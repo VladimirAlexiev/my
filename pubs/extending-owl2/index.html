@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Extending OWL2 Property Constructs with OWLIM Rules</title>
+<!-- 2014-09-18 Thu 01:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Vladimir Alexiev, Ontotext Corp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<style>table, th, td {border-width: thin; border-style: solid solid; border-spacing:0 0; padding:0px 2px}</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Extending OWL2 Property Constructs with OWLIM Rules</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Intro</a>
+<ul>
+<li><a href="#sec-1-1">Existing Property Constructs</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">New Property Constructs</a>
+<ul>
+<li><a href="#sec-2-1">Representation</a></li>
+<li><a href="#sec-2-2">Implementation</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Notes and Examples</a>
+<ul>
+<li><a href="#sec-3-1">transitiveOver</a></li>
+<li><a href="#sec-3-2">transitiveLeft</a></li>
+<li><a href="#sec-3-3">TransitiveOverRestr</a></li>
+<li><a href="#sec-3-4">PropChain</a></li>
+<li><a href="#sec-3-5">PropRestr</a></li>
+<li><a href="#sec-3-6">PropChainRestr</a></li>
+<li><a href="#sec-3-7">TypeRestr</a></li>
+<li><a href="#sec-3-8">PropChainRestrType2Restr</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Intro</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+While OWL2 has very powerful class constructs, its property constructs are quite weak.
+We propose several extensions that we found useful when making:
+</p>
+<ul class="org-ul">
+<li>CIDOC CRM Fundamental Relations Search for the British Museum
+</li>
+<li>Appropriate compositions of BTG, BTP, BTI relations for the Getty Vocabularies
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Existing Property Constructs</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+OWL2 Property Constructs include the following. Below we use pN for premises, q for conclusion.
+<b>prop path</b> is a SPARQL 1.1 property path, := means "equivalent to" and &lt;= means "implied by".
+We provide an illustration, where the conclusion is in red
+</p>
+<table border="1" cellspacing="0" cellpadding="0" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="center" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left"><b>construct</b></td>
+<td class="left"><b>prop path</b></td>
+<td class="center"><b>illustration</b></td>
+</tr>
+
+<tr>
+<td class="left">Symmetric (self-inverse)</td>
+<td class="left">q := ^q</td>
+<td class="center"><img src="./img/SymmetricProperty.png" alt="SymmetricProperty.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Inverse</td>
+<td class="left">q := ^p</td>
+<td class="center"><img src="./img/inverseOf.png" alt="inverseOf.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Disjunction (parallel composition)</td>
+<td class="left">q &lt;= p1 &vert; p2</td>
+<td class="center"><img src="./img/subPropertyOf.png" alt="subPropertyOf.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Chain (sequential composition)</td>
+<td class="left">q &lt;= p1/../pN</td>
+<td class="center"><img src="./img/propertyChainAxiom.png" alt="propertyChainAxiom.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Transitive closure</td>
+<td class="left">q &lt;= p+</td>
+<td class="center"><img src="./img/TransitiveProperty.png" alt="TransitiveProperty.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>
+The corresponding OWL2 axioms (in RDF Turtle) are:
+</p>
+<pre class="example">
+q a owl:SymmetricProperty.
+q owl:inverseOf p.
+p1 rdfs:subPropertyOf q. p2 rdfs:subPropertyOf q.
+q owl:propertyChainAxiom (p1..pN).
+p rdfs:subPropertyOf q. q a owl:TransitiveProperty.
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">New Property Constructs</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Below we use pN for premises, r for restriction (which is just another premise), tN for types, q for conclusion.
+<b>prop path</b> uses the following additional constructs:
+</p>
+<ul class="org-ul">
+<li><code>p &amp; r</code>: property conjunction (restriction): holds between two nodes when both properties connect the same nodes
+</li>
+<li><code>[t1] p [t2]</code>: type restriction: holds when the source node has type t1 and the target node has type t2 (shown inside the node)
+</li>
+</ul>
+<table border="1" cellspacing="0" cellpadding="0" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="center" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left"><b>construct</b></td>
+<td class="left"><b>name</b></td>
+<td class="left"><b>prop path</b></td>
+<td class="center"><b>illustration</b></td>
+</tr>
+
+<tr>
+<td class="left">Extension on the right</td>
+<td class="left">transitiveOver</td>
+<td class="left">q &lt;= q / p</td>
+<td class="center"><img src="./img/transitiveOver.png" alt="transitiveOver.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Extension by conjunction on the right</td>
+<td class="left">TransitiveOverRestr</td>
+<td class="left">q &lt;= (q / p) &amp; r</td>
+<td class="center"><img src="./img/TransitiveOverRestr.png" alt="TransitiveOverRestr.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Extension on the left</td>
+<td class="left">transitiveLeft</td>
+<td class="left">q &lt;= p / q</td>
+<td class="center"><img src="./img/transitiveLeft.png" alt="transitiveLeft.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Chain of fixed length 2</td>
+<td class="left">PropChain</td>
+<td class="left">q &lt;= p1 / p2</td>
+<td class="center"><img src="./img/PropChain.png" alt="PropChain.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Conjunction (restriction by property)</td>
+<td class="left">PropRestr</td>
+<td class="left">q &lt;= p &amp; r</td>
+<td class="center"><img src="./img/PropRestr.png" alt="PropRestr.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Chain and restriction by property</td>
+<td class="left">PropChainRestr</td>
+<td class="left">q &lt;= (p1 / p2) &amp; r</td>
+<td class="center"><img src="./img/PropChainRestr.png" alt="PropChainRestr.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Restriction by two typechecks</td>
+<td class="left">TypeRestr</td>
+<td class="left">q &lt;= [t1] p [t2]</td>
+<td class="center"><img src="./img/TypeRestr.png" alt="TypeRestr.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Restriction by 1 typecheck</td>
+<td class="left">Type1Restr</td>
+<td class="left">q &lt;= [t1] p</td>
+<td class="center"><img src="./img/Type1Restr.png" alt="Type1Restr.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Chain and typecheck</td>
+<td class="left">PropChainType2</td>
+<td class="left">q &lt;= p1 / p2[t2]</td>
+<td class="center"><img src="./img/PropChainType2.png" alt="PropChainType2.png" /></td>
+</tr>
+
+<tr>
+<td class="left">Chain, typecheck and restriction</td>
+<td class="left">PropChainRestrType2Restr</td>
+<td class="left">q &lt;= (p1 / p2[t2]) &amp; r</td>
+<td class="center"><img src="./img/PropChainRestrType2Restr.png" alt="PropChainRestrType2Restr.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>
+Note: PropRestr is a conjunction of two properties.
+We call the first one <i>premise</i> and the second one <i>restriction</i>
+only for stylistic reasons, to better match PropChainRestr.
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Representation</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+We represent the constructs as axioms (in RDF Turtle):
+</p>
+<pre class="example">
+q ptop:transitiveOver p.
+x a ptop:TransitiveOverRestr; ptop:premise p; ptop:restricton r; ptop:conclusion q.
+q ptop:transitiveLeft p.
+x a ptop:PropChain; ptop:premise1 p1; ptop:premise2 p2; ptop:conclusion q.
+x a ptop:PropRestr; ptop:premise p; ptop:restricton r; ptop:conclusion q.
+x a ptop:PropChainRestr; ptop:premise1 p1; ptop:premise2 p2; ptop:restricton r; ptop:conclusion q.
+x a ptop:TypeRestr; ptop:premise p; ptop:type1 t1; ptop:type2 t2; ptop:conclusion q.
+x a ptop:Type1Restr; ptop:premise p; ptop:type1 t1; ptop:conclusion q.
+x a ptop:PropChainRestrType2Restr; ptop:premise1 p1; ptop:premise2 p2; ptop:restricton r; ptop:type2 t2; ptop:conclusion q.
+</pre>
+<ul class="org-ul">
+<li>The lowercase constructs are simple relations between properties, similar to owl:inverseOf.
+</li>
+<li>For the uppercase constructs we use specific structures,
+distinguished by a particular type (eg ptop:PropChain) and using specific slot names for the construct's constituents.
+TODO: but the slot names are the same across constructs, which causes lower specificity and slower execution.
+</li>
+</ul>
+<p>
+This is in contrast to owl:propertyChainAxiom, which uses a general structure (rdf:List):
+</p>
+<ul class="org-ul">
+<li>The benefit of our approach is that it can be implemented more efficiently:
+propertyChainAxiom needs to use intermediate nodes and edges in order to unroll the rdf:List representing the chain
+</li>
+<li>The disadvantage is that it allows only constructs of limited length.
+But have you seen in practice an owl:propertyChainAxiom with a chain longer than 2?
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Implementation</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+We implement these constructs using OWLIM Rules,
+which has the benefit of <b>incremental retract</b>: when a premise is deleted, its unsupported conclusions are deleted, recursively.
+This is possible since the rules are simple enough (eg don't include arithmetics or comparisons),
+so they can be executed "backwards" during retraction.
+We show the implementation only of the last (most complicated) rule.
+</p>
+<pre class="example">
+Id: ptop_PropChainRestrType2Restr
+  t &lt;rdf:type&gt; &lt;ptop:PropChainRestrType2Restr&gt;
+  t &lt;ptop:premise1&gt;    p1
+  t &lt;ptop:premise2&gt;    p2
+  t &lt;ptop:restriction&gt; r
+  t &lt;ptop:type2&gt;       t2
+  t &lt;ptop:conclusion&gt;  q
+  x p1 y
+  y p2 z
+  z &lt;rdf:type&gt; t2
+  x r z
+  ----------------
+  x q z
+</pre>
+<p>
+This could also be implemented with RIF or N3 Rules.
+But SPIN cannot be used because the rules are recursive,
+unless one is willing to iterate until no more conclusions are inferred.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Notes and Examples</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">transitiveOver</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+It all started with ptop:transitiveOver, which has been part of Ontotext's PROTON ontology since 2008(?).
+This is better than owl:TransitiveProperty for two reasons:
+</p>
+<ul class="org-ul">
+<li>It's <b>more general</b>: q is a TransitiveProperty <i>iff</i> it's transitiveOver itself:
+</li>
+</ul>
+<pre class="example">
+q a owl:TransitiveProperty &lt;=&gt; q ptop:transitiveOver q
+</pre>
+<p>
+ptop:transitiveOver is more general because you could different properties with it.
+For example, the canonical inferencing of types along the class hierarchy can be expressed as:
+</p>
+<pre class="example">
+rdf:type ptop:transitiveOver rdfs:subClassOf
+</pre>
+<p>
+Note: SymmetricProperty is a specialziation of inverseOf in an analogous way:
+</p>
+<pre class="example">
+q a owl:SymmetricProperty &lt;=&gt; a owl:inverseOf a
+</pre>
+<ul class="org-ul">
+<li>It allows <b>more efficient</b> implementation of transitive closures.
+</li>
+</ul>
+<p>
+Transitive properties are usually implemented as transitive closure over a basic <b>step</b> property.
+For example, skos:broaderTransitive is based on skos:broader and is usually implemented as
+</p>
+<pre class="example">
+skos:broader rdfs:subPropertyOf skos:broaderTransitive.
+skos:broaderTransitive a owl:TransitiveProperty.
+</pre>
+<p>
+Now consider a chain of skos:broader between two nodes.
+owl:TransitiveProperty has to consider every split of the chain, and infers the same closure between the two nodes multiple times,
+leading to quadratic inference complexity.
+The following axioms are more efficient, since they seek to extend the chain only at the right end:
+</p>
+<pre class="example">
+skos:broader rdfs:subPropertyOf skos:broaderTransitive.
+skos:broaderTransitive ptop:transitiveOver skos:broader.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">transitiveLeft</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+transitiveLeft is just like transitiveOver, but extends the chain of q by using p on the left, not on the right.
+For example, the first three axioms below say that broaderPartitiveExtended is a chain of broaderPartitive,
+followed by any number of broaderPartitive|broaderGeneric on the right.
+The last axiom also allows any number of broaderGeneric on the left.
+</p>
+<pre class="example">
+gvp:broaderPartitive rdfs:subPropertyOf gvp:broaderPartitiveExtended.
+gvp:broaderPartitiveExtended ptop:transitiveOver gvp:broaderGeneric.
+gvp:broaderPartitiveExtended ptop:transitiveOver gvp:broaderPartitive.
+gvp:broaderPartitiveExtended ptop:transitiveLeft gvp:broaderGeneric.
+</pre>
+<p>
+So in effect broaderPartitiveExtended is any chain of broaderPartitive|broaderGeneric, including at least one broaderPartitive.
+You don't need to bother with transitiveLeft if you are extending a single property, but you may need it if you are mixing two.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">TransitiveOverRestr</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+To understand this example, you need to know a bit about the LOD representation of the Getty Vocabularies:
+</p>
+<ul class="org-ul">
+<li>TGN places form a hierarchy using broaderPartitive
+</li>
+<li>AAT concepts (including place types) form a hierarchy using broaderGeneric (mostly)
+</li>
+<li>TGN place is connected to its AAT place type using broaderInstantial
+</li>
+</ul>
+<p>
+We first defined broaderInstantialExtended as a closure of broaderInstantial over broaderGeneric (only on the right):
+</p>
+<pre class="example">
+gvp:broaderInstantial rdfs:subPropertyOf gvp:broaderInstantialExtended.
+gvp:broaderInstantialExtended ptop:transitiveOver gvp:broaderGeneric.
+</pre>
+
+<p>
+But we faced a problem: some broaderGeneric are better suited for this purpose than others.
+AAT concepts (including place types) have a Preferred (primary) hierarchy, and often have secondary (Non-Preferred) hierarchies, eg:
+</p>
+<table border="1" cellspacing="0" cellpadding="0" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">place type</th>
+<th scope="col" class="left">Preferred Hierarchy</th>
+<th scope="col" class="left">Non-Preferred Hierarchy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">continents</td>
+<td class="left">Built Environment (Hierarchy Name)</td>
+<td class="left">Associated Concepts</td>
+</tr>
+
+<tr>
+<td class="left">(eg Europe)</td>
+<td class="left">. Settlements and Landscapes</td>
+<td class="left">. scientific concepts</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">.. landscapes (environments)</td>
+<td class="left">.. physical sciences concepts</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026; natural landscapes</td>
+<td class="left">&#x2026; earth sciences concepts</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;. landforms (terrestrial)</td>
+<td class="left">&#x2026;. earth features</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;.. landmasses</td>
+<td class="left">&#x2026;.. physical features</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;&#x2026; continents</td>
+<td class="left">&#x2026;&#x2026; hypsographic features</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;&#x2026;. terrestrial features (natural)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;&#x2026;.. landforms (terrestrial)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;&#x2026;&#x2026; continents</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">inhabited places</td>
+<td class="left">Objects Facet</td>
+<td class="left">Agents Facet</td>
+</tr>
+
+<tr>
+<td class="left">(eg Sofia)</td>
+<td class="left">. Settlements and Landscapes</td>
+<td class="left">. organizations (groups)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">.. inhabited places</td>
+<td class="left">.. administrative bodies</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026; political administrative bodies</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;. &lt;political administrative bodies by general designation&gt;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#x2026;.. inhabited places</td>
+</tr>
+</tbody>
+</table>
+<p>
+While the Preferred hierarchy is useful, the secondary hierarchy is not so useful:
+few people would think of Europe as a "scientific concept" or Sofia city as an "organization".
+So we found it better to define broaderInstantialExtended as a closure over broaderGeneric <b>restricted by</b> broaderPreferred:
+</p>
+<pre class="example">
+[a ptop:TransitiveOverRestr;
+ ptop:conclusion  gvp:broaderInstantialExtended;
+ ptop:premise     gvp:broaderGeneric;
+ ptop:restriction gvp:broaderPreferred].
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">PropChain</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+PropChain is like owl:propertyChainAxiom but for chains of length 2
+(have you seen longer chains used in practice?)
+The advantage is more efficient implementation,
+as propertyChainAxiom needs to use intermediate nodes and edges in order to unroll the rdf:List representing the chain.
+</p>
+
+<p>
+You don't need to rewrite your owl:propertyChainAxioms to use ptop:PropChain: you can convert with a rule like this:
+</p>
+<pre class="example">
+Id: ptop_PropChainByPropertyChainAxiom
+  p  &lt;owl:propertyChainAxiom&gt; l1
+  l1 &lt;rdf:first&gt; p1
+  l1 &lt;rdf:rest&gt;  l2
+  l2 &lt;rdf:first&gt; p2
+  l2 &lt;rdf:rest&gt;  &lt;rdf:nil&gt;
+  ----------------
+  t &lt;rdf:type&gt; &lt;ptop:PropChain&gt;
+  t &lt;ptop:premise1&gt;   p1
+  t &lt;ptop:premise2&gt;   p2
+  t &lt;ptop:conclusion&gt; p
+</pre>
+<p>
+But if your OWLIM ruleset has a general implementation of owl:propertyChainAxiom, it needs to be modified to apply to chains longer than 2 only.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">PropRestr</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+OWL2 does not allow the expression of conjunctive properties,
+something that provided original motivation for these extensions, while working on CRM Fundamental Relations.
+</p>
+
+<p>
+For example, iso:broaderGeneric can be defined as a restriction of gvp:broaderGenericExtended to skos:broader (i.e. directly connected skos:Concepts):
+</p>
+<pre class="example">
+[a ptop:PropRestr;
+ ptop:premise    skos:broader;
+ ptop:restricton gvp:broaderGenericExtended;
+ ptop:conclusion iso:broaderGeneric].
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6">PropChainRestr</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+PropChainRestr is a combination of PropChain and PropRestr. For example, broaderPreferredExtended is the transitive closure of broaderPreferred, but restricted to broaderExtended.
+</p>
+<pre class="example">
+[a ptop:PropChainRestr;
+ ptop:premise1    gvp:broaderPreferredExtended;
+ ptop:premise2    gvp:broaderPreferred;
+ ptop:restriction gvp:broaderExtended;
+ ptop:conclusion  gvp:broaderPreferredExtended].
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7">TypeRestr</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+TypeRestr is a restriction of a property to connect nodes of specified types.
+(Type1Restr is a very simple modification where we restrict only the source node.)
+For example, skos:broader is a restriction of gvp:broader to only skos:Concepts; iso:subordinateArray is a restriction of gvp:narrower from skos:Concept to iso:ThesaurusArray.
+</p>
+<pre class="example">
+[a ptop:TypeRestr;
+ ptop:premise    gvp:broader;
+ ptop:type1      skos:Concept;
+ ptop:type2      skos:Concept;
+ ptop:conclusion skos:broader].
+[a ptop:TypeRestr;
+ ptop:premise    gvp:narrower;
+ ptop:type1      skos:Concept;
+ ptop:type2      iso:ThesaurusArray;
+ ptop:conclusion iso:subordinateArray].
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8">PropChainRestrType2Restr</h3>
+<div class="outline-text-3" id="text-3-8">
+<p>
+There's nothing fundamentally important about this pattern.
+But we found it useful in order to infer skos:broader as a restriction of gvp:broaderExtended over directly connected pairs of skos:Concept
+(no intervening skos:Concept).
+We use an auxiliary property gvp:broaderNonConcept, which connects skos:Concept to non-concepts
+(it itself is implemented with PropChainRestrType2Restr).
+</p>
+<pre class="example">
+[a ptop:PropChainRestrType2Restr;
+ ptop:premise1    gvp:broaderNonConcept;
+ ptop:premise2    gvp:broader;
+ ptop:restriction gvp:broaderExtended;
+ ptop:type2       skos:Concept;
+ ptop:conclusion  skos:broader].
+</pre>
+
+<p>
+The power of our approach is that you can easily define more constructs for any rule patterns that are important in your situation.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2014-09-18</p>
+<p class="author">Author: Vladimir Alexiev, Ontotext Corp</p>
+<p class="date">Created: 2014-09-18 Thu 01:08</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.91.1 (<a href="http://orgmode.org">Org</a> mode 8.2.6)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

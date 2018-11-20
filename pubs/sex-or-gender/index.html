@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sex or Gender?</title>
+<!-- 2015-08-04 Tue 16:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Vladimir Alexiev" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+<style type="text/css">
+h1,h2,h3,h4,h5,h6,h7 {font-family: Arial}
+// don't want empty lines in auto-postamble
+.author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em}
+// style for #+BEGIN_ABSTRACT
+.abstract {margin: 1em; padding: 1em; border: 1px solid black}
+.abstract:before {content: "Abstract: "; font-weight: bold}
+// center the preamble (author name) and make it bigger
+#preamble p { font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center; }
+// table headers aligned same as table data
+th.left     {text-align:left}
+th.right    {text-align:right}
+// table horizontal & vertical borders. First value is top & bottom, second is left & right. http://www.w3schools.com/css/css_border.asp
+th, td {border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding:4px 2px}
+// colored TODO keywords
+.CANCELED   {color: blue}
+.MAYBE      {color: blue}
+.POSTPONED  {color: blue}
+.INPROGRESS {color: orange}
+.NEXT       {color: orange}
+.IER        {color: orange}
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sex or Gender?</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Intro</a>
+<ul>
+<li><a href="#sec-1-1">1.1. How Many in Wikidata?</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Survey of Datasets</a>
+<ul>
+<li><a href="#sec-2-1">2.1. ULAN</a></li>
+<li><a href="#sec-2-2">2.2. AAT</a></li>
+<li><a href="#sec-2-3">2.3. FOAF and Schema</a></li>
+<li><a href="#sec-2-4">2.4. RDA</a></li>
+<li><a href="#sec-2-5">2.5. Wikidata</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Coreferencing</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Intro</h2>
+<div class="outline-text-2" id="text-1">
+<p class="verse">
+Sex &#x2013;Question on a form<br  />
+Lots! &#x2013;Answer provided<br  />
+</p>
+
+<p>
+While working on ULAN LOD, I wondered how should we map the ULAN field "sex".
+</p>
+
+<p>
+So I did a small review of available LOD properties and values.
+</p>
+
+<p>
+Everyone agrees on male/female but there are other values as well.
+Read the discussion on Wikidata prop <a href="https://www.wikidata.org/wiki/Property_talk:P21#Transgender_.2F_Cisgender_changes">sex or gender (P21)</a> to learn more than you ever wanted on the topic, including the difference between sex and gender.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> How Many in Wikidata?</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+How many Wikidata entities have gender but are neither male nor female?
+We can check with this cryptic query:
+</p>
+<pre class="example">
+CLAIM[21] AND NOCLAIM[21:6581097] AND NOCLAIM[21:6581072] AND NOCLAIM[21:4294967294]  AND NOCLAIM[21:44148] AND NOCLAIM[21:43445]
+</pre>
+<p>
+Use the <a href="http://wdq.wmflabs.org/wdq/">WDQ Editor</a> to "click a query", or paste the above query to figure out what it means.
+<img src="./WDQ-gender.png" alt="WDQ-gender.png" />
+</p>
+
+<ul class="org-ul">
+<li>the values that we exclude with NOCLAIM are (in order): male, female, unknown, male animal, female animal
+</li>
+<li>Wikidata distinguishes between human and animal males/females.
+If you skip the last 2 NOCLAIM, you can find out that both Laika (the first space dog) and Blondi (Hitler's dog) were female
+</li>
+</ul>
+
+<p>
+Then invoke <a href="http://tools.wmflabs.org/autolist/autolist1.html?q=CLAIM[21]%20AND%20NOCLAIM[21:6581097]%20AND%20NOCLAIM[21:4294967294]%20AND%20NOCLAIM[21:6581072]%20AND%20NOCLAIM[21:44148]%20AND%20NOCLAIM[21:43445]">Autolist</a>, add "Property: 21" and click Update to get a Gender column.
+Currently there are 163 humans that have gender neither male nor female. Eg
+</p>
+<ul class="org-ul">
+<li>the artist Jeffrey Catherine Jones is "transgender female";
+</li>
+<li>the author, poet, playwright, and theater artist S. Bear Bergman is "transgender male".
+</li>
+</ul>
+
+<p>
+Now let's find out how many humans have a gender (excluding unknown,  male animal, female animal).
+Since there's a lot, we use the <a href="http://wdq.wmflabs.org/api_documentation.html">WDQ API</a> to just count, returning "noitems":
+</p>
+<pre class="example">
+http://wdq.wmflabs.org/api?q=CLAIM[21] AND NOCLAIM[21:4294967294] AND NOCLAIM[21:44148] AND NOCLAIM[21:43445]&amp;noitems=1
+</pre>
+
+<p>
+There are 2,516,099. So the ones neither male nor female are 0.0065% (6.5 promiles). This is quite low.
+But studies have shown that all authority lists (VIAF, Wikipedia, Wikidata) are strongly male-biased.
+So in a more harmonious future we should expect the percentage of records and articles about females and transgenders to increase.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Survey of Datasets</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> ULAN</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The ULAN database field "sex" has these values:
+</p>
+<ul class="org-ul">
+<li>Male
+</li>
+<li>Female.
+</li>
+<li>Other: neither male nor female (eg hermaphrodite)
+</li>
+</ul>
+<p>
+ULAN includes a few &lt;named animals&gt; under ulan:500353455, for which also male/female is used.
+</p>
+
+<p>
+The following database values won't be used
+</p>
+<ul class="org-ul">
+<li>Transgender: will be replaced with Other
+</li>
+<li>Unknown: the default for loads, when gender is not indicated by the contributor or otherwise we do not know it. Will be skipped
+</li>
+<li>N/A: for corporate bodies. Will be skipped
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> AAT</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+ULAN refers to AAT for all sorts of concepts (person type, life event type, sex).
+The following concepts will be used (first two are under <a href="http://www.getty.edu/vow/AATHierarchy?find=300189557&logic=AND&note=&subjectid=300055146">AAT concept Sex</a>):
+</p>
+<ul class="org-ul">
+<li>aat:300189559 male
+</li>
+<li>aat:300189557 female
+</li>
+<li>aat:300400513 other
+</li>
+</ul>
+
+<p>
+AAT also has a concept that won't be used
+</p>
+<ul class="org-ul">
+<li>aat:300389935 hermaphroditic "combining male and female characteristics".
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> FOAF and Schema</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><a href="http://xmlns.com/foaf/spec/#term_gender">foaf:gender</a> is literal, with recommended values "male", "female" and "other values may be used, but are not enumerated here"
+</li>
+<li><a href="http://schema.org/gender">schema:gender</a> is literal, with no recommended values
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> RDA</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+The RDA <a href="http://www.rdaregistry.info/termList/gender/">termList/gender</a> is now online at <a href="http://www.rdaregistry.info">http://www.rdaregistry.info</a>. It has these limited values:
+</p>
+<ul class="org-ul">
+<li>1002 male
+</li>
+<li>1001 female
+</li>
+<li>1003 not known
+</li>
+</ul>
+
+<p>
+I wonder what RDA would have to say about the aforementioned S. Bear Bergman (<a href="https://www.wikidata.org/wiki/Q185735">wd:Q185735</a>, <a href="https://viaf.org/viaf/26494357/">viaf:26494357</a>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Wikidata</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Wikidata prop <a href="https://www.wikidata.org/wiki/Property_talk:P21">sex or gender (P21)</a> has the most values:
+</p>
+<ul class="org-ul">
+<li>for persons: male (Q6581097), female (Q6581072), intersex (Q1097630), hermaphrodite (Q303479), transgender (Q189125), transgender female (Q1052281), transgender male (Q2449503), genderqueer (Q48270), fa'afafine (Q1399232), māhū (Q3277905), kathoey (Q746411), fakaleiti (Q350374), hijra (Q660882) ;
+</li>
+<li>for animals: male animal (Q44148) or female animal (Q43445)
+</li>
+</ul>
+
+<p>
+I <a href="https://www.wikidata.org/wiki/Property_talk:P21#Hermaphrodite_and_Transgender">added two values</a>: Hermaphrodite and Transgender:
+</p>
+<ul class="org-ul">
+<li>hermaphrodite (Q303479): described as "used for organisms with both 'male' and 'female' reproductive organs" and coreferenced to GND 4191351-6
+<ul class="org-ul">
+<li>note: intersex (Q1097630) is described as "variation in sex characteristics that do not allow an individual to be distinctly identified as male or female". It's coreferenced to GND 4027484-6 "occurrence of male and female or intermediate characteristics in an individual of a single sex type", which has synonym <b>Pseudo</b>-hermaphroditism so it's not the same as Hermaphrodite
+</li>
+</ul>
+</li>
+<li>transgender (Q189125): while there exist transgender male (Q2449503) and transgender female (Q1052281), ULAN doesn't have such distinction, so we need a "super-value" Transgender in addition to these two
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Coreferencing</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+One can use the following coreferencing statements for male/female
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #a020f0;">@prefix</span> <span style="color: #228b22;">aat:</span><span style="color: #008b8b;"> </span>  <span style="color: #0000ff;">&lt;http://vocab.getty.edu/aat/&gt;</span>.
+<span style="color: #a020f0;">@prefix</span> <span style="color: #228b22;">wd:</span><span style="color: #008b8b;"> </span>   <span style="color: #0000ff;">&lt;http://www.wikidata.org/entity/&gt;</span>.
+<span style="color: #a020f0;">@prefix</span> <span style="color: #228b22;">rdagn:</span><span style="color: #008b8b;"> </span><span style="color: #0000ff;">&lt;http://rdaregistry.info/termList/gender/&gt;</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">aat:</span><span style="color: #008b8b;">300189559</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">exactMatch</span> <span style="color: #228b22;">wd:</span><span style="color: #008b8b;">Q6581097,</span> <span style="color: #228b22;">rdaGender:</span><span style="color: #008b8b;">1002</span>. <span style="color: #b22222;"># </span><span style="color: #228b22;">male</span>
+<span style="color: #228b22;">aat:</span><span style="color: #008b8b;">300189557</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">exactMatch</span> <span style="color: #228b22;">wd:</span><span style="color: #008b8b;">Q6581072,</span> <span style="color: #228b22;">rdaGender:</span><span style="color: #008b8b;">1001</span>. <span style="color: #b22222;"># female</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2015-08-04</p>
+<p class="author">Author: Vladimir Alexiev</p>
+<p class="date">Created: 2015-08-04 Tue 16:06</p>
+<p class="creator">Emacs 25.0.50.1 (Org mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

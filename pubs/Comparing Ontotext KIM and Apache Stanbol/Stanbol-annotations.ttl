@@ -1,0 +1,947 @@
+
+
+<urn:enhancement-794323dd-81e1-a2a2-1545-760d052f0fff>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9808085086922897"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2152"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "p onto furnishings. In response to the tacky souvenirs and cheap throwaway London designs for tourists, Swedish designer Maria Holmer Dahlgren wanted to celebrate the city using co temporary graphics. The result is her London collection, which will be on show at Top rawer this weekend. It comprises trays, mugs and aprons adorned with the Tate Modern, Brick La"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2146"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-1e8428f1-e3e5-1d94-44f0-9dc7fddb3b35>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9103143263001054"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "4014"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Royal"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "he Brit mania trend last? Many thought it would wane after the Royal wedding ma hem. How wrong they were. We   ve got at least until t"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "4009"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-4ecba9ce-b43b-1a4f-8d85-292b7ccac665>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.5210316639627116"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3448"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Misha Black"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "nth ( 17-25 September). Whatmough   s patchwork sofas are made from the famous hardwearing moquette fabric that upholstered the transport seating across ondon for over 100 years. The iconic moquette patterns include the vibrant orange District Line pattern designed by Misha Black in 1978 and the still fashio able Green Line moquette. It's iconic, it's upcycling and its very British; an inspired"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3437"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.691Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Person> .
+
+<urn:enhancement-57787468-134b-ea88-355a-f1cdbb0ce3c4>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.94624430675945"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3585"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """able Green Line moquette. It's iconic, it's upcycling and its very British; an inspired on the London trend.
+  
+  Book signings at Top Drawer ill please city dwellers. Published this month by Batsford is a new book Love London which features 180 photographs"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3579"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.794Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-1cfeb19e-d618-8617-745e-07816d67e642>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.5515522172585856"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2598"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Cockpit Arts"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "e and Tower Bridge. Humour is key to her success; Dahlgren epitomizes well-known British idiosyncrasies as she pictorially sums up our wet weather with cats and dogs fallin under an umbrella. Also showing at Top Drawer is ceramicist Kate Adams, of mydeco design boutique, who spent five years at Cockpit Arts where she established her London skyl ne tableware range. Each piece is thrown on the potter   s wheel, then individually illustrated with rugged versions of iconic buildings such as St.Paul   s Ca"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2586"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-5f77de5b-abed-cea3-b26c-13c551c5de03>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "18.896194"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "Silver Spring, Maryland"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/Silver_Spring,_Maryland> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://www.w3.org/2002/07/owl#Thing> , <http://www.opengis.net/gml/_Feature> , <http://dbpedia.org/ontology/Place> , <http://dbpedia.org/ontology/Settlement> , <http://dbpedia.org/ontology/PopulatedPlace> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.826Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-0e02f54b-e565-b892-6062-3c94b541ed36> .
+
+<urn:enhancement-b420d444-4f9b-6332-6b9c-7eb83be3f19b>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9234695274596006"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "187"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "Rather a long time, insist trend predictors and designers showing at this month   s interior exhibition . With Top Drawer starting this Sunday and London Design Festival just a few weeks away, the capital city is awash with iconic     and subtle - London imag ry. The longevity of this Brit mania trend, it seems, lies in the originality of the design"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "181"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-064f5ec6-7086-8cc0-46c9-6dea45472074>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.8621083721776795"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2898"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Lisa Whatmough"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """ne tableware range. Each piece is thrown on the potter   s wheel, then individually illustrated with rugged versions of iconic buildings such as St.Paul   s Ca l and the Gherkin.
+  
+  Another such designer keeping the trend looking fresh is Lisa Whatmough, founder of Squint Ltd who recently collaborated with the ondon Transport Museum. The result of their partnership, unusual patchwork sofas, will be unveiled at Tent London, one of the largest design trade shows taking place during London Design Festival later this m"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2884"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.691Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Person> .
+
+<urn:enhancement-09f99e91-7e40-7ee2-9328-2e12e2ee08b9>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9783656262689752"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "956"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "Last year, a micro trend for all things London was obvious at Top Drawer, a trade show for design-led gifts and this year, sees little differe ce.    With the arrival of the Olympics and the Golden Jubilee in 2012, we   re celebrating all things London at Top Drawer this autumn,    say the organizers of T p Drawer. Back in 2009, market forecasters Trend Bible announced that the London and transport trend would be a long-te"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "950"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-2a5631c0-02ac-7e78-118d-08cb45a9390f>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.825871792725155"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2921"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Squint Ltd"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """ne tableware range. Each piece is thrown on the potter   s wheel, then individually illustrated with rugged versions of iconic buildings such as St.Paul   s Ca l and the Gherkin.
+  
+  Another such designer keeping the trend looking fresh is Lisa Whatmough, founder of Squint Ltd who recently collaborated with the ondon Transport Museum. The result of their partnership, unusual patchwork sofas, will be unveiled at Tent London, one of the largest design trade shows taking place during London Design Festival later this m"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2911"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-8918c4b1-0e6d-d0de-3442-7ae958b2d88a>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9036765903601375"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2533"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Kate Adams"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "e and Tower Bridge. Humour is key to her success; Dahlgren epitomizes well-known British idiosyncrasies as she pictorially sums up our wet weather with cats and dogs fallin under an umbrella. Also showing at Top Drawer is ceramicist Kate Adams, of mydeco design boutique, who spent five years at Cockpit Arts where she established her London skyl ne tableware range. Each piece is thrown on the potter   s wheel, then individually illustrated with rugged versions of iconic buildings such as St.Paul   s Ca"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2523"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.691Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Person> .
+
+<urn:enhancement-9677857b-2641-a0c3-5f09-50b09f77ef47>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9616047390480841"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2797"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Ca"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """under an umbrella. Also showing at Top Drawer is ceramicist Kate Adams, of mydeco design boutique, who spent five years at Cockpit Arts where she established her London skyl ne tableware range. Each piece is thrown on the potter   s wheel, then individually illustrated with rugged versions of iconic buildings such as St.Paul   s Ca l and the Gherkin.
+  
+  Another such designer keeping the trend looking fresh is Lisa Whatmough, founder of Squint Ltd who recently collaborated with the"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2795"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.794Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9929548560324263"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "187"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "Rather a long time, insist trend predictors and designers showing at this month   s interior exhibition . With Top Drawer starting this Sunday and London Design Festival just a few weeks away, the capital city is awash with iconic     and subtle - London imag ry. The longevity of this Brit mania trend, it seems, lies in the originality of the design"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "181"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-429aa791-cc1e-5958-fbfa-45a45039b77f>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "30.3609"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "Union Pacific Railroad"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/Union_Pacific_Railroad> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://www.w3.org/2002/07/owl#Thing> , <http://dbpedia.org/ontology/Organisation> , <http://dbpedia.org/ontology/Company> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.816Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-0125efd7-b6e0-4cb9-2465-d80e2c950390> , <urn:enhancement-86643831-8f83-5c1a-eb5c-ecf85a541d9f> .
+
+<urn:enhancement-d4fe04e6-3fb5-e102-1131-964458c207a5>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9945541049675725"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "1795"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """009.
+  
+     Many of our clients have had real commercial success with a type of British nostalgia-whether it is Union Jack cushions or vintage Queen Elizabeth photographic style prints,    says Trend Bible founder oanna Feeley.    But really the question they are all asking is how they can keep this look fresh and move it forward, since British nostalgia as a trend concept continuing to be important through 2011 and into 2012 with the Queen   s Diamond Jubilee and London Olympics still to ext summer.   
+  
+  The secret lies in originality and an aversion to splattering the Union Jack or tube m"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "1789"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-0e02f54b-e565-b892-6062-3c94b541ed36>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9380386405777541"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "1270"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Spring"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """p Drawer. Back in 2009, market forecasters Trend Bible announced that the London and transport trend would be a long-te m keeper. They initially flagged up the trend of transport and nostalgia for British icons in their Voyager trend showcased in their Spring/ Summer 2011 Home Trends book written bac 009.
+  
+     Many of our clients have had real commercial success with a type of British nostalgia-whether it is Union Jack cushions or vintage Queen Elizabeth photographic style prints,    says Trend Bible founder"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "1264"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.794Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-f3f75374-f043-2335-b88e-c0cbcbb2f588>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.5660291278624385"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3711"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Love London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """on the London trend.
+  
+  Book signings at Top Drawer ill please city dwellers. Published this month by Batsford is a new book Love London which features 180 photographs aken by Barbara Chandler. Her exhibition Love London was shown in the picture gallery of Habitat in Regent Street in 2008 and her handmade photo cards are o"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3700"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.794Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-1ea771b3-f1f2-0d22-68f3-11829c75c1d7>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.5309255667895856"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2316"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Humour"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "rawer this weekend. It comprises trays, mugs and aprons adorned with the Tate Modern, Brick La e and Tower Bridge. Humour is key to her success; Dahlgren epitomizes well-known British idiosyncrasies as she pictorially sums up our wet weather with cats and dogs fallin under an umbrella. Also showing at Top Drawer is ceramicist Kate Adams, of mydeco design boutique, who spent five years at Cockpit Arts where she established her London skyl"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2310"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-540d93d5-d0cc-7038-9fa6-edfb46765832>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "18.211885"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "Auto Union"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/Auto_Union> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://www.w3.org/2002/07/owl#Thing> , <http://dbpedia.org/ontology/Organisation> , <http://dbpedia.org/ontology/Company> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.816Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-0125efd7-b6e0-4cb9-2465-d80e2c950390> , <urn:enhancement-86643831-8f83-5c1a-eb5c-ecf85a541d9f> .
+
+<urn:enhancement-f66acf0a-3f8b-d1f3-d1aa-890758ad2655>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9793718529152091"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "1091"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "ce.    With the arrival of the Olympics and the Golden Jubilee in 2012, we   re celebrating all things London at Top Drawer this autumn,    say the organizers of T p Drawer. Back in 2009, market forecasters Trend Bible announced that the London and transport trend would be a long-te m keeper. They initially flagged up the trend of transport and nostalgia for British icons in their Voyager trend showcased in their Spring/ Summer 2011 Home Trends book written bac"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "1085"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-7919e8c2-ea64-6e95-93e5-31ba3411281c>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "43.447914"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "London, Ontario"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/London,_Ontario> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://www.w3.org/2002/07/owl#Thing> , <http://dbpedia.org/ontology/City> , <http://www.opengis.net/gml/_Feature> , <http://dbpedia.org/ontology/Place> , <http://dbpedia.org/ontology/Settlement> , <http://dbpedia.org/ontology/PopulatedPlace> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.811Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-794323dd-81e1-a2a2-1545-760d052f0fff> , <urn:enhancement-5316a7ee-8e82-9b1c-a413-66d02d24ff3a> , <urn:enhancement-57787468-134b-ea88-355a-f1cdbb0ce3c4> , <urn:enhancement-ed0d8b54-499f-b640-28c7-77d0c0533742> , <urn:enhancement-b420d444-4f9b-6332-6b9c-7eb83be3f19b> , <urn:enhancement-72d6be94-76ab-b50f-4753-e2cecd001873> , <urn:enhancement-09f99e91-7e40-7ee2-9328-2e12e2ee08b9> , <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> , <urn:enhancement-d4fe04e6-3fb5-e102-1131-964458c207a5> , <urn:enhancement-aa0e4d65-9e17-7273-7928-8cd1a4676f5d> , <urn:enhancement-6b0e5587-8c02-9169-86ad-1f7d7fbc4a1f> , <urn:enhancement-f66acf0a-3f8b-d1f3-d1aa-890758ad2655> , <urn:enhancement-0560aa86-68b2-75ff-3dd3-ed441d5ece22> .
+
+<urn:enhancement-0560aa86-68b2-75ff-3dd3-ed441d5ece22>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9871088843403276"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3071"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """l and the Gherkin.
+  
+  Another such designer keeping the trend looking fresh is Lisa Whatmough, founder of Squint Ltd who recently collaborated with the ondon Transport Museum. The result of their partnership, unusual patchwork sofas, will be unveiled at Tent London, one of the largest design trade shows taking place during London Design Festival later this m nth ( 17-25 September). Whatmough   s patchwork sofas are made from the famous hardwearing moquette fabric that upholstered the transport seating across"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3065"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.794Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-bf21d985-735e-4834-917b-35a43199355f>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.7429123410424164"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3200"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Whatmough"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "ondon Transport Museum. The result of their partnership, unusual patchwork sofas, will be unveiled at Tent London, one of the largest design trade shows taking place during London Design Festival later this m nth ( 17-25 September). Whatmough   s patchwork sofas are made from the famous hardwearing moquette fabric that upholstered the transport seating across ondon for over 100 years. The iconic moquette patterns include the vibrant orange District Line pattern designed by Misha Black in 1978 and the still fashio"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3191"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.691Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-064f5ec6-7086-8cc0-46c9-6dea45472074> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Person> .
+
+<urn:enhancement-5316a7ee-8e82-9b1c-a413-66d02d24ff3a>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9894338299870598"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2631"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "e and Tower Bridge. Humour is key to her success; Dahlgren epitomizes well-known British idiosyncrasies as she pictorially sums up our wet weather with cats and dogs fallin under an umbrella. Also showing at Top Drawer is ceramicist Kate Adams, of mydeco design boutique, who spent five years at Cockpit Arts where she established her London skyl ne tableware range. Each piece is thrown on the potter   s wheel, then individually illustrated with rugged versions of iconic buildings such as St.Paul   s Ca"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2625"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-f7e1c882-ae6c-5455-e10b-72e4d0446224>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.6335366874260864"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Barbara Chandler . Her"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """ill please city dwellers. Published this month by Batsford is a new book Love London which features 180 photographs aken by Barbara Chandler. Her exhibition Love London was shown in the picture gallery of Habitat in Regent Street in 2008 and her handmade photo cards are o at The Conran Shop.
+  
+  How long can"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.691Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Person> .
+
+<urn:enhancement-78ce136f-0bc2-9e73-0b30-5c960109bdc0>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "30.909382"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "Royal Marines"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/Royal_Marines> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://dbpedia.org/ontology/MilitaryUnit> , <http://www.w3.org/2002/07/owl#Thing> , <http://dbpedia.org/ontology/Organisation> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.821Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-1e8428f1-e3e5-1d94-44f0-9dc7fddb3b35> .
+
+<urn:enhancement-a03495bb-0e51-677a-e7a8-5116e2dc7678>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "351.459228515625"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "London"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/London> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://www.w3.org/2002/07/owl#Thing> , <http://www.opengis.net/gml/_Feature> , <http://dbpedia.org/ontology/Place> , <http://dbpedia.org/ontology/Settlement> , <http://dbpedia.org/ontology/PopulatedPlace> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.811Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-794323dd-81e1-a2a2-1545-760d052f0fff> , <urn:enhancement-5316a7ee-8e82-9b1c-a413-66d02d24ff3a> , <urn:enhancement-57787468-134b-ea88-355a-f1cdbb0ce3c4> , <urn:enhancement-ed0d8b54-499f-b640-28c7-77d0c0533742> , <urn:enhancement-b420d444-4f9b-6332-6b9c-7eb83be3f19b> , <urn:enhancement-72d6be94-76ab-b50f-4753-e2cecd001873> , <urn:enhancement-09f99e91-7e40-7ee2-9328-2e12e2ee08b9> , <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> , <urn:enhancement-d4fe04e6-3fb5-e102-1131-964458c207a5> , <urn:enhancement-aa0e4d65-9e17-7273-7928-8cd1a4676f5d> , <urn:enhancement-6b0e5587-8c02-9169-86ad-1f7d7fbc4a1f> , <urn:enhancement-f66acf0a-3f8b-d1f3-d1aa-890758ad2655> , <urn:enhancement-0560aa86-68b2-75ff-3dd3-ed441d5ece22> .
+
+<urn:enhancement-0af94013-27af-7839-f14a-1d577b5f066c>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "18.585884"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "International Astronomical Union"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/International_Astronomical_Union> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://www.w3.org/2002/07/owl#Thing> , <http://dbpedia.org/ontology/Organisation> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.816Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-0125efd7-b6e0-4cb9-2465-d80e2c950390> , <urn:enhancement-86643831-8f83-5c1a-eb5c-ecf85a541d9f> .
+
+<urn:enhancement-1de96754-a43b-66fd-1ae6-443b9c71ec39>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.7729087958043118"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2069"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Maria Holmer Dahlgren"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """ext summer.   
+  
+  The secret lies in originality and an aversion to splattering the Union Jack or tube m p onto furnishings. In response to the tacky souvenirs and cheap throwaway London designs for tourists, Swedish designer Maria Holmer Dahlgren wanted to celebrate the city using co temporary graphics. The result is her London collection, which will be on show at Top"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2048"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.691Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Person> .
+
+<urn:enhancement-73b2c505-865f-37ad-df4b-71db315615ee>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "61.818764"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "Royal Air Force"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/Royal_Air_Force> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://dbpedia.org/ontology/MilitaryUnit> , <http://www.w3.org/2002/07/owl#Thing> , <http://dbpedia.org/ontology/Organisation> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.821Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-1e8428f1-e3e5-1d94-44f0-9dc7fddb3b35> .
+
+<urn:enhancement-393d6a38-0b92-d84b-eaaa-effd3afda8c3>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.6660201265285247"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3493"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Green Line"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """ondon for over 100 years. The iconic moquette patterns include the vibrant orange District Line pattern designed by Misha Black in 1978 and the still fashio able Green Line moquette. It's iconic, it's upcycling and its very British; an inspired on the London trend.
+  
+  Book signings at Top Drawer"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3483"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-ed0d8b54-499f-b640-28c7-77d0c0533742>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9629089622753807"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2008"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """ext summer.   
+  
+  The secret lies in originality and an aversion to splattering the Union Jack or tube m p onto furnishings. In response to the tacky souvenirs and cheap throwaway London designs for tourists, Swedish designer Maria Holmer Dahlgren wanted to celebrate the city using co temporary graphics. The result is her London collection, which will be on show at Top"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2002"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-72d6be94-76ab-b50f-4753-e2cecd001873>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.85431511571543"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3071"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """l and the Gherkin.
+  
+  Another such designer keeping the trend looking fresh is Lisa Whatmough, founder of Squint Ltd who recently collaborated with the ondon Transport Museum. The result of their partnership, unusual patchwork sofas, will be unveiled at Tent London, one of the largest design trade shows taking place during London Design Festival later this m nth ( 17-25 September). Whatmough   s patchwork sofas are made from the famous hardwearing moquette fabric that upholstered the transport seating across"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3065"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.794Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-aa0e4d65-9e17-7273-7928-8cd1a4676f5d>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9762306423454941"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "746"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "ty. Expect to find innovative twists on the London trend; a sofa upholstered in that furry seating fabric in the Tube, trays decorated with raining cats and dogs and bulldog embossed wallpa Last year, a micro trend for all things London was obvious at Top Drawer, a trade show for design-led gifts and this year, sees little differe ce.    With the arrival of the Olympics and the Golden Jubilee in 2012, we   re celebrating all things London at Top Drawer this autumn,    say the organizers of T"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "740"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-704d8b76-faf1-80f3-8fbc-939a49c5eafc>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.5448922091859896"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3924"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Conran Shop"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """aken by Barbara Chandler. Her exhibition Love London was shown in the picture gallery of Habitat in Regent Street in 2008 and her handmade photo cards are o at The Conran Shop.
+  
+  How long can he Brit mania trend last? Many thought it would wane after"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3913"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-edb4a4f5-2ae8-d32d-591d-99654502f1ee>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.8653808674443502"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "2980"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Transport Museum"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """l and the Gherkin.
+  
+  Another such designer keeping the trend looking fresh is Lisa Whatmough, founder of Squint Ltd who recently collaborated with the ondon Transport Museum. The result of their partnership, unusual patchwork sofas, will be unveiled at Tent London, one of the largest design trade shows taking place during London Design Festival later this m nth ( 17-25 September). Whatmough   s patchwork sofas are made from the famous hardwearing moquette fabric that upholstered the transport seating across"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "2964"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-70ddc5ac-f16e-745c-8b82-b3dbe0a73e5b>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "98.79049"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "Royal Navy"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/Royal_Navy> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://dbpedia.org/ontology/MilitaryUnit> , <http://www.w3.org/2002/07/owl#Thing> , <http://dbpedia.org/ontology/Organisation> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.821Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-1e8428f1-e3e5-1d94-44f0-9dc7fddb3b35> .
+
+<urn:enhancement-6b0e5587-8c02-9169-86ad-1f7d7fbc4a1f>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9705458333627471"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "554"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "rs. Instead of plastering the Union Jack or tube map prints onto everything, designers realize an urgency for creativ ty. Expect to find innovative twists on the London trend; a sofa upholstered in that furry seating fabric in the Tube, trays decorated with raining cats and dogs and bulldog embossed wallpa Last year, a micro trend for all things London was obvious at Top Drawer, a trade show for design-led gifts and this year, sees little differe"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "548"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.793Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-d7d4a736-23a6-3b68-3ceb-6e05064bb165>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.7867387099111994"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3796"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Love London"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """ill please city dwellers. Published this month by Batsford is a new book Love London which features 180 photographs aken by Barbara Chandler. Her exhibition Love London was shown in the picture gallery of Habitat in Regent Street in 2008 and her handmade photo cards are o at The Conran Shop.
+  
+  How long can"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3785"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.794Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-f3f75374-f043-2335-b88e-c0cbcbb2f588> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Place> .
+
+<urn:enhancement-dd5acfef-28f1-aa00-93c8-d7deea7de49e>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.8269465964381667"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "3416"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "District Line"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "nth ( 17-25 September). Whatmough   s patchwork sofas are made from the famous hardwearing moquette fabric that upholstered the transport seating across ondon for over 100 years. The iconic moquette patterns include the vibrant orange District Line pattern designed by Misha Black in 1978 and the still fashio able Green Line moquette. It's iconic, it's upcycling and its very British; an inspired"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "3403"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-8bd03eda-4948-9aa7-7008-f048cb0fec41>
+      a       <http://fise.iks-project.eu/ontology/EntityAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "30.743958"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/entity-label>
+              "City of London"@en ;
+      <http://fise.iks-project.eu/ontology/entity-reference>
+              <http://dbpedia.org/resource/City_of_London> ;
+      <http://fise.iks-project.eu/ontology/entity-type>
+              <http://www.w3.org/2002/07/owl#Thing> , <http://www.opengis.net/gml/_Feature> , <http://dbpedia.org/ontology/Place> , <http://dbpedia.org/ontology/Settlement> , <http://dbpedia.org/ontology/PopulatedPlace> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.811Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.entitytagging.impl.NamedEntityTaggingEngine"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-794323dd-81e1-a2a2-1545-760d052f0fff> , <urn:enhancement-5316a7ee-8e82-9b1c-a413-66d02d24ff3a> , <urn:enhancement-57787468-134b-ea88-355a-f1cdbb0ce3c4> , <urn:enhancement-ed0d8b54-499f-b640-28c7-77d0c0533742> , <urn:enhancement-b420d444-4f9b-6332-6b9c-7eb83be3f19b> , <urn:enhancement-72d6be94-76ab-b50f-4753-e2cecd001873> , <urn:enhancement-09f99e91-7e40-7ee2-9328-2e12e2ee08b9> , <urn:enhancement-264f11b6-9c06-29b3-14e4-cb6c2cbce1d4> , <urn:enhancement-d4fe04e6-3fb5-e102-1131-964458c207a5> , <urn:enhancement-aa0e4d65-9e17-7273-7928-8cd1a4676f5d> , <urn:enhancement-6b0e5587-8c02-9169-86ad-1f7d7fbc4a1f> , <urn:enhancement-f66acf0a-3f8b-d1f3-d1aa-890758ad2655> , <urn:enhancement-0560aa86-68b2-75ff-3dd3-ed441d5ece22> .
+
+<urn:enhancement-0125efd7-b6e0-4cb9-2465-d80e2c950390>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9830173647057951"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "421"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Union"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              "ry. The longevity of this Brit mania trend, it seems, lies in the originality of the design rs. Instead of plastering the Union Jack or tube map prints onto everything, designers realize an urgency for creativ ty. Expect to find innovative twists on the London trend; a sofa upholstered in that furry seating fabric in the Tube, trays decorated with raining cats and dogs and bulldog embossed wallpa"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "416"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
+<urn:enhancement-86643831-8f83-5c1a-eb5c-ecf85a541d9f>
+      a       <http://fise.iks-project.eu/ontology/TextAnnotation> , <http://fise.iks-project.eu/ontology/Enhancement> ;
+      <http://fise.iks-project.eu/ontology/confidence>
+              "0.9749249728311787"^^<http://www.w3.org/2001/XMLSchema#double> ;
+      <http://fise.iks-project.eu/ontology/end>
+              "1911"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://fise.iks-project.eu/ontology/extracted-from>
+              <urn:content-item-sha1-70a59b60efed8f0f9895ff40e7bc9722e541900f> ;
+      <http://fise.iks-project.eu/ontology/selected-text>
+              "Union"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/selection-context>
+              """oanna Feeley.    But really the question they are all asking is how they can keep this look fresh and move it forward, since British nostalgia as a trend concept continuing to be important through 2011 and into 2012 with the Queen   s Diamond Jubilee and London Olympics still to ext summer.   
+  
+  The secret lies in originality and an aversion to splattering the Union Jack or tube m p onto furnishings. In response to the tacky souvenirs and cheap throwaway London designs for tourists, Swedish designer Maria Holmer Dahlgren wanted to celebrate the city using co"""^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://fise.iks-project.eu/ontology/start>
+              "1906"^^<http://www.w3.org/2001/XMLSchema#int> ;
+      <http://purl.org/dc/terms/created>
+              "2011-09-09T05:40:12.577Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://purl.org/dc/terms/creator>
+              "org.apache.stanbol.enhancer.engines.opennlp.impl.NEREngineCore"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://purl.org/dc/terms/relation>
+              <urn:enhancement-0125efd7-b6e0-4cb9-2465-d80e2c950390> ;
+      <http://purl.org/dc/terms/type>
+              <http://dbpedia.org/ontology/Organisation> .
+
