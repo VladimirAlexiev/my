@@ -1,0 +1,5 @@
+Books, thesis, conference proceedings	 3
+Tech reports, manuals, deliverables, ontologies	 25 
+Conference papers, journal articles	 19
+Presentations, posters, blog posts	 21
+TOTAL	 69
