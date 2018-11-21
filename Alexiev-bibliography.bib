@@ -22,7 +22,7 @@
   pages        = {19-50},
   month        = sep,
   address      = {Burgas, Bulgaria},
-  publisher    = {Institute of Mathematics and Informatics – BAS},
+  publisher    = {Institute of Mathematics and Informatics (IMI BAS)},
   url          = {http://dipp.math.bas.bg/images/2018/019-050_32_11-iDiPP2018-34.pdf},
   url_Slides   = {https://www.slideshare.net/valexiev1/museum-linked-open-data-ontologies-datasets-projects},
   url_PPT      = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/Museum+Linked+Open+Data+(DIPP+2018,+21+slides).ppt},
@@ -68,7 +68,7 @@
   abstract     = {Analysts and journalists face the problem of having to deal with very large, heterogeneous, and multilingual data volumes that need to be analyzed, understood, and aggregated. Automated and simplified editorial and authoring process could significantly reduce time, labor, and costs. Therefore, there is a need for unified access to multilingual and multicultural news story material, beyond the level of a nation, ensuring context-aware, spatiotemporal, and semantic interpretation, correlating also and summarizing the interpreted material into a coherent gist. In this paper, we present a platform integrating multimodal analytics techniques, which are able to support journalists in handling large streams of real-time and diverse information. Specifically, the platform automatically crawls and indexes multilingual and multimedia information from heterogeneous resources. Textual information is automatically summarized and can be translated (on demand) into the language of the journalist. High-level information is extracted from both textual and multimedia content for fast inspection using concept clouds. The textual and multimedia content is semantically integrated and indexed using a common representation, to be accessible through a web-based search engine. The evaluation of the proposed platform was performed by several groups of journalists revealing satisfaction from the user side.},
 }
 
-@Misc{Alexiev-ULAN-SNAC-Wikidata-2017,
+@Misc{Alexiev2017-ULAN-SNAC-Wikidata,
   author       = {Vladimir Alexiev},
   title        = {{How to Count ULAN and SNAC in Wikidata}},
   howpublished = {Blog post (Google docs)},
@@ -78,7 +78,60 @@
   keywords     = {Wikidata, Coreferencing, Getty Vocabularies, ULAN, SNAC},
 }
 
-@InProceedings{euBusinessGraph-Semantics2017,
+@Manual{Alexiev2018-EBG-model,
+  title        = {euBusinessGraph Semantic Data Model},
+  author       = {Vladimir Alexiev and Tatiana Tarasova and Javier Paniagua and Chris Taggart and Brian Elvesæter and Fredrik Seehusen and Dumitru Roman and David Norheim},
+  organization = {euBusinessGraph Consortium},
+  month        = jun,
+  year         = 2018,
+  url          = {https://docs.google.com/document/d/1dhMOTlIOC6dOK_jksJRX0CB-GIRoiYY6fWtCnZArUhU/edit},
+  url_Source   = {https://github.com/euBusinessGraph/eubg-data/tree/master/model},
+  abstract     = {This document describes the semantic model used by euBusinessGraph (EBG) to represent companies, their attributes, addresses, directors and CEOs, datasets by the different providers, provenance. It includes an informative description of classes and properties, gives examples and data provider rules, provides schema and instance diagrams. It also provides RDF bindings, i.e. classes and properties to be used for representation of company data. The github project euBusinessGraph/eubg-data/model provides a generated ontology and RDF shapes intended to validate submitted data (these are not yet complete).},
+  keywords     = {euBusinessGraph, firmographics, company data, organisation data, trade registers, POL data, linked data, business graph, economics, W3C Org, W3C RegOrg, Schema.org},
+}
+
+@Manual{Alexiev2018-EBG-ontology,
+  title        = {euBusinessGraph Semantic Data Model},
+  author       = {Vladimir Alexiev and Javier Paniagua},
+  organization = {euBusinessGraph Consortium},
+  month        = oct,
+  year         = 2018,
+  url          = {https://github.com/euBusinessGraph/eubg-data/raw/master/model/ebg-ontology.ttl},
+  url_HTML     = {http://rawgit2.com/euBusinessGraph/eubg-data/master/ontology/index.html},
+  abstract     = {The euBusinessGraph (ebg:) ontology represents companies, type/status/economic classification, addresses, identifiers, (and soon) directors and CEOs, dataset offerings.
+It uses schema:domain/rangeIncludes (which are polymorphic) to describe which properties are applicable to a class, 
+rather than rdfs:domain/rainge (which are monomorphic) to prescribe what classes must be applied to each node using a property.
+We find that this enables more flexible reuse and combination of different ontologies.
+We reuse the following ontologies and nomenclatures, and extend them where appropriate with classes and properties:
+- W3C Org, W3C RegOrg (basic company data), 
+- W3C Time (officer membership), 
+- W3C Locn (addresses),
+- schema.org (domain/rangeIncludes and various properties)
+- DBpedia ontology (jurisdiction)
+- NGEO and Spatial (NUTS administrative divisions)
+- ADMS (identifiers), 
+- FOAF, SIOC (blog posts),
+- RAMON, SKOS (NACE economic classifications and various nomenclatures),
+- VOID (dataset descriptions).
+This is only a reference. See more detail in the EBG Semantic Model document, which includes an informative description of classes and properties, gives examples and data provider rules, and provides more schema and instance diagrams.},
+  keywords     = {euBusinessGraph, firmographics, company data, organisation data, trade registers, POL data, linked data, business graph, economics, W3C Org, W3C RegOrg, Schema.org, domainIncludes, rangeIncludes},
+}
+
+@Misc{Alexiev2018-LODE,
+  author       = {Vladimir Alexiev},
+  title        = {Live OWL Documentation Environment (LODE) Extended with Schema and SKOS Properties},
+  month        = may,
+  year         = 2018,
+  url_Source   = {https://github.com/VladimirAlexiev/LODE},
+  keywords     = {LODE, ontology, ontology documentation, documentation generator, Schema.org, domainIncludes, rangeIncludes},
+  abstract     = {I've extended LODE to handle schema:domain/rangeIncludes in addition to rdfs:domain/range, some SKOS properties (example, scopeNote)
+  and a number of typographic enahncements (eg emit multi-valued fields such as examples as a list).
+  schema:domain/rangeIncludes (which are polymorphic) are used to describe which properties are applicable to a class, 
+  rather than rdfs:domain/range (which are monomorphic) that prescribe what classes must be applied to each node using a property.
+  I find that this enables more flexible reuse and combination of different ontologies.},
+}
+
+@InProceedings{AlexievKiryakovTarkalanov2017-euBusinessGraph-Semantics2017,
   author       = {Vladimir Alexiev and Atanas Kiryakov and Plamen Tarkalanov},
   title        = {euBusinessGraph: Company and Economic Data for Innovative Products and Services},
   booktitle    = {13th International Conference on Semantic Systems (Semantics 2017)},
@@ -94,6 +147,16 @@
   abstract     = {Corporate information, including basic company firmographics (e.g., name(s), incorporation data, registered addresses, ownership and related entities), financials (e.g., balance sheets, ratings), contextual data (e.g., addresses, economic activity classification, key officers, public tenders data, press mentions and events) are the foundation that many data value chains are built on. Furthermore, this type of information contributes to the transparency and accountability of enterprises, is instrumental input to the process of marketing and sales, and plays a key role in many business interactions. Collecting and aggregating data about a business entity from several public sources (be it private/public, official or non-official ones), and especially across country borders and languages is a tedious, time consuming, error prone, and expensive operation which renders many potential business models non-feasible. The euBusinessGraph project integrates European company and economic data from various data providers, including OpenCorporates (the largest open database of company info crawled from official registers), Norway's Bronnoysund Register Center (official register data), SpazioDati (rich IT data from official registers, additional databases, web crawl of company sites, tender info, etc), EventRegistry events, GLEI, Panama Leaks, etc. euBusinessGraph is intended to overcome these barriers and provision several important business cases, such as economic journalism (Deutsche Welle), publication of rich company data (BRC), tender information service (CERVED), business intelligence (EVRY), etc. It will also provide a marketplace of company data, with some free search and faceting, leading to information about richer Data Offerings by specific providers and their pricing. We will present the work done on exploring relevant ontologies and vocabularies for describing companies, systems of identifiers, development of a unified data model, plans for data flows, data aggregation, matching and cross-linking, and the opportunities that lie ahead for the business cases and the data marketplace.},
 }
 
+@Misc{Alexiev2017-euBusinessGraph-organization-datasets-and-ontologies,
+  author       = {Vladimir Alexiev},
+  title        = {Organization Datasets and Ontologies},
+  howpublished = {Presentation at euBusinessGraph Project Kickoff, Oslo, Norway},
+  month        = jan,
+  year         = 2017,
+  url_Slides   = {https://docs.google.com/presentation/d/1s-mQwj_0cpbLFVmhZPUrzB_M5mISkZQug0Wiui6H218/pub},
+  keywords     = {euBusinessGraph, organisation data, POL data, Dun and Bradstreet, DnB, Financial Industry Business Ontology, FIBO), Global Legal Entity Identifier, GLEI, Panama Papers, Linked Leaks, Bulgarian Trade Register, BG TR, Wikidata},
+}
+
 @Misc{Alexiev2016-How-not-to-do-Open-Publications,
   author       = {Vladimir Alexiev},
   title        = {How Not to Do Open Publications LOD},
@@ -103,16 +166,6 @@
   url          = {https://gist.github.com/VladimirAlexiev/90753af3a1148b7fd9bb194b2b0d7cbd},
   keywords     = {OpenAIRE, open access, open publications, open data, linked reasearch, CERIF},
   abstract     = {A review of the OpenAIRE beta ontology http://lod.openaire.eu/vocab. An EC Research Infrastructure gone awry.},
-}
-
-@Misc{euBusinessGraph-organization-datasets-and-ontologies,
-  author       = {Vladimir Alexiev},
-  title        = {Organization Datasets and Ontologies},
-  howpublished = {Presentation at euBusinessGraph Project Kickoff, Oslo, Norway},
-  month        = jan,
-  year         = 2017,
-  url_Slides   = {https://docs.google.com/presentation/d/1s-mQwj_0cpbLFVmhZPUrzB_M5mISkZQug0Wiui6H218/pub},
-  keywords     = {euBusinessGraph, organisation data, POL data, Dun and Bradstreet, DnB, Financial Industry Business Ontology, FIBO), Global Legal Entity Identifier, GLEI, Panama Papers, Linked Leaks, Bulgarian Trade Register, BG TR, Wikidata},
 }
 
 @Misc{Alexiev2016-How-not-to-do-LOD,
@@ -126,10 +179,10 @@
   abstract     = {I review the data quality of the LOD publication of a national cultural heritage institution, and show examples of bad practices},
 }
 
-@Article{Alexiev-Nikolova-EHRI-UmanisticaDigitale,
+@Article{AlexievNikolova2018-EHRI-UmanisticaDigitale,
   author       = {Vladimir Alexiev and Ivelina Nikolova and Neli Hateva},
   title        = {Semantic Archive Integration for Holocaust Research: the EHRI Research Infrastructure},
-  journal      = {Umanistica Digitale},
+  journal      = {Umanistica Digitale (to appear)},
   year         = 2018,
   keywords     = {archives -- Holocaust research -- EHRI -- digital humanities -- VRE -- semantic integration -- coreferencing -- access points -- EAD -- OAI PMH -- ResourceSync -- Geonames -- Wikidata -- VIAF -- person matching -- record linking},
   publisher    = {Associazione per l'Informatica Umanistica e la Cultural Digitale, Universita di Bologna (AIUCD)},
@@ -138,7 +191,7 @@
   abstract     = {The European Holocaust Research Infrastructure (EHRI) is a large-scale EU project that involves 23 institutions and archives working on Holocaust studies, from Europe, Israel and the US. In its first phase (2011-2015) it aggregated archival descriptions and materials on a large scale and built a Virtual Research Environment (portal) for Holocaust researchers based on a graph database. In its second phase (2015-2019), EHRI2 seeks to enhance the gathered materials using semantic approaches: enrichment, coreferencing, interlinking. Semantic integration involves four of the 14 EHRI2 work packages and helps integrate databases, free text, and metadata to interconnect historical entities (people, organizations, places, historic events) and create networks. We will present some of the EHRI2 technical work, including critical issues we have encountered. WP10 (EAD) converts archival descriptions from various formats to standard EAD XML; transports EADs using OAI PMH or ResourceSync; ingests EADs to the EHRI database; enables use cases such as synchronization; coreferencing of textual Access Points to proper thesaurus references. WP11 (Authorities and Standards) consolidates and enlarges the EHRI authorities to render the indexing and retrieval of information more effective. It addresses Access Points in ingested EADs (normalization of Unicode, spelling, punctuation; deduplication; clustering; coreferencing to authority control), Subjects (deployment of a Thesaurus Management System in support of the EHRI Thesaurus Editorial Board), Places (coreferencing to Geonames); Camps and Ghettos (integrating data with Wikidata); Persons, Corporate Bodies (using USHMM HSV and VIAF); semantic (conceptual) search including hierarchical query expansion; interconnectivity of archival descriptions; permanent URLs; metadata quality; EAD RelaxNG and Schematron schemas and validation, etc. WP13 (Data Infrastructures) builds up domain knowledge bases from institutional databases by using deduplication, semantic data integration, semantic text analysis. It provides the foundation for research use cases on Jewish Social Networks and their impact on the chance of survival. WP14 (Digital Historiography Research) works on semantic text analysis (semantic enrichment), text similarity (e.g. clustering based on Neural Networks, LDA, etc), geo-mapping. It develops Digital Historiography researcher tools, including Prosopographical approaches.},
 }
 
-@InProceedings{Alexiev-Nikolova-EHRI-DSDH17,
+@InProceedings{AlexievNikolova2017-EHRI-DSDH17,
   author       = {Vladimir Alexiev and Ivelina Nikolova},
   title        = {Semantic Archive Integration for Holocaust Research: the EHRI Research Infrastructure},
   booktitle    = {Data Sharing, Holocaust Documentation and the Digital Humanities. Best Practices, Benefits, Case Studies (DSDH 2017)},
@@ -152,21 +205,21 @@
   abstract     = {The European Holocaust Research Infrastructure (EHRI) is a large-scale EU project that involves 23 institutions and archives working on Holocaust studies, from Europe, Israel and the US. In its first phase (2011-2015) it aggregated archival descriptions and materials on a large scale and built a Virtual Research Environment (portal) for Holocaust researchers based on a graph database. In its second phase (2015-2019), EHRI2 seeks to enhance the gathered materials using semantic approaches: enrichment, coreferencing, interlinking. Semantic integration involves four of the 14 EHRI2 work packages and helps integrate databases, free text, and metadata to interconnect historical entities (people, organizations, places, historic events) and create networks. We will present some of the EHRI2 technical work, including critical issues we have encountered. WP10 (EAD) converts archival descriptions from various formats to standard EAD XML; transports EADs using OAI PMH or ResourceSync; ingests EADs to the EHRI database; enables use cases such as synchronization; coreferencing of textual Access Points to proper thesaurus references. WP11 (Authorities and Standards) consolidates and enlarges the EHRI authorities to render the indexing and retrieval of information more effective. It addresses Access Points in ingested EADs (normalization of Unicode, spelling, punctuation; deduplication; clustering; coreferencing to authority control), Subjects (deployment of a Thesaurus Management System in support of the EHRI Thesaurus Editorial Board), Places (coreferencing to Geonames); Camps and Ghettos (integrating data with Wikidata); Persons, Corporate Bodies (using USHMM HSV and VIAF); semantic (conceptual) search including hierarchical query expansion; interconnectivity of archival descriptions; permanent URLs; metadata quality; EAD RelaxNG and Schematron schemas and validation, etc. WP13 (Data Infrastructures) builds up domain knowledge bases from institutional databases by using deduplication, semantic data integration, semantic text analysis. It provides the foundation for research use cases on Jewish Social Networks and their impact on the chance of survival. WP14 (Digital Historiography Research) works on semantic text analysis (semantic enrichment), text similarity (e.g. clustering based on Neural Networks, LDA, etc), geo-mapping. It develops Digital Historiography researcher tools, including Prosopographical approaches.},
 }
 
-@Misc{Alexiev-EFD-DBpedia,
+@Misc{Alexiev2016-EFD-DBpedia,
   author       = {Vladimir Alexiev},
   title        = {{Using DBPedia in Europeana Food and Drink}},
   month        = feb,
   year         = 2016,
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160212-Using-DBPedia-in-Europeana-Food-and-Drink.pdf},
+  url_Slides   = {https://drive.google.com/file/d/0B7je1jgVmCgIZzNiWmdqTGpDa28/view},
+  url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160212-Using-DBPedia-in-Europeana-Food-and-Drink.pdf},
   keywords     = {Europeana, cultural heritage, food and drink, DBpedia, Geonames, semantic application, faceted search, semantic search},
   booktitle    = {DBpedia Meeting},
   type         = {presentation},
   address      = {The Hague, Netherlands},
-  url_Slides   = {https://drive.google.com/file/d/0B7je1jgVmCgIZzNiWmdqTGpDa28/view},
   abstract     = {The Europeana Food and Drink project collects cultural heritage objects for and develops applications related to Food and Drink heritage. As part of the project, Ontotext developed a FD Classification based on Wikipedia/DBpedia Categories, a semantic enrichment service that annotates each CHO with FD Topics and Places, and a semantic application (http://efd.ontotext.com/app) that implements hierarchical semantic facets and semantic search for these facets. We'll also be packaging the enrichment as a service for others to use in a crowdsourced annotation application. We will explain how we used Categories to build a domain-specific gazetteer, used external datasets (eg UMBEL domains and DBTax types), correlated DBpedia places to Geonames to use the place hierarchy, and the workings of the semantic application},
 }
 
-@Misc{Alexiev-EuropeanaMC-blog,
+@Misc{Alexiev2016-EuropeanaMC-blog,
   author       = {Vladimir Alexiev},
   title        = {{Meet the Europeana Members Council: Vladimir Alexiev}},
   month        = mar,
@@ -177,40 +230,39 @@
   abstract     = {Describes the work of Ontotext and in particular Vladimir Alexiev in applying semantic technologies to cultural heritage},
 }
 
-@Misc{Alexiev-OpenData2016,
+@Misc{Alexiev2016-OpenData,
   author       = {Vladimir Alexiev},
   title        = {{How to find Open Data and Ontologies in Linguistics/NLP and Cultural Heritage}},
   month        = mar,
   year         = 2016,
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies/index.html},
   keywords     = {open data, ontology, linguistiscs, NLP, cultural heritage},
   type         = {presentation},
   booktitle    = {4th Open Data & Linked Data meetup},
   address      = {Sofia, Bulgaria},
 }
 
-@Misc{Alexiev-rdfpuml,
+@Misc{Alexiev2016-rdfpuml,
   author       = {Vladimir Alexiev},
   title        = {{Making True RDF Diagrams with rdfpuml}},
   month        = mar,
   year         = 2016,
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index.html},
   url_HTML     = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index-full.html},
   keywords     = {RDF, visualization, PlantUML, cultural heritage, NLP, NIF, EHRI},
   type         = {presentation},
   abstract     = {RDF is a graph data model, thus often the best way to understand RDF data schemas (ontologies, application profiles, RDF shapes) is with a diagram. We describe a tool (rdfpuml) that makes true diagrams from Turtle examples using PlantUML and GraphViz. Diagram readability is of prime concern, and rdfpuml introduces a few diagram control mechanisms using triples in the puml: namespace. We give examples from Getty CONA (Mappings of museum data to CIDOC CRM), Multisensor (NLP2RDF/NIF, FrameNet), EHRI (Holocaust Research into Jewish social networks), Duraspace (Portland Common Data Model for holding metadata in institutional repositories)}}
 
-@InProceedings{Alexiev-rdfpuml-rdf2rml,
+@InProceedings{Alexiev2016-rdfpuml-rdf2rml,
   author       = {Vladimir Alexiev},
   title        = {{RDF by Example: rdfpuml for True RDF Diagrams, rdf2rml for R2RML Generation}},
-  booktitle    = {Semantic Web in Libraries 2016 (SWIB 16)},
+  booktitle    = {Semantic Web in Libraries 2016 (SWIB 2016)},
   year         = 2016,
   month        = nov,
   address      = {Bonn, Germany},
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/index.html},
   url_HTML     = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/index-full.html},
   keywords     = {RDF, visualization, PlantUML, cultural heritage, NLP, NIF, EHRI, R2RML, generation, model-driven, RDF by Example, rdfpuml, rdf2rml},
-  url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/RDF_by_Example.pdf}, 
   url_Video    = {https://youtu.be/4WoYlaGF6DE},
   type         = {presentation},
   abstract     = {RDF is a graph data model, so the best way to understand RDF data schemas (ontologies, application profiles, RDF shapes) is with a diagram. Many RDF visualization tools exist, but they either focus on large graphs (where the details are not easily visible), or the visualization results are not satisfactory, or manual tweaking of the diagrams is required. We describe a tool *rdfpuml* that makes true diagrams directly from Turtle examples using PlantUML and GraphViz. Diagram readability is of prime concern, and rdfpuml introduces various diagram control mechanisms using triples in the puml: namespace. Special attention is paid to inlining and visualizing various Reification mechanisms (described with PRV). We give examples from Getty CONA, Getty Museum, AAC (mappings of museum data to CIDOC CRM), Multisensor (NIF and FrameNet), EHRI (Holocaust Research into Jewish social networks), Duraspace (Portland Common Data Model for holding metadata in institutional repositories), Video annotation. If the example instances include SQL queries and embedded field names, they can describe a mapping precisely. Another tool *rdf2rdb* generates R2RML transformations from such examples, saving about 15x in complexity.},
@@ -479,17 +531,18 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   keywords     = {Medieval studies, virtual research environment, CIDOC CRM, semantic integration},
 }
 
-@Misc{Alexiev2014-Brussels,
+@Misc{Alexiev2014-SmartCulture,
   author       = {Vladimir Alexiev},
-  type         = {presentation},
   title        = {{Semantic Technologies for Cultural Heritage}},
-  booktitle    = {SmartCulture Conference},
-  year         = 2014,
   month        = jun,
-  address      = {Brussels, Belgium},
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH},
+  year         = 2014,
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/index.html},
+  url_Slides   = {http://www.slideshare.net/valexiev1/semantic-technologies-for-cultural-heritage-35749530},
   url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/Semantic Technologies for Cultural Heritage.pdf},
   keywords     = {semantic technology, ontology, semantic integration, cultural heritage},
+  type         = {presentation},
+  booktitle    = {SmartCulture Conference},
+  address      = {Brussels, Belgium},
 }
 
 @TechReport{Alexiev2014-ExtendingOWL2,
@@ -504,17 +557,17 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   abstract     = {While OWL2 has very powerful class constructs, its property constructs are quite weak. We propose several extensions that we found useful, and implement them using OWLIM rules},
 }
 
-@Misc{Alexiev2014-GVP-LOD,
+@InProceedings{Alexiev2014-GVP-LOD,
   author       = {Vladimir Alexiev},
   title        = {{Getty Vocabulary Program LOD: Ontologies and Semantic Representation}},
   booktitle    = {CIDOC Congress},
   year         = 2014,
   month        = sep,
-  type         = {presentation},
   address      = {Dresden, Germany},
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/index.html},
   url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/GVP-LOD-CIDOC.pdf},
   keywords     = {Getty, GVP, AAT, TGN, ULAN, LOD, thesauri, vocabularies, SKOS, SKOS-XL, ISO 25964},
+  type         = {presentation},
 }
 
 @Manual{Alexiev2014-GraphDBRuleProfiling,
@@ -546,8 +599,9 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   title        = {{Semantic Technologies for Cultural Heritage}},
   month        = aug,
   year         = 2014,
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/index.html},
   url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/SemTechCH-Malmo.pdf},
+  url_Video    = {http://youtu.be/n8oGmOu9JEw},
   keywords     = {semantic technology, ontology, semantic integration, cultural heritage},
   type         = {presentation},
   booktitle    = {Malmo Linked Data Meetup},
@@ -561,11 +615,12 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   year         = 2014,
   month        = sep,
   address      = {London, UK},
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index.html},
+  url_HTML     = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index-full.html},
   url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/BTG-BTP-BTI-compositionality.pdf},
 }
 
-@Misc{Alexiev2014-UWash,
+@Misc{Alexiev2014-University-Washington,
   author       = {Vladimir Alexiev},
   title        = {{Doing Business with Semantic Technologies}},
   howpublished = {INFX 598 - Introducing Linked Data: concepts, methods and tools. Information School, University of Washington. Module 9. Guest lecture},
@@ -586,7 +641,7 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   type         = {Deliverable},
   number       = {Part of Deliverable D2.4},
   month        = feb,
-  url          = {http://rawgit2.com/VladimirAlexiev/my/master/CH-names/README.html},
+  url          = {http://rawgit2.com/VladimirAlexiev/CH-names/master/README.html},
   keywords     = {Europeana, semantic enrichment, knowledge base, gazetteer, VIAF, Wikidata, ULAN, ISNI},
   abstract     = {Semantic enrichment in Europeana is a very difficult task due to several factors: 1. Varying metadata quality across different collections, sometimes including misallocation of metadata fields; 2. Varying metadata formatting practices across different collections, e.g. some collections indicate the role of a creator in brackets after the creator name; 3. Lack of accurate language information. In this report we focus on Person & Institution enrichment (person Named Entity Recognition), which in itself is an ambitious task. Historic people are often referred to by many names. For successful semantic enrichment it's important to integrate high-quality and high-coverage datasets that provide name info. There is a great number of Name Authority files maintained at libraries, museums and other heritage institutions world-wide, e.g. VIAF, ISNI, Getty ULAN, British Museum. Linked Open Data (LOD) datasets also have a plethora of names, e.g. in DBpedia, Wikidata and FreeBase. We analyze some of the available datasets in terms of person coverage, name coverage, language tags, extra features that can be useful for enrichment, quality. We also analyze the important topic of coreferencing, i.e. how connected the sources are to each other.},
 }
@@ -733,7 +788,7 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   month        = feb,
   year         = 2015,
   url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems.html},
-  url_HTML    = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems-long.html},
+  url_HTML     = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems-long.html},
   keywords     = {DBpedia, ontology, ontology mapping, data quality},
   type         = {presentation},
   booktitle    = {DBpedia Meeting},
@@ -747,7 +802,7 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   month        = sep,
   year         = 2016,
   abstract     = {The Internet, global digitization efforts, Europe's Digital Agenda, continuing investments in Europeana, the Digital Public Library of America and many other initiatives, have made millions upon millions of digitized cultural artifacts available on the net. We need to make sense of all this information: aggregate it, integrate it, provide cross-collection search, find links between entities and artefacts, build narratives, analyze data, support the scientific discourse, engage users… From ancient maps to bibliographic records, to paintings, to coins and hoards, to paleographic analysis, to prosopography factoids... everything is becoming more and more connected. A host of ontologies and metadata standards exist in the Cultural Heritage (CH) domain: CIDOC CRM, TEI5, LIDO, SPECTRUM, VRA Core, MPEG7, DC, ESE and EDM, OAI ORE and PMH, IIIIF, ResourceSync... the list goes on and on. How many of the standards listed in Seeing Standards: A Visualization of the Metadata Universe (by Jenn Riley, Associate Dean for Digital Initiatives at McGill University Library) apply to your work? A number of established thesauri and gazetteers exist, and some of them are interconnected: DBPedia; Wikidata, VIAF, FAST, ULAN; GeoNames, Pleiades, TGN; LCSH, AAT, IconClass, Joconde, SVCN, Wordnet, etc etc. The diagram below (by Michiel Hildebrand) shows a small part of this upcoming universe of CH data. How to use them in every-day collection management, cataloging, documentation and research? How to expose your institution's collections and other data to allow interlinking? Digital Humanities (DH) has emerged as a new and promising scientific discipline, with universities like Kings College London establishing new departments devoted to it. As Jeffrey Schnapp writes in the Digital Humanities manifesto 2.0 "Digital Humanities embraces and harnesses the expanded, global nature of today’s research communities as one of the great inter-disciplinary/post-disciplinary opportunities of our time. It dreams of models of knowledge production and reproduction that leverage the increasingly distributed nature of expertise and knowledge and transform this reality into occasions for scholarly innovation, disciplinary cross-fertilization, and the democratization of knowledge". In his keynote address at MCN 2014 Beyond Borders: The Humanities in the Digital Age, James Cuno (President and CEO of the J. Paul Getty Trust) emphasizes the role of modernizing Humanities and the value of Linked Data in cultural heritage informatics. The question also is how to preserve the role of libraries, museums and other Cultural Heritage institutions as centers of wisdom and culture into the new millennium? Aren't Google, Wikipedia, Facebook, Twitter and smart-phone apps becoming the new centers of research and culture (or at least popular culture)? We believe the answers to many of these questions lie with Semantic Technology and Linked Data. They enable large-scale Digital Humanities research, collaboration and aggregation; and technological renewal of CH institutions. The Rosetta Stone was key to the deciphering of Egyptian hieroglyphs, by providing parallel text in three scripts: Ancient Egyptian, Demotic and Ancient Greek. Today semantic technologies play a similar role, allowing the Digital Humanist to make connections between (and make sense of) the multitude of digitized cultural artifacts available on the net. An upsurge of interest in semantic technology has swept the CH and DH communities. Meetups and summits, conferences and un-conferences, residences and hackathons are taking place every week. CH institutions are collaborating actively. An active Linked Open Data for Libraries, Archives and Museums (LODLAM) community has emerged, and the #LODLAM twitter hashtag sees active communication. Established institutions create branches that sound like web startups or Wikipedia offsprings (e.g. British Library Labs; Smithsonian Web-strategy and Smithsonian Commons; UK National Archives department of Web Continuity). The Galleries, Libraries, Archives and Museums (GLAM) sector deals with complex and varied data. Integrating that data, especially across institutions, has always been a challenge. On the other hand, the value of linked data is especially high in this sector, since culture by its very nature is cross-border and interlinked. In this webinar we'll present interesting LODLAM projects, datasets and ontologies, as well as Ontotext's experience in this domain.},
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar//index.html},
   url_HTML     = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index-full.html},
   url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/Linked%20Open%20Data%20for%20Cultural%20Heritage.pdf},
   url_Recording= {https://ontotext.com/knowledgehub/webinars/build-narratives-connect-artifacts-cultural-heritage/},
@@ -828,7 +883,7 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   abstract     = {I use Wikidata SPARQL to find J. Paul Getty Museum objects without museum Object ID. Most of these objects have a property "described at URL" that includes the object ID I seek. I use SPARQL to transform the results to Wikidata Quick Statements format, then insert the IDs directly to Wikidata.},
 }
 
-@Misc{AlexievAngelova-CultJam15,
+@Misc{AlexievAngelova2015-CultJam15,
   author       = {Vladimir Alexiev and Dilyana Angelova},
   title        = {{O is for Open: OAI and SPARQL interfaces for Europeana}},
   month        = jul,
@@ -860,14 +915,14 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   publisher    = {John Wiley and Sons},
   year         = 2005,
   month        = feb,
-  url_Published= {http://eu.wiley.com/WileyCDA/WileyTitle/productCd-0470010487.html},
+  url_Published= {https://www.wiley.com/en-gb/Information+Integration+with+Ontologies%3A+Experiences+from+an+Industrial+Showcase-p-9780470010488},
   keywords     = {semantic integration, ontology, semantic technology, ontology-based data access},
   chapter      = 2,
   isbn         = {978-0-470-01048-8},
   abstract     = {Disparate information, spread over various sources, in various formats, and with inconsistent semantics is a major obstacle for enterprises to use this information at its full potential. Information Grids should allow for the effective access, extraction and linking of dispersed information. Currently Europe's coporations spend over 10 Billion EUR to deal with these problems. This book will demonstrate the applicability of grid technologies to industry. To this end, it gives a detailed insight on how on tology technology can be used to manage dispersed information assets more efficiently. The book is based on experiences from the COG (Corporate Ontology Grid) project, carried out jointly by three leading industrial players and the Digital Enterprise Research Institute Austria. Through comparisons of this project with alternative technologies and projects, it provides hands-on experience and best practice examples to act as a reference guide for their development. Information Integration with Ontologies: Ontology based Information Integration in an Industrial Setting is ideal for technical experts and computer researchers in the IT-area looking to achieve integration of heterogeneous information and apply ontology technologies and techniques in practice. It will also be of great benefit to technical decision makers seeking infor mation about ontology technologies and the scientific audience, interested in achievements towards the application of ontologies in an industrial setting.},
 }
 
-@InProceedings{AlexievCasamayor-FN-NIF,
+@InProceedings{AlexievCasamayor2016-FN-NIF,
   author       = {Vladimir Alexiev and Gerard Casamayor},
   title        = {{FN goes NIF: Integrating FrameNet in the NLP Interchange Format}},
   booktitle    = {Linked Data in Linguistics (LDL-2016): Managing, Building and Using Linked Language Resources},
@@ -929,7 +984,7 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   abstract     = {Describes the progress on developing the EFD Semantic Demonstrator for the 3 months from 1 Jul 2015 to 1 Oct 2015. We describe all work performed, the achieved results and project management considerations.},
 }
 
-@Proceedings{CRMEX2013,
+@Proceedings{TPDL2013-CRMEX2013,
   title        = {{Practical Experiences with CIDOC CRM and its Extensions (CRMEX 2013), Workshop at 17th International Conference on Theory and Practice of Digital Libraries (TPDL 2013)}},
   year         = 2013,
   booktitle    = {{Practical Experiences with CIDOC CRM and its Extensions (CRMEX 2013), Workshop at 17th International Conference on Theory and Practice of Digital Libraries (TPDL 2013)}},
@@ -943,30 +998,30 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   abstract     = {The CIDOC CRM (international standard ISO 21127:2006) is a conceptual model and ontology with a fundamental role in many data integration efforts in the Digital Libraries and Cultural Heritage (CH) domain. The goal of this workshop is to describe and showcase systems using CRM at their core, exchange experience about the practical use of CRM, describe difficulties for the practical application of CRM, and share approaches for overcoming such difficulties. The ultimate objective of this workshop is to encourage the wider practical adoption of CRM},
 }
 
-@TechReport{EDM-FRBRoo,
+@TechReport{Europeana2013-EDM-FRBRoo,
   author       = {Martin Doerr and Stefan Gradmann and others},
   title        = {{Europeana Task Force on EDM-FRBRoo Application Profile}},
   institution  = {Europeana},
   year         = 2013,
   month        = may,
-  url          = {http://pro.europeana.eu/get-involved/europeana-tech/europeanatech-task-forces/edm-frbroo-application-profile},
+  url          = {https://pro.europeana.eu/project/edm-frbroo-application-profile},
   abstract     = {The EDM – FRBRoo Application Profile Task Force (EFAP-TF) was launched in response to the recommendations from the deliverable D3.4 from Europeana V1.0. This deliverable asked for an application profile that would allow a better representation of the FRBR group 1 entities: work, expression, manifestation and item. Additionally, it was to be conceived as an application profile of FRBRoo where each intellectual contribution (e.g., in the publication process) and the related activity are treated as entities in their own right, and does not depend too much on the notion of a bibliographic record. As a starting point they suggested the mapping of FRBRoo and EDM offered by the CIDOC CRM working group. The aim of the EFAP-TF is to extend, correct or restrict this suggested mapping and provide examples for the use of the combined EDM and FRBRoo namespaces.
 This report delivers combined models in terms of properties and classes of EDM and FRBRoo illustrated by sample data. Smaller groups have worked on three different examples. The report also provides principles for modeling and mapping rules based on the experiments of the working groups.},
 keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
 }
 
-@TechReport{Europeana-enrichment-strategy,
+@TechReport{Europeana2014-enrichment-strategy,
   author       = {Juliane Stiller and Antoine Isaac and Vivien Petras and others},
   title        = {{EuropeanaTech Task Force on a Multilingual and Semantic Enrichment Strategy}},
   institution  = {Europeana},
   year         = 2014,
   month        = apr,
-  url          = {http://pro.europeana.eu/get-involved/europeana-tech/europeanatech-task-forces/multilingual-and-semantic-enrichment-strategy},
+  url          = {https://pro.europeana.eu/project/multilingual-and-semantic-enrichment-strategy},
   keywords     = {cultural heritage, Europeana, task force, semantic enrichment, text analysis, multilingual, evaluation},
   abstract     = {The semantic and multilingual enrichment of metadata in Europeana is a core concern as it improves access to the material, defines relations among objects and enables cross-lingual retrieval of documents. The quality of these enrichments is crucial to ensure that highly curated content from providers gets represented correctly across different languages. To ensure that those enrichments unfold their whole potential and act as facilitators of access, a semantic and multilingual enrichment strategy is needed. The EuropeanaTech Task Force on a Multilingual and Semantic Enrichment Strategy set out to analyze datasets in Europeana and to evaluate them with regard to their enrichment potential and the enrichments that were executed. The goal was to drive a strategy for enriching metadata fields adding value for users. To achieve this, the members of the task force held a one-day workshop in Berlin where they analyzed randomly selected datasets from Europeana, their metadata fields and their enrichment potential. This report aggregates the results and derives findings and recommendations regarding the metadata quality (source), vocabulary used (target) and the enrichment process. It was found that especially during mapping and ingestion time, metadata quality issues arise that influence the success of the enrichments. Tackling these issues with better documentation, training and the establishment of quality scores are some of the recommendations in this field. Furthermore, Europeana should encourage the delivery of specialized vocabularies with resolvable URIs which would also lead to less need for enrichments by Europeana itself. With regard to the enrichment process, clear rules for each field need to be established.},
 }
 
-@TechReport{Europeana-evaluation-enrichments,
+@TechReport{Europeana2015-evaluation-enrichments,
   author       = {Antoine Isaac and Hugo Manguinhas and Juliane Stiller and Valentine Charles and others},
   title        = {{Report on Enrichment and Evaluation}},
   institution  = {Europeana Task Force on Enrichment and Evaluation},
@@ -978,7 +1033,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
 }
 
 
-@Manual{GVP-LOD-doc,
+@Manual{Alexiev2015-GVP-LOD-doc,
   title        = {{Getty Vocabularies Linked Open Data: Semantic Representation}},
   author       = {Vladimir Alexiev and Joan Cobb and Gregg Garcia and Patricia Harpring},
   organization = {Getty Research Institute},
@@ -989,7 +1044,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   keywords     = {Getty, GVP, vocabularies, thesauri, AAT, TGN, ULAN, semantic representation, LOD, ontology, SKOS, SKOS-XL, ISO 25964},
 }
 
-@Manual{GVP-LOD-queries,
+@Manual{Alexiev2016-GVP-LOD-queries,
   title        = {{Getty Vocabularies: LOD Sample Queries}},
   author       = {Vladimir Alexiev},
   organization = {Getty Research Institute},
@@ -1001,7 +1056,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   keywords     = {Getty, GVP, vocabularies, thesauri, AAT, TGN, ULAN, SPARQL, ontology, SKOS, SKOS-XL, ISO 25964},
 }
 
-@Manual{GVP-ontology,
+@Manual{Alexiev2015-GVP-ontology,
   title        = {{Getty Vocabulary Program (GVP) Ontology}},
   author       = {Vladimir Alexiev},
   edition      = {3.2},
@@ -1097,7 +1152,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   abstract     = {This paper describes a particular inference mechanism which has been successfully used for the implementation of an expert system and a generic shell supporting consulting-type expert systems. The main features of Boolean Constraint Propagation Networks (BCPN) are: the inference fows in all directions, unlike inference modes of forward or backward chaining systems; all possible consequences of a fact are derived as soon as the user enters the fact, therefore the system is very interactive; if the user withdraws an assertion then all propositions depending on it are retracted; the inference architecture is simple and uniform. After a general description of BCPN we give an account of the problems encountered and the approaches we used to solve them. Some possible extensions of the mechanism and its applicability to various areas are also discussed. The current version of BCPN is written in C++ and took about one man-year to develop.},
 }
 
-@InProceedings{Multisensor-ICMEW2015,
+@InProceedings{ICMEW2015-Multisensor,
   author       = {Stefanos Vrochidis and Ioannis Kompatsiaris and Gerard Casamayor and Ioannis Arapakis and Reinhard Busch and Vladimir Alexiev and Emmanuel Jamin and Michael Jugov and Nicolaus Heise and Teresa Forrellat and Dimitris Liparas and Leo Wanner and Iris Miliaraki and Vera Aleksic and Kiril Simov and Alan Mas Soro and Mirja Eckhoff and Tilman Wagner and Marti Puigbo},
   title        = {{MULTISENSOR: Development of Multimedia Content Integration Technologies for Journalism, Media Monitoring and International Exporting Decision Support}},
   booktitle    = {{2015 IEEE International Conference on Multimedia & Expo Workshops (ICMEW)}},
@@ -1111,8 +1166,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   abstract     = {This paper presents an overview and the first results of the FP7 MULTISENSOR project, which deals with multidimensional content integration of multimedia content for intelligent sentiment enriched and context oriented interpretation. MULTISENSOR aims at providing unified access to multilingual, multimedia and multicultural economic, news story material across borders in order to support journalism and media monitoring tasks and provide decision support for internationalisation of companies.},
 }
 
-
-@InProceedings{Multisensor-INSCI2016,
+@InProceedings{INSCI2016-Multisensor,
   author       = {Boyan Simeonov and Vladimir Alexiev and Dimitris Liparas and Marti Puigbo and Stefanos Vrochidis and Emmanuel Jamin and Ioannis Kompatsiaris},
   title        = {{Semantic Integration of Web Data for International Investment Decision Support}},
   booktitle    = {3rd International Conference on Internet Science (INSCI 2016)},
@@ -1127,7 +1181,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   session      = {13 Sep 14:20: Smart Cities and Data Analysis Issues},
 }
 
-@TechReport{OldmanMahmudAlexiev2013,
+@TechReport{OldmanMahmudAlexiev2013-CRM-revealed,
   author       = {Dominic Oldman and Joshan Mahmud and Vladimir Alexiev},
   title        = {{The Conceptual Reference Model Revealed. Quality contextual data for research and engagement: A British Museum case study}},
   institution  = {ResearchSpace Project},
@@ -1139,7 +1193,6 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   pages        = {359 pages},
   abstract     = {Contents: 169p: Main body, including discussion, illustrations and mapping diagrams. 7p: Association Codes (see details at BM Association Mapping v2). 49p: Example Object Graph. 134p: RDFer configuration files (i.e. mapping implementation)},
 }
-
 
 @InProceedings{Parvanova2013-SemanticAnnotation,
   author       = {Jana Parvanova and Vladimir Alexiev and Stanislav Kostadinov},
@@ -1157,7 +1210,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   doi          = {10.1145/2517978.2517997},
 }
 
-@InProceedings{TPDL2016,
+@InProceedings{TPDL2016-semanticEnrichment,
   author       = {Hugo Manguinhas and Nuno Freire and Antoine Isaac and Juliane Stiller and Valentine Charles and Aitor Soroa and Rainer Simon and Vladimir Alexiev},
   title        = {Exploring comparative evaluation of semantic enrichment tools for cultural heritage metadata},
   booktitle    = {20th International Conference on Theory and Practice of Digital Libraries (TPDL 2016)},
@@ -1170,7 +1223,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   abstract     = {Semantic enrichment of metadata is an important and difficult problem for digital heritage efforts such as Europeana. This paper gives motivations and presents the work of a recently completed Task Force that addressed the topic of evaluation of semantic enrichment. We especially report on the design and the results of a comparative evaluation experiment, where we have assessed the enrichments of seven tools (or configurations thereof) on a sample benchmark dataset from Europeana.},
 }
 
-@InProceedings{TagarevTolosiAlexiev-FD,
+@InProceedings{TagarevTolosiAlexiev2017-FD,
   author       = {Andrey Tagarev and Laura Tolosi and Vladimir Alexiev},
   title        = {{Domain-specific modeling: Towards a Food and Drink Gazetteer}},
   booktitle    = {{Semantic Keyword-based Search on Structured Data Sources}},
@@ -1192,7 +1245,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   abstract     = {Our goal is to build a Food and Drink (FD) gazetteer that can serve for classification of general, FD-related concepts, efficient faceted search or automated semantic enrichment. Fully supervised design of a domain-specific models "ex novo" is not scalable. Integration of several ready knowledge bases is tedious and does not ensure coverage. Completely data-driven approaches require a large amount of training data, which is not always available. In cases when the domain is not very specific (as the FD domain), re-using encyclopedic knowledge bases like Wikipedia may be a good idea. We propose here a semi-supervised approach, that uses a restricted Wikipedia as a base for the modeling, achieved by selecting a domain-relevant Wikipedia category as root for the model and all its subcategories, combined with expert and data-driven pruning of irrelevant categories.},
 }
 
-@InProceedings{TagarevTolosiAlexiev-FD-extended,
+@InProceedings{TagarevTolosiAlexiev2017-FD-extended,
   author       = {Andrey Tagarev and Laura Tolosi and Vladimir Alexiev},
   title        = {{Domain-specific modeling: a Food and Drink Gazetteer}},
   booktitle    = {Transactions on Computational Collective Intelligence XXVI, special issue on Keyword Search in Big Data},
@@ -1210,13 +1263,13 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   abstract     = {Our goal is to build a Food and Drink (FD) gazetteer that can serve for classification of general, FD-related concepts, efficient faceted search or automated semantic enrichment. Fully supervised design of domain-specific models ex novo is not scalable. Integration of several ready knowledge bases is tedious and does not ensure coverage. Completely data-driven approaches require a large amount of training data, which is not always available. For general domains (such as the FD domain), re-using encyclopedic knowledge bases like Wikipedia may be a good idea. We propose here a semi-supervised approach that uses a restricted Wikipedia as a base for the modeling, achieved by selecting a domain-relevant Wikipedia category as root for the model and all its subcategories, combined with expert and data-driven pruning of irrelevant categories.},
 }
 
-@InProceedings{Uzunov-Alexiev2016-Fulbright,
+@InProceedings{UzunovAlexiev2016-Fulbright,
   author       = {Ilian Uzunov and Vladimir Alexiev},
   title        = {Linked Open Data for Cultural Heritage Institutions: Build Narratives through Connecting Artifacts},
   booktitle    = {Museum Exhibits and Standards: A Look Ahead},
   year         = 2016,
   organization = {Bulgarian-American Fulbright Commission for Educational Exchange: Bi-National Commission for the Preservation of Bulgaria's Cultural Heritage},
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright/},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright//index.html},
   url_HTML     = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-fulbright/index-full.html},
   address      = {Sofia, Bulgaria},
   month        = nov,
@@ -1242,12 +1295,33 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   organization = {Ontotext Corp},
   month        = apr,
   year         = 2013,
-  url_HTML     = {http://rawgit2.com/VladimirAlexiev/my/master/SPARQL/sparql11-grammar.xhtml},
-  url_EBNF     = {http://rawgit2.com/VladimirAlexiev/my/master/SPARQL/sparql11-grammar.ebnf},
-  url_text     = {http://rawgit2.com/VladimirAlexiev/my/master/SPARQL/sparql11-grammar.txt},
+  url_HTML     = {http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.xhtml},
+  url_EBNF     = {http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.ebnf},
+  url_Source   = {http://github.com/VladimirAlexiev/grammar-diagrams},
   abstract     = {Cross-linked SPARQL 1.1 syntax (railroad) diagrams, one per production (173 total). A bit hard to understand: use this for reference, but not for learning SPARQL. Also available: EBNF syntax rules extracted from the SPARQL 1.1 specification, Text file including production numbers and syntax rules},
 }
 
+@Manual{Alexiev2013-SPARQL-diagrams,
+  title        = {XSPARQL Syntax Diagrams},
+  author       = {Vladimir Alexiev},
+  organization = {Ontotext Corp},
+  month        = apr,
+  year         = 2013,
+  url          = {https://github.com/VladimirAlexiev/grammar-diagrams#xsparql},
+  url_Source   = {https://github.com/VladimirAlexiev/xsparql/blob/master/doc/},
+  abstract     = {Cross-linked XSPARQL syntax (railroad) diagrams, one per production. XSPARQL is a melding of XQuery and SPARQL. Its syntax is pretty large, so the diagrams help.},
+}
+
+@InProceedings{KiryakovAlexiev2014-Keystone,
+  author       = {Atanas Kiryakov and Vladimir Alexiev},
+  title        = {Semantic Technology in Publishing & Finance},
+  booktitle    = {Keystone Industrial Panel, ISWC 2014},
+  year         = 2014,
+  month        = Oct,
+  address      = {Riva del Garda, Italy},
+  url_Slides   = {http://www.slideshare.net/valexiev1/semantic-technology-in-publishing-finance},
+  abstract     = {Triplestores and inference, applications in Finance, text-mining. Projects and solutions for financial media and publishers. Thanks to Atanas Kiryakov for this presentation, I just cut it to size.},
+}
 
 @Misc{Alexiev2015-SexOrGender,
   author       = {Vladimir Alexiev},
