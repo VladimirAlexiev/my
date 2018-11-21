@@ -1,0 +1,308 @@
+# -*- my-org-place: "4th Open Data & Linked Data meetup, Sofia, Bulgaria"
+#+TITLE: How to find Open Data and Ontologies
+#+DATE: 2016-03-29
+#+AUTHOR: Vladimir Alexiev 
+
+* What is Open Data?
+[[http://5stardata.info/en/][5stardata.info]]:\\
+★ make your stuff available on the Web (whatever format) under an _open license_\\
+★★ make it _reusable_ as structured data (e.g., Excel instead of scanned table)\\
+★★★ make it available in a non-proprietary _open format_ (e.g., CSV + Excel)\\
+★★★★ use _URIs_ to denote things, so that people can point at your stuff\\
+★★★★★ _link_ your data to other data to provide context
+
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/5-star-steps.png]]
+
+** Here we Focus on the Higher Levels
+Levels 4 and 5 require the use of RDF
+- Simple graph data model
+- Every piece of data (and every property) has a URL
+- Enables easy semantic data interation (but converting to RDF is not so easy)
+
+Where can I buy such mug? [[https://www.w3.org/DesignIssues/LinkedData.html][W3C DesignIssues/LinkedData]] (TimBL 2009)
+
+#+ATTR_HTML: :class stretch :style width:400px
+[[./img/5-star-mug.jpg]]
+
+** Application Areas
+In this presentation we'll focus on data from these domains:
+- Linguistics/NLP
+- Cultural Heritage
+- (No time: Statistics)
+
+* Finding Open Data
+- Start from https://datahub.io, the global data portal
+- It's implemented with [[http://ckan.org/][CKAN]] ([[https://github.com/ckan/ckan][Github source]])
+- Many other data portals use CKAN, eg https://opendata.government.bg/
+- Most often it's only a starting point
+- Explore widely, as you can see in examples below
+
+* NLP Data
+Representing language resources and text annotations as RDF
+
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/datahub-nlp.png]]
+
+** NLP Data
+20 datasets, but IMHO only OLIA and Wordnet on the first page are most important
+- Wordnet is an old release (2.0) that's outdated
+- OLIA also points to an old release, see later
+
+Use the tags, Luke!
+- See tags on the left
+- You can get more results by exploring "linguistics", "linguistic"...
+- After some research, you can find more salient topics like "llod", "nif", "freme-project"...
+
+** NLP Data: OLIA
+Explore OLIA: the first link is ok, but [[https://sourceforge.net/projects/olia/files/latest/download][full data set]] is old (2012-09-16). 
+
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/datahub-olia.png]]
+
+** NLP LOD Working Groups
+Look on the left, there's an Organization OWLG:
+- gives you more datasets
+- slightly misspelt, it's [[http://linguistics.okfn.org][Open Linguistics Working Group]] (OLWG) at OKFN
+There are 3 more Linguistic LD working groups at W3C:
+- [[https://www.w3.org/community/ontolex/][Ontology-Lexica]] (OntoLex)
+- [[Https://www.w3.org/community/ld4lt/][Linked Data for Language Technology]] (LD4LT)
+- [[https://www.w3.org/community/bpmlod/][Best Practices for Multilingual LOD]] (BPMLOD)
+
+** NLP: Linguistic LOD Cloud
+http://www.linguistic-lod.org/ by OLWG
+
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/llod.png]]
+
+** NLP: Linguistic Hub
+If you click on a dataset, you'll find they have their own data hub:
+- http://linghub.lider-project.eu/
+- [[http://linghub.lider-project.eu/search/?property%3D&query%3Dolia][Search for OLIA]] and you'll find 7 related datasets
+- Including [[http://linghub.lider-project.eu/datahub/olia-discourse][OLIA Discourse]] and [[http://linghub.lider-project.eu/datahub/lemonuby][lemonUby]]
+- Explore Lemon and you'll find the [[http://lemon-model.net/][Lexicon Model for Ontologies]]
+- And then [[http://babelnet.org][Babelnet]]
+
+** NLP: Babelnet 
+Babelnet integrates encyclopedic & linguistic knowledge. Pretty amazing: [[http://babelnet.org/search?word%3DOntotext%2Bworks%2Bin%2BLinguistics%2Band%2BSemantic%2BTechnologies&lang%3DEN&langTrans%3DBG][sample sentence]]
+
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/babelnet-ontotext-sentence.png]]
+
+** NLP Tag Cloud
+:PROPERTIES: 
+:REVEAL_EXTRA_ATTR: tagcloud
+:END:
+Text Annotation
+Lexical Resources
+Corpora
+Semantic Annotation
+Opinion/Sentiment Analysis
+Working Groups:
+OLWG
+OntoLex
+LD4LT
+BPMLOD
+Projects: 
+MultilingualWeb
+LIDER
+FALCON
+Multisensor
+FREME
+XML schemas:
+GRaF
+ITS2
+LAF
+LMF
+UBY
+Linguistic Ontologies:
+FISE
+ITS2
+MARL
+NERD
+NIF
+NLP2RDF
+OLIA
+OntoLing
+OntoTag
+Penn
+Stanford
+FrameNet
+Lexical Ontologies/thesauri:
+LEMON
+LIME
+OntoLex
+GOLD
+ISOcat
+NERD
+Lexical resources:
+BabelNet
+FrameNet
+LemonUBY
+OmegaNet
+VerbNet
+Wiktionary2RDF
+WordNetRDF
+Corpora:
+Multitext
+MASC
+
+** Ontotext Linguistic LD Experience
+- Using NIF, OLIA, Penn, deep parsing [[http://vladimiralexiev.github.io/Multisensor/][in FP7 Multisensor]]
+- [[http://vladimiralexiev.github.io/Multisensor/FrameNet/paper.pdf][Integrating FrameNet in NIF]] (LDL 2016)
+- [[http://vladimiralexiev.github.io/Multisensor/20141008-Linguistic-LD/][Presentation 2014-10-08]], intro to a lot of these topics
+Collaborative bibliography on Linguistic LOD
+- [[https://www.zotero.org/groups/linguistic_ld][Zotero Group]]: join so you can collaborate
+- [[https://www.zotero.org/groups/linguistic_ld/items][Zotero Library]]: accessible on the web
+
+* Cultural Heritage Data
+- [[https://datahub.io/dataset?q%3Dmuseum][78 datasets]] on DataHub for "museum"
+- [[http://openglam.org/][OpenGLAM]] WG at OKFN provides info and some listings
+
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/datahub-openglam.png]]
+
+** GLAMs, Hackathons 
+- GLAM = Galleries, Libraries, Archives & Museums.
+Active communities, new datasets, often hackathons...
+- Germany: http://codingdavinci.de/
+- Switzerland: http://glam.opendata.ch/
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/openglam-ch.png]]
+
+** CH LOD Cloud
+Michiel Hildebrand, http://e-culture.multimedian.nl, 2012.
+- Shows only thesauri, not eg Museum collections
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/Culture-datacloud-large.png]]
+
+** Ontotext CH Experience
+Ontotext was involved in important #LODLAM (CH LOD) projects
+- [[http://collection.britishmuseum.org/sparql][British Museum collection]] in CIDOC CRM
+- [[http://britishart.yale.edu/collections/using-collections/technology/linked-open-data][Yale Center for British Art collection]] in CIDOC CRM
+- Europeana EDM SPARQL Endpoint
+- Getty Vocabularies as LOD (AAT, TGN, ULAN)
+  - Now working on Getty CONA & Getty Museum
+- Europeana Food and Drink
+
+** Europeana EDM SPARQL Endpoint
+http://europeana.ontotext.com/
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/graph-LevskiOrdinance.png]]
+
+** Getty Vocabs: Home Page
+http://vocab.getty.edu.
+Support through Google Groups and Twitter
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/GVP-home-page.png]]
+
+** Getty Vocabs: Sample Queries
+http://vocab.getty.edu/queries
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/GVP-sample-queries.png]]
+
+** Getty Vocabs: Documentation
+http://vocab.getty.edu/doc
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/GVP-doc-TOC.png]]
+
+* Open Data Description
+Can't a computer do the exploration for me?
+- There are many RDF crawlers & cleaners, eg http://lodlaundromat.org/
+- Description data is machine-readable
+- Lots of research on automatic description of datasets, finding linked datasets, etc
+So in theory, yes. In practice:
+- There are several options for description format: [[https://www.w3.org/TR/void/][VOID]], [[http://www.w3.org/TR/vocab-dcat/][DCAT]], [[https://www.w3.org/TR/vocab-adms/][ADMS]], [[http://aquarius.tw.rpi.edu/projects/datafaqs/home][DataFAQs]], [[http://wiki.dbpedia.org/projects/dbpedia-dataid][DataID]] ...
+- Very often providers *disregard them all*
+- For Getty we use VOID, DCAT, ADMS; considering DataID
+
+** Descriptive Ontologies in Getty
+| *Prefix* | *Ontology*                               | *Used for*                            |
+| adms:    | Asset Description Metadata Schema        | Dataset description                   |
+| cc:      | Creative Commons Rights Expressions      | License rights                        |
+| dcat:    | Data Catalog Vocabulary                  | Dataset description                   |
+| dctype:  | DCMI Type Vocabulary                     | Dataset class                         |
+| fmt:     | RDF formats used in datasets             | Formats of data dumps                 |
+| sd:      | SPARQL Service Description               | SPARQL endpoint capabilities (future) |
+| vaem:    | Vocabulary Attaching Essential Metadata  | Not used yet                          |
+| vann:    | Vocabulary for annotating vocabularies   | Namespace and prefix                  |
+| vcard:   | vCard (contact info)                     | Contact info                          |
+| vdpp:    | Vocabulary for Dataset Publ Projects     | Not used yet                          |
+| voaf:    | Vocabulary of a Friend                   | Linked Open Vocabularies (LOV)        |
+| voag:    | Vocabulary Of Attribution and Governance | Frequency of publication              |
+| void:    | Vocabulary of Interlinked Datasets       | Basis descr, LOD registration         |
+| wdrs:    | Protocol for Web Description Resources   | Described by from dataset to doc      |
+| wv:      | A vocabulary for waivers of rights       | License rights                        |
+
+*** VOID
+[[http://vocab.deri.ie/void][VOID Ontology at Neologism]]
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/void-Neologism.png]]
+
+*** DCAT
+[[https://www.w3.org/TR/vocab-dcat/][DCAT at W3C]]
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/dcat-domain-model.jpg]]
+
+*** ADMS
+[[https://www.w3.org/TR/vocab-adms/][ADMS at W3C]] (adopted from EU SEMIC group)
+[[./img/ADMS_Conceptual_W3C.png]]
+#+ATTR_HTML: :class stretch :style width:1400px
+
+*** DataID
+[[http://wiki.dbpedia.org/projects/dbpedia-dataid][DataID at DBpedia]] and [[https://github.com/dbpedia/dataid][Github]]
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/DataIdOntology.png]]
+
+* Ontology Engineering
+- Ontologies are the data schemas of LOD RDF
+- Ontology Engineering is about proper modeling
+- More often than not, it's about finding, adapting & reusing
+- Not creating brand new ontologies
+Benefits of reuse
+- Can save you a lot of time
+- Can make your data more easy to consume by others
+
+** Ontology Reuse in Getty
+[[http://VladimirAlexiev.github.io/pres/20140905-CIDOC-GVP][GVP LOD: Ontologies and Semantic Representation]], CIDOC congress, 2014-09
+| *Prefix* | *Ontology*                           | *Used for*                      |
+| bibo:    | Bibliography Ontology                | Sources                         |
+| dc:      | Dublin Core Elements                 | common                          |
+| dct:     | Dublin Core Terms                    | common                          |
+| foaf:    | Friend of a Friend ontology          | Contributors                    |
+| iso:     | ISO 25946 (latest on thesauri)       | iso:ThesaurusArray, BTG/BTP/BTI |
+| owl:     | Web Ontology Language                | Basic RDF representation        |
+| prov:    | Provenance Ontology                  | Revision history                |
+| rdf:     | Resource Description Framework       | Basic RDF representation        |
+| rdfs:    | RDF Schema                           | Basic RDF representation        |
+| schema:  | Schema.org                           | common, geo (TGN)               |
+| skos:    | Simple Knowledge Organization System | Basis vocabulary representation |
+| skosxl:  | SKOS Extension for Labels            | Rich labels                     |
+| wgs:     | W3C World Geodetic Survey geo        | Geo (TGN)                       |
+| xsd:     | XML Schema Datatypes                 | Basic RDF representation        |
+
+** Own Getty Ontology 
+http://vocab.getty.edu/ontology
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/GVP-ontology-parrot.png]]
+
+* Finding Ontologies: Linked Open Vocabularies
+http://lov.okfn.org/dataset/lov/: 542 vocabs (ontologies), 52k terms (classes, properties), 581 agents (people, orgs)
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/LOV.png]]
+
+** Data About Each Vocabulary
+Dates, Versions, Creators, Statistics, related Vocabs...
+http://lov.okfn.org/dataset/lov/vocabs/iso-thes
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/lov-isothes.png]]
+
+** VOWL Visualization
+http://vowl.visualdataweb.org/webvowl/#iri=http://vocab.getty.edu/ontology
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/vowl-gvp.png]]
+
+** LOV Community
+https://plus.google.com/communities/108509791366293651606
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/lov-google-plus.png]]

@@ -1,0 +1,10 @@
+Ethan Gruber <ewg4xuva@gmail.com>
+
+denarius.png: the geographic distribution of the Roman denarius, blue dots for mints and a heatmap showing distribution of finds (a lot in the UK from Dan Pett's Portable Antiquities Scheme data made available in http://numismatics.org/crro)
+comparing the mint distribution of denarii, quinarii, aurei of Augustus; d3js/sparql of OCRE data
+
+oa.png: a Greek coin in our database with a map showing the mint (geo data provided by nomisma), below a reference to the coin in an archival notebook (linked via Open Annotation)
+
+distribution.png: Map of hoards containing a particular Roman Republican coin type, below some examples of the type in partner collections
+
+denominations.png: The denominations issued by Augustus, Tiberius, Hadrian, rendered in a chart built on d3js

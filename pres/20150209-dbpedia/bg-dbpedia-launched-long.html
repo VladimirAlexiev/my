@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>bg.dbpedia.org launched</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Vladimir Alexiev &amp; Boyan Simeonov" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">bg.dbpedia.org launched</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga694cba">BG Wikipedia</a></li>
+<li><a href="#org4e67b86">Ontotext Motivation</a></li>
+<li><a href="#org9390fbb">bg.dbpedia: Home Page</a></li>
+<li><a href="#org4b5289a">Sample Queries (BG)</a></li>
+<li><a href="#orgf3825ba">Settlements and Problems (BG)</a></li>
+<li><a href="#orgf7e59fe">Musical Artists (BG)</a></li>
+<li><a href="#org013f63b">Musical Genres</a></li>
+<li><a href="#org3fd3433">Blogs/Tweets</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga694cba" class="outline-2">
+<h2 id="orga694cba">BG Wikipedia</h2>
+<div class="outline-text-2" id="text-orga694cba">
+<p>
+There is an active BG Wikipedia community:
+</p>
+<ul class="org-ul">
+<li>Established December 2003 (on 15 Jan, the official 10-year anniversary of BG Wikipedia was celebrated in the press)</li>
+<li>As of Dec 2014, there are 185K articles on BG Wikipedia</li>
+<li>The Wikimedians of Bulgaria User Group was approved in late 2014</li>
+<li>The registration of a Wikimedia NGO is pending</li>
+<li>The BG Wikipedia community presented at the Wikimedia CEE conference 2014 (Kiev)</li>
+<li>See <a href="https://bg.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A3%D0%B8%D0%BA%D0%B8%D1%81%D1%80%D0%B5%D1%89%D0%B0/%D0%A1%D0%B5%D0%BC%D0%B8%D0%BD%D0%B0%D1%80%D0%B8/2015-01/%D0%B1%D0%B5%D0%BB%D0%B5%D0%B6%D0%BA%D0%B8">https://bg.wikipedia.org/wiki/Уикипедия:Уикисреща/Семинари/2015-01/бележки</a> for more discussions, news and presentations</li>
+</ul>
+</div>
+
+<div id="outline-container-org726281e" class="outline-3">
+<h3 id="org726281e">GLAM and BG Wikipedia &amp; DBpedia</h3>
+<div class="outline-text-3" id="text-org726281e">
+<p>
+For a year now, an idea has been bandied around to focus BG cultural heritage documentation efforts around Wikipedia/DBpedia/Wikidata.
+These free information resources, the center of the Linked Open Data cloud, can enable cultural heritage workers to collaborate on describing the common elements of our Cultural Heritage. It's not right that foreign Wikipedias have more information about our kings, artists, politicians and events; and the data extracted in BG DBpedia is half missing and half wrong.
+</p>
+
+<p>
+The BG Wikipedia community has done two GLAM projects, see <a href="https://commons.wikimedia.org/wiki/File:Wikimedia-CEE-2014-Kiev--GLAM--Vassia.pdf">Wikimedia-CEE-2014 Report</a>
+</p>
+<ul class="org-ul">
+<li>A project with Sofia Zoo: nice information plates</li>
+<li><a href="https://bg.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A1%D1%8A%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE/%D0%94%D1%8A%D1%80%D0%B6%D0%B0%D0%B2%D0%BD%D0%B0_%D0%B0%D0%B3%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_%E2%80%9E%D0%90%D1%80%D1%85%D0%B8%D0%B2%D0%B8%E2%80%9C">Digitization project with DA Arhivi</a>
+<ul class="org-ul">
+<li><a href="https://commons.wikimedia.org/wiki/Commons:Bulgarian_Archives_State_Agency">Bulgarian_Archives_State_Agency</a> on Commons</li>
+<li>Gallery: <a href="https://commons.wikimedia.org/wiki/Category:Images_from_the_Bulgarian_Archives_State_Agency">Images_from_the_Bulgarian_Archives_State_Agency</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org503ee5c" class="outline-3">
+<h3 id="org503ee5c">BASA-image mapped to DBpedia</h3>
+<div class="outline-text-3" id="text-org503ee5c">
+<p>
+<a href="https://bg.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A1%D1%8A%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE/%D0%94%D1%8A%D1%80%D0%B6%D0%B0%D0%B2%D0%BD%D0%B0_%D0%B0%D0%B3%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_%E2%80%9E%D0%90%D1%80%D1%85%D0%B8%D0%B2%D0%B8%E2%80%9C#Mapped_to_DBpedia">https://bg.wikipedia.org/wiki/Уикипедия:Сътрудничество/Държавна_агенция_„Архиви“#Mapped_to_DBpedia</a>
+</p>
+<ul class="org-ul">
+<li>16 Jan 2015: Created the mapping <a href="http://mappings.dbpedia.org/index.php/Mapping_commons_talk:BASA-image">http://mappings.dbpedia.org/index.php/Mapping_commons_talk:BASA-image</a>.</li>
+<li>Now it extracts metadata, eg see <code>http://mappings.dbpedia.org/server/extraction/commons/extract?revid=&amp;format=turtle-triples&amp;extractors=custom&amp;title=File:Hristogdanov.jpg</code></li>
+<li>Or see <a href="http://mappings.dbpedia.org/server/mappings/commons/extractionSamples/Mapping_commons:BASA-image?namespace=File">http://mappings.dbpedia.org/server/mappings/commons/extractionSamples/Mapping_commons:BASA-image?namespace=File</a></li>
+<li>But there are still some things to fix: <a href="http://mappings.dbpedia.org/index.php/Mapping_commons_talk:BASA-image">http://mappings.dbpedia.org/index.php/Mapping_commons_talk:BASA-image</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9b14e02" class="outline-3">
+<h3 id="org9b14e02">BG Wikipedia Meeting</h3>
+<div class="outline-text-3" id="text-org9b14e02">
+<p>
+BG Wikipedia Chapter meeting on <a href="https://bg.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A3%D0%B8%D0%BA%D0%B8%D1%81%D1%80%D0%B5%D1%89%D0%B0/%D0%A1%D0%B5%D0%BC%D0%B8%D0%BD%D0%B0%D1%80%D0%B8/2015-02">Sun 8 Feb 2015</a>
+</p>
+<ul class="org-ul">
+<li>Discussed DBpedia, Wikidata and the value of data</li>
+<li>bgwiki already uses wikidata props, for Commons Category of geographic places</li>
+<li>Ontotext presented bg.dbpedia.org (still working on it!)</li>
+<li>A lot of interest for collaboration</li>
+<li>Upcoming meeting with Daniel Mietchen (coordinator of Wikidata 4 Research proposal in the H2020 VRE call)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e67b86" class="outline-2">
+<h2 id="org4e67b86">Ontotext Motivation</h2>
+<div class="outline-text-2" id="text-org4e67b86">
+<p>
+Ontotext has long used DBpedia and other LOD datasets for NLP and semantic extraction tasks.
+Until recently, there was little interest and market for Bulgarian NLP applications, and few language resources.
+Recent developments in two domains have raised the interest:
+</p>
+<ul class="org-ul">
+<li>Cultural heritage: Bulgaria joined CLARIN and DARIAH (in Bulgaria it's a single programme CLADA), the Bulgariana.eu foundation was formed, and the upstarting Bulgarian Operating Program "Science and Education" includes cultural heritage Research Infrastructures.</li>
+<li>The European projects Europeana Food and Drink and Multisensor include Bulgarian language processing and Bulgarian contributions</li>
+</ul>
+</div>
+
+<div id="outline-container-orgfd6a57a" class="outline-3">
+<h3 id="orgfd6a57a">Starting a bg.dbpedia.org chapter</h3>
+<div class="outline-text-3" id="text-orgfd6a57a">
+<p>
+Ontotext is in the middle of many of these developments, and we see the Bulgarian Wikipedia and DBpedia as crucial national resources to focus the efforts of the Bulgarian cultural heritage community.
+</p>
+<ul class="org-ul">
+<li>We started improving BG DBpedia mappings, reporting problems in the extraction &amp; ontology, etc</li>
+<li>We're trying to initiate a corresponding project in BG Wikipedia. See <a href="https://bg.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:BG_DBpedia">https://bg.wikipedia.org/wiki/Уикипедия:BG_DBpedia</a> for some background and practical examples.</li>
+<li>Ontotext has offered to host <a href="http://bg.dbpedia.org">http://bg.dbpedia.org</a>, which should be ready for review end of January 2015.</li>
+<li>Ontotext will attend the next international DBpedia meeting (9 Feb 2015, Dublin): <a href="http://wiki.dbpedia.org/meetings/Dublin2015">http://wiki.dbpedia.org/meetings/Dublin2015</a>. We'll talk/discuss on 2 topics:
+<ul class="org-ul">
+<li>Improving the DBpedia ontology and mappings</li>
+<li>Starting a BG DBpedia chapter. We need a lot of advice on organizational matters.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd00e084" class="outline-3">
+<h3 id="orgd00e084">bg.dbpedia.org Launch</h3>
+<div class="outline-text-3" id="text-orgd00e084">
+<p>
+Ontotext started hosting <a href="http://bg.dbpedia.org">http://bg.dbpedia.org</a> on 2015-02-05
+</p>
+<ul class="org-ul">
+<li>E.g. search for "левски"</li>
+<li>sample queries are upcoming (see <a href="./sample-queries.html">./sample-queries.html</a>)</li>
+<li>Your feedback is welcome!</li>
+<li>If you have lots of feedback, we'll establish some tracker, like we did with DBpedia: <a href="http://github.com/dbpedia/mappings-tracker/issues">http://github.com/dbpedia/mappings-tracker/issues</a></li>
+<li>Ontotext staff: please add any bugs you find as subtasks of <a href="https://jira.ontotext.com/browse/FF-300">https://jira.ontotext.com/browse/FF-300</a>, or add a comment to <a href="https://jira.ontotext.com/browse/FF-312">https://jira.ontotext.com/browse/FF-312</a> if it's something minor</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9390fbb" class="outline-2">
+<h2 id="org9390fbb">bg.dbpedia: Home Page</h2>
+<div class="outline-text-2" id="text-org9390fbb">
+
+<div class="figure">
+<p><img src="./img/bg-home-page.png" alt="bg-home-page.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org11e16f0" class="outline-3">
+<h3 id="org11e16f0">Search With Autocomplete</h3>
+<div class="outline-text-3" id="text-org11e16f0">
+
+<div class="figure">
+<p><img src="./img/bg-search.png" alt="bg-search.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org9ad0c3e" class="outline-3">
+<h3 id="org9ad0c3e">Resource Page (Vassil Levski)</h3>
+<div class="outline-text-3" id="text-org9ad0c3e">
+
+<div class="figure">
+<p><img src="./img/bg-resource-Levski.png" alt="bg-resource-Levski.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4b5289a" class="outline-2">
+<h2 id="org4b5289a">Sample Queries (BG)</h2>
+<div class="outline-text-2" id="text-org4b5289a">
+<p>
+Брой факти
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {<span style="color: #a0522d;">?s</span> <span style="color: #a0522d;">?p</span> <span style="color: #a0522d;">?o</span>}
+</pre>
+</div>
+<p>
+Брой страници
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {<span style="color: #a0522d;">?thing</span> foaf:isPrimaryTopicOf <span style="color: #a0522d;">?page</span>}
+</pre>
+</div>
+<p>
+Брой хора
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {<span style="color: #a0522d;">?person</span> a dbo:Person}
+</pre>
+</div>
+<p>
+Брой организации
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {<span style="color: #a0522d;">?org</span> a dbo:Organisation}
+</pre>
+</div>
+<p>
+Брой места
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {<span style="color: #a0522d;">?place</span> a dbo:Place}
+</pre>
+</div>
+<p>
+Брой растения/животни
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {<span style="color: #a0522d;">?place</span> a dbo:Species}
+</pre>
+</div>
+<p>
+Брой произведения
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {<span style="color: #a0522d;">?place</span> a dbo:Work}
+</pre>
+</div>
+</div>
+<div id="outline-container-org300bbc3" class="outline-3">
+<h3 id="org300bbc3">Pages Without Type</h3>
+<div class="outline-text-3" id="text-org300bbc3">
+<p>
+Брой страници без тип
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {
+  <span style="color: #a0522d;">?thing</span> foaf:isPrimaryTopicOf <span style="color: #a0522d;">?page</span>.
+  <span style="color: #a020f0;">filter</span> <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">exists</span>{<span style="color: #a0522d;">?thing</span> a <span style="color: #a0522d;">?type</span>.
+    <span style="color: #a020f0;">filter</span> (<span style="color: #a0522d;">?type</span> <span style="color: #a020f0;">in</span> (owl:Thing,dbo:Place,dbo:Species))}}
+</pre>
+</div>
+<p>
+Страници без тип: с техните категории
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?thing</span> (group_concat(<span style="color: #a0522d;">?cat</span>;separator=<span style="color: #8b2252;">"; "</span>) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?cats</span>) {
+  <span style="color: #a0522d;">?thing</span> foaf:isPrimaryTopicOf <span style="color: #a0522d;">?page</span>.
+  <span style="color: #a020f0;">filter</span> <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">exists</span>{<span style="color: #a0522d;">?thing</span> a <span style="color: #a0522d;">?type</span>.
+    <span style="color: #a020f0;">filter</span> (<span style="color: #a0522d;">?type</span> <span style="color: #a020f0;">in</span> (owl:Thing,dbo:Place,dbo:Species))}
+  <span style="color: #a0522d;">?thing</span> dct:subject <span style="color: #a0522d;">?category</span>.
+  <span style="color: #a020f0;">bind</span>(strafter(str(<span style="color: #a0522d;">?category</span>),<span style="color: #8b2252;">"http://bg.dbpedia.org/resource/&#1050;&#1072;&#1090;&#1077;&#1075;&#1086;&#1088;&#1080;&#1103;:"</span>) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?cat</span>)
+} <span style="color: #a020f0;">group</span> <span style="color: #a020f0;">by</span> <span style="color: #a0522d;">?thing</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1ee5f08" class="outline-3">
+<h3 id="org1ee5f08">Page Stats</h3>
+<div class="outline-text-3" id="text-org1ee5f08">
+<p>
+Най-големи страници
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> * {
+  <span style="color: #a0522d;">?x</span> dbo:wikiPageLength <span style="color: #a0522d;">?len</span>
+} <span style="color: #a020f0;">order</span> <span style="color: #a020f0;">by</span> <span style="color: #a020f0;">desc</span>(<span style="color: #a0522d;">?len</span>) <span style="color: #a020f0;">limit</span> 100
+</pre>
+</div>
+<p>
+Страници с най-много линкове
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?x</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?links</span>) {
+  <span style="color: #a0522d;">?x</span> dbo:wikiPageWikiLink <span style="color: #a0522d;">?l</span>
+} <span style="color: #a020f0;">group</span> <span style="color: #a020f0;">by</span> <span style="color: #a0522d;">?x</span> <span style="color: #a020f0;">order</span> <span style="color: #a020f0;">by</span> <span style="color: #a020f0;">desc</span>(<span style="color: #a0522d;">?links</span>) <span style="color: #a020f0;">limit</span> 100
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf3825ba" class="outline-2">
+<h2 id="orgf3825ba">Settlements and Problems (BG)</h2>
+<div class="outline-text-2" id="text-orgf3825ba">
+<p>
+Най-големи нас.места:
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">PREFIX</span> bgdbp: <span style="color: #008b8b;">&lt;http://bg.dbpedia.org/property/&gt;</span>
+<span style="color: #a020f0;">PREFIX</span> dbo: <span style="color: #008b8b;">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?x</span> <span style="color: #a0522d;">?area</span> {
+  <span style="color: #a0522d;">?x</span> bgdbp:wikiPageUsesTemplate <span style="color: #008b8b;">&lt;http://bg.dbpedia.org/resource/&#1064;&#1072;&#1073;&#1083;&#1086;&#1085;:&#1057;&#1077;&#1083;&#1080;&#1097;&#1077;_&#1074;_&#1041;&#1098;&#1083;&#1075;&#1072;&#1088;&#1080;&#1103;&gt;</span>;
+     dbo:areaLand <span style="color: #a0522d;">?area</span>
+} <span style="color: #a020f0;">order</span> <span style="color: #a020f0;">by</span> <span style="color: #a020f0;">desc</span>(<span style="color: #a0522d;">?area</span>) <span style="color: #a020f0;">limit</span> 100
+</pre>
+</div>
+</div>
+<div id="outline-container-org12ee2c7" class="outline-3">
+<h3 id="org12ee2c7">Wrong Data</h3>
+<div class="outline-text-3" id="text-org12ee2c7">
+<ul class="org-ul">
+<li>Най-големите НМ са Мътеница, Дебелец, Дъбовик, Ръжево, Мало Крушево?!?
+<ul class="org-ul">
+<li><p>
+<a href="https://bg.wikipedia.org/wiki/%D0%9C%D1%8A%D1%82%D0%B5%D0%BD%D0%B8%D1%86%D0%B0_(%D1%81%D0%B5%D0%BB%D0%BE)">https://bg.wikipedia.org/wiki/Мътеница_(село)</a>:
+</p>
+<pre class="example">
+Землище    33 035 km²
+
+</pre></li>
+<li><p>
+<a href="https://bg.wikipedia.org/w/index.php?title=%D0%9C%D1%8A%D1%82%D0%B5%D0%BD%D0%B8%D1%86%D0%B0_(%D1%81%D0%B5%D0%BB%D0%BE)&amp;action=edit">https://bg.wikipedia.org/w/index.php?title=Мътеница_(село)&amp;action=edit</a>
+</p>
+<pre class="example">
+| площ = 33 035
+
+</pre></li>
+<li>Това е 1/3 от площта на България ;-)</li>
+<li>Ние приемаме, че "," и "." са десетичен знак, ама чак пък интервал&#x2026;</li>
+<li>На друго място съм виждал изписано така: <code>1 nbsp;234</code>, което се извлича като "1" :-(</li>
+</ul></li>
+<li>Ако изключим тези грешки, следващото НМ е София</li>
+<li>После е Батак?
+<ul class="org-ul">
+<li><a href="https://bg.wikipedia.org/wiki/%D0%91%D0%B0%D1%82%D0%B0%D0%BA">https://bg.wikipedia.org/wiki/Батак</a>: Землище 461.105 km²: не ми се вярва</li>
+<li>Спас Колев казва, че е вярно. Това е землището на града (не само градската територия), и Батак включва голяма планинска територия.</li>
+<li>Надм. височина 1036m? Но Екатте дава интервал Надм. височина, м: 700 - 999 вкл <a href="http://www.ekatte.com/%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82-%D0%BF%D0%B0%D0%B7%D0%B0%D1%80%D0%B4%D0%B6%D0%B8%D0%BA/%D0%BE%D0%B1%D1%89%D0%B8%D0%BD%D0%B0-%D0%B1%D0%B0%D1%82%D0%B0%D0%BA/%D0%B1%D0%B0%D1%82%D0%B0%D0%BA">http://www.ekatte.com/област-пазарджик/община-батак/батак</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfd2e73b" class="outline-3">
+<h3 id="orgfd2e73b">Place Parents</h3>
+<div class="outline-text-3" id="text-orgfd2e73b">
+<ul class="org-ul">
+<li>Няма структурно поле, което да индицира Settlements само в Bulgaria.</li>
+</ul>
+<p>
+В момента информацията за административната структура на местата (и броят население) не може да се извлече
+</p>
+<ul class="org-ul">
+<li>Причина: в bg.wikipedia, голяма част от информацията е заключена в lookup lists in sub-templates, като "ekatte" се ползва за ключ.</li>
+<li><p>
+Напр за Мътеница <a href="https://bg.wikipedia.org/w/index.php?title=%D0%9C%D1%8A%D1%82%D0%B5%D0%BD%D0%B8%D1%86%D0%B0_(%D1%81%D0%B5%D0%BB%D0%BE)&amp;action=edit">https://bg.wikipedia.org/w/index.php?title=Мътеница_(село)&amp;action=edit</a>
+</p>
+<pre class="example">
+{{Селище в България
+| екатте = 49624
+| надм-височина=441 ...
+
+</pre></li>
+<li>Извън шаблона (в свободен текст) се казва: "село в Южна България. То се намира в община Хисаря, Област Пловдив".
+Тези се извличат като линкове, но не в структурни полета.</li>
+<li>The extraction framework cannot extract data from such lists. See issue <a href="https://github.com/dbpedia/extraction-framework/issues/305">#305</a>: resolving lookup-list data out of sub-templates</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1901966" class="outline-3">
+<h3 id="org1901966">Places With Biggest Population</h3>
+<div class="outline-text-3" id="text-org1901966">
+<p>
+Населени места с най-голямо население
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">PREFIX</span> bgdbp: <span style="color: #008b8b;">&lt;http://bg.dbpedia.org/property/&gt;</span>
+<span style="color: #a020f0;">PREFIX</span> dbo: <span style="color: #008b8b;">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span style="color: #a020f0;">select</span> * {
+  <span style="color: #a0522d;">?x</span> bgdbp:wikiPageUsesTemplate <span style="color: #008b8b;">&lt;http://bg.dbpedia.org/resource/&#1064;&#1072;&#1073;&#1083;&#1086;&#1085;:&#1057;&#1077;&#1083;&#1080;&#1097;&#1077;_&#1074;_&#1041;&#1098;&#1083;&#1075;&#1072;&#1088;&#1080;&#1103;&gt;</span>;
+     dbo:populationTotal <span style="color: #a0522d;">?pop</span>
+} <span style="color: #a020f0;">order</span> <span style="color: #a020f0;">by</span> <span style="color: #a020f0;">desc</span>(<span style="color: #a0522d;">?pop</span>) <span style="color: #a020f0;">limit</span> 100
+</pre>
+</div>
+<p>
+Ура! Тези май са верни :-)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf7e59fe" class="outline-2">
+<h2 id="orgf7e59fe">Musical Artists (BG)</h2>
+<div class="outline-text-2" id="text-orgf7e59fe">
+<p>
+Музикални изпълнители и групи
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">PREFIX</span> dbo: <span style="color: #008b8b;">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span style="color: #a020f0;">select</span> * {
+  <span style="color: #a0522d;">?x</span> a <span style="color: #a0522d;">?type</span>
+  <span style="color: #a020f0;">filter</span> (<span style="color: #a0522d;">?type</span> <span style="color: #a020f0;">in</span> (dbo:MusicalArtist, dbo:Band))
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>2559. Но само 111 са dbo:MusicalArtist?!? Напр. Лили Иванова и Горан Брегович излизат като dbo:Band (и оттам dbo:Organisation ;-))</li>
+<li><p>
+Причината е, че мапингът <a href="http://mappings.dbpedia.org/index.php?title=Mapping_bg:%D0%9C%D1%83%D0%B7%D0%B8%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD_%D0%B8%D0%B7%D0%BF%D1%8A%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB&amp;action=edit&amp;oldid=18009">Музикален_изпълнител имаше следният проблем</a>:  
+</p>
+<pre class="example">
+{{ Condition
+  | templateProperty = фон
+  | operator = isSet
+  | mapping = {{ TemplateMapping | mapToClass = Band }}
+}}
+</pre></li>
+<li>Т.е. ако има поле "фон", то приеми че е Група. Напр. Горан Брегович: фон = инструменталист</li>
+</ul>
+</div>
+<div id="outline-container-org5d29be3" class="outline-3">
+<h3 id="org5d29be3">Conditional Mapping</h3>
+<div class="outline-text-3" id="text-org5d29be3">
+<p>
+Сега го оправихме <a href="http://mappings.dbpedia.org/index.php?title=Mapping_bg:%D0%9C%D1%83%D0%B7%D0%B8%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD_%D0%B8%D0%B7%D0%BF%D1%8A%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB&amp;action=edit">да има следната сложна логика</a>: 
+</p>
+<ul class="org-ul">
+<li>Ако има поле "състав", "бивши_членове" или "създадена" -&gt; Band
+<ul class="org-ul">
+<li>(Ами "членове"? Не знам)</li>
+</ul></li>
+<li>Ако "фон" съдържа "група", "квартет", "ансамбъл", "хор" -&gt; Band</li>
+<li>Ако "фон" съдържа "композитор" -&gt; MusicComposer</li>
+<li>Ако "фон" съдържа "диригент" -&gt; MusicDirector</li>
+<li>Ако "фон" съдържа "певица" -&gt; MusicalArtist, gender=dbo:Female</li>
+<li>Ако "фон" съдържа "певец" -&gt; MusicalArtist, gender=dbo:Male</li>
+<li>Ако "фон" съдържа "пианист" -&gt; MusicalArtist, gender=dbo:Male</li>
+<li>Ако има поле "наставка" -&gt; MusicalArtist, gender=dbo:Female</li>
+<li>Иначе -&gt; MusicalArtist, gender=dbo:Male</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee257d5" class="outline-3">
+<h3 id="orgee257d5">Data Improvement</h3>
+<div class="outline-text-3" id="text-orgee257d5">
+<ul class="org-ul">
+<li>Вече Лили Иванова не е Band (и Organisation), а MusicalArtist, gender=dbo:Female. Ура!
+<ul class="org-ul">
+<li>Макар че някои биха оспорили, че де-факто тя е <b>институция</b> в българската музика</li>
+</ul></li>
+<li>По принцип шаблонът <a href="https://bg.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%D0%9C%D1%83%D0%B7%D0%B8%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD_%D0%B8%D0%B7%D0%BF%D1%8A%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB">https://bg.wikipedia.org/wiki/Шаблон:Музикален_изпълнител</a> казва, че "фон" трябва да е: певец, инструменталист, не_изпълнител, временно.
+<ul class="org-ul">
+<li>Но има мноого изключения, напр. "фолк певица" (е може ли без нея)</li>
+<li>Нашият мапинг следва реалните данни</li>
+</ul></li>
+<li>Тригонометрична_функция и България_на_Световното_първенство_по_футбол_1994?!?
+<ul class="org-ul">
+<li>Преди ползваха шаблон "Музикален изпълнител"</li>
+<li>Но вече не, напр <a href="https://bg.wikipedia.org/w/index.php?title=%D0%A2%D1%80%D0%B8%D0%B3%D0%BE%D0%BD%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%87%D0%BD%D0%B0_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F&amp;diff=6434190&amp;oldid=5927191">https://bg.wikipedia.org/w/index.php?title=Тригонометрична_функция&amp;diff=6434190&amp;oldid=5927191</a></li>
+<li>При следващото извличане ще се актуализират и ще отпаднат от този списък</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org013f63b" class="outline-2">
+<h2 id="org013f63b">Musical Genres</h2>
+<div class="outline-text-2" id="text-org013f63b">
+<p>
+Музикални изпълнители за които са посочени жанрове
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">PREFIX</span> dbo: <span style="color: #008b8b;">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?x</span> (group_concat(<span style="color: #a0522d;">?genre</span>;separator=<span style="color: #8b2252;">"; "</span>) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?genres</span>) {
+  <span style="color: #a0522d;">?x</span> a <span style="color: #a0522d;">?type</span>. <span style="color: #a020f0;">filter</span> (<span style="color: #a0522d;">?type</span> <span style="color: #a020f0;">in</span> (dbo:MusicalArtist, dbo:Band))
+  <span style="color: #a0522d;">?x</span> dbo:genre <span style="color: #a0522d;">?g</span>.
+   <span style="color: #a020f0;">bind</span> (strafter(str(<span style="color: #a0522d;">?g</span>),<span style="color: #8b2252;">"http://bg.dbpedia.org/resource/"</span>) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?genre</span>)
+} <span style="color: #a020f0;">group</span> <span style="color: #a020f0;">by</span> <span style="color: #a0522d;">?x</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-org92ef064" class="outline-3">
+<h3 id="org92ef064">Popular Genres</h3>
+<div class="outline-text-3" id="text-org92ef064">
+<p>
+Музикални жанрове по популярност
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">PREFIX</span> dbo: <span style="color: #008b8b;">&lt;http://dbpedia.org/ontology/&gt;</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?genre</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) {
+  <span style="color: #a0522d;">?x</span> a <span style="color: #a0522d;">?type</span>. <span style="color: #a020f0;">filter</span> (<span style="color: #a0522d;">?type</span> <span style="color: #a020f0;">in</span> (dbo:MusicalArtist, dbo:Band))
+  <span style="color: #a0522d;">?x</span> dbo:genre <span style="color: #a0522d;">?g</span>.
+  <span style="color: #a020f0;">bind</span> (strafter(str(<span style="color: #a0522d;">?g</span>),<span style="color: #8b2252;">"http://bg.dbpedia.org/resource/"</span>) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?genre</span>)
+} <span style="color: #a020f0;">group</span> <span style="color: #a020f0;">by</span> <span style="color: #a0522d;">?genre</span> <span style="color: #a020f0;">order</span> <span style="color: #a020f0;">by</span> <span style="color: #a020f0;">desc</span>(<span style="color: #a0522d;">?c</span>) <span style="color: #a020f0;">limit</span> 20
+</pre>
+</div>
+<ul class="org-ul">
+<li>520 жанра</li>
+<li><p>
+Най-популярните са
+</p>
+<pre class="example">
+Поп_музика  356 (изненада!)
+Хард_рок    313
+Хеви_метъл  238
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b99dd0" class="outline-3">
+<h3 id="org6b99dd0">Making Charts</h3>
+<div class="outline-text-3" id="text-org6b99dd0">
+<ul class="org-ul">
+<li>Charts directly from SPARQL: <a href="http://goo.gl/l3lAeB">VISU</a>, <a href="http://jsfiddle.net/valexiev/1p9qs2zu/">sgvizler</a> (jsfiddle)</li>
+<li>Or Query&gt; Save as&gt; TSV and make it in Excel</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/музикални-жанрове.png" alt="музикални-жанрове.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3fd3433" class="outline-2">
+<h2 id="org3fd3433">Blogs/Tweets</h2>
+<div class="outline-text-2" id="text-org3fd3433">
+<p>
+Please retweet, post to facebook &amp; linkedin
+</p>
+<ul class="org-ul">
+<li><a href="https://confluence.ontotext.com/display/Bulgariana/20140116+BG+DBpedia+and+Wikipedia-GLAM%20">Bulgariana blog</a>: publicizing Wikipedia/DBpedia with GLAMs</li>
+<li><a href="https://twitter.com/valexiev1/status/556093880681398272">https://twitter.com/valexiev1/status/556093880681398272</a>: bg.dbpedia project</li>
+<li><a href="https://twitter.com/valexiev1/status/563651292040822785">https://twitter.com/valexiev1/status/563651292040822785</a>: bg.dbpedia launch</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2015-02-10</p>
+<p class="author">Author: Vladimir Alexiev &amp; Boyan Simeonov</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

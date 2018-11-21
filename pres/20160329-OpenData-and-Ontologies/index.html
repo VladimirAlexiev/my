@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>How to find Open Data and Ontologies</title>
+<meta name="author" content="(Vladimir Alexiev)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>How to find Open Data and Ontologies</h2><h3>Vladimir Alexiev</h3><h4>2016-03-29</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies/index-full.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org71cf74c">What is Open Data?</a>
+<ul>
+<li><a href="#/slide-org8f61def">Here we Focus on the Higher Levels</a></li>
+<li><a href="#/slide-org528542d">Application Areas</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org175f613">Finding Open Data</a></li>
+<li><a href="#/slide-org115aa7e">NLP Data</a>
+<ul>
+<li><a href="#/slide-orgc748c47">NLP Data</a></li>
+<li><a href="#/slide-orga6a1fa2">NLP Data: OLIA</a></li>
+<li><a href="#/slide-org9bcf2ae">NLP LOD Working Groups</a></li>
+<li><a href="#/slide-org55589ca">NLP: Linguistic LOD Cloud</a></li>
+<li><a href="#/slide-org095f5dd">NLP: Linguistic Hub</a></li>
+<li><a href="#/slide-org4d5d935">NLP: Babelnet</a></li>
+<li><a href="#/slide-orgf655885">NLP Tag Cloud</a></li>
+<li><a href="#/slide-orgb4cc798">Ontotext Linguistic LD Experience</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orga104542">Cultural Heritage Data</a>
+<ul>
+<li><a href="#/slide-org94dcb8c">GLAMs, Hackathons</a></li>
+<li><a href="#/slide-org9cff6fe">CH LOD Cloud</a></li>
+<li><a href="#/slide-orga207280">Ontotext CH Experience</a></li>
+<li><a href="#/slide-org55cc8f1">Europeana EDM SPARQL Endpoint</a></li>
+<li><a href="#/slide-org5b77f09">Getty Vocabs: Home Page</a></li>
+<li><a href="#/slide-orgddc0681">Getty Vocabs: Sample Queries</a></li>
+<li><a href="#/slide-orgc951b4a">Getty Vocabs: Documentation</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgc6258dd">Open Data Description</a>
+<ul>
+<li><a href="#/slide-org1e70f26">Descriptive Ontologies in Getty</a>
+<ul>
+<li><a href="#/slide-orgc960927">VOID</a></li>
+<li><a href="#/slide-orgcce63c2">DCAT</a></li>
+<li><a href="#/slide-org14e0564">ADMS</a></li>
+<li><a href="#/slide-orgbd7e682">DataID</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org7430240">Ontology Engineering</a>
+<ul>
+<li><a href="#/slide-orgf704853">Ontology Reuse in Getty</a></li>
+<li><a href="#/slide-orgeddbb5d">Own Getty Ontology</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org6835d2d">Finding Ontologies: Linked Open Vocabularies</a>
+<ul>
+<li><a href="#/slide-org87682b0">Data About Each Vocabulary</a></li>
+<li><a href="#/slide-org09b1009">VOWL Visualization</a></li>
+<li><a href="#/slide-org292d4ad">LOV Community</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org71cf74c">
+<h2 id="org71cf74c">What is Open Data?</h2>
+<p>
+<a href="http://5stardata.info/en/">5stardata.info</a>:<br />
+★ make your stuff available on the Web (whatever format) under an <span class="underline">open license</span><br />
+★★ make it <span class="underline">reusable</span> as structured data (e.g., Excel instead of scanned table)<br />
+★★★ make it available in a non-proprietary <span class="underline">open format</span> (e.g., CSV + Excel)<br />
+★★★★ use <span class="underline">URIs</span> to denote things, so that people can point at your stuff<br />
+★★★★★ <span class="underline">link</span> your data to other data to provide context
+</p>
+
+
+<div class="figure">
+<p><img src="./img/5-star-steps.png" alt="5-star-steps.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org8f61def">
+<h3 id="org8f61def">Here we Focus on the Higher Levels</h3>
+<p>
+Levels 4 and 5 require the use of RDF
+</p>
+<ul>
+<li>Simple graph data model</li>
+<li>Every piece of data (and every property) has a URL</li>
+<li>Enables easy semantic data interation (but converting to RDF is not so easy)</li>
+
+</ul>
+
+<p>
+Where can I buy such mug? <a href="https://www.w3.org/DesignIssues/LinkedData.html">W3C DesignIssues/LinkedData</a> (TimBL 2009)
+</p>
+
+
+<div class="figure">
+<p><img src="./img/5-star-mug.jpg" alt="5-star-mug.jpg" class="stretch" style="width:400px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org528542d">
+<h3 id="org528542d">Application Areas</h3>
+<p>
+In this presentation we'll focus on data from these domains:
+</p>
+<ul>
+<li>Linguistics/NLP</li>
+<li>Cultural Heritage</li>
+<li>(No time: Statistics)</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org175f613">
+<h2 id="org175f613">Finding Open Data</h2>
+<ul>
+<li>Start from <a href="https://datahub.io">https://datahub.io</a>, the global data portal</li>
+<li>It's implemented with <a href="http://ckan.org/">CKAN</a> (<a href="https://github.com/ckan/ckan">Github source</a>)</li>
+<li>Many other data portals use CKAN, eg <a href="https://opendata.government.bg/">https://opendata.government.bg/</a></li>
+<li>Most often it's only a starting point</li>
+<li>Explore widely, as you can see in examples below</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org115aa7e">
+<h2 id="org115aa7e">NLP Data</h2>
+<p>
+Representing language resources and text annotations as RDF
+</p>
+
+
+<div class="figure">
+<p><img src="./img/datahub-nlp.png" alt="datahub-nlp.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc748c47">
+<h3 id="orgc748c47">NLP Data</h3>
+<p>
+20 datasets, but IMHO only OLIA and Wordnet on the first page are most important
+</p>
+<ul>
+<li>Wordnet is an old release (2.0) that's outdated</li>
+<li>OLIA also points to an old release, see later</li>
+
+</ul>
+
+<p>
+Use the tags, Luke!
+</p>
+<ul>
+<li>See tags on the left</li>
+<li>You can get more results by exploring "linguistics", "linguistic"&#x2026;</li>
+<li>After some research, you can find more salient topics like "llod", "nif", "freme-project"&#x2026;</li>
+
+</ul>
+
+</section>
+<section id="slide-orga6a1fa2">
+<h3 id="orga6a1fa2">NLP Data: OLIA</h3>
+<p>
+Explore OLIA: the first link is ok, but <a href="https://sourceforge.net/projects/olia/files/latest/download">full data set</a> is old (2012-09-16). 
+</p>
+
+
+<div class="figure">
+<p><img src="./img/datahub-olia.png" alt="datahub-olia.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9bcf2ae">
+<h3 id="org9bcf2ae">NLP LOD Working Groups</h3>
+<p>
+Look on the left, there's an Organization OWLG:
+</p>
+<ul>
+<li>gives you more datasets</li>
+<li>slightly misspelt, it's <a href="http://linguistics.okfn.org">Open Linguistics Working Group</a> (OLWG) at OKFN</li>
+
+</ul>
+<p>
+There are 3 more Linguistic LD working groups at W3C:
+</p>
+<ul>
+<li><a href="https://www.w3.org/community/ontolex/">Ontology-Lexica</a> (OntoLex)</li>
+<li><a href="//www.w3.org/community/ld4lt/">Linked Data for Language Technology</a> (LD4LT)</li>
+<li><a href="https://www.w3.org/community/bpmlod/">Best Practices for Multilingual LOD</a> (BPMLOD)</li>
+
+</ul>
+
+</section>
+<section id="slide-org55589ca">
+<h3 id="org55589ca">NLP: Linguistic LOD Cloud</h3>
+<p>
+<a href="http://www.linguistic-lod.org/">http://www.linguistic-lod.org/</a> by OLWG
+</p>
+
+
+<div class="figure">
+<p><img src="./img/llod.png" alt="llod.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org095f5dd">
+<h3 id="org095f5dd">NLP: Linguistic Hub</h3>
+<p>
+If you click on a dataset, you'll find they have their own data hub:
+</p>
+<ul>
+<li><a href="http://linghub.lider-project.eu/">http://linghub.lider-project.eu/</a></li>
+<li><a href="http://linghub.lider-project.eu/search/?property=&amp;query=olia">Search for OLIA</a> and you'll find 7 related datasets</li>
+<li>Including <a href="http://linghub.lider-project.eu/datahub/olia-discourse">OLIA Discourse</a> and <a href="http://linghub.lider-project.eu/datahub/lemonuby">lemonUby</a></li>
+<li>Explore Lemon and you'll find the <a href="http://lemon-model.net/">Lexicon Model for Ontologies</a></li>
+<li>And then <a href="http://babelnet.org">Babelnet</a></li>
+
+</ul>
+
+</section>
+<section id="slide-org4d5d935">
+<h3 id="org4d5d935">NLP: Babelnet</h3>
+<p>
+Babelnet integrates encyclopedic &amp; linguistic knowledge. Pretty amazing: <a href="http://babelnet.org/search?word=Ontotext+works+in+Linguistics+and+Semantic+Technologies&amp;lang=EN&amp;langTrans=BG">sample sentence</a>
+</p>
+
+
+<div class="figure">
+<p><img src="./img/babelnet-ontotext-sentence.png" alt="babelnet-ontotext-sentence.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf655885" tagcloud>
+<h3 id="orgf655885">NLP Tag Cloud</h3>
+<p>
+Text Annotation
+Lexical Resources
+Corpora
+Semantic Annotation
+Opinion/Sentiment Analysis
+Working Groups:
+OLWG
+OntoLex
+LD4LT
+BPMLOD
+Projects: 
+MultilingualWeb
+LIDER
+FALCON
+Multisensor
+FREME
+XML schemas:
+GRaF
+ITS2
+LAF
+LMF
+UBY
+Linguistic Ontologies:
+FISE
+ITS2
+MARL
+NERD
+NIF
+NLP2RDF
+OLIA
+OntoLing
+OntoTag
+Penn
+Stanford
+FrameNet
+Lexical Ontologies/thesauri:
+LEMON
+LIME
+OntoLex
+GOLD
+ISOcat
+NERD
+Lexical resources:
+BabelNet
+FrameNet
+LemonUBY
+OmegaNet
+VerbNet
+Wiktionary2RDF
+WordNetRDF
+Corpora:
+Multitext
+MASC
+</p>
+
+</section>
+<section id="slide-orgb4cc798">
+<h3 id="orgb4cc798">Ontotext Linguistic LD Experience</h3>
+<ul>
+<li>Using NIF, OLIA, Penn, deep parsing <a href="http://vladimiralexiev.github.io/Multisensor/">in FP7 Multisensor</a></li>
+<li><a href="http://vladimiralexiev.github.io/Multisensor/FrameNet/paper.pdf">Integrating FrameNet in NIF</a> (LDL 2016)</li>
+<li><a href="http://vladimiralexiev.github.io/Multisensor/20141008-Linguistic-LD/">Presentation 2014-10-08</a>, intro to a lot of these topics</li>
+
+</ul>
+<p>
+Collaborative bibliography on Linguistic LOD
+</p>
+<ul>
+<li><a href="https://www.zotero.org/groups/linguistic_ld">Zotero Group</a>: join so you can collaborate</li>
+<li><a href="https://www.zotero.org/groups/linguistic_ld/items">Zotero Library</a>: accessible on the web</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga104542">
+<h2 id="orga104542">Cultural Heritage Data</h2>
+<ul>
+<li><a href="https://datahub.io/dataset?q=museum">78 datasets</a> on DataHub for "museum"</li>
+<li><a href="http://openglam.org/">OpenGLAM</a> WG at OKFN provides info and some listings</li>
+
+</ul>
+
+
+<div class="figure">
+<p><img src="./img/datahub-openglam.png" alt="datahub-openglam.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org94dcb8c">
+<h3 id="org94dcb8c">GLAMs, Hackathons</h3>
+<ul>
+<li>GLAM = Galleries, Libraries, Archives &amp; Museums.</li>
+
+</ul>
+<p>
+Active communities, new datasets, often hackathons&#x2026;
+</p>
+<ul>
+<li>Germany: <a href="http://codingdavinci.de/">http://codingdavinci.de/</a></li>
+<li>Switzerland: <a href="http://glam.opendata.ch/">http://glam.opendata.ch/</a></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/openglam-ch.png" alt="openglam-ch.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9cff6fe">
+<h3 id="org9cff6fe">CH LOD Cloud</h3>
+<p>
+Michiel Hildebrand, <a href="http://e-culture.multimedian.nl">http://e-culture.multimedian.nl</a>, 2012.
+</p>
+<ul>
+<li>Shows only thesauri, not eg Museum collections</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/Culture-datacloud-large.png" alt="Culture-datacloud-large.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orga207280">
+<h3 id="orga207280">Ontotext CH Experience</h3>
+<p>
+Ontotext was involved in important #LODLAM (CH LOD) projects
+</p>
+<ul>
+<li><a href="http://collection.britishmuseum.org/sparql">British Museum collection</a> in CIDOC CRM</li>
+<li><a href="http://britishart.yale.edu/collections/using-collections/technology/linked-open-data">Yale Center for British Art collection</a> in CIDOC CRM</li>
+<li>Europeana EDM SPARQL Endpoint</li>
+<li>Getty Vocabularies as LOD (AAT, TGN, ULAN)
+<ul>
+<li>Now working on Getty CONA &amp; Getty Museum</li>
+
+</ul></li>
+<li>Europeana Food and Drink</li>
+
+</ul>
+
+</section>
+<section id="slide-org55cc8f1">
+<h3 id="org55cc8f1">Europeana EDM SPARQL Endpoint</h3>
+<p>
+<a href="http://europeana.ontotext.com/">http://europeana.ontotext.com/</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/graph-LevskiOrdinance.png" alt="graph-LevskiOrdinance.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5b77f09">
+<h3 id="org5b77f09">Getty Vocabs: Home Page</h3>
+<p>
+<a href="http://vocab.getty.edu">http://vocab.getty.edu</a>.
+Support through Google Groups and Twitter
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-home-page.png" alt="GVP-home-page.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgddc0681">
+<h3 id="orgddc0681">Getty Vocabs: Sample Queries</h3>
+<p>
+<a href="http://vocab.getty.edu/queries">http://vocab.getty.edu/queries</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-sample-queries.png" alt="GVP-sample-queries.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc951b4a">
+<h3 id="orgc951b4a">Getty Vocabs: Documentation</h3>
+<p>
+<a href="http://vocab.getty.edu/doc">http://vocab.getty.edu/doc</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-doc-TOC.png" alt="GVP-doc-TOC.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc6258dd">
+<h2 id="orgc6258dd">Open Data Description</h2>
+<p>
+Can't a computer do the exploration for me?
+</p>
+<ul>
+<li>There are many RDF crawlers &amp; cleaners, eg <a href="http://lodlaundromat.org/">http://lodlaundromat.org/</a></li>
+<li>Description data is machine-readable</li>
+<li>Lots of research on automatic description of datasets, finding linked datasets, etc</li>
+
+</ul>
+<p>
+So in theory, yes. In practice:
+</p>
+<ul>
+<li>There are several options for description format: <a href="https://www.w3.org/TR/void/">VOID</a>, <a href="http://www.w3.org/TR/vocab-dcat/">DCAT</a>, <a href="https://www.w3.org/TR/vocab-adms/">ADMS</a>, <a href="http://aquarius.tw.rpi.edu/projects/datafaqs/home">DataFAQs</a>, <a href="http://wiki.dbpedia.org/projects/dbpedia-dataid">DataID</a> &#x2026;</li>
+<li>Very often providers <b>disregard them all</b></li>
+<li>For Getty we use VOID, DCAT, ADMS; considering DataID</li>
+
+</ul>
+
+</section>
+<section id="slide-org1e70f26">
+<h3 id="org1e70f26">Descriptive Ontologies in Getty</h3>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Prefix</b></td>
+<td class="org-left"><b>Ontology</b></td>
+<td class="org-left"><b>Used for</b></td>
+</tr>
+
+<tr>
+<td class="org-left">adms:</td>
+<td class="org-left">Asset Description Metadata Schema</td>
+<td class="org-left">Dataset description</td>
+</tr>
+
+<tr>
+<td class="org-left">cc:</td>
+<td class="org-left">Creative Commons Rights Expressions</td>
+<td class="org-left">License rights</td>
+</tr>
+
+<tr>
+<td class="org-left">dcat:</td>
+<td class="org-left">Data Catalog Vocabulary</td>
+<td class="org-left">Dataset description</td>
+</tr>
+
+<tr>
+<td class="org-left">dctype:</td>
+<td class="org-left">DCMI Type Vocabulary</td>
+<td class="org-left">Dataset class</td>
+</tr>
+
+<tr>
+<td class="org-left">fmt:</td>
+<td class="org-left">RDF formats used in datasets</td>
+<td class="org-left">Formats of data dumps</td>
+</tr>
+
+<tr>
+<td class="org-left">sd:</td>
+<td class="org-left">SPARQL Service Description</td>
+<td class="org-left">SPARQL endpoint capabilities (future)</td>
+</tr>
+
+<tr>
+<td class="org-left">vaem:</td>
+<td class="org-left">Vocabulary Attaching Essential Metadata</td>
+<td class="org-left">Not used yet</td>
+</tr>
+
+<tr>
+<td class="org-left">vann:</td>
+<td class="org-left">Vocabulary for annotating vocabularies</td>
+<td class="org-left">Namespace and prefix</td>
+</tr>
+
+<tr>
+<td class="org-left">vcard:</td>
+<td class="org-left">vCard (contact info)</td>
+<td class="org-left">Contact info</td>
+</tr>
+
+<tr>
+<td class="org-left">vdpp:</td>
+<td class="org-left">Vocabulary for Dataset Publ Projects</td>
+<td class="org-left">Not used yet</td>
+</tr>
+
+<tr>
+<td class="org-left">voaf:</td>
+<td class="org-left">Vocabulary of a Friend</td>
+<td class="org-left">Linked Open Vocabularies (LOV)</td>
+</tr>
+
+<tr>
+<td class="org-left">voag:</td>
+<td class="org-left">Vocabulary Of Attribution and Governance</td>
+<td class="org-left">Frequency of publication</td>
+</tr>
+
+<tr>
+<td class="org-left">void:</td>
+<td class="org-left">Vocabulary of Interlinked Datasets</td>
+<td class="org-left">Basis descr, LOD registration</td>
+</tr>
+
+<tr>
+<td class="org-left">wdrs:</td>
+<td class="org-left">Protocol for Web Description Resources</td>
+<td class="org-left">Described by from dataset to doc</td>
+</tr>
+
+<tr>
+<td class="org-left">wv:</td>
+<td class="org-left">A vocabulary for waivers of rights</td>
+<td class="org-left">License rights</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgc960927">
+<h4 id="orgc960927">VOID</h4>
+<p>
+<a href="http://vocab.deri.ie/void">VOID Ontology at Neologism</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/void-Neologism.png" alt="void-Neologism.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgcce63c2">
+<h4 id="orgcce63c2">DCAT</h4>
+<p>
+<a href="https://www.w3.org/TR/vocab-dcat/">DCAT at W3C</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/dcat-domain-model.jpg" alt="dcat-domain-model.jpg" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org14e0564">
+<h4 id="org14e0564">ADMS</h4>
+<p>
+<a href="https://www.w3.org/TR/vocab-adms/">ADMS at W3C</a> (adopted from EU SEMIC group)
+<img src="./img/ADMS_Conceptual_W3C.png" alt="ADMS_Conceptual_W3C.png" />
+</p>
+
+</section>
+<section id="slide-orgbd7e682">
+<h4 id="orgbd7e682">DataID</h4>
+<p>
+<a href="http://wiki.dbpedia.org/projects/dbpedia-dataid">DataID at DBpedia</a> and <a href="https://github.com/dbpedia/dataid">Github</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/DataIdOntology.png" alt="DataIdOntology.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7430240">
+<h2 id="org7430240">Ontology Engineering</h2>
+<ul>
+<li>Ontologies are the data schemas of LOD RDF</li>
+<li>Ontology Engineering is about proper modeling</li>
+<li>More often than not, it's about finding, adapting &amp; reusing</li>
+<li>Not creating brand new ontologies</li>
+
+</ul>
+<p>
+Benefits of reuse
+</p>
+<ul>
+<li>Can save you a lot of time</li>
+<li>Can make your data more easy to consume by others</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf704853">
+<h3 id="orgf704853">Ontology Reuse in Getty</h3>
+<p>
+<a href="http://vladimiralexiev.github.io/pres/20140905-CIDOC-GVP">GVP LOD: Ontologies and Semantic Representation</a>, CIDOC congress, 2014-09
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Prefix</b></td>
+<td class="org-left"><b>Ontology</b></td>
+<td class="org-left"><b>Used for</b></td>
+</tr>
+
+<tr>
+<td class="org-left">bibo:</td>
+<td class="org-left">Bibliography Ontology</td>
+<td class="org-left">Sources</td>
+</tr>
+
+<tr>
+<td class="org-left">dc:</td>
+<td class="org-left">Dublin Core Elements</td>
+<td class="org-left">common</td>
+</tr>
+
+<tr>
+<td class="org-left">dct:</td>
+<td class="org-left">Dublin Core Terms</td>
+<td class="org-left">common</td>
+</tr>
+
+<tr>
+<td class="org-left">foaf:</td>
+<td class="org-left">Friend of a Friend ontology</td>
+<td class="org-left">Contributors</td>
+</tr>
+
+<tr>
+<td class="org-left">iso:</td>
+<td class="org-left">ISO 25946 (latest on thesauri)</td>
+<td class="org-left">iso:ThesaurusArray, BTG/BTP/BTI</td>
+</tr>
+
+<tr>
+<td class="org-left">owl:</td>
+<td class="org-left">Web Ontology Language</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">prov:</td>
+<td class="org-left">Provenance Ontology</td>
+<td class="org-left">Revision history</td>
+</tr>
+
+<tr>
+<td class="org-left">rdf:</td>
+<td class="org-left">Resource Description Framework</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">rdfs:</td>
+<td class="org-left">RDF Schema</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">schema:</td>
+<td class="org-left">Schema.org</td>
+<td class="org-left">common, geo (TGN)</td>
+</tr>
+
+<tr>
+<td class="org-left">skos:</td>
+<td class="org-left">Simple Knowledge Organization System</td>
+<td class="org-left">Basis vocabulary representation</td>
+</tr>
+
+<tr>
+<td class="org-left">skosxl:</td>
+<td class="org-left">SKOS Extension for Labels</td>
+<td class="org-left">Rich labels</td>
+</tr>
+
+<tr>
+<td class="org-left">wgs:</td>
+<td class="org-left">W3C World Geodetic Survey geo</td>
+<td class="org-left">Geo (TGN)</td>
+</tr>
+
+<tr>
+<td class="org-left">xsd:</td>
+<td class="org-left">XML Schema Datatypes</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgeddbb5d">
+<h3 id="orgeddbb5d">Own Getty Ontology</h3>
+<p>
+<a href="http://vocab.getty.edu/ontology">http://vocab.getty.edu/ontology</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-ontology-parrot.png" alt="GVP-ontology-parrot.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6835d2d">
+<h2 id="org6835d2d">Finding Ontologies: Linked Open Vocabularies</h2>
+<p>
+<a href="http://lov.okfn.org/dataset/lov/">http://lov.okfn.org/dataset/lov/</a>: 542 vocabs (ontologies), 52k terms (classes, properties), 581 agents (people, orgs)
+</p>
+
+<div class="figure">
+<p><img src="./img/LOV.png" alt="LOV.png" class="stretch" style="width:700px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org87682b0">
+<h3 id="org87682b0">Data About Each Vocabulary</h3>
+<p>
+Dates, Versions, Creators, Statistics, related Vocabs&#x2026;
+<a href="http://lov.okfn.org/dataset/lov/vocabs/iso-thes">http://lov.okfn.org/dataset/lov/vocabs/iso-thes</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/lov-isothes.png" alt="lov-isothes.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org09b1009">
+<h3 id="org09b1009">VOWL Visualization</h3>
+<p>
+<a href="http://vowl.visualdataweb.org/webvowl/#iri=http://vocab.getty.edu/ontology">http://vowl.visualdataweb.org/webvowl/#iri=http://vocab.getty.edu/ontology</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/vowl-gvp.png" alt="vowl-gvp.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org292d4ad">
+<h3 id="org292d4ad">LOV Community</h3>
+<p>
+<a href="https://plus.google.com/communities/108509791366293651606">https://plus.google.com/communities/108509791366293651606</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/lov-google-plus.png" alt="lov-google-plus.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

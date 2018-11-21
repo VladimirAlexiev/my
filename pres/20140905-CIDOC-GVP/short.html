@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>GVP LOD: Ontologies and Semantic Representation (short version)</title>
+<meta name="author" content="(Vladimir Alexiev, Data and Ontology Group, Ontotext Corp)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>GVP LOD: Ontologies and Semantic Representation (short version)</h2><h3>Vladimir Alexiev, Data and Ontology Group, Ontotext Corp</h3><h4>CIDOC Congress, Dresden, Germany, 2015-02-10</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/GVP-LOD-CIDOC-short.pdf'>PDF</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+
+<section>
+<section id="slide-org8bc952f">
+<h2 id="org8bc952f">Ontotext Scope of Work</h2>
+<p>
+<a href="http://vocab.getty.edu">http://vocab.getty.edu</a>
+</p>
+<ul>
+<li>Ontology development: <a href="http://vocab.getty.edu/ontology">http://vocab.getty.edu/ontology</a></li>
+<li>Contribution to <a href="http://purl.org/iso25964/skos-thes">ISO 25964 ontology</a> (latest thesauri standard)</li>
+<li>Complete mapping specification</li>
+<li>Help with R2RML conversion scripts, contrib to RDB2RDF (Perl), rrx:languageColumn extension</li>
+<li>GraphDB (OWLIM) repository. Enterprise Edition (clustered)</li>
+<li>Sem app dev (customized Forest UI), tech consulting</li>
+<li>SPARQL 1.1 endpoint: <a href="http://vocab.getty.edu/sparql">http://vocab.getty.edu/sparql</a></li>
+<li>Documentation (100 pages): <a href="http://vocab.getty.edu/doc">http://vocab.getty.edu/doc</a></li>
+<li>Lots of sample queries, incl charts, geographic, etc</li>
+<li>Per-entity export files, explicit/total data dumps</li>
+<li>Help desk / support</li>
+<li>Presentations, scientific papers</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgb067ffa">
+<h2 id="orgb067ffa">Semantic Resolution &amp; Content Negotiation</h2>
+<p>
+All GVP, AAT and TGN URLs resolve, returning human or machine readable content through content negotiation (303 redirect).
+Eg about the ontology:
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/ontology">http://vocab.getty.edu/ontology</a></td>
+<td class="org-left">semantic URI, content-negotiated</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/ontology.html">http://vocab.getty.edu/ontology.html</a></td>
+<td class="org-left">page (application/xhtml+xml)</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/ontology.rdf">http://vocab.getty.edu/ontology.rdf</a></td>
+<td class="org-left">application/rdf+xml</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/ontology.ttl">http://vocab.getty.edu/ontology.ttl</a></td>
+<td class="org-left">text/turtle</td>
+</tr>
+</tbody>
+</table>
+<p>
+Eg about an AAT subject
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/aat/300011154">http://vocab.getty.edu/aat/300011154</a></td>
+<td class="org-left">semantic URI, con-neg</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/aat/300011154.html">http://vocab.getty.edu/aat/300011154.html</a></td>
+<td class="org-left">page (application/xhtml+xml)</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/aat/300011154.rdf">http://vocab.getty.edu/aat/300011154.rdf</a></td>
+<td class="org-left">application/rdf+xml</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/aat/300011154.ttl">http://vocab.getty.edu/aat/300011154.ttl</a></td>
+<td class="org-left">text/turtle</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/aat/300011154.nt">http://vocab.getty.edu/aat/300011154.nt</a></td>
+<td class="org-left">NTriples</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://vocab.getty.edu/aat/300011154.json">http://vocab.getty.edu/aat/300011154.json</a></td>
+<td class="org-left">JSON (to change to .rj)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<section id="slide-orgc933a7e">
+<h2 id="orgc933a7e">GVP Vocabulary Data</h2>
+<p>
+Scope includes:
+</p>
+<ul>
+<li>Subjects: Concepts but also non-concepts</li>
+<li>Obsolete subjects (and dct:isReplacedBy)</li>
+<li>Terms: plain (SKOS) &amp; rich (SKOS-XL). Term characteristics</li>
+<li>Languages (some custom lang tags)</li>
+<li>Hierarchical rels: custom &amp; standard, distinguish BTG,BTP,BTI</li>
+<li>Associative rels (170 subprop of skos:related)</li>
+<li>Historic info on rels (rdf:Statement) and terms</li>
+<li>Alignment (exactMatch to LCSH)</li>
+<li>Sources (bibo:Document, bibo:DocumentPart with locator)</li>
+<li>Contributors (foaf:Agent)</li>
+<li>Revision history (prov:Activity)</li>
+<li>Thesaurus-specific (TGN place types, coordinates)</li>
+
+</ul>
+<p>
+One of the richest thesauri I've seen
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgf45cb3c">
+<h2 id="orgf45cb3c">External Ontologies</h2>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Prefix</b></td>
+<td class="org-left"><b>Ontology</b></td>
+<td class="org-left"><b>Used for</b></td>
+</tr>
+
+<tr>
+<td class="org-left">bibo:</td>
+<td class="org-left">Bibliography Ontology</td>
+<td class="org-left">Sources</td>
+</tr>
+
+<tr>
+<td class="org-left">dc:</td>
+<td class="org-left">Dublin Core Elements</td>
+<td class="org-left">common</td>
+</tr>
+
+<tr>
+<td class="org-left">dct:</td>
+<td class="org-left">Dublin Core Terms</td>
+<td class="org-left">common</td>
+</tr>
+
+<tr>
+<td class="org-left">foaf:</td>
+<td class="org-left">Friend of a Friend ontology</td>
+<td class="org-left">Contributors</td>
+</tr>
+
+<tr>
+<td class="org-left">iso:</td>
+<td class="org-left">ISO 25946 (latest on thesauri)</td>
+<td class="org-left">iso:ThesaurusArray, BTG/BTP/BTI</td>
+</tr>
+
+<tr>
+<td class="org-left">owl:</td>
+<td class="org-left">Web Ontology Language</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">prov:</td>
+<td class="org-left">Provenance Ontology</td>
+<td class="org-left">Revision history</td>
+</tr>
+
+<tr>
+<td class="org-left">rdf:</td>
+<td class="org-left">Resource Description Framework</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">rdfs:</td>
+<td class="org-left">RDF Schema</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">schema:</td>
+<td class="org-left">Schema.org</td>
+<td class="org-left">common, geo (TGN)</td>
+</tr>
+
+<tr>
+<td class="org-left">skos:</td>
+<td class="org-left">Simple Knowledge Org System</td>
+<td class="org-left">Basic vocabulary representation</td>
+</tr>
+
+<tr>
+<td class="org-left">skosxl:</td>
+<td class="org-left">SKOS Extension for Labels</td>
+<td class="org-left">Rich labels</td>
+</tr>
+
+<tr>
+<td class="org-left">wgs:</td>
+<td class="org-left">W3C World Geodetic Survey geo</td>
+<td class="org-left">Geo (TGN)</td>
+</tr>
+
+<tr>
+<td class="org-left">xsd:</td>
+<td class="org-left">XML Schema Datatypes</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<section id="slide-org3c90411">
+<h2 id="org3c90411">GVP Semantic Representation</h2>
+
+<div class="figure">
+<p><img src="./img/semantic-overview-1.png" alt="semantic-overview-1.png" style="width:800px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org98f7ef6">
+<h2 id="org98f7ef6">GVP Semantic Representation (2)</h2>
+
+<div class="figure">
+<p><img src="./img/semantic-overview-2.png" alt="semantic-overview-2.png" style="width:710px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgdbf0020">
+<h2 id="orgdbf0020">Hierarchical Relations</h2>
+<p>
+Use iso:ThesaurusArray to allow Guide Terms below Concepts. Infer cross-threading SKOS/ISO broader relations
+</p>
+
+<div class="figure">
+<p><img src="./img/008-complex-hierarchy.png" alt="008-complex-hierarchy.png" style="width:600px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7f970fb">
+<h2 id="org7f970fb">Key Values (Flags) Are Important</h2>
+<p>
+Excel-driven Ontology Generation™ (getty-codes.xls to getty-codes.ttl)<br />
+Key <b>val</b> can be mapped to Custom sub-class, Custom (sub-)prop, <a href="http://vocab.getty.edu/doc/#Ontology_Values">Ontology Value</a> (eg &lt;term/kind/Abbreviation&gt;)
+<img src="./img/getty-codes.png" alt="getty-codes.png" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org4be448d">
+<h2 id="org4be448d">Associative Relations Are Valuable</h2>
+<p>
+More Excel-driven Ontology Generation™ (assoc-rels.xls to assoc-rels.ttl)
+</p>
+<ul>
+<li>Relations come in owl:inverseOf pairs (or owl:SymmetricProperty self-inverse)</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/assoc-rels.png" alt="assoc-rels.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org89cece6">
+<h2 id="org89cece6">GVP Ontology</h2>
+<p>
+<a href="http://vocab.getty.edu/ontology">http://vocab.getty.edu/ontology</a>, <a href="http://lov.okfn.org/dataset/lov/details/vocabulary_gvp.html">LOV Entry</a>. 10 classes, 177 props: a lot are from excel, so editable by Getty
+<img src="./img/GVP-ontology.png" alt="GVP-ontology.png" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgb2f9e44">
+<h2 id="orgb2f9e44">Obsolete Subjects</h2>
+<ul>
+<li>AAT obsolete subjects are 4.4% of valid subjects, which shows a good rate of editorial actions</li>
+<li>Obsolete subjects may have been used in client data. In order not to leave such data hanging, we publish minimal information:</li>
+
+</ul>
+<pre  class="example">
+aat:300123456 a gvp:ObsoleteSubject; # Was made non-publishable
+  skos:prefLabel "Made up subject";
+  skos:inScheme aat: ;
+  schema:endDate "2012-12-31T12:34:56"^^xsd:dateTime.
+
+aat:300386746 a gvp:ObsoleteSubject; # Was merged to a dominant Subject
+  skos:prefLabel "Buncheong";
+  skos:inScheme aat: ;
+  dct:isReplacedBy aat:300018699; # Punch'ong
+  schema:endDate "2012-12-31T12:34:56"^^xsd:dateTime.
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org8fa5456">
+<h2 id="org8fa5456">Use of iso:ThesaurusArray in GVP</h2>
+<p>
+Use rdf:List for ordered children.<br />
+Novelty: if parent is Concept, use anonymous ThesaurusArray
+<img src="./img/GVP-isoThesaurusArray.png" alt="GVP-isoThesaurusArray.png" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgaea9a00">
+<h2 id="orgaea9a00">Contribution to ISO 25946</h2>
+<ul>
+<li>Contributed to <a href="http://purl.org/iso25964/skos-thes">ISO 25946 ontology</a> (<a href="http://lov.okfn.org/dataset/lov/details/vocabulary_iso-thes.html">LOV entry</a>)</li>
+<li>First industrial use of ISO 25946</li>
+<li>Defined appropriate combinations of BTG, BTP, BTI relations (first formally defined in ISO).</li>
+
+</ul>
+<p>
+On Compositionality of ISO 25964 Hierarchical Relations<br />
+(BTG, BTP, BTI), V.Alexiev, J.Lindenthal, A.Isaac.
+<a href="https://drive.google.com/file/d/0B7BFygWDV2_PNkQycHl0bWNLak0">Draft paper</a>, <a href="http://vladimiralexiev.github.io/pres/20140912-NKOS-compositionality/index.htm">Presentation</a> at <a href="https://at-web1.comp.glam.ac.uk/pages/research/hypermedia/nkos/nkos2014/programme.html">NKOS 2014</a> Workshop, London, 12 Sep 2014
+</p>
+<div class="org-center">
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>BTGx</b></td>
+<td class="org-left"><b>BTPx</b></td>
+<td class="org-left"><b>BTIx</b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTGx</b></td>
+<td class="org-left">BTGE</td>
+<td class="org-left">BTPE</td>
+<td class="org-left">no</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTPx</b></td>
+<td class="org-left">BTPE</td>
+<td class="org-left">BTPE</td>
+<td class="org-left">no</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTIx</b></td>
+<td class="org-left">BTIE</td>
+<td class="org-left">no</td>
+<td class="org-left">no</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Eg: anvil components BTP &lt;anvils and anvil accessories&gt; BTG &lt;forging and metal-shaping tools&gt; =&gt; BTPE</li>
+<li>Mount Athos BTI Orthodox religious center BTG religious center =&gt; BTIE</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgf54bb64">
+<h2 id="orgf54bb64">Terms</h2>
+<p>
+Support multilingual labels: both SKOS (plain)&#x2026;
+</p>
+<pre  class="example">
+aat:300198841 a skos:Concept , gvp:Subject , gvp:Concept ;
+  skos:prefLabel "rhyta"@el-latn , "rhyta"@en , "rhytons"@es , "rhytons"@fr ;
+  skos:altLabel "rhyta"@es , "rhyton"@es , "rhyton"@en , "rhyton"@el-latn ...;
+  skosxl:prefLabel aat_term:1000198841-en , aat_term:1000198841-el-Latn ...;
+  skosxl:altLabel aat_term:1000198841-es , aat_term:1000297235-en ...
+</pre>
+<p>
+&#x2026; and rich info in SKOS-XL:
+</p>
+<pre  class="example">
+aat_term:1000198841-en a skosxl:Label ;
+  dc:identifier "1000198841" ;
+  dct:language aat:300388277 , gvp_lang:en ; # owl:sameAs
+  dct:contributor aat_contrib:10000000 , aat_contrib:10000131 ;
+  skosxl:literalForm "rhyta"@en ;          #### with Qualifier if applicable
+  gvp:term "rhyta"@en ;                    #### no qualifier
+  gvp:displayOrder "1"^^xsd:positiveInteger ;
+  gvp:termType &lt;term/type/Descriptor&gt; ;    #### Descr/AltDescr/UseFor
+  gvp:termPOS &lt;term/POS/PluralNoun&gt; ;      #### Part of Speech
+  gvp:contributorPreferred aat_contrib:10000000 , aat_contrib:10000088 ;
+  gvp:contributorNonPreferred aat_contrib:10000131 ;
+  gvp:sourcePreferred aat_source:2000051089-term-1000198841 ...;
+  dct:source aat_source:2000024811 , aat_source:2000052946 ...;
+  gvp:sourceNonPreferred aat_source:2000052946 ;
+  gvp:sourceAlternatePreferred aat_source:2000048328-term-1000198841 .
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org9c23403">
+<h2 id="org9c23403">Some Custom Language Tags</h2>
+<p>
+Despite the richness of IANA tags (9000), we had to define new tags, using several extension mechanisms:
+</p>
+<ul>
+<li>Private language, e.g.
+<ul>
+<li><b>x-byzantin-Latn</b>: Byzantine Greek (transliterated)</li>
+<li><b>x-frisian</b> (IANA/ISO has codes for predecessor Old Frisian and dialects West, Saterland and North Frisian)</li>
+
+</ul></li>
+<li>Private language used in specific region, e.g.
+<ul>
+<li><b>qqq-002</b>: African language (not specified which)</li>
+<li><b>qqq-ET</b>: Ethiopian (not specified: Boro/Borna, Karo&#x2026;)</li>
+
+</ul></li>
+<li>Private modifier, e.g.
+<ul>
+<li>grc-Latn- <b>x-liturgic</b>: Liturgical Greek</li>
+<li>ber-Latn- <b>x-dialect</b>: Berber Dialects (transliterated)</li>
+<li>fa-Latn- <b>x-middle</b>: Persian, Middle (transliterated)</li>
+<li>zh-Latn-pinyin- <b>x-notone</b>: transliterated Pinyin without tones</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgc75986b">
+<h2 id="orgc75986b">Sources</h2>
+<p>
+bibo:Document or bibo:DocumentPart
+</p>
+<pre  class="example">
+aat_source:2000051089 a bibo:Document;
+  dc:identifier "2000051089"
+  bibo:shortTitle "AATA database (2002-)";
+  dct:title "Getty Conservation Institute (GCI). database of AATA Online...".
+aat_source:2000051089-term-1000198841 a bibo:DocumentPart;
+  dct:isPartOf aat_source:2000051089;
+  bibo:locator "128257 checked 26 January 2012".
+</pre>
+<p>
+Applied to subject, term, scopeNote:
+</p>
+<pre  class="example">
+aat:300198841 # subject (rhyta)
+  dct:source aat_source:2000030301-subject-300198841;
+  dct:source aat_source:2000052378.
+aat_term:1000198841-en # term "rhyta"@en
+  gvp:sourceNonPreferred aat_source:2000049728;
+  dct:source aat_source:2000051089-term-1000198841. 
+aat_scopeNote:34904 # scopeNote
+  dct:source aat_source:2000046502.
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org1409f72">
+<h2 id="org1409f72">Contributors</h2>
+<p>
+foaf:Agent
+</p>
+<pre  class="example">
+aat_contrib:10000131 a foaf:Agent;
+  dc:identifier "10000131";
+  foaf:nick "CDBP-DIBAM";
+  foaf:name "Centro de Documentación de Bienes Patrimoniales...".
+</pre>
+<p>
+Applied to subject, term, scopeNote:
+</p>
+<pre  class="example">
+aat:300198841 # subject "rhyta"
+  dct:contributor aat_contrib:10000131;
+  dct:contributor aat_contrib:10000000.
+aat_term:1000198841-en # term "rhyta"@en
+  gvp:contributorNonPreferred aat_contrib:10000131;
+  gvp:contributorPreferred aat_contrib:10000000.
+aat_scopeNote:34904 # scopeNote
+  dct:contributor aat_contrib:10000000.
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org076d9af">
+<h2 id="org076d9af">Historic Info</h2>
+<p>
+Includes dates of applicability, historicFlag, comment. Applied to terms; hier &amp; assoc rels, place types (using rdf:Statement)
+</p>
+<pre  class="example">
+aat_term:1000002693-en a skosxl:Label;
+  skosxl:literalForm "lambruscatura"@en ;
+  gvp:historicFlag &lt;http://vocab.getty.edu/historic/historic&gt; ;
+  schema:startDate "0900"^^xsd:gYear ;
+  schema:endDate "1700"^^xsd:gYear ;
+  rdfs:comment "Medieval term for wainscoting".
+
+aat_rel:300020271-aat2812_followed-300020269 a rdf:Statement;
+  rdf:subject      aat:300020271;        # Second Dynasty (Egyptian)
+  rdf:predicate    gvp:aat2812_followed;
+  rdf:object       aat:300020269;        # First Dynasty (Egyptian)
+  rdfs:comment     "Second Dynasty began ca. 2775 BCE";
+  schema:startDate "-2785"^^xsd:gYear;
+  schema:endDate   "-2765"^^xsd:gYear.
+
+tgn:7011179-placeType-300008347 a rdf:Statement;
+  rdf:subject      tgn:7011179;          # Siena
+  rdf:predicate    gvp:placeTypePreferred;
+  rdf:object       aat:300008347;        # inhabited place
+  rdfs:comment     "settled by Etruscans (flourished 6th century BCE)";
+  schema:startDate "-0800"^^xsd:gYear;
+  gvp:displayOrder "1"^^xsd:positiveInteger.
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-orgfcbb9ab">
+<h2 id="orgfcbb9ab">Revision History</h2>
+<p>
+PROV is too complex, so we simplify:
+</p>
+<pre  class="example">
+aat:300018699
+  skos:changeNote aat_rev:12345, aat_rev:12346, aat_rev:12347;
+  prov:wasGeneratedBy aat_rev:12345;
+  dct:created  "2014-01-02T01:02:03"^^xsd:dateTime;
+  dct:modified "2014-01-03T01:02:03"^^xsd:dateTime;
+  dct:issued   "2014-01-04T01:02:03"^^xsd:dateTime.
+aat_rev:12345 a prov:Activity, prov:Create;
+  dc:type "created";
+  prov:startedAtTime "2014-01-02T01:02:03"^^xsd:dateTime.
+aat_rev:12346 a prov:Activity, prov:Modify;
+  prov:used aat:300018699;
+  dc:type "term added";
+  dc:description "leggings, puttee (1000248060)";
+  prov:startedAtTime "2014-01-03T01:02:03"^^xsd:dateTime.
+aat_rev:12347 a prov:Activity, prov:Publish;
+  prov:used aat:300018699;
+  dc:type "issued";
+  prov:startedAtTime "2014-01-04T01:02:03"^^xsd:dateTime.
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org2547f32">
+<h2 id="org2547f32">TGN Specifics: Concept-Place Duality</h2>
+<p>
+Duality between Concept and its denotation  (ala VIAF, UK BL, FR BnF, SE KB&#x2026;)
+<img src="./img/013-concept-place-duality.png" alt="013-concept-place-duality.png" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org312d11b">
+<h2 id="org312d11b">TGN Semantic Representation</h2>
+<p>
+Place types (TGN-&gt;AAT), Concept-Place duality, coordinates
+</p>
+
+<div class="figure">
+<p><img src="./img/012-TGN-overview.png" alt="012-TGN-overview.png" style="width:350px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgea2c774">
+<h2 id="orgea2c774">Construct Query: Get &amp; Cache All Data for Subject</h2>
+
+<div class="figure">
+<p><img src="./img/028-construct-subject.png" alt="028-construct-subject.png" />
+</p>
+</div>
+<ul>
+<li>All data for these subsidiary objects is served by the resource URL</li>
+<li>Cached, thus served quickly</li>
+<li>Served in RDF/XML, N3/Turtle, NTriples, JSON, soon JSON-LD</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org6e81a32">
+<h2 id="org6e81a32">Documentation</h2>
+
+<div class="figure">
+<p><img src="./img/GVP-doc-TOC.png" alt="GVP-doc-TOC.png" style="width:1100px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd743bc1">
+<h2 id="orgd743bc1">Sample Query: Bar chart with SPARQL</h2>
+<p>
+Number of UN members per year. <a href="http://vocab.getty.edu/doc/#Column_Chart_with_SPARQL">See doc</a> or <a href="http://jsfiddle.net/valexiev/TCr59/">jsfiddle</a> with it
+</p>
+
+<div class="figure">
+<p><img src="./img/029-growth-of-UN.png" alt="029-growth-of-UN.png" style="width:700px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orga7e2661">
+<h2 id="orga7e2661">Thanks for your time!</h2>
+<p>
+<a href="mailto:vladimir.alexiev@ontotext.com">mailto:vladimir.alexiev@ontotext.com</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/QuestionMark.jpg" alt="QuestionMark.jpg" style="width:400px" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

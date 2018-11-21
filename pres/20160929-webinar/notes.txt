@@ -1,0 +1,120 @@
+﻿20160929 Webinar notes:
+
+NEW:
+
+chapter 2
++"Describe what data to capture (and sometimes how to go about it" -> close bracket
+
+5.3.1
++ (Wikidata: Freebase, DBpedia, Yago; VIAF: ISNI, ULAN). -> use consistent separator : , ;
+It's on purpose: first are LOD-tradition, then library-tradition datasets
+
+6.4
+Onto is helping -> Ontotext is helping
+Based on GraphDB (semantic metadata) -> maybe make clear that GraphDB is Ontotext's product
+
+6.7.2 
+Help desk / support on twitter and ggroup (see home page) -> what is ggroup?
+last line is cut out and not visible 
+
+6.13.1 
+Below some examples of this type in partner collections -> "Below are" or "Below:"
+
+6.13.8
+end of line "imports dat" -> missing a in data
+
+
+----------------------------------------------------
+OLD (already addressed):
+
++ make a (verbal) note about slide numbers (in titles different from bottom right corner, if questions refer to a slide they should make sure it's clear which ones they refer to)
+  Removed the bottom right numbrers, yack!
+
+chapter 2 (slide 3)
++ "Describe what (and sometimes how) data to capture" -> Describe what data to capture (and sometimes how to do (/go about) it)
+
+2.3.1 (slide 3-4)
+- cursor on snapshot (covers part of a word)
+Aw come on
+
+3.1 (slide 4-1)
+- title "Seeing standards (2)" but there is no slide "Seeing standards" before that - > remove (2)
+  The prev slide is about Seeign standards, thouh it doens't say it in title
+
+4.2.1 (slide 5-3)
+- cursor on snapshot (right edge)
+
+4.3 + 4.4 + 4.4.0.1 (slides 5-5 + 5-6 + 5-7)
+- bottom of the slides is cut out
+  that's fine
+
+4.4.0.1 (slide 5-7)
++ perhaps 4.4.1 ?
+  fixed heading level
+
+4.5.2 (slide 5-10)
++ Very many - phrase is mostly used with negative connotation (e.g. not very many wild bears are roaming Europe), not so much positive. Also mostly use in verbal, not written communication. Perhaps leave "many" or replace  with "A lot of" "A large number"
+bottom of the slide is cut out (I think also on previous slide)
+
+4.5.3 (slide 5-11)
+- space between initial and surname for people?
+  is ok
+
+5.1.2 (slide 6-3)
++ bottom of the slide is cut out
+  Removed, repetitive with prev
+
+5.3 (slide 6-11)
++201501 Wikidata Projec Authority Control -> missing t in Project
+
+5.3.3 (slide 6-14)
+bottom of the slide is cut out
+
+6.1.4 (slide 7-5)
+bottom of the slide is cut out
+
+6.1.11 (slide 7-12)
+bottom of the slide is cut out
+
+6.2 (slide 7-14)
+bottom of the slide is cut out
+
+6.3.3 (slide 7-20)
++bottom of the slide is cut out (graphs x-axes are not visible)
+
+6.3.5 (slide 7-22)
++ what is the x-axis?
+  level
+- presumably y-axis is count, but also not specified (count of what?)
+  y-axis also unclear in previous slide
+  number of cats
+
+6.4.1 (slide 7-29)
+bottom of the slide is cut out 
+
+6.5 + 6.6 (slides 7-31 + 7-32)
+Getty museum + American Art Collaborative -> title only slides with no other related (sub-)slides to follow 
+
+6.7.1 (slide 7-34)
+bottom of the slide is cut out (full graph not visible)
+
+6.7.3 (slide 7-36)
+bottom of the slide is cut out (KGB example not fully visible)
+
+6.8 (slide 7-38)
+bottom of the slide is cut out (the whole bottom row is not visible)
+
+---------
++ в презентацията LOD никъде не се въвежда като съкращение, а важно въпреки че е очевидно 
++ 6: The Andrew Mellon Foundation funds many projects in CH and DH including few software projects:
+- 6.6.1 снимката е лошо качество 
+  don't have better
++ 6.1.11 BM не е представено като съкращение никъде преди това
++ Oтрязана картинка. Това ли е идеята? Мисля че текста като картинка е излизшен иначе става объркване
+  yes, even if I show the whole pic, it can't be explained. If they want, they should click, see the full pic, download the doc.
+  I want to show the info about the doc
++ Слайд 6 LOADM предполагам трябва да е обобщаващ слайд,защото секцията е голяма, но в него представяш 6.1 ResearchSpace и ConservationSpace и след това в 6.2 Влиза в EUROPEANA LOD AND OAI PMH и в 6.3 EUROPEAN FOOD AND DRINK , но тези секции никъде не се споменават в началото, същото се отнася за всички секции до 6.10. 
+  Така е, аз хем  искам голяма секция хем да почна с контента (Мелон). Но е объркващо, написах нещо въведително.
+  Същия проблем го има и в някои други секции, напр MARC. Но нейсе
+- Понеже са доста секции с примери е важно да обобщиш в каква последователност си ги подредил, ако това е възможно, ако са просто проекти и нямат последователност просто спомени всичките проекти в началото на слайд 6 и така ще е по лесно да следят хората презентацията.
+  По принцип съм съгласен, но същото важи за всички секции: content, metadata, ontologies. Май не мога да правя автоматични subsection TOC с този framework (reveal.js)

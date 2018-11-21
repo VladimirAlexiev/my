@@ -1,0 +1,79 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class _http_example_org_anno41_ as "<http://example.org/anno41>"
+_http_example_org_anno41_ : a oa:Annotation
+class _http_example_org_stylesheet1_ as "<http://example.org/stylesheet1>"
+_http_example_org_anno41_ --> _http_example_org_stylesheet1_ : oa:styledBy
+class _http_example_org_user1_ as "<http://example.org/user1>"
+_http_example_org_anno41_ --> _http_example_org_user1_ : dct:creator
+class _http_example_org_client1_ as "<http://example.org/client1>"
+_http_example_org_anno41_ --> _http_example_org_client1_ : as:generator
+class _b1_ as " "
+_http_example_org_anno41_ --> _b1_ : oa:hasBody
+class _b2_ as " "
+_http_example_org_anno41_ --> _b2_ : oa:hasTarget
+class _b0_ as " "
+_http_example_org_anno41_ --> _b0_ : oa:hasBody
+_http_example_org_anno41_ : dct:created "2015-10-13T13:00:00Z"^^xsd:dateTime
+_http_example_org_anno41_ : dct:issued "2015-10-14T15:13:28Z"^^xsd:dateTime
+_http_example_org_anno41_ : oa:motivatedBy oa:commenting
+_b0_ : a oa:TextualBody
+_b0_ : oa:hasPurpose oa:tagging
+_b0_ : rdf:value "love"
+_http_example_org_stylesheet1_ : a oa:CssStyle
+class _b5_ as " "
+class _b6_ as " "
+_b5_ --> _b6_ : rdf:first
+_b5_ : rdf:rest rdf:nil
+_b1_ : a oa:Choice
+class _b3_ as " "
+_b1_ --> _b3_ : as:items
+_b2_ : a oa:SpecificResource
+class _b7_ as " "
+_b2_ --> _b7_ : oa:hasSelector
+class _b8_ as " "
+_b2_ --> _b8_ : oa:hasState
+_b2_ : oa:hasSource <http://example.com/document1>
+_b2_ : oa:styleClass "mystyle"
+_http_example_org_user1_ : a foaf:Person
+_http_example_org_user1_ : foaf:name "A. Person"
+_http_example_org_user1_ : foaf:nick "user1"
+class _b4_ as " "
+_b4_ : a oa:TextualBody
+_b4_ --> _http_example_org_user1_ : dct:creator
+_b4_ : dc:format "text/plain"
+_b4_ : dc:language "en"
+_b4_ : oa:hasPurpose oa:describing
+_b4_ : rdf:value "I really love this particular\n bit of text in this XML. No really."
+_http_example_org_client1_ : a as:Application
+_http_example_org_client1_ : foaf:homepage <http://example.org/homepage1>
+_http_example_org_client1_ : foaf:name "Code v2.1"
+_b3_ --> _b4_ : rdf:first
+_b3_ --> _b5_ : rdf:rest
+_b6_ : a oa:SpecificResource
+class _http_example_org_comment1_ as "<http://example.org/comment1>"
+_b6_ --> _http_example_org_comment1_ : oa:hasSource
+_b6_ : oa:hasPurpose oa:describing
+_b8_ : a <http://example.org/type/HttpRequestState>
+class _b10_ as " "
+_b8_ --> _b10_ : oa:refinedBy
+_b8_ : rdf:value "Accept: application/xml"
+class _http_example_org_user2_ as "<http://example.org/user2>"
+_http_example_org_user2_ : a foaf:Person
+_http_example_org_comment1_ : a dctype:Sound
+_http_example_org_comment1_ --> _http_example_org_user2_ : dct:creator
+_http_example_org_comment1_ : dc:format "audio/mpeg"
+_http_example_org_comment1_ : dc:language "de"
+_b7_ : a oa:FragmentSelector
+class _b9_ as " "
+_b7_ --> _b9_ : oa:refinedBy
+_b7_ : rdf:value "xpointer[/doc/body/section[2]/para[1]]"
+_b9_ : a oa:TextPositionSelector
+_b9_ : oa:end "27"^^xsd:nonNegativeInteger
+_b9_ : oa:start "6"^^xsd:nonNegativeInteger
+_b10_ : a oa:TimeState
+_b10_ : oa:sourceDate "2015-09-25T12:00:00Z"^^xsd:dateTime
+@enduml

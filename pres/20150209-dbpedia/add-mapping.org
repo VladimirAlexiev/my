@@ -1,0 +1,184 @@
+# -*- my-org-place: "DBpedia Meeting, Dublin, Ireland"; my-org-filename-reveal: "add-mapping.html"; my-org-filename-full: "add-mapping-long.html" -*-
+#+TITLE: Adding a DBpedia Mapping
+#+DATE: 2015-02-16
+#+AUTHOR: Vladimir Alexiev
+#+EMAIL: vladimir.alexiev@ontotext.com
+
+* Outline
+Show practical steps to add a mapping:
+1. Preparation
+2. Find a template to map
+3. Generate blank mapping with Chrome plugin
+4. Explore the meaining of each property from the template definition
+5. Pick appropriate ontology properties
+6. Create missing properties
+7. Clean up (or post as issues) any problems you find along the way
+8. Test the mapping
+* Prepare for Mapping
+To work more easily with the mapping wiki info, install some addons
+- [[https://chrome.google.com/webstore/detail/copy-url/mkhnbhdofgaendegcgbmndipmijhbili][CopyURL]] Chrome Plugin
+  - Many URLs in dbpedia are International Resource Identifiers (IRIs)
+  - When you copy from the browser's address bar, an IRI is URL-encoded
+  - Unreadable ugliness like 
+    : http://bg.dbpedia.org/resource/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%B0_%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%D0%B0
+  - Instead, this plugin allows you to copy & paste IRIs like http://bg.dbpedia.org/resource/Константина_Живова
+  - These are readable and allow other editors to see what they represent: it's [[http://mappings.dbpedia.org/index.php/Main_Page#Copy_IRIs_not_URL-encoded][editorial policy]]
+- [[https://github.com/dbpedia/mappings_chrome_extension][mappings_chrome_extension]]
+  - generates blank mappings by analyzing which template properties are used
+  - [[https://github.com/dbpedia/mappings_chrome_extension/archive/master.zip][Download]] the extension
+  - Go to [[~chrome://extensions~]], enable "Developer mode"
+  - "Load unpacked extension" and point to the extension folder
+  - Note: [[https://github.com/dbpedia/mapping-tool][mapping-tool]] is a GUI mapping tool.
+  - Potentially much more useful, but is 4y old and I haven't tried it
+* Prepare for Mapping (2)
+[[http://www.listary.com/text-editor-anywhere][Text Editor Anywhere]]
+- This is a Windows program (not Chrome plugin) that allows you to edit web text with your favorite editor.
+- Map editing may involve significant text operations, so I use this all the time with Emacs
+- It creates a temp file, calls your editor, watches the file for changes, and pastes back into the browser text box
+- You can save the file with your editor many times before you finish
+- This is better than the other similar programs ("edit servers") I've tried
+* Find Template to Map
+- You can start from a wiki page you like that doesn't have much semantic data
+  - eg the Model (mannequin) [[http://bg.wikipedia.org/wiki/Константина_Живова][Константина_Живова]] has [[http://bg.dbpedia.org/resource/Константина_Живова][no type]]
+  - since the template [[https://bg.wikipedia.org/wiki/Шаблон:Манекен_инфо][Манекен_инфо]] is not yet mapped
+- Or browse [[http://mappings.dbpedia.org/server/statistics/bg/?show%3D100000][stats for your language]]
+#+HTML_ATTR: :class stretch :style width:1000px
+[[./img/mapping-stats.png]]
+* Start a Blank Mapping
+- Click "Edit" on the stats screen, which takes you to http://mappings.dbpedia.org/index.php?title=Mapping_bg:Манекен_инфо&action=edit
+- Or directly start a new mapping by replacing the template URL
+  : https://bg.wikipedia.org/wiki/Шаблон:* ->
+  :  http://mappings.dbpedia.org/index.php?action=edit&title=Mapping_bg:*
+- the Chrome plugin makes a blank map for us (hurray!):
+: {{TemplateMapping | mapToClass = 
+: | mappings = 
+: 	!-- {{ PropertyMapping | templateProperty = imdb | ontologyProperty = }} --
+: 	!-- {{ PropertyMapping | templateProperty = Име | ontologyProperty = }} --
+* Search for Properties
+- so we first need to map "imdb" (International Movie DataBase id)
+- we search for "imdb" on the mapping wiki. We don't find a property directly
+- then we search for "imdb*" and find the property imdbId: that's the one we need
+- however, it has rdfs:domain = Film while we're mapping a Model, which is a Person
+- So we remove rdfs:domain and replace it with a comment (see [[http://mappings.dbpedia.org/index.php?title=OntologyProperty:ImdbId&diff=39770&oldid=28299][the diff]]):
+  #+BEGIN_EXAMPLE
+  |comments=
+  {{comment|en|International Movie Database ID. Applies to Films, Actors, etc}}
+  #+END_EXAMPLE
+* Add A Property
+There are a few props we need to add, eg zodiacSign, skinColor
+- We check Wikipedia or Google for the right name, and find that it applies not only to People but also to Planets
+- Go directly to http://mappings.dbpedia.org/index.php?title=OntologyProperty:ZodiacSign&action=edit
+- Entering the prop info is best done from a template
+- We also check the use of this prop in wikipedia and find out that it links to pages, eg ~[[Телец]]~ (Taurus). So we need an ObjectProperty
+- Entering an appropriate comment is *mandatory*: describe the usage *in detail*:
+  #+BEGIN_EXAMPLE
+  {{ObjectProperty
+    | labels =
+    {{label|en|zodiac sign}}
+    |comments=
+    {{comment|en|Zodiac Sign. Applies to persons, planets, etc}}
+  }}
+  #+END_EXAMPLE
+* Add a Tracking Issue
+Looking for "shoe size", we find two duplicate properties. showSize is the proper English term, so we choose to remove showNumber
+- Search for "shoeNumber" to see how many times it's used. If it's a few, just do it (delete the prop and replace the usages)
+- But in this case there are a many, so let's make an issue hoping that someone else (maybe with the help of a bot) will do it
+- Go to https://github.com/dbpedia/mappings-tracker/issues/new
+- Type a title: "replace shoeNumber with shoeSize"
+- Paste the link of the property discussion page: http://mappings.dbpedia.org/index.php?title=OntologyProperty_talk:ShoeNumber
+- Put all details on the discussion page: we use the tracker only to track, not to discuss/explain
+* Describe the Problem
+- Go to the Discussion tab of the shoeNumber property
+- Add a description of the problem:
+  #+BEGIN_EXAMPLE
+  * Duplicate of shoeSize (which is the proper English term).
+  * Also, xsd:integer is not appropriate, xsd:string is better.
+  * So: delete and replace all usages with shoeSize.
+
+  https://github.com/dbpedia/mappings-tracker/issues/34
+  --~~~~
+  #+END_EXAMPLE
+- Paste the new issue link that you just created. This way the issue and prop are inter-linked
+- Sign your submission! The --~~~~ at the end is converted to the datetime and your name
+* Add Another Property
+The "vital stats" for a Model include height, weight, eyeColor, hairColor, skinColor, shoeSize, zodiacSign, bustSize (but of course!), waistSize, hipSize
+- enwiki and jawiki have fields bustSize, waistSize, hipSize
+  - An app to sort models by these measures would surely be a commercial success :-)
+- bgwiki uses a composite field bust-waist-hip size (мерки: бюст-талия-ханш)
+- So I made a new composite property, describing in detail its usage vs the 3 separate properties (rdfs:comment):
+  #+BEGIN_EXAMPLE
+  {{DatatypeProperty
+   |rdfs:label@en=bust-waist-hip Size
+   |rdfs:label@bg=размер бюст-талия-ханш
+   |rdfs:domain=Person
+   |rdfs:range=xsd:string
+   |rdfs:comment@en=Use this property if all 3 sizes are given together
+     (DBpedia cannot currently extract 3 Lengths out of a field).
+     Otherwise use separate fields bustSize, waistSize, hipSize
+  }}
+  #+END_EXAMPLE
+- Also made enh req [[https://github.com/dbpedia/extraction-framework/issues/325][#325]] extract several Lengths out of a field
+- Finally, I linked the issue to the property, by putting this in the property's Discussion page:
+  "If [[https://github.com/dbpedia/extraction-framework/issues/325][#325]] is implemented, this should be deleted in favor of 3 separate fields"
+* Completed Mapping
+Move any unmapped props to the end, in a comment ~!-- ... --~
+#+BEGIN_EXAMPLE
+{{TemplateMapping | mapToClass = Model
+| mappings = 
+  {{ PropertyMapping | templateProperty = imdb | ontologyProperty = imdbId }}
+  {{ PropertyMapping | templateProperty = Име | ontologyProperty = foaf:name }}
+  {{ PropertyMapping | templateProperty = дата на смърт | ontologyProperty = deathDate }}
+  {{ PropertyMapping | templateProperty = дейности | ontologyProperty = occupation}}
+  ....
+  {{ PropertyMapping | templateProperty = цвят на кожа | ontologyProperty = skinColor }}
+  {{ PropertyMapping | templateProperty = цвят на коса | ontologyProperty = hairColor }}
+  {{ PropertyMapping | templateProperty = цвят на очи | ontologyProperty = eyeColor }}
+}}
+
+!-- NOT YET MAPPED
+  {{ PropertyMapping | templateProperty = категория | ontologyProperty = }}
+  {{ PropertyMapping | templateProperty = филми | ontologyProperty = }} dbo:film has domain FilmFestival
+--
+#+END_EXAMPLE
+* Test the Mapping
+- At the [[http://mappings.dbpedia.org/index.php/Mapping_bg:Манекен_инфо][mapping page]] you'll find some useful links
+- Link to [[http://mappings.dbpedia.org/server/mappings/bg/extractionSamples/Mapping_bg:Манекен_инфо][return triples]] from the mapping: unfortunately works only for ASCII names ([[https://github.com/dbpedia/extraction-framework/issues/289][#289]])
+- So [[http://bg.wikipedia.org/wiki/Special:WhatLinksHere/Template:Манекен_инфо?limit%3D500&namespace%3D0][find some usages]] and pick up some names
+  : Летисия Каста     
+  : Константина Живова
+- Then go to the Discussion page, add a section "Testing" and make a list of links eg
+  - http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&extractors=custom&title=Летисия_Каста
+  - http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&extractors=custom&title=Константина_Живова
+- This is *especially* important if you fix a mapping
+- It's [[http://mappings.dbpedia.org/index.php/Main_Page#Testing_Best_Practices][proposed editorial policy]]
+
+* Special: Intermediate Node Mapping
+The template [[http://mappings.dbpedia.org/index.php?title%3DMapping_en:Listen&action%3Dedit][en:Listen]] ([[http://mappings.dbpedia.org/index.php/Mapping_el:Ακούστε][el:Ακούστε]], [[http://mappings.dbpedia.org/index.php?title%3DMapping_bg:Слушайте&action%3Dedit][bg:Слушайте]]) adds soundRecording's that are somehow related to the subject.
+We map it to additional nodes like this ([[https://github.com/dbpedia/mappings-tracker/issues/19][#19]]):
+#+BEGIN_SRC Turtle
+<Neil_Armstrong> soundRecording <Neil_Armstrong__1>.
+<Neil_Armstrong__1> a Sound;
+   dc:type "speech";
+   filename "one-small-step.ogv"; 
+   title "One small step for man...";
+   description "Neal Armstrong's famous words".
+#+END_SRC
+- An outer ~TemplateMapping~ with ~mapToClass owl:Thing~: 
+  ~Listen~ can be embedded in various pages, and the only common class for all of them is the top-level ~owl:Thing~
+- Inside we make a number of ~IntermediateNodeMapping~ for the separate ~soundRecording~. They share ~type~ and each has 3 own fields:
+#+BEGIN_EXAMPLE
+{{TemplateMapping | mapToClass = owl:Thing
+| mappings =
+  {{IntermediateNodeMapping | nodeClass = Sound | correspondingProperty = soundRecording | mappings =
+    {{ PropertyMapping | templateProperty = type          | ontologyProperty = dc:type }}
+    {{ PropertyMapping | templateProperty = filename      | ontologyProperty = filename }}
+    {{ PropertyMapping | templateProperty = title         | ontologyProperty = title }}
+    {{ PropertyMapping | templateProperty = description   | ontologyProperty = description }}
+  }}
+  {{IntermediateNodeMapping | nodeClass = Sound | correspondingProperty = soundRecording | mappings =
+    {{ PropertyMapping | templateProperty = type          | ontologyProperty = dc:type }}
+    {{ PropertyMapping | templateProperty = filename1     | ontologyProperty = filename }}
+    {{ PropertyMapping | templateProperty = title1        | ontologyProperty = title }}
+    {{ PropertyMapping | templateProperty = description1  | ontologyProperty = description }}
+  }}
+#+END_EXAMPLE

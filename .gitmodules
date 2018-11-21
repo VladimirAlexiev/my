@@ -1,0 +1,6 @@
+[submodule "reveal.js"]
+	path = reveal.js
+	url = https://github.com/VladimirAlexiev/reveal.js
+[submodule "reveal.js-tagcloud-plugin"]
+	path = reveal.js-tagcloud-plugin
+	url = https://github.com/sebhildebrandt/reveal.js-tagcloud-plugin

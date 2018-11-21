@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Adding a DBpedia Mapping</title>
+<meta name="author" content="(Vladimir Alexiev)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>Adding a DBpedia Mapping</h2><h3>Vladimir Alexiev</h3><h4>DBpedia Meeting, Dublin, Ireland, 2015-02-16</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/add-mapping.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/add-mapping-long.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org98d7c70">Outline</a></li>
+<li><a href="#/slide-org6bf6d77">Prepare for Mapping</a></li>
+<li><a href="#/slide-org9e2e52c">Prepare for Mapping (2)</a></li>
+<li><a href="#/slide-org2eaa884">Find Template to Map</a></li>
+<li><a href="#/slide-org47e8996">Start a Blank Mapping</a></li>
+<li><a href="#/slide-org32a0a6b">Search for Properties</a></li>
+<li><a href="#/slide-org9ab1d67">Add A Property</a></li>
+<li><a href="#/slide-org414b19f">Add a Tracking Issue</a></li>
+<li><a href="#/slide-orgccc164d">Describe the Problem</a></li>
+<li><a href="#/slide-orgc568ebe">Add Another Property</a></li>
+<li><a href="#/slide-org1754ed3">Completed Mapping</a></li>
+<li><a href="#/slide-org4f35f41">Test the Mapping</a></li>
+<li><a href="#/slide-org6e0af31">Special: Intermediate Node Mapping</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org98d7c70">
+<h2 id="org98d7c70">Outline</h2>
+<p>
+Show practical steps to add a mapping:
+</p>
+<ol>
+<li>Preparation</li>
+<li>Find a template to map</li>
+<li>Generate blank mapping with Chrome plugin</li>
+<li>Explore the meaining of each property from the template definition</li>
+<li>Pick appropriate ontology properties</li>
+<li>Create missing properties</li>
+<li>Clean up (or post as issues) any problems you find along the way</li>
+<li>Test the mapping</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org6bf6d77">
+<h2 id="org6bf6d77">Prepare for Mapping</h2>
+<p>
+To work more easily with the mapping wiki info, install some addons
+</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/copy-url/mkhnbhdofgaendegcgbmndipmijhbili">CopyURL</a> Chrome Plugin
+<ul>
+<li>Many URLs in dbpedia are International Resource Identifiers (IRIs)</li>
+<li>When you copy from the browser's address bar, an IRI is URL-encoded</li>
+<li><p>
+Unreadable ugliness like 
+</p>
+<pre class="example">
+http://bg.dbpedia.org/resource/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%B0_%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%D0%B0
+
+</pre></li>
+<li>Instead, this plugin allows you to copy &amp; paste IRIs like <a href="http://bg.dbpedia.org/resource/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%B0_%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%D0%B0">http://bg.dbpedia.org/resource/Константина_Живова</a></li>
+<li>These are readable and allow other editors to see what they represent: it's <a href="http://mappings.dbpedia.org/index.php/Main_Page#Copy_IRIs_not_URL-encoded">editorial policy</a></li>
+
+</ul></li>
+<li><a href="https://github.com/dbpedia/mappings_chrome_extension">mappings_chrome_extension</a>
+<ul>
+<li>generates blank mappings by analyzing which template properties are used</li>
+<li><a href="https://github.com/dbpedia/mappings_chrome_extension/archive/master.zip">Download</a> the extension</li>
+<li>Go to <a href="file:///c:/my/GitHub/my/pres/20150209-dbpedia/~chrome:/extensions~">file:///c:/my/GitHub/my/pres/20150209-dbpedia/~chrome:/extensions~</a>, enable "Developer mode"</li>
+<li>"Load unpacked extension" and point to the extension folder</li>
+<li>Note: <a href="https://github.com/dbpedia/mapping-tool">mapping-tool</a> is a GUI mapping tool.</li>
+<li>Potentially much more useful, but is 4y old and I haven't tried it</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org9e2e52c">
+<h2 id="org9e2e52c">Prepare for Mapping (2)</h2>
+<p>
+<a href="http://www.listary.com/text-editor-anywhere">Text Editor Anywhere</a>
+</p>
+<ul>
+<li>This is a Windows program (not Chrome plugin) that allows you to edit web text with your favorite editor.</li>
+<li>Map editing may involve significant text operations, so I use this all the time with Emacs</li>
+<li>It creates a temp file, calls your editor, watches the file for changes, and pastes back into the browser text box</li>
+<li>You can save the file with your editor many times before you finish</li>
+<li>This is better than the other similar programs ("edit servers") I've tried</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org2eaa884">
+<h2 id="org2eaa884">Find Template to Map</h2>
+<ul>
+<li>You can start from a wiki page you like that doesn't have much semantic data
+<ul>
+<li>eg the Model (mannequin) <a href="http://bg.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%B0_%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%D0%B0">Константина_Живова</a> has <a href="http://bg.dbpedia.org/resource/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%B0_%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%D0%B0">no type</a></li>
+<li>since the template <a href="https://bg.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE">Манекен_инфо</a> is not yet mapped</li>
+
+</ul></li>
+<li>Or browse <a href="http://mappings.dbpedia.org/server/statistics/bg/?show=100000">stats for your language</a></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/mapping-stats.png" alt="mapping-stats.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org47e8996">
+<h2 id="org47e8996">Start a Blank Mapping</h2>
+<ul>
+<li>Click "Edit" on the stats screen, which takes you to <a href="http://mappings.dbpedia.org/index.php?title=Mapping_bg:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE&amp;action=edit">http://mappings.dbpedia.org/index.php?title=Mapping_bg:Манекен_инфо&amp;action=edit</a></li>
+<li><p>
+Or directly start a new mapping by replacing the template URL
+</p>
+<pre class="example">
+https://bg.wikipedia.org/wiki/Шаблон:* -&gt;
+ http://mappings.dbpedia.org/index.php?action=edit&amp;title=Mapping_bg:*
+
+</pre></li>
+<li>the Chrome plugin makes a blank map for us (hurray!):</li>
+
+</ul>
+<pre class="example">
+{{TemplateMapping | mapToClass = 
+| mappings = 
+	!-- {{ PropertyMapping | templateProperty = imdb | ontologyProperty = }} --
+	!-- {{ PropertyMapping | templateProperty = Име | ontologyProperty = }} --
+
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org32a0a6b">
+<h2 id="org32a0a6b">Search for Properties</h2>
+<ul>
+<li>so we first need to map "imdb" (International Movie DataBase id)</li>
+<li>we search for "imdb" on the mapping wiki. We don't find a property directly</li>
+<li>then we search for "imdb*" and find the property imdbId: that's the one we need</li>
+<li>however, it has rdfs:domain = Film while we're mapping a Model, which is a Person</li>
+<li><p>
+So we remove rdfs:domain and replace it with a comment (see <a href="http://mappings.dbpedia.org/index.php?title=OntologyProperty:ImdbId&amp;diff=39770&amp;oldid=28299">the diff</a>):
+</p>
+<pre class="example">
+|comments=
+{{comment|en|International Movie Database ID. Applies to Films, Actors, etc}}
+</pre></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org9ab1d67">
+<h2 id="org9ab1d67">Add A Property</h2>
+<p>
+There are a few props we need to add, eg zodiacSign, skinColor
+</p>
+<ul>
+<li>We check Wikipedia or Google for the right name, and find that it applies not only to People but also to Planets</li>
+<li>Go directly to <a href="http://mappings.dbpedia.org/index.php?title=OntologyProperty:ZodiacSign&amp;action=edit">http://mappings.dbpedia.org/index.php?title=OntologyProperty:ZodiacSign&amp;action=edit</a></li>
+<li>Entering the prop info is best done from a template</li>
+<li>We also check the use of this prop in wikipedia and find out that it links to pages, eg <code>[[Телец]]</code> (Taurus). So we need an ObjectProperty</li>
+<li><p>
+Entering an appropriate comment is <b>mandatory</b>: describe the usage <b>in detail</b>:
+</p>
+<pre class="example">
+{{ObjectProperty
+  | labels =
+  {{label|en|zodiac sign}}
+  |comments=
+  {{comment|en|Zodiac Sign. Applies to persons, planets, etc}}
+}}
+</pre></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org414b19f">
+<h2 id="org414b19f">Add a Tracking Issue</h2>
+<p>
+Looking for "shoe size", we find two duplicate properties. showSize is the proper English term, so we choose to remove showNumber
+</p>
+<ul>
+<li>Search for "shoeNumber" to see how many times it's used. If it's a few, just do it (delete the prop and replace the usages)</li>
+<li>But in this case there are a many, so let's make an issue hoping that someone else (maybe with the help of a bot) will do it</li>
+<li>Go to <a href="https://github.com/dbpedia/mappings-tracker/issues/new">https://github.com/dbpedia/mappings-tracker/issues/new</a></li>
+<li>Type a title: "replace shoeNumber with shoeSize"</li>
+<li>Paste the link of the property discussion page: <a href="http://mappings.dbpedia.org/index.php?title=OntologyProperty_talk:ShoeNumber">http://mappings.dbpedia.org/index.php?title=OntologyProperty_talk:ShoeNumber</a></li>
+<li>Put all details on the discussion page: we use the tracker only to track, not to discuss/explain</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgccc164d">
+<h2 id="orgccc164d">Describe the Problem</h2>
+<ul>
+<li>Go to the Discussion tab of the shoeNumber property</li>
+<li><p>
+Add a description of the problem:
+</p>
+<pre class="example">
+* Duplicate of shoeSize (which is the proper English term).
+* Also, xsd:integer is not appropriate, xsd:string is better.
+* So: delete and replace all usages with shoeSize.
+
+https://github.com/dbpedia/mappings-tracker/issues/34
+--~~~~
+</pre></li>
+<li>Paste the new issue link that you just created. This way the issue and prop are inter-linked</li>
+<li>Sign your submission! The --<code>~~</code> at the end is converted to the datetime and your name</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgc568ebe">
+<h2 id="orgc568ebe">Add Another Property</h2>
+<p>
+The "vital stats" for a Model include height, weight, eyeColor, hairColor, skinColor, shoeSize, zodiacSign, bustSize (but of course!), waistSize, hipSize
+</p>
+<ul>
+<li>enwiki and jawiki have fields bustSize, waistSize, hipSize
+<ul>
+<li>An app to sort models by these measures would surely be a commercial success :-)</li>
+
+</ul></li>
+<li>bgwiki uses a composite field bust-waist-hip size (мерки: бюст-талия-ханш)</li>
+<li><p>
+So I made a new composite property, describing in detail its usage vs the 3 separate properties (rdfs:comment):
+</p>
+<pre class="example">
+{{DatatypeProperty
+ |rdfs:label@en=bust-waist-hip Size
+ |rdfs:label@bg=размер бюст-талия-ханш
+ |rdfs:domain=Person
+ |rdfs:range=xsd:string
+ |rdfs:comment@en=Use this property if all 3 sizes are given together
+   (DBpedia cannot currently extract 3 Lengths out of a field).
+   Otherwise use separate fields bustSize, waistSize, hipSize
+}}
+</pre></li>
+<li>Also made enh req <a href="https://github.com/dbpedia/extraction-framework/issues/325">#325</a> extract several Lengths out of a field</li>
+<li>Finally, I linked the issue to the property, by putting this in the property's Discussion page:
+"If <a href="https://github.com/dbpedia/extraction-framework/issues/325">#325</a> is implemented, this should be deleted in favor of 3 separate fields"</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org1754ed3">
+<h2 id="org1754ed3">Completed Mapping</h2>
+<p>
+Move any unmapped props to the end, in a comment <code>!-- ... --</code>
+</p>
+<pre class="example">
+{{TemplateMapping | mapToClass = Model
+| mappings = 
+  {{ PropertyMapping | templateProperty = imdb | ontologyProperty = imdbId }}
+  {{ PropertyMapping | templateProperty = Име | ontologyProperty = foaf:name }}
+  {{ PropertyMapping | templateProperty = дата на смърт | ontologyProperty = deathDate }}
+  {{ PropertyMapping | templateProperty = дейности | ontologyProperty = occupation}}
+  ....
+  {{ PropertyMapping | templateProperty = цвят на кожа | ontologyProperty = skinColor }}
+  {{ PropertyMapping | templateProperty = цвят на коса | ontologyProperty = hairColor }}
+  {{ PropertyMapping | templateProperty = цвят на очи | ontologyProperty = eyeColor }}
+}}
+
+!-- NOT YET MAPPED
+  {{ PropertyMapping | templateProperty = категория | ontologyProperty = }}
+  {{ PropertyMapping | templateProperty = филми | ontologyProperty = }} dbo:film has domain FilmFestival
+--
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org4f35f41">
+<h2 id="org4f35f41">Test the Mapping</h2>
+<ul>
+<li>At the <a href="http://mappings.dbpedia.org/index.php/Mapping_bg:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE">mapping page</a> you'll find some useful links</li>
+<li>Link to <a href="http://mappings.dbpedia.org/server/mappings/bg/extractionSamples/Mapping_bg:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE">return triples</a> from the mapping: unfortunately works only for ASCII names (<a href="https://github.com/dbpedia/extraction-framework/issues/289">#289</a>)</li>
+<li><p>
+So <a href="http://bg.wikipedia.org/wiki/Special:WhatLinksHere/Template:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE?limit=500&amp;namespace=0">find some usages</a> and pick up some names
+</p>
+<pre class="example">
+Летисия Каста     
+Константина Живова
+
+</pre></li>
+<li>Then go to the Discussion page, add a section "Testing" and make a list of links eg
+<ul>
+<li><a href="http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&amp;extractors=custom&amp;title=%D0%9B%D0%B5%D1%82%D0%B8%D1%81%D0%B8%D1%8F_%D0%9A%D0%B0%D1%81%D1%82%D0%B0">http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&amp;extractors=custom&amp;title=Летисия_Каста</a></li>
+<li><a href="http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&amp;extractors=custom&amp;title=%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%B0_%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%D0%B0">http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&amp;extractors=custom&amp;title=Константина_Живова</a></li>
+
+</ul></li>
+<li>This is <b>especially</b> important if you fix a mapping</li>
+<li>It's <a href="http://mappings.dbpedia.org/index.php/Main_Page#Testing_Best_Practices">proposed editorial policy</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6e0af31">
+<h2 id="org6e0af31">Special: Intermediate Node Mapping</h2>
+<p>
+The template <a href="http://mappings.dbpedia.org/index.php?title=Mapping_en:Listen&amp;action=edit">en:Listen</a> (<a href="http://mappings.dbpedia.org/index.php/Mapping_el:%CE%91%CE%BA%CE%BF%CF%8D%CF%83%CF%84%CE%B5">el:Ακούστε</a>, <a href="http://mappings.dbpedia.org/index.php?title=Mapping_bg:%D0%A1%D0%BB%D1%83%D1%88%D0%B0%D0%B9%D1%82%D0%B5&amp;action=edit">bg:Слушайте</a>) adds soundRecording's that are somehow related to the subject.
+We map it to additional nodes like this (<a href="https://github.com/dbpedia/mappings-tracker/issues/19">#19</a>):
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #0000ff;">&lt;Neil_Armstrong&gt;</span> soundRecording <span style="color: #0000ff;">&lt;Neil_Armstrong__1&gt;</span>.
+<span style="color: #0000ff;">&lt;Neil_Armstrong__1&gt;</span> <span style="color: #a020f0;">a</span> Sound;
+   <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">type</span> <span style="color: #8b2252;">"speech"</span>;
+   filename <span style="color: #8b2252;">"one-small-step.ogv"</span>; 
+   title <span style="color: #8b2252;">"One small step for man..."</span>;
+   description <span style="color: #8b2252;">"Neal Armstrong's famous words"</span>.
+</pre>
+</div>
+<ul>
+<li>An outer <code>TemplateMapping</code> with <code>mapToClass owl:Thing</code>: 
+<code>Listen</code> can be embedded in various pages, and the only common class for all of them is the top-level <code>owl:Thing</code></li>
+<li>Inside we make a number of <code>IntermediateNodeMapping</code> for the separate <code>soundRecording</code>. They share <code>type</code> and each has 3 own fields:</li>
+
+</ul>
+<pre class="example">
+{{TemplateMapping | mapToClass = owl:Thing
+| mappings =
+  {{IntermediateNodeMapping | nodeClass = Sound | correspondingProperty = soundRecording | mappings =
+    {{ PropertyMapping | templateProperty = type          | ontologyProperty = dc:type }}
+    {{ PropertyMapping | templateProperty = filename      | ontologyProperty = filename }}
+    {{ PropertyMapping | templateProperty = title         | ontologyProperty = title }}
+    {{ PropertyMapping | templateProperty = description   | ontologyProperty = description }}
+  }}
+  {{IntermediateNodeMapping | nodeClass = Sound | correspondingProperty = soundRecording | mappings =
+    {{ PropertyMapping | templateProperty = type          | ontologyProperty = dc:type }}
+    {{ PropertyMapping | templateProperty = filename1     | ontologyProperty = filename }}
+    {{ PropertyMapping | templateProperty = title1        | ontologyProperty = title }}
+    {{ PropertyMapping | templateProperty = description1  | ontologyProperty = description }}
+  }}
+</pre>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

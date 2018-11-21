@@ -1,0 +1,84 @@
+<http://example.org/anno41>
+        rdf:type         oa:Annotation ;
+        dct:created  "2015-10-13T13:00:00Z"^^xsd:dateTime ;
+        dct:creator  <http://example.org/user1> ;
+        dct:issued   "2015-10-14T15:13:28Z"^^xsd:dateTime ;
+        as:generator     <http://example.org/client1> ;
+        oa:hasBody       _:b0 ;
+        oa:hasBody       _:b1 ;
+        oa:hasTarget     _:b2 ;
+        oa:motivatedBy   oa:commenting ;
+        oa:styledBy      <http://example.org/stylesheet1> .
+
+<http://example.org/user1>
+        rdf:type   foaf:Person ;
+        foaf:name  "A. Person" ;
+        foaf:nick  "user1" .
+
+<http://example.org/client1>
+        rdf:type       as:Application ;
+        foaf:homepage  <http://example.org/homepage1> ;
+        foaf:name      "Code v2.1" .
+
+_:b0    rdf:type       oa:TextualBody ;
+        rdf:value      "love" ;
+        oa:hasPurpose  oa:tagging .
+
+_:b1    rdf:type  oa:Choice ;
+        as:items  _:b3 .
+
+_:b3    rdf:first  _:b4 ;
+        rdf:rest   _:b5 .
+
+_:b5    rdf:first  _:b6 ;
+        rdf:rest   rdf:nil .
+
+_:b4    rdf:type         oa:TextualBody ;
+        dc:format        "text/plain" ;
+        dc:language      "en" ;
+        dct:creator  <http://example.org/user1> ;
+        rdf:value        "I really love this particular\n bit of text in this XML. No really." ;
+        oa:hasPurpose    oa:describing .
+
+_:b6    rdf:type       oa:SpecificResource ;
+        oa:hasPurpose  oa:describing ;
+        oa:hasSource   <http://example.org/comment1> .
+
+<http://example.org/comment1>
+        rdf:type         dctype:Sound ;
+        dc:format        "audio/mpeg" ;
+        dc:language      "de" ;
+        dct:creator  <http://example.org/user2> .
+
+<http://example.org/user2>
+        rdf:type  foaf:Person .
+
+_:b2    rdf:type        oa:SpecificResource ;
+        oa:hasSelector  _:b7 ;
+        oa:hasSource    <http://example.com/document1> ;
+        oa:hasState     _:b8 ;
+        oa:styleClass   "mystyle" .
+
+_:b7    rdf:type      oa:FragmentSelector ;
+        rdf:value     "xpointer(/doc/body/section[2]/para[1])" ;
+        oa:refinedBy  _:b9 .
+
+_:b9    rdf:type  oa:TextPositionSelector ;
+        oa:end    "27"^^xsd:nonNegativeInteger ;
+        oa:start  "6"^^xsd:nonNegativeInteger .
+
+_:b8    rdf:type      <http://example.org/type/HttpRequestState> ;
+        rdf:value     "Accept: application/xml" ;
+        oa:refinedBy  _:b10 .
+
+_:b10   rdf:type       oa:TimeState ;
+        oa:sourceDate  "2015-09-25T12:00:00Z"^^xsd:dateTime .
+
+<http://example.org/stylesheet1>
+        rdf:type  oa:CssStyle .
+
+oa:hasPurpose a puml:InlineProperty.
+oa:motivatedBy a puml:InlineProperty.
+rdf:nil a puml:Inline.
+foaf:homepage a puml:InlineProperty.
+<http://example.com/document1> a puml:Inline.

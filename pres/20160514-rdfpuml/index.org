@@ -1,0 +1,279 @@
+#+TITLE: Making True RDF Diagrams with rdfpuml
+#+DATE: 2016-05-14 (Added Offshore Leaks data model), 2016-03-25 (original)
+#+AUTHOR: Vladimir Alexiev
+#+EMAIL: vladimir.alexiev@ontotext.com
+#+OPTIONS: toc:2 num:t
+
+* Motivation
+ 
+RDF is a graph data model, so:
+- Often the best way to understand RDF data schemas (ontologies, application profiles, RDF shapes) is with a diagram
+- Many visualizations exist but they focus on big graphs and are hard to understand
+
+Developed a tool *rdfpuml* that makes *true* diagrams from Turtle examples
+- Guarantees consistency between said (triple statements) and shown (diagram)
+- Lets you focus on domain modeling rather than diagram layouting
+- Saves you effort
+Uses [[http://www.plantuml.com/][PlantUML]] and [[http://www.graphviz.org][GraphViz]]
+
+** Simple Example: Source Turtle
+#+BEGIN_SRC Turtle
+cona:456-thing crm:P12i_was_present_at cona:456-discovery-123.
+cona:456-discovery-123 a crmx:Discovery;
+  crm:P2_has_type <cona/production/discovery>;
+  crm:P4_has_time-span cona:456-discovery-123-date.
+cona:456-discovery-123-date a crm:E52_Time-Span;
+  crm:P82a_begin_of_the_begin "1800"^^xsd:gYear;
+  crm:P82b_end_of_the_end "1850"^^xsd:gYear.
+########################################
+<cona/production/discovery> a puml:Inline.
+#+END_SRC
+Namespace ~puml:~ are diagram control triples, explained further
+#+ATTR_HTML: :class stretch :style width:500px
+[[./img/CONA-production-discovery-Simple.png]]
+
+** Simple Example: Generated PlantUML
+Takes care of many hairy details, eg node name sanitization, property name & value collection, inlining, Association nodes, replacing ~()~ with ~[]~ (puml quirk), etc
+#+BEGIN_SRC plantuml :exports code
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class cona_456_discovery_123 as "cona:456-discovery-123"
+cona_456_discovery_123 : a crmx:Discovery
+class cona_456_discovery_123_date as "cona:456-discovery-123-date"
+cona_456_discovery_123 --> cona_456_discovery_123_date : crm:P4_has_time-span
+cona_456_discovery_123 : crm:P2_has_type cona:production/discovery
+cona_456_discovery_123_date : a crm:E52_Time-Span
+cona_456_discovery_123_date : crm:P82a_begin_of_the_begin "1800"^^xsd:gYear
+cona_456_discovery_123_date : crm:P82b_end_of_the_end "1850"^^xsd:gYear
+class cona_456_thing as "cona:456-thing"
+cona_456_thing --> cona_456_discovery_123 : crm:P12i_was_present_at
+@enduml
+#+END_SRC
+
+* Diagram Control
+Diagram readability is a prime concern. Some measures:
+- Shorten URLs aggressively. Some prefixed names you see in the diagram are not valid Turtle
+- Sort properties by name (rdf:type comes first)
+- Collect property values together; collect "parallel" properties together
+- Introduce a few diagram control mechanisms
+  - Follow Dan Connolly's approach [[https://www.w3.org/2001/02pd/][Circles and arrows diagrams using stylesheet rules]] (W3C 2005)
+  - Use triples in namespace ~puml:~, usually written after ~####~
+
+** Inlining
+Show object inlined in the subject node, not as separate node
+- Types and literals are inlined automatically
+- Inline resource: used often for lookup values
+  : <cona/event/competition> a puml:Inline.
+  :   # Show URL in the subject node.
+  : cona_contrib:10000000 a puml:Inline; rdfs:label "VP".
+  :   # Show the URL, and add a comment "# VP"
+- Inline property: show all objects of a property inlined
+  : fn:annotationSetFrame a puml:InlineProperty. 
+  :   # Show all objects (values) of fn:annotationSetFrame inline
+#+ATTR_HTML: :class stretch :style width:600px
+[[./img/MS-Frame-InlineProperty.png]]
+
+** Collect Values, Comment Label
+- Multiple objects are collected and shown separated with commas
+- ~rdfs:label~ of ~puml:Inline~ is used as comment after the value
+  #+BEGIN_SRC Turtle
+cona_source:2000015171 a puml:Inline; rdfs:label "Fletcher, History of Architecture [1975]".
+cona_source:2000052135 a puml:Inline; rdfs:label "Great Buildings Online [1997-]".
+  #+END_SRC
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/CONA-MultipleValues-Labels.png]]
+- ~puml:label~ adds a comment on non-Inlined node
+  #+BEGIN_SRC Turtle
+ia:1000042 a skos:Concept;
+  puml:label "Hercules";
+  dct:type <ia/type/Religion_Mythology_Legend>;
+  ...
+ia:129 puml:label "Story of Hercules".
+tgn:7010720 puml:label "Argos".
+tgn:7029383 puml:label "Thebes".
+  #+END_SRC
+
+#+ATTR_HTML: :class stretch :style width:600px
+[[./img/CONA-PumlLabel.png]]
+
+** Collect Arrow Labels
+- Multiple property instances between nodes are collected in one arrow and shown as several labels
+- Inverse arrows work fine
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/CONA-arel-replaced-MultipleArrowLabels.png]]
+
+** Arrow Customization
+Customize arrows using predicate of the form ~puml:$dir-$head-$line~
+- ~$dir~: left, right, up, down (default)
+- ~$head~: none="", tri="|>", star="*", o="o" (default is normal arrow)
+  - See [[http://plantuml.com/objects.html][PlantUML Object diagrams]]. Unfortunately PlantUML doesn't have bidirectional arrows
+- ~$line~: dashed (default is solid)
+- (each part is optional)
+Set arrow for all property instances:
+#+BEGIN_SRC Turtle
+nif:oliaLink puml:arrow puml:up.
+#+END_SRC
+Set arrow between two specific nodes:
+#+BEGIN_SRC Turtle
+cona:456-production puml:left cona:456-motivation-123.
+#+END_SRC
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/CONA-production-motivation-ArrowDir.png]]
+
+** Stereotypes and Colored Circles
+[[https://en.wikipedia.org/wiki/Stereotype_(UML)][Stereotype]] is UML lingo for those funny /«guillemetted names»/ and colored circles (either is optional)
+
+#+BEGIN_COMMENT
+#+BEGIN_SRC Turtle
+fn:AnnotationSet   puml:stereotype "(F,red)"
+#+END_SRC
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/MS-Frame-Stereotype.png]]
+#+END_COMMENT
+
+#+BEGIN_SRC Turtle
+iso:ThesaurusArray puml:stereotype "(A,red)".
+gvp:GuideTerm      puml:stereotype "(G,green)".
+gvp:Concept        puml:stereotype "(C,lightblue)".
+#+END_SRC
+#+ATTR_HTML: :class stretch :style width:400px
+[[./img/GVP-ordered-collection-Stereotype.png]]
+
+You can also use this on an individual node instead of a whole class.
+
+** Reification
+- A statement ~<s> <p> <o>~ is also represented as a node with 3 addressing properties, and extra data is added
+#+BEGIN_SRC Turtle
+<node> a <ReificationClass>;
+  <subjectProp>  <s>;
+  <shortcutProp> <p>;
+  <objectProp>   <o>;
+  # extra data, eg dct:created, dct:creator
+#+END_SRC
+- RDF Reification is used most often (first row below)
+- CIDOC CRM also has it (with extension ~crmx:property~ aka ~bmo:PX_property~)
+- [[http://smiy.sourceforge.net/prv/spec/propertyreification.html][Property Reification Vocabulary]] allows us to express this data formally:
+| ReificationClass               | subjectProp                     | shortcutProp  | objectProp                           | prop (shortcut)                             |
+|--------------------------------+---------------------------------+---------------+--------------------------------------+---------------------------------------------|
+| rdf:Statement                  | rdf:subject                     | rdf:predicate | rdf:object                           | any prop                                    |
+| crm:E13_Attribute _Assignment  | crm:P140_assigned _attribute_to | crmx:property | crm:P141_assigned                    | any CRM prop                                |
+| crm:E14_Condition _Assessment  | crm:P34_concerned               | crmx:property | crm:P35_has_identified               | crm:P44_has_condition                       |
+| crm:E15_Identifier _Assignment | crm:P140_assigned _attribute_to | crmx:property | crm:P37_assigned, crm:P38_deassigned | crm:P1_is_identified_by, crm:P102_has_title |
+| crm:E16_Measurement            | crm:P39_measured                | crmx:property | crm:P40_observed _dimension          | crm:P43_has_dimension                       |
+| crm:E17_Type _Assignment       | crm:P41_classified              | crmx:property | crm:P42_assigned                     | crm:P2_has_type or subprop                  |
+
+** Reification Nodes
+- Automatically discover reifications as per the previous table and make [[http://plantuml.com/classes.html#Association_classes][PlantUML Association Class]]
+- Show addressing properties with arrows (← : →) pointing to the subject, shortcut, object
+- Limit: no more than 2 reifications per relation (and the second one is ugly). So use ~puml:noReify~ to avoid making reification
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/CONA-arel-Reification.png]]
+
+* Application Examples
+- Getty CONA: Mappings of museum data to CIDOC CRM
+- EHRI: Holocaust Research into Jewish social networks
+- Multisensor: NLP2RDF/NIF, FrameNet
+- Duraspace: Portland Common Data Model for metadata in institutional repositories
+- Video Annotation: LinkedTV NISV Use Case
+
+** Getty CONA: Contributors and Sources
+Aggressive URL shortening, collecting multiple values, value comments
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/CONA-contribs-sources-MultipleValues-Labels.png]]
+
+*** CONA Iconographic Authority
+Arrow direction, reification
+#+ATTR_HTML: :class stretch :style width:1500px
+[[./img/CONA-ia_hercules-Complex.png]]
+
+** EHRI: Person Record
+Simple record about a person, including info about related people
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/EHRI-person-record.png]]
+
+** EHRI: Person Network
+Reconstructing the social network of a person, representing in CIDOC CRM and AgRelOn
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/EHRI-person-network.png]]
+
+** Multisensor: Video Annotation & Text Annotation (NIF) 
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/MS-video-and-text-NIF.png]]
+
+*** Multisensor: Social Network Analysis
+Global influence and reachability 
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/MS-social-network.png]]
+
+*** Multisensor: Image Annotation with OpenAnnotation
+Reification is used to express Confidence
+#+ATTR_HTML: :class stretch :style width:1400px
+[[./img/MS-OpenAnnotation-with-Reification.png]]
+
+*** Multisensor: Image Annotation with OpenAnnotation+FISE
+FISE (Stanbol) is used to express Confidence
+#+ATTR_HTML: :class stretch :style width:1400px
+[[./img/MS-OpenAnnotation-and-Stanbol-FISE.png]]
+
+** Multisensor: FrameNet Embedded in NIF
+Made with PlantUML "by hand", not rdfpuml. Uses [[http://plantuml.com/classes.html#Using][PlantUML Packages]]
+#+ATTR_HTML: :class stretch :style width:950px
+[[./img/MS-FrameNet-Embedding-in-NIF.png]]
+
+*** Multisensor: FrameNet Manual Example
+Diagram made by hand, took a lot of time, stylized
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/MS-Frame-by-hand-stylized.png]]
+
+*** Multisensor: FrameNet Automatic Example (Part 1)
+Made automatically with rdfpuml. Split on 2 pages...
+#+ATTR_HTML: :class stretch :style width:1500px
+[[./img/MS-Frame-complex-part1.png]]
+
+*** Multisensor: FrameNet Automatic Example (Part 2)
+Split on 2 pages... part2
+#+ATTR_HTML: :class stretch :style width:1500px
+[[./img/MS-Frame-complex-part2.png]]
+
+** Duraspace PCDM Metadata
+- [[https://github.com/duraspace/pcdm/wiki][Portland Common Data Model]] for metadata in institutional repositories (Fedora, Islandora, etc)
+- [[https://wiki.duraspace.org/display/FF/PCDM%2BMappings%2B-%2BReference%2BDiagrams%2Bfor%2BComment][Reference Diagrams for Comment]] lists a bunch of metadata layouts for different kinds of Works/Files
+- These are made by hand, which takes a lot of time. Eg see diagram for a [[https://docs.google.com/drawings/d/1nhwbFqQY_dEOTuHwgXMZIt79pZ4kfa2_DFN5LFOz9Qs/edit][Postcard]] (simple kind of Work)
+- Proposed making [[https://github.com/duraspace/pcdm/wiki/Diagrams-with-rdfpuml][diagrams with rdfpuml]] (interest tracked as [[https://github.com/duraspace/pcdm/issues/46][duraspace/pcdm#46]]):
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/PCDM_Multi_Page_Text-circles.png]]
+
+** Video Annotation: LinkedTV NISV Use Case
+#+ATTR_HTML: :class stretch :style width:1400px
+[[./img/LinkedTV-Fig22-NISV-scenario.png]]
+
+** Video Annotation: Generated Diagram
+#+ATTR_HTML: :class stretch :style width:1400px
+[[./img/linkedtv-nisv.png]]
+
+** Offshore Leaks
+Ontotext [[https://github.com/Ontotext-AD/leaks/][published as RDF]] the ICIJ [[https://offshoreleaks.icij.org/][Offshore Leaks]] database according to this model:\\
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/leaks-model1.png]]
+
+** Offshore Leaks (2)
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/leaks-model2.png]]
+
+** Offshore Leaks Evolution
+The [[https://github.com/Ontotext-AD/leaks/commit/3ef04ff99751247dfc876295cce54264259085e8#diff-76e7f343443a2e76fcadc0fcba335d2d][model will be evolving]] as we unravel more of the data
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/leaks-model-evolution.png]]
+
+* Next Steps
+Perl hackers wanted:
+- Publish on Github
+- Modularize better
+- Package and publish on CPAN
+- Intgrate in Emacs org-mode: write turtle, see diagram
+
+Farther future:
+- Extend to visualize RDF Shapes (SHACL and SHEX)

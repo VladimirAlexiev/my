@@ -1,0 +1,584 @@
+# -*- my-org-place: "DBpedia Meeting, Dublin, Ireland"; my-org-filename-reveal: "dbpedia-problems.html"; my-org-filename-full: "dbpedia-problems-long.html" -*-
+#+TITLE: DBpedia Ontology and Mapping Problems
+#+DATE: 2015-02-16
+#+AUTHOR: Vladimir Alexiev
+#+EMAIL: vladimir.alexiev@ontotext.com
+#+OPTIONS: num:t
+#+EXCLUDE_TAGS: noexport
+
+* Table of Contents                                 :TOC:noexport:
+ - [[#dbpedia-data-quality][DBpedia Data Quality]]
+   - [[#ontotexts-dbpedia-experience][Ontotext's DBpedia Experience]]
+   - [[#a-non-sense-mapping][A Non-sense Mapping]]
+   - [[#have-i-got-your-attention][Have I got your attention?]]
+   - [[#mapping-issues-bigger-than-ontology-issues][Mapping Issues Bigger Than Ontology Issues?]]
+   - [[#balanced-effort][Balanced Effort]]
+ - [[#issue-tracking][Issue Tracking]]
+   - [[#testing-best-practice][Testing Best Practice]]
+ - [[#mapping-language-issues][Mapping Language Issues]]
+   - [[#conditionalmapping-not-flexible-enough][ConditionalMapping Not Flexible Enough]]
+   - [[#objectdataprop-dichotomy][Object/DataProp Dichotomy]]
+   - [[#mapping-framework-is-not-modular-enough][Mapping Framework is not Modular Enough]]
+ - [[#mapping-server-deficiencies][Mapping Server Deficiencies]]
+ - [[#mapping-wiki-deficiencies][Mapping Wiki Deficiencies]]
+   - [[#improve-display-of-mappings][Improve Display of Mappings]]
+ - [[#mapping-issues][Mapping Issues]]
+   - [[#no-editorial-process][No Editorial Process]]
+   - [[#lack-of-documentation][Lack of Documentation]]
+   - [[#good-documentation-is-specific][Good Documentation Is Specific]]
+   - [[#duplicate--semi-duplicate-properties][Duplicate & Semi-Duplicate Properties]]
+   - [[#need-for-research][Need for Research]]
+   - [[#need-for-research-1][Need for Research]]
+   - [[#validate-ontological-assumptions][Validate Ontological Assumptions]]
+   - [[#property-and-class-naming][Property and Class Naming]]
+   - [[#various-mapping-issues][Various Mapping Issues]]
+ - [[#extraction-framework-issues][Extraction Framework Issues]]
+   - [[#issues-important-for-local-chapters][Issues Important for Local Chapters]]
+   - [[#date-as-page-is-not-extracted][Date as Page is not Extracted]]
+   - [[#object-property-extractor-does-not-respect-ranges][Object Property Extractor Does Not Respect Ranges]]
+   - [[#curious-parents-and-poor-data-monarchs][Curious Parents and Poor Data Monarchs]]
+   - [[#data-property-extractor-does-not-respect-datatypes][Data Property Extractor Does Not Respect Datatypes]]
+   - [[#use-domain--range-to-guide-extraction][Use Domain & Range to Guide Extraction]]
+   - [[#specific-properties][Specific Properties]]
+   - [[#various-extraction-issues][Various Extraction Issues]]
+ - [[#external-mapping-problems][External Mapping Problems]]
+   - [[#dul-too-generic][DUL Too Generic?]]
+   - [[#owlthing-considered-useless][owl:Thing Considered Useless]]
+   - [[#no-choice][No Choice]]
+ - [[#ontology-problems][Ontology Problems]]
+   - [[#external-props-not-used-consistently][External Props Not Used Consistently]]
+   - [[#rdfsdomainrange-are-wishful][rdfs:domain/range are Wishful]]
+   - [[#classes-that-duplicate-properties][Classes that Duplicate Properties]]
+   - [[#measurement-classes][Measurement Classes]]
+   - [[#place-vs-organisation][Place vs Organisation]]
+   - [[#simple-ontology-fixes][Simple Ontology Fixes]]
+
+* DBpedia Data Quality
+- DBpedia is a crucial LOD dataset used by many, including for commercial applications by companies like Ontotext.
+- But DBpedia data quality leaves a lot to be desired, and has been the subject of many recent papers.
+- Most of these papers describe approaches for finding errors. 
+
+Instead, I want to focus on root causes of important error classes and to propose fixing approaches. We focus on:
+- Lack of documentation on classes and properties
+- Weak editorial process in the mapping wiki, lack of issue tracking
+- Ontology problems, mostly due to the weak editorial process. Compare to Wikidata property proposal process
+- Potential improvements for error checking in the mapping wiki (both ontology and mapping)
+- Deficiencies of ontology mapping to external ontologies
+- Extractor deficiencies
+I give many concrete examples
+** Ontotext's DBpedia Experience
+- Used DBpedia for at least 5 years 
+- Eg http://factforge.net aggregates DBPedia, FreeBase, GeoNames, etc (9 central LOD datasets), but old versions
+- Developed mapping layers, eg PROTON; contributed to UMBEL
+- Use in FP7 Multisensor: DBpedia in 5 languages as a core background dataset
+- Use in FP7 Europeana Food and Drink: DBpedia in 11 languages  as the backbone of EFD Classification
+- Just started hosting http://bg.dbpedia.org (above FP7 projects include Bulgarian)
+Most importantly:
+- Use DBpedia labels and other features for commercial Semantic Enrichment (media, publishers, etc)
+- Now also for Bulgarian (BG project with OffMedia)
+Until now, only grumbled internally about DBpedia data quality
+- A couple months ago started looking actively into that
+- Many improvements to bg.dbpedia mappings
+- Posted suggestions and issues to dbpedia
+- *Pragmatic* approach
+
+** A Non-sense Mapping
+[[http://mappings.dbpedia.org/index.php?title%3DMapping_el:Quote_box&action%3Dedit][Mapping_el:Quote_box]] is utter nonsense
+- Mapped to Road, so eg the [[https://el.wikipedia.org/wiki/%CE%99%CF%83%CF%84%CE%BF%CF%81%CE%AF%CE%B1][Greek article on History]] will be mapped to Road
+- The only meaningful property (quote text) won't be extracted because [[http://mappings.dbpedia.org/index.php/OntologyProperty:Category][category]] is an ObjectProperty:
+  : {{ PropertyMapping | templateProperty = quote | ontologyProperty = category }} 
+  : {{ PropertyMapping | templateProperty = quoted | ontologyProperty = category }} 
+- "title" (if any), is intermixed with non-semantic properties like background and font:
+  : {{PropertyMapping | templateProperty = title| ontologyProperty = title }} 
+  : {{PropertyMapping | templateProperty = title_bg| ontologyProperty = title }} 
+  : {{PropertyMapping | templateProperty = title_fnt| ontologyProperty = title }} 
+- Most of the properties (eg size, style) have no semantic significance
+- Alignment -> picture ??
+  : {{PropertyMapping | templateProperty = align | ontologyProperty = picture }} 
+  : {{PropertyMapping | templateProperty = salign | ontologyProperty = picture }} 
+  : {{PropertyMapping | templateProperty = halign | ontologyProperty = picture }} 
+  : {{PropertyMapping | templateProperty = qalign | ontologyProperty = picture }}
+- I especially like these mappings. 1 is a number, alright ;-)
+  : {{ PropertyMapping | templateProperty = 1 | ontologyProperty = number }} 
+  : {{ PropertyMapping | templateProperty = 2 | ontologyProperty = number }} 
+- [[http://mappings.dbpedia.org/server/templatestatistics/el/?template%3DQuote_box][Stats happily reports]] all props are mapped
+
+** Have I got your attention?
+I wanted to open with a horrible example to get your attention
+- You may think the above is a weird exception, but it is not
+- All of the DBpedia ontology and mappings are crowd-sourced
+- But due to lack of editorial process, documentation and discussion, the results are... less than ideal
+
+*Ontology problems* include duplicated properties, non-standard properties, etc
+- But they pale in comparison to *mapping problems* (subjectively: 5% vs 95%)
+- Efforts to improve the ontology and improve the mappings should be appropriately balanced
+- These efforts must be intimately tied, else we'll not achieve much improvement
+- It doesn't take an ontological discussion on the nature of Numbers to figure out this is wrong:
+  : {{ PropertyMapping | templateProperty = 1 | ontologyProperty = number }}
+- Prop [[http://mappings.dbpedia.org/index.php/OntologyProperty:Number][number]] is not documented (i.e. not well-defined), but that's not the problem here
+- Crowdsourcing without editorial process = allowing any fool to write nonsense
+
+** Mapping Issues Bigger Than Ontology Issues?
+Thesis: ontology problems pale in comparison to mapping problems
+- Lack of documentation of classes & props
+  - Sometimes template props in wikipedia are also not documented
+  - This turns mapping into guesswork (also because of Object/DataProp Dichotomy [[Object/DataProp Dichotomy]])
+  - Many people don't research exising props before making new
+- Lack of editorial process
+- Bad practices are copy & pasted ([[Mapping Framework is not Modular Enough]])
+
+** Balanced Effort
+Please don't focus your energy and efforts only on ontology problems
+- The ontology and mappings are intimately connected
+- The effort between fixing ontology & mapping problems should be balanced
+- If we fix ontology problems in isolation from mapping: no useful result
+It will take lots of pragmatic & concerted editorial effort
+- Research current usage in various areas (eg Name props, Place parent hierarchy, Membership...)
+- Best practice writing, wiki gardening, bot writing
+- Not necessarily by world-class ontological thinkers
+- But by people willing to spend the time and build consensus (examples: Wikipedia, Wikidata)
+Are we up to it?
+
+* Issue Tracking
+A major problem was that ontology and mapping issues were not tracked
+- D.Kontokostas made trackers on github about a month ago
+- [[https://github.com/dbpedia/mappings-tracker/issues][mappings-tracker/issues]]: mapping issues, issues with the mapping wiki
+- [[https://github.com/dbpedia/ontology-tracker/issues][ontology-tracker/issues]]: issues with the ontology
+- (old): [[https://github.com/dbpedia/extraction-framework/issues][extraction-framework/issues]]: technical problems with the extraction software
+But so far it seems I'm the only one using them :-(
+- I've posted 19 [[https://github.com/dbpedia/extraction-framework/issues?q%3Dauthor%3AVladimirAlexiev%2B][extraction-framework/issues]], Referenced below with bigger numbers, eg #286
+- I've posted 36 [[https://github.com/dbpedia/mappings-tracker/issues?q%3Dauthor:VladimirAlexiev%2B][mappings-tracker/issues]]. Referenced below with small numbers, eg #20
+- I haven't posted ontology-tracker/issues, since IMHO ontology and mapping problems are intimately related
+  - If we start using Web Protege, it must be just as intimately related to the mapping wiki!
+All discussion should be in the wiki
+- The tracker is for tracking only, not for keeping knowledge
+- Issue and Discussion should be interlinked (paste links in each)
+
+** Testing Best Practice
+Say you made a [[http://mappings.dbpedia.org/index.php/Mapping_bg:Манекен_инфо][new mapping]] or fixed a mapping
+- There's a [[http://mappings.dbpedia.org/server/mappings/bg/extractionSamples/Mapping_bg:Манекен_инфо][test link]] to return triples
+- But they're "random" triples and it works only for enwiki/ASCII ([[https://github.com/dbpedia/extraction-framework/issues/289][#289]])
+The individual triple extractor is more useful
+- First find [[http://bg.wikipedia.org/wiki/Special:WhatLinksHere/Template:Манекен_инфо?limit%3D500&namespace%3D0][wikipedia usages]] and pick up some individuals, eg
+  : Летисия Каста     
+- Then go to Discussion page, add section "Testing" and make test links (cases), eg
+  - http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&extractors=custom&title=Летисия_Каста
+These test cases serve important purposes:
+- Illustrates the problem
+- As proof it works after the problem is fixed
+- To provide test cases for any bugs in the extraction framework (upstream bug reporting)
+Proposed as [[http://mappings.dbpedia.org/index.php/Main_Page#Testing_Best_Practices][editorial policy]]
+
+* Mapping Language Issues
+The *mapping language* is a set of wiki templates expressing classes, props, mappings
+- The very concept of using a wiki to express mappings is quite excellent
+- But the mapping framework has a few deficiencies
+  - "ConditionalMapping" is very possible to fix
+  - "Modularity" is hard/impossible to fix
+  - [[https://github.com/dbpedia/mappings-tracker/issues/22][#22]] what are "super" datatypes? is more of a question
+- Neither of these is crucially important
+Various cosmetic fixes to the mapping wiki are in the next section
+
+** ConditionalMapping Not Flexible Enough
+[[https://github.com/dbpedia/extraction-framework/issues/310][#310]]: [[http://mappings.dbpedia.org/index.php?title%3DMapping_bg:Музикален_изпълнител&action%3Dedit][bg:Musical_artist]] has complex ConditionalMapping logic (translated from bg):
+- If "members", "former_members", "created" -> Band
+- If "background" includes "group", "quartet", "ensemble", "choir" -> Band
+- If "background" includes "composer" -> MusicComposer
+- If "background" includes "director" -> MusicDirector
+- If "background" includes "she-singer" -> MusicalArtist, gender=dbo:Female
+- If "background" includes "he-singer" -> MusicalArtist, gender=dbo:Male
+- If "background" includes "he-pianist" -> MusicalArtist, gender=dbo:Male
+- If "suffix=a" -> MusicalArtist, gender=dbo:Female 
+  - "suffix=a" in BG/RU indicates Female gender, eg my wife is *Alexieva*
+- Otherwise -> MusicalArtist, gender=dbo:Male
+ConditionalMapping is *linear*, so we can't:
+- Check "suffix" of "composer" to emit gender
+- Check if "background" includes "composer" and "director" to emit *both* MusicComposer *and* MusicDirector
+#310 was fixed to merge triples produced by each matching condition.
+So the logic was changed from completely sequential to completely parallel (additive).
+But [[https://github.com/dbpedia/extraction-framework/pull/443][PR#443]] is not yet merged.
+
+** Object/DataProp Dichotomy
+The mapping language adopts the OWL Dichotomy between owl:ObjectProperty and owl:DatatypeProperty
+- rdf:Property is more flexible in that it can have either or both
+- This dichotomy doesn't always work well with current wikipedia practice
+- Eg saint's [[http://dbpedia.org/sparql?default-graph-uri%3Dhttp%3A%2F%2Fdbpedia.org&query%3Dselect%2B*%2B%7B%3Fx%2Bdbp%3Apatronage%2B%3Fy%7D&format%3Dtext%2Fhtml&CXML_redir_for_subjs%3D121&CXML_redir_for_hrefs%3D&timeout%3D30000&debug%3Don][dbp:patronage]] has both:
+  - object references: countries, cities, House_of_Este, Archdiocese_of_Milan, Rosary...
+  - text literals: "fishermen", "the sick", "Prisoners", "Persecuted Christians"...
+- Many other examples
+Some templates harvest *the same* template field -> ObjectProp & DataProp
+- Eg firstAscent -> firstAscentPerson (object), firstAscentYear (literal)
+- Others exemplified by "field" (object) vs "fieldName" (literal)
+- But this is not used systematically (eg there's no "childName" to complement "child")
+- Hard to know when to use it: [[https://github.com/dbpedia/extraction-framework/issues/327][#327]] Field Sampling
+Do you think this should be fixed?
+
+** Mapping Framework is not Modular Enough
+- There's no mapping of a *property* or *group of properties*
+- Thus mapping patterns cannot be reused but have to be copy-pasted
+- We need to copy the complex suffix/gender ConditionalMapping 11 times
+- Some bad patterns are copied over and over again, replicating their problems
+- IMHO hard to impossible to fix
+
+* Mapping Server Deficiencies
+The mapping server has good Stats and Testing features, but more is needed
+- [[https://github.com/dbpedia/extraction-framework/issues/327][#327]] Field Sampling: 
+  - On template stats, for every field, add a hyperlink to show some occurrences
+  - Extremely useful to understand the meaning of some fields
+  - And whether they're links, text, or both ([[Object/DataProp Dichotomy]])
+- [[https://github.com/dbpedia/mappings-tracker/issues/3][#3]] Statistics and Validator to check for redirected templates. Prevent problems like
+  - [[https://github.com/dbpedia/extraction-framework/issues/296][#296]] Why Infobox_Geopolitical_organization (eg United_Nations) is mapped to Country?
+  - [[https://github.com/dbpedia/extraction-framework/issues/326][#326]] Why the redirect is not enacted?
+- [[https://github.com/dbpedia/extraction-framework/issues/287][#287]] some invalid domain, range, subPropertyOf
+  - Check that prop names in templates start with lowercase
+  - Class names uppercase, include no comma
+  - Eg ~firstAscentYear rdfs:domain Peak,Volcano~ is breakage
+- [[https://github.com/dbpedia/extraction-framework/issues/289][#289]] testing works only for en/ASCII (see [[Testing Best Practice]] for workaround)
+- [[https://github.com/dbpedia/extraction-framework/issues/304][#304]] extraction tester should return encoding UTF-8
+  - Else browser displays gibberish: need to save file & open in proper editor
+  - Makes it unnecessarily hard to test international mappings
+- [[https://github.com/dbpedia/extraction-framework/issues/308][#308]] statistics should check params of GeocoordinatesMapping
+
+* Mapping Wiki Deficiencies
+IMHO the mapping wiki is quite workable (some enhancements are in order)
+- Eg "OntologyProperty=foo" finds uses of "foo"
+- If Web Protege is adopted, it should be as tightly knit with the mappings as currently
+Improve editing:
+- [[https://github.com/dbpedia/mappings-tracker/issues/31][#31]] show class & prop info while/at Mapping
+- [[https://github.com/dbpedia/mappings-tracker/issues/32][#32]] add Preview and key shortcuts. Like on any wikipedia!
+Improve search:
+- [[https://github.com/dbpedia/mappings-tracker/issues/1][#1]] add class hierarchy to left navbar
+- [[https://github.com/dbpedia/mappings-tracker/issues/2][#2]] add Search for Property to left navbar
+- [[https://github.com/dbpedia/mappings-tracker/issues/25][#25]] FTS doesn't index everything
+Improve collaboration
+- [[https://github.com/dbpedia/mappings-tracker/issues/33][#33]] Add editorial templates/addons: but this is not *why* we're not doing it
+
+** Improve Display of Mappings
+- [[https://github.com/dbpedia/mappings-tracker/issues/30][#30]]: The current display (left) is useless (nobody bothers "header=no")
+- I just look at the source Edit tab (right)
+- The "diff" display (bottom) is quite good 
+#+HTML_ATTR: :class stretch :style width:1500px
+[[./img/dbpedia-mapping-views.png]]
+
+* Mapping Issues
+*Biggest reason* for current situation is lack of *Discussion* and *Editorial process*
+- Contrast to *Wikidata Property Proposal* process, eg for [[https://www.wikidata.org/wiki/Wikidata:Property_proposal/Authority_control][Authority_control]]
+- Rich metadata: guidelines on use (eg what items applies to), corresponding
+  register/authority file (if any), examples, format validation, uniqueness constraints,
+  known exceptions, dynamic validation reports, etc.
+- All reasoning & discussion preserved
+#+HTML_ATTR: :class stretch :style width:1250px
+[[./img/wikidata-DNB-metadata.png]]
+
+** No Editorial Process
+- Compare to Wikidata's *lack* of editorial process for Classes
+- Any fool can make "instance of" or "subclass of" claims (thus classes and hierarchy)
+- Result: 17k classes, at least 2/3 are junk (less than 5 instances)
+Examples
+- *location> geographic location> facility> laboratory> lab-on-a-chip*:
+  - But "lab-on-a-chip" is a "device that integrates one or several laboratory functions on a single chip of only millimeters to a few square centimeters in size", hardly a "geographic location"!!
+- *location> storage> data storage device> audio storage device> album*:
+  - Any NER implementor will balk at "albums are locations". The everyday understanding of "location" as "place" is implemented as the subclass "geographic location". But nevertheless, an "album" is a creative work, and as such is a conceptual object that persists even after all its copies are destroyed. It's definitely not a "storage device"!
+
+** Lack of Documentation
+Many props/classes have no comment. Everyone has complained about this
+- It takes a lot of unnecessary digging to figure out the meaning of a prop
+- You'd never guess what "event" is until you investigate usages, eg this SL mapping:
+  #+BEGIN_SRC Turtle
+  Antonio_Pettigrew dbo:event Moški_tek_na_400_m # (male race on 400m)
+  #+END_SRC  
+- Then you figure out it's the same as sportDiscipline and should be replaced
+Must be merciless about new props & classes: *no comment means automatic deletion*
+- But what to do about existing props with no comment?
+- Thus [[https://github.com/dbpedia/mappings-tracker/issues/6][#6]] "add documentation to every property" is a very large ongoing task
+** Good Documentation Is Specific
+Comments should describe Usage (ie Scope Notes) and compare to similar props
+- Eg what's member vs membership?
+- When to use teamMember vs currentTeamMember vs sportsTeamMember?
+Good examples:
+- *sportDiscipline*: the sport discipline the athlete practices, e.g. Diving, or that a board member of a sporting club is focussing at
+- *zodiacSign*: Applies to persons, planets, etc
+- *bustWaistHipSize*: Use this property if all 3 sizes are given together (DBpedia cannot currently extract 3 Lengths out of a field). Otherwise use separate fields bustSize, waistSize, hipSize 
+
+** Duplicate & Semi-Duplicate Properties
+[[https://github.com/dbpedia/mappings-tracker/issues/5][#5]] Eliminate semi-duplicate properties: another long-term task:
+- Research individual problems
+- Write up decisions and best practices
+- Clean up mappings that violate them
+A few random examples, but this just scratches the surface
+- [[https://github.com/dbpedia/mappings-tracker/issues/17][#17]] remove Racecourse, there is RaceTrack
+- [[https://github.com/dbpedia/mappings-tracker/issues/36][#36]] Merge motto and slogan
+- [[https://github.com/dbpedia/mappings-tracker/issues/11][#11]] blazonLink vs Blazon
+- [[https://github.com/dbpedia/mappings-tracker/issues/34][#34]] replace shoeNumber with shoeSize
+- replace event with sportDiscipline
+
+** Need for Research
+Need to research problem areas & individual problems!
+- Need to write resolutions & best practices
+Example 1: [[http://mappings.dbpedia.org/index.php/What%27s_in_a_Name][What's_in_a_Name]] 
+- Believe it or not, DBO has 86 properties called "name".
+- Birth, former, historical, old, original, previous, same, present: in what situations should each one be used?
+- About 30 Language-specific_Name Props need to be converted to one prop with lang tag
+  - Eg [[https://github.com/dbpedia/mappings-tracker/issues/15][#15]] use "language" instead of "cyrilliqueName"
+Other candidates:
+- Membership props
+- Place hierarchy props, etc
+Any takers to research and write up?
+
+** Need for Research
+Example 2: [[https://github.com/dbpedia/mappings-tracker/issues/19][#19]] fix mapping Listen. Conclusion:
+- delete class Listen, replace with prop soundRecording
+- map using IntermediateNodeMapping:
+  #+BEGIN_SRC Turtle
+  dbr:Neil_Armstrong soundRecording dbr:Neil_Armstrong__1.
+  dbr:eil_Armstrong__1 a Sound; dc:type "sound";
+     filename "one-small-step.ogv"; 
+     title "One small step for man...";
+     description "Neal Armstrong's famous words".
+  #+END_SRC
+- [[https://github.com/dbpedia/mappings-tracker/issues/19][#19]] contradicts my own decision not to put knowledge in the tracker
+- But when Listen is deleted, its Discussion page will also go away...
+
+** Validate Ontological Assumptions
+Sometimes one needs to resort to SPARQL to find out usage
+- Assumption: "Only material things can have color". Let's check:
+  #+BEGIN_SRC SPARQL
+  select * {?x dbpedia-owl:colour ?y}
+  #+END_SRC
+- Shows that political parties, places, schools, etc have colours
+- Especially useful to reassure oneself that non-sense classes have no instances
+  - Leading to a quick and painless deletion
+
+** Property and Class Naming
+Pragmatic problems:
+- spelling consistency (UK vs US): colour but eyeColor & hairColor?
+- camel-casing
+  - [[https://github.com/dbpedia/mappings-tracker/issues/7][#7]] Fix Greek Astronomy templates
+  - Garbage prop names: appmag_v, dist_ly, names, size_v, Dist ly, Names, Dist pc, Credit, Dec, Ra
+  - *¡No pasarán!*
+- Props should start with lowerCase, classes with UpperCase, eg [[Classes that Duplicate Properties]] (oops!):
+  #+BEGIN_SRC Turtle
+  dbo:bronzeMedalist rdfs:subPropertyOf dbo:Medalist
+  #+END_SRC
+
+** Various Mapping Issues
+- [[https://github.com/dbpedia/mappings-tracker/issues/27][#27]] Mapping_el:Quote_box is utter nonsense
+- [[https://github.com/dbpedia/mappings-tracker/issues/4][#4]] Merge Geopolitical organization to Country (template is redirected)
+- [[https://github.com/dbpedia/mappings-tracker/issues/8][#8]] excessive use of intermediate nodes in French mappings
+- [[https://github.com/dbpedia/mappings-tracker/issues/29][#29]] fix Parent places from frwiki (remove takePlace, sharingOut)
+- [[https://github.com/dbpedia/mappings-tracker/issues/9][#9]] Mapping_commons:NARA-image-full
+- [[https://github.com/dbpedia/mappings-tracker/issues/10][#10]] prop pageNumber
+- [[https://github.com/dbpedia/mappings-tracker/issues/12][#12]] delete prop event
+- [[https://github.com/dbpedia/mappings-tracker/issues/14][#14]] merge Infobox_Ville to Infobox_Subdivision_administrative
+- [[https://github.com/dbpedia/mappings-tracker/issues/16][#16]] rework or delete sports as classes (HorseRiding, Boxing, etc)
+- [[https://github.com/dbpedia/mappings-tracker/issues/18][#18]] fix capitalization of Disease properties
+- [[https://github.com/dbpedia/mappings-tracker/issues/20][#20]] delete ascentDate, ascent from Mapping_en_talk:Geobox
+- [[https://github.com/dbpedia/mappings-tracker/issues/21][#21]] area or areaLand?
+- [[https://github.com/dbpedia/mappings-tracker/issues/23][#23]] valvetrain, engineConfiguration, fuelType as Datatypes??
+- [[https://github.com/dbpedia/mappings-tracker/issues/24][#24]] delete colorChart
+- [[https://github.com/dbpedia/mappings-tracker/issues/26][#26]] "source" in "sl:Infobox Chess player" is wrong
+- [[https://github.com/dbpedia/mappings-tracker/issues/28][#28]] use parent instead of mother,father; spouse instead of wife
+- [[https://github.com/dbpedia/mappings-tracker/issues/35][#35]] delete Mapping_el:IMDb_Name
+
+* Extraction Framework Issues
+If you think about it, the extraction framework does wonders extracting numerous properties
+- In a heavily multilingual situation
+- With various ways of spelling dates, centuries, BC/AD, units, etc
+But there are various things that need improvement
+** Issues Important for Local Chapters
+A local chapter should at least configure dates (eg month names) and numbers (eg decimal separator:
+- [[https://github.com/dbpedia/extraction-framework/issues/313][#313]] BG place coordinates lack precision
+  - [[https://github.com/dbpedia/extraction-framework/issues/307][#307]] added bg mapping to DateTimeParserConfig.scala  
+- [[https://github.com/dbpedia/extraction-framework/issues/306][#306]] Special date extraction from template, date-page
+Other issues:
+- [[https://github.com/dbpedia/mappings-tracker/issues/13][#13]] coordinates like 45/20/N, 3/00/E
+- [[https://github.com/dbpedia/extraction-framework/issues/311][#311]] handle multilingual strings with templates like ~{{en|...}}~
+- [[https://github.com/dbpedia/extraction-framework/issues/305][#305]] resolving lookup-list data out of sub-templates
+  - Place parent hierarchy is hidden in subtemplates keyed on "ekatte" code
+  - Very hard, probably will restructure bgwiki
+- [[https://github.com/dbpedia/extraction-framework/issues/303][#303]] dataprop extractor: language doesn't handle lang tag sr-Cyrl
+
+** Date as Page is not Extracted
+[[https://github.com/dbpedia/extraction-framework/issues/306][#306]] On bgwiki, a lot of dates use the "Notable Date Page" approach, eg
+: firstAscent = [[18 май]] [[1956]]
+- This template prop is mapped to firstAscentYear (DataProp) and firstAscentPerson (ObjectProp)
+- Three non-sense values are extracted:
+  #+BEGIN_SRC Turtle
+  bgdbr:Лхотце firstAscentPerson bgdbr:18_май, bgdbr:1956;
+    firstAscentYear "0018"^^xsd:gYear.
+  #+END_SRC
+- The object extractor finds two links and captures them as firstAscentPerson, but these are not persons!
+- The year extractor greedily looks for a year, finds "80" and makes "0018" (i.e. 18 AD). But the year is further down the string: 1956
+
+** Object Property Extractor Does Not Respect Ranges
+Wikipedia editors write all kinds of links in fields.
+- [[https://github.com/dbpedia/extraction-framework/issues/286][#286]] object property extractor should respect rdfs:range
+Curious situations, eg *firstAscentPerson* of these peaks:
+- *bgdbr:Лхотце*: 18_май and 1956: these are "notable date" (event list) pages that someone linked instead of providing a plain date
+- *dbr:Abi_Gamin*: United_Kingdom and Switzerland (it was a mixed British-Swiss expedition)
+- *dbr:Gunung_Tok_Wan*: Kajang (a location), because someone wrote "A small group from Kajang Prison Officer".
+- *dbr:Stawamus_Squaw*: Prehistory (a HistoricPeriod): that's when it was first climbed
+
+** Curious Parents and Poor Data Monarchs
+Lest you think this is an exotic exception, see [[http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+*+%7B%3Fx+dbo%3Aparent+%3Fy+filter+not+exists%7B%3Fy+a+dbo%3APerson%7D%7D&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+][curios values for *parent*]]
+#+BEGIN_SRC sparql
+select * {?x dbo:parent ?y filter not exists{?y a dbo:Person}}
+#+END_SRC
+- Adoption, Archbishop, Dairy, House_of_Este, Prince, Rabbi, Corfu, All My Children
+The extractor could filter these out by range, *but*
+- We dare not throw out objects until all prop ranges are fixed/verified
+- [[https://github.com/dbpedia/extraction-framework/issues/516][#516]] Infobox_monarch and Infobox_royalty emit no type, and little data
+(Added 4-Aug-2017)
+
+** Data Property Extractor Does Not Respect Datatypes
+Data value extraction is based on imperfect heuristics
+- Eg if it first sees a number, it assumes the value is a number
+- Eg the titles of articles starting with digits (used to be) cut off at last digit (Asteroids beware)
+- Eg [[https://github.com/dbpedia/extraction-framework/issues/458][#458]]: ISSN is treated as integer and cut at the first dash
+  - although ~dbo:issn~ is declared ~xsd:string~
+(Added 4-Aug-2017)
+
+** Use Domain & Range to Guide Extraction
+Extraction quality could be improved if it can take into account the range of properties.
+But this is hard:
+- Raw props (~dbp:~) don't have a range, only mapped props (~dbo:~) do
+- The extraction do ~dbp:~ and the subsequent mapping to ~dbo:~ happen in completely separate phases
+- So the extractor would need to propagate ranges backward: raw<-mapped
+- Whereas data flows forward: raw->mapped
+- The mapping framework doesn't map Properties but Templates, so conceivably two people could map a raw prop ~dbp:~ to two different ~dbo:~ props having different nature (object vs data) and datatype
+This is the single *most important* enhancement, if it's possible.
+- [[https://github.com/dbpedia/mappings-tracker/issues/93#issuecomment-320207029][#93]] discussion involving RML and R2RML mappings
+(Edited 4-Aug-2017)
+
+** Specific Properties
+Specific props provide more "natural" units for a specific measurement.
+- E.g. I could look for tall people like this:  
+  #+BEGIN_SRC SPARQL
+  select * {?x dbo:Person/height > 180}  # 1
+  #+END_SRC
+- But I have to know there's such prop, and find the unit is "cm" (I bet that's not documented)
+- Just as easy to write 
+  #+BEGIN_SRC SPARQL
+  select * {?x dbo:height > 1.80}        # 2
+  #+END_SRC
+Actually much easier, since 1 is not valid SPARQL
+- One can't have a slash in a prefixed name. 
+- would have to write ~<http://dbpedia.org/ontology/Person/height>~, yack
+- So please rename them to dbo:Person_height, etc 
+
+** Various Extraction Issues
+- [[https://github.com/dbpedia/extraction-framework/issues/314][#314]] numbered raw props are collapsed to one prop
+- [[https://github.com/dbpedia/extraction-framework/issues/325][#325]] extract several Lengths out of a field?
+- [[https://github.com/dbpedia/extraction-framework/issues/292][#292]] IntermediateNodeMapping of "stub resources" is missing a letter
+
+* External Mapping Problems
+47 owl:equivalentClass, 35 owl:equivalentProperty mappings to schema.org. Controversial and hastily made:
+- eg dbo:University equivalentClass schema:UniversityOrCollege equivalentClass dbo:College
+- If we *use* this equivalence, we'll whack the DBO distinction University vs College
+Maybe "equivalentClass (schema:UniversityOrCollege, union (dbo:University, dbo:College))". IMHO is useless, but that's just an opinion
+More insidious: no consideration for the structure of the two hierarchies
+- dbo:AdministrativeRegion owl:equivalentClass schema:AdministrativeArea
+- dbo:City owl:equivalentClass schema:City
+- schema:City rdfs:subclassOf schema:AdministrativeArea
+- => dbo:City rdfs:subclassOf dbo:AdministrativeRegion
+But in DBO:
+- City is a Settlement (a point feature)
+- AdministrativeRegion is a Region (an area feature)
+- Settlement and Region are siblings, presumably disjoint
+
+** DUL Too Generic?
+The DUL properties are so general that their utility is not obvious to me
+- dul:coparticipatesWith puts together variegated props from dbo:aircraftAttack to dbo:university to dbo:writer
+- Is ther a useful query example with dul:coparticipatesWith?
+But they're built on strong ontological foundations
+- So maybe can be used for guidance to improve DBO props:
+- Automated validation of domain/range
+- Grouping of props by superprop and domain/range, to discover duplicates
+
+** owl:Thing Considered Useless
+A heretic thought: owl:Thing is useless because nobody would query by it
+- [[http://www.w3.org/TR/2004/REC-owl-guide-20040210/#DefiningSimpleClasses][OWL spec]]: "Every individual in the OWL world is a member of the class owl:Thing"
+- Ok, so an OWL-compliant reasoner will infer it: if I need it
+- Or we could just ask like this:
+  #+BEGIN_SRC SPARQL
+  ?x a ?class. ?class a owl:Class
+  #+END_SRC
+- Do we need an extra 10-20M triples in the repo? 
+The owl:Thing expansion is inconsistent
+- Eg 34658 bg.dbpedia resources have no owl:Thing
+- Eg http://bg.dbpedia.org/resource/Райко_Жинзифов has it
+- But http://bg.dbpedia.org/resource/България does not
+** No Choice
+Superclasses are expanded to direct rdf:type statements in DBpedia exports
+- So I don’t have an option to use external mappings & owl:Thing or not
+IMHO DBpedia should emit as a separate option (load file): 
+- External ontology mapping statements (filtering by namespace, I have a simple script) 
+- Data triples mapped to external ontologies 
+   
+* Ontology Problems
+Finally I list some ontology problems
+- Why in the last section?
+- To emphasize my thesis that ontology problems are just one kind of many :-)
+The list of problems below is by no means exhaustive
+
+** External Props Not Used Consistently
+Widely-used external props should be reused in DBpedia, rather than making our own
+- Eg foaf:name, dct:type: these are used to some extent, but not always and not consistently
+- Of course, we need to be mindful of domain/range
+
+** rdfs:domain/range are Wishful
+Domain/range are not taken into account by the extractor
+- rdfs:domain/range have uncompromising  semantics and infer classes
+- Don't attempt RDFS reasoning on DBpedia to avoid disappointment/embarrassment :-)
+- Maybe it's better to emit them as schema:domainIncludes/rangeIncludes until fixed
+
+** Classes that Duplicate Properties
+Classes like President, VicePresident, Medalist are often non-sensical. Check
+: select ?x {?x a dbo:President}
+- President of what? Doesn't point the country or institution/association. And when?
+- Too many errors to be useful. Eg [[https://en.wikipedia.org/wiki/Česlovas_Juršėnas][Česlovas_Juršėnas]] is not a president
+- VicePresident has no instances
+- Medalist: of sporting event at what level?
+How do these relate to the properties president, vicePresident?
+- really should be sub-props of colleague:
+- "X president Y" means "Y was president while X held some other position" 
+- If "X president Y", should it infer that Y is President? It does not. 
+There are many classes that duplicate a prop name, with no consideration what the class means or how it would be assigned.
+- In some cases even led to syntax errors since people are not mindful of capitalization. Oops:
+  #+BEGIN_SRC Turtle
+  dbo:bronzeMedalist rdfs:subPropertyOf dbo:Medalist .
+  #+END_SRC
+
+** Measurement Classes
+There are numerous classes that duplicate measurement props
+- e.g. Area, Altitude, Depth
+A lot are unused or not well used.
+IMHO should be generalized to Measurement (ala ~crm:E16_Measurement~) with props:
+- type, eg: height, width, population, depth, altitude
+- value: with unit (datatype)
+- asOfDate
+- dct:publisher, eg: bgdbr:Национален_статистически_институт (BG Statistical institute)
+- method, eg: Census, Estimation
+- extent, eg: metro/total/land/water (area), metro/total (population), with/without frame (painting)
+
+** Place vs Organisation
+Place and Organization are often dual aspects of the same entity, eg
+- country with its government
+- city with its council
+- store as a building vs as a business
+- a castle museum
+IMHO we can't disentangle these without splitting up numerous nodes
+- That's IMHO not viable
+- The top-level should IMHO accommodate such diality
+
+** Simple Ontology Fixes
+Problems due to decisions in the Extraction Framework (not ontology editing)
+- [[https://github.com/dbpedia/extraction-framework/issues/301][#301]] topical_concepts should use foaf:focus not skos:subject
+  - On Wikipedia, a Topical Page is the main page of a Category. Map to:
+    : dbr:Mathematics foaf:focus dbr:Category:Mathematics
+- [[https://github.com/dbpedia/extraction-framework/issues/312][#312]] wikiPageUsesTemplate should be in DBO namespace
+  - Because it's a language-independent concept
+- [[https://github.com/dbpedia/extraction-framework/issues/293][#293]] dbpedia should use true wikidata URLs, not "bastardized" URLs
+  - Holds for classes: http://wikidata.dbpedia.org/resource/Q5
+  - And individuals: http://wikidata.dbpedia.org/resource/Q5499200
+Easy to fix

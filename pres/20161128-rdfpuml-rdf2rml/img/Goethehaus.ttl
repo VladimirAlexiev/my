@@ -1,0 +1,150 @@
+@prefix aat:           <http://vocab.getty.edu/aat/> .
+@prefix bilder:        <http://www.bildindex.de/bilder/d/> .
+@prefix crm:           <http://www.cidoc-crm.org/rdfs/cidoc_crm_v5.0.2_english_label.rdfs#> .
+@prefix dc:            <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms:       <http://purl.org/dc/terms/> .
+@prefix document:      <http://www.bildindex.de/document/> .
+@prefix edm:           <http://www.europeana.eu/schemas/edm/> .
+@prefix fmAgent:       <http://mint-projects.image.ntua.gr/Museu/Agent/Bildarchiv+Foto+Marburg/> .
+@prefix fmAggregation: <http://mint-projects.image.ntua.gr/Museu/Aggregation/Bildarchiv+Foto+Marburg/> .
+@prefix fmCHO:         <http://mint-projects.image.ntua.gr/Museu/ProvidedCHO/Bildarchiv+Foto+Marburg/> .
+@prefix fmEvent:       <http://mint-projects.image.ntua.gr/Museu/Event/Bildarchiv+Foto+Marburg/> .
+@prefix fmTimeSpan:    <http://mint-projects.image.ntua.gr/Museu/TimeSpan/Bildarchiv+Foto+Marburg/> .
+@prefix foaf:          <http://xmlns.com/foaf/0.1/> .
+@prefix gnd:           <http://d-nb.info/gnd/> .
+@prefix lidoTerm:      <http://terminology.lido-schema.org/eventType/> .
+@prefix ore:           <http://www.openarchives.org/ore/terms/> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix rdaGr2:        <http://rdvocab.info/ElementsGr2/> .
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix svcs:          <http://rdfs.org/sioc/services#> .
+@prefix wgs84:         <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+fmAggregation:obj20225099
+        a                  ore:Aggregation ;
+        edm:aggregatedCHO  fmCHO:obj20225099 ;
+        edm:dataProvider   "Bildarchiv Foto Marburg" ;
+        edm:hasView        bilder:mi10650b01 , bilder:mi10650b05 , bilder:fm827849 ;
+        edm:isShownAt      document:obj20225099 ;
+        edm:isShownBy      bilder:fmkbb10509 ;
+        edm:provider       "Museu" ;
+        edm:rights         <http://rightsstatements.org/vocab/InC/1.0/> .
+
+fmCHO:obj20225099  a        edm:ProvidedCHO ;
+        dc:contributor      "Goethe, Catharina Elisabeth"@de ;
+        dc:contributor      gnd:118695940 , gnd:118540238 ;
+        dc:date             "1946/1951" , "1755/1756" , "1944" ;
+        dc:format           "Fachwerk"@de , "verputzt"@de ;
+        dc:identifier       "obj20225099" ;
+        dc:title            "Goethehaus, Frankfurt (Main), Großer Hirschgraben 23"@de ;
+        dc:type             "Museum"@de , "Architektur"@de ;
+        dc:type             aat:300263552 , gnd:4002851-3 , aat:300005768 , gnd:4040795-0 ;
+        dcterms:created     "1719" ;
+        dcterms:provenance  "Frankfurt (Main), Großer Hirschgraben 23"@de ;
+        edm:hasMet          fmEvent:obj20225099_Event_2 , fmEvent:obj20225099_Event_3 , fmEvent:obj20225099_Event_4 , fmEvent:obj20225099_Event_5 , fmEvent:obj20225099_Event_6 , fmEvent:obj20225099_Event_1 ;
+        edm:type            "IMAGE" .
+
+fmEvent:obj20225099_Event_1
+        a                        edm:Event ;
+        crm:P11_had_participant  gnd:102418500 ;
+        edm:hasType              lidoTerm:production ;
+        edm:occuredAt            fmTimeSpan:obj20225099_TimeSpan_1 .
+
+fmEvent:obj20225099_Event_2
+        a                        edm:Event ;
+        crm:P11_had_participant  gnd:118540238 ;
+        edm:hasType              lidoTerm:use .
+
+fmEvent:obj20225099_Event_3
+        a                        edm:Event ;
+        crm:P11_had_participant  gnd:118695940 , fmAgent:obj20225099_Agent_1 ;
+        edm:hasType              lidoTerm:use .
+
+fmEvent:obj20225099_Event_4
+        a              edm:Event ;
+        edm:hasType    lidoTerm:modification ;
+        edm:occuredAt  fmTimeSpan:obj20225099_TimeSpan_2 .
+
+fmEvent:obj20225099_Event_5
+        a              edm:Event ;
+        edm:hasType    lidoTerm:destruction ;
+        edm:occuredAt  fmTimeSpan:obj20225099_TimeSpan_3 .
+
+fmEvent:obj20225099_Event_6
+        a              edm:Event ;
+        edm:hasType    lidoTerm:modification ;
+        edm:occuredAt  fmTimeSpan:obj20225099_TimeSpan_4 .
+
+fmTimeSpan:obj20225099_TimeSpan_1
+        a          edm:TimeSpan ;
+        edm:begin  "1719" ;
+        edm:end    "1719" .
+
+fmTimeSpan:obj20225099_TimeSpan_2
+        a          edm:TimeSpan ;
+        edm:begin  "1755" ;
+        edm:end    "1756" .
+
+fmTimeSpan:obj20225099_TimeSpan_3
+        a          edm:TimeSpan ;
+        edm:begin  "1944" ;
+        edm:end    "1944" .
+
+fmTimeSpan:obj20225099_TimeSpan_4
+        a          edm:TimeSpan ;
+        edm:begin  "1946" ;
+        edm:end    "1951" .
+
+fmAgent:obj20225099_Agent_1
+        a                 edm:Agent ;
+        edm:wasPresentAt  fmEvent:obj20225099_Event_3 ;
+        skos:prefLabel    "Goethe, Catharina Elisabeth" .
+
+gnd:102418500  a          edm:Agent ;
+        edm:wasPresentAt  fmEvent:obj20225099_Event_1 ;
+        owl:sameAs        <http://vocab.getty.edu/ulan/500066230-agent> ;
+        skos:prefLabel    "Uffenbach, Johann Friedrich Armand von" .
+
+gnd:118540238  a          edm:Agent ;
+        edm:wasPresentAt  fmEvent:obj20225099_Event_2 ;
+        skos:prefLabel    "Goethe, Johann Wolfgang von" .
+
+gnd:118695940  a          edm:Agent ;
+        edm:wasPresentAt  fmEvent:obj20225099_Event_3 ;
+        skos:prefLabel    "Goethe, Johann Caspar" .
+
+gnd:4002851-3  a    skos:Concept ;
+        rdfs:label  "Architektur"@de .
+
+gnd:4040795-0  a    skos:Concept ;
+        rdfs:label  "Museum"@de .
+
+aat:300005768  a    skos:Concept ;
+        rdfs:label  "museum (building)"@en .
+
+aat:300263552  a    skos:Concept ;
+        rdfs:label  "architecture (object genre)"@en .
+
+bilder:mi10650b01    a  edm:WebResource .
+bilder:mi10650b05    a  edm:WebResource .
+bilder:fm827849      a  edm:WebResource .
+bilder:fmkbb10509    a  edm:WebResource .
+document:obj20225099 a  edm:WebResource .
+
+###################
+
+@prefix puml: <http://plantuml.com/ontology#>.
+edm:rights    a puml:InlineProperty.
+edm:hasType   a puml:InlineProperty.
+edm:hasView   a puml:InlineProperty.
+owl:sameAs    a puml:InlineProperty.
+edm:isShownAt a puml:InlineProperty.
+edm:isShownBy a puml:InlineProperty.
+aat:300005768 a puml:Inline.
+aat:300263552 a puml:Inline.
+gnd:4002851-3 a puml:Inline.
+gnd:4040795-0 a puml:Inline.
+fmCHO:obj20225099 puml:left  fmEvent:obj20225099_Event_2 .
+fmCHO:obj20225099 puml:right fmEvent:obj20225099_Event_3 .

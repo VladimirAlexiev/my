@@ -1,0 +1,324 @@
+# -*- my-org-place: "Ontotext, Sofia, Bulgaria"; my-org-filename-full: nil -*-
+
+#+TITLE: RDF Shapes
+#+DESCRIPTION: Shapes as the new Ontologies, SHACL as the new SPIN
+#+DATE: 2016-07-29
+#+AUTHOR: Vladimir Alexiev
+#+EMAIL: vladimir.alexiev@ontotext.com
+#+EXCLUDE_TAGS: noexport
+
+* Table of Contents                                 :TOC:noexport:
+ - [[#motivation][Motivation]]
+   - [[#ontologies][Ontologies]]
+   - [[#owa-vs-cwa][OWA vs CWA]]
+   - [[#ontology-engineering-vs-domain-data-modeling][Ontology Engineering vs Domain Data Modeling]]
+ - [[#domain-modeling-example][Domain Modeling Example]]
+   - [[#domain-areas][Domain Areas]]
+   - [[#ontologies-reused][Ontologies Reused]]
+   - [[#ontologies-reused-1][Ontologies Reused]]
+   - [[#atag-ontology][ATAG Ontology]]
+   - [[#atag-ontology-1][ATAG Ontology]]
+   - [[#atag-domain-model-video-metadata][ATAG Domain Model: Video Metadata]]
+   - [[#atag-domain-model-video-segmentation][ATAG Domain Model: Video Segmentation]]
+   - [[#atag-domain-model-text-annotations][ATAG Domain Model: Text Annotations]]
+   - [[#atag-domain-model-text-to-video-synchronization][ATAG Domain Model: Text to Video Synchronization]]
+ - [[#rdf-shapes][RDF Shapes]]
+   - [[#database-of-requirements][Database of Requirements]]
+   - [[#database-of-requirements-use-cases][Database of Requirements: Use Cases]]
+   - [[#database-of-requirements-requirements][Database of Requirements: Requirements]]
+   - [[#database-of-requirements-requirements-by-use-case][Database of Requirements: Requirements by Use Case]]
+   - [[#database-of-requirements-requirements-coverage-by-tools][Database of Requirements: Requirements Coverage by Tools]]
+   - [[#evaluation-and-logical-underpinning][Evaluation and Logical Underpinning]]
+   - [[#evaluation-and-logical-underpinning-1][Evaluation and Logical Underpinning]]
+ - [[#shex][ShEx]]
+   - [[#shex-example][ShEx Example]]
+ - [[#shacl][SHACL]]
+   - [[#shacl-example][SHACL Example]]
+   - [[#tools][Tools]]
+
+* Motivation
+- Why RDF Shapes aka Application Profiles are more important than Ontologies
+- Shapes as the new Ontologies, SHACL as the new SPIN
+
+** Ontologies
+- Everyone uses rdfs:subClassOf, rdfs:subPropertyOf
+- Problems start with rdfs:domain, rdfs:range
+- OWL classes (especilly Restrictions) are not very useful
+
+RDFS/OWL is made to infer new stuff, not for constraint validation
+- eg this makes every node having the property be both dbo:Peak and dbo:Volcano:
+  : dbo:firstAscentYear rdfs:domain dbo:Peak, dbo:Volcano
+- eg see [[https://github.com/dbpedia/extraction-framework/issues/287][dbpedia/extraction-framework/issues/287]] 
+
+schema:domainIncludes & schema:rangeIncludes don't have this problem
+- see [[https://github.com/dbpedia/ontology-tracker/issues/14][dbpedia/ontology-tracker/issues/14]] and [[https://docs.google.com/document/d/1pQPO61d3RJY05yHSxlcu4DsR1NEcW8n9URoTci4lFJY/edit#heading%3Dh.btsd7n2canhm][this discussion]]
+
+** OWA vs CWA
+Pellet ICV (Integrity Constraint Validation): Validating RDF with OWL
+- Interprets OWL ontologies with the Closed World Assumption in order to detect constraint violations in RDF data
+- Developed by Clark & Parsia in 2010 as open source.
+  Still continues at https://github.com/Complexible/pellet
+- Pellet 3.0 is closed source, part of StarDog
+- [[http://pellet-users.mindswap.narkive.com/QJjUKeZj/where-can-i-get-the-pellet-icv][Kendall Clark 2011]]: ICV not available any longer.
+  if yr interested in icv, it will be available in the next release of stardog
+- [[http://notes.3kbo.com/node/572][Notes at 3kbo]]
+
+** Ontology Engineering vs Domain Data Modeling
+Ontology Engineering:
+- Make a new ontology for a new domain
+
+But how often do you work in a brand new domain?
+- The spirit of the web is "reuse as much as you can"
+- Don't make up your own stuff just because you can:
+- Often this is more effort-intensive
+- Using a custom ontology will limit reuse of your data
+
+Domain Data Modeling:
+- Research & find appropriate ontologies
+- Extend if/as needed
+- Document how they come together to describe the domain data
+
+* Domain Modeling Example
+~atag:~ (AutoTag): Automotive Video Tagging for Tagasauris
+- https://github.com/Ontotext-AD/tagasauris/tree/master/data-model
+- Unfortunately http://rawgit.com/Ontotext-AD/tagasauris/master/data-model/index.html doesn't work since the repo is closed. Download and view
+
+** Domain Areas
+The model covers the following areas:
+- Video and Annotation domain:
+  - Video *Metadata* 
+  - Video *Segmentation* including hierarchy (Chapter/Scene/Shot/Frame), time stamps, hash URLs
+  - Text *captions*: Subtitles or Automatic Speech Recognition (ASR) 
+  - Text Segmentation and *Annotations* (applies to title, description, captions)
+  - Text to Video *Synchronization*, allowing fusion of text and video annotations
+  - Video *Recognition* of images 
+- Automotive domain:
+  - Vehicle *brands & models* 
+  - Tuners 
+  - *Events*: places (Venues, Circuits), dates, Participants
+  - *Racing*: Series (championships), Seasons, Races, Teams, drivers, Ranking (results)
+  - *Shows* (expositions, salons)
+See [[https://docs.google.com/document/d/1ULiUbG2rjR9x6tkrsXUK8wXJTuogdEgdiOzKIRqo9AM/edit#heading%3Dh.l9l2q5iu754][Multimedia Annotation]] notes (google doc)
+
+** Ontologies Reused
+- [[http://dbpedia.org/ontology/][dbo]]: DBpedia ontology: some classes (eg dbo:Person) and props (eg dbo:productionStartYear, dbo:manufacturer)
+- [[http://purl.org/dc/elements/1.1/][dc]], [[http://purl.org/dc/terms/][dct]]: Dublin Core: basic metadata (eg dc:creator, dct:title, dct:issued, dc:format, eg "video/mpeg4")
+- [[http://purl.org/dc/dcmitype/][dctype]]: media resource type (eg dctype:MovingImage)
+- [[http://purl.org/NET/c4dm/event.owl/][event]]: basic Event info
+- [[http://www.w3.org/2005/11/its/rdf#][itsrdf]]: NER in text: itsrdf:taIdentRef is Named Entity, itsrdf:taIdentClass is type
+- [[http://www.w3.org/ns/ma-ont#][ma]]: W3C Media Annotation (ma:MediaResource, ma:MediaFragment, ma:isFragmentOf...)
+- [[http://nerd.eurecom.fr/ontology#][nerd]]: NE classes (eg nerd:Person, nerd:Phone, nerd:Email)
+- [[http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#][nif]]: NLP Interchange Format: text annotation
+- [[http://www.w3.org/ns/oa#][oa]]: Open Annotation: video annotation
+- [[http://www.w3.org/2004/02/skos/core#][skos]]: Simple Knowledge Organization System: defining concepts
+
+** Ontologies Reused
+Datasets reused:
+- [[http://babelnet.org/rdf/][bn]]: Babelnet: concepts, eg bn:s03473434n "pole position"
+- [[http://dbpedia.org/resource/][dbr]]: DBpedia resources (eg dbr:Niki_Lauda, dbo:Honda) and concepts (eg dbr:Mid-size_car, dbr:Luxury_vehicle)
+- [[http://vocab.linkeddata.es/lscom#][lscom]]: concepts often occuring in videos (eg lscom:Commentator_Studio_Expert, lscom:Performing_Art_Activity)
+
+Standard reused:
+- [[https://www.w3.org/TR/media-frags/][mfrag]]: W3C Media Fragments: not ontology but hash URL schemes to access a certain fragment of a media resource
+  - ~#t=start,end~: temporal
+  - ~#xywh=x,y,width,height~: region
+- nif: does that for text, reusing RFC 5147: ~#char=beg,end~
+
+Potentially useful:
+- [[http://data.linkedtv.eu/ontologies/core#][linkedtv]]: FP7 LinkedTV ontology: used as model for ~atag~
+- [[http://multimedialab.elis.ugent.be/organon/ontologies/ninsuna/][nsa]]: Ninsuna: represent mfrag info in properties: used as model for ~atag~
+- [[http://linkedmultimedia.org/sparql-mm/functions#][mm]]: SPARQL MM for querying video annotations
+- [[http://purl.org/ontology/po/][po]]: BBC Programmes Ontology
+
+** ATAG Ontology
+We define a few classes and properties, eg for Video fragmentation:
+#+BEGIN_SRC Turtle
+
+atag:Shot a owl:Class; 
+  rdfs:label "Shot";
+  rdfs:comment "Continuous footage between two camera edits (change of camera setup)";
+  rdfs:subClassOf ma:MediaFragment;
+  rdfs:isDefinedBy atag: .
+
+atag:Frame a owl:Class; 
+  rdfs:label "Frame";
+  rdfs:comment "Single (or a few) frames from a video. Images are recognized within frames";
+  rdfs:subClassOf ma:MediaFragment;
+  rdfs:isDefinedBy atag: .
+
+atag:hasFragment a owl:ObjectProperty;
+  rdfs:label "hasFragment";
+  rdfs:comment "Direct (proper) fragment. Used to build up the hierarchy MediaResource>[Chapter]>Scene>Shot>Frame";
+  # rdfs:domain ma:MediaResource or ma:MediaFragment
+  rdfs:range ma:MediaFragment;
+  rdfs:isDefinedBy atag: .
+
+atag:transitiveFragment a owl:TransitiveProperty;
+  rdfs:label "transitiveFragment";
+  rdfs:comment "Transitive fragment from MediaResource (video) all the way down to Frame";
+  # rdfs:domain ma:MediaResource or ma:MediaFragment
+  rdfs:range ma:MediaFragment;
+  rdfs:isDefinedBy atag: .
+
+atag:hasFragment rdfs:subPropertyOf atag:transitiveFragment.
+#+END_SRC
+
+** ATAG Ontology
+And for vehicles, brands etc
+#+BEGIN_SRC Turtle
+atag:VehicleBrand a owl:Class;
+  rdfs:label "VehicleBrand";
+  rdfs:comment """Manufacturer or brand name for automobiles, motorcycles, trucks, etc; eg Acura""";
+  rdfs:isDefinedBy atag: .
+  
+atag:Vehicle a owl:Class;
+  rdfs:label "Vehicle";
+  rdfs:comment """Specific vehicle model for automobiles, motorcycles, trucks, etc; eg Acura TLX""";
+  rdfs:isDefinedBy atag: .
+
+atag:feature a rdf:Property;
+  rdfs:label "feature";
+  rdfs:comment """Various characteristics of an object (eg atag:VehicleBrand, atag:VehicleTuner, atag:Vehicle) such as
+- vehicle type, eg dbr:Automobile, dbr:Motorcycle, dbr:Truck
+- class, eg dbr:Mid-size_car, dbr:Luxury_vehicle, dbr:Monster_truck
+- layout, eg dbr:Front-engine_design, dbr:Front-wheel_drive
+- currency of brand or model: former (dbc:Defunct_motor_vehicle_manufacturers) or current (dbr:Going_concern)
+- engine, eg dbr:Inline-four_engine, dbr:V6_engine, "V6", "straight-four"
+""";
+  rdfs:isDefinedBy atag: .
+#+END_SRC
+
+** ATAG Domain Model: Video Metadata
+More importantly, we document how things come together to represent data.
+
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/video-metadata.png]]
+
+** ATAG Domain Model: Video Segmentation
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/video-segmentation.png]]
+
+** ATAG Domain Model: Text Annotations
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/nif.png]]
+
+** ATAG Domain Model: Text to Video Synchronization
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/nif-video.png]]
+
+* RDF Shapes
+Goal: formally describe the shape of RDF data:
+- constraint validation
+- documentation between data exchange partners
+- generating UIs, etc
+
+Precedents:
+- [[http://wiki.dublincore.org/index.php/RDF-Application-Profiles][DCMI RDF Application Profiles]] task group
+- [[https://www.w3.org/Submission/shapes/][OSLC Resource Shapes]]: IBM-led, for exchanging info between requirements management systems, change trackers, issue trackers...
+- [[http://spinrdf.org/][SPIN]] (SPARQL Inferencing Notation), [[https://www.w3.org/Submission/spin-overview/][2011-02 W3C Submission]] by TopQuadrant, RPI, OpenLink
+- [[http://aksw.org/Projects/RDFUnit.html][RDFUnit]] (AKSW): generates SPARQL tests from OWL, DCAP, OSLC and now SHACL
+- [[http://purl.org/net/rdf-validation][Database of Requirements]] on RDF Constraint Formulation and Validation
+
+W3C Activities:
+- [[http://www.w3.org/2012/12/rdf-val/][RDF Validation Workshop]]: Cambridge, 2013-09-11
+- [[https://www.w3.org/2014/data-shapes/wiki/Main_Page][RDF Data Shapes Working Group]]: approved 2014-09-26.
+  Initially lots of friction (eg between ShEx and SHACL), now settled on SHACL
+
+** [[http://purl.org/net/rdf-validation][Database of Requirements]]
+Case Studies\\
+[[./img/req-case-studies.png]]
+
+Tools\\
+[[./img/req-tools.png]]
+
+** Database of Requirements: Use Cases
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/req-use-cases.png]]
+
+** Database of Requirements: Requirements
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/req-requirements.png]]
+
+** Database of Requirements: Requirements by Use Case
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/req-by-use-case.png]]
+
+EDM (Europeana Data Model) validation: work topic of Europeana DQC (Data Quality Committee)
+
+** Database of Requirements: Requirements Coverage by Tools
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/req-coverage.png]]
+
+** Evaluation and Logical Underpinning
+"RDF Validation Requirements - Evaluation and Logical Underpinning"
+- by Thomas Bosch, Andreas Nolle, Erman Acar, Kai Eckert 
+- (GESIS – Leibniz Institute, Albstadt-Sigmaringen University, University of Mannheim)
+- 82.1 Evaluation of Constraint Languages, p71
+
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/req-evaluation1.png]]
+
+** Evaluation and Logical Underpinning
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/req-evaluation2.png]]
+
+"If you can't check it with SPARQL, it doesn't mattter"
+
+* ShEx
+ShapeExpressions: like regexps but for graphs
+- http://www.w3.org/Submission/shex-primer/
+  - Beautifully animated with JS. Visualises how the validation works
+  - Lets you try things and understand the concepts
+- http://shex.io/: resources
+- http://www.w3.org/2013/ShEx/Examples/ & http://www.w3.org/2013/ShEx/FancyShExDemo
+- devised by Eric Prud’hommeaux (W3C)
+- Iovka Boneva (INRIA & CNRS, University of Lille): theoretical proofs on ShEx and SHACL
+
+** ShEx Example
+Nice and simple language.
+- A person must have one name and mbox, an optional age, and may have ~foaf:knows~ links that are also Persons
+
+#+BEGIN_SRC Turtle
+<PersonShape> {
+  foaf:name xsd:string 
+, foaf:age  xsd:integer{0,1}
+, foaf:mbox IRI
+, foaf:knows @<PersonShape>*
+}
+#+END_SRC
+
+* SHACL
+Shapes Constraint Language
+- Strongly inspired by SPIN
+- Led by TopQuadrant
+http://w3c.github.io/data-shapes/shacl/: current draft
+
+** SHACL Example
+Complex and verbose
+#+BEGIN_SRC Turtle
+<PersonShape>  a sh:Shape ;
+  sh:property  [ a   sh:PropertyConstraint ;
+    sh:minCount   0 ;
+    sh:predicate  foaf:knows] ;
+  sh:property  [ a   sh:PropertyConstraint ;
+    sh:maxCount   1 ;
+    sh:minCount   1 ;
+    sh:nodeKind   sh:IRI ;
+    sh:predicate  foaf:mbox] ;
+  sh:property  [ a   sh:PropertyConstraint ;
+    sh:datatype   xsd:integer ;
+    sh:maxCount   1 ;
+    sh:minCount   0 ;
+    sh:predicate  foaf:age] ;
+  sh:property  [ a   sh:PropertyConstraint ;
+    sh:datatype   xsd:string ;
+    sh:maxCount   1 ;
+    sh:minCount   1 ;
+    sh:predicate  foaf:name] .
+#+END_SRC 
+
+** Tools
+- http://rdfshape.herokuapp.com/: validation/conversion between languages. Eg [[http://rdfshape.herokuapp.com/converter/schema?schema%3Dprefix%2B%3A%2B%2B%2B%2B%2B%3Chttp%3A%2F%2Fexample.org%2F%3E%0D%0Aprefix%2Bfoaf%3A%2B%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0D%0Aprefix%2Bxsd%3A%2B%2B%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0D%0Aprefix%2Bshex%3A%2B%3Chttp%3A%2F%2Fwww.w3.org%2F2013%2FShEx%2Fns%23%3E%0D%0A%0D%0A%3CPersonShape%3E%2B%7B%0D%0A%2B%2Bfoaf%3Aname%2Bxsd%3Astring%2B%0D%0A%2C%2Bfoaf%3Aage%2B%2Bxsd%3Ainteger%0D%0A%2C%2Bfoaf%3Ambox%2BIRI%0D%0A%2C%2Bfoaf%3Aknows%2B%40%3CPersonShape%3E*%0D%0A%7D&targetFormat%3DTURTLE][previous example]]
+
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/heroku-compare.png]]

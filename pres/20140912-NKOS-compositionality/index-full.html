@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>On Compositionality of ISO 25964 Hierarchical Relations (BTG, BTP, BTI)</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Vladimir Alexiev (Ontotext Corp), Jutta Lindenthal (Consultant digiCULT-Verbund eG), Antoine Isaac (Europeana, VU Amsterdam)" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">On Compositionality of ISO 25964 Hierarchical Relations (BTG, BTP, BTI)</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org973365f">BTG, BTP, BTI</a></li>
+<li><a href="#org2df3225">Problem Statement</a></li>
+<li><a href="#orgb64747f">BTG, BTP, BTI Compositionality</a></li>
+<li><a href="#org2b0495c">Usage: Inferring ISO relations</a></li>
+<li><a href="#orgde15588">BTP Imprecisions</a></li>
+<li><a href="#orgf020b18">BTI Elaborations</a></li>
+<li><a href="#org2c2bb22">Thanks for your time!</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org973365f" class="outline-2">
+<h2 id="org973365f">BTG, BTP, BTI</h2>
+<div class="outline-text-2" id="text-org973365f">
+<p>
+KOS have used different kinds of hierarchical relations for a long time:
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Relation</b></td>
+<td class="org-left"><b>Abbr</b></td>
+<td class="org-left"><b>Name</b></td>
+<td class="org-left"><b>Example</b></td>
+</tr>
+
+<tr>
+<td class="org-left">broaderGeneric</td>
+<td class="org-left">BTG</td>
+<td class="org-left">Genus/Species Relation</td>
+<td class="org-left">mineral BTG inorganic material  (AAT)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Iceland spar BTG calcite (AAT)</td>
+</tr>
+
+<tr>
+<td class="org-left">broaderPartitive</td>
+<td class="org-left">BTP</td>
+<td class="org-left">Part/Whole Relation</td>
+<td class="org-left">Tuscany BTP Italy (TGN)</td>
+</tr>
+
+<tr>
+<td class="org-left">broaderInstantial</td>
+<td class="org-left">BTI</td>
+<td class="org-left">Kind/Instance Relation</td>
+<td class="org-left">Rembrandt van Rijn BTI person (ULAN)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://d-nb.info/gnd/5055902-3">SG Dynamo Dresden</a> BTI <a href="http://d-nb.info/gnd/4155742-6">football clubs</a> (GND)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-orgf62dafb" class="outline-3">
+<h3 id="orgf62dafb">Use of BTG, BTP, BTI in Thesauri</h3>
+<div class="outline-text-3" id="text-orgf62dafb">
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>Deutsche Nationalbibliothek: <a href="http://d-nb.info/standards/elementset/gnd">Gemeinsame Normdatei Ontology</a> 
+<ul class="org-ul">
+<li>gndo:broaderTermInstantial (see <a href="http://d-nb.info/050559028/about/rdf">Dynamo Dresden</a> in <a href="http://www.dnb.de/EN/lds">Linked Data Service</a>)</li>
+</ul></li>
+<li>Some vocabs in xTree (vocnet.org) by digiCULT-Verbund eG</li>
+<li><a href="http://www.ldf.fi/schema/skosext/">FinnONTO SKOS Extensions</a> (Aalto University)</li>
+<li><a href="https://wordnet.princeton.edu/wordnet/man/wn.1WN.html">WordNet</a>, with BTP distinctions: member vs part vs substance meronym/holonym</li>
+<li><a href="http://purl.org/iso25964/skos-thes">ISO 25964 Ontology</a>: officially formalized (as "step" properties)</li>
+<li>Most recently, <a href="http://vocab.getty.edu">Getty Vocabulary Program (GVP) LOD</a>
+<ul class="org-ul">
+<li>First industrial application of ISO 25964</li>
+<li>Many examples in this presentation are from GVP</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb3c2c5e" class="outline-3">
+<h3 id="orgb3c2c5e">Definitions in ISO 25964</h3>
+<div class="outline-text-3" id="text-orgb3c2c5e">
+<ul class="org-ul">
+<li>BTG: amenable to logical all-and-some test
+<ul class="org-ul">
+<li>Children should all be a type, or kind of the parent</li>
+<li>From the parent's point of view, it encompasses only some of any given child</li>
+<li>Can be concluded it's comparable to rdfs:subClassOf (isA): transitive</li>
+</ul></li>
+<li>BTP: part of entity/system belongs uniquely to particular possessing whole in any context
+<ul class="org-ul">
+<li>The part may not belong to more than one whole, and BTP has to be universally valid</li>
+<li><a href="http://www.getty.edu/research/tools/vocabularies/guidelines/aat_3_1_hierarchical_rels.html">AAT Guidelines</a>: "Each child should be part of the parent and all ancestors above it" (transitive)</li>
+</ul></li>
+<li>BTI: individual instance to general class
+<ul class="org-ul">
+<li>Instances often represented by proper name (also called "classes of one")</li>
+<li>Instances may not have further BTI nor BTG</li>
+<li>But may be further subdivided: use custom relationship (BTX), eg BTS (subdivision)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5625d13" class="outline-3">
+<h3 id="org5625d13">GVP Hierarchical Relation Counts</h3>
+<div class="outline-text-3" id="text-org5625d13">
+
+<div class="figure">
+<p><img src="./img/hier-rel-per-type.png" alt="hier-rel-per-type.png" style="width:600px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf550168" class="outline-3">
+<h3 id="orgf550168">GVP Hierarchical Relations</h3>
+<div class="outline-text-3" id="text-orgf550168">
+<ul class="org-ul">
+<li>AAT: most are BTG, but there is a variety of BTP:
+<ul class="org-ul">
+<li>(C) BTP (C): calendars of relics BTP cabinets of relics</li>
+<li>(C) BTP (G): anvil components BTP &lt;anvils and anvil accessories&gt;</li>
+<li>(G) BTP (C): &lt;jewelry and accessory components&gt; BTP jewelry</li>
+<li>(G) BTP (G): &lt;grinding and milling equipment components&gt; BTP &lt;grinding and milling equipment&gt;</li>
+<li>(C) BTP (H): building divisions BTP Single Built Works</li>
+</ul></li>
+<li>TGN: all are BTP
+<ul class="org-ul">
+<li>placeType: in the current TGN LOD (2.0) has no relation to BTI</li>
+<li>May reconsider and make it subprop of BTI, see <a href="http://lists.w3.org/Archives/Public/public-esw-thes/2014Mar/att-0001/TGN-place-type.docx">TGN Place Type Relation</a> discussion paper</li>
+</ul></li>
+<li>ULAN: most are BTI, e.g. Rembrandt (ULAN) Persons facet (ULAN)
+<ul class="org-ul">
+<li>May consider more specific, eg Rembrandt (ULAN) BTI Painters (AAT)</li>
+<li>Some BTP, e.g. corporate body BTP another corporate body</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4b1b14b" class="outline-3">
+<h3 id="org4b1b14b">GVP Hierarchy Structure</h3>
+<div class="outline-text-3" id="text-org4b1b14b">
+<ul class="org-ul">
+<li>Subjects include (C)oncepts; but also: (F)acets, (H)ierarchies, (G)uide Terms
+<ul class="org-ul">
+<li>Not for indexing, only to structure. Implemented as iso:ThesaurusArray</li>
+<li>G and C can be intermixed: F&gt;H&gt;(G|C)</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/007-subject-hierarchy.png" alt="007-subject-hierarchy.png" style="width:1100px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org59884bb" class="outline-3">
+<h3 id="org59884bb">SKOS/ISO vs GVP Impedance Mismatch</h3>
+<div class="outline-text-3" id="text-org59884bb">
+<ul class="org-ul">
+<li>SKOS and ISO define <a href="http://vocab.getty.edu/doc/#Standard_Hierarchical_Relations">Standard Hierarchical Relations</a>
+<ul class="org-ul">
+<li>Only between Concepts</li>
+<li>skos:broader, iso:broaderGeneric, etc</li>
+</ul></li>
+<li>We define custom <a href="http://vocab.getty.edu/doc/#GVP_Hierarchical_Relations">GVP Hierarchical Relations</a>
+<ul class="org-ul">
+<li>Connect the hierarchy uniformly</li>
+<li>gvp:broader, gvp:broaderGeneric, etc</li>
+</ul></li>
+<li>We infer appropriate standard relations when they connect concepts directly
+<ul class="org-ul">
+<li>Notice the "thread-through" skos:narrower in the prev diagram</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2df3225" class="outline-2">
+<h2 id="org2df3225">Problem Statement</h2>
+<div class="outline-text-2" id="text-org2df3225">
+<p>
+What are the appropriate combinations (compositions) of BTG, BTP, BTI?
+</p>
+<ul class="org-ul">
+<li>Matters with respect to appropriate closure for information retrieval</li>
+<li>It's a prerequisite for sensible search expansion</li>
+<li>Has not been systematically analyzed to date</li>
+</ul>
+</div>
+<div id="outline-container-org32e7372" class="outline-3">
+<h3 id="org32e7372">The problem with broaderTransitive</h3>
+<div class="outline-text-3" id="text-org32e7372">
+<p>
+ISO 25964 formalized BTG, BTP, BTI as sub-properties of skos:broader
+</p>
+<ul class="org-ul">
+<li>skos:broader contributes unconditionally to skos:broaderTransitive<br />
+(broaderGeneric|broaderPartitive|broaderInstantial) =&gt; broader =&gt; broaderTransitive</li>
+<li><a href="https://at-web1.comp.glam.ac.uk/pages/research/hypermedia/nkos/nkos2012/presentations/TPDL2012_NKOS_Ambiguities.pptx">Ambiguities in representing thesauri using extended SKOS - examples from real life</a> (NKOS 2012):<br />
+broaderTransitive should be established only for BTG and BTP, but not for BTI, nor mixed paths BTG+BTP</li>
+<li>skos:broaderTransitive may include semantically inappropriate statements
+<ul class="org-ul">
+<li>a place inherits all place types of its parents</li>
+<li>eg: Sofia BTP Bulgaria BTI country =&gt; Sofia BTI country</li>
+</ul></li>
+<li>Lively discussion at SKOS mailing list <a href="http://lists.w3.org/Archives/Public/public-esw-thes/2013Nov/%20">from Nov 2013</a> to April 2014</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org17eb4dc" class="outline-3">
+<h3 id="org17eb4dc">The Time Has Come!</h3>
+<div class="outline-text-3" id="text-org17eb4dc">
+<p>
+We <b>have</b> to resolve this issue for GVP LOD representation:
+</p>
+<ul class="org-ul">
+<li>To infer appropriate thread-through standard relations</li>
+<li>Makes sense to represent TGN place types and ULAN actor roles as BTI
+<ul class="org-ul">
+<li>But skos:broaderTransitive causes confusion and bloat (100M=&gt;400M statements)</li>
+</ul></li>
+<li>So we want to infer only appropriate compositions (see <a href="http://vocab.getty.edu/doc/#BTG_BTP_BTI_Inference">BTG, BTP, BTI Inference</a>)
+<ul class="org-ul">
+<li>BTGE, BTPE, BTIE (gvp:broaderGenericExtended, gvp:broaderPartitiveExtended, gvp:broaderInstantialExtended)</li>
+<li>Their disjunction gvp:broaderExtended</li>
+<li>(Also gvp:broaderPreferred and gvp:broaderPreferredExtended)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb64747f" class="outline-2">
+<h2 id="orgb64747f">BTG, BTP, BTI Compositionality</h2>
+<div class="outline-text-2" id="text-orgb64747f">
+<ul class="org-ul">
+<li>Basic decision table. BT*x means BT*|BT*E</li>
+</ul>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>BTGx</b></td>
+<td class="org-left"><b>BTPx</b></td>
+<td class="org-left"><b>BTIx</b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTGx</b></td>
+<td class="org-left">BTGE</td>
+<td class="org-left">BTPE</td>
+<td class="org-left">no</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTPx</b></td>
+<td class="org-left">BTPE</td>
+<td class="org-left">BTPE</td>
+<td class="org-left">no</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTIx</b></td>
+<td class="org-left">BTIE</td>
+<td class="org-left">no</td>
+<td class="org-left">no</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>BTG=&gt;BTGE, BTP=&gt;BTPE, BTI=&gt;BTIE: basic inferences</li>
+</ul>
+</div>
+<div id="outline-container-org62de5db" class="outline-3">
+<h3 id="org62de5db">BTG, BTP, BTI Compositionality (2)</h3>
+<div class="outline-text-3" id="text-org62de5db">
+<ul class="org-ul">
+<li>BTGx/BTGx=&gt;BTGE
+<ul class="org-ul">
+<li>If X is kind of Y and Y is kind of Z then X is kind of Z</li>
+<li>Eg: racehorses BTG &lt;horses by use or role&gt; BTG Equus caballus =&gt; racehorses BTGE Equus caballus</li>
+</ul></li>
+<li>BTGx/BTPx=&gt;BTPE
+<ul class="org-ul">
+<li>If X is kind of Y and Y is part of Z then X is part of Z (X can play the role of Y)</li>
+<li>Eg: beak irons BTG anvil components BTP &lt;anvils and anvil accessories =&gt; beak irons BTPE &lt;anvils and anvil accessories&gt;</li>
+</ul></li>
+<li>BTGx/BTIx=&gt;n/a
+<ul class="org-ul">
+<li>A generic concept may not be hierarchically subordinate to an instance.</li>
+<li>The understanding of instance, as described in ISO, excludes this composition</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3a00d6d" class="outline-3">
+<h3 id="org3a00d6d">BTG, BTP, BTI Compositionality (3)</h3>
+<div class="outline-text-3" id="text-org3a00d6d">
+<ul class="org-ul">
+<li>BTPx/BTGx=&gt;BTPE.
+<ul class="org-ul">
+<li>If X is part of Y and Y is kind of Z then X is part of Z (Z can play the role of Y)</li>
+<li>Eg: anvil components BTP &lt;anvils and anvil accessories&gt; BTG &lt;forging and metal-shaping tools&gt; =&gt; anvil components BTPE &lt;forging and metal-shaping tools&gt;</li>
+</ul></li>
+<li>BTPx/BTPx=&gt;BTPE
+<ul class="org-ul">
+<li>If X is part of Y and Y is part of Z then X is part of Z</li>
+<li>Eg: Sofia BTP Bulgaria, Bulgaria BTP Europe, so Sofia BTP Europe</li>
+<li>But see mereological exceptions/imprecisions below!</li>
+</ul></li>
+<li>BTPx/BTIx=&gt;no
+<ul class="org-ul">
+<li>Counter-example: Sofia BTP Bulgaria BTI country. But Sofia is no country</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7e62e56" class="outline-3">
+<h3 id="org7e62e56">BTG, BTP, BTI Compositionality (4)</h3>
+<div class="outline-text-3" id="text-org7e62e56">
+<ul class="org-ul">
+<li>BTIx/BTGx=&gt;BTIE
+<ul class="org-ul">
+<li>If X is instance of Y and Y is kind of Z, then X is instance of Z (Z can play the role of Y)</li>
+<li>Eg: Mt Athos BTI orthodox religious center BTG Christian religious center =&gt; Mt Athos BTIE Christian religious center</li>
+</ul></li>
+<li>BTIx/BTPx=&gt;no
+<ul class="org-ul">
+<li>Counter-example: Statue of Liberty pedestal BTI pedestals BTP statues. That particular pedestal is neither BTI nor BTP statues in general</li>
+<li>But see "beyond paths" below</li>
+</ul></li>
+<li>BTIx/BTIx=&gt;n/a
+<ul class="org-ul">
+<li>An instance as a class of one cannot have instances</li>
+<li>But see BTI Elaborations below</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b0495c" class="outline-2">
+<h2 id="org2b0495c">Usage: Inferring ISO relations</h2>
+<div class="outline-text-2" id="text-org2b0495c">
+
+<div class="figure">
+<p><img src="./img/anvils-components.png" alt="anvils-components.png" style="width:800px" />
+</p>
+</div>
+</div>
+<div id="outline-container-org75cabd7" class="outline-3">
+<h3 id="org75cabd7">Inferring ISO relations</h3>
+<div class="outline-text-3" id="text-org75cabd7">
+<div class="org-src-container">
+<pre class="src src-plantuml"><span style="color: #a020f0;">hide</span> empty attributes
+<span style="color: #a020f0;">hide</span> empty methods
+
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   &lt;&lt;(C,<span style="color: #483d8b;">yellow</span>)&gt;&gt;
+<span style="color: #8b2252;">"&lt;horse by use&gt;"</span>             &lt;&lt;(G,<span style="color: #483d8b;">gray</span>)&gt;&gt;
+<span style="color: #8b2252;">"race horse"</span>                 &lt;&lt;(C,<span style="color: #483d8b;">yellow</span>)&gt;&gt;
+<span style="color: #8b2252;">"Secretariat"</span>                &lt;&lt;(C,<span style="color: #483d8b;">yellow</span>)&gt;&gt;
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   <span style="color: #a020f0;">&lt;--</span> <span style="color: #8b2252;">"&lt;horse by use&gt;"</span> : gvp:broaderGenericExtended
+<span style="color: #8b2252;">"&lt;horse by use&gt;"</span>             <span style="color: #a020f0;">&lt;--</span> <span style="color: #8b2252;">"race horse"</span>     : gvp:broaderGeneric                   
+<span style="color: #8b2252;">"race horse"</span>                 <span style="color: #a020f0;">&lt;--</span> <span style="color: #8b2252;">"Secretariat"</span>    : gvp:broaderInstantial
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   <span style="color: #a020f0;">&lt;..</span> <span style="color: #8b2252;">"Secretariat"</span>    : gvp:broaderInstantialExtended
+<span style="color: #8b2252;">"race horse"</span>                 <span style="color: #a020f0;">&lt;..</span> <span style="color: #8b2252;">"Secretariat"</span>    : iso:broaderInstantial
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   <span style="color: #a020f0;">&lt;..</span> <span style="color: #8b2252;">"race horse"</span>     : iso:broaderGeneric
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/Secretariat-inference.png" alt="Secretariat-inference.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org681fe9f" class="outline-3">
+<h3 id="org681fe9f">Inference Dependencies</h3>
+<div class="outline-text-3" id="text-org681fe9f">
+<p>
+<img src="./img/hierarchicalRelations-simplified.png" alt="hierarchicalRelations-simplified.png" />
+(A bit simplified, see <a href="http://vocab.getty.edu/doc/#Hierarchical_Relations_Inference">GVP Hierarchical Relations Inference</a>)
+</p>
+</div>
+</div>
+<div id="outline-container-org3432b97" class="outline-3">
+<h3 id="org3432b97">Usage 2: Query Expansion in Information Retrieval</h3>
+<div class="outline-text-3" id="text-org3432b97">
+<p>
+The main purpose of a proper broader relation is to enable query expansion in information retrieval, eg:
+</p>
+<ul class="org-ul">
+<li>Sofia BTP Bulgaria BTP Europe =&gt; Sofia BTPE Europe
+<ul class="org-ul">
+<li>Enables a search for places in Europe to also find Sofia</li>
+</ul></li>
+<li>Mt Athos BTI orthodox religious centers BTG Christian religious centers BTG religious centers =&gt; Mt Athos BTIE religious centers
+<ul class="org-ul">
+<li>Enables a search for religious centers to also find Mt Athos</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd503f0d" class="outline-3">
+<h3 id="orgd503f0d">Usage 3: Beyond Chain Inferences</h3>
+<div class="outline-text-3" id="text-orgd503f0d">
+<p>
+If X <b>necessary</b> BTP Y and Z BTI X and T BTI Y then Z BTP T
+</p>
+<div class="org-src-container">
+<pre class="src src-plantuml"><span style="color: #a020f0;">hide</span> circles
+<span style="color: #a020f0;">hide</span> empty attributes
+<span style="color: #a020f0;">hide</span> empty methods
+
+<span style="color: #228b22;">class</span> StatueOfLibertyPedestal
+StatueOfLibertyPedestal <span style="color: #a020f0;">.&gt;</span>    StatueOfLiberty : BTP
+Pedestal                <span style="color: #a020f0;">-&gt;</span>    Statue : BTP
+StatueOfLibertyPedestal -up<span style="color: #a020f0;">-&gt;</span> Pedestal : BTI
+StatueOfLiberty         -up<span style="color: #a020f0;">-&gt;</span> Statue : BTI
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/statue-pedestal.png" alt="statue-pedestal.png" style="width:600px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcd343a7" class="outline-3">
+<h3 id="orgcd343a7">Usage 3: Beyond Chain Inferences</h3>
+<div class="outline-text-3" id="text-orgcd343a7">
+<p>
+If X <b>necessary</b> BTP Y and Z BTG Y then X BTP Z
+</p>
+
+<div class="figure">
+<p><img src="./img/keyboard-instrument.png" alt="keyboard-instrument.png" style="width:600px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ce7187" class="outline-3">
+<h3 id="org6ce7187">Usage 4: Quality Checking</h3>
+<div class="outline-text-3" id="text-org6ce7187">
+
+<div class="figure">
+<p><img src="./img/swell-boxes.png" alt="swell-boxes.png" style="width:1000px" />
+</p>
+</div>
+<ul class="org-ul">
+<li>"swell boxes" BTG "organ components" BTP "organs (aerophones)" =&gt; BTPE</li>
+<li>"swell boxes" BTG "organs (aerophones)" is asserted in error</li>
+<li>Can catch it if we declare BTGE &amp; BTPE as owl:disjointProperty</li>
+<li>But is this true in all cases?</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgde15588" class="outline-2">
+<h2 id="orgde15588">BTP Imprecisions</h2>
+<div class="outline-text-2" id="text-orgde15588">
+<ul class="org-ul">
+<li>Mixing partial vs full inclusion; and physical vs administrative:<br />
+Netherlands Antilles BTP Netherlands BTP Europe ??</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/NetherlandsAntilles.png" alt="NetherlandsAntilles.png" style="width:900px" />
+</p>
+</div>
+<ul class="org-ul">
+<li>was until 1954: is in TGN with historic date qualification</li>
+<li>sample query: <a href="http://vocab.getty.edu/doc/#Places_Outside_Bounding_Box_Overseas_Possessions">Places Outside Bounding Box (Overseas Possessions)</a></li>
+</ul>
+</div>
+<div id="outline-container-org2f55207" class="outline-3">
+<h3 id="org2f55207">BTP Imprecisions (2)</h3>
+<div class="outline-text-3" id="text-org2f55207">
+<ul class="org-ul">
+<li>Mixing Partial vs full inclusion:<br />
+Istanbul BTP Turkey BTP Asia</li>
+</ul>
+<p style="width:500px">
+<img src="./img/Turkey.png" alt="Turkey.png" style="width:500px" />
+How about Istanbul BTP Europe? It does straddle the Bosphorus strait:
+</p>
+
+<div class="figure">
+<p><img src="./img/Istanbul_and_Bosporus.jpg" alt="Istanbul_and_Bosporus.jpg" style="width:200px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org56ea7b6" class="outline-3">
+<h3 id="org56ea7b6">BTP Imprecisions (3)</h3>
+<div class="outline-text-3" id="text-org56ea7b6">
+<ul class="org-ul">
+<li>Mixing member vs substance meronym:<br />
+chicken feet BTP chicken BTP chicken soup ??</li>
+<li>Mixing intrinsic vs extrinsic BTP; and categories (person vs group):<br />
+Mick Jagger's BTP Mick Jagger BTP The Rolling Stones ??</li>
+</ul>
+<p>
+Mereology is a complex topic spanning: philosophy, mathematical logic, theoretical computer science, physics, Sheaf, Topos, or Category Theory, object-oriented programming.
+</p>
+<ul class="org-ul">
+<li><a href="http://en.wikipedia.org/wiki/Mereology">Wikipedia article</a></li>
+<li><a href="http://www.inf.unibz.it/krdb/pub/TR/KRDB06-3.pdf">Introduction to part-whole relations: mereology, conceptual modelling and mathematical aspects</a> (Maria Keet, 2006)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf020b18" class="outline-2">
+<h2 id="orgf020b18">BTI Elaborations</h2>
+<div class="outline-text-2" id="text-orgf020b18">
+<ul class="org-ul">
+<li><a href="http://en.wikipedia.org/wiki/Metaclass">Metaclasses</a> in OOP and <a href="http://www.w3.org/2007/OWL/wiki/Punning">Punning</a> in OWL allow classes of classes, and use them profitably</li>
+<li>ISO: instance may have parts/subdivisions, recommends custom relation BTX (eg BTS=subdivsion)).<br />
+Eg "BMW E87" BTS "BMW 1 Series" BTI "Automobiles"</li>
+<li>Biological classification: concepts belong to different levels (taxonomic ranks).<br />
+Eg Secretariat (ULAN &lt;named animal&gt;) BTI racehorses BTG Equus caballus BTI species</li>
+</ul>
+</div>
+<div id="outline-container-orgab82499" class="outline-3">
+<h3 id="orgab82499">BTI in Taxonomic Relations</h3>
+<div class="outline-text-3" id="text-orgab82499">
+
+<div class="figure">
+<p><img src="./img/Secretariat.png" alt="Secretariat.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5ffb629" class="outline-3">
+<h3 id="org5ffb629">Do Individuals Belong in a Thesaurus?</h3>
+<div class="outline-text-3" id="text-org5ffb629">
+<ul class="org-ul">
+<li>TGN gave up placeType&lt;BTI for now, because of non-sensical broaderTransitive</li>
+<li>If you exclude BTI then broaderExtended coincides with broaderTransitive: <code>BTG* | (BTG|BTP)* = (BTG|BTP)*</code></li>
+<li>Some CRM SIG members: "Individuals don't belong to a thesaurus. Mixing individuals and generics is logically inconsistent"</li>
+<li>Eg in Getty LOD: <a href="http://vocab.getty.edu/tgn/7011781">tgn:7009977</a> London is gvp:adminplaceconcept, gvp:subject, skos:concept
+<ul class="org-ul">
+<li>Separate node <a href="http://vocab.getty.edu/tgn/7011781-place">tgn:7009977-place</a> is schema:Place, wgs:SpatialThing</li>
+<li>Such <a href="http://vocab.getty.edu/doc/#Concept_vs_Place_Duality">Concept vs Place Duality</a> is respected by VIAF, UK BL, FR BnF, SE KB; but not US LoC, DE DNB</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgedbd13b" class="outline-3">
+<h3 id="orgedbd13b">Do Individuals Belong in a Thesaurus? (2)</h3>
+<div class="outline-text-3" id="text-orgedbd13b">
+<p>
+We think yes: main role of a thesaurus is a list of fixed values (concepts, people, etc)
+</p>
+<ul class="org-ul">
+<li>Eg GND mixes 10M things: materials, subjects, football clubs, deities, ghosts</li>
+<li>Eg British Museum LOD: <a href="http://collection.britishmuseum.org/id/place/x17731">London England</a> is ecrm:E53_Place, skos:Concept (but latter may be removed)</li>
+<li>Eg LoC MARC Relators: <a href="http://id.loc.gov/vocabulary/relators/aut.html">Author</a> is skos:Concept, rdf:Property, owl:ObjectProperty !</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c2bb22" class="outline-2">
+<h2 id="org2c2bb22">Thanks for your time!</h2>
+<div class="outline-text-2" id="text-org2c2bb22">
+<ul class="org-ul">
+<li><a href="https://drive.google.com/file/d/0B7BFygWDV2_PNkQycHl0bWNLak0">Draft paper</a> (some months old, these ideas are still evolving)</li>
+<li>Research conducted as part of GVP LOD publication: <a href="http://vocab.getty.edu">http://vocab.getty.edu</a>
+<ul class="org-ul">
+<li>See <a href="http://vladimiralexiev.github.io/pres/20140905-CIDOC-GVP/index.html">CIDOC 2014 presentation</a></li>
+<li>See doc (100 pages!): <a href="http://vocab.getty.edu/doc">http://vocab.getty.edu/doc</a></li>
+</ul></li>
+<li>The financial support of the J. Paul Getty Trust is gratefully acknowledged</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/QuestionMark.jpg" alt="QuestionMark.jpg" style="width:400px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2014-09-12</p>
+<p class="author">Author: Vladimir Alexiev (Ontotext Corp), Jutta Lindenthal (Consultant digiCULT-Verbund eG), Antoine Isaac (Europeana, VU Amsterdam)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

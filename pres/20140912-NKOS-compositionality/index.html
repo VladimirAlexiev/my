@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>On Compositionality of ISO 25964 Hierarchical Relations (BTG, BTP, BTI)</title>
+<meta name="author" content="(Vladimir Alexiev (Ontotext Corp), Jutta Lindenthal (Consultant digiCULT-Verbund eG), Antoine Isaac (Europeana, VU Amsterdam))"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>On Compositionality of ISO 25964 Hierarchical Relations (BTG, BTP, BTI)</h2><h3>Vladimir Alexiev (Ontotext Corp), Jutta Lindenthal (Consultant digiCULT-Verbund eG), Antoine Isaac (Europeana, VU Amsterdam)</h3><h4>2014-09-12</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index-full.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org3e7f2c0">BTG, BTP, BTI</a></li>
+<li><a href="#/slide-orgbb9c3e1">Problem Statement</a></li>
+<li><a href="#/slide-org90f2ca8">BTG, BTP, BTI Compositionality</a></li>
+<li><a href="#/slide-org7ef585c">Usage: Inferring ISO relations</a></li>
+<li><a href="#/slide-orgee6fe35">BTP Imprecisions</a></li>
+<li><a href="#/slide-org2e2ddd1">BTI Elaborations</a></li>
+<li><a href="#/slide-org30ddfd6">Thanks for your time!</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org3e7f2c0">
+<h2 id="org3e7f2c0">BTG, BTP, BTI</h2>
+<p>
+KOS have used different kinds of hierarchical relations for a long time:
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Relation</b></td>
+<td class="org-left"><b>Abbr</b></td>
+<td class="org-left"><b>Name</b></td>
+<td class="org-left"><b>Example</b></td>
+</tr>
+
+<tr>
+<td class="org-left">broaderGeneric</td>
+<td class="org-left">BTG</td>
+<td class="org-left">Genus/Species Relation</td>
+<td class="org-left">mineral BTG inorganic material  (AAT)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Iceland spar BTG calcite (AAT)</td>
+</tr>
+
+<tr>
+<td class="org-left">broaderPartitive</td>
+<td class="org-left">BTP</td>
+<td class="org-left">Part/Whole Relation</td>
+<td class="org-left">Tuscany BTP Italy (TGN)</td>
+</tr>
+
+<tr>
+<td class="org-left">broaderInstantial</td>
+<td class="org-left">BTI</td>
+<td class="org-left">Kind/Instance Relation</td>
+<td class="org-left">Rembrandt van Rijn BTI person (ULAN)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://d-nb.info/gnd/5055902-3">SG Dynamo Dresden</a> BTI <a href="http://d-nb.info/gnd/4155742-6">football clubs</a> (GND)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-org32dc789">
+<h3 id="org32dc789">Use of BTG, BTP, BTI in Thesauri</h3>
+<p>
+Examples:
+</p>
+<ul>
+<li>Deutsche Nationalbibliothek: <a href="http://d-nb.info/standards/elementset/gnd">Gemeinsame Normdatei Ontology</a> 
+<ul>
+<li>gndo:broaderTermInstantial (see <a href="http://d-nb.info/050559028/about/rdf">Dynamo Dresden</a> in <a href="http://www.dnb.de/EN/lds">Linked Data Service</a>)</li>
+
+</ul></li>
+<li>Some vocabs in xTree (vocnet.org) by digiCULT-Verbund eG</li>
+<li><a href="http://www.ldf.fi/schema/skosext/">FinnONTO SKOS Extensions</a> (Aalto University)</li>
+<li><a href="https://wordnet.princeton.edu/wordnet/man/wn.1WN.html">WordNet</a>, with BTP distinctions: member vs part vs substance meronym/holonym</li>
+<li><a href="http://purl.org/iso25964/skos-thes">ISO 25964 Ontology</a>: officially formalized (as "step" properties)</li>
+<li>Most recently, <a href="http://vocab.getty.edu">Getty Vocabulary Program (GVP) LOD</a>
+<ul>
+<li>First industrial application of ISO 25964</li>
+<li>Many examples in this presentation are from GVP</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgd70405f">
+<h3 id="orgd70405f">Definitions in ISO 25964</h3>
+<ul>
+<li>BTG: amenable to logical all-and-some test
+<ul>
+<li>Children should all be a type, or kind of the parent</li>
+<li>From the parent's point of view, it encompasses only some of any given child</li>
+<li>Can be concluded it's comparable to rdfs:subClassOf (isA): transitive</li>
+
+</ul></li>
+<li>BTP: part of entity/system belongs uniquely to particular possessing whole in any context
+<ul>
+<li>The part may not belong to more than one whole, and BTP has to be universally valid</li>
+<li><a href="http://www.getty.edu/research/tools/vocabularies/guidelines/aat_3_1_hierarchical_rels.html">AAT Guidelines</a>: "Each child should be part of the parent and all ancestors above it" (transitive)</li>
+
+</ul></li>
+<li>BTI: individual instance to general class
+<ul>
+<li>Instances often represented by proper name (also called "classes of one")</li>
+<li>Instances may not have further BTI nor BTG</li>
+<li>But may be further subdivided: use custom relationship (BTX), eg BTS (subdivision)</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgd4b5cfe">
+<h3 id="orgd4b5cfe">GVP Hierarchical Relation Counts</h3>
+
+<div class="figure">
+<p><img src="./img/hier-rel-per-type.png" alt="hier-rel-per-type.png" style="width:600px" />
+</p>
+</div>
+</section>
+<section id="slide-orgf6f5f73">
+<h3 id="orgf6f5f73">GVP Hierarchical Relations</h3>
+<ul>
+<li>AAT: most are BTG, but there is a variety of BTP:
+<ul>
+<li>(C) BTP (C): calendars of relics BTP cabinets of relics</li>
+<li>(C) BTP (G): anvil components BTP &lt;anvils and anvil accessories&gt;</li>
+<li>(G) BTP (C): &lt;jewelry and accessory components&gt; BTP jewelry</li>
+<li>(G) BTP (G): &lt;grinding and milling equipment components&gt; BTP &lt;grinding and milling equipment&gt;</li>
+<li>(C) BTP (H): building divisions BTP Single Built Works</li>
+
+</ul></li>
+<li>TGN: all are BTP
+<ul>
+<li>placeType: in the current TGN LOD (2.0) has no relation to BTI</li>
+<li>May reconsider and make it subprop of BTI, see <a href="http://lists.w3.org/Archives/Public/public-esw-thes/2014Mar/att-0001/TGN-place-type.docx">TGN Place Type Relation</a> discussion paper</li>
+
+</ul></li>
+<li>ULAN: most are BTI, e.g. Rembrandt (ULAN) Persons facet (ULAN)
+<ul>
+<li>May consider more specific, eg Rembrandt (ULAN) BTI Painters (AAT)</li>
+<li>Some BTP, e.g. corporate body BTP another corporate body</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org6724082">
+<h3 id="org6724082">GVP Hierarchy Structure</h3>
+<ul>
+<li>Subjects include (C)oncepts; but also: (F)acets, (H)ierarchies, (G)uide Terms
+<ul>
+<li>Not for indexing, only to structure. Implemented as iso:ThesaurusArray</li>
+<li>G and C can be intermixed: F&gt;H&gt;(G|C)</li>
+
+</ul></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/007-subject-hierarchy.png" alt="007-subject-hierarchy.png" style="width:1100px" />
+</p>
+</div>
+</section>
+<section id="slide-org792f0c7">
+<h3 id="org792f0c7">SKOS/ISO vs GVP Impedance Mismatch</h3>
+<ul>
+<li>SKOS and ISO define <a href="http://vocab.getty.edu/doc/#Standard_Hierarchical_Relations">Standard Hierarchical Relations</a>
+<ul>
+<li>Only between Concepts</li>
+<li>skos:broader, iso:broaderGeneric, etc</li>
+
+</ul></li>
+<li>We define custom <a href="http://vocab.getty.edu/doc/#GVP_Hierarchical_Relations">GVP Hierarchical Relations</a>
+<ul>
+<li>Connect the hierarchy uniformly</li>
+<li>gvp:broader, gvp:broaderGeneric, etc</li>
+
+</ul></li>
+<li>We infer appropriate standard relations when they connect concepts directly
+<ul>
+<li>Notice the "thread-through" skos:narrower in the prev diagram</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgbb9c3e1">
+<h2 id="orgbb9c3e1">Problem Statement</h2>
+<p>
+What are the appropriate combinations (compositions) of BTG, BTP, BTI?
+</p>
+<ul>
+<li>Matters with respect to appropriate closure for information retrieval</li>
+<li>It's a prerequisite for sensible search expansion</li>
+<li>Has not been systematically analyzed to date</li>
+
+</ul>
+</section>
+<section id="slide-orgc7871ba">
+<h3 id="orgc7871ba">The problem with broaderTransitive</h3>
+<p>
+ISO 25964 formalized BTG, BTP, BTI as sub-properties of skos:broader
+</p>
+<ul>
+<li>skos:broader contributes unconditionally to skos:broaderTransitive<br />
+(broaderGeneric|broaderPartitive|broaderInstantial) =&gt; broader =&gt; broaderTransitive</li>
+<li><a href="https://at-web1.comp.glam.ac.uk/pages/research/hypermedia/nkos/nkos2012/presentations/TPDL2012_NKOS_Ambiguities.pptx">Ambiguities in representing thesauri using extended SKOS - examples from real life</a> (NKOS 2012):<br />
+broaderTransitive should be established only for BTG and BTP, but not for BTI, nor mixed paths BTG+BTP</li>
+<li>skos:broaderTransitive may include semantically inappropriate statements
+<ul>
+<li>a place inherits all place types of its parents</li>
+<li>eg: Sofia BTP Bulgaria BTI country =&gt; Sofia BTI country</li>
+
+</ul></li>
+<li>Lively discussion at SKOS mailing list <a href="http://lists.w3.org/Archives/Public/public-esw-thes/2013Nov/%20">from Nov 2013</a> to April 2014</li>
+
+</ul>
+</section>
+<section id="slide-org6ded24e">
+<h3 id="org6ded24e">The Time Has Come!</h3>
+<p>
+We <b>have</b> to resolve this issue for GVP LOD representation:
+</p>
+<ul>
+<li>To infer appropriate thread-through standard relations</li>
+<li>Makes sense to represent TGN place types and ULAN actor roles as BTI
+<ul>
+<li>But skos:broaderTransitive causes confusion and bloat (100M=&gt;400M statements)</li>
+
+</ul></li>
+<li>So we want to infer only appropriate compositions (see <a href="http://vocab.getty.edu/doc/#BTG_BTP_BTI_Inference">BTG, BTP, BTI Inference</a>)
+<ul>
+<li>BTGE, BTPE, BTIE (gvp:broaderGenericExtended, gvp:broaderPartitiveExtended, gvp:broaderInstantialExtended)</li>
+<li>Their disjunction gvp:broaderExtended</li>
+<li>(Also gvp:broaderPreferred and gvp:broaderPreferredExtended)</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org90f2ca8">
+<h2 id="org90f2ca8">BTG, BTP, BTI Compositionality</h2>
+<ul>
+<li>Basic decision table. BT*x means BT*|BT*E</li>
+
+</ul>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>BTGx</b></td>
+<td class="org-left"><b>BTPx</b></td>
+<td class="org-left"><b>BTIx</b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTGx</b></td>
+<td class="org-left">BTGE</td>
+<td class="org-left">BTPE</td>
+<td class="org-left">no</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTPx</b></td>
+<td class="org-left">BTPE</td>
+<td class="org-left">BTPE</td>
+<td class="org-left">no</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>BTIx</b></td>
+<td class="org-left">BTIE</td>
+<td class="org-left">no</td>
+<td class="org-left">no</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>BTG=&gt;BTGE, BTP=&gt;BTPE, BTI=&gt;BTIE: basic inferences</li>
+
+</ul>
+</section>
+<section id="slide-orgcf276be">
+<h3 id="orgcf276be">BTG, BTP, BTI Compositionality (2)</h3>
+<ul>
+<li>BTGx/BTGx=&gt;BTGE
+<ul>
+<li>If X is kind of Y and Y is kind of Z then X is kind of Z</li>
+<li>Eg: racehorses BTG &lt;horses by use or role&gt; BTG Equus caballus =&gt; racehorses BTGE Equus caballus</li>
+
+</ul></li>
+<li>BTGx/BTPx=&gt;BTPE
+<ul>
+<li>If X is kind of Y and Y is part of Z then X is part of Z (X can play the role of Y)</li>
+<li>Eg: beak irons BTG anvil components BTP &lt;anvils and anvil accessories =&gt; beak irons BTPE &lt;anvils and anvil accessories&gt;</li>
+
+</ul></li>
+<li>BTGx/BTIx=&gt;n/a
+<ul>
+<li>A generic concept may not be hierarchically subordinate to an instance.</li>
+<li>The understanding of instance, as described in ISO, excludes this composition</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org4017679">
+<h3 id="org4017679">BTG, BTP, BTI Compositionality (3)</h3>
+<ul>
+<li>BTPx/BTGx=&gt;BTPE.
+<ul>
+<li>If X is part of Y and Y is kind of Z then X is part of Z (Z can play the role of Y)</li>
+<li>Eg: anvil components BTP &lt;anvils and anvil accessories&gt; BTG &lt;forging and metal-shaping tools&gt; =&gt; anvil components BTPE &lt;forging and metal-shaping tools&gt;</li>
+
+</ul></li>
+<li>BTPx/BTPx=&gt;BTPE
+<ul>
+<li>If X is part of Y and Y is part of Z then X is part of Z</li>
+<li>Eg: Sofia BTP Bulgaria, Bulgaria BTP Europe, so Sofia BTP Europe</li>
+<li>But see mereological exceptions/imprecisions below!</li>
+
+</ul></li>
+<li>BTPx/BTIx=&gt;no
+<ul>
+<li>Counter-example: Sofia BTP Bulgaria BTI country. But Sofia is no country</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org835dd03">
+<h3 id="org835dd03">BTG, BTP, BTI Compositionality (4)</h3>
+<ul>
+<li>BTIx/BTGx=&gt;BTIE
+<ul>
+<li>If X is instance of Y and Y is kind of Z, then X is instance of Z (Z can play the role of Y)</li>
+<li>Eg: Mt Athos BTI orthodox religious center BTG Christian religious center =&gt; Mt Athos BTIE Christian religious center</li>
+
+</ul></li>
+<li>BTIx/BTPx=&gt;no
+<ul>
+<li>Counter-example: Statue of Liberty pedestal BTI pedestals BTP statues. That particular pedestal is neither BTI nor BTP statues in general</li>
+<li>But see "beyond paths" below</li>
+
+</ul></li>
+<li>BTIx/BTIx=&gt;n/a
+<ul>
+<li>An instance as a class of one cannot have instances</li>
+<li>But see BTI Elaborations below</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org7ef585c">
+<h2 id="org7ef585c">Usage: Inferring ISO relations</h2>
+
+<div class="figure">
+<p><img src="./img/anvils-components.png" alt="anvils-components.png" style="width:800px" />
+</p>
+</div>
+</section>
+<section id="slide-orgacaaa9e">
+<h3 id="orgacaaa9e">Inferring ISO relations</h3>
+<div class="org-src-container">
+
+<pre  class="src src-plantuml"><span style="color: #a020f0;">hide</span> empty attributes
+<span style="color: #a020f0;">hide</span> empty methods
+
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   &lt;&lt;(C,<span style="color: #483d8b;">yellow</span>)&gt;&gt;
+<span style="color: #8b2252;">"&lt;horse by use&gt;"</span>             &lt;&lt;(G,<span style="color: #483d8b;">gray</span>)&gt;&gt;
+<span style="color: #8b2252;">"race horse"</span>                 &lt;&lt;(C,<span style="color: #483d8b;">yellow</span>)&gt;&gt;
+<span style="color: #8b2252;">"Secretariat"</span>                &lt;&lt;(C,<span style="color: #483d8b;">yellow</span>)&gt;&gt;
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   <span style="color: #a020f0;">&lt;--</span> <span style="color: #8b2252;">"&lt;horse by use&gt;"</span> : gvp:broaderGenericExtended
+<span style="color: #8b2252;">"&lt;horse by use&gt;"</span>             <span style="color: #a020f0;">&lt;--</span> <span style="color: #8b2252;">"race horse"</span>     : gvp:broaderGeneric                   
+<span style="color: #8b2252;">"race horse"</span>                 <span style="color: #a020f0;">&lt;--</span> <span style="color: #8b2252;">"Secretariat"</span>    : gvp:broaderInstantial
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   <span style="color: #a020f0;">&lt;..</span> <span style="color: #8b2252;">"Secretariat"</span>    : gvp:broaderInstantialExtended
+<span style="color: #8b2252;">"race horse"</span>                 <span style="color: #a020f0;">&lt;..</span> <span style="color: #8b2252;">"Secretariat"</span>    : iso:broaderInstantial
+<span style="color: #8b2252;">"Equus caballus (species)"</span>   <span style="color: #a020f0;">&lt;..</span> <span style="color: #8b2252;">"race horse"</span>     : iso:broaderGeneric
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/Secretariat-inference.png" alt="Secretariat-inference.png" />
+</p>
+</div>
+</section>
+<section id="slide-org967a81c">
+<h3 id="org967a81c">Inference Dependencies</h3>
+<p>
+<img src="./img/hierarchicalRelations-simplified.png" alt="hierarchicalRelations-simplified.png" />
+(A bit simplified, see <a href="http://vocab.getty.edu/doc/#Hierarchical_Relations_Inference">GVP Hierarchical Relations Inference</a>)
+</p>
+</section>
+<section id="slide-orga7e3749">
+<h3 id="orga7e3749">Usage 2: Query Expansion in Information Retrieval</h3>
+<p>
+The main purpose of a proper broader relation is to enable query expansion in information retrieval, eg:
+</p>
+<ul>
+<li>Sofia BTP Bulgaria BTP Europe =&gt; Sofia BTPE Europe
+<ul>
+<li>Enables a search for places in Europe to also find Sofia</li>
+
+</ul></li>
+<li>Mt Athos BTI orthodox religious centers BTG Christian religious centers BTG religious centers =&gt; Mt Athos BTIE religious centers
+<ul>
+<li>Enables a search for religious centers to also find Mt Athos</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgbecadfb">
+<h3 id="orgbecadfb">Usage 3: Beyond Chain Inferences</h3>
+<p>
+If X <b>necessary</b> BTP Y and Z BTI X and T BTI Y then Z BTP T
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-plantuml"><span style="color: #a020f0;">hide</span> circles
+<span style="color: #a020f0;">hide</span> empty attributes
+<span style="color: #a020f0;">hide</span> empty methods
+
+<span style="color: #228b22;">class</span> StatueOfLibertyPedestal
+StatueOfLibertyPedestal <span style="color: #a020f0;">.&gt;</span>    StatueOfLiberty : BTP
+Pedestal                <span style="color: #a020f0;">-&gt;</span>    Statue : BTP
+StatueOfLibertyPedestal -up<span style="color: #a020f0;">-&gt;</span> Pedestal : BTI
+StatueOfLiberty         -up<span style="color: #a020f0;">-&gt;</span> Statue : BTI
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/statue-pedestal.png" alt="statue-pedestal.png" style="width:600px" />
+</p>
+</div>
+</section>
+<section id="slide-org05adafe">
+<h3 id="org05adafe">Usage 3: Beyond Chain Inferences</h3>
+<p>
+If X <b>necessary</b> BTP Y and Z BTG Y then X BTP Z
+</p>
+
+<div class="figure">
+<p><img src="./img/keyboard-instrument.png" alt="keyboard-instrument.png" style="width:600px" />
+</p>
+</div>
+</section>
+<section id="slide-orgae5f083">
+<h3 id="orgae5f083">Usage 4: Quality Checking</h3>
+
+<div class="figure">
+<p><img src="./img/swell-boxes.png" alt="swell-boxes.png" style="width:1000px" />
+</p>
+</div>
+<ul>
+<li>"swell boxes" BTG "organ components" BTP "organs (aerophones)" =&gt; BTPE</li>
+<li>"swell boxes" BTG "organs (aerophones)" is asserted in error</li>
+<li>Can catch it if we declare BTGE &amp; BTPE as owl:disjointProperty</li>
+<li>But is this true in all cases?</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgee6fe35">
+<h2 id="orgee6fe35">BTP Imprecisions</h2>
+<ul>
+<li>Mixing partial vs full inclusion; and physical vs administrative:<br />
+Netherlands Antilles BTP Netherlands BTP Europe ??</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/NetherlandsAntilles.png" alt="NetherlandsAntilles.png" style="width:900px" />
+</p>
+</div>
+<ul>
+<li>was until 1954: is in TGN with historic date qualification</li>
+<li>sample query: <a href="http://vocab.getty.edu/doc/#Places_Outside_Bounding_Box_Overseas_Possessions">Places Outside Bounding Box (Overseas Possessions)</a></li>
+
+</ul>
+</section>
+<section id="slide-orge92bb4e">
+<h3 id="orge92bb4e">BTP Imprecisions (2)</h3>
+<ul>
+<li>Mixing Partial vs full inclusion:<br />
+Istanbul BTP Turkey BTP Asia</li>
+
+</ul>
+<p style="width:500px">
+<img src="./img/Turkey.png" alt="Turkey.png" style="width:500px" />
+How about Istanbul BTP Europe? It does straddle the Bosphorus strait:
+</p>
+
+<div class="figure">
+<p><img src="./img/Istanbul_and_Bosporus.jpg" alt="Istanbul_and_Bosporus.jpg" style="width:200px" />
+</p>
+</div>
+</section>
+<section id="slide-org1f463a1">
+<h3 id="org1f463a1">BTP Imprecisions (3)</h3>
+<ul>
+<li>Mixing member vs substance meronym:<br />
+chicken feet BTP chicken BTP chicken soup ??</li>
+<li>Mixing intrinsic vs extrinsic BTP; and categories (person vs group):<br />
+Mick Jagger's BTP Mick Jagger BTP The Rolling Stones ??</li>
+
+</ul>
+<p>
+Mereology is a complex topic spanning: philosophy, mathematical logic, theoretical computer science, physics, Sheaf, Topos, or Category Theory, object-oriented programming.
+</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Mereology">Wikipedia article</a></li>
+<li><a href="http://www.inf.unibz.it/krdb/pub/TR/KRDB06-3.pdf">Introduction to part-whole relations: mereology, conceptual modelling and mathematical aspects</a> (Maria Keet, 2006)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org2e2ddd1">
+<h2 id="org2e2ddd1">BTI Elaborations</h2>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Metaclass">Metaclasses</a> in OOP and <a href="http://www.w3.org/2007/OWL/wiki/Punning">Punning</a> in OWL allow classes of classes, and use them profitably</li>
+<li>ISO: instance may have parts/subdivisions, recommends custom relation BTX (eg BTS=subdivsion)).<br />
+Eg "BMW E87" BTS "BMW 1 Series" BTI "Automobiles"</li>
+<li>Biological classification: concepts belong to different levels (taxonomic ranks).<br />
+Eg Secretariat (ULAN &lt;named animal&gt;) BTI racehorses BTG Equus caballus BTI species</li>
+
+</ul>
+</section>
+<section id="slide-org12a5cd5">
+<h3 id="org12a5cd5">BTI in Taxonomic Relations</h3>
+
+<div class="figure">
+<p><img src="./img/Secretariat.png" alt="Secretariat.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgade2644">
+<h3 id="orgade2644">Do Individuals Belong in a Thesaurus?</h3>
+<ul>
+<li>TGN gave up placeType&lt;BTI for now, because of non-sensical broaderTransitive</li>
+<li>If you exclude BTI then broaderExtended coincides with broaderTransitive: <code>BTG* | (BTG|BTP)* = (BTG|BTP)*</code></li>
+<li>Some CRM SIG members: "Individuals don't belong to a thesaurus. Mixing individuals and generics is logically inconsistent"</li>
+<li>Eg in Getty LOD: <a href="http://vocab.getty.edu/tgn/7011781">tgn:7009977</a> London is gvp:adminplaceconcept, gvp:subject, skos:concept
+<ul>
+<li>Separate node <a href="http://vocab.getty.edu/tgn/7011781-place">tgn:7009977-place</a> is schema:Place, wgs:SpatialThing</li>
+<li>Such <a href="http://vocab.getty.edu/doc/#Concept_vs_Place_Duality">Concept vs Place Duality</a> is respected by VIAF, UK BL, FR BnF, SE KB; but not US LoC, DE DNB</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgd7ff135">
+<h3 id="orgd7ff135">Do Individuals Belong in a Thesaurus? (2)</h3>
+<p>
+We think yes: main role of a thesaurus is a list of fixed values (concepts, people, etc)
+</p>
+<ul>
+<li>Eg GND mixes 10M things: materials, subjects, football clubs, deities, ghosts</li>
+<li>Eg British Museum LOD: <a href="http://collection.britishmuseum.org/id/place/x17731">London England</a> is ecrm:E53_Place, skos:Concept (but latter may be removed)</li>
+<li>Eg LoC MARC Relators: <a href="http://id.loc.gov/vocabulary/relators/aut.html">Author</a> is skos:Concept, rdf:Property, owl:ObjectProperty !</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org30ddfd6">
+<h2 id="org30ddfd6">Thanks for your time!</h2>
+<ul>
+<li><a href="https://drive.google.com/file/d/0B7BFygWDV2_PNkQycHl0bWNLak0">Draft paper</a> (some months old, these ideas are still evolving)</li>
+<li>Research conducted as part of GVP LOD publication: <a href="http://vocab.getty.edu">http://vocab.getty.edu</a>
+<ul>
+<li>See <a href="http://vladimiralexiev.github.io/pres/20140905-CIDOC-GVP/index.html">CIDOC 2014 presentation</a></li>
+<li>See doc (100 pages!): <a href="http://vocab.getty.edu/doc">http://vocab.getty.edu/doc</a></li>
+
+</ul></li>
+<li>The financial support of the J. Paul Getty Trust is gratefully acknowledged</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/QuestionMark.jpg" alt="QuestionMark.jpg" style="width:400px" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

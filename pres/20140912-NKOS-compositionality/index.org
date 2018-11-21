@@ -1,0 +1,240 @@
+# -*- my-org-place: "NKOS 2014, London"; my-org-filename-pdf: "BTG-BTP-BTI-compositionality.pdf"
+#+TITLE:     On Compositionality of ISO 25964 Hierarchical Relations (BTG, BTP, BTI)
+#+AUTHOR:    Vladimir Alexiev (Ontotext Corp), Jutta Lindenthal (Consultant digiCULT-Verbund eG), Antoine Isaac (Europeana, VU Amsterdam)
+#+DATE:      2014-09-12
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:1
+
+* BTG, BTP, BTI
+KOS have used different kinds of hierarchical relations for a long time:
+| *Relation*        | *Abbr* | *Name*                 | *Example*                                  |
+| broaderGeneric    | BTG    | Genus/Species Relation | mineral BTG inorganic material  (AAT)      |
+|                   |        |                        | Iceland spar BTG calcite (AAT)             |
+| broaderPartitive  | BTP    | Part/Whole Relation    | Tuscany BTP Italy (TGN)                    |
+| broaderInstantial | BTI    | Kind/Instance Relation | Rembrandt van Rijn BTI person (ULAN)       |
+|                   |        |                        | [[http://d-nb.info/gnd/5055902-3][SG Dynamo Dresden]] BTI [[http://d-nb.info/gnd/4155742-6][football clubs]] (GND) |
+** Use of BTG, BTP, BTI in Thesauri
+Examples:
+- Deutsche Nationalbibliothek: [[http://d-nb.info/standards/elementset/gnd][Gemeinsame Normdatei Ontology]] 
+  - gndo:broaderTermInstantial (see [[http://d-nb.info/050559028/about/rdf][Dynamo Dresden]] in [[http://www.dnb.de/EN/lds][Linked Data Service]]) 
+- Some vocabs in xTree (vocnet.org) by digiCULT-Verbund eG
+- [[http://www.ldf.fi/schema/skosext/][FinnONTO SKOS Extensions]] (Aalto University)
+- [[https://wordnet.princeton.edu/wordnet/man/wn.1WN.html][WordNet]], with BTP distinctions: member vs part vs substance meronym/holonym
+- [[http://purl.org/iso25964/skos-thes][ISO 25964 Ontology]]: officially formalized (as "step" properties)
+- Most recently, [[http://vocab.getty.edu][Getty Vocabulary Program (GVP) LOD]]
+  - First industrial application of ISO 25964
+  - Many examples in this presentation are from GVP
+** Definitions in ISO 25964
+- BTG: amenable to logical all-and-some test
+  - Children should all be a type, or kind of the parent
+  - From the parent's point of view, it encompasses only some of any given child
+  - Can be concluded it's comparable to rdfs:subClassOf (isA): transitive
+- BTP: part of entity/system belongs uniquely to particular possessing whole in any context
+  - The part may not belong to more than one whole, and BTP has to be universally valid
+  - [[http://www.getty.edu/research/tools/vocabularies/guidelines/aat_3_1_hierarchical_rels.html][AAT Guidelines]]: "Each child should be part of the parent and all ancestors above it" (transitive)
+- BTI: individual instance to general class
+  - Instances often represented by proper name (also called "classes of one")
+  - Instances may not have further BTI nor BTG
+  - But may be further subdivided: use custom relationship (BTX), eg BTS (subdivision)
+** GVP Hierarchical Relation Counts
+#+ATTR_HTML: :style width:600px
+[[./img/hier-rel-per-type.png]]
+** GVP Hierarchical Relations 
+- AAT: most are BTG, but there is a variety of BTP:
+  - (C) BTP (C): calendars of relics BTP cabinets of relics
+  - (C) BTP (G): anvil components BTP <anvils and anvil accessories>
+  - (G) BTP (C): <jewelry and accessory components> BTP jewelry
+  - (G) BTP (G): <grinding and milling equipment components> BTP <grinding and milling equipment>
+  - (C) BTP (H): building divisions BTP Single Built Works
+- TGN: all are BTP
+  - placeType: in the current TGN LOD (2.0) has no relation to BTI
+  - May reconsider and make it subprop of BTI, see [[http://lists.w3.org/Archives/Public/public-esw-thes/2014Mar/att-0001/TGN-place-type.docx][TGN Place Type Relation]] discussion paper
+- ULAN: most are BTI, e.g. Rembrandt (ULAN) Persons facet (ULAN)
+  - May consider more specific, eg Rembrandt (ULAN) BTI Painters (AAT)
+  - Some BTP, e.g. corporate body BTP another corporate body
+** GVP Hierarchy Structure
+- Subjects include (C)oncepts; but also: (F)acets, (H)ierarchies, (G)uide Terms
+  - Not for indexing, only to structure. Implemented as iso:ThesaurusArray
+  - G and C can be intermixed: F>H>(G|C)
+#+ATTR_HTML: :style width:1100px
+[[./img/007-subject-hierarchy.png]]
+** SKOS/ISO vs GVP Impedance Mismatch
+- SKOS and ISO define [[http://vocab.getty.edu/doc/#Standard_Hierarchical_Relations][Standard Hierarchical Relations]]
+  - Only between Concepts
+  - skos:broader, iso:broaderGeneric, etc 
+- We define custom [[http://vocab.getty.edu/doc/#GVP_Hierarchical_Relations][GVP Hierarchical Relations]]
+  - Connect the hierarchy uniformly
+  - gvp:broader, gvp:broaderGeneric, etc
+- We infer appropriate standard relations when they connect concepts directly
+  - Notice the "thread-through" skos:narrower in the prev diagram
+* Problem Statement
+What are the appropriate combinations (compositions) of BTG, BTP, BTI?
+- Matters with respect to appropriate closure for information retrieval
+- It's a prerequisite for sensible search expansion 
+- Has not been systematically analyzed to date
+** The problem with broaderTransitive
+ISO 25964 formalized BTG, BTP, BTI as sub-properties of skos:broader
+- skos:broader contributes unconditionally to skos:broaderTransitive\\
+  (broaderGeneric|broaderPartitive|broaderInstantial) => broader => broaderTransitive
+- [[https://at-web1.comp.glam.ac.uk/pages/research/hypermedia/nkos/nkos2012/presentations/TPDL2012_NKOS_Ambiguities.pptx][Ambiguities in representing thesauri using extended SKOS - examples from real life]] (NKOS 2012):\\
+  broaderTransitive should be established only for BTG and BTP, but not for BTI, nor mixed paths BTG+BTP
+- skos:broaderTransitive may include semantically inappropriate statements
+  - a place inherits all place types of its parents
+  - eg: Sofia BTP Bulgaria BTI country => Sofia BTI country
+- Lively discussion at SKOS mailing list [[http://lists.w3.org/Archives/Public/public-esw-thes/2013Nov/%20][from Nov 2013]] to April 2014
+** The Time Has Come!
+We *have* to resolve this issue for GVP LOD representation:
+- To infer appropriate thread-through standard relations
+- Makes sense to represent TGN place types and ULAN actor roles as BTI
+  - But skos:broaderTransitive causes confusion and bloat (100M=>400M statements)
+- So we want to infer only appropriate compositions (see [[http://vocab.getty.edu/doc/#BTG_BTP_BTI_Inference][BTG, BTP, BTI Inference]])
+  - BTGE, BTPE, BTIE (gvp:broaderGenericExtended, gvp:broaderPartitiveExtended, gvp:broaderInstantialExtended)
+  - Their disjunction gvp:broaderExtended
+  - (Also gvp:broaderPreferred and gvp:broaderPreferredExtended)
+* BTG, BTP, BTI Compositionality
+- Basic decision table. BT*x means BT*|BT*E
+|        | *BTGx* | *BTPx* | *BTIx* |
+| *BTGx* | BTGE   | BTPE   | no     |
+| *BTPx* | BTPE   | BTPE   | no     |
+| *BTIx* | BTIE   | no     | no     | 
+- BTG=>BTGE, BTP=>BTPE, BTI=>BTIE: basic inferences
+** BTG, BTP, BTI Compositionality (2)
+- BTGx/BTGx=>BTGE
+  - If X is kind of Y and Y is kind of Z then X is kind of Z
+  - Eg: racehorses BTG <horses by use or role> BTG Equus caballus => racehorses BTGE Equus caballus
+- BTGx/BTPx=>BTPE
+  - If X is kind of Y and Y is part of Z then X is part of Z (X can play the role of Y)
+  - Eg: beak irons BTG anvil components BTP <anvils and anvil accessories => beak irons BTPE <anvils and anvil accessories>
+- BTGx/BTIx=>n/a
+  - A generic concept may not be hierarchically subordinate to an instance.
+  - The understanding of instance, as described in ISO, excludes this composition
+** BTG, BTP, BTI Compositionality (3)
+- BTPx/BTGx=>BTPE.
+  - If X is part of Y and Y is kind of Z then X is part of Z (Z can play the role of Y)
+  - Eg: anvil components BTP <anvils and anvil accessories> BTG <forging and metal-shaping tools> => anvil components BTPE <forging and metal-shaping tools>
+- BTPx/BTPx=>BTPE
+  - If X is part of Y and Y is part of Z then X is part of Z
+  - Eg: Sofia BTP Bulgaria, Bulgaria BTP Europe, so Sofia BTP Europe
+  - But see mereological exceptions/imprecisions below!
+- BTPx/BTIx=>no
+  - Counter-example: Sofia BTP Bulgaria BTI country. But Sofia is no country
+** BTG, BTP, BTI Compositionality (4)
+- BTIx/BTGx=>BTIE
+  - If X is instance of Y and Y is kind of Z, then X is instance of Z (Z can play the role of Y)
+  - Eg: Mt Athos BTI orthodox religious center BTG Christian religious center => Mt Athos BTIE Christian religious center
+- BTIx/BTPx=>no
+  - Counter-example: Statue of Liberty pedestal BTI pedestals BTP statues. That particular pedestal is neither BTI nor BTP statues in general
+  - But see "beyond paths" below
+- BTIx/BTIx=>n/a
+  - An instance as a class of one cannot have instances
+  - But see BTI Elaborations below
+* Usage: Inferring ISO relations
+#+ATTR_HTML: :style width:800px
+[[./img/anvils-components.png]]
+** Inferring ISO relations
+#+begin_src plantuml :file ./img/Secretariat-inference.png :cache yes
+hide empty attributes
+hide empty methods
+
+"Equus caballus (species)"   <<(C,yellow)>>
+"<horse by use>"             <<(G,gray)>>
+"race horse"                 <<(C,yellow)>>
+"Secretariat"                <<(C,yellow)>>
+"Equus caballus (species)"   <-- "<horse by use>" : gvp:broaderGenericExtended
+"<horse by use>"             <-- "race horse"     : gvp:broaderGeneric                   
+"race horse"                 <-- "Secretariat"    : gvp:broaderInstantial
+"Equus caballus (species)"   <.. "Secretariat"    : gvp:broaderInstantialExtended
+"race horse"                 <.. "Secretariat"    : iso:broaderInstantial
+"Equus caballus (species)"   <.. "race horse"     : iso:broaderGeneric
+#+end_src
+
+#+results[67b4e45d49df9c93896b23d0d7bf1bc8f05f095e]:
+[[file:./img/Secretariat-inference.png]]
+** Inference Dependencies
+[[./img/hierarchicalRelations-simplified.png]]
+(A bit simplified, see [[http://vocab.getty.edu/doc/#Hierarchical_Relations_Inference][GVP Hierarchical Relations Inference]])
+** Usage 2: Query Expansion in Information Retrieval
+The main purpose of a proper broader relation is to enable query expansion in information retrieval, eg:
+- Sofia BTP Bulgaria BTP Europe => Sofia BTPE Europe
+  - Enables a search for places in Europe to also find Sofia
+- Mt Athos BTI orthodox religious centers BTG Christian religious centers BTG religious centers => Mt Athos BTIE religious centers
+  - Enables a search for religious centers to also find Mt Athos
+** Usage 3: Beyond Chain Inferences
+If X *necessary* BTP Y and Z BTI X and T BTI Y then Z BTP T
+#+begin_src plantuml :file ./img/statue-pedestal.png :cache yes
+hide circles
+hide empty attributes
+hide empty methods
+
+class StatueOfLibertyPedestal
+StatueOfLibertyPedestal .>    StatueOfLiberty : BTP
+Pedestal                ->    Statue : BTP
+StatueOfLibertyPedestal -up-> Pedestal : BTI
+StatueOfLiberty         -up-> Statue : BTI
+#+end_src
+
+#+results[7a67a92cac5ca8a780fb22557b749f3776ee7aa6]:
+#+ATTR_HTML: :style width:600px
+[[file:./img/statue-pedestal.png]]
+** Usage 3: Beyond Chain Inferences
+If X *necessary* BTP Y and Z BTG Y then X BTP Z
+#+ATTR_HTML: :style width:600px
+[[./img/keyboard-instrument.png]]
+** Usage 4: Quality Checking
+#+ATTR_HTML: :style width:1000px
+[[./img/swell-boxes.png]]
+- "swell boxes" BTG "organ components" BTP "organs (aerophones)" => BTPE
+- "swell boxes" BTG "organs (aerophones)" is asserted in error
+- Can catch it if we declare BTGE & BTPE as owl:disjointProperty
+- But is this true in all cases?
+* BTP Imprecisions
+- Mixing partial vs full inclusion; and physical vs administrative:\\
+  Netherlands Antilles BTP Netherlands BTP Europe ??
+#+ATTR_HTML: :style width:900px
+[[./img/NetherlandsAntilles.png]]
+- was until 1954: is in TGN with historic date qualification
+- sample query: [[http://vocab.getty.edu/doc/#Places_Outside_Bounding_Box_Overseas_Possessions][Places Outside Bounding Box (Overseas Possessions)]]
+** BTP Imprecisions (2)
+- Mixing Partial vs full inclusion:\\
+  Istanbul BTP Turkey BTP Asia
+#+ATTR_HTML: :style width:500px
+[[./img/Turkey.png]]
+How about Istanbul BTP Europe? It does straddle the Bosphorus strait:
+#+ATTR_HTML: :style width:200px
+[[./img/Istanbul_and_Bosporus.jpg]]
+** BTP Imprecisions (3)
+- Mixing member vs substance meronym:\\
+  chicken feet BTP chicken BTP chicken soup ??
+- Mixing intrinsic vs extrinsic BTP; and categories (person vs group):\\
+  Mick Jagger's BTP Mick Jagger BTP The Rolling Stones ??
+Mereology is a complex topic spanning: philosophy, mathematical logic, theoretical computer science, physics, Sheaf, Topos, or Category Theory, object-oriented programming.
+- [[http://en.wikipedia.org/wiki/Mereology][Wikipedia article]]
+- [[http://www.inf.unibz.it/krdb/pub/TR/KRDB06-3.pdf][Introduction to part-whole relations: mereology, conceptual modelling and mathematical aspects]] (Maria Keet, 2006)
+* BTI Elaborations
+- [[http://en.wikipedia.org/wiki/Metaclass][Metaclasses]] in OOP and [[http://www.w3.org/2007/OWL/wiki/Punning][Punning]] in OWL allow classes of classes, and use them profitably
+- ISO: instance may have parts/subdivisions, recommends custom relation BTX (eg BTS=subdivsion)).\\
+  Eg "BMW E87" BTS "BMW 1 Series" BTI "Automobiles"
+- Biological classification: concepts belong to different levels (taxonomic ranks).\\
+  Eg Secretariat (ULAN <named animal>) BTI racehorses BTG Equus caballus BTI species
+** BTI in Taxonomic Relations
+[[./img/Secretariat.png]]
+** Do Individuals Belong in a Thesaurus?
+- TGN gave up placeType<BTI for now, because of non-sensical broaderTransitive
+- If you exclude BTI then broaderExtended coincides with broaderTransitive: ~BTG* | (BTG|BTP)* = (BTG|BTP)*~
+- Some CRM SIG members: "Individuals don't belong to a thesaurus. Mixing individuals and generics is logically inconsistent"
+- Eg in Getty LOD: [[http://vocab.getty.edu/tgn/7011781][tgn:7009977]] London is gvp:adminplaceconcept, gvp:subject, skos:concept
+  - Separate node [[http://vocab.getty.edu/tgn/7011781-place][tgn:7009977-place]] is schema:Place, wgs:SpatialThing
+  - Such [[http://vocab.getty.edu/doc/#Concept_vs_Place_Duality][Concept vs Place Duality]] is respected by VIAF, UK BL, FR BnF, SE KB; but not US LoC, DE DNB
+** Do Individuals Belong in a Thesaurus? (2)
+We think yes: main role of a thesaurus is a list of fixed values (concepts, people, etc)
+- Eg GND mixes 10M things: materials, subjects, football clubs, deities, ghosts
+- Eg British Museum LOD: [[http://collection.britishmuseum.org/id/place/x17731][London England]] is ecrm:E53_Place, skos:Concept (but latter may be removed)
+- Eg LoC MARC Relators: [[http://id.loc.gov/vocabulary/relators/aut.html][Author]] is skos:Concept, rdf:Property, owl:ObjectProperty !
+* Thanks for your time!
+- [[https://drive.google.com/file/d/0B7BFygWDV2_PNkQycHl0bWNLak0][Draft paper]] (some months old, these ideas are still evolving)
+- Research conducted as part of GVP LOD publication: http://vocab.getty.edu
+  - See [[http://VladimirAlexiev.github.io/pres/20140905-CIDOC-GVP/index.html][CIDOC 2014 presentation]]
+  - See doc (100 pages!): http://vocab.getty.edu/doc
+- The financial support of the J. Paul Getty Trust is gratefully acknowledged
+#+ATTR_HTML: :style width:400px
+[[./img/QuestionMark.jpg]]

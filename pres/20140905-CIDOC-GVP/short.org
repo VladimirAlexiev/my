@@ -1,0 +1,276 @@
+# -*- my-org-place: "CIDOC Congress, Dresden, Germany"; my-org-filename-reveal: "short.html"; my-org-filename-pdf: "GVP-LOD-CIDOC-short.pdf"; my-org-filename-full: nil -*-
+#+STARTUP:   noinlineimages content
+#+DATE:      2015-02-10
+#+TITLE:     GVP LOD: Ontologies and Semantic Representation (short version)
+#+AUTHOR:    Vladimir Alexiev, Data and Ontology Group, Ontotext Corp
+#+EMAIL:     vladimir.alexiev@ontotext.com
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil
+
+***** Ontotext Scope of Work
+http://vocab.getty.edu
+- Ontology development: http://vocab.getty.edu/ontology
+- Contribution to [[http://purl.org/iso25964/skos-thes][ISO 25964 ontology]] (latest thesauri standard)
+- Complete mapping specification
+- Help with R2RML conversion scripts, contrib to RDB2RDF (Perl), rrx:languageColumn extension
+- GraphDB (OWLIM) repository. Enterprise Edition (clustered)
+- Sem app dev (customized Forest UI), tech consulting
+- SPARQL 1.1 endpoint: http://vocab.getty.edu/sparql 
+- Documentation (100 pages): http://vocab.getty.edu/doc
+- Lots of sample queries, incl charts, geographic, etc
+- Per-entity export files, explicit/total data dumps
+- Help desk / support
+- Presentations, scientific papers
+***** Semantic Resolution & Content Negotiation
+All GVP, AAT and TGN URLs resolve, returning human or machine readable content through content negotiation (303 redirect).
+Eg about the ontology:
+| http://vocab.getty.edu/ontology      | semantic URI, content-negotiated |
+| http://vocab.getty.edu/ontology.html | page (application/xhtml+xml)     |
+| http://vocab.getty.edu/ontology.rdf  | application/rdf+xml              |
+| http://vocab.getty.edu/ontology.ttl  | text/turtle                      |
+Eg about an AAT subject
+| http://vocab.getty.edu/aat/300011154      | semantic URI, con-neg        |
+| http://vocab.getty.edu/aat/300011154.html | page (application/xhtml+xml) |
+| http://vocab.getty.edu/aat/300011154.rdf  | application/rdf+xml          |
+| http://vocab.getty.edu/aat/300011154.ttl  | text/turtle                  |
+| http://vocab.getty.edu/aat/300011154.nt   | NTriples                     |
+| http://vocab.getty.edu/aat/300011154.json | JSON (to change to .rj)      |
+***** GVP Vocabulary Data
+Scope includes:
+- Subjects: Concepts but also non-concepts
+- Obsolete subjects (and dct:isReplacedBy)
+- Terms: plain (SKOS) & rich (SKOS-XL). Term characteristics
+- Languages (some custom lang tags)
+- Hierarchical rels: custom & standard, distinguish BTG,BTP,BTI
+- Associative rels (170 subprop of skos:related)
+- Historic info on rels (rdf:Statement) and terms
+- Alignment (exactMatch to LCSH)
+- Sources (bibo:Document, bibo:DocumentPart with locator)
+- Contributors (foaf:Agent)
+- Revision history (prov:Activity)
+- Thesaurus-specific (TGN place types, coordinates)
+One of the richest thesauri I've seen
+***** External Ontologies
+| *Prefix* | *Ontology*                     | *Used for*                      |
+| bibo:    | Bibliography Ontology          | Sources                         |
+| dc:      | Dublin Core Elements           | common                          |
+| dct:     | Dublin Core Terms              | common                          |
+| foaf:    | Friend of a Friend ontology    | Contributors                    |
+| iso:     | ISO 25946 (latest on thesauri) | iso:ThesaurusArray, BTG/BTP/BTI |
+| owl:     | Web Ontology Language          | Basic RDF representation        |
+| prov:    | Provenance Ontology            | Revision history                |
+| rdf:     | Resource Description Framework | Basic RDF representation        |
+| rdfs:    | RDF Schema                     | Basic RDF representation        |
+| schema:  | Schema.org                     | common, geo (TGN)               |
+| skos:    | Simple Knowledge Org System    | Basic vocabulary representation |
+| skosxl:  | SKOS Extension for Labels      | Rich labels                     |
+| wgs:     | W3C World Geodetic Survey geo  | Geo (TGN)                       |
+| xsd:     | XML Schema Datatypes           | Basic RDF representation        |
+***** GVP Semantic Representation
+#+ATTR_HTML: :style width:800px
+[[./img/semantic-overview-1.png]]
+***** GVP Semantic Representation (2)
+#+ATTR_HTML: :style width:710px
+[[./img/semantic-overview-2.png]]
+***** Hierarchical Relations
+Use iso:ThesaurusArray to allow Guide Terms below Concepts. Infer cross-threading SKOS/ISO broader relations
+#+ATTR_HTML: :style width:600px
+[[./img/008-complex-hierarchy.png]]
+***** Key Values (Flags) Are Important
+Excel-driven Ontology Generation™ (getty-codes.xls to getty-codes.ttl)\\
+Key *val* can be mapped to Custom sub-class, Custom (sub-)prop, [[http://vocab.getty.edu/doc/#Ontology_Values][Ontology Value]] (eg <term/kind/Abbreviation>)
+[[./img/getty-codes.png]]
+***** Associative Relations Are Valuable
+More Excel-driven Ontology Generation™ (assoc-rels.xls to assoc-rels.ttl)
+- Relations come in owl:inverseOf pairs (or owl:SymmetricProperty self-inverse)
+[[./img/assoc-rels.png]]
+***** GVP Ontology
+http://vocab.getty.edu/ontology, [[http://lov.okfn.org/dataset/lov/details/vocabulary_gvp.html][LOV Entry]]. 10 classes, 177 props: a lot are from excel, so editable by Getty
+[[./img/GVP-ontology.png]]
+***** Obsolete Subjects
+- AAT obsolete subjects are 4.4% of valid subjects, which shows a good rate of editorial actions
+- Obsolete subjects may have been used in client data. In order not to leave such data hanging, we publish minimal information:
+#+BEGIN_SRC 
+aat:300123456 a gvp:ObsoleteSubject; # Was made non-publishable
+  skos:prefLabel "Made up subject";
+  skos:inScheme aat: ;
+  schema:endDate "2012-12-31T12:34:56"^^xsd:dateTime.
+
+aat:300386746 a gvp:ObsoleteSubject; # Was merged to a dominant Subject
+  skos:prefLabel "Buncheong";
+  skos:inScheme aat: ;
+  dct:isReplacedBy aat:300018699; # Punch'ong
+  schema:endDate "2012-12-31T12:34:56"^^xsd:dateTime.
+#+END_SRC
+***** Use of iso:ThesaurusArray in GVP
+Use rdf:List for ordered children.\\
+Novelty: if parent is Concept, use anonymous ThesaurusArray
+[[./img/GVP-isoThesaurusArray.png]]
+***** Contribution to ISO 25946
+- Contributed to [[http://purl.org/iso25964/skos-thes][ISO 25946 ontology]] ([[http://lov.okfn.org/dataset/lov/details/vocabulary_iso-thes.html][LOV entry]])
+- First industrial use of ISO 25946
+- Defined appropriate combinations of BTG, BTP, BTI relations (first formally defined in ISO).
+On Compositionality of ISO 25964 Hierarchical Relations\\
+(BTG, BTP, BTI), V.Alexiev, J.Lindenthal, A.Isaac.
+[[https://drive.google.com/file/d/0B7BFygWDV2_PNkQycHl0bWNLak0][Draft paper]], [[http://VladimirAlexiev.github.io/pres/20140912-NKOS-compositionality/index.htm][Presentation]] at [[https://at-web1.comp.glam.ac.uk/pages/research/hypermedia/nkos/nkos2014/programme.html][NKOS 2014]] Workshop, London, 12 Sep 2014
+#+BEGIN_CENTER
+|        | *BTGx* | *BTPx* | *BTIx* |
+| *BTGx* | BTGE   | BTPE   | no     |
+| *BTPx* | BTPE   | BTPE   | no     |
+| *BTIx* | BTIE   | no     | no     | 
+#+END_CENTER
+- Eg: anvil components BTP <anvils and anvil accessories> BTG <forging and metal-shaping tools> => BTPE
+- Mount Athos BTI Orthodox religious center BTG religious center => BTIE
+***** Terms
+Support multilingual labels: both SKOS (plain)...
+#+BEGIN_SRC 
+aat:300198841 a skos:Concept , gvp:Subject , gvp:Concept ;
+  skos:prefLabel "rhyta"@el-latn , "rhyta"@en , "rhytons"@es , "rhytons"@fr ;
+  skos:altLabel "rhyta"@es , "rhyton"@es , "rhyton"@en , "rhyton"@el-latn ...;
+  skosxl:prefLabel aat_term:1000198841-en , aat_term:1000198841-el-Latn ...;
+  skosxl:altLabel aat_term:1000198841-es , aat_term:1000297235-en ...
+#+END_SRC
+... and rich info in SKOS-XL:
+#+BEGIN_SRC 
+aat_term:1000198841-en a skosxl:Label ;
+  dc:identifier "1000198841" ;
+  dct:language aat:300388277 , gvp_lang:en ; # owl:sameAs
+  dct:contributor aat_contrib:10000000 , aat_contrib:10000131 ;
+  skosxl:literalForm "rhyta"@en ;          #### with Qualifier if applicable
+  gvp:term "rhyta"@en ;                    #### no qualifier
+  gvp:displayOrder "1"^^xsd:positiveInteger ;
+  gvp:termType <term/type/Descriptor> ;    #### Descr/AltDescr/UseFor
+  gvp:termPOS <term/POS/PluralNoun> ;      #### Part of Speech
+  gvp:contributorPreferred aat_contrib:10000000 , aat_contrib:10000088 ;
+  gvp:contributorNonPreferred aat_contrib:10000131 ;
+  gvp:sourcePreferred aat_source:2000051089-term-1000198841 ...;
+  dct:source aat_source:2000024811 , aat_source:2000052946 ...;
+  gvp:sourceNonPreferred aat_source:2000052946 ;
+  gvp:sourceAlternatePreferred aat_source:2000048328-term-1000198841 .
+#+END_SRC
+***** Some Custom Language Tags
+Despite the richness of IANA tags (9000), we had to define new tags, using several extension mechanisms:
+- Private language, e.g.
+  - *x-byzantin-Latn*: Byzantine Greek (transliterated)
+  - *x-frisian* (IANA/ISO has codes for predecessor Old Frisian and dialects West, Saterland and North Frisian)
+- Private language used in specific region, e.g.
+  - *qqq-002*: African language (not specified which)
+  - *qqq-ET*: Ethiopian (not specified: Boro/Borna, Karo...)
+- Private modifier, e.g.
+  - grc-Latn- *x-liturgic*: Liturgical Greek
+  - ber-Latn- *x-dialect*: Berber Dialects (transliterated)
+  - fa-Latn- *x-middle*: Persian, Middle (transliterated)
+  - zh-Latn-pinyin- *x-notone*: transliterated Pinyin without tones
+***** Sources
+bibo:Document or bibo:DocumentPart
+#+BEGIN_SRC 
+aat_source:2000051089 a bibo:Document;
+  dc:identifier "2000051089"
+  bibo:shortTitle "AATA database (2002-)";
+  dct:title "Getty Conservation Institute (GCI). database of AATA Online...".
+aat_source:2000051089-term-1000198841 a bibo:DocumentPart;
+  dct:isPartOf aat_source:2000051089;
+  bibo:locator "128257 checked 26 January 2012".
+#+END_SRC
+Applied to subject, term, scopeNote:
+#+BEGIN_SRC 
+aat:300198841 # subject (rhyta)
+  dct:source aat_source:2000030301-subject-300198841;
+  dct:source aat_source:2000052378.
+aat_term:1000198841-en # term "rhyta"@en
+  gvp:sourceNonPreferred aat_source:2000049728;
+  dct:source aat_source:2000051089-term-1000198841. 
+aat_scopeNote:34904 # scopeNote
+  dct:source aat_source:2000046502.
+#+END_SRC
+***** Contributors
+foaf:Agent
+#+BEGIN_SRC 
+aat_contrib:10000131 a foaf:Agent;
+  dc:identifier "10000131";
+  foaf:nick "CDBP-DIBAM";
+  foaf:name "Centro de Documentación de Bienes Patrimoniales...".
+#+END_SRC
+Applied to subject, term, scopeNote:
+#+BEGIN_SRC 
+aat:300198841 # subject "rhyta"
+  dct:contributor aat_contrib:10000131;
+  dct:contributor aat_contrib:10000000.
+aat_term:1000198841-en # term "rhyta"@en
+  gvp:contributorNonPreferred aat_contrib:10000131;
+  gvp:contributorPreferred aat_contrib:10000000.
+aat_scopeNote:34904 # scopeNote
+  dct:contributor aat_contrib:10000000.
+#+END_SRC
+***** Historic Info
+Includes dates of applicability, historicFlag, comment. Applied to terms; hier & assoc rels, place types (using rdf:Statement)
+#+BEGIN_SRC 
+aat_term:1000002693-en a skosxl:Label;
+  skosxl:literalForm "lambruscatura"@en ;
+  gvp:historicFlag <http://vocab.getty.edu/historic/historic> ;
+  schema:startDate "0900"^^xsd:gYear ;
+  schema:endDate "1700"^^xsd:gYear ;
+  rdfs:comment "Medieval term for wainscoting".
+
+aat_rel:300020271-aat2812_followed-300020269 a rdf:Statement;
+  rdf:subject      aat:300020271;        # Second Dynasty (Egyptian)
+  rdf:predicate    gvp:aat2812_followed;
+  rdf:object       aat:300020269;        # First Dynasty (Egyptian)
+  rdfs:comment     "Second Dynasty began ca. 2775 BCE";
+  schema:startDate "-2785"^^xsd:gYear;
+  schema:endDate   "-2765"^^xsd:gYear.
+ 
+tgn:7011179-placeType-300008347 a rdf:Statement;
+  rdf:subject      tgn:7011179;          # Siena
+  rdf:predicate    gvp:placeTypePreferred;
+  rdf:object       aat:300008347;        # inhabited place
+  rdfs:comment     "settled by Etruscans (flourished 6th century BCE)";
+  schema:startDate "-0800"^^xsd:gYear;
+  gvp:displayOrder "1"^^xsd:positiveInteger.
+#+END_SRC
+***** Revision History 
+PROV is too complex, so we simplify:
+#+BEGIN_SRC 
+aat:300018699
+  skos:changeNote aat_rev:12345, aat_rev:12346, aat_rev:12347;
+  prov:wasGeneratedBy aat_rev:12345;
+  dct:created  "2014-01-02T01:02:03"^^xsd:dateTime;
+  dct:modified "2014-01-03T01:02:03"^^xsd:dateTime;
+  dct:issued   "2014-01-04T01:02:03"^^xsd:dateTime.
+aat_rev:12345 a prov:Activity, prov:Create;
+  dc:type "created";
+  prov:startedAtTime "2014-01-02T01:02:03"^^xsd:dateTime.
+aat_rev:12346 a prov:Activity, prov:Modify;
+  prov:used aat:300018699;
+  dc:type "term added";
+  dc:description "leggings, puttee (1000248060)";
+  prov:startedAtTime "2014-01-03T01:02:03"^^xsd:dateTime.
+aat_rev:12347 a prov:Activity, prov:Publish;
+  prov:used aat:300018699;
+  dc:type "issued";
+  prov:startedAtTime "2014-01-04T01:02:03"^^xsd:dateTime.
+#+END_SRC
+***** TGN Specifics: Concept-Place Duality
+Duality between Concept and its denotation  (ala VIAF, UK BL, FR BnF, SE KB...)
+[[./img/013-concept-place-duality.png]]
+***** TGN Semantic Representation
+Place types (TGN->AAT), Concept-Place duality, coordinates
+#+ATTR_HTML: :style width:350px
+[[./img/012-TGN-overview.png]]
+***** Construct Query: Get & Cache All Data for Subject
+[[./img/028-construct-subject.png]]
+- All data for these subsidiary objects is served by the resource URL
+- Cached, thus served quickly
+- Served in RDF/XML, N3/Turtle, NTriples, JSON, soon JSON-LD
+***** Documentation
+#+ATTR_HTML: :style width:1100px
+[[./img/GVP-doc-TOC.png]]
+***** Sample Query: Bar chart with SPARQL
+Number of UN members per year. [[http://vocab.getty.edu/doc/#Column_Chart_with_SPARQL][See doc]] or [[http://jsfiddle.net/valexiev/TCr59/][jsfiddle]] with it
+#+ATTR_HTML: :style width:700px
+[[./img/029-growth-of-UN.png]]
+***** Thanks for your time!
+[[mailto:vladimir.alexiev@ontotext.com]]
+#+ATTR_HTML: :style width:400px
+[[./img/QuestionMark.jpg]]
+

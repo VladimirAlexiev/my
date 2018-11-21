@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Making True RDF Diagrams with rdfpuml</title>
+<meta name="author" content="(Vladimir Alexiev)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>Making True RDF Diagrams with rdfpuml</h2><h3>Vladimir Alexiev</h3><h4>2016-05-14 (Added Offshore Leaks data model), 2016-03-25 (original)</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index-full.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org9bc9d26">1. Motivation</a>
+<ul>
+<li><a href="#/slide-org167355b">1.1. Simple Example: Source Turtle</a></li>
+<li><a href="#/slide-org286e702">1.2. Simple Example: Generated PlantUML</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org7a665fd">2. Diagram Control</a>
+<ul>
+<li><a href="#/slide-org1d4946a">2.1. Inlining</a></li>
+<li><a href="#/slide-org4f0cc72">2.2. Collect Values, Comment Label</a></li>
+<li><a href="#/slide-org0bde267">2.3. Collect Arrow Labels</a></li>
+<li><a href="#/slide-orgaa6268f">2.4. Arrow Customization</a></li>
+<li><a href="#/slide-orgca59079">2.5. Stereotypes and Colored Circles</a></li>
+<li><a href="#/slide-org02ab87c">2.6. Reification</a></li>
+<li><a href="#/slide-orgf5f4ab3">2.7. Reification Nodes</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org43eb27f">3. Application Examples</a>
+<ul>
+<li><a href="#/slide-org72a6088">3.1. Getty CONA: Contributors and Sources</a></li>
+<li><a href="#/slide-org9a90c83">3.2. EHRI: Person Record</a></li>
+<li><a href="#/slide-org37cd8f7">3.3. EHRI: Person Network</a></li>
+<li><a href="#/slide-org2684a05">3.4. Multisensor: Video Annotation &amp; Text Annotation (NIF)</a></li>
+<li><a href="#/slide-orgfcd73de">3.5. Multisensor: FrameNet Embedded in NIF</a></li>
+<li><a href="#/slide-org2b25509">3.6. Duraspace PCDM Metadata</a></li>
+<li><a href="#/slide-orgc8ff3c6">3.7. Video Annotation: LinkedTV NISV Use Case</a></li>
+<li><a href="#/slide-org8495787">3.8. Video Annotation: Generated Diagram</a></li>
+<li><a href="#/slide-org2177a56">3.9. Offshore Leaks</a></li>
+<li><a href="#/slide-orge09c97d">3.10. Offshore Leaks (2)</a></li>
+<li><a href="#/slide-org277d1bc">3.11. Offshore Leaks Evolution</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgf3bba6a">4. Next Steps</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org9bc9d26">
+<h2 id="org9bc9d26"><span class="section-number-2">1</span> Motivation</h2>
+<p>
+RDF is a graph data model, so:
+</p>
+<ul>
+<li>Often the best way to understand RDF data schemas (ontologies, application profiles, RDF shapes) is with a diagram</li>
+<li>Many visualizations exist but they focus on big graphs and are hard to understand</li>
+
+</ul>
+
+<p>
+Developed a tool <b>rdfpuml</b> that makes <b>true</b> diagrams from Turtle examples
+</p>
+<ul>
+<li>Guarantees consistency between said (triple statements) and shown (diagram)</li>
+<li>Lets you focus on domain modeling rather than diagram layouting</li>
+<li>Saves you effort</li>
+
+</ul>
+<p>
+Uses <a href="http://www.plantuml.com/">PlantUML</a> and <a href="http://www.graphviz.org">GraphViz</a>
+</p>
+
+</section>
+<section id="slide-org167355b">
+<h3 id="org167355b"><span class="section-number-3">1.1</span> Simple Example: Source Turtle</h3>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">cona:</span><span style="color: #008b8b;">456-thing</span> <span style="color: #228b22;">crm:</span><span style="color: #008b8b;">P12i_was_present_at</span> <span style="color: #228b22;">cona:</span><span style="color: #008b8b;">456-discovery-123</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">cona:</span><span style="color: #008b8b;">456-discovery-123</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">crmx:</span><span style="color: #008b8b;">Discovery</span>;
+  <span style="color: #228b22;">crm:</span><span style="color: #008b8b;">P2_has_type</span> <span style="color: #0000ff;">&lt;cona/production/discovery&gt;</span>;
+  <span style="color: #228b22;">crm:</span><span style="color: #008b8b;">P4_has_time-span</span> <span style="color: #228b22;">cona:</span><span style="color: #008b8b;">456-discovery-123-date</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">cona:</span><span style="color: #008b8b;">456-discovery-123-date</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">crm:</span><span style="color: #008b8b;">E52_Time-Span</span>;
+  <span style="color: #228b22;">crm:</span><span style="color: #008b8b;">P82a_begin_of_the_begin</span> <span style="color: #8b2252;">"1800"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">gYear</span>;
+  <span style="color: #228b22;">crm:</span><span style="color: #008b8b;">P82b_end_of_the_end</span> <span style="color: #8b2252;">"1850"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">gYear</span>.
+<span style="color: #b22222;">########################################</span>
+<span style="color: #0000ff;">&lt;cona/production/discovery&gt;</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">Inline</span>.
+</pre>
+</div>
+<p>
+Namespace <code>puml:</code> are diagram control triples, explained further
+</p>
+
+<div class="figure">
+<p><img src="./img/CONA-production-discovery-Simple.png" alt="CONA-production-discovery-Simple.png" class="stretch" style="width:500px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org286e702">
+<h3 id="org286e702"><span class="section-number-3">1.2</span> Simple Example: Generated PlantUML</h3>
+<p>
+Takes care of many hairy details, eg node name sanitization, property name &amp; value collection, inlining, Association nodes, replacing <code>()</code> with <code>[]</code> (puml quirk), etc
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-plantuml"><span style="color: #a020f0;">@startuml</span>
+<span style="color: #a020f0;">hide</span> empty methods
+<span style="color: #a020f0;">hide</span> empty attributes
+<span style="color: #a020f0;">hide</span> circle
+<span style="color: #a020f0;">skinparam</span> <span style="color: #483d8b;">classAttributeIconSize</span> 0
+<span style="color: #228b22;">class</span> cona_456_discovery_123 as <span style="color: #8b2252;">"cona:456-discovery-123"</span>
+cona_456_discovery_123 : a crmx:Discovery
+<span style="color: #228b22;">class</span> cona_456_discovery_123_date as <span style="color: #8b2252;">"cona:456-discovery-123-date"</span>
+cona_456_discovery_123 <span style="color: #a020f0;">--&gt;</span> cona_456_discovery_123_date : crm:P4_has_time-span
+cona_456_discovery_123 : crm:P2_has_type cona:production/discovery
+cona_456_discovery_123_date : a crm:E52_Time-Span
+cona_456_discovery_123_date : crm:P82a_begin_of_the_begin <span style="color: #8b2252;">"1800"</span>^^xsd:gYear
+cona_456_discovery_123_date : crm:P82b_end_of_the_end <span style="color: #8b2252;">"1850"</span>^^xsd:gYear
+<span style="color: #228b22;">class</span> cona_456_thing as <span style="color: #8b2252;">"cona:456-thing"</span>
+cona_456_thing <span style="color: #a020f0;">--&gt;</span> cona_456_discovery_123 : crm:P12i_was_present_at
+<span style="color: #a020f0;">@enduml</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7a665fd">
+<h2 id="org7a665fd"><span class="section-number-2">2</span> Diagram Control</h2>
+<p>
+Diagram readability is a prime concern. Some measures:
+</p>
+<ul>
+<li>Shorten URLs aggressively. Some prefixed names you see in the diagram are not valid Turtle</li>
+<li>Sort properties by name (rdf:type comes first)</li>
+<li>Collect property values together; collect "parallel" properties together</li>
+<li>Introduce a few diagram control mechanisms
+<ul>
+<li>Follow Dan Connolly's approach <a href="https://www.w3.org/2001/02pd/">Circles and arrows diagrams using stylesheet rules</a> (W3C 2005)</li>
+<li>Use triples in namespace <code>puml:</code>, usually written after <code>####</code></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org1d4946a">
+<h3 id="org1d4946a"><span class="section-number-3">2.1</span> Inlining</h3>
+<p>
+Show object inlined in the subject node, not as separate node
+</p>
+<ul>
+<li>Types and literals are inlined automatically</li>
+<li><p>
+Inline resource: used often for lookup values
+</p>
+<pre class="example">
+&lt;cona/event/competition&gt; a puml:Inline.
+  # Show URL in the subject node.
+cona_contrib:10000000 a puml:Inline; rdfs:label "VP".
+  # Show the URL, and add a comment "# VP"
+
+</pre></li>
+<li><p>
+Inline property: show all objects of a property inlined
+</p>
+<pre class="example">
+fn:annotationSetFrame a puml:InlineProperty. 
+  # Show all objects (values) of fn:annotationSetFrame inline
+
+</pre></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/MS-Frame-InlineProperty.png" alt="MS-Frame-InlineProperty.png" class="stretch" style="width:600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4f0cc72">
+<h3 id="org4f0cc72"><span class="section-number-3">2.2</span> Collect Values, Comment Label</h3>
+<ul>
+<li>Multiple objects are collected and shown separated with commas</li>
+<li><p>
+<code>rdfs:label</code> of <code>puml:Inline</code> is used as comment after the value
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">cona_source:</span><span style="color: #008b8b;">2000015171</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">Inline</span>; <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Fletcher, History of Architecture [1975]"</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">cona_source:</span><span style="color: #008b8b;">2000052135</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">Inline</span>; <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Great Buildings Online [1997-]"</span>.
+</pre>
+</div></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/CONA-MultipleValues-Labels.png" alt="CONA-MultipleValues-Labels.png" class="stretch" style="width:700px" />
+</p>
+</div>
+<ul>
+<li><p>
+<code>puml:label</code> adds a comment on non-Inlined node
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">ia:</span><span style="color: #008b8b;">1000042</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>;
+  <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Hercules"</span>;
+  <span style="color: #228b22;">dct:</span><span style="color: #008b8b;">type</span> <span style="color: #0000ff;">&lt;ia/type/Religion_Mythology_Legend&gt;</span>;
+  <span style="color: #228b22;">...</span>
+<span style="color: #228b22;">ia:</span><span style="color: #008b8b;">129</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Story of Hercules"</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">tgn:</span><span style="color: #008b8b;">7010720</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Argos"</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">tgn:</span><span style="color: #008b8b;">7029383</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Thebes"</span>.
+</pre>
+</div></li>
+
+</ul>
+
+
+<div class="figure">
+<p><img src="./img/CONA-PumlLabel.png" alt="CONA-PumlLabel.png" class="stretch" style="width:600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org0bde267">
+<h3 id="org0bde267"><span class="section-number-3">2.3</span> Collect Arrow Labels</h3>
+<ul>
+<li>Multiple property instances between nodes are collected in one arrow and shown as several labels</li>
+<li>Inverse arrows work fine</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/CONA-arel-replaced-MultipleArrowLabels.png" alt="CONA-arel-replaced-MultipleArrowLabels.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgaa6268f">
+<h3 id="orgaa6268f"><span class="section-number-3">2.4</span> Arrow Customization</h3>
+<p>
+Customize arrows using predicate of the form <code>puml:$dir-$head-$line</code>
+</p>
+<ul>
+<li><code>$dir</code>: left, right, up, down (default)</li>
+<li><code>$head</code>: none="", tri="|&gt;", star="*", o="o" (default is normal arrow)
+<ul>
+<li>See <a href="http://plantuml.com/objects.html">PlantUML Object diagrams</a>. Unfortunately PlantUML doesn't have bidirectional arrows</li>
+
+</ul></li>
+<li><code>$line</code>: dashed (default is solid)</li>
+<li>(each part is optional)</li>
+
+</ul>
+<p>
+Set arrow for all property instances:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">oliaLink</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">arrow</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">up</span>.
+</pre>
+</div>
+<p>
+Set arrow between two specific nodes:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">cona:</span><span style="color: #008b8b;">456-production</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">left</span> <span style="color: #228b22;">cona:</span><span style="color: #008b8b;">456-motivation-123</span>.
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="./img/CONA-production-motivation-ArrowDir.png" alt="CONA-production-motivation-ArrowDir.png" class="stretch" style="width:700px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgca59079">
+<h3 id="orgca59079"><span class="section-number-3">2.5</span> Stereotypes and Colored Circles</h3>
+<p>
+<a href="https://en.wikipedia.org/wiki/Stereotype_(UML)">Stereotype</a> is UML lingo for those funny <i>«guillemetted names»</i> and colored circles (either is optional)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">iso:</span><span style="color: #008b8b;">ThesaurusArray</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span> <span style="color: #8b2252;">"(A,red)"</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">gvp:</span><span style="color: #008b8b;">GuideTerm</span>      <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span> <span style="color: #8b2252;">"(G,green)"</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">gvp:</span><span style="color: #008b8b;">Concept</span>        <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span> <span style="color: #8b2252;">"(C,lightblue)"</span>.
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="./img/GVP-ordered-collection-Stereotype.png" alt="GVP-ordered-collection-Stereotype.png" class="stretch" style="width:400px" />
+</p>
+</div>
+
+<p>
+You can also use this on an individual node instead of a whole class.
+</p>
+
+</section>
+<section id="slide-org02ab87c">
+<h3 id="org02ab87c"><span class="section-number-3">2.6</span> Reification</h3>
+<ul>
+<li>A statement <code>&lt;s&gt; &lt;p&gt; &lt;o&gt;</code> is also represented as a node with 3 addressing properties, and extra data is added</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #0000ff;">&lt;node&gt;</span> <span style="color: #a020f0;">a</span> <span style="color: #0000ff;">&lt;ReificationClass&gt;</span>;
+  <span style="color: #0000ff;">&lt;subjectProp&gt;</span>  <span style="color: #0000ff;">&lt;s&gt;</span>;
+  <span style="color: #0000ff;">&lt;shortcutProp&gt;</span> <span style="color: #0000ff;">&lt;p&gt;</span>;
+  <span style="color: #0000ff;">&lt;objectProp&gt;</span>   <span style="color: #0000ff;">&lt;o&gt;</span>;
+  <span style="color: #b22222;"># extra data, eg dct:created, dct:creator</span>
+</pre>
+</div>
+<ul>
+<li>RDF Reification is used most often (first row below)</li>
+<li>CIDOC CRM also has it (with extension <code>crmx:property</code> aka <code>bmo:PX_property</code>)</li>
+<li><a href="http://smiy.sourceforge.net/prv/spec/propertyreification.html">Property Reification Vocabulary</a> allows us to express this data formally:</li>
+
+</ul>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">ReificationClass</th>
+<th scope="col" class="org-left">subjectProp</th>
+<th scope="col" class="org-left">shortcutProp</th>
+<th scope="col" class="org-left">objectProp</th>
+<th scope="col" class="org-left">prop (shortcut)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">rdf:Statement</td>
+<td class="org-left">rdf:subject</td>
+<td class="org-left">rdf:predicate</td>
+<td class="org-left">rdf:object</td>
+<td class="org-left">any prop</td>
+</tr>
+
+<tr>
+<td class="org-left">crm:E13_Attribute _Assignment</td>
+<td class="org-left">crm:P140_assigned _attribute_to</td>
+<td class="org-left">crmx:property</td>
+<td class="org-left">crm:P141_assigned</td>
+<td class="org-left">any CRM prop</td>
+</tr>
+
+<tr>
+<td class="org-left">crm:E14_Condition _Assessment</td>
+<td class="org-left">crm:P34_concerned</td>
+<td class="org-left">crmx:property</td>
+<td class="org-left">crm:P35_has_identified</td>
+<td class="org-left">crm:P44_has_condition</td>
+</tr>
+
+<tr>
+<td class="org-left">crm:E15_Identifier _Assignment</td>
+<td class="org-left">crm:P140_assigned _attribute_to</td>
+<td class="org-left">crmx:property</td>
+<td class="org-left">crm:P37_assigned, crm:P38_deassigned</td>
+<td class="org-left">crm:P1_is_identified_by, crm:P102_has_title</td>
+</tr>
+
+<tr>
+<td class="org-left">crm:E16_Measurement</td>
+<td class="org-left">crm:P39_measured</td>
+<td class="org-left">crmx:property</td>
+<td class="org-left">crm:P40_observed _dimension</td>
+<td class="org-left">crm:P43_has_dimension</td>
+</tr>
+
+<tr>
+<td class="org-left">crm:E17_Type _Assignment</td>
+<td class="org-left">crm:P41_classified</td>
+<td class="org-left">crmx:property</td>
+<td class="org-left">crm:P42_assigned</td>
+<td class="org-left">crm:P2_has_type or subprop</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgf5f4ab3">
+<h3 id="orgf5f4ab3"><span class="section-number-3">2.7</span> Reification Nodes</h3>
+<ul>
+<li>Automatically discover reifications as per the previous table and make <a href="http://plantuml.com/classes.html#Association_classes">PlantUML Association Class</a></li>
+<li>Show addressing properties with arrows (← : →) pointing to the subject, shortcut, object</li>
+<li>Limit: no more than 2 reifications per relation (and the second one is ugly). So use <code>puml:noReify</code> to avoid making reification</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/CONA-arel-Reification.png" alt="CONA-arel-Reification.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org43eb27f">
+<h2 id="org43eb27f"><span class="section-number-2">3</span> Application Examples</h2>
+<ul>
+<li>Getty CONA: Mappings of museum data to CIDOC CRM</li>
+<li>EHRI: Holocaust Research into Jewish social networks</li>
+<li>Multisensor: NLP2RDF/NIF, FrameNet</li>
+<li>Duraspace: Portland Common Data Model for metadata in institutional repositories</li>
+<li>Video Annotation: LinkedTV NISV Use Case</li>
+
+</ul>
+
+</section>
+<section id="slide-org72a6088">
+<h3 id="org72a6088"><span class="section-number-3">3.1</span> Getty CONA: Contributors and Sources</h3>
+<p>
+Aggressive URL shortening, collecting multiple values, value comments
+</p>
+
+<div class="figure">
+<p><img src="./img/CONA-contribs-sources-MultipleValues-Labels.png" alt="CONA-contribs-sources-MultipleValues-Labels.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org567326c">
+<h4 id="org567326c"><span class="section-number-4">3.1.1</span> CONA Iconographic Authority</h4>
+<p>
+Arrow direction, reification
+</p>
+
+<div class="figure">
+<p><img src="./img/CONA-ia_hercules-Complex.png" alt="CONA-ia_hercules-Complex.png" class="stretch" style="width:1500px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9a90c83">
+<h3 id="org9a90c83"><span class="section-number-3">3.2</span> EHRI: Person Record</h3>
+<p>
+Simple record about a person, including info about related people
+</p>
+
+<div class="figure">
+<p><img src="./img/EHRI-person-record.png" alt="EHRI-person-record.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org37cd8f7">
+<h3 id="org37cd8f7"><span class="section-number-3">3.3</span> EHRI: Person Network</h3>
+<p>
+Reconstructing the social network of a person, representing in CIDOC CRM and AgRelOn
+</p>
+
+<div class="figure">
+<p><img src="./img/EHRI-person-network.png" alt="EHRI-person-network.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2684a05">
+<h3 id="org2684a05"><span class="section-number-3">3.4</span> Multisensor: Video Annotation &amp; Text Annotation (NIF)</h3>
+
+<div class="figure">
+<p><img src="./img/MS-video-and-text-NIF.png" alt="MS-video-and-text-NIF.png" class="stretch" style="width:700px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgff543dc">
+<h4 id="orgff543dc"><span class="section-number-4">3.4.1</span> Multisensor: Social Network Analysis</h4>
+<p>
+Global influence and reachability 
+</p>
+
+<div class="figure">
+<p><img src="./img/MS-social-network.png" alt="MS-social-network.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgadf93e5">
+<h4 id="orgadf93e5"><span class="section-number-4">3.4.2</span> Multisensor: Image Annotation with OpenAnnotation</h4>
+<p>
+Reification is used to express Confidence
+</p>
+
+<div class="figure">
+<p><img src="./img/MS-OpenAnnotation-with-Reification.png" alt="MS-OpenAnnotation-with-Reification.png" class="stretch" style="width:1400px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf5f958d">
+<h4 id="orgf5f958d"><span class="section-number-4">3.4.3</span> Multisensor: Image Annotation with OpenAnnotation+FISE</h4>
+<p>
+FISE (Stanbol) is used to express Confidence
+</p>
+
+<div class="figure">
+<p><img src="./img/MS-OpenAnnotation-and-Stanbol-FISE.png" alt="MS-OpenAnnotation-and-Stanbol-FISE.png" class="stretch" style="width:1400px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgfcd73de">
+<h3 id="orgfcd73de"><span class="section-number-3">3.5</span> Multisensor: FrameNet Embedded in NIF</h3>
+<p>
+Made with PlantUML "by hand", not rdfpuml. Uses <a href="http://plantuml.com/classes.html#Using">PlantUML Packages</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/MS-FrameNet-Embedding-in-NIF.png" alt="MS-FrameNet-Embedding-in-NIF.png" class="stretch" style="width:950px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org51d450a">
+<h4 id="org51d450a"><span class="section-number-4">3.5.1</span> Multisensor: FrameNet Manual Example</h4>
+<p>
+Diagram made by hand, took a lot of time, stylized
+</p>
+
+<div class="figure">
+<p><img src="./img/MS-Frame-by-hand-stylized.png" alt="MS-Frame-by-hand-stylized.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org956e015">
+<h4 id="org956e015"><span class="section-number-4">3.5.2</span> Multisensor: FrameNet Automatic Example (Part 1)</h4>
+<p>
+Made automatically with rdfpuml. Split on 2 pages&#x2026;
+</p>
+
+<div class="figure">
+<p><img src="./img/MS-Frame-complex-part1.png" alt="MS-Frame-complex-part1.png" class="stretch" style="width:1500px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org6e2687f">
+<h4 id="org6e2687f"><span class="section-number-4">3.5.3</span> Multisensor: FrameNet Automatic Example (Part 2)</h4>
+<p>
+Split on 2 pages&#x2026; part2
+</p>
+
+<div class="figure">
+<p><img src="./img/MS-Frame-complex-part2.png" alt="MS-Frame-complex-part2.png" class="stretch" style="width:1500px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2b25509">
+<h3 id="org2b25509"><span class="section-number-3">3.6</span> Duraspace PCDM Metadata</h3>
+<ul>
+<li><a href="https://github.com/duraspace/pcdm/wiki">Portland Common Data Model</a> for metadata in institutional repositories (Fedora, Islandora, etc)</li>
+<li><a href="https://wiki.duraspace.org/display/FF/PCDM+Mappings+-+Reference+Diagrams+for+Comment">Reference Diagrams for Comment</a> lists a bunch of metadata layouts for different kinds of Works/Files</li>
+<li>These are made by hand, which takes a lot of time. Eg see diagram for a <a href="https://docs.google.com/drawings/d/1nhwbFqQY_dEOTuHwgXMZIt79pZ4kfa2_DFN5LFOz9Qs/edit">Postcard</a> (simple kind of Work)</li>
+<li>Proposed making <a href="https://github.com/duraspace/pcdm/wiki/Diagrams-with-rdfpuml">diagrams with rdfpuml</a> (interest tracked as <a href="https://github.com/duraspace/pcdm/issues/46">duraspace/pcdm#46</a>):</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/PCDM_Multi_Page_Text-circles.png" alt="PCDM_Multi_Page_Text-circles.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc8ff3c6">
+<h3 id="orgc8ff3c6"><span class="section-number-3">3.7</span> Video Annotation: LinkedTV NISV Use Case</h3>
+
+<div class="figure">
+<p><img src="./img/LinkedTV-Fig22-NISV-scenario.png" alt="LinkedTV-Fig22-NISV-scenario.png" class="stretch" style="width:1400px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org8495787">
+<h3 id="org8495787"><span class="section-number-3">3.8</span> Video Annotation: Generated Diagram</h3>
+
+<div class="figure">
+<p><img src="./img/linkedtv-nisv.png" alt="linkedtv-nisv.png" class="stretch" style="width:1400px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2177a56">
+<h3 id="org2177a56"><span class="section-number-3">3.9</span> Offshore Leaks</h3>
+<p>
+Ontotext <a href="https://github.com/Ontotext-AD/leaks/">published as RDF</a> the ICIJ <a href="https://offshoreleaks.icij.org/">Offshore Leaks</a> database according to this model:<br />
+</p>
+
+<div class="figure">
+<p><img src="./img/leaks-model1.png" alt="leaks-model1.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge09c97d">
+<h3 id="orge09c97d"><span class="section-number-3">3.10</span> Offshore Leaks (2)</h3>
+
+<div class="figure">
+<p><img src="./img/leaks-model2.png" alt="leaks-model2.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org277d1bc">
+<h3 id="org277d1bc"><span class="section-number-3">3.11</span> Offshore Leaks Evolution</h3>
+<p>
+The <a href="https://github.com/Ontotext-AD/leaks/commit/3ef04ff99751247dfc876295cce54264259085e8#diff-76e7f343443a2e76fcadc0fcba335d2d">model will be evolving</a> as we unravel more of the data
+</p>
+
+<div class="figure">
+<p><img src="./img/leaks-model-evolution.png" alt="leaks-model-evolution.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf3bba6a">
+<h2 id="orgf3bba6a"><span class="section-number-2">4</span> Next Steps</h2>
+<p>
+Perl hackers wanted:
+</p>
+<ul>
+<li>Publish on Github</li>
+<li>Modularize better</li>
+<li>Package and publish on CPAN</li>
+<li>Intgrate in Emacs org-mode: write turtle, see diagram</li>
+
+</ul>
+
+<p>
+Farther future:
+</p>
+<ul>
+<li>Extend to visualize RDF Shapes (SHACL and SHEX)</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

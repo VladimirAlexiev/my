@@ -1,0 +1,1477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DBpedia Ontology and Mapping Problems</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Vladimir Alexiev" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">DBpedia Ontology and Mapping Problems</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc3c0d6b">1. DBpedia Data Quality</a>
+<ul>
+<li><a href="#orge7de607">1.1. Ontotext's DBpedia Experience</a></li>
+<li><a href="#orgdeae887">1.2. A Non-sense Mapping</a></li>
+<li><a href="#orge783d32">1.3. Have I got your attention?</a></li>
+<li><a href="#org1e448ee">1.4. Mapping Issues Bigger Than Ontology Issues?</a></li>
+<li><a href="#org9ea65cb">1.5. Balanced Effort</a></li>
+</ul>
+</li>
+<li><a href="#orgc4e4b05">2. Issue Tracking</a>
+<ul>
+<li><a href="#orgbf6184c">2.1. Testing Best Practice</a></li>
+</ul>
+</li>
+<li><a href="#orgb4f82ea">3. Mapping Language Issues</a>
+<ul>
+<li><a href="#org57ff738">3.1. ConditionalMapping Not Flexible Enough</a></li>
+<li><a href="#org66c68c2">3.2. Object/DataProp Dichotomy</a></li>
+<li><a href="#orgd60424f">3.3. Mapping Framework is not Modular Enough</a></li>
+</ul>
+</li>
+<li><a href="#org96096f0">4. Mapping Server Deficiencies</a></li>
+<li><a href="#orgd4e8dd4">5. Mapping Wiki Deficiencies</a>
+<ul>
+<li><a href="#org317d1e1">5.1. Improve Display of Mappings</a></li>
+</ul>
+</li>
+<li><a href="#org7064adf">6. Mapping Issues</a>
+<ul>
+<li><a href="#org49ff488">6.1. No Editorial Process</a></li>
+<li><a href="#orgc3187d7">6.2. Lack of Documentation</a></li>
+<li><a href="#orgfab7b5a">6.3. Good Documentation Is Specific</a></li>
+<li><a href="#orgb3577ce">6.4. Duplicate &amp; Semi-Duplicate Properties</a></li>
+<li><a href="#org8f0e2d8">6.5. Need for Research</a></li>
+<li><a href="#org07eef90">6.6. Need for Research</a></li>
+<li><a href="#orgb4d9999">6.7. Validate Ontological Assumptions</a></li>
+<li><a href="#orgd52a5af">6.8. Property and Class Naming</a></li>
+<li><a href="#orgc1a664d">6.9. Various Mapping Issues</a></li>
+</ul>
+</li>
+<li><a href="#orga650076">7. Extraction Framework Issues</a>
+<ul>
+<li><a href="#org4db1f1c">7.1. Issues Important for Local Chapters</a></li>
+<li><a href="#org35ee667">7.2. Date as Page is not Extracted</a></li>
+<li><a href="#orgb5b5822">7.3. Object Property Extractor Does Not Respect Ranges</a></li>
+<li><a href="#org1c4f883">7.4. Curious Parents and Poor Data Monarchs</a></li>
+<li><a href="#orgd5f1606">7.5. Data Property Extractor Does Not Respect Datatypes</a></li>
+<li><a href="#org614178d">7.6. Use Domain &amp; Range to Guide Extraction</a></li>
+<li><a href="#org858c6b8">7.7. Specific Properties</a></li>
+<li><a href="#org1ff3aad">7.8. Various Extraction Issues</a></li>
+</ul>
+</li>
+<li><a href="#orgc2dcb66">8. External Mapping Problems</a>
+<ul>
+<li><a href="#orgf22aae5">8.1. DUL Too Generic?</a></li>
+<li><a href="#org94ed16a">8.2. owl:Thing Considered Useless</a></li>
+<li><a href="#org11813bf">8.3. No Choice</a></li>
+</ul>
+</li>
+<li><a href="#org4f732a2">9. Ontology Problems</a>
+<ul>
+<li><a href="#org0ba76fc">9.1. External Props Not Used Consistently</a></li>
+<li><a href="#org0c9fcd3">9.2. rdfs:domain/range are Wishful</a></li>
+<li><a href="#orgd7f1e64">9.3. Classes that Duplicate Properties</a></li>
+<li><a href="#org580e047">9.4. Measurement Classes</a></li>
+<li><a href="#orgf947692">9.5. Place vs Organisation</a></li>
+<li><a href="#orgc52b345">9.6. Simple Ontology Fixes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc3c0d6b" class="outline-2">
+<h2 id="orgc3c0d6b"><span class="section-number-2">1</span> DBpedia Data Quality</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>DBpedia is a crucial LOD dataset used by many, including for commercial applications by companies like Ontotext.</li>
+<li>But DBpedia data quality leaves a lot to be desired, and has been the subject of many recent papers.</li>
+<li>Most of these papers describe approaches for finding errors.</li>
+</ul>
+
+<p>
+Instead, I want to focus on root causes of important error classes and to propose fixing approaches. We focus on:
+</p>
+<ul class="org-ul">
+<li>Lack of documentation on classes and properties</li>
+<li>Weak editorial process in the mapping wiki, lack of issue tracking</li>
+<li>Ontology problems, mostly due to the weak editorial process. Compare to Wikidata property proposal process</li>
+<li>Potential improvements for error checking in the mapping wiki (both ontology and mapping)</li>
+<li>Deficiencies of ontology mapping to external ontologies</li>
+<li>Extractor deficiencies</li>
+</ul>
+<p>
+I give many concrete examples
+</p>
+</div>
+<div id="outline-container-orge7de607" class="outline-3">
+<h3 id="orge7de607"><span class="section-number-3">1.1</span> Ontotext's DBpedia Experience</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Used DBpedia for at least 5 years</li>
+<li>Eg <a href="http://factforge.net">http://factforge.net</a> aggregates DBPedia, FreeBase, GeoNames, etc (9 central LOD datasets), but old versions</li>
+<li>Developed mapping layers, eg PROTON; contributed to UMBEL</li>
+<li>Use in FP7 Multisensor: DBpedia in 5 languages as a core background dataset</li>
+<li>Use in FP7 Europeana Food and Drink: DBpedia in 11 languages  as the backbone of EFD Classification</li>
+<li>Just started hosting <a href="http://bg.dbpedia.org">http://bg.dbpedia.org</a> (above FP7 projects include Bulgarian)</li>
+</ul>
+<p>
+Most importantly:
+</p>
+<ul class="org-ul">
+<li>Use DBpedia labels and other features for commercial Semantic Enrichment (media, publishers, etc)</li>
+<li>Now also for Bulgarian (BG project with OffMedia)</li>
+</ul>
+<p>
+Until now, only grumbled internally about DBpedia data quality
+</p>
+<ul class="org-ul">
+<li>A couple months ago started looking actively into that</li>
+<li>Many improvements to bg.dbpedia mappings</li>
+<li>Posted suggestions and issues to dbpedia</li>
+<li><b>Pragmatic</b> approach</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdeae887" class="outline-3">
+<h3 id="orgdeae887"><span class="section-number-3">1.2</span> A Non-sense Mapping</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<a href="http://mappings.dbpedia.org/index.php?title=Mapping_el:Quote_box&amp;action=edit">Mapping_el:Quote_box</a> is utter nonsense
+</p>
+<ul class="org-ul">
+<li>Mapped to Road, so eg the <a href="https://el.wikipedia.org/wiki/%CE%99%CF%83%CF%84%CE%BF%CF%81%CE%AF%CE%B1">Greek article on History</a> will be mapped to Road</li>
+<li><p>
+The only meaningful property (quote text) won't be extracted because <a href="http://mappings.dbpedia.org/index.php/OntologyProperty:Category">category</a> is an ObjectProperty:
+</p>
+<pre class="example">
+{{ PropertyMapping | templateProperty = quote | ontologyProperty = category }} 
+{{ PropertyMapping | templateProperty = quoted | ontologyProperty = category }} 
+
+</pre></li>
+<li><p>
+"title" (if any), is intermixed with non-semantic properties like background and font:
+</p>
+<pre class="example">
+{{PropertyMapping | templateProperty = title| ontologyProperty = title }} 
+{{PropertyMapping | templateProperty = title_bg| ontologyProperty = title }} 
+{{PropertyMapping | templateProperty = title_fnt| ontologyProperty = title }} 
+
+</pre></li>
+<li>Most of the properties (eg size, style) have no semantic significance</li>
+<li><p>
+Alignment -&gt; picture ??
+</p>
+<pre class="example">
+{{PropertyMapping | templateProperty = align | ontologyProperty = picture }} 
+{{PropertyMapping | templateProperty = salign | ontologyProperty = picture }} 
+{{PropertyMapping | templateProperty = halign | ontologyProperty = picture }} 
+{{PropertyMapping | templateProperty = qalign | ontologyProperty = picture }}
+
+</pre></li>
+<li><p>
+I especially like these mappings. 1 is a number, alright ;-)
+</p>
+<pre class="example">
+{{ PropertyMapping | templateProperty = 1 | ontologyProperty = number }} 
+{{ PropertyMapping | templateProperty = 2 | ontologyProperty = number }} 
+
+</pre></li>
+<li><a href="http://mappings.dbpedia.org/server/templatestatistics/el/?template=Quote_box">Stats happily reports</a> all props are mapped</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge783d32" class="outline-3">
+<h3 id="orge783d32"><span class="section-number-3">1.3</span> Have I got your attention?</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+I wanted to open with a horrible example to get your attention
+</p>
+<ul class="org-ul">
+<li>You may think the above is a weird exception, but it is not</li>
+<li>All of the DBpedia ontology and mappings are crowd-sourced</li>
+<li>But due to lack of editorial process, documentation and discussion, the results are&#x2026; less than ideal</li>
+</ul>
+
+<p>
+<b>Ontology problems</b> include duplicated properties, non-standard properties, etc
+</p>
+<ul class="org-ul">
+<li>But they pale in comparison to <b>mapping problems</b> (subjectively: 5% vs 95%)</li>
+<li>Efforts to improve the ontology and improve the mappings should be appropriately balanced</li>
+<li>These efforts must be intimately tied, else we'll not achieve much improvement</li>
+<li><p>
+It doesn't take an ontological discussion on the nature of Numbers to figure out this is wrong:
+</p>
+<pre class="example">
+{{ PropertyMapping | templateProperty = 1 | ontologyProperty = number }}
+
+</pre></li>
+<li>Prop <a href="http://mappings.dbpedia.org/index.php/OntologyProperty:Number">number</a> is not documented (i.e. not well-defined), but that's not the problem here</li>
+<li>Crowdsourcing without editorial process = allowing any fool to write nonsense</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1e448ee" class="outline-3">
+<h3 id="org1e448ee"><span class="section-number-3">1.4</span> Mapping Issues Bigger Than Ontology Issues?</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Thesis: ontology problems pale in comparison to mapping problems
+</p>
+<ul class="org-ul">
+<li>Lack of documentation of classes &amp; props
+<ul class="org-ul">
+<li>Sometimes template props in wikipedia are also not documented</li>
+<li>This turns mapping into guesswork (also because of Object/DataProp Dichotomy <a href="#org66c68c2">3.2</a>)</li>
+<li>Many people don't research exising props before making new</li>
+</ul></li>
+<li>Lack of editorial process</li>
+<li>Bad practices are copy &amp; pasted (<a href="#orgd60424f">3.3</a>)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9ea65cb" class="outline-3">
+<h3 id="org9ea65cb"><span class="section-number-3">1.5</span> Balanced Effort</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Please don't focus your energy and efforts only on ontology problems
+</p>
+<ul class="org-ul">
+<li>The ontology and mappings are intimately connected</li>
+<li>The effort between fixing ontology &amp; mapping problems should be balanced</li>
+<li>If we fix ontology problems in isolation from mapping: no useful result</li>
+</ul>
+<p>
+It will take lots of pragmatic &amp; concerted editorial effort
+</p>
+<ul class="org-ul">
+<li>Research current usage in various areas (eg Name props, Place parent hierarchy, Membership&#x2026;)</li>
+<li>Best practice writing, wiki gardening, bot writing</li>
+<li>Not necessarily by world-class ontological thinkers</li>
+<li>But by people willing to spend the time and build consensus (examples: Wikipedia, Wikidata)</li>
+</ul>
+<p>
+Are we up to it?
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc4e4b05" class="outline-2">
+<h2 id="orgc4e4b05"><span class="section-number-2">2</span> Issue Tracking</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+A major problem was that ontology and mapping issues were not tracked
+</p>
+<ul class="org-ul">
+<li>D.Kontokostas made trackers on github about a month ago</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues">mappings-tracker/issues</a>: mapping issues, issues with the mapping wiki</li>
+<li><a href="https://github.com/dbpedia/ontology-tracker/issues">ontology-tracker/issues</a>: issues with the ontology</li>
+<li>(old): <a href="https://github.com/dbpedia/extraction-framework/issues">extraction-framework/issues</a>: technical problems with the extraction software</li>
+</ul>
+<p>
+But so far it seems I'm the only one using them :-(
+</p>
+<ul class="org-ul">
+<li>I've posted 19 <a href="https://github.com/dbpedia/extraction-framework/issues?q=author:VladimirAlexiev+">extraction-framework/issues</a>, Referenced below with bigger numbers, eg #286</li>
+<li>I've posted 36 <a href="https://github.com/dbpedia/mappings-tracker/issues?q=author:VladimirAlexiev+">mappings-tracker/issues</a>. Referenced below with small numbers, eg #20</li>
+<li>I haven't posted ontology-tracker/issues, since IMHO ontology and mapping problems are intimately related
+<ul class="org-ul">
+<li>If we start using Web Protege, it must be just as intimately related to the mapping wiki!</li>
+</ul></li>
+</ul>
+<p>
+All discussion should be in the wiki
+</p>
+<ul class="org-ul">
+<li>The tracker is for tracking only, not for keeping knowledge</li>
+<li>Issue and Discussion should be interlinked (paste links in each)</li>
+</ul>
+</div>
+
+<div id="outline-container-orgbf6184c" class="outline-3">
+<h3 id="orgbf6184c"><span class="section-number-3">2.1</span> Testing Best Practice</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Say you made a <a href="http://mappings.dbpedia.org/index.php/Mapping_bg:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE">new mapping</a> or fixed a mapping
+</p>
+<ul class="org-ul">
+<li>There's a <a href="http://mappings.dbpedia.org/server/mappings/bg/extractionSamples/Mapping_bg:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE">test link</a> to return triples</li>
+<li>But they're "random" triples and it works only for enwiki/ASCII (<a href="https://github.com/dbpedia/extraction-framework/issues/289">#289</a>)</li>
+</ul>
+<p>
+The individual triple extractor is more useful
+</p>
+<ul class="org-ul">
+<li><p>
+First find <a href="http://bg.wikipedia.org/wiki/Special:WhatLinksHere/Template:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE?limit=500&amp;namespace=0">wikipedia usages</a> and pick up some individuals, eg
+</p>
+<pre class="example">
+Летисия Каста     
+
+</pre></li>
+<li>Then go to Discussion page, add section "Testing" and make test links (cases), eg
+<ul class="org-ul">
+<li><a href="http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&amp;extractors=custom&amp;title=%D0%9B%D0%B5%D1%82%D0%B8%D1%81%D0%B8%D1%8F_%D0%9A%D0%B0%D1%81%D1%82%D0%B0">http://mappings.dbpedia.org/server/extraction/bg/extract?format=turtle-triples&amp;extractors=custom&amp;title=Летисия_Каста</a></li>
+</ul></li>
+</ul>
+<p>
+These test cases serve important purposes:
+</p>
+<ul class="org-ul">
+<li>Illustrates the problem</li>
+<li>As proof it works after the problem is fixed</li>
+<li>To provide test cases for any bugs in the extraction framework (upstream bug reporting)</li>
+</ul>
+<p>
+Proposed as <a href="http://mappings.dbpedia.org/index.php/Main_Page#Testing_Best_Practices">editorial policy</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb4f82ea" class="outline-2">
+<h2 id="orgb4f82ea"><span class="section-number-2">3</span> Mapping Language Issues</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The <b>mapping language</b> is a set of wiki templates expressing classes, props, mappings
+</p>
+<ul class="org-ul">
+<li>The very concept of using a wiki to express mappings is quite excellent</li>
+<li>But the mapping framework has a few deficiencies
+<ul class="org-ul">
+<li>"ConditionalMapping" is very possible to fix</li>
+<li>"Modularity" is hard/impossible to fix</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/22">#22</a> what are "super" datatypes? is more of a question</li>
+</ul></li>
+<li>Neither of these is crucially important</li>
+</ul>
+<p>
+Various cosmetic fixes to the mapping wiki are in the next section
+</p>
+</div>
+
+<div id="outline-container-org57ff738" class="outline-3">
+<h3 id="org57ff738"><span class="section-number-3">3.1</span> ConditionalMapping Not Flexible Enough</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<a href="https://github.com/dbpedia/extraction-framework/issues/310">#310</a>: <a href="http://mappings.dbpedia.org/index.php?title=Mapping_bg:%D0%9C%D1%83%D0%B7%D0%B8%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD_%D0%B8%D0%B7%D0%BF%D1%8A%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB&amp;action=edit">bg:Musical_artist</a> has complex ConditionalMapping logic (translated from bg):
+</p>
+<ul class="org-ul">
+<li>If "members", "former_members", "created" -&gt; Band</li>
+<li>If "background" includes "group", "quartet", "ensemble", "choir" -&gt; Band</li>
+<li>If "background" includes "composer" -&gt; MusicComposer</li>
+<li>If "background" includes "director" -&gt; MusicDirector</li>
+<li>If "background" includes "she-singer" -&gt; MusicalArtist, gender=dbo:Female</li>
+<li>If "background" includes "he-singer" -&gt; MusicalArtist, gender=dbo:Male</li>
+<li>If "background" includes "he-pianist" -&gt; MusicalArtist, gender=dbo:Male</li>
+<li>If "suffix=a" -&gt; MusicalArtist, gender=dbo:Female 
+<ul class="org-ul">
+<li>"suffix=a" in BG/RU indicates Female gender, eg my wife is <b>Alexieva</b></li>
+</ul></li>
+<li>Otherwise -&gt; MusicalArtist, gender=dbo:Male</li>
+</ul>
+<p>
+ConditionalMapping is <b>linear</b>, so we can't:
+</p>
+<ul class="org-ul">
+<li>Check "suffix" of "composer" to emit gender</li>
+<li>Check if "background" includes "composer" and "director" to emit <b>both</b> MusicComposer <b>and</b> MusicDirector</li>
+</ul>
+<p>
+#310 was fixed to merge triples produced by each matching condition.
+So the logic was changed from completely sequential to completely parallel (additive).
+But <a href="https://github.com/dbpedia/extraction-framework/pull/443">PR#443</a> is not yet merged.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org66c68c2" class="outline-3">
+<h3 id="org66c68c2"><span class="section-number-3">3.2</span> Object/DataProp Dichotomy</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The mapping language adopts the OWL Dichotomy between owl:ObjectProperty and owl:DatatypeProperty
+</p>
+<ul class="org-ul">
+<li>rdf:Property is more flexible in that it can have either or both</li>
+<li>This dichotomy doesn't always work well with current wikipedia practice</li>
+<li>Eg saint's <a href="http://dbpedia.org/sparql?default-graph-uri=http://dbpedia.org&amp;query=select+*+%7B?x+dbp:patronage+?y%7D&amp;format=text/html&amp;CXML_redir_for_subjs=121&amp;CXML_redir_for_hrefs=&amp;timeout=30000&amp;debug=on">dbp:patronage</a> has both:
+<ul class="org-ul">
+<li>object references: countries, cities, House_of_Este, Archdiocese_of_Milan, Rosary&#x2026;</li>
+<li>text literals: "fishermen", "the sick", "Prisoners", "Persecuted Christians"&#x2026;</li>
+</ul></li>
+<li>Many other examples</li>
+</ul>
+<p>
+Some templates harvest <b>the same</b> template field -&gt; ObjectProp &amp; DataProp
+</p>
+<ul class="org-ul">
+<li>Eg firstAscent -&gt; firstAscentPerson (object), firstAscentYear (literal)</li>
+<li>Others exemplified by "field" (object) vs "fieldName" (literal)</li>
+<li>But this is not used systematically (eg there's no "childName" to complement "child")</li>
+<li>Hard to know when to use it: <a href="https://github.com/dbpedia/extraction-framework/issues/327">#327</a> Field Sampling</li>
+</ul>
+<p>
+Do you think this should be fixed?
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd60424f" class="outline-3">
+<h3 id="orgd60424f"><span class="section-number-3">3.3</span> Mapping Framework is not Modular Enough</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>There's no mapping of a <b>property</b> or <b>group of properties</b></li>
+<li>Thus mapping patterns cannot be reused but have to be copy-pasted</li>
+<li>We need to copy the complex suffix/gender ConditionalMapping 11 times</li>
+<li>Some bad patterns are copied over and over again, replicating their problems</li>
+<li>IMHO hard to impossible to fix</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org96096f0" class="outline-2">
+<h2 id="org96096f0"><span class="section-number-2">4</span> Mapping Server Deficiencies</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The mapping server has good Stats and Testing features, but more is needed
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/327">#327</a> Field Sampling: 
+<ul class="org-ul">
+<li>On template stats, for every field, add a hyperlink to show some occurrences</li>
+<li>Extremely useful to understand the meaning of some fields</li>
+<li>And whether they're links, text, or both (<a href="#org66c68c2">3.2</a>)</li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/3">#3</a> Statistics and Validator to check for redirected templates. Prevent problems like
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/296">#296</a> Why Infobox_Geopolitical_organization (eg United_Nations) is mapped to Country?</li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/326">#326</a> Why the redirect is not enacted?</li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/287">#287</a> some invalid domain, range, subPropertyOf
+<ul class="org-ul">
+<li>Check that prop names in templates start with lowercase</li>
+<li>Class names uppercase, include no comma</li>
+<li>Eg <code>firstAscentYear rdfs:domain Peak,Volcano</code> is breakage</li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/289">#289</a> testing works only for en/ASCII (see <a href="#orgbf6184c">2.1</a> for workaround)</li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/304">#304</a> extraction tester should return encoding UTF-8
+<ul class="org-ul">
+<li>Else browser displays gibberish: need to save file &amp; open in proper editor</li>
+<li>Makes it unnecessarily hard to test international mappings</li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/308">#308</a> statistics should check params of GeocoordinatesMapping</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd4e8dd4" class="outline-2">
+<h2 id="orgd4e8dd4"><span class="section-number-2">5</span> Mapping Wiki Deficiencies</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+IMHO the mapping wiki is quite workable (some enhancements are in order)
+</p>
+<ul class="org-ul">
+<li>Eg "OntologyProperty=foo" finds uses of "foo"</li>
+<li>If Web Protege is adopted, it should be as tightly knit with the mappings as currently</li>
+</ul>
+<p>
+Improve editing:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/31">#31</a> show class &amp; prop info while/at Mapping</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/32">#32</a> add Preview and key shortcuts. Like on any wikipedia!</li>
+</ul>
+<p>
+Improve search:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/1">#1</a> add class hierarchy to left navbar</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/2">#2</a> add Search for Property to left navbar</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/25">#25</a> FTS doesn't index everything</li>
+</ul>
+<p>
+Improve collaboration
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/33">#33</a> Add editorial templates/addons: but this is not <b>why</b> we're not doing it</li>
+</ul>
+</div>
+
+<div id="outline-container-org317d1e1" class="outline-3">
+<h3 id="org317d1e1"><span class="section-number-3">5.1</span> Improve Display of Mappings</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/30">#30</a>: The current display (left) is useless (nobody bothers "header=no")</li>
+<li>I just look at the source Edit tab (right)</li>
+<li>The "diff" display (bottom) is quite good</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/dbpedia-mapping-views.png" alt="dbpedia-mapping-views.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7064adf" class="outline-2">
+<h2 id="org7064adf"><span class="section-number-2">6</span> Mapping Issues</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<b>Biggest reason</b> for current situation is lack of <b>Discussion</b> and <b>Editorial process</b>
+</p>
+<ul class="org-ul">
+<li>Contrast to <b>Wikidata Property Proposal</b> process, eg for <a href="https://www.wikidata.org/wiki/Wikidata:Property_proposal/Authority_control">Authority_control</a></li>
+<li>Rich metadata: guidelines on use (eg what items applies to), corresponding
+register/authority file (if any), examples, format validation, uniqueness constraints,
+known exceptions, dynamic validation reports, etc.</li>
+<li>All reasoning &amp; discussion preserved</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/wikidata-DNB-metadata.png" alt="wikidata-DNB-metadata.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org49ff488" class="outline-3">
+<h3 id="org49ff488"><span class="section-number-3">6.1</span> No Editorial Process</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Compare to Wikidata's <b>lack</b> of editorial process for Classes</li>
+<li>Any fool can make "instance of" or "subclass of" claims (thus classes and hierarchy)</li>
+<li>Result: 17k classes, at least 2/3 are junk (less than 5 instances)</li>
+</ul>
+<p>
+Examples
+</p>
+<ul class="org-ul">
+<li><b>location&gt; geographic location&gt; facility&gt; laboratory&gt; lab-on-a-chip</b>:
+<ul class="org-ul">
+<li>But "lab-on-a-chip" is a "device that integrates one or several laboratory functions on a single chip of only millimeters to a few square centimeters in size", hardly a "geographic location"!!</li>
+</ul></li>
+<li><b>location&gt; storage&gt; data storage device&gt; audio storage device&gt; album</b>:
+<ul class="org-ul">
+<li>Any NER implementor will balk at "albums are locations". The everyday understanding of "location" as "place" is implemented as the subclass "geographic location". But nevertheless, an "album" is a creative work, and as such is a conceptual object that persists even after all its copies are destroyed. It's definitely not a "storage device"!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc3187d7" class="outline-3">
+<h3 id="orgc3187d7"><span class="section-number-3">6.2</span> Lack of Documentation</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Many props/classes have no comment. Everyone has complained about this
+</p>
+<ul class="org-ul">
+<li>It takes a lot of unnecessary digging to figure out the meaning of a prop</li>
+<li><p>
+You'd never guess what "event" is until you investigate usages, eg this SL mapping:
+</p>
+<div class="org-src-container">
+<pre class="src src-Turtle">Antonio_Pettigrew <span style="color: #228b22;">dbo:</span><span style="color: #008b8b;">event</span> Mo&#353;ki_tek_n<span style="color: #a020f0;">a</span>_400_m <span style="color: #b22222;"># (male race on 400m)</span>
+</pre>
+</div></li>
+<li>Then you figure out it's the same as sportDiscipline and should be replaced</li>
+</ul>
+<p>
+Must be merciless about new props &amp; classes: <b>no comment means automatic deletion</b>
+</p>
+<ul class="org-ul">
+<li>But what to do about existing props with no comment?</li>
+<li>Thus <a href="https://github.com/dbpedia/mappings-tracker/issues/6">#6</a> "add documentation to every property" is a very large ongoing task</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfab7b5a" class="outline-3">
+<h3 id="orgfab7b5a"><span class="section-number-3">6.3</span> Good Documentation Is Specific</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Comments should describe Usage (ie Scope Notes) and compare to similar props
+</p>
+<ul class="org-ul">
+<li>Eg what's member vs membership?</li>
+<li>When to use teamMember vs currentTeamMember vs sportsTeamMember?</li>
+</ul>
+<p>
+Good examples:
+</p>
+<ul class="org-ul">
+<li><b>sportDiscipline</b>: the sport discipline the athlete practices, e.g. Diving, or that a board member of a sporting club is focussing at</li>
+<li><b>zodiacSign</b>: Applies to persons, planets, etc</li>
+<li><b>bustWaistHipSize</b>: Use this property if all 3 sizes are given together (DBpedia cannot currently extract 3 Lengths out of a field). Otherwise use separate fields bustSize, waistSize, hipSize</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb3577ce" class="outline-3">
+<h3 id="orgb3577ce"><span class="section-number-3">6.4</span> Duplicate &amp; Semi-Duplicate Properties</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+<a href="https://github.com/dbpedia/mappings-tracker/issues/5">#5</a> Eliminate semi-duplicate properties: another long-term task:
+</p>
+<ul class="org-ul">
+<li>Research individual problems</li>
+<li>Write up decisions and best practices</li>
+<li>Clean up mappings that violate them</li>
+</ul>
+<p>
+A few random examples, but this just scratches the surface
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/17">#17</a> remove Racecourse, there is RaceTrack</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/36">#36</a> Merge motto and slogan</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/11">#11</a> blazonLink vs Blazon</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/34">#34</a> replace shoeNumber with shoeSize</li>
+<li>replace event with sportDiscipline</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8f0e2d8" class="outline-3">
+<h3 id="org8f0e2d8"><span class="section-number-3">6.5</span> Need for Research</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+Need to research problem areas &amp; individual problems!
+</p>
+<ul class="org-ul">
+<li>Need to write resolutions &amp; best practices</li>
+</ul>
+<p>
+Example 1: <a href="http://mappings.dbpedia.org/index.php/What's_in_a_Name">What's_in_a_Name</a> 
+</p>
+<ul class="org-ul">
+<li>Believe it or not, DBO has 86 properties called "name".</li>
+<li>Birth, former, historical, old, original, previous, same, present: in what situations should each one be used?</li>
+<li>About 30 Language-specific_Name Props need to be converted to one prop with lang tag
+<ul class="org-ul">
+<li>Eg <a href="https://github.com/dbpedia/mappings-tracker/issues/15">#15</a> use "language" instead of "cyrilliqueName"</li>
+</ul></li>
+</ul>
+<p>
+Other candidates:
+</p>
+<ul class="org-ul">
+<li>Membership props</li>
+<li>Place hierarchy props, etc</li>
+</ul>
+<p>
+Any takers to research and write up?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org07eef90" class="outline-3">
+<h3 id="org07eef90"><span class="section-number-3">6.6</span> Need for Research</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+Example 2: <a href="https://github.com/dbpedia/mappings-tracker/issues/19">#19</a> fix mapping Listen. Conclusion:
+</p>
+<ul class="org-ul">
+<li>delete class Listen, replace with prop soundRecording</li>
+<li><p>
+map using IntermediateNodeMapping:
+</p>
+<div class="org-src-container">
+<pre class="src src-Turtle"><span style="color: #228b22;">dbr:</span><span style="color: #008b8b;">Neil_Armstrong</span> soundRecording <span style="color: #228b22;">dbr:</span><span style="color: #008b8b;">Neil_Armstrong__1</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">dbr:</span><span style="color: #008b8b;">eil_Armstrong__1</span> <span style="color: #a020f0;">a</span> Sound; <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">type</span> <span style="color: #8b2252;">"sound"</span>;
+   filename <span style="color: #8b2252;">"one-small-step.ogv"</span>; 
+   title <span style="color: #8b2252;">"One small step for man..."</span>;
+   description <span style="color: #8b2252;">"Neal Armstrong's famous words"</span>.
+</pre>
+</div></li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/19">#19</a> contradicts my own decision not to put knowledge in the tracker</li>
+<li>But when Listen is deleted, its Discussion page will also go away&#x2026;</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb4d9999" class="outline-3">
+<h3 id="orgb4d9999"><span class="section-number-3">6.7</span> Validate Ontological Assumptions</h3>
+<div class="outline-text-3" id="text-6-7">
+<p>
+Sometimes one needs to resort to SPARQL to find out usage
+</p>
+<ul class="org-ul">
+<li><p>
+Assumption: "Only material things can have color". Let's check:
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?x</span> dbpedia-owl:colour <span style="color: #a0522d;">?y</span>}
+</pre>
+</div></li>
+<li>Shows that political parties, places, schools, etc have colours</li>
+<li>Especially useful to reassure oneself that non-sense classes have no instances
+<ul class="org-ul">
+<li>Leading to a quick and painless deletion</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd52a5af" class="outline-3">
+<h3 id="orgd52a5af"><span class="section-number-3">6.8</span> Property and Class Naming</h3>
+<div class="outline-text-3" id="text-6-8">
+<p>
+Pragmatic problems:
+</p>
+<ul class="org-ul">
+<li>spelling consistency (UK vs US): colour but eyeColor &amp; hairColor?</li>
+<li>camel-casing
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/7">#7</a> Fix Greek Astronomy templates</li>
+<li>Garbage prop names: appmag_v, dist_ly, names, size_v, Dist ly, Names, Dist pc, Credit, Dec, Ra</li>
+<li><b>¡No pasarán!</b></li>
+</ul></li>
+<li><p>
+Props should start with lowerCase, classes with UpperCase, eg <a href="#orgd7f1e64">9.3</a> (oops!):
+</p>
+<div class="org-src-container">
+<pre class="src src-Turtle"><span style="color: #228b22;">dbo:</span><span style="color: #008b8b;">bronzeMedalist</span> <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">subPropertyOf</span> <span style="color: #228b22;">dbo:</span>Medalist
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc1a664d" class="outline-3">
+<h3 id="orgc1a664d"><span class="section-number-3">6.9</span> Various Mapping Issues</h3>
+<div class="outline-text-3" id="text-6-9">
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/27">#27</a> Mapping_el:Quote_box is utter nonsense</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/4">#4</a> Merge Geopolitical organization to Country (template is redirected)</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/8">#8</a> excessive use of intermediate nodes in French mappings</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/29">#29</a> fix Parent places from frwiki (remove takePlace, sharingOut)</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/9">#9</a> Mapping_commons:NARA-image-full</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/10">#10</a> prop pageNumber</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/12">#12</a> delete prop event</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/14">#14</a> merge Infobox_Ville to Infobox_Subdivision_administrative</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/16">#16</a> rework or delete sports as classes (HorseRiding, Boxing, etc)</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/18">#18</a> fix capitalization of Disease properties</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/20">#20</a> delete ascentDate, ascent from Mapping_en_talk:Geobox</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/21">#21</a> area or areaLand?</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/23">#23</a> valvetrain, engineConfiguration, fuelType as Datatypes??</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/24">#24</a> delete colorChart</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/26">#26</a> "source" in "sl:Infobox Chess player" is wrong</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/28">#28</a> use parent instead of mother,father; spouse instead of wife</li>
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/35">#35</a> delete Mapping_el:IMDb_Name</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga650076" class="outline-2">
+<h2 id="orga650076"><span class="section-number-2">7</span> Extraction Framework Issues</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+If you think about it, the extraction framework does wonders extracting numerous properties
+</p>
+<ul class="org-ul">
+<li>In a heavily multilingual situation</li>
+<li>With various ways of spelling dates, centuries, BC/AD, units, etc</li>
+</ul>
+<p>
+But there are various things that need improvement
+</p>
+</div>
+<div id="outline-container-org4db1f1c" class="outline-3">
+<h3 id="org4db1f1c"><span class="section-number-3">7.1</span> Issues Important for Local Chapters</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+A local chapter should at least configure dates (eg month names) and numbers (eg decimal separator:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/313">#313</a> BG place coordinates lack precision
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/307">#307</a> added bg mapping to DateTimeParserConfig.scala</li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/306">#306</a> Special date extraction from template, date-page</li>
+</ul>
+<p>
+Other issues:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/13">#13</a> coordinates like 45/20/N, 3/00/E</li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/311">#311</a> handle multilingual strings with templates like <code>{{en|...}}</code></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/305">#305</a> resolving lookup-list data out of sub-templates
+<ul class="org-ul">
+<li>Place parent hierarchy is hidden in subtemplates keyed on "ekatte" code</li>
+<li>Very hard, probably will restructure bgwiki</li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/303">#303</a> dataprop extractor: language doesn't handle lang tag sr-Cyrl</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org35ee667" class="outline-3">
+<h3 id="org35ee667"><span class="section-number-3">7.2</span> Date as Page is not Extracted</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+<a href="https://github.com/dbpedia/extraction-framework/issues/306">#306</a> On bgwiki, a lot of dates use the "Notable Date Page" approach, eg
+</p>
+<pre class="example">
+firstAscent = [[18 май]] [[1956]]
+
+</pre>
+<ul class="org-ul">
+<li>This template prop is mapped to firstAscentYear (DataProp) and firstAscentPerson (ObjectProp)</li>
+<li><p>
+Three non-sense values are extracted:
+</p>
+<div class="org-src-container">
+<pre class="src src-Turtle"><span style="color: #228b22;">bgdbr:</span><span style="color: #008b8b;">&#1051;&#1093;&#1086;&#1090;&#1094;&#1077;</span> firstAscentPerson <span style="color: #228b22;">bgdbr:</span><span style="color: #008b8b;">18_&#1084;&#1072;&#1081;,</span> <span style="color: #228b22;">bgdbr:</span><span style="color: #008b8b;">1956</span>;
+  firstAscentYear <span style="color: #8b2252;">"0018"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">gYear</span>.
+</pre>
+</div></li>
+<li>The object extractor finds two links and captures them as firstAscentPerson, but these are not persons!</li>
+<li>The year extractor greedily looks for a year, finds "80" and makes "0018" (i.e. 18 AD). But the year is further down the string: 1956</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb5b5822" class="outline-3">
+<h3 id="orgb5b5822"><span class="section-number-3">7.3</span> Object Property Extractor Does Not Respect Ranges</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Wikipedia editors write all kinds of links in fields.
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/286">#286</a> object property extractor should respect rdfs:range</li>
+</ul>
+<p>
+Curious situations, eg <b>firstAscentPerson</b> of these peaks:
+</p>
+<ul class="org-ul">
+<li><b>bgdbr:Лхотце</b>: 18_май and 1956: these are "notable date" (event list) pages that someone linked instead of providing a plain date</li>
+<li><b>dbr:Abi_Gamin</b>: United_Kingdom and Switzerland (it was a mixed British-Swiss expedition)</li>
+<li><b>dbr:Gunung_Tok_Wan</b>: Kajang (a location), because someone wrote "A small group from Kajang Prison Officer".</li>
+<li><b>dbr:Stawamus_Squaw</b>: Prehistory (a HistoricPeriod): that's when it was first climbed</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c4f883" class="outline-3">
+<h3 id="org1c4f883"><span class="section-number-3">7.4</span> Curious Parents and Poor Data Monarchs</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+Lest you think this is an exotic exception, see <a href="http://dbpedia.org/sparql?default-graph-uri=http://dbpedia.org&amp;query=select+*+%7B?x+dbo:parent+?y+filter+not+exists%7B?y+a+dbo:Person%7D%7D&amp;format=text/html&amp;CXML_redir_for_subjs=121&amp;CXML_redir_for_hrefs=&amp;timeout=30000&amp;debug=on&amp;run=+Run+Query+">curios values for <b>parent</b></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?x</span> dbo:parent <span style="color: #a0522d;">?y</span> <span style="color: #a020f0;">filter</span> <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">exists</span>{<span style="color: #a0522d;">?y</span> a dbo:Person}}
+</pre>
+</div>
+<ul class="org-ul">
+<li>Adoption, Archbishop, Dairy, House_of_Este, Prince, Rabbi, Corfu, All My Children</li>
+</ul>
+<p>
+The extractor could filter these out by range, <b>but</b>
+</p>
+<ul class="org-ul">
+<li>We dare not throw out objects until all prop ranges are fixed/verified</li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/516">#516</a> Infobox_monarch and Infobox_royalty emit no type, and little data</li>
+</ul>
+<p>
+(Added 4-Aug-2017)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd5f1606" class="outline-3">
+<h3 id="orgd5f1606"><span class="section-number-3">7.5</span> Data Property Extractor Does Not Respect Datatypes</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+Data value extraction is based on imperfect heuristics
+</p>
+<ul class="org-ul">
+<li>Eg if it first sees a number, it assumes the value is a number</li>
+<li>Eg the titles of articles starting with digits (used to be) cut off at last digit (Asteroids beware)</li>
+<li>Eg <a href="https://github.com/dbpedia/extraction-framework/issues/458">#458</a>: ISSN is treated as integer and cut at the first dash
+<ul class="org-ul">
+<li>although <code>dbo:issn</code> is declared <code>xsd:string</code></li>
+</ul></li>
+</ul>
+<p>
+(Added 4-Aug-2017)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org614178d" class="outline-3">
+<h3 id="org614178d"><span class="section-number-3">7.6</span> Use Domain &amp; Range to Guide Extraction</h3>
+<div class="outline-text-3" id="text-7-6">
+<p>
+Extraction quality could be improved if it can take into account the range of properties.
+But this is hard:
+</p>
+<ul class="org-ul">
+<li>Raw props (<code>dbp:</code>) don't have a range, only mapped props (<code>dbo:</code>) do</li>
+<li>The extraction do <code>dbp:</code> and the subsequent mapping to <code>dbo:</code> happen in completely separate phases</li>
+<li>So the extractor would need to propagate ranges backward: raw&lt;-mapped</li>
+<li>Whereas data flows forward: raw-&gt;mapped</li>
+<li>The mapping framework doesn't map Properties but Templates, so conceivably two people could map a raw prop <code>dbp:</code> to two different <code>dbo:</code> props having different nature (object vs data) and datatype</li>
+</ul>
+<p>
+This is the single <b>most important</b> enhancement, if it's possible.
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/mappings-tracker/issues/93#issuecomment-320207029">#93</a> discussion involving RML and R2RML mappings</li>
+</ul>
+<p>
+(Edited 4-Aug-2017)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org858c6b8" class="outline-3">
+<h3 id="org858c6b8"><span class="section-number-3">7.7</span> Specific Properties</h3>
+<div class="outline-text-3" id="text-7-7">
+<p>
+Specific props provide more "natural" units for a specific measurement.
+</p>
+<ul class="org-ul">
+<li><p>
+E.g. I could look for tall people like this:  
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?x</span> dbo:Person/height &gt; 180}  <span style="color: #b22222;"># 1</span>
+</pre>
+</div></li>
+<li>But I have to know there's such prop, and find the unit is "cm" (I bet that's not documented)</li>
+<li><p>
+Just as easy to write 
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?x</span> dbo:height &gt; 1.80}        <span style="color: #b22222;"># 2</span>
+</pre>
+</div></li>
+</ul>
+<p>
+Actually much easier, since 1 is not valid SPARQL
+</p>
+<ul class="org-ul">
+<li>One can't have a slash in a prefixed name.</li>
+<li>would have to write <code>&lt;http://dbpedia.org/ontology/Person/height&gt;</code>, yack</li>
+<li>So please rename them to dbo:Person_height, etc</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1ff3aad" class="outline-3">
+<h3 id="org1ff3aad"><span class="section-number-3">7.8</span> Various Extraction Issues</h3>
+<div class="outline-text-3" id="text-7-8">
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/314">#314</a> numbered raw props are collapsed to one prop</li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/325">#325</a> extract several Lengths out of a field?</li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/292">#292</a> IntermediateNodeMapping of "stub resources" is missing a letter</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc2dcb66" class="outline-2">
+<h2 id="orgc2dcb66"><span class="section-number-2">8</span> External Mapping Problems</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+47 owl:equivalentClass and 35 owl:equivalentProperty mappings to schema.org
+</p>
+<ul class="org-ul">
+<li>controversial and hastily made:</li>
+<li>eg dbo:University equivalentClass schema:UniversityOrCollege equivalentClass dbo:College</li>
+<li>If we <b>use</b> this equivalence, we'll whack the DBO distinction University vs College</li>
+</ul>
+<p>
+Maybe "equivalentClass (schema:UniversityOrCollege, union (dbo:University, dbo:College))"
+</p>
+<ul class="org-ul">
+<li>IMHO is useless, but that's just an opinion</li>
+</ul>
+<p>
+More insidious: no consideration for the structure of the two hierarchies
+</p>
+<ul class="org-ul">
+<li>dbo:AdministrativeRegion owl:equivalentClass schema:AdministrativeArea</li>
+<li>dbo:City owl:equivalentClass schema:City</li>
+<li>schema:City rdfs:subclassOf schema:AdministrativeArea</li>
+<li>=&gt; dbo:City rdfs:subclassOf dbo:AdministrativeRegion</li>
+</ul>
+<p>
+But in DBO:
+</p>
+<ul class="org-ul">
+<li>City is a Settlement (a point feature)</li>
+<li>AdministrativeRegion is a Region (an area feature)</li>
+<li>Settlement and Region are siblings, presumably disjoint</li>
+</ul>
+</div>
+
+<div id="outline-container-orgf22aae5" class="outline-3">
+<h3 id="orgf22aae5"><span class="section-number-3">8.1</span> DUL Too Generic?</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+The DUL properties are so general that their utility is not obvious to me
+</p>
+<ul class="org-ul">
+<li>dul:coparticipatesWith puts together variegated props from dbo:aircraftAttack to dbo:university to dbo:writer</li>
+<li>Is ther a useful query example with dul:coparticipatesWith?</li>
+</ul>
+<p>
+But they're built on strong ontological foundations
+</p>
+<ul class="org-ul">
+<li>So maybe can be used for guidance to improve DBO props:</li>
+<li>Automated validation of domain/range</li>
+<li>Grouping of props by superprop and domain/range, to discover duplicates</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org94ed16a" class="outline-3">
+<h3 id="org94ed16a"><span class="section-number-3">8.2</span> owl:Thing Considered Useless</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+A heretic thought: owl:Thing is useless because nobody would query by it
+</p>
+<ul class="org-ul">
+<li><a href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#DefiningSimpleClasses">OWL spec</a>: "Every individual in the OWL world is a member of the class owl:Thing"</li>
+<li>Ok, so an OWL-compliant reasoner will infer it: if I need it</li>
+<li><p>
+Or we could just ask like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-SPARQL"><span style="color: #a0522d;">?x</span> a <span style="color: #a0522d;">?class</span>. <span style="color: #a0522d;">?class</span> a owl:Class
+</pre>
+</div></li>
+<li>Do we need an extra 10-20M triples in the repo?</li>
+</ul>
+<p>
+The owl:Thing expansion is inconsistent
+</p>
+<ul class="org-ul">
+<li>Eg 34658 bg.dbpedia resources have no owl:Thing</li>
+<li>Eg <a href="http://bg.dbpedia.org/resource/%D0%A0%D0%B0%D0%B9%D0%BA%D0%BE_%D0%96%D0%B8%D0%BD%D0%B7%D0%B8%D1%84%D0%BE%D0%B2">http://bg.dbpedia.org/resource/Райко_Жинзифов</a> has it</li>
+<li>But <a href="http://bg.dbpedia.org/resource/%D0%91%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D0%B8%D1%8F">http://bg.dbpedia.org/resource/България</a> does not</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org11813bf" class="outline-3">
+<h3 id="org11813bf"><span class="section-number-3">8.3</span> No Choice</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+Superclasses are expanded to direct rdf:type statements in DBpedia exports
+</p>
+<ul class="org-ul">
+<li>So I don’t have an option to use external mappings &amp; owl:Thing or not</li>
+</ul>
+<p>
+IMHO DBpedia should emit as a separate option (load file): 
+</p>
+<ul class="org-ul">
+<li>External ontology mapping statements (filtering by namespace, I have a simple script)</li>
+<li>Data triples mapped to external ontologies</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f732a2" class="outline-2">
+<h2 id="org4f732a2"><span class="section-number-2">9</span> Ontology Problems</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Finally I list some ontology problems
+</p>
+<ul class="org-ul">
+<li>Why in the last section?</li>
+<li>To emphasize my thesis that ontology problems are just one kind of many :-)</li>
+</ul>
+<p>
+The list of problems below is by no means exhaustive
+</p>
+</div>
+
+<div id="outline-container-org0ba76fc" class="outline-3">
+<h3 id="org0ba76fc"><span class="section-number-3">9.1</span> External Props Not Used Consistently</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Widely-used external props should be reused in DBpedia, rather than making our own
+</p>
+<ul class="org-ul">
+<li>Eg foaf:name, dct:type: these are used to some extent, but not always and not consistently</li>
+<li>Of course, we need to be mindful of domain/range</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0c9fcd3" class="outline-3">
+<h3 id="org0c9fcd3"><span class="section-number-3">9.2</span> rdfs:domain/range are Wishful</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Domain/range are not taken into account by the extractor
+</p>
+<ul class="org-ul">
+<li>rdfs:domain/range have uncompromising  semantics and infer classes</li>
+<li>Don't attempt RDFS reasoning on DBpedia to avoid disappointment/embarrassment :-)</li>
+<li>Maybe it's better to emit them as schema:domainIncludes/rangeIncludes until fixed</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd7f1e64" class="outline-3">
+<h3 id="orgd7f1e64"><span class="section-number-3">9.3</span> Classes that Duplicate Properties</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+Classes like President, VicePresident, Medalist are often non-sensical. Check
+</p>
+<pre class="example">
+select ?x {?x a dbo:President}
+
+</pre>
+<ul class="org-ul">
+<li>President of what? Doesn't point the country or institution/association. And when?</li>
+<li>Too many errors to be useful. Eg <a href="https://en.wikipedia.org/wiki/%C4%8Ceslovas_Jur%C5%A1%C4%97nas">Česlovas_Juršėnas</a> is not a president</li>
+<li>VicePresident has no instances</li>
+<li>Medalist: of sporting event at what level?</li>
+</ul>
+<p>
+How do these relate to the properties president, vicePresident?
+</p>
+<ul class="org-ul">
+<li>really should be sub-props of colleague:</li>
+<li>"X president Y" means "Y was president while X held some other position"</li>
+<li>If "X president Y", should it infer that Y is President? It does not.</li>
+</ul>
+<p>
+There are many classes that duplicate a prop name, with no consideration what the class means or how it would be assigned.
+</p>
+<ul class="org-ul">
+<li><p>
+In some cases even led to syntax errors since people are not mindful of capitalization. Oops:
+</p>
+<div class="org-src-container">
+<pre class="src src-Turtle"><span style="color: #228b22;">dbo:</span><span style="color: #008b8b;">bronzeMedalist</span> <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">subPropertyOf</span> <span style="color: #228b22;">dbo:</span><span style="color: #008b8b;">Medalist</span> .
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org580e047" class="outline-3">
+<h3 id="org580e047"><span class="section-number-3">9.4</span> Measurement Classes</h3>
+<div class="outline-text-3" id="text-9-4">
+<p>
+There are numerous classes that duplicate measurement props
+</p>
+<ul class="org-ul">
+<li>e.g. Area, Altitude, Depth</li>
+</ul>
+<p>
+A lot are unused or not well used.
+IMHO should be generalized to Measurement (ala <code>crm:E16_Measurement</code>) with props:
+</p>
+<ul class="org-ul">
+<li>type, eg: height, width, population, depth, altitude</li>
+<li>value: with unit (datatype)</li>
+<li>asOfDate</li>
+<li>dct:publisher, eg: bgdbr:Национален_статистически_институт (BG Statistical institute)</li>
+<li>method, eg: Census, Estimation</li>
+<li>extent, eg: metro/total/land/water (area), metro/total (population), with/without frame (painting)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf947692" class="outline-3">
+<h3 id="orgf947692"><span class="section-number-3">9.5</span> Place vs Organisation</h3>
+<div class="outline-text-3" id="text-9-5">
+<p>
+Place and Organization are often dual aspects of the same entity, eg
+</p>
+<ul class="org-ul">
+<li>country with its government</li>
+<li>city with its council</li>
+<li>store as a building vs as a business</li>
+<li>a castle museum</li>
+</ul>
+<p>
+IMHO we can't disentangle these without splitting up numerous nodes
+</p>
+<ul class="org-ul">
+<li>That's IMHO not viable</li>
+<li>The top-level should IMHO accommodate such diality</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc52b345" class="outline-3">
+<h3 id="orgc52b345"><span class="section-number-3">9.6</span> Simple Ontology Fixes</h3>
+<div class="outline-text-3" id="text-9-6">
+<p>
+Problems due to decisions in the Extraction Framework (not ontology editing)
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/301">#301</a> topical_concepts should use foaf:focus not skos:subject
+<ul class="org-ul">
+<li><p>
+On Wikipedia, a Topical Page is the main page of a Category. Map to:
+</p>
+<pre class="example">
+dbr:Mathematics foaf:focus dbr:Category:Mathematics
+
+</pre></li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/312">#312</a> wikiPageUsesTemplate should be in DBO namespace
+<ul class="org-ul">
+<li>Because it's a language-independent concept</li>
+</ul></li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/293">#293</a> dbpedia should use true wikidata URLs, not "bastardized" URLs
+<ul class="org-ul">
+<li>Holds for classes: <a href="http://wikidata.dbpedia.org/resource/Q5">http://wikidata.dbpedia.org/resource/Q5</a></li>
+<li>And individuals: <a href="http://wikidata.dbpedia.org/resource/Q5499200">http://wikidata.dbpedia.org/resource/Q5499200</a></li>
+</ul></li>
+</ul>
+<p>
+Easy to fix
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2015-02-16</p>
+<p class="author">Author: Vladimir Alexiev</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linked Open Data for Cultural Heritage Institutions</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ilian Uzunov &amp; Vladimir Alexiev" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Linked Open Data for Cultural Heritage Institutions</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9342135">About Ontotext</a>
+<ul>
+<li><a href="#org4441ff1">GLAM vs Internet</a></li>
+<li><a href="#orgdd96f00">Google NGrams: Phrases in Books</a></li>
+<li><a href="#org489b61a">Google NGrams: Two Specific Orgs</a></li>
+<li><a href="#org347b112">Google Trends: Search Popularity</a></li>
+<li><a href="#orgd2b5c6e">How To Survive in the Internet Age?</a></li>
+<li><a href="#org569214d">Why Linked Open Data (LOD) is Important</a></li>
+</ul>
+</li>
+<li><a href="#orgcccc214">GLAM Content Standards</a>
+<ul>
+<li><a href="#orgffd8021">Museum Content Standards</a>
+<ul>
+<li><a href="#org3d5295f">SPECTRUM</a></li>
+</ul>
+</li>
+<li><a href="#org2f3ea5b">Archival Content Standards</a></li>
+<li><a href="#orgc3494e0">Library Content Standards</a></li>
+</ul>
+</li>
+<li><a href="#org6a8c78e">GLAM Metadata Schemas</a>
+<ul>
+<li><a href="#orgb78a705">Seeing Standards (2)</a></li>
+</ul>
+</li>
+<li><a href="#orgdf174cc">GLAM Ontologies</a>
+<ul>
+<li><a href="#org78c2c29">Europeana Data Model</a>
+<ul>
+<li><a href="#org07f08c2">EDM Semantic Graph</a></li>
+</ul>
+</li>
+<li><a href="#org93694e3">CIDOC CRM</a></li>
+<li><a href="#org97d5439">Web Annotation (Open Annotation, OA)</a></li>
+<li><a href="#org4e8f52c">International Image Interop Framework (IIIF)</a></li>
+<li><a href="#org523be29">Library Ontologies</a></li>
+<li><a href="#orge0cbaf4">Archival Ontologies</a></li>
+</ul>
+</li>
+<li><a href="#orge941616">GLAM LOD Datasets (LODLAM)</a>
+<ul>
+<li><a href="#org92c996e">Wikidata</a>
+<ul>
+<li><a href="#orgc7ef8f4">Sum of All Paintings</a></li>
+<li><a href="#orgd5d6acc">Crotos</a></li>
+</ul>
+</li>
+<li><a href="#org829f3ac">VIAF</a>
+<ul>
+<li><a href="#orgb84c1b5">VIAF vs Wikidata (2015)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga72aa53">LODLAM Projects</a>
+<ul>
+<li><a href="#org9227ae8">Mellon "Space" Projects</a></li>
+<li><a href="#org7a71eed">ResearchSpace</a>
+<ul>
+<li><a href="#org0555cbd">ResearchSpace Search: Implementation</a></li>
+</ul>
+</li>
+<li><a href="#orgbb2d2b3">British Museum (BM) and YCBA LOD</a></li>
+<li><a href="#org8cf02c9">ConservationSpace</a></li>
+<li><a href="#org31b1919">Europeana LOD and OAI PMH</a></li>
+<li><a href="#org79a4db0">Europeana Food and Drink</a>
+<ul>
+<li><a href="#org7142549">Tasty Bulgarian Recipes</a></li>
+</ul>
+</li>
+<li><a href="#org17bc7c0">Getty Vocabulary Program LOD</a>
+<ul>
+<li><a href="#orge794290">GVP LOD Releases</a></li>
+</ul>
+</li>
+<li><a href="#orge704324">J.P.Getty Museum</a>
+<ul>
+<li><a href="#org2436c96">J.P.Getty Museum and Wikidata</a></li>
+</ul>
+</li>
+<li><a href="#orga6c629f">American Art Collaborative</a></li>
+</ul>
+</li>
+<li><a href="#org9facfe7">Questions?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9342135" class="outline-2">
+<h2 id="org9342135">About Ontotext</h2>
+<div class="outline-text-2" id="text-org9342135">
+<p class="center">
+Subtitle "Build Narratives through Connecting Artifacts".<br />
+Also see <a href="http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index.html" class="center">full version of webinar</a> (134 slides)
+</p>
+
+
+<div class="figure">
+<p><img src="./img/about-Ontotext.png" alt="about-Ontotext.png" class="stretch" style="width:1217px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4441ff1" class="outline-3">
+<h3 id="org4441ff1">GLAM vs Internet</h3>
+<div class="outline-text-3" id="text-org4441ff1">
+<p>
+GLAM, CH, DH?
+</p>
+<ul class="org-ul">
+<li><b>Cultural Heritage</b> (CH): the sum of our non-economic heritage
+<ul class="org-ul">
+<li>Obvious implications to economically significant sectors, eg tourism</li>
+<li>Some say it's the source of all creativity, would you agree?</li>
+<li>Includes old and new (eg digitally-born), material and immaterial, tangible and intangible, permanent and temporal (eg interactive installations)</li>
+</ul></li>
+<li><b>Galleries, Libraries, Archives, Museums</b> (GLAM): sisterhood of institutions that care for our CH, each with its own perspective and priorities</li>
+<li><b>Digital Humanities (DH)</b>: the use of computers in the humanities.
+<ul class="org-ul">
+<li>Eg some UK universities with DH programs: @KingsDH @UCLDH @DH_OU @CamDigHum</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdd96f00" class="outline-3">
+<h3 id="orgdd96f00">Google NGrams: Phrases in Books</h3>
+<div class="outline-text-3" id="text-orgdd96f00">
+<p>
+Search for "library, museum" vs "Google, Facebook, Twitter" in books: the web sites are negligible
+</p>
+
+<div class="figure">
+<p><img src="./img/google-books-ngrams.png" alt="google-books-ngrams.png" class="stretch" style="width:1275px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org489b61a" class="outline-3">
+<h3 id="org489b61a">Google NGrams: Two Specific Orgs</h3>
+<div class="outline-text-3" id="text-org489b61a">
+<p>
+Compare two specific orgs: "Facebook" is more popular in recent books, compared to "British Museum" over time
+</p>
+
+<div class="figure">
+<p><img src="./img/google-books-BM-facebook.png" alt="google-books-BM-facebook.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org347b112" class="outline-3">
+<h3 id="org347b112">Google Trends: Search Popularity</h3>
+<div class="outline-text-3" id="text-org347b112">
+<p>
+Web searches over the last 12 years: "Facebook, Google" are much more popular than "library, museum"
+</p>
+
+<div class="figure">
+<p><img src="./img/google-search-trends.png" alt="google-search-trends.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd2b5c6e" class="outline-3">
+<h3 id="orgd2b5c6e">How To Survive in the Internet Age?</h3>
+<div class="outline-text-3" id="text-orgd2b5c6e">
+<p>
+Since ancient times GLAMs have been the centers of knowledge and wisdom
+</p>
+<ul class="org-ul">
+<li>Aren’t Google, Wikipedia, Facebook, Twitter and smart-phone apps becoming the new centers of research and culture (or at least popular culture)?</li>
+<li>Will GLAMs fall victims to teenagers with smartphones browsing Facebook? If the library's attitude is "Come search in our OPAC" then <b>certainly yes</b></li>
+<li>How to preserve the role of GLAMs into the new millennium?</li>
+</ul>
+<p>
+To survive, GLAMs must adopt the internet as their default modus operandi
+</p>
+<ul class="org-ul">
+<li>Web 1.0: presentation</li>
+<li>Web 2.0: interaction</li>
+<li>Web 3.0 (semantic web): data linking, enriching/disambiguating text using NLP/IE approaches</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org569214d" class="outline-3">
+<h3 id="org569214d">Why Linked Open Data (LOD) is Important</h3>
+<div class="outline-text-3" id="text-org569214d">
+<ul class="org-ul">
+<li>Culture is naturally cross-institutional, cross-border, multilingual, and interlinked</li>
+<li>LOD allows making connections between (and making sense of) the multitude of digitized cultural artifacts available on the net</li>
+<li>LOD enables large-scale Digital Humanities research, collaboration and aggregation; technological renewal of CH institutions</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/CH-linking.png" alt="CH-linking.png" class="stretch" style="width:1263px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcccc214" class="outline-2">
+<h2 id="orgcccc214">GLAM Content Standards</h2>
+<div class="outline-text-2" id="text-orgcccc214">
+<p>
+GLAM data is complex and varied
+</p>
+<ul class="org-ul">
+<li>Exception is the rule</li>
+<li>Many metadata format variations</li>
+<li>Data comes from a variety of systems</li>
+</ul>
+<p>
+Thus professional organizations have found it useful to define <b>content standards</b>
+</p>
+<ul class="org-ul">
+<li>Describe what data to capture (and sometimes how to go about it)</li>
+<li>Before formalizing how to express it in machine-readable form</li>
+</ul>
+<p>
+Examples are extremely useful for data modelers to decide how to map the data
+</p>
+</div>
+
+<div id="outline-container-orgffd8021" class="outline-3">
+<h3 id="orgffd8021">Museum Content Standards</h3>
+<div class="outline-text-3" id="text-orgffd8021">
+<p>
+<a href="http://cco.vrafoundation.org/">Cataloging Cultural Objects</a>: content standard for art, architecture, museums
+</p>
+
+<div class="figure">
+<p><img src="./img/CCO-cover.jpg" alt="CCO-cover.jpg" class="stretch" style="width:708px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3d5295f" class="outline-4">
+<h4 id="org3d5295f">SPECTRUM</h4>
+<div class="outline-text-4" id="text-org3d5295f">
+<p style="width:150px">
+<img src="./img/spectrum-logo.jpg" alt="spectrum-logo.jpg" style="width:150px" />
+<a href="http://www.collectionstrust.org.uk/spectrum">UK Museum Collections Management Standard</a> 
+</p>
+<ul class="org-ul">
+<li>Defines procedures for museums to follow, and the attendant data</li>
+<li>Covers 21 procedures: Pre-entry, Object entry, Loans in, Acquisition, Inventory control, Location and movement control, Transport, Cataloguing, Object condition checking and technical assessment, Conservation and collections care, Risk management, Insurance and indemnity management, Valuation control, Audit, Rights management, Use of collections, Object exit, Loans out, Loss and damage, Deaccession and disposal, Retrospective documentation</li>
+<li>Addresses accreditation</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f3ea5b" class="outline-3">
+<h3 id="org2f3ea5b">Archival Content Standards</h3>
+<div class="outline-text-3" id="text-org2f3ea5b">
+<ul class="org-ul">
+<li>ISAD(G): archival materials</li>
+<li>ISAAR(CPF): agents (corporations, people, families)</li>
+<li>ISDF: functions (eg Secretary of some society)</li>
+<li>ISDIAH: archival holding institutions</li>
+</ul>
+<p>
+Image by D.Pitti, 2015
+</p>
+
+<div class="figure">
+<p><img src="./img/ICA-standards-timelines.png" alt="ICA-standards-timelines.png" class="stretch" style="width:900px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc3494e0" class="outline-3">
+<h3 id="orgc3494e0">Library Content Standards</h3>
+<div class="outline-text-3" id="text-orgc3494e0">
+<ul class="org-ul">
+<li>AACR2 (Anglo-American Cataloging Rules 2)</li>
+<li>International Standard Bibliographic Description (ISBD)</li>
+<li>Resource Description and Access (RDA)</li>
+</ul>
+<p>
+Extremely detailed and comprehensive (see RDA later).
+But sometimes pay more attention where to put the commas than to:
+</p>
+<ul class="org-ul">
+<li>Data sharing</li>
+<li>Global availability of resources</li>
+<li>Sharing the cataloging burden</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6a8c78e" class="outline-2">
+<h2 id="org6a8c78e">GLAM Metadata Schemas</h2>
+<div class="outline-text-2" id="text-org6a8c78e">
+<p>
+How many of the standards listed in <a href="http://jennriley.com/metadatamap/">Seeing Standards: A Visualization of the Metadata Universe</a> apply to your work?
+(by Jenn Riley, Associate Dean for Digital Initiatives at McGill University Library)
+</p>
+
+<div class="figure">
+<p><img src="./img/GLAM-seeing-standards.png" alt="GLAM-seeing-standards.png" class="stretch" style="width:1222px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb78a705" class="outline-3">
+<h3 id="orgb78a705">Seeing Standards (2)</h3>
+<div class="outline-text-3" id="text-orgb78a705">
+
+<div class="figure">
+<p><img src="./img/GLAM-seeing-standards-full.png" alt="GLAM-seeing-standards-full.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf174cc" class="outline-2">
+<h2 id="orgdf174cc">GLAM Ontologies</h2>
+<div class="outline-text-2" id="text-orgdf174cc">
+<p>
+Why do they call conversion to RDF "lifting" and back to some other format "lowering"?
+</p>
+<ul class="org-ul">
+<li>RDF is a simple abstracted data model</li>
+<li>Doesn't have nesting biases like XML: whether a sub-element is nested or referenced by ID. Has less syntactic idiosyncrasies</li>
+<li>(RDF/XML is awful, but there is Turtle for readability, or JSONLD for programmer convenience)</li>
+<li>The model is self-describing in a distributed way: if a class/property is looked up, should return description and info</li>
+</ul>
+</div>
+
+
+<div id="outline-container-org78c2c29" class="outline-3">
+<h3 id="org78c2c29">Europeana Data Model</h3>
+<div class="outline-text-3" id="text-org78c2c29">
+<p>
+Model used by the Europeana aggregator (53M objects), and adopted by Digital Public Library of America (DPLA)
+Based on:
+</p>
+<ul class="org-ul">
+<li>OAI ORE (Open Archives Initiative Object Reuse &amp; Exchange): organizing object metadata and digital representations (WebResources)</li>
+<li>Dublin Core: descriptive metadata</li>
+<li>SKOS (Simple Knowledge Organization System): conceptual objects (concepts, agents, etc)</li>
+<li>CIDOC-CRM inspired: events, some relations between objects</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/Europeana-classes.png" alt="Europeana-classes.png" class="stretch" style="width:900px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org07f08c2" class="outline-4">
+<h4 id="org07f08c2">EDM Semantic Graph</h4>
+<div class="outline-text-4" id="text-org07f08c2">
+
+<div class="figure">
+<p><img src="./img/graph-LevskiOrdinance.png" alt="graph-LevskiOrdinance.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93694e3" class="outline-3">
+<h3 id="org93694e3">CIDOC CRM</h3>
+<div class="outline-text-3" id="text-org93694e3">
+<p>
+<a href="http://cidoc-crm.org/">CIDOC CRM</a>: comprehensive reference model used for history, historic events, archaeology, museum data, etc
+by CIDOC (ICOM documentation committee).
+Standardized as ISO 21127:2014, still evolving.
+About 85 classes, fundamental branches: Persistent (endurant) vs Temporal (perdurant), Physical vs Conceptual
+</p>
+
+<div class="figure">
+<p><img src="./img/cidoc_class_hierarchy.jpg" alt="cidoc_class_hierarchy.jpg" class="stretch" style="width:900px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97d5439" class="outline-3">
+<h3 id="org97d5439">Web Annotation (Open Annotation, OA)</h3>
+<div class="outline-text-3" id="text-org97d5439">
+<p>
+<a href="https://www.w3.org/TR/annotation-model/">W3C TR</a>: mark, annotate, relate any web resources, eg: Webpage and bookmark, Image and region over it, Document and translation, Paragraph and commentary.
+Diagram of <a href="https://www.w3.org/TR/annotation-model/#complete-example">Complete Example</a> from spec (using my <b>rdfpuml</b>)
+</p>
+
+<div class="figure">
+<p><img src="./img/OA-eg44.png" alt="OA-eg44.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e8f52c" class="outline-3">
+<h3 id="org4e8f52c">International Image Interop Framework (IIIF)</h3>
+<div class="outline-text-3" id="text-org4e8f52c">
+<p>
+Standard API for DeepZoom (hi-res) images. Supported by many servers and viewers. <a href="http://iiif.io">http://iiif.io</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/IIIF-showcase.png" alt="IIIF-showcase.png" class="stretch" style="width:900px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org523be29" class="outline-3">
+<h3 id="org523be29">Library Ontologies</h3>
+<div class="outline-text-3" id="text-org523be29">
+<p>
+War of the Bibliographic Ontologies?
+</p>
+<ul class="org-ul">
+<li><b>BIBO</b>: used for a long time, pragmaic</li>
+<li><b>FRBRer</b>: pragmatic realization of FRBR, but little uptake (not rich enough?)</li>
+<li><b>FRBRoo</b>: based on CIDOC CRM, perhaps too complex</li>
+<li><b>Fabio, Cito, Doco</b> and friends: modern, includes new features (eg citation intent)</li>
+<li><b>BibFrame</b>: sponsored by LoC, but <a href="http://www.slideshare.net/azaroth42/linked-data-best-practices-and-bibframe">soundly criticized</a> for modeling mistakes</li>
+<li><b>RDAregistry.info</b>: basic FRBR classes, numerous properties for all kinds of things. Used for 100M records at TEL</li>
+<li><b>SchemaBibEx</b> (<a href="http://bib.schema.org">http://bib.schema.org</a>): steps on a clean model sponsored by the big 4 search engines (Google, MS Bing, Yahoo, Yandex.ru).
+Developed by OCLC.
+May end up being used for 300M records at WorldCat.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge0cbaf4" class="outline-3">
+<h3 id="orge0cbaf4">Archival Ontologies</h3>
+<div class="outline-text-3" id="text-orge0cbaf4">
+<p>
+3 attempts to represent EAD as RDF, but IMHO neither is very good.
+</p>
+<ul class="org-ul">
+<li>Eg "The Semantic Mapping of Archival Metadata to the CIDOC CRM Ontology" (Journal of Archival Organization, 9:174–207, 2011) proposes to represent the EAD levels hierarchy (from Fonds down to Items) as <b>five</b> parallel CRM hierarchies</li>
+</ul>
+<p>
+Records in Context (RiC): new upcoming semantic standard by ICA
+</p>
+<ul class="org-ul">
+<li>Addresses the scope of EAD, EAC, EAG in one framework. 
+Inspired by national standards, FRBR (FRBR-LRM), CIDOC CRM</li>
+<li><a href="http://schd.ws/hosted_files/archives2015/c7/session109.Rubinstein.pdf">Progress report</a> (2015), <a href="http://lists.village.virginia.edu/mailman/listinfo/ica-egad-ric">Mlist for comments</a></li>
+<li><a href="http://www.ica.org/sites/default/files/RiC-CM-0.1.pdf">Conceptual Model</a> 1.0 (Sep 2016): Document key components of archival description, properties of each, relations between them</li>
+<li>Ontology: after finalizing the Conceptual Model, Expressed in OWL, will include semantic mapping to similar concepts developed by related communities</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge941616" class="outline-2">
+<h2 id="orge941616">GLAM LOD Datasets (LODLAM)</h2>
+<div class="outline-text-2" id="text-orge941616">
+<ul class="org-ul">
+<li>Some established thesauri and gazetteers as LOD, some are interconnected: DBPedia; Wikidata, VIAF, FAST, ULAN; GeoNames, Pleiades, TGN; LCSH, AAT, IconClass, Joconde, SVCN, Wordnet, etc.</li>
+<li>Not shown: large collection LODs like: Europeana (EDM), British Museum (CIDOC CRM), YCBA (CIDOC CRM), Rijksmuseum (EDM)</li>
+<li>(Diagram based on work by M.Hildebrand)</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/Culture-datacloud-pretty.png" alt="Culture-datacloud-pretty.png" class="stretch" style="width:1183px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org92c996e" class="outline-3">
+<h3 id="org92c996e">Wikidata</h3>
+<div class="outline-text-3" id="text-org92c996e">
+<p>
+Tons of info on everything, including GLAMs, artists, artworks, etc. Eg <a href="https://tools.wmflabs.org/reasonator/?&amp;q=167654">Frans Hals on Reasonator</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-FransHals.png" alt="WD-FransHals.png" class="stretch" style="width:900px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc7ef8f4" class="outline-4">
+<h4 id="orgc7ef8f4">Sum of All Paintings</h4>
+<div class="outline-text-4" id="text-orgc7ef8f4">
+<p>
+<a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_sum_of_all_paintings">Wikidata Project Sum of All Paintings</a>. Data used for works by painter across collections (catalogue raisonné). Eg <a href="http://tools.wmflabs.org/hay/wdskim/index.php?prop=P170&amp;item=Q167654&amp;language=en&amp;withimages=on">Frans Hals</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-FransHals-painings.png" alt="WD-FransHals-painings.png" class="stretch" style="width:900px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd5d6acc" class="outline-4">
+<h4 id="orgd5d6acc">Crotos</h4>
+<div class="outline-text-4" id="text-orgd5d6acc">
+<p>
+Excellent image search. Shows links to WD, Wikimedia Commons, original website. Eg <a href="http://www.zone47.com/crotos/?l=en&amp;p=&amp;nb=20&amp;disp=1&amp;s=frans+hals&amp;y1=-40000&amp;y2=2016&amp;p31=&amp;p170=167654">Frans Hals on Crotos</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-FransHals-Crotos.png" alt="WD-FransHals-Crotos.png" class="stretch" style="width:1223px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org829f3ac" class="outline-3">
+<h3 id="org829f3ac">VIAF</h3>
+<div class="outline-text-3" id="text-org829f3ac">
+<p>
+Virtual International Authority File: 20 national libraries, 10 other contributors including Getty ULAN and Wikidata.
+Eg coreferencing cluster of Spinoza:
+</p>
+
+<div class="figure">
+<p><img src="./img/viaf-spinoza.png" alt="viaf-spinoza.png" class="stretch" style="width:1238px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb84c1b5" class="outline-4">
+<h4 id="orgb84c1b5">VIAF vs Wikidata (2015)</h4>
+<div class="outline-text-4" id="text-orgb84c1b5">
+
+<div class="figure">
+<p><img src="./img/VIAF-Wikidata-comparison.png" alt="VIAF-Wikidata-comparison.png" class="stretch" style="width:600px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga72aa53" class="outline-2">
+<h2 id="orga72aa53">LODLAM Projects</h2>
+<div class="outline-text-2" id="text-orga72aa53">
+<p>
+GLAM and DH projects present a bewildering variety, eg
+</p>
+<ul class="org-ul">
+<li>Publishing Vocabularies/Thesauri as LOD</li>
+<li>Publishing Museum collections and National Bibliographies as LOD</li>
+<li>Enrichment of GLAM metadata with relevant thesauri, semantic and faceted search</li>
+<li>Study of artistic influence over time and space</li>
+<li>Literary traditions, parallel editions</li>
+<li>Poetic repertories</li>
+<li>Studying manuscripts, stematology (manuscript derivation)</li>
+<li>Historiography</li>
+<li>Studying charters, prosopography ("micro biographies").
+"Prosopography is Greek for <i>Facebook</i>", <a href="http://snapdrgn.net/archives/482">SNAP:DRGN project</a>, 2015</li>
+</ul>
+<p>
+Research functions and sometimes integrated into Virtual Research Environments
+</p>
+</div>
+
+
+<div id="outline-container-org9227ae8" class="outline-3">
+<h3 id="org9227ae8">Mellon "Space" Projects</h3>
+<div class="outline-text-3" id="text-org9227ae8">
+<p>
+The Andrew Mellon Foundation funds many projects in CH and DH, and a few software projects, including:
+</p>
+<ul class="org-ul">
+<li><b>CollectionSpace</b>: museum collection management</li>
+<li><b>ArchiveSpace</b>: archive management</li>
+<li><b>ResearchSpace</b>: semantic integration based on CIDOC CRM, search, data &amp; image annotation, data basket, etc</li>
+<li><b>ConservationSpace</b>: line of business application for conservation specialists</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7a71eed" class="outline-3">
+<h3 id="org7a71eed">ResearchSpace</h3>
+<div class="outline-text-3" id="text-org7a71eed">
+<p>
+Executed by the British Museum. Ontotext developed the first prototype (2010-2013). Semantic Search
+</p>
+
+<div class="figure">
+<p><img src="./img/RS-search-paper-from-London.png" alt="RS-search-paper-from-London.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0555cbd" class="outline-4">
+<h4 id="org0555cbd">ResearchSpace Search: Implementation</h4>
+<div class="outline-text-4" id="text-org0555cbd">
+<p>
+120 GraphDB rules, weaved using Literate Programming approach. Inference dependencies between props (text=input, gray=intermediate, white=output)
+</p>
+
+<div class="figure">
+<p><img src="./img/RS-search-implementation-deps.png" alt="RS-search-implementation-deps.png" class="stretch" style="width:1100px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbb2d2b3" class="outline-3">
+<h3 id="orgbb2d2b3">British Museum (BM) and YCBA LOD</h3>
+<div class="outline-text-3" id="text-orgbb2d2b3">
+<ul class="org-ul">
+<li>GraphDB runs the BM SPARQL endpoint. One of the biggest CH RDF collections (917M triples)</li>
+<li>As part of RS, developed mapping of BM data (2M objects) with BM, using CIDOC CRM</li>
+<li>This mapping was followed by the Yale Center for British Art (YCBA)</li>
+<li><a href="https://confluence.ontotext.com/display/ResearchSpace/BM+Mapping">Mapping Documentation</a>: very comprehensive but is monolithic and has imprecisions. Includes the (in)famous diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/BM-mapping-doc.png" alt="BM-mapping-doc.png" class="stretch" style="width:800px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8cf02c9" class="outline-3">
+<h3 id="org8cf02c9">ConservationSpace</h3>
+<div class="outline-text-3" id="text-org8cf02c9">
+<p>
+Executed by a consortium led by US National Gallery of Art. 
+Developed by Sirma ITT (Ontotext sibling).
+Based on Ontotext GraphDB (semantic metadata), Alfresco (document management), Smart Documents (Sirma product).
+</p>
+
+<div class="figure">
+<p><img src="./img/ConservationSpace.png" alt="ConservationSpace.png" class="stretch" style="width:700px" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org31b1919" class="outline-3">
+<h3 id="org31b1919">Europeana LOD and OAI PMH</h3>
+<div class="outline-text-3" id="text-org31b1919">
+<p>
+Ontotext crated and hosted the Europeana SPARQL and OAI PMH services
+</p>
+
+<div class="figure">
+<p><img src="./img/O is for Open (CultJam 201507).png" alt="O is for Open (CultJam 201507).png" class="stretch" style="width:900px" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org79a4db0" class="outline-3">
+<h3 id="org79a4db0">Europeana Food and Drink</h3>
+<div class="outline-text-3" id="text-org79a4db0">
+<p>
+Food &amp; Drink content, semantically enriched (place and FD topic).
+<a href="http://efd.ontotext.com/app/">EFD Semantic App</a>: open data, SPARQL endpoint, open source (Github). Uses GraphDB and ElasticSearch enterprise connector
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-semapp.png" alt="EFD-semapp.png" class="stretch" style="width:850px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7142549" class="outline-4">
+<h4 id="org7142549">Tasty Bulgarian Recipes</h4>
+<div class="outline-text-4" id="text-org7142549">
+<p>
+Eg 150 with beer, including pancakes!
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-Beer-Pancake.png" alt="EFD-Beer-Pancake.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17bc7c0" class="outline-3">
+<h3 id="org17bc7c0">Getty Vocabulary Program LOD</h3>
+<div class="outline-text-3" id="text-org17bc7c0">
+<p>
+GVP well-known and respected in GLAM. Dependencies: AAT-TGN-ULAN-CONA. Center of LODLAM cloud?
+<a href="http://www.getty.edu/research/tools/vocabularies/training.html">GVP Training Materials</a> (Diagram by J.Cobb, 2014)
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-linked.png" alt="GVP-linked.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge794290" class="outline-4">
+<h4 id="orge794290">GVP LOD Releases</h4>
+<div class="outline-text-4" id="text-orge794290">
+<p>
+<a href="http://blogs.getty.edu/iris/art-architecture-thesaurus-now-available-as-linked-open-data/">AAT 2014-02</a>, <a href="http://blogs.getty.edu/iris/getty-thesaurus-of-geographic-names-released-as-linked-open-data/">TGN 2014-08</a>, <a href="http://blogs.getty.edu/iris/getty-thesaurus-of-geographic-names-released-as-linked-open-data/">ULAN 2015-03</a>. Publicized in blog posts by J.Cuno, head of the Getty Trust
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-ULAN_LOD.png" alt="GVP-ULAN_LOD.png" class="stretch" style="width:800px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge704324" class="outline-3">
+<h3 id="orge704324">J.P.Getty Museum</h3>
+<div class="outline-text-3" id="text-orge704324">
+<p>
+Working with JPGM on publishing LOD. Considering CIDOC CRM, maybe also simpler ontologies.
+Hoping to generate R2RML from instance examples like:
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-objects.png" alt="GVP-objects.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2436c96" class="outline-4">
+<h4 id="org2436c96">J.P.Getty Museum and Wikidata</h4>
+<div class="outline-text-4" id="text-org2436c96">
+<p>
+Discussing making data for Wikidata. WD has 480 Getty paintings, but the Museum has 180k artworks.
+<a href="https://query.wikidata.org/#%23defaultView:ImageGrid%0ASELECT%20?item%20?itemLabel%20?pic%20WHERE%20%7B%0A%20%20?item%20wdt:P195%20wd:Q731126.%0A%20%20OPTIONAL%20%7B%20?item%20wdt:P18%20?pic.%20%7D%0A%20%20SERVICE%20wikibase:label%20%7B%20bd:serviceParam%20wikibase:language%20%22en%22.%20%7D%0A%7D%0A">WD query shown as image grid</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-Getty.png" alt="WD-Getty.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga6c629f" class="outline-3">
+<h3 id="orga6c629f">American Art Collaborative</h3>
+<div class="outline-text-3" id="text-orga6c629f">
+<p>
+<a href="http://americanartcollaborative.org/">American Art Collaborative</a>: 14 US art museums committed to establishing a critical mass of LOD on the semantic web.
+Consulting on CRM mapping.
+</p>
+<ul class="org-ul">
+<li>Work ongoing at <a href="https://github.com/american-art">https://github.com/american-art</a>, eg see <a href="https://github.com/american-art/npg/issues?utf8=%E2%9C%93&amp;q=is:issue%20">NPG mapping issues</a></li>
+<li>Eg possible mapping of "(sculpture) Cast after"</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/AAC-NPG-castAfter.png" alt="AAC-NPG-castAfter.png" class="stretch" style="width:1256px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9facfe7" class="outline-2">
+<h2 id="org9facfe7">Questions?</h2>
+<div class="outline-text-2" id="text-org9facfe7">
+<p>
+Thank you for your time!
+</p>
+<ul class="org-ul">
+<li>Website: <a href="http://www.ontotext.com">http://www.ontotext.com</a></li>
+<li>Contact: ilian.uzunov@ontotext.com</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2016-11-28</p>
+<p class="author">Author: Ilian Uzunov &amp; Vladimir Alexiev</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

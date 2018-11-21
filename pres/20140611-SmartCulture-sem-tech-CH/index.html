@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Semantic Technologies for Cultural Heritage</title>
+<meta name="author" content="(Vladimir Alexiev, Ontotext Corp)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>Semantic Technologies for Cultural Heritage</h2><h3>Vladimir Alexiev, Ontotext Corp</h3><h4>SmartCulture Conference, Brussels, 2015-02-10</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/Semantic Technologies for Cultural Heritage.pdf'>PDF</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgc937199">Ontotext Corp</a></li>
+<li><a href="#/slide-orgcad97fe">Semantic Technologies</a></li>
+<li><a href="#/slide-orgbc755f2">Cultural Heritage LOD Cloud</a></li>
+<li><a href="#/slide-orge87f773">ResearchSpace</a></li>
+<li><a href="#/slide-org48a92ac">Bulgariana</a></li>
+<li><a href="#/slide-orgde0112b">Europeana Creative</a></li>
+<li><a href="#/slide-org4567d96">Getty Vocabularies</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+</section>
+<section id="slide-orge1a4349">
+<h3 id="orge1a4349">SmartCulture Conference (thanks for inviting me!)</h3>
+
+<div class="figure">
+<p><img src="./img/SmartCulture.png" alt="SmartCulture.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc937199">
+<h2 id="orgc937199">Ontotext Corp</h2>
+<ul>
+<li>World Leading semantic technology developer
+<ul>
+<li>Established in 2000 as part of Sirma Group</li>
+<li>Spun off in 2008 after venture investment (NEVEQ)</li>
+<li>75 employees</li>
+<li>Offices in Bulgaria (Sofia and Varna), UK (London), USA (New York)</li>
+<li>Global leader in semantic databases and search</li>
+
+</ul></li>
+<li>Proven Delivery
+<ul>
+<li>More high-profile show cases than competitors</li>
+<li>Highest profile sem web applications</li>
+<li>BBC: World Cup 2010, London Olympics 2012</li>
+<li>Semantic search for multinational pharmaceuticals (Astra Zeneca)</li>
+
+</ul></li>
+<li>Stable and Growing
+<ul>
+<li>Both staff and revenue growing for 12th year in a row</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgd0e9a75">
+<h3 id="orgd0e9a75">Some Ontotext Clients</h3>
+
+<div class="figure">
+<p><img src="./img/Ontotext-Clients.png" alt="Ontotext-Clients.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org00235a7">
+<h3 id="org00235a7">Ontotext Research Projects (FP5-FP7)</h3>
+<ul>
+<li>Bulgaria's largest participant: over 30 projects</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/Ontotext-FP-projects-timeline.png" alt="Ontotext-FP-projects-timeline.png" style="width:850px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcad97fe">
+<h2 id="orgcad97fe">Semantic Technologies</h2>
+<ul>
+<li><b>Web 1.0</b>: hyperlinked documents (World Wide Web)</li>
+<li><b>Web 2.0</b>: interactive applications, the Social Web</li>
+<li><b>Web 3.0</b>: interlinked data (Global Giant Graph)</li>
+
+</ul>
+<p>
+Is this something new?
+</p>
+<ul>
+<li>It was all envisioned by Sir Tim Berners-Lee 25 years ago</li>
+<li>Standardized by W3C: both HTML and sem web standards (RDF, RDFS, OWL, SPARQL&#x2026;)</li>
+<li>Great flurry of sem tech activity in the last 15 years</li>
+<li>Buzzwords: Big Data, Semantic Analytics, Concept Extraction, Sentiment Analysis&#x2026;</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf6f9c23">
+<h3 id="orgf6f9c23">Linked Open Data Cloud</h3>
+<ul>
+<li>This is from Mar 2009, now has grown 10x!</li>
+<li>Part at <a href="http://factforge.net">http://factforge.net</a>, <a href="http://linkedlifedata.com">http://linkedlifedata.com</a></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/lod-datasets-2009-03-27-FactForge-LLD.jpg" alt="lod-datasets-2009-03-27-FactForge-LLD.jpg" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgceea9db">
+<h3 id="orgceea9db">Linguistic Linked Data</h3>
+
+<div class="figure">
+<p><img src="./img/llod-for-multisensor.png" alt="llod-for-multisensor.png" style="width:750px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org3e339c5">
+<h3 id="org3e339c5">First Ontotext GLAM Project: UK National Archives</h3>
+
+<div class="figure">
+<p><img src="./img/TNA-SKB.png" alt="TNA-SKB.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbc755f2">
+<h2 id="orgbc755f2">Cultural Heritage LOD Cloud</h2>
+
+<div class="figure">
+<p><img src="./img/Culture-datacloud-large.png" alt="Culture-datacloud-large.png" style="width:850px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb59fcd6">
+<h3 id="orgb59fcd6">Europeana Recognizes Importance of Semantic Technologies</h3>
+
+<div class="figure">
+<p><img src="./img/Europeana-semantic-whitepaper-press-release.png" alt="Europeana-semantic-whitepaper-press-release.png" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4f49697">
+<h3 id="org4f49697">Europeana Sem Tech MindMap</h3>
+
+<div class="figure">
+<p><img src="./img/Europeana-semantic-activities-mindmap.png" alt="Europeana-semantic-activities-mindmap.png" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org19cc5fd">
+<h3 id="org19cc5fd">Europeana Sem Tech MindMap Detail</h3>
+
+<div class="figure">
+<p><img src="./img/Europeana-semantic-activities-detail.png" alt="Europeana-semantic-activities-detail.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge87f773">
+<h2 id="orge87f773">ResearchSpace</h2>
+<ul>
+<li>A Virtual Research Environment for art research</li>
+<li>Funded by the Andrew Mellon Foundation</li>
+<li>Executed by the British Museum</li>
+<li>Software developed by Ontotext</li>
+<li>Uses Ontotext's semantic database (OWLIM)</li>
+<li>Provided all 2.5M objects of the British Museum as Linked Open Data (LOD)</li>
+
+</ul>
+
+</section>
+<section id="slide-org87a4846">
+<h3 id="org87a4846">2.5M British Museum Objects as LOD</h3>
+
+<div class="figure">
+<p><img src="./img/RS-BM-HoaHakananai'a.png" alt="RS-BM-HoaHakananai'a.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5d938d5">
+<h3 id="org5d938d5">ResearchSpace Semantic Search</h3>
+
+<div class="figure">
+<p><img src="./img/RS-search-Rembrandt-drawing-mammal.png" alt="RS-search-Rembrandt-drawing-mammal.png" />
+</p>
+</div>
+<ul>
+<li>Also works across collections, eg BM and Yale Center for British Art</li>
+
+</ul>
+
+</section>
+<section id="slide-orgaa0227b">
+<h3 id="orgaa0227b">ResearchSpace: Semantic Data Annotation</h3>
+
+<div class="figure">
+<p><img src="./img/RS-data-annotation-over-BM-data.png" alt="RS-data-annotation-over-BM-data.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org3a29515">
+<h3 id="org3a29515">ResearchSpace: Semantic Image Annotation</h3>
+
+<div class="figure">
+<p><img src="./img/RS-image-annotation-susanna-xRay.png" alt="RS-image-annotation-susanna-xRay.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org48a92ac">
+<h2 id="org48a92ac">Bulgariana</h2>
+<ul>
+<li>A Bulgarian aggregator to Europeana</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/bulgariana-collections.png" alt="bulgariana-collections.png" style="width:850px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgcb8db24">
+<h3 id="orgcb8db24">Bulgariana Collection: Thracian Gold</h3>
+
+<div class="figure">
+<p><img src="./img/rhyton-at-bulgariana.png" alt="rhyton-at-bulgariana.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgcc047ab">
+<h3 id="orgcc047ab">Rhyton at Europeana</h3>
+<ul>
+<li>Now any European citizen can find it!</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/rhyton-at-europeana.png" alt="rhyton-at-europeana.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgcdf05eb">
+<h3 id="orgcdf05eb">Rhyton at Europeana Open Culture</h3>
+<ul>
+<li>Others make beautiful apps with your data!</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/rhyton-europeanaopenculture.png" alt="rhyton-europeanaopenculture.png" style="width:850px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgdd07965">
+<h3 id="orgdd07965">Bulgariana Collection Featured in Open Culture</h3>
+<ul>
+<li>And publicize it for you to an audience you couldn't reach!</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/rhyton-EuropeanaOpenCulture-news.png" alt="rhyton-EuropeanaOpenCulture-news.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgde0112b">
+<h2 id="orgde0112b">Europeana Creative</h2>
+
+<div class="figure">
+<p><img src="./img/eCreative-poster_1.png" alt="eCreative-poster_1.png" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org16cb3be">
+<h3 id="org16cb3be">Europeana Creative</h3>
+
+<div class="figure">
+<p><img src="./img/eCreative-poster_2.png" alt="eCreative-poster_2.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org1e51cf2">
+<h3 id="org1e51cf2">Enabling Creatives to Work with CH Data</h3>
+<ul>
+<li>Pilots by eCreative partners</li>
+<li>Open challenges, growing to incubation support</li>
+<li>Help with collection data, content reuse, Europeana APIs, creative workshop ideas&#x2026;</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/eCreative-pipeline-workshop.png" alt="eCreative-pipeline-workshop.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2fc2047">
+<h3 id="org2fc2047">In 5 pilot areas: tourism, social networks, design, nature, history</h3>
+
+<div class="figure">
+<p><img src="./img/eCreative-plan-fragment.png" alt="eCreative-plan-fragment.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb7ba38a">
+<h3 id="orgb7ba38a">Creative Open Challenges and Incubation Support</h3>
+
+<div class="figure">
+<p><img src="./img/eCreative 2nd Challenges and Incubation Support.png" alt="eCreative 2nd Challenges and Incubation Support.png" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge5b39e4">
+<h3 id="orge5b39e4">Ontotext in Europeana</h3>
+<p>
+Ontotext works on fundamental backend technologies important for KPIs 
+</p>
+
+<div class="figure">
+<p><img src="./img/OntotextContributesToEuropeana.png" alt="OntotextContributesToEuropeana.png" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5d22063">
+<h3 id="org5d22063">Europeana OAI and SPARQL</h3>
+<p>
+Ontotext creates OAI PMH server for Europeana
+</p>
+<ul>
+<li>So we or others can download objects in bulk</li>
+
+</ul>
+<p>
+Ontotext hosts the Europeana semantic data (EDM) in OWLIM
+</p>
+<ul>
+<li><a href="http://europeana.ontotext.com/sparql">http://europeana.ontotext.com/sparql</a><br />
+20M objects, 1.5 years old</li>
+<li><a href="http://europeana-test.ontotext.com/sparql">http://europeana-test.ontotext.com/sparql</a><br />
+working with Europeana to update it</li>
+<li>Provides SPARQL querying</li>
+
+</ul>
+
+</section>
+<section id="slide-org39c7461">
+<h3 id="org39c7461">SPARQL 1.1 Queries</h3>
+<p>
+Eg Polish Periodicals by library and decade<br />
+<a href="http://europeana-test.ontotext.com/sparql">http://europeana-test.ontotext.com/sparql</a>
+</p>
+<pre  class="example">
+select 
+  ?date 
+  (sum(?n1) as ?Uniwersytetu_Warszawskiego)
+  (sum(?n2) as ?Politechniki_Lubelskiej)
+  (sum(?n3) as ?Baltycka)
+{
+  ?x dc:type 'periodical'@en.
+  ?x ore:proxyIn/edm:dataProvider ?dataProvider.
+  ?x dc:date ?date2.
+  bind (xsd:integer(concat(substr(?date2,1,3),'0')) as ?date)
+  bind (if(?dataProvider='e-biblioteka Uniwersytetu Warszawskiego',1,0) as ?n1)
+  bind (if(?dataProvider='Biblioteka Cyfrowa Politechniki Lubelskiej',1,0) as ?n2)
+  bind (if(?dataProvider='Bałtycka Biblioteka Cyfrowa',1,0) as ?n3)
+} group by ?date order by ?date
+</pre>
+
+</section>
+<section id="slide-orgb0b1b98">
+<h3 id="orgb0b1b98">SPARQL Analytics</h3>
+<p>
+Eg Polish Periodicals by library &amp; decade (you can <a href="http://jsfiddle.net/valexiev/t4aX9/">jsfiddle</a> with it)<br />
+<img src="./img/EDM-sgvizler2.png" alt="EDM-sgvizler2.png" />
+</p>
+
+</section>
+<section id="slide-orga7ebba5">
+<h3 id="orga7ebba5">EDM Object Graph</h3>
+
+<div class="figure">
+<p><img src="./img/europeana-graph.png" alt="europeana-graph.png" /> 
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4567d96">
+<h2 id="org4567d96">Getty Vocabularies</h2>
+<p>
+Well-known and important cultural heritage thesauri:
+</p>
+<ul>
+<li>Art and Architecture Thesaurus (AAT)</li>
+<li>Thesaurus of Geographic Names (TGN)</li>
+<li>Unified List of Artist Names (ULAN)</li>
+<li>Cultural Object Names Authority (CONA)</li>
+
+</ul>
+<p>
+Ontotext is publishing them as Linked Open Data: <a href="http://vocab.getty.edu">http://vocab.getty.edu</a>
+</p>
+<ul>
+<li>AAT LOD published in Feb 2014, already sees numerous use cases</li>
+<li>First industrial use of the latest ISO standard on thesauri: ISO 25946</li>
+<li>Contributed to ISO 25946 ontology</li>
+<li>Special session at CIDOC Congress (Dresden, Sep 2014)</li>
+
+</ul>
+
+</section>
+<section id="slide-org3afa8dc">
+<h3 id="org3afa8dc">Use of ISO 25946 in Getty LOD</h3>
+
+<div class="figure">
+<p><img src="./img/Getty-isoThesaurusArray.png" alt="Getty-isoThesaurusArray.png" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

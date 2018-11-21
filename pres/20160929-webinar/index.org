@@ -1,0 +1,910 @@
+# -*- my-org-place: "Ontotext Webinar"; my-org-filename-pdf: "Linked Open Data for Cultural Heritage.pdf" -*-
+#+TITLE: Linked Open Data for Cultural Heritage
+#+DATE: 2016-09-29
+#+AUTHOR: Vladimir Alexiev
+#+EMAIL: vladimir.alexiev@ontotext.com
+#+OPTIONS: H:5 num:t toc:2
+
+* Intro
+- A bit about me: co-founder of Sirma Group Holding, Bulgaria's largest software group and parent company of Ontotext
+  - 30y in IT: 8 at university, 22 in industry
+  - Did plenty of project management, business analysis and data modeling, some big projects too
+  - Last 8 years focused on data modeling and integration
+  - Last 6 years in paricular, focused on semantic data and semantic integration
+- I love to poke in other people's data and get in-depth. So there's a lot about data in these slides
+- See [[http://rawgit2.com/VladimirAlexiev/my/master/index.html][My publications]]: you can sort by type and keyword, full abstracts are available. 
+  - I've provided a few references below, but if a topic interests you, please search in the publications
+- The shorter version has about 110 slides, so sit back, relax, and enjoy the ride. Should take us 1:20h
+  - Ask questions at any time in the chat, I'll answer them all at the end
+- This longer version has 130 slides, including info about Library metadata and ontologies
+
+** GLAM vs Internet
+GLAM, CH, DH?
+- *Cultural Heritage* (CH): the sum of our non-economic heritage
+  - Obvious implications to economically significant sectors, eg tourism
+  - Some say it's the source of all creativity, would you agree?
+  - Includes old and new (eg digitally-born), material and immaterial, tangible and intangible, permanent and temporal (eg interactive installations)
+- *Galleries, Libraries, Archives, Museums* (GLAM): sisterhood of institutions that care for our CH, each with its own perspective and priorities
+- *Digital Humanities (DH)*: the use of computers in the humanities.
+  - Eg some UK universities with DH programs: @KingsDH @UCLDH @DH_OU @CamDigHum
+
+** Google NGrams: Phrases in Books
+Search for "library, museum" vs "Google, Facebook, Twitter" in books: the web sites are negligible
+#+ATTR_HTML: :class stretch :style width:1275px
+[[./img/google-books-ngrams.png]]
+
+** Google NGrams: Two Specific Orgs
+Compare two specific orgs: "Facebook" is more popular in recent books, compared to "British Museum" over time
+#+ATTR_HTML: :class stretch :style width:1320px
+[[./img/google-books-BM-facebook.png]]
+
+** Google Trends: Search Popularity
+Web searches over the last 12 years: "Facebook, Google" are much more popular than "library, museum"
+#+ATTR_HTML: :class stretch :style width:1320px
+[[./img/google-search-trends.png]]
+
+** How To Survive in the Internet Age?
+Since ancient times GLAMs have been the centers of knowledge and wisdom
+- Aren’t Google, Wikipedia, Facebook, Twitter and smart-phone apps becoming the new centers of research and culture (or at least popular culture)?
+- Will GLAMs fall victims to teenagers with smartphones browsing Facebook? If the library's attitude is "Come search in our OPAC" then *certainly yes*
+- How to preserve the role of GLAMs into the new millennium? 
+To survive, GLAMs must adopt the internet as their default modus operandi
+- Web 1.0: presentation
+- Web 2.0: interaction
+- Web 3.0 (semantic web): data linking, enriching/disambiguating text using NLP/IE approaches
+
+** Why Linked Open Data (LOD) is Important
+- Culture is naturally cross-institutional, cross-border, multilingual, and interlinked
+- LOD allows making connections between (and making sense of) the multitude of digitized cultural artifacts available on the net
+- LOD enables large-scale Digital Humanities research, collaboration and aggregation; technological renewal of CH institutions
+#+ATTR_HTML: :class stretch :style width:1263px
+[[./img/CH-linking.png]]
+
+
+* GLAM Content Standards
+GLAM data is complex and varied
+- Exception is the rule
+- Many metadata format variations
+- Data comes from a variety of systems
+Thus professional organizations have found it useful to define *content standards*
+- Describe what data to capture (and sometimes how to go about it)
+- Before formalizing how to express it in machine-readable form
+Examples are extremely useful for data modelers to decide how to map the data
+
+
+** Museum Content Standards
+[[http://cco.vrafoundation.org/][Cataloging Cultural Objects]]: content standard for art, architecture, museums
+#+ATTR_HTML: :class stretch :style width:708px
+[[./img/CCO-cover.jpg]]
+
+*** CCO Example: Artwork and Creator Record
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/CCO-example-Marco-Ricci.png]]
+
+*** CCO Example: Hierarchical Link Between 2 Artworks
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/CCO-example-chartres-portal.png]]
+
+*** CCO Example: Creator Extent
+How to describe one aspect of the data
+#+ATTR_HTML: :class stretch :style width:850px
+[[./img/CCO-example-creator-extent.png]]
+
+*** SPECTRUM
+#+ATTR_HTML: :style width:150px
+[[./img/spectrum-logo.jpg]]
+[[http://www.collectionstrust.org.uk/spectrum][UK Museum Collections Management Standard]] 
+- Defines procedures for museums to follow, and the attendant data
+- Covers 21 procedures: Pre-entry, Object entry, Loans in, Acquisition, Inventory control, Location and movement control, Transport, Cataloguing, Object condition checking and technical assessment, Conservation and collections care, Risk management, Insurance and indemnity management, Valuation control, Audit, Rights management, Use of collections, Object exit, Loans out, Loss and damage, Deaccession and disposal, Retrospective documentation
+- Addresses accreditation
+
+*** SPECTRUM Example: Object Entry
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/SPECTRUM-object-entry.png]]
+
+
+** Archival Content Standards
+- ISAD(G): archival materials
+- ISAAR(CPF): agents (corporations, people, families)
+- ISDF: functions (eg Secretary of some society)
+- ISDIAH: archival holding institutions
+Image by D.Pitti, 2015
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/ICA-standards-timelines.png]]
+
+
+** Library Content Standards
+- AACR2 (Anglo-American Cataloging Rules 2)
+- International Standard Bibliographic Description (ISBD)
+- Resource Description and Access (RDA)
+Extremely detailed and comprehensive (see RDA later).
+But sometimes pay more attention where to put the commas than to:
+- Data sharing
+- Global availability of resources
+- Sharing the cataloging burden
+
+*** FRBR, FRSAD, FRAD 
+Functional Requirements for Bibliographic Records (FRBR), Subject Authority Data (FRSAD), Authority Data (FRAD)
+(J.Mitchell, M.Zeng, M.Zumer, 2011)
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/FRBR-FRAD-FRSAD.jpg]]
+
+*** FRBR
+Starts from user tasks (find, identify, select, obtain, explore).
+Introduces the important 4-level WEMI model (relates to Uniform Titles):
+- Work: original or derived intellectual work (eg Don Quixote)
+- Expression: translation or edition (eg Don Quixote translation to English)
+- Manifestation: publisher's work (eg with illustrations, foreword by, compilation...). ISBNs are here
+- Item: physical copy: libraries track loan/availability; famous copies (eg Lincoln's Bible); manuscripts are singleton items
+
+*** FRSAD
+Anything can be subject (thema), referred to by various names/titles (nomen)
+#+ATTR_HTML: :class stretch :style width:950px
+[[./img/FRSAD.png]]
+
+*** FRBR-LRM
+FRBR-Library Reference Model (P.Riva, P.Le Bœuf, M.Žumer, Draft for World-Wide Review 2016-02). Merges the previous standards
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/FRBR-LRM.png]]
+
+
+* GLAM Metadata Schemas
+How many of the standards listed in [[http://jennriley.com/metadatamap/][Seeing Standards: A Visualization of the Metadata Universe]] apply to your work?
+(by Jenn Riley, Associate Dean for Digital Initiatives at McGill University Library)
+#+ATTR_HTML: :class stretch :style width:1222px
+[[./img/GLAM-seeing-standards.png]]
+
+** Seeing Standards (2)
+#+ATTR_HTML: :class stretch :style width:1320px
+[[./img/GLAM-seeing-standards-full.png]]
+
+** XML Schemas
+Do you deal with XML? I bet you do
+- XML Schema (XSD): most widely used, but most unwieldy
+- RelaxNG (RNG): new generation schema language
+- RNG Compact (RNC): non-XML notation, most readable. Eg EAD3 is mastered in RNC, then RNG and XSD produced
+- Schematron: express rules in XPath that can't be captured in XSD/RNG/RNC (eg cross-field validation)
+Tools:
+- https://github.com/EHRI/jing-trang/tree/EHRI-176: patch the *jing* RNG validator to emit errors like Schematron (SVRL with XPath error location)
+- https://github.com/VladimirAlexiev/rnc: RNC tools and CH schemas in RNC. Emacs with code highlighting and syntax checking (flycheck)
+#+ATTR_HTML: :class stretch :style width:600px
+[[./img/RNC-flymake.png]]
+
+** Museum Metadata: CDWA
+Categories for the Description of Works of Art (CDWA): realization of CCO, 532 "categories" (data elements).
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/CDWA-sections.png]]
+
+*** CDWA Lite
+XML schema implementing part of CDWA. Moderate complexity, about 300 elements.
+Display vs Indexing (structured) elements, eg for Dimension.
+#+ATTR_HTML: :class stretch :style width:1350px
+[[./img/CDWA-data-outline.png]]
+
+*** CONA Schema
+Cultural Objects Name Authority (CONA): Getty museum data aggregation. Moderate complexity, about 280 elements:
+#+ATTR_HTML: :class stretch :style width:1350px
+[[./img/CONA-data-outline.png]]
+
+*** SPECTRUM XML
+[[http://www.collectionstrust.org.uk/item/1602-spectrum-4-0-schema][SPECTRUM Schema 4.0b]] has 10 entities and 592 fields, of which 490 are Object (artwork) fields.
+I am not aware of any systems producing this.
+#+ATTR_HTML: :class stretch :style width:1350px
+[[./img/SPECTRUM-object-data-outline.png]]
+
+*** LIDO
+Lightweight Information Describing Objects (LIDO). 
+Evolved from CDWA, museumdat, with inspiration from CIDOC CRM.
+(Images by R.Stein and A.Vitzthum, ATHENA workshop, 2010)
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/LIDO-data-outline.png]]
+
+*** LIDO Schema
+- Complex schema, eg when referring to a related object, you can provide almost as much detail as for the main object.
+  Could leverage opportunities for linking more.
+- Display vs Indexing (structured) elements: inherited from CDWA
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/LIDO-example.png]]
+
+** Archive Metadata
+- EAD: Encoded Archival Description. Describes archival materials (documentary units)
+- EAC/CPF: Encoded Archival Context: Corporations, Persons, Families
+- EAG: Encoded Archival Guide. Describes institutions
+
+*** Archive Metadata Problems 
+Pay a lot of attention to presentation, not enough to linking (difficult to "semanticize"). Emphasis on documents, not historic agents and events
+- EAG: So-called "controlled access points" are text, and typically not controlled at all
+- EAC: Many institutions don't consider EAC very valuable, and instead put person info in EAD's [[http://eadiva.com/2/bioghist/][bioghist]] element (example below from EADiva)
+- EAC: Related persons are names ("strings"), not links ("things")
+- EAC: Events include lots of info but only Date is separate field (person names could be tagged but often are not)
+- EAC: Family tree modeled as Outline, that's also used for other purposes (just presentation)
+#+BEGIN_SRC xml
+  <bioghist>
+    <head>Chronological Events</head>
+    <chronlist>
+      <chronitem>
+        <date normal="19781028">October 28, 1978</date>
+        <event>
+          <persname normal="Wossname, Samuel">Sam Wossname</persname> succeeds
+          <persname normal="Othername, John">John Othername</persname> as department head.
+        </event>
+      </chronitem>
+      <chronitem>
+        <date normal="19790315">March 15, 1979</date>
+        <event>Departmental reorganization.</event>
+      </chronitem>
+    </chronlist>
+  </bioghist>
+#+END_SRC
+
+** Library Metadata: MARC
+MARC is 50 years old, unreadable, and doesn't accommodate new FRBR principles. MARC-XML is not much better
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/MARC.png]]
+
+*** MARC Must Die
+A whole emotional subculture, based on a slogan by Roy Fielding, 2002.
+- [[http://marc-must-die.info/][marc-must-die.info]]: "MARC is dead" (is it really?)
+- [[http://futurelib.pbworks.com/][FutureLib]]: in-depth discussion wiki
+- [[https://www.facebook.com/MARC-must-die-244179532306471/][Facebook group]]
+[[http://www.slideshare.net/schambers3/marc-must-die][Presentation]] by Sally Chambers, ELAG 2011
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/MARC-must-die.png]]
+
+
+* GLAM Ontologies
+Why do they call conversion to RDF "lifting" and back to some other format "lowering"?
+- RDF is a simple abstracted data model
+- Doesn't have nesting biases like XML: whether a sub-element is nested or referenced by ID. Has less syntactic idiosyncrasies
+- (RDF/XML is awful, but there is Turtle for readability, or JSONLD for programmer convenience)
+- The model is self-describing in a distributed way: if a class/property is looked up, should return description and info
+
+
+** Europeana Data Model
+Model used by the Europeana aggregator (53M objects), and adopted by Digital Public Library of America (DPLA)
+Based on:
+- OAI ORE (Open Archives Initiative Object Reuse & Exchange): organizing object metadata and digital representations (WebResources)
+- Dublin Core: descriptive metadata 
+- SKOS (Simple Knowledge Organization System): conceptual objects (concepts, agents, etc)
+- CIDOC-CRM inspired: events, some relations between objects
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/Europeana-classes.png]]
+
+*** EDM Semantic Graph
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/graph-LevskiOrdinance.png]]
+
+*** EDM Issues/Considerations
+- Criticized that it's not expressive enough. Eg can't capture the specific contribution of an artist to artwork
+- Complication: splits info about an object:
+  - EDM External (form provider): edm:ProvidedCHO and ore:Aggregation
+  - EDM Internal (at Europeana): edm:ProvidedCHO and 2 <ore:Aggregation, ore:Proxy> pairs
+- Many providers use the minimal features and make mistakes; Europeana didn't do a lot of validation
+  - Old objects retro-converted from ESE are poor (only text), though some enrichments added by Europeana
+  - [[http://pro.europeana.eu/page/data-quality-committee][Europeana Data Quality Committee]] formed, to push this strategic point (2015-2020)
+Evolving specification (since 2009)
+- Currently considering actual implementation of Events
+- Extensions for manuscripts, music, fashion, etc
+
+
+** CIDOC CRM
+[[http://cidoc-crm.org/][CIDOC CRM]]: comprehensive reference model used for history, historic events, archaeology, museum data, etc
+by CIDOC (ICOM documentation committee).
+Standardized as ISO 21127:2014, still evolving.
+About 85 classes, fundamental branches: Persistent (endurant) vs Temporal (perdurant), Physical vs Conceptual
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/cidoc_class_hierarchy.jpg]]
+
+*** CIDOC CRM Properties
+Classes represent abstract things (eg crm:E24_Physical_Man-Made_Thing), specific things (eg Paintings, Coins) are accommodated with crm:P2_has_type.
+135 props (plus their inverses); prop hierarchy (see "- - -" at bottom):
+#+ATTR_HTML: :class stretch :style width:850px
+[[./img/CIDOC-prop-hierarchy.png]]
+
+*** CIDOC Graphical Examples
+- [[http://www.cidoc-crm.org/cidoc_tutorial/][Video Tutorial]] (or [[http://personal.sirma.bg/vladimir/crm-tutorial/][HTML version]] including Kindle)
+- [[http://www.cidoc-crm.org/cidoc_graphical_representation_v_5_1/graphical_representaion_5_0_1.html][Graphical Representation]] (or [[http://personal.sirma.bg/vladimir/crm-graphical/][continuous HTML version]] including Kindle): essential to understand how to apply CRM in various situations
+- Typical modeling construct *short-cut* (crm:P43_has_dimension) vs *long-path* (eg crm:P39i_was_measured_by/crm:P40_observed_dimension), which allows more details
+#+ATTR_HTML: :class stretch :style width:1209px
+[[./img/cidoc-graphical-measurement.jpg]]
+
+
+** Web Annotation (Open Annotation, OA)
+[[https://www.w3.org/TR/annotation-model/][W3C TR]]: mark, annotate, relate any web resources, eg: Webpage and bookmark, Image and region over it, Document and translation, Paragraph and commentary.
+Diagram of [[https://www.w3.org/TR/annotation-model/#complete-example][Complete Example]] from spec (using my *rdfpuml*)
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/OA-eg44.png]]
+
+** International Image Interop Framework (IIIF)
+Standard API for DeepZoom (hi-res) images. Supported by many servers and viewers. http://iiif.io
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/IIIF-showcase.png]]
+
+*** IIIF Presentation API
+Based on OA and SharedCanvas. 
+Strong attention to JSONLD representation (convenient for developers).
+Allows to assemble manuscripts from pieces, present folios, etc etc.
+See [[http://www.slideshare.net/azaroth42][Rob Sanderson presentations]], eg [[http://www.slideshare.net/azaroth42/iiif-and-jsonld-lodlam-training-day][IIIF and JSONLD]]:
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/IIIF-sharedCanvas.png]]
+
+
+** Library Ontologies
+War of the Bibliographic Ontologies?
+- *BIBO*: used for a long time, pragmaic
+- *FRBRer*: pragmatic realization of FRBR, but little uptake (not rich enough?)
+- *FRBRoo*: based on CIDOC CRM, perhaps too complex
+- *Fabio, Cito, Doco* and friends: modern, includes new features (eg citation intent)
+- *BibFrame*: sponsored by LoC, but [[http://www.slideshare.net/azaroth42/linked-data-best-practices-and-bibframe][soundly criticized]] for modeling mistakes
+- *RDAregistry.info*: basic FRBR classes, numerous properties for all kinds of things. Used for 100M records at TEL
+- *SchemaBibEx* (http://bib.schema.org): steps on a clean model sponsored by the big 4 search engines (Google, MS Bing, Yahoo, Yandex.ru).
+  Developed by OCLC.
+  May end up being used for 300M records at WorldCat.
+
+*** RDAregistry
+Resource Description and Access (RDA). Registry info is well organized
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/RDAregistry.png]]
+
+*** RDAregistry Properties
+Many props (306 for Work alone), 
+for specific purposes (eg "apellee" for court decisions, "granting institution" for academic theses).
+Numeric prop names, but lexical (natural language) also supported.
+Serves many semantic formats. 
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RDAregistry-Work.png]]
+
+*** A Taste of FRBRoo
+[[http://pro.europeana.eu/taskforce/edm-frbroo-application-profile][EDM–FRBRoo Application Profile]] Task Force: asked what to add to EDM to better fit FRBRoo.
+- TF members developed a number of examples, eg on publications of "Don Quixote" (T.Aalberg, V.Alexiev, J.Walkowska).
+EDM variant:
+#+ATTR_HTML: :class stretch :style width:1320px
+[[./img/bima0000007198.edm.png]]
+
+**** A Taste of FRBRoo 
+Simpler FRBRoo variant: 
+#+ATTR_HTML: :class stretch :style width:1400px
+[[./img/bima0000007198.png]]
+
+**** A Taste of FRBRoo
+More complex FRBRoo variant:
+#+ATTR_HTML: :class stretch :style width:1400px
+[[./img/bima0000007198.JW.png]]
+
+*** FRBR-Inspired
+- "FRBR, Before and After" by K.Coyle (ALA 2016) is an in-depth look at FRBR-inspired models/realizations.
+- Chapter 10 describes the following ontologies: FRBRer, FRBRcore, FaBiO, <indecs>, BIBFRAME, RDA in RDF, webFRBRer, FRBRoo
+- "Mistakes have been made", K.Coyle, SWIB 2015
+#+ATTR_HTML: :class stretch :style width:500px
+[[./img/FRBR-mistakes.png]]
+
+
+*** British Library Data Model
+Pragmatic data model that reuses several ontologies, and adds own props
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/BL-model-serial.png]]
+
+*** First Library That Runs on RDF
+Oslo Public Library (http://data.deichman.no, since 2014) uses Koha open source software, RDF in the core, and [[https://github.com/digibib/marc2rdf][marc2rdf]]/rdf2marc conversions.
+Pragmatic data model that reuses several ontologies, and adds own props.
+Enables a number of agile apps, eg search related books on Kiosk
+#+ATTR_HTML: :class stretch :style width:905px
+[[./img/NO-Oslo-RDF-model.jpeg]]
+
+**** Oslo Public Library Data
+#+BEGIN_SRC Turtle
+d_res:tnr_749919  rdf:type  bibo:Document , fabio:Manifestation ;
+  dc:title  "About time" ;
+  d:titleURLized  "about_time" ;
+  fabio:hasSubtitle  "Einstein's unfinished revolution" ;
+  ctag:tagged  d_keyword:imaginary , d_keyword:dilation , d_keyword:time , 
+    d_keyword:tidsreiser , d_keyword:tidsdilatasjon ;
+  foaf:depiction  <http://covers.openlibrary.org/b/id/96714-M.jpg> ,
+    <http://covers.openlibrary.org/b/id/96715-M.jpg> ,
+    <http://www.bokkilden.no/SamboWeb/servlet/VisBildeServlet?produktId=81081> ;
+  owl:sameAs  <http://purl.org/NET/book/isbn/0140174613#book> ,
+    <http://www4.wiwiss.fu-berlin.de/bookmashup/books/0140174613> ;
+  dc:language  lexvo:eng ;
+  d:bibliofilID  "931138" ;
+  dc:format  <http://data.deichman.no/format/Book> ;
+  d:location_signature  "Dav" ;
+  dc:publisher  d_org:penguin ;
+  bibo:numPages  "316" ;
+  d:physicalDescription  "fig." ;
+  d:bibsubject  d_subject:einstein_albert , d_subject:tid_metafysikk ;
+  fabio:isManifestationOf  d_work:x24918900_about_time ;
+  d:signatureNote  "07x0619gq" ;
+  d:bindingInfo  <http://data.deichman.no/bindingInfo/h> ;
+  d:bsID  "0181541" ;
+  dc:description  "Bibliografi: s. 293-294"@no ;
+  d:priceInfo  "Nkr 170.00" ;
+  foaf:isPrimaryTopicOf  <http://www.goodreads.com/book/show/286461> ,
+    <http://www.librarything.com/work/23493> ;
+  dc:identifier  "749919" ;
+  d:dewey  "115" , "530.11" ;
+  d:location_dewey  "530.11" ;
+  bibo:isbn  "9780140174618" , "0140174613" ;
+#+END_SRC
+
+
+** Archival Ontologies
+3 attempts to represent EAD as RDF, but IMHO neither is very good.
+- Eg "The Semantic Mapping of Archival Metadata to the CIDOC CRM Ontology" (Journal of Archival Organization, 9:174–207, 2011) proposes to represent the EAD levels hierarchy (from Fonds down to Items) as *five* parallel CRM hierarchies
+Records in Context (RiC): new upcoming semantic standard by ICA
+- Addresses the scope of EAD, EAC, EAG in one framework. 
+  Inspired by national standards, FRBR (FRBR-LRM), CIDOC CRM
+- [[http://schd.ws/hosted_files/archives2015/c7/session109.Rubinstein.pdf][Progress report]] (2015), [[http://lists.village.virginia.edu/mailman/listinfo/ica-egad-ric][Mlist for comments]]
+- [[http://www.ica.org/sites/default/files/RiC-CM-0.1.pdf][Conceptual Model]] 1.0 (Sep 2016): Document key components of archival description, properties of each, relations between them
+- Ontology: after finalizing the Conceptual Model, Expressed in OWL, will include semantic mapping to similar concepts developed by related communities
+
+*** RiC Sample Network
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RiC-example.png]]
+
+
+* GLAM LOD Datasets (LODLAM)
+- Some established thesauri and gazetteers as LOD, some are interconnected: DBPedia; Wikidata, VIAF, FAST, ULAN; GeoNames, Pleiades, TGN; LCSH, AAT, IconClass, Joconde, SVCN, Wordnet, etc.
+- Not shown: large collection LODs like: Europeana (EDM), British Museum (CIDOC CRM), YCBA (CIDOC CRM), Rijksmuseum (EDM)
+- (Diagram based on work by M.Hildebrand)
+#+ATTR_HTML: :class stretch :style width:1183px
+[[./img/Culture-datacloud-pretty.png]]
+
+** Wikidata
+Tons of info on everything, including GLAMs, artists, artworks, etc. Eg [[https://tools.wmflabs.org/reasonator/?&q%3D167654][Frans Hals on Reasonator]]
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/WD-FransHals.png]]
+
+*** Wikidata Genealogy
+[[https://tools.wmflabs.org/reasonator/geneawiki2/?q%3DQ76][Family tree of Barack Obama]]
+#+ATTR_HTML: :class stretch :style width:1320px
+[[./img/WD-Obama-familyTree.png]]
+
+*** Sum of All Paintings
+[[https://www.wikidata.org/wiki/Wikidata:WikiProject_sum_of_all_paintings][Wikidata Project Sum of All Paintings]]. Data used for:
+- Works by painter across collections (catalogue raisonné). Eg [[http://tools.wmflabs.org/hay/wdskim/index.php?prop%3DP170&item%3DQ167654&language%3Den&withimages%3Don][Frans Hals]]
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/WD-FransHals-painings.png]]
+
+*** Crotos
+Excellent image search. Shows links to WD, Wikimedia Commons, original website. Eg [[http://www.zone47.com/crotos/?l%3Den&p%3D&nb%3D20&disp%3D1&s%3Dfrans%2Bhals&y1%3D-40000&y2%3D2016&p31%3D&p170%3D167654][Frans Hals on Crotos]]
+#+ATTR_HTML: :class stretch :style width:1223px
+[[./img/WD-FransHals-Crotos.png]]
+
+*** You can help too!
+[[https://www.wikidata.org/wiki/Wikidata_talk:WikiProject_sum_of_all_paintings#Hunting_for_missing_inventory_numbers][Hunting for missing inventory numbers]] (9.9k of 140k). Important because <collection, inventory number> is used to identify the painting.
+Eg [[https://www.wikidata.org/wiki/User:Multichill/Paintings_without_inventory_number_in_the_United_States_of_America][US]] (1k), [[https://www.wikidata.org/wiki/User:Multichill/Paintings_without_inventory_number_in_the_United_States_of_America#J._Paul_Getty_Museum][Getty Museum]] (2)
+#+ATTR_HTML: :class stretch :style width:1320px
+[[./img/WD-Getty-missing-invNo.png]]
+
+*** Let's fix the second one
+[[http://www.getty.edu/art/collection/objects/265936/edouard-manet-portrait-of-julien-de-la-rochenoire-french-1882/][Find it on Getty's site]], [[https://www.wikidata.org/w/index.php?title%3DQ17591169&type%3Drevision&diff%3D382066112&oldid%3D356909985][add the info]] like this:
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/WD-Getty-portrait.png]]
+
+*** Histropedia
+Timelines of everyting. Eg [[http://histropedia.com/timeline/69qjt4bs3t/Paintings-by-Leonardo-da-Vinci][paintings by Leonardo]]
+#+ATTR_HTML: :class stretch :style width:1320px 
+[[./img/histropedia-Leonardo.png]]
+
+
+** VIAF
+Virtual International Authority File: 20 national libraries, 10 other contributors including Getty ULAN and Wikidata.
+Eg coreferencing cluster of Spinoza:
+#+ATTR_HTML: :class stretch :style width:1238px
+[[./img/viaf-spinoza.png]]
+
+*** VIAF vs Wikidata (2015)
+#+ATTR_HTML: :class stretch :style width:600px
+[[./img/VIAF-Wikidata-comparison.png]]
+
+** Global Authority Control
+- 201307 [[https://wikimania2013.wikimedia.org/wiki/Submissions/Authority_Addicts:_The_New_Frontier_of_Authority_Control_on_Wikidata][Authority Addicts: The New Frontier of Authority Control on Wikidata]], Wikimania 2013
+- 201501 [[https://www.wikidata.org/wiki/Wikidata:WikiProject_Authority_control][Wikidata Project Authority Control]] (initiated by Ontotext)
+- 201503 [[http://vladimiralexiev.github.io/CH-names/README.html][Name Data Sources for Semantic Enrichment]] study for Europeana of datasets including Person/Organization names. Conclusions:
+  - The best datasets to use for name enrichment are VIAF and Wikidata
+  - There are few name forms in common between the "library-tradition" datasets (dominated by VIAF) and the "LOD-tradition datasets" (dominated by Wikidata)
+  - VIAF has more name variations and permutations, Wikidata has more multilingual names (translations)
+  - VIAF is much bigger: 35M persons/orgs. Wikidata has 2.7M persons and maybe 1M orgs
+  - Only 0.5M of Wikidata persons/orgs are coreferenced to VIAF, with maybe another 0.5M coreferenced to other datasets, either VIAF-constituent (eg GND) or non-constituent (eg RKDartists)
+  - A lot can be gained by leveraging coreferencing across VIAF and Wikidata
+  - Wikidata has great tools for crowd-sourced coreferencing
+
+*** Names of Lucas Cranach
+[[http://vladimiralexiev.github.io/CH-names/cranach-venn.html][Analyzed records of Lucas Cranach]] in 7 LOD datasets (Wikidata: Freebase, DBpedia, Yago; VIAF: ISNI, ULAN).
+#+ATTR_HTML: :class stretch :style width:500px
+[[./img/Cranach-venn.png]]
+
+*** Wikidata Coreferencing can Enlarge VIAF
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/Cranach-corefs.jpg]]
+
+*** Mix-n-Match
+A global Authority on everything: librarian's dream come true!
+[[https://tools.wmflabs.org/mix-n-match/][Mix-n-Match]] is a collaborative tool to create coreferences. 234 authorities, including Getty AAT, TGN, ULAN; RKD artists, works; LoC Authorities; VIAF (not in M-n-M but on WD); BM persons; BBC YourPaintings; Artsy, etc etc
+#+ATTR_HTML: :class stretch :style width:1100px
+[[./img/WD-MnM-catalogs.png]]
+
+**** You can help with Authorities too!
+Eg checking matches to Getty AAT. Single sign-on, a click per item. Easy!
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/WD-MnM-AAT.png]]
+
+* LODLAM Projects
+GLAM and DH projects present a bewildering variety, eg
+- Publishing Vocabularies/Thesauri as LOD
+- Publishing Museum collections and National Bibliographies as LOD
+- Enrichment of GLAM metadata with relevant thesauri, semantic and faceted search
+- Study of artistic influence over time and space
+- Literary traditions, parallel editions
+- Poetic repertories
+- Studying manuscripts, stematology (manuscript derivation)
+- Historiography 
+- Studying charters, prosopography ("micro biographies").
+  "Prosopography is Greek for /Facebook/", [[http://snapdrgn.net/archives/482][SNAP:DRGN project]], 2015
+Research functions and sometimes integrated into Virtual Research Environments
+
+
+** Mellon "Space" Projects
+The Andrew Mellon Foundation funds many projects in CH and DH, and a few software projects, including:
+- *CollectionSpace*: museum collection management
+- *ArchiveSpace*: archive management
+- *ResearchSpace*: semantic integration based on CIDOC CRM, search, data & image annotation, data basket, etc
+- *ConservationSpace*: line of business application for conservation specialists
+
+** ResearchSpace
+Executed by the British Museum. Ontotext developed the first prototype (2010-2013). Semantic Search
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-search-paper-from-London.png]]
+
+*** ResearchSpace Search
+Powerful and precise search: Drawings by Rembrandt that are about Mammals
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-search-Rembrandt.png]]
+
+*** ResearchSpace Search: Fundamental Relations
+First implementation experience of the CIDOC CRM Fundamental Relations approach
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-search-FR-matrix.png]]
+
+*** ResearchSpace Search: One FR (Thing from Place)
+#+ATTR_HTML: :class stretch :style width:1320px
+[[./img/RS-search-FR-thing-from-place.png]]
+
+*** ResearchSpace Search: Implementation
+120 GraphDB rules, weaved using Literate Programming approach. Inference dependencies between props (text=input, gray=intermediate, white=output)
+#+ATTR_HTML: :class stretch :style width:1100px
+[[./img/RS-search-implementation-deps.png]]
+
+*** ResearchSpace Search: New Implementation
+(Not Ontotext work). [[https://www.youtube.com/watch?v%3Df5lU-D_3s7M][Watch the video]] (D.Oldman)
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/RS-search-new.png]]
+
+*** ResearchSpace Data Annotation
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-data-annotation.png]]
+
+*** ResearchSpace Data Annotation Model
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-data-annotation-model.png]]
+
+*** Image Annotation
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-image-annotation.png]]
+
+*** Image Annotation Model
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-image-annotation-model.png]]
+
+*** Image Annotation Architecture
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/RS-image-annotation-arch.png]]
+
+** British Museum (BM) and YCBA LOD
+- GraphDB runs the BM SPARQL endpoint. One of the biggest CH RDF collections (917M triples)
+- As part of RS, developed mapping of BM data (2M objects) with BM, using CIDOC CRM
+- This mapping was followed by the Yale Center for British Art (YCBA)
+- [[https://confluence.ontotext.com/display/ResearchSpace/BM%2BMapping][Mapping Documentation]]: very comprehensive but is monolithic and has imprecisions. Includes the (in)famous diagram
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/BM-mapping-doc.png]]
+
+** ConservationSpace
+Executed by a consortium led by US National Gallery of Art. 
+Developed by Sirma ITT (Ontotext sibling).
+Based on Ontotext GraphDB (semantic metadata), Alfresco (document management), Smart Documents (Sirma product).
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/ConservationSpace.png]]
+
+
+** Europeana LOD and OAI PMH
+Ontotext crated and hosted the Europeana SPARQL and OAI PMH services
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/O is for Open (CultJam 201507).png]]
+
+*** Europeana Statistics
+Eg chart of newspapers (several millions) by year: can't do this using the Europeana API, but is easy with SPARQL
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/EDM-chart-EuropeanaNewspapers.png]]
+
+
+** Europeana Food and Drink
+Food & Drink content, semantically enriched (place and FD topic).
+[[http://efd.ontotext.com/app/][EFD Semantic App]]: open data, SPARQL endpoint, open source (Github). Uses GraphDB and ElasticSearch enterprise connector
+#+ATTR_HTML: :class stretch :style width:850px
+[[./img/EFD-semapp.png]]
+
+*** Tasty Bulgarian Recipes 
+Eg 150 with beer, including pancakes!
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/EFD-Beer-Pancake.png]]
+
+*** Wide Geographic Coverage
+Objects from the Roman Empire to Antarctica (Scott's expedition to the South Pole), and everything in-between
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/EFD-Antarctica.png]]
+
+*** EFD Enrichment: FD Gazetteer
+Use Wikipedia Categories to extract a FD Gazetteer.
+- "Domain-specific modeling: Towards a Food and Drink Gazetteer", Tagarev, A.; Tolosi, L.; and Alexiev, V, LNCS 9398, p182-196, January 2016 ([[http://vladimiralexiev.github.io/pubs/Tagarev2015-DomainSpecificGazetteer-extended.pdf][preprint]])
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/EFD-cats1.png]]
+
+*** EFD Enrichment: Pruning FD Category Tree
+- [[http://vladimiralexiev.github.io/pres/20160212-Using-DBPedia-in-Europeana-Food-and-Drink.pdf][Using DBPedia in Europeana Food and Drink]]. Alexiev, V. DBpedia meeting, February 2016.
+#+ATTR_HTML: :class stretch :style width:1224px
+[[./img/EFD-cats2.png]]
+
+*** EFD Enrichment: French
+Selected French as second enrichment language after English, considering category overlap (work by L.Tolosi, x-axis is cat level), available content, NLP capabilities
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/EFD-cats3.jpg]]
+
+*** EFD Place Enrichment
+We used standard Ontotext Concept Enrichment Service, which is a mix of DBpedia+Wikidata.
+But also had to add Geonames, to leverage the place hierarchy
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/EFD-places1.png]]
+
+*** EFD Place Enrichment
+Hierarchical semantic facet based on Geonames
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/EFD-places2.png]]
+
+*** EFD Geographic Mapping: Clustering
+Once we have places, it's relatively easy to map them. We used the Cluster Mapper library
+#+ATTR_HTML: :class stretch :style width:1204px
+[[./img/EFD-geo-clusters.png]]
+
+*** EFD Geographic Mapping: Jittering
+There are 9k objects marked "Bulgaria". We don't want all flags in the center of Bulgaria, so we jitter them up
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/EFD-geo-Place-jitter.png]]
+
+*** GLAMs Working With Wikidata
+Why should GLAMs bother about Wikidata? Because it gives an excellent way to connect and expose your collection data to a multilingual audience
+- [[http://pro.europeana.eu/files/Europeana_Professional/Europeana_Network/europeana_wikimedia_taskforce_report_2015.pdf][Europeana Wikimedia Taskforce report]]: 
+  - Recommendation 1: For every Europeana project, considering the possible benefits of a Wikimedia component should be default behavior
+  - Recommendation 7: Make Wikidata a central element of Europeana's "portal to platform" strategy
+  - Recommendation 8: Europeana should continue to invest in technology that improves the interoperability between GLAMs and Wikimedia platforms
+- [[http://www.slideshare.net/valexiev1/glams-working-with-wikidata][GLAMs Working with Wikidata]]: easily add content about a colorful tradition "blessing of the baskets" ("swiecenie koszyczek" or just "Święconka" in Polish). With proper cats: when we merge them across languages (pl, en, de), we discover the content is about Food and Drink, Easter, and a Polish tradition
+#+ATTR_HTML: :class stretch :style width:500px
+[[./img/Blessing_of_the_baskets_Easter_tradition.jpg]]
+
+** Getty Vocabulary Program LOD
+GVP well-known and respected in GLAM. Dependencies: AAT-TGN-ULAN-CONA. Center of LODLAM cloud?
+[[http://www.getty.edu/research/tools/vocabularies/training.html][GVP Training Materials]] (Diagram by J.Cobb, 2014)
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/GVP-linked.png]]
+
+*** GVP LOD Releases
+[[http://blogs.getty.edu/iris/art-architecture-thesaurus-now-available-as-linked-open-data/][AAT 2014-02]], [[http://blogs.getty.edu/iris/getty-thesaurus-of-geographic-names-released-as-linked-open-data/][TGN 2014-08]], [[http://blogs.getty.edu/iris/getty-thesaurus-of-geographic-names-released-as-linked-open-data/][ULAN 2015-03]]. Publicized in blog posts by J.Cuno, head of the Getty Trust
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/GVP-ULAN_LOD.png]]
+
+*** Ontotext Scope of Work
+- Semantic/ontology development: http://vocab.getty.edu/ontology
+- Contributed to [[http://purl.org/iso25964/skos-thes][ISO 25964 ontology]] (latest standard on thesauri). Provided implementation experience, suggestions and fixes
+- Complete mapping specification
+- Help implement R2RML scripts working off Getty's Oracle database, contribution to Perl implementation (RDB2RDF), R2RML extension (rrx:languageColumn)
+- Work with a wide External Reviewers group (people from OCLC, Europeana, ISO 25964 working group, etc)
+- GraphDB semantic repo, clustered for high-availability
+- Semantic application development (customized Forest user interface) and tech consulting
+- SPARQL 1.1 compliant endpoint: http://vocab.getty.edu/sparql 
+- Comprehensive documentation (100 pages): http://vocab.getty.edu/doc
+- Sample queries (100), including charts, geographic queries, etc
+- Per-entity export files, explicit/total data dumps. Many formats: RDF, Turtle, NTriples, JSON, JSON-LD 
+- Help desk / support on twitter and google group (see home page)
+- Presentations, papers. [[http://link.springer.com/content/pdf/10.1007/s00799-015-0162-2.pdf][On the composition of ISO 25964 hierarchical relations (BTG, BTP, BTI)]]. Alexiev, V.; Lindenthal, J.; and Isaac, A. International Journal on Digital Libraries, August 2015, Springer.
+
+*** Complete Representation of All GVP Info
+See [[http://vladimiralexiev.github.io/pres/20140905-CIDOC-GVP/index.html][GVP LOD: Ontologies and Semantic Representation]], V.Alexiev, CIDOC 2014. External Ontologies:
+| *Prefix* | *Ontology*                           | *Used for*                      |
+| bibo:    | Bibliography Ontology                | Sources                         |
+| dc:      | Dublin Core Elements                 | common                          |
+| dct:     | Dublin Core Terms                    | common                          |
+| foaf:    | Friend of a Friend ontology          | Contributors                    |
+| iso:     | ISO 25946 (latest on thesauri)       | iso:ThesaurusArray, BTG/BTP/BTI |
+| owl:     | Web Ontology Language                | Basic RDF representation        |
+| prov:    | Provenance Ontology                  | Revision history                |
+| rdf:     | Resource Description Framework       | Basic RDF representation        |
+| rdfs:    | RDF Schema                           | Basic RDF representation        |
+| schema:  | Schema.org                           | common, geo (TGN), bio (ULAN)   |
+| skos:    | Simple Knowledge Organization System | Basis vocabulary representation |
+| skosxl:  | SKOS Extension for Labels            | Rich labels                     |
+| wgs:     | W3C World Geodetic Survey geo        | Geo (TGN)                       |
+| xsd:     | XML Schema Datatypes                 | Basic RDF representation        |
+
+*** GVP Semantic Representation (1)
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/GVP-semantic-overview-1.png]]
+
+*** GVP Semantic Representation (2)
+#+ATTR_HTML: :class stretch :style width:750px
+[[./img/GVP-semantic-overview-2.png]]
+
+*** Key Values (Flags) Are Important
+Excel-driven Ontology Generation™.
+Key *val* can be mapped to Custom sub-class, Custom (sub-)prop, Ontology Value (eg <term/kind/Abbreviation>)
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/GVP-getty-codes.png]]
+
+*** Associative Relations Are Valuable
+More Excel-driven Ontology Generation™
+- Relations come in owl:inverseOf pairs (or owl:SymmetricProperty self-inverse)
+#+ATTR_HTML: :class stretch :style width:1251px
+[[./img/GVP-assoc-rels.png]]
+
+*** Involved Inference of Hierarchical Relations
+#+ATTR_HTML: :class stretch :style width:1241px
+[[./img/GVP-hierarchicalRelationsInference.png]]
+
+*** Comprehensive Documentation
+[[http://vocab.getty.edu/doc/][Getty Vocabularies Linked Open Data: Semantic Representation]]. Alexiev, V.; Cobb, J.; Garcia, G.; Harpring, P. Getty Research Institute, 3.2 edition, March 2015.
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/GVP-doc-TOC.png]]
+
+*** Sample Queries (100), Integrated UI
+Some charts, eg "Year Joined UN" (TGN), "Pope Reign Durations" (ULAN)
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/GVP-sample-queries.png]]
+
+*** GVP Vocabs Usage
+Collected about 100 usages of the vocabs, many in Collection Management and Search. Many described in [[http://www.getty.edu/research/tools/vocabularies/cidoc_cobb_getty_vocabs_lod.pdf][Getty Vocabs: Why LOD? Why Now?]], J.Cobb, 2014. Eg
+- AAT used in [[http://calculate.alptown.com/][Cataloging Calculator]]: finds bibliographic and authority data: language codes, geographic area codes, publication country codes, AACR2 abbreviations, LC main entry, Cutter numbers, AAT concepts, etc
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/AAT-CatalogingCalculator.png]]
+
+*** AAT in Europeana
+- [[http://pro.europeana.eu/share-your-data/data-guidelines/edm-case-studies/europeana-aat][Europeana uses AAT to enrich]] type/subject/material fields
+- PartagePlus matched Art Nuveau candidate concepts to AAT; enriched labels
+#+ATTR_HTML: :class stretch :style width:600px
+[[./img/AAT-Europeana.jpg]]
+
+** J.P.Getty Museum
+Working with JPGM on publishing LOD. Considering CIDOC CRM, maybe also simpler ontologies.
+Hoping to generate R2RML from instance examples like:
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/GVP-objects.png]]
+
+*** J.P.Getty Museum and Wikidata
+Discussing making data for Wikidata. WD has 480 Getty paintings, but the Museum has 180k artworks.
+[[https://query.wikidata.org/#%23defaultView%3AImageGrid%0ASELECT%20%3Fitem%20%3FitemLabel%20%3Fpic%20WHERE%20%7B%0A%20%20%3Fitem%20wdt%3AP195%20wd%3AQ731126.%0A%20%20OPTIONAL%20%7B%20%3Fitem%20wdt%3AP18%20%3Fpic.%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0A][WD query shown as image grid]]
+#+ATTR_HTML: :class stretch :style width:1300px
+[[./img/WD-Getty.png]]
+
+** American Art Collaborative
+[[http://americanartcollaborative.org/][American Art Collaborative]]: 14 US art museums committed to establishing a critical mass of LOD on the semantic web.
+Consulting on CRM mapping.
+- Work ongoing at https://github.com/american-art, eg see [[https://github.com/american-art/npg/issues?utf8%3D%E2%9C%93&q%3Dis%3Aissue%20][NPG mapping issues]]
+- Eg possible mapping of "(sculpture) Cast after"
+#+ATTR_HTML: :class stretch :style width:1256px
+[[./img/AAC-NPG-castAfter.png]]
+
+** European Holocaust Research Infrastructure
+EHRI is a large-scale EU project that involves 23 Holocaust archives (Europe, Israel and the US), DH and IT organizations.
+- In its first phase (2011-2015) it aggregated archival descriptions and materials on a large scale and built a Virtual Research Environment (portal) for Holocaust researchers based on a graph database. 
+- In its second phase (2015-2019), EHRI2 seeks to enhance the gathered materials using semantic approaches: enrichment, coreferencing, interlinking. Semantic integration involves Four of the 14 EHRI2 work packages and helps integrate databases, free text, and metadata to interconnect historical entities (people, organizations, places, historic events)  and create networks.
+"Semantic Archive Integration for Holocaust Research: the EHRI Research Infrastructure", V.Alexiev, L.Brazzo, CIDOC Congress 2016.
+
+*** EHRI: Person Networks
+Research question: how person networks influenced chance of survival. Idea:
+- Rec 123456: firstName “John”, lastName “Smith”, gender Male, dateMarriage 1921-01-05, /additional names/ nameSpouseMaiden “Matienzo”, nameSpouse “Maria Smith”, nameChild “Mike Smith”, nameSibling “Jack Jones”
+- We can create Person records for the people mentioned, make some likely inferences, then try to match to other Person records in the database
+#+ATTR_HTML: :class stretch :style width:950px
+[[./img/EHRI-person-networks.png]]
+
+*** EHRI: Large-Scale Place Matching
+Match USHMM places to Geonames, also achieving deduplication. A Geonames matching pipeline in free text was also developed
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/EHRI-place-matching.png]]
+
+*** EHRI: Oral History Interviews
+Analyze 2.5k OH Interviews:
+- ONTO: Place enrichment, Person name recognition
+- INRIA: word2vec experiments
+| guard     | Cos dist | punishment    | Cos dist |
+|-----------+----------|---------------+----------|
+| guarding  | 0.593507 | punishments   | 0.668144 |
+| sentry    | 0.512083 | punish        | 0.601212 |
+| hlinka    | 0.496201 | punishing     | 0.543213 |
+| gate      | 0.490032 | beatings      | 0.527033 |
+| watching  | 0.484647 | penalty       | 0.497262 |
+| rifle     | 0.484379 | deserved      | 0.490157 |
+| lookout   | 0.482025 | beaten        | 0.473870 |
+| patrol    | 0.477233 | straf         | 0.473338 |
+| soldier   | 0.475982 | offense       | 0.461230 |
+| guarded   | 0.474689 | executing     | 0.459965 |
+| police    | 0.474291 | merciless     | 0.455123 |
+- semantic "differencing" (*interesting*)
+  : KGB - Stalin + Hitler = SS
+
+*** EHRI: Discovering Camps, Ghettos, Stalags
+And referencing to Geonames so we can get coordinates
+#+ATTR_HTML: :class stretch :style width:1290px
+[[./img/EHRI-camps.png]]
+
+** Others Projects: WikiArtHistory
+Vienna University of Technology ([[http://vsem.ec.tuwien.ac.at/wikiarthistory/2012/05/15/wikiarthistory-init/][site]], [[http://vsem.ec.tuwien.ac.at/wp-content/publications/WEBSCI12.pdf][paper]])
+- Art History networks from Wikipedia, through VIAF id
+- Time and nationality from ULAN
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/wikiarthistory.png]]
+
+** ChartEx
+NLP analysis of medieval *Charters* and Deeds.
+Funded by Digging Into Data cross-country SSH funding initiative.
+Visualized with [[http://brat.nlplab.org/][BRAT]]
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/ChartEx.png]]
+
+** Numismatics
+My good friend [[https://www.blogger.com/profile/14492799646719449654][Ethan Gruber]] at the American Numismatic Society has developed a host of amazing software that uses and produces LOD.
+- Numishare: Data platform for coins/medals, 100k coin types
+- Nomisma: Shared authorities for numismatics
+- Kerameikos: Pottery LOD
+- EADitor: EAD Editor:  based on XML & XForms, uses/produces LOD
+- xEAC: EAC/CPF Editor: based on XML & XForms, uses/produces LOD
+
+*** Coins in Time and Space
+Spatiotemporal distribution of hoards containing a particular Roman Republican coin type.
+Below: examples of this type in partner collections
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/numismatics-distribution.png]]
+
+*** Geographic Distribution
+Distribution of the Roman denarius: blue dots for mints, heatmap of finds (a lot in the UK Portable Antiquities Scheme)
+#+ATTR_HTML: :class stretch :style width:900px
+[[./img/numismatics-denarius.png]]
+
+*** Numishare
+Data platform with over 100k coin types. 
+Powers custom collections, eg [[http://numismatics.org/aod/][Art of Devastation]]: Medalic Art of the Great War
+#+ATTR_HTML: :class stretch :style width:1315px
+[[./img/numismatics-AoD.png]]
+
+*** Nomisma
+Shared authorities for numismatics. Eg a mint:
+#+ATTR_HTML: :class stretch :style width:1218px
+[[./img/numismatics-mint.png]]
+
+*** CoinHoards
+- Greek coin data provided by [[http://coinhoards.org][CoinHoards.org]]
+- Geo mapping data provided by [[http://nomisma.org][nomisma.org]]
+- Below: reference to the coin in an archival notebook (linked via OA)
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/numismatics-oa.png]]
+
+*** Statistical Charts
+Denominations issued by Augustus, Tiberius... rendered in a chart using d3js
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/numismatics-denominations.png]]
+
+*** Kerameikos: Pottery LOD 
+[[http://kerameikos-project.blogspot.bg/][Kerameikos Project]] editor. Based on XForms, leverages Getty and BM LOD
+#+ATTR_HTML: :class stretch :style width:1251px
+[[./img/numismatics-kerameikos-editor.png]]
+
+*** EADitor and xEAC
+[[http://eaditor.blogspot.com][Blog]], [[http://wiki.numismatics.org/xeac:viaf-import][Wiki]]. Based on XForms. Leverages the Getty thesauri and VIAF, imports data as needed
+#+ATTR_HTML: :class stretch :style width:1200px
+[[./img/numismatics-xEAC-import.png]]

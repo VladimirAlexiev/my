@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Linked Open Data for Cultural Heritage</title>
+<meta name="author" content="(Vladimir Alexiev)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>Linked Open Data for Cultural Heritage</h2><h3>Vladimir Alexiev</h3><h4>Ontotext Webinar, 2016-09-29</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index-full.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/Linked Open Data for Cultural Heritage.pdf'>PDF</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org4d00593">1. Intro</a>
+<ul>
+<li><a href="#/slide-org2352f1f">1.1. GLAM vs Internet</a></li>
+<li><a href="#/slide-org6cfdcfa">1.2. Google NGrams: Phrases in Books</a></li>
+<li><a href="#/slide-org27bee29">1.3. Google NGrams: Two Specific Orgs</a></li>
+<li><a href="#/slide-org688b129">1.4. Google Trends: Search Popularity</a></li>
+<li><a href="#/slide-org6ec0c87">1.5. How To Survive in the Internet Age?</a></li>
+<li><a href="#/slide-orga496d04">1.6. Why Linked Open Data (LOD) is Important</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org5e62192">2. GLAM Content Standards</a>
+<ul>
+<li><a href="#/slide-orge603e09">2.1. Museum Content Standards</a></li>
+<li><a href="#/slide-org32cf67b">2.2. Archival Content Standards</a></li>
+<li><a href="#/slide-org087bcd5">2.3. Library Content Standards</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org2aaf050">3. GLAM Metadata Schemas</a>
+<ul>
+<li><a href="#/slide-org69743d5">3.1. Seeing Standards (2)</a></li>
+<li><a href="#/slide-org7252138">3.2. XML Schemas</a></li>
+<li><a href="#/slide-org109d7fe">3.3. Museum Metadata: CDWA</a></li>
+<li><a href="#/slide-orge9f0868">3.4. Archive Metadata</a></li>
+<li><a href="#/slide-orgd9d4868">3.5. Library Metadata: MARC</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org8a03cc3">4. GLAM Ontologies</a>
+<ul>
+<li><a href="#/slide-org31792d9">4.1. Europeana Data Model</a></li>
+<li><a href="#/slide-orga6f23d4">4.2. CIDOC CRM</a></li>
+<li><a href="#/slide-org29eeb4a">4.3. Web Annotation (Open Annotation, OA)</a></li>
+<li><a href="#/slide-orgdb1ced5">4.4. International Image Interop Framework (IIIF)</a></li>
+<li><a href="#/slide-orgff98656">4.5. Library Ontologies</a></li>
+<li><a href="#/slide-org14be2d8">4.6. Archival Ontologies</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org47ce0ab">5. GLAM LOD Datasets (LODLAM)</a>
+<ul>
+<li><a href="#/slide-org207f368">5.1. Wikidata</a></li>
+<li><a href="#/slide-org12a0d62">5.2. VIAF</a></li>
+<li><a href="#/slide-orgd3ad5bf">5.3. Global Authority Control</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org494df5f">6. LODLAM Projects</a>
+<ul>
+<li><a href="#/slide-org6578a8f">6.1. Mellon "Space" Projects</a></li>
+<li><a href="#/slide-org9ae1c78">6.2. ResearchSpace</a></li>
+<li><a href="#/slide-orgcc25cb5">6.3. British Museum (BM) and YCBA LOD</a></li>
+<li><a href="#/slide-org236cfaf">6.4. ConservationSpace</a></li>
+<li><a href="#/slide-orgc2c09cc">6.5. Europeana LOD and OAI PMH</a></li>
+<li><a href="#/slide-org6c7773e">6.6. Europeana Food and Drink</a></li>
+<li><a href="#/slide-org2cb0659">6.7. Getty Vocabulary Program LOD</a></li>
+<li><a href="#/slide-org96c6688">6.8. J.P.Getty Museum</a></li>
+<li><a href="#/slide-org864a052">6.9. American Art Collaborative</a></li>
+<li><a href="#/slide-org1904cff">6.10. European Holocaust Research Infrastructure</a></li>
+<li><a href="#/slide-orgc936b86">6.11. Others Projects: WikiArtHistory</a></li>
+<li><a href="#/slide-orgc6e7db3">6.12. ChartEx</a></li>
+<li><a href="#/slide-orgf25afa8">6.13. Numismatics</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org4d00593">
+<h2 id="org4d00593"><span class="section-number-2">1</span> Intro</h2>
+<ul>
+<li>A bit about me: co-founder of Sirma Group Holding, Bulgaria's largest software group and parent company of Ontotext
+<ul>
+<li>30y in IT: 8 at university, 22 in industry</li>
+<li>Did plenty of project management, business analysis and data modeling, some big projects too</li>
+<li>Last 8 years focused on data modeling and integration</li>
+<li>Last 6 years in paricular, focused on semantic data and semantic integration</li>
+
+</ul></li>
+<li>I love to poke in other people's data and get in-depth. So there's a lot about data in these slides</li>
+<li>See <a href="http://rawgit2.com/VladimirAlexiev/my/master/index.html">My publications</a>: you can sort by type and keyword, full abstracts are available. 
+<ul>
+<li>I've provided a few references below, but if a topic interests you, please search in the publications</li>
+
+</ul></li>
+<li>The shorter version has about 110 slides, so sit back, relax, and enjoy the ride. Should take us 1:20h
+<ul>
+<li>Ask questions at any time in the chat, I'll answer them all at the end</li>
+
+</ul></li>
+<li>This longer version has 130 slides, including info about Library metadata and ontologies</li>
+
+</ul>
+
+</section>
+<section id="slide-org2352f1f">
+<h3 id="org2352f1f"><span class="section-number-3">1.1</span> GLAM vs Internet</h3>
+<p>
+GLAM, CH, DH?
+</p>
+<ul>
+<li><b>Cultural Heritage</b> (CH): the sum of our non-economic heritage
+<ul>
+<li>Obvious implications to economically significant sectors, eg tourism</li>
+<li>Some say it's the source of all creativity, would you agree?</li>
+<li>Includes old and new (eg digitally-born), material and immaterial, tangible and intangible, permanent and temporal (eg interactive installations)</li>
+
+</ul></li>
+<li><b>Galleries, Libraries, Archives, Museums</b> (GLAM): sisterhood of institutions that care for our CH, each with its own perspective and priorities</li>
+<li><b>Digital Humanities (DH)</b>: the use of computers in the humanities.
+<ul>
+<li>Eg some UK universities with DH programs: @KingsDH @UCLDH @DH_OU @CamDigHum</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org6cfdcfa">
+<h3 id="org6cfdcfa"><span class="section-number-3">1.2</span> Google NGrams: Phrases in Books</h3>
+<p>
+Search for "library, museum" vs "Google, Facebook, Twitter" in books: the web sites are negligible
+</p>
+
+<div class="figure">
+<p><img src="./img/google-books-ngrams.png" alt="google-books-ngrams.png" class="stretch" style="width:1275px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org27bee29">
+<h3 id="org27bee29"><span class="section-number-3">1.3</span> Google NGrams: Two Specific Orgs</h3>
+<p>
+Compare two specific orgs: "Facebook" is more popular in recent books, compared to "British Museum" over time
+</p>
+
+<div class="figure">
+<p><img src="./img/google-books-BM-facebook.png" alt="google-books-BM-facebook.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org688b129">
+<h3 id="org688b129"><span class="section-number-3">1.4</span> Google Trends: Search Popularity</h3>
+<p>
+Web searches over the last 12 years: "Facebook, Google" are much more popular than "library, museum"
+</p>
+
+<div class="figure">
+<p><img src="./img/google-search-trends.png" alt="google-search-trends.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org6ec0c87">
+<h3 id="org6ec0c87"><span class="section-number-3">1.5</span> How To Survive in the Internet Age?</h3>
+<p>
+Since ancient times GLAMs have been the centers of knowledge and wisdom
+</p>
+<ul>
+<li>Aren’t Google, Wikipedia, Facebook, Twitter and smart-phone apps becoming the new centers of research and culture (or at least popular culture)?</li>
+<li>Will GLAMs fall victims to teenagers with smartphones browsing Facebook? If the library's attitude is "Come search in our OPAC" then <b>certainly yes</b></li>
+<li>How to preserve the role of GLAMs into the new millennium?</li>
+
+</ul>
+<p>
+To survive, GLAMs must adopt the internet as their default modus operandi
+</p>
+<ul>
+<li>Web 1.0: presentation</li>
+<li>Web 2.0: interaction</li>
+<li>Web 3.0 (semantic web): data linking, enriching/disambiguating text using NLP/IE approaches</li>
+
+</ul>
+
+</section>
+<section id="slide-orga496d04">
+<h3 id="orga496d04"><span class="section-number-3">1.6</span> Why Linked Open Data (LOD) is Important</h3>
+<ul>
+<li>Culture is naturally cross-institutional, cross-border, multilingual, and interlinked</li>
+<li>LOD allows making connections between (and making sense of) the multitude of digitized cultural artifacts available on the net</li>
+<li>LOD enables large-scale Digital Humanities research, collaboration and aggregation; technological renewal of CH institutions</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/CH-linking.png" alt="CH-linking.png" class="stretch" style="width:1263px" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org5e62192">
+<h2 id="org5e62192"><span class="section-number-2">2</span> GLAM Content Standards</h2>
+<p>
+GLAM data is complex and varied
+</p>
+<ul>
+<li>Exception is the rule</li>
+<li>Many metadata format variations</li>
+<li>Data comes from a variety of systems</li>
+
+</ul>
+<p>
+Thus professional organizations have found it useful to define <b>content standards</b>
+</p>
+<ul>
+<li>Describe what data to capture (and sometimes how to go about it)</li>
+<li>Before formalizing how to express it in machine-readable form</li>
+
+</ul>
+<p>
+Examples are extremely useful for data modelers to decide how to map the data
+</p>
+
+
+</section>
+<section id="slide-orge603e09">
+<h3 id="orge603e09"><span class="section-number-3">2.1</span> Museum Content Standards</h3>
+<p>
+<a href="http://cco.vrafoundation.org/">Cataloging Cultural Objects</a>: content standard for art, architecture, museums
+</p>
+
+<div class="figure">
+<p><img src="./img/CCO-cover.jpg" alt="CCO-cover.jpg" class="stretch" style="width:708px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org469874a">
+<h4 id="org469874a"><span class="section-number-4">2.1.1</span> CCO Example: Artwork and Creator Record</h4>
+
+<div class="figure">
+<p><img src="./img/CCO-example-Marco-Ricci.png" alt="CCO-example-Marco-Ricci.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf02f176">
+<h4 id="orgf02f176"><span class="section-number-4">2.1.2</span> CCO Example: Hierarchical Link Between 2 Artworks</h4>
+
+<div class="figure">
+<p><img src="./img/CCO-example-chartres-portal.png" alt="CCO-example-chartres-portal.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org160c315">
+<h4 id="org160c315"><span class="section-number-4">2.1.3</span> CCO Example: Creator Extent</h4>
+<p>
+How to describe one aspect of the data
+</p>
+
+<div class="figure">
+<p><img src="./img/CCO-example-creator-extent.png" alt="CCO-example-creator-extent.png" class="stretch" style="width:850px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb56df47">
+<h4 id="orgb56df47"><span class="section-number-4">2.1.4</span> SPECTRUM</h4>
+<p style="width:150px">
+<img src="./img/spectrum-logo.jpg" alt="spectrum-logo.jpg" style="width:150px" />
+<a href="http://www.collectionstrust.org.uk/spectrum">UK Museum Collections Management Standard</a> 
+</p>
+<ul>
+<li>Defines procedures for museums to follow, and the attendant data</li>
+<li>Covers 21 procedures: Pre-entry, Object entry, Loans in, Acquisition, Inventory control, Location and movement control, Transport, Cataloguing, Object condition checking and technical assessment, Conservation and collections care, Risk management, Insurance and indemnity management, Valuation control, Audit, Rights management, Use of collections, Object exit, Loans out, Loss and damage, Deaccession and disposal, Retrospective documentation</li>
+<li>Addresses accreditation</li>
+
+</ul>
+
+</section>
+<section id="slide-orgc7a4569">
+<h4 id="orgc7a4569"><span class="section-number-4">2.1.5</span> SPECTRUM Example: Object Entry</h4>
+
+<div class="figure">
+<p><img src="./img/SPECTRUM-object-entry.png" alt="SPECTRUM-object-entry.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org32cf67b">
+<h3 id="org32cf67b"><span class="section-number-3">2.2</span> Archival Content Standards</h3>
+<ul>
+<li>ISAD(G): archival materials</li>
+<li>ISAAR(CPF): agents (corporations, people, families)</li>
+<li>ISDF: functions (eg Secretary of some society)</li>
+<li>ISDIAH: archival holding institutions</li>
+
+</ul>
+<p>
+Image by D.Pitti, 2015
+</p>
+
+<div class="figure">
+<p><img src="./img/ICA-standards-timelines.png" alt="ICA-standards-timelines.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org087bcd5">
+<h3 id="org087bcd5"><span class="section-number-3">2.3</span> Library Content Standards</h3>
+<ul>
+<li>AACR2 (Anglo-American Cataloging Rules 2)</li>
+<li>International Standard Bibliographic Description (ISBD)</li>
+<li>Resource Description and Access (RDA)</li>
+
+</ul>
+<p>
+Extremely detailed and comprehensive (see RDA later).
+But sometimes pay more attention where to put the commas than to:
+</p>
+<ul>
+<li>Data sharing</li>
+<li>Global availability of resources</li>
+<li>Sharing the cataloging burden</li>
+
+</ul>
+
+</section>
+<section id="slide-orge9e0f89">
+<h4 id="orge9e0f89"><span class="section-number-4">2.3.1</span> FRBR, FRSAD, FRAD</h4>
+<p>
+Functional Requirements for Bibliographic Records (FRBR), Subject Authority Data (FRSAD), Authority Data (FRAD)
+(J.Mitchell, M.Zeng, M.Zumer, 2011)
+</p>
+
+<div class="figure">
+<p><img src="./img/FRBR-FRAD-FRSAD.jpg" alt="FRBR-FRAD-FRSAD.jpg" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org44ae482">
+<h4 id="org44ae482"><span class="section-number-4">2.3.2</span> FRBR</h4>
+<p>
+Starts from user tasks (find, identify, select, obtain, explore).
+Introduces the important 4-level WEMI model (relates to Uniform Titles):
+</p>
+<ul>
+<li>Work: original or derived intellectual work (eg Don Quixote)</li>
+<li>Expression: translation or edition (eg Don Quixote translation to English)</li>
+<li>Manifestation: publisher's work (eg with illustrations, foreword by, compilation&#x2026;). ISBNs are here</li>
+<li>Item: physical copy: libraries track loan/availability; famous copies (eg Lincoln's Bible); manuscripts are singleton items</li>
+
+</ul>
+
+</section>
+<section id="slide-orge045d61">
+<h4 id="orge045d61"><span class="section-number-4">2.3.3</span> FRSAD</h4>
+<p>
+Anything can be subject (thema), referred to by various names/titles (nomen)
+</p>
+
+<div class="figure">
+<p><img src="./img/FRSAD.png" alt="FRSAD.png" class="stretch" style="width:950px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org99c8439">
+<h4 id="org99c8439"><span class="section-number-4">2.3.4</span> FRBR-LRM</h4>
+<p>
+FRBR-Library Reference Model (P.Riva, P.Le Bœuf, M.Žumer, Draft for World-Wide Review 2016-02). Merges the previous standards
+</p>
+
+<div class="figure">
+<p><img src="./img/FRBR-LRM.png" alt="FRBR-LRM.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2aaf050">
+<h2 id="org2aaf050"><span class="section-number-2">3</span> GLAM Metadata Schemas</h2>
+<p>
+How many of the standards listed in <a href="http://jennriley.com/metadatamap/">Seeing Standards: A Visualization of the Metadata Universe</a> apply to your work?
+(by Jenn Riley, Associate Dean for Digital Initiatives at McGill University Library)
+</p>
+
+<div class="figure">
+<p><img src="./img/GLAM-seeing-standards.png" alt="GLAM-seeing-standards.png" class="stretch" style="width:1222px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org69743d5">
+<h3 id="org69743d5"><span class="section-number-3">3.1</span> Seeing Standards (2)</h3>
+
+<div class="figure">
+<p><img src="./img/GLAM-seeing-standards-full.png" alt="GLAM-seeing-standards-full.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org7252138">
+<h3 id="org7252138"><span class="section-number-3">3.2</span> XML Schemas</h3>
+<p>
+Do you deal with XML? I bet you do
+</p>
+<ul>
+<li>XML Schema (XSD): most widely used, but most unwieldy</li>
+<li>RelaxNG (RNG): new generation schema language</li>
+<li>RNG Compact (RNC): non-XML notation, most readable. Eg EAD3 is mastered in RNC, then RNG and XSD produced</li>
+<li>Schematron: express rules in XPath that can't be captured in XSD/RNG/RNC (eg cross-field validation)</li>
+
+</ul>
+<p>
+Tools:
+</p>
+<ul>
+<li><a href="https://github.com/EHRI/jing-trang/tree/EHRI-176">https://github.com/EHRI/jing-trang/tree/EHRI-176</a>: patch the <b>jing</b> RNG validator to emit errors like Schematron (SVRL with XPath error location)</li>
+<li><a href="https://github.com/VladimirAlexiev/rnc">https://github.com/VladimirAlexiev/rnc</a>: RNC tools and CH schemas in RNC. Emacs with code highlighting and syntax checking (flycheck)</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/RNC-flymake.png" alt="RNC-flymake.png" class="stretch" style="width:600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org109d7fe">
+<h3 id="org109d7fe"><span class="section-number-3">3.3</span> Museum Metadata: CDWA</h3>
+<p>
+Categories for the Description of Works of Art (CDWA): realization of CCO, 532 "categories" (data elements).
+</p>
+
+<div class="figure">
+<p><img src="./img/CDWA-sections.png" alt="CDWA-sections.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org88de716">
+<h4 id="org88de716"><span class="section-number-4">3.3.1</span> CDWA Lite</h4>
+<p>
+XML schema implementing part of CDWA. Moderate complexity, about 300 elements.
+Display vs Indexing (structured) elements, eg for Dimension.
+</p>
+
+<div class="figure">
+<p><img src="./img/CDWA-data-outline.png" alt="CDWA-data-outline.png" class="stretch" style="width:1350px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb5d3ba7">
+<h4 id="orgb5d3ba7"><span class="section-number-4">3.3.2</span> CONA Schema</h4>
+<p>
+Cultural Objects Name Authority (CONA): Getty museum data aggregation. Moderate complexity, about 280 elements:
+</p>
+
+<div class="figure">
+<p><img src="./img/CONA-data-outline.png" alt="CONA-data-outline.png" class="stretch" style="width:1350px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org1c47eb6">
+<h4 id="org1c47eb6"><span class="section-number-4">3.3.3</span> SPECTRUM XML</h4>
+<p>
+<a href="http://www.collectionstrust.org.uk/item/1602-spectrum-4-0-schema">SPECTRUM Schema 4.0b</a> has 10 entities and 592 fields, of which 490 are Object (artwork) fields.
+I am not aware of any systems producing this.
+</p>
+
+<div class="figure">
+<p><img src="./img/SPECTRUM-object-data-outline.png" alt="SPECTRUM-object-data-outline.png" class="stretch" style="width:1350px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb622cdd">
+<h4 id="orgb622cdd"><span class="section-number-4">3.3.4</span> LIDO</h4>
+<p>
+Lightweight Information Describing Objects (LIDO). 
+Evolved from CDWA, museumdat, with inspiration from CIDOC CRM.
+(Images by R.Stein and A.Vitzthum, ATHENA workshop, 2010)
+</p>
+
+<div class="figure">
+<p><img src="./img/LIDO-data-outline.png" alt="LIDO-data-outline.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgd656d31">
+<h4 id="orgd656d31"><span class="section-number-4">3.3.5</span> LIDO Schema</h4>
+<ul>
+<li>Complex schema, eg when referring to a related object, you can provide almost as much detail as for the main object.
+Could leverage opportunities for linking more.</li>
+<li>Display vs Indexing (structured) elements: inherited from CDWA</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/LIDO-example.png" alt="LIDO-example.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge9f0868">
+<h3 id="orge9f0868"><span class="section-number-3">3.4</span> Archive Metadata</h3>
+<ul>
+<li>EAD: Encoded Archival Description. Describes archival materials (documentary units)</li>
+<li>EAC/CPF: Encoded Archival Context: Corporations, Persons, Families</li>
+<li>EAG: Encoded Archival Guide. Describes institutions</li>
+
+</ul>
+
+</section>
+<section id="slide-org0601e84">
+<h4 id="org0601e84"><span class="section-number-4">3.4.1</span> Archive Metadata Problems</h4>
+<p>
+Pay a lot of attention to presentation, not enough to linking (difficult to "semanticize"). Emphasis on documents, not historic agents and events
+</p>
+<ul>
+<li>EAG: So-called "controlled access points" are text, and typically not controlled at all</li>
+<li>EAC: Many institutions don't consider EAC very valuable, and instead put person info in EAD's <a href="http://eadiva.com/2/bioghist/">bioghist</a> element (example below from EADiva)</li>
+<li>EAC: Related persons are names ("strings"), not links ("things")</li>
+<li>EAC: Events include lots of info but only Date is separate field (person names could be tagged but often are not)</li>
+<li>EAC: Family tree modeled as Outline, that's also used for other purposes (just presentation)</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-xml">&lt;<span style="color: #0000ff;">bioghist</span>&gt;
+  &lt;<span style="color: #0000ff;">head</span>&gt;Chronological Events&lt;/<span style="color: #0000ff;">head</span>&gt;
+  &lt;<span style="color: #0000ff;">chronlist</span>&gt;
+    &lt;<span style="color: #0000ff;">chronitem</span>&gt;
+      &lt;<span style="color: #0000ff;">date</span> <span style="color: #a0522d;">normal</span>=<span style="color: #8b2252;">"</span><span style="color: #8b2252;">19781028</span><span style="color: #8b2252;">"</span>&gt;October 28, 1978&lt;/<span style="color: #0000ff;">date</span>&gt;
+      &lt;<span style="color: #0000ff;">event</span>&gt;
+        &lt;<span style="color: #0000ff;">persname</span> <span style="color: #a0522d;">normal</span>=<span style="color: #8b2252;">"</span><span style="color: #8b2252;">Wossname, Samuel</span><span style="color: #8b2252;">"</span>&gt;Sam Wossname&lt;/<span style="color: #0000ff;">persname</span>&gt; succeeds
+        &lt;<span style="color: #0000ff;">persname</span> <span style="color: #a0522d;">normal</span>=<span style="color: #8b2252;">"</span><span style="color: #8b2252;">Othername, John</span><span style="color: #8b2252;">"</span>&gt;John Othername&lt;/<span style="color: #0000ff;">persname</span>&gt; as department head.
+      &lt;/<span style="color: #0000ff;">event</span>&gt;
+    &lt;/<span style="color: #0000ff;">chronitem</span>&gt;
+    &lt;<span style="color: #0000ff;">chronitem</span>&gt;
+      &lt;<span style="color: #0000ff;">date</span> <span style="color: #a0522d;">normal</span>=<span style="color: #8b2252;">"</span><span style="color: #8b2252;">19790315</span><span style="color: #8b2252;">"</span>&gt;March 15, 1979&lt;/<span style="color: #0000ff;">date</span>&gt;
+      &lt;<span style="color: #0000ff;">event</span>&gt;Departmental reorganization.&lt;/<span style="color: #0000ff;">event</span>&gt;
+    &lt;/<span style="color: #0000ff;">chronitem</span>&gt;
+  &lt;/<span style="color: #0000ff;">chronlist</span>&gt;
+&lt;/<span style="color: #0000ff;">bioghist</span>&gt;
+</pre>
+</div>
+
+</section>
+<section id="slide-orgd9d4868">
+<h3 id="orgd9d4868"><span class="section-number-3">3.5</span> Library Metadata: MARC</h3>
+<p>
+MARC is 50 years old, unreadable, and doesn't accommodate new FRBR principles. MARC-XML is not much better
+</p>
+
+<div class="figure">
+<p><img src="./img/MARC.png" alt="MARC.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org726ee60">
+<h4 id="org726ee60"><span class="section-number-4">3.5.1</span> MARC Must Die</h4>
+<p>
+A whole emotional subculture, based on a slogan by Roy Fielding, 2002.
+</p>
+<ul>
+<li><a href="http://marc-must-die.info/">marc-must-die.info</a>: "MARC is dead" (is it really?)</li>
+<li><a href="http://futurelib.pbworks.com/">FutureLib</a>: in-depth discussion wiki</li>
+<li><a href="https://www.facebook.com/MARC-must-die-244179532306471/">Facebook group</a></li>
+
+</ul>
+<p>
+<a href="http://www.slideshare.net/schambers3/marc-must-die">Presentation</a> by Sally Chambers, ELAG 2011
+</p>
+
+<div class="figure">
+<p><img src="./img/MARC-must-die.png" alt="MARC-must-die.png" class="stretch" style="width:700px" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8a03cc3">
+<h2 id="org8a03cc3"><span class="section-number-2">4</span> GLAM Ontologies</h2>
+<p>
+Why do they call conversion to RDF "lifting" and back to some other format "lowering"?
+</p>
+<ul>
+<li>RDF is a simple abstracted data model</li>
+<li>Doesn't have nesting biases like XML: whether a sub-element is nested or referenced by ID. Has less syntactic idiosyncrasies</li>
+<li>(RDF/XML is awful, but there is Turtle for readability, or JSONLD for programmer convenience)</li>
+<li>The model is self-describing in a distributed way: if a class/property is looked up, should return description and info</li>
+
+</ul>
+
+
+</section>
+<section id="slide-org31792d9">
+<h3 id="org31792d9"><span class="section-number-3">4.1</span> Europeana Data Model</h3>
+<p>
+Model used by the Europeana aggregator (53M objects), and adopted by Digital Public Library of America (DPLA)
+Based on:
+</p>
+<ul>
+<li>OAI ORE (Open Archives Initiative Object Reuse &amp; Exchange): organizing object metadata and digital representations (WebResources)</li>
+<li>Dublin Core: descriptive metadata</li>
+<li>SKOS (Simple Knowledge Organization System): conceptual objects (concepts, agents, etc)</li>
+<li>CIDOC-CRM inspired: events, some relations between objects</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/Europeana-classes.png" alt="Europeana-classes.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org0e4fe5e">
+<h4 id="org0e4fe5e"><span class="section-number-4">4.1.1</span> EDM Semantic Graph</h4>
+
+<div class="figure">
+<p><img src="./img/graph-LevskiOrdinance.png" alt="graph-LevskiOrdinance.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org938ddf5">
+<h4 id="org938ddf5"><span class="section-number-4">4.1.2</span> EDM Issues/Considerations</h4>
+<ul>
+<li>Criticized that it's not expressive enough. Eg can't capture the specific contribution of an artist to artwork</li>
+<li>Complication: splits info about an object:
+<ul>
+<li>EDM External (form provider): edm:ProvidedCHO and ore:Aggregation</li>
+<li>EDM Internal (at Europeana): edm:ProvidedCHO and 2 &lt;ore:Aggregation, ore:Proxy&gt; pairs</li>
+
+</ul></li>
+<li>Many providers use the minimal features and make mistakes; Europeana didn't do a lot of validation
+<ul>
+<li>Old objects retro-converted from ESE are poor (only text), though some enrichments added by Europeana</li>
+<li><a href="http://pro.europeana.eu/page/data-quality-committee">Europeana Data Quality Committee</a> formed, to push this strategic point (2015-2020)</li>
+
+</ul></li>
+
+</ul>
+<p>
+Evolving specification (since 2009)
+</p>
+<ul>
+<li>Currently considering actual implementation of Events</li>
+<li>Extensions for manuscripts, music, fashion, etc</li>
+
+</ul>
+
+
+</section>
+<section id="slide-orga6f23d4">
+<h3 id="orga6f23d4"><span class="section-number-3">4.2</span> CIDOC CRM</h3>
+<p>
+<a href="http://cidoc-crm.org/">CIDOC CRM</a>: comprehensive reference model used for history, historic events, archaeology, museum data, etc
+by CIDOC (ICOM documentation committee).
+Standardized as ISO 21127:2014, still evolving.
+About 85 classes, fundamental branches: Persistent (endurant) vs Temporal (perdurant), Physical vs Conceptual
+</p>
+
+<div class="figure">
+<p><img src="./img/cidoc_class_hierarchy.jpg" alt="cidoc_class_hierarchy.jpg" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf75f7ef">
+<h4 id="orgf75f7ef"><span class="section-number-4">4.2.1</span> CIDOC CRM Properties</h4>
+<p>
+Classes represent abstract things (eg crm:E24_Physical_Man-Made_Thing), specific things (eg Paintings, Coins) are accommodated with crm:P2_has_type.
+135 props (plus their inverses); prop hierarchy (see "- - -" at bottom):
+</p>
+
+<div class="figure">
+<p><img src="./img/CIDOC-prop-hierarchy.png" alt="CIDOC-prop-hierarchy.png" class="stretch" style="width:850px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org3177bd1">
+<h4 id="org3177bd1"><span class="section-number-4">4.2.2</span> CIDOC Graphical Examples</h4>
+<ul>
+<li><a href="http://www.cidoc-crm.org/cidoc_tutorial/">Video Tutorial</a> (or <a href="http://personal.sirma.bg/vladimir/crm-tutorial/">HTML version</a> including Kindle)</li>
+<li><a href="http://www.cidoc-crm.org/cidoc_graphical_representation_v_5_1/graphical_representaion_5_0_1.html">Graphical Representation</a> (or <a href="http://personal.sirma.bg/vladimir/crm-graphical/">continuous HTML version</a> including Kindle): essential to understand how to apply CRM in various situations</li>
+<li>Typical modeling construct <b>short-cut</b> (crm:P43_has_dimension) vs <b>long-path</b> (eg crm:P39i_was_measured_by/crm:P40_observed_dimension), which allows more details</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/cidoc-graphical-measurement.jpg" alt="cidoc-graphical-measurement.jpg" class="stretch" style="width:1209px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org29eeb4a">
+<h3 id="org29eeb4a"><span class="section-number-3">4.3</span> Web Annotation (Open Annotation, OA)</h3>
+<p>
+<a href="https://www.w3.org/TR/annotation-model/">W3C TR</a>: mark, annotate, relate any web resources, eg: Webpage and bookmark, Image and region over it, Document and translation, Paragraph and commentary.
+Diagram of <a href="https://www.w3.org/TR/annotation-model/#complete-example">Complete Example</a> from spec (using my <b>rdfpuml</b>)
+</p>
+
+<div class="figure">
+<p><img src="./img/OA-eg44.png" alt="OA-eg44.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgdb1ced5">
+<h3 id="orgdb1ced5"><span class="section-number-3">4.4</span> International Image Interop Framework (IIIF)</h3>
+<p>
+Standard API for DeepZoom (hi-res) images. Supported by many servers and viewers. <a href="http://iiif.io">http://iiif.io</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/IIIF-showcase.png" alt="IIIF-showcase.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org847675b">
+<h4 id="org847675b"><span class="section-number-4">4.4.1</span> IIIF Presentation API</h4>
+<p>
+Based on OA and SharedCanvas. 
+Strong attention to JSONLD representation (convenient for developers).
+Allows to assemble manuscripts from pieces, present folios, etc etc.
+See <a href="http://www.slideshare.net/azaroth42">Rob Sanderson presentations</a>, eg <a href="http://www.slideshare.net/azaroth42/iiif-and-jsonld-lodlam-training-day">IIIF and JSONLD</a>:
+</p>
+
+<div class="figure">
+<p><img src="./img/IIIF-sharedCanvas.png" alt="IIIF-sharedCanvas.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-orgff98656">
+<h3 id="orgff98656"><span class="section-number-3">4.5</span> Library Ontologies</h3>
+<p>
+War of the Bibliographic Ontologies?
+</p>
+<ul>
+<li><b>BIBO</b>: used for a long time, pragmaic</li>
+<li><b>FRBRer</b>: pragmatic realization of FRBR, but little uptake (not rich enough?)</li>
+<li><b>FRBRoo</b>: based on CIDOC CRM, perhaps too complex</li>
+<li><b>Fabio, Cito, Doco</b> and friends: modern, includes new features (eg citation intent)</li>
+<li><b>BibFrame</b>: sponsored by LoC, but <a href="http://www.slideshare.net/azaroth42/linked-data-best-practices-and-bibframe">soundly criticized</a> for modeling mistakes</li>
+<li><b>RDAregistry.info</b>: basic FRBR classes, numerous properties for all kinds of things. Used for 100M records at TEL</li>
+<li><b>SchemaBibEx</b> (<a href="http://bib.schema.org">http://bib.schema.org</a>): steps on a clean model sponsored by the big 4 search engines (Google, MS Bing, Yahoo, Yandex.ru).
+Developed by OCLC.
+May end up being used for 300M records at WorldCat.</li>
+
+</ul>
+
+</section>
+<section id="slide-org13bb36b">
+<h4 id="org13bb36b"><span class="section-number-4">4.5.1</span> RDAregistry</h4>
+<p>
+Resource Description and Access (RDA). Registry info is well organized
+</p>
+
+<div class="figure">
+<p><img src="./img/RDAregistry.png" alt="RDAregistry.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgfaf3c60">
+<h4 id="orgfaf3c60"><span class="section-number-4">4.5.2</span> RDAregistry Properties</h4>
+<p>
+Many props (306 for Work alone), 
+for specific purposes (eg "apellee" for court decisions, "granting institution" for academic theses).
+Numeric prop names, but lexical (natural language) also supported.
+Serves many semantic formats. 
+</p>
+
+<div class="figure">
+<p><img src="./img/RDAregistry-Work.png" alt="RDAregistry-Work.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org3b145c0">
+<h4 id="org3b145c0"><span class="section-number-4">4.5.3</span> A Taste of FRBRoo</h4>
+<p>
+<a href="http://pro.europeana.eu/taskforce/edm-frbroo-application-profile">EDM–FRBRoo Application Profile</a> Task Force: asked what to add to EDM to better fit FRBRoo.
+</p>
+<ul>
+<li>TF members developed a number of examples, eg on publications of "Don Quixote" (T.Aalberg, V.Alexiev, J.Walkowska).</li>
+
+</ul>
+<p>
+EDM variant:
+</p>
+
+<div class="figure">
+<p><img src="./img/bima0000007198.edm.png" alt="bima0000007198.edm.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf3ec6b0">
+<h5 id="orgf3ec6b0"><span class="section-number-5">4.5.3.1</span> A Taste of FRBRoo</h5>
+<p>
+Simpler FRBRoo variant: 
+</p>
+
+<div class="figure">
+<p><img src="./img/bima0000007198.png" alt="bima0000007198.png" class="stretch" style="width:1400px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org3bea10e">
+<h5 id="org3bea10e"><span class="section-number-5">4.5.3.2</span> A Taste of FRBRoo</h5>
+<p>
+More complex FRBRoo variant:
+</p>
+
+<div class="figure">
+<p><img src="./img/bima0000007198.JW.png" alt="bima0000007198.JW.png" class="stretch" style="width:1400px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org8d4f835">
+<h4 id="org8d4f835"><span class="section-number-4">4.5.4</span> FRBR-Inspired</h4>
+<ul>
+<li>"FRBR, Before and After" by K.Coyle (ALA 2016) is an in-depth look at FRBR-inspired models/realizations.</li>
+<li>Chapter 10 describes the following ontologies: FRBRer, FRBRcore, FaBiO, &lt;indecs&gt;, BIBFRAME, RDA in RDF, webFRBRer, FRBRoo</li>
+<li>"Mistakes have been made", K.Coyle, SWIB 2015</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/FRBR-mistakes.png" alt="FRBR-mistakes.png" class="stretch" style="width:500px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org514681d">
+<h4 id="org514681d"><span class="section-number-4">4.5.5</span> British Library Data Model</h4>
+<p>
+Pragmatic data model that reuses several ontologies, and adds own props
+</p>
+
+<div class="figure">
+<p><img src="./img/BL-model-serial.png" alt="BL-model-serial.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5886d1c">
+<h4 id="org5886d1c"><span class="section-number-4">4.5.6</span> First Library That Runs on RDF</h4>
+<p>
+Oslo Public Library (<a href="http://data.deichman.no">http://data.deichman.no</a>, since 2014) uses Koha open source software, RDF in the core, and <a href="https://github.com/digibib/marc2rdf">marc2rdf</a>/rdf2marc conversions.
+Pragmatic data model that reuses several ontologies, and adds own props.
+Enables a number of agile apps, eg search related books on Kiosk
+</p>
+
+<div class="figure">
+<p><img src="./img/NO-Oslo-RDF-model.jpeg" alt="NO-Oslo-RDF-model.jpeg" class="stretch" style="width:905px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org78fabd5">
+<h5 id="org78fabd5"><span class="section-number-5">4.5.6.1</span> Oslo Public Library Data</h5>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">d_res:</span><span style="color: #008b8b;">tnr_749919</span>  <span style="color: #228b22;">rdf:</span><span style="color: #008b8b;">type</span>  <span style="color: #228b22;">bibo:</span><span style="color: #008b8b;">Document</span> , <span style="color: #228b22;">fabio:</span><span style="color: #008b8b;">Manifestation</span> ;
+  <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">title</span>  <span style="color: #8b2252;">"About time"</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">titleURLized</span>  <span style="color: #8b2252;">"about_time"</span> ;
+  <span style="color: #228b22;">fabio:</span><span style="color: #008b8b;">hasSubtitle</span>  <span style="color: #8b2252;">"Einstein's unfinished revolution"</span> ;
+  <span style="color: #228b22;">ctag:</span><span style="color: #008b8b;">tagged</span>  <span style="color: #228b22;">d_keyword:</span><span style="color: #008b8b;">imaginary</span> , <span style="color: #228b22;">d_keyword:</span><span style="color: #008b8b;">dilation</span> , <span style="color: #228b22;">d_keyword:</span><span style="color: #008b8b;">time</span> , 
+    <span style="color: #228b22;">d_keyword:</span><span style="color: #008b8b;">tidsreiser</span> , <span style="color: #228b22;">d_keyword:</span><span style="color: #008b8b;">tidsdilatasjon</span> ;
+  <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">depiction</span>  <span style="color: #0000ff;">&lt;http://covers.openlibrary.org/b/id/96714-M.jpg&gt;</span> ,
+    <span style="color: #0000ff;">&lt;http://covers.openlibrary.org/b/id/96715-M.jpg&gt;</span> ,
+    <span style="color: #0000ff;">&lt;http://www.bokkilden.no/SamboWeb/servlet/VisBildeServlet?produktId=81081&gt;</span> ;
+  <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">sameAs</span>  <span style="color: #0000ff;">&lt;http://purl.org/NET/book/isbn/0140174613#book&gt;</span><span style="color: #b22222;"> ,</span>
+    <span style="color: #0000ff;">&lt;http://www4.wiwiss.fu-berlin.de/bookmashup/books/0140174613&gt;</span> ;
+  <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">language</span>  <span style="color: #228b22;">lexvo:</span><span style="color: #008b8b;">eng</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">bibliofilID</span>  <span style="color: #8b2252;">"931138"</span> ;
+  <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">format</span>  <span style="color: #0000ff;">&lt;http://data.deichman.no/format/Book&gt;</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">location_signature</span>  <span style="color: #8b2252;">"Dav"</span> ;
+  <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">publisher</span>  <span style="color: #228b22;">d_org:</span><span style="color: #008b8b;">penguin</span> ;
+  <span style="color: #228b22;">bibo:</span><span style="color: #008b8b;">numPages</span>  <span style="color: #8b2252;">"316"</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">physicalDescription</span>  <span style="color: #8b2252;">"fig."</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">bibsubject</span>  <span style="color: #228b22;">d_subject:</span><span style="color: #008b8b;">einstein_albert</span> , <span style="color: #228b22;">d_subject:</span><span style="color: #008b8b;">tid_metafysikk</span> ;
+  <span style="color: #228b22;">fabio:</span><span style="color: #008b8b;">isManifestationOf</span>  <span style="color: #228b22;">d_work:</span><span style="color: #008b8b;">x24918900_about_time</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">signatureNote</span>  <span style="color: #8b2252;">"07x0619gq"</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">bindingInfo</span>  <span style="color: #0000ff;">&lt;http://data.deichman.no/bindingInfo/h&gt;</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">bsID</span>  <span style="color: #8b2252;">"0181541"</span> ;
+  <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">description</span>  <span style="color: #8b2252;">"Bibliografi: s. 293-294"</span>@no ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">priceInfo</span>  <span style="color: #8b2252;">"Nkr 170.00"</span> ;
+  <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">isPrimaryTopicOf</span>  <span style="color: #0000ff;">&lt;http://www.goodreads.com/book/show/286461&gt;</span> ,
+    <span style="color: #0000ff;">&lt;http://www.librarything.com/work/23493&gt;</span> ;
+  <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">identifier</span>  <span style="color: #8b2252;">"749919"</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">dewey</span>  <span style="color: #8b2252;">"115"</span> , <span style="color: #8b2252;">"530.11"</span> ;
+  <span style="color: #228b22;">d:</span><span style="color: #008b8b;">location_dewey</span>  <span style="color: #8b2252;">"530.11"</span> ;
+  <span style="color: #228b22;">bibo:</span><span style="color: #008b8b;">isbn</span>  <span style="color: #8b2252;">"9780140174618"</span> , <span style="color: #8b2252;">"0140174613"</span> ;
+</pre>
+</div>
+
+
+</section>
+<section id="slide-org14be2d8">
+<h3 id="org14be2d8"><span class="section-number-3">4.6</span> Archival Ontologies</h3>
+<p>
+3 attempts to represent EAD as RDF, but IMHO neither is very good.
+</p>
+<ul>
+<li>Eg "The Semantic Mapping of Archival Metadata to the CIDOC CRM Ontology" (Journal of Archival Organization, 9:174–207, 2011) proposes to represent the EAD levels hierarchy (from Fonds down to Items) as <b>five</b> parallel CRM hierarchies</li>
+
+</ul>
+<p>
+Records in Context (RiC): new upcoming semantic standard by ICA
+</p>
+<ul>
+<li>Addresses the scope of EAD, EAC, EAG in one framework. 
+Inspired by national standards, FRBR (FRBR-LRM), CIDOC CRM</li>
+<li><a href="http://schd.ws/hosted_files/archives2015/c7/session109.Rubinstein.pdf">Progress report</a> (2015), <a href="http://lists.village.virginia.edu/mailman/listinfo/ica-egad-ric">Mlist for comments</a></li>
+<li><a href="http://www.ica.org/sites/default/files/RiC-CM-0.1.pdf">Conceptual Model</a> 1.0 (Sep 2016): Document key components of archival description, properties of each, relations between them</li>
+<li>Ontology: after finalizing the Conceptual Model, Expressed in OWL, will include semantic mapping to similar concepts developed by related communities</li>
+
+</ul>
+
+</section>
+<section id="slide-org12872d1">
+<h4 id="org12872d1"><span class="section-number-4">4.6.1</span> RiC Sample Network</h4>
+
+<div class="figure">
+<p><img src="./img/RiC-example.png" alt="RiC-example.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org47ce0ab">
+<h2 id="org47ce0ab"><span class="section-number-2">5</span> GLAM LOD Datasets (LODLAM)</h2>
+<ul>
+<li>Some established thesauri and gazetteers as LOD, some are interconnected: DBPedia; Wikidata, VIAF, FAST, ULAN; GeoNames, Pleiades, TGN; LCSH, AAT, IconClass, Joconde, SVCN, Wordnet, etc.</li>
+<li>Not shown: large collection LODs like: Europeana (EDM), British Museum (CIDOC CRM), YCBA (CIDOC CRM), Rijksmuseum (EDM)</li>
+<li>(Diagram based on work by M.Hildebrand)</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/Culture-datacloud-pretty.png" alt="Culture-datacloud-pretty.png" class="stretch" style="width:1183px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org207f368">
+<h3 id="org207f368"><span class="section-number-3">5.1</span> Wikidata</h3>
+<p>
+Tons of info on everything, including GLAMs, artists, artworks, etc. Eg <a href="https://tools.wmflabs.org/reasonator/?&amp;q=167654">Frans Hals on Reasonator</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-FransHals.png" alt="WD-FransHals.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc1e01e4">
+<h4 id="orgc1e01e4"><span class="section-number-4">5.1.1</span> Wikidata Genealogy</h4>
+<p>
+<a href="https://tools.wmflabs.org/reasonator/geneawiki2/?q=Q76">Family tree of Barack Obama</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-Obama-familyTree.png" alt="WD-Obama-familyTree.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org90b8bab">
+<h4 id="org90b8bab"><span class="section-number-4">5.1.2</span> Sum of All Paintings</h4>
+<p>
+<a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_sum_of_all_paintings">Wikidata Project Sum of All Paintings</a>. Data used for:
+</p>
+<ul>
+<li>Works by painter across collections (catalogue raisonné). Eg <a href="http://tools.wmflabs.org/hay/wdskim/index.php?prop=P170&amp;item=Q167654&amp;language=en&amp;withimages=on">Frans Hals</a></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/WD-FransHals-painings.png" alt="WD-FransHals-painings.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org09a20c8">
+<h4 id="org09a20c8"><span class="section-number-4">5.1.3</span> Crotos</h4>
+<p>
+Excellent image search. Shows links to WD, Wikimedia Commons, original website. Eg <a href="http://www.zone47.com/crotos/?l=en&amp;p=&amp;nb=20&amp;disp=1&amp;s=frans+hals&amp;y1=-40000&amp;y2=2016&amp;p31=&amp;p170=167654">Frans Hals on Crotos</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-FransHals-Crotos.png" alt="WD-FransHals-Crotos.png" class="stretch" style="width:1223px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org7a1ed16">
+<h4 id="org7a1ed16"><span class="section-number-4">5.1.4</span> You can help too!</h4>
+<p>
+<a href="https://www.wikidata.org/wiki/Wikidata_talk:WikiProject_sum_of_all_paintings#Hunting_for_missing_inventory_numbers">Hunting for missing inventory numbers</a> (9.9k of 140k). Important because &lt;collection, inventory number&gt; is used to identify the painting.
+Eg <a href="https://www.wikidata.org/wiki/User:Multichill/Paintings_without_inventory_number_in_the_United_States_of_America">US</a> (1k), <a href="https://www.wikidata.org/wiki/User:Multichill/Paintings_without_inventory_number_in_the_United_States_of_America#J._Paul_Getty_Museum">Getty Museum</a> (2)
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-Getty-missing-invNo.png" alt="WD-Getty-missing-invNo.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgaa0001d">
+<h4 id="orgaa0001d"><span class="section-number-4">5.1.5</span> Let's fix the second one</h4>
+<p>
+<a href="http://www.getty.edu/art/collection/objects/265936/edouard-manet-portrait-of-julien-de-la-rochenoire-french-1882/">Find it on Getty's site</a>, <a href="https://www.wikidata.org/w/index.php?title=Q17591169&amp;type=revision&amp;diff=382066112&amp;oldid=356909985">add the info</a> like this:
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-Getty-portrait.png" alt="WD-Getty-portrait.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org56935dc">
+<h4 id="org56935dc"><span class="section-number-4">5.1.6</span> Histropedia</h4>
+<p>
+Timelines of everyting. Eg <a href="http://histropedia.com/timeline/69qjt4bs3t/Paintings-by-Leonardo-da-Vinci">paintings by Leonardo</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/histropedia-Leonardo.png" alt="histropedia-Leonardo.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org12a0d62">
+<h3 id="org12a0d62"><span class="section-number-3">5.2</span> VIAF</h3>
+<p>
+Virtual International Authority File: 20 national libraries, 10 other contributors including Getty ULAN and Wikidata.
+Eg coreferencing cluster of Spinoza:
+</p>
+
+<div class="figure">
+<p><img src="./img/viaf-spinoza.png" alt="viaf-spinoza.png" class="stretch" style="width:1238px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9bb0d1b">
+<h4 id="org9bb0d1b"><span class="section-number-4">5.2.1</span> VIAF vs Wikidata (2015)</h4>
+
+<div class="figure">
+<p><img src="./img/VIAF-Wikidata-comparison.png" alt="VIAF-Wikidata-comparison.png" class="stretch" style="width:600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgd3ad5bf">
+<h3 id="orgd3ad5bf"><span class="section-number-3">5.3</span> Global Authority Control</h3>
+<ul>
+<li>201307 <a href="https://wikimania2013.wikimedia.org/wiki/Submissions/Authority_Addicts:_The_New_Frontier_of_Authority_Control_on_Wikidata">Authority Addicts: The New Frontier of Authority Control on Wikidata</a>, Wikimania 2013</li>
+<li>201501 <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Authority_control">Wikidata Project Authority Control</a> (initiated by Ontotext)</li>
+<li>201503 <a href="http://vladimiralexiev.github.io/CH-names/README.html">Name Data Sources for Semantic Enrichment</a> study for Europeana of datasets including Person/Organization names. Conclusions:
+<ul>
+<li>The best datasets to use for name enrichment are VIAF and Wikidata</li>
+<li>There are few name forms in common between the "library-tradition" datasets (dominated by VIAF) and the "LOD-tradition datasets" (dominated by Wikidata)</li>
+<li>VIAF has more name variations and permutations, Wikidata has more multilingual names (translations)</li>
+<li>VIAF is much bigger: 35M persons/orgs. Wikidata has 2.7M persons and maybe 1M orgs</li>
+<li>Only 0.5M of Wikidata persons/orgs are coreferenced to VIAF, with maybe another 0.5M coreferenced to other datasets, either VIAF-constituent (eg GND) or non-constituent (eg RKDartists)</li>
+<li>A lot can be gained by leveraging coreferencing across VIAF and Wikidata</li>
+<li>Wikidata has great tools for crowd-sourced coreferencing</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org41f35af">
+<h4 id="org41f35af"><span class="section-number-4">5.3.1</span> Names of Lucas Cranach</h4>
+<p>
+<a href="http://vladimiralexiev.github.io/CH-names/cranach-venn.html">Analyzed records of Lucas Cranach</a> in 7 LOD datasets (Wikidata: Freebase, DBpedia, Yago; VIAF: ISNI, ULAN).
+</p>
+
+<div class="figure">
+<p><img src="./img/Cranach-venn.png" alt="Cranach-venn.png" class="stretch" style="width:500px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2d76f6e">
+<h4 id="org2d76f6e"><span class="section-number-4">5.3.2</span> Wikidata Coreferencing can Enlarge VIAF</h4>
+
+<div class="figure">
+<p><img src="./img/Cranach-corefs.jpg" alt="Cranach-corefs.jpg" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc27a4ee">
+<h4 id="orgc27a4ee"><span class="section-number-4">5.3.3</span> Mix-n-Match</h4>
+<p>
+A global Authority on everything: librarian's dream come true!
+<a href="https://tools.wmflabs.org/mix-n-match/">Mix-n-Match</a> is a collaborative tool to create coreferences. 234 authorities, including Getty AAT, TGN, ULAN; RKD artists, works; LoC Authorities; VIAF (not in M-n-M but on WD); BM persons; BBC YourPaintings; Artsy, etc etc
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-MnM-catalogs.png" alt="WD-MnM-catalogs.png" class="stretch" style="width:1100px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org03e1b9f">
+<h5 id="org03e1b9f"><span class="section-number-5">5.3.3.1</span> You can help with Authorities too!</h5>
+<p>
+Eg checking matches to Getty AAT. Single sign-on, a click per item. Easy!
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-MnM-AAT.png" alt="WD-MnM-AAT.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org494df5f">
+<h2 id="org494df5f"><span class="section-number-2">6</span> LODLAM Projects</h2>
+<p>
+GLAM and DH projects present a bewildering variety, eg
+</p>
+<ul>
+<li>Publishing Vocabularies/Thesauri as LOD</li>
+<li>Publishing Museum collections and National Bibliographies as LOD</li>
+<li>Enrichment of GLAM metadata with relevant thesauri, semantic and faceted search</li>
+<li>Study of artistic influence over time and space</li>
+<li>Literary traditions, parallel editions</li>
+<li>Poetic repertories</li>
+<li>Studying manuscripts, stematology (manuscript derivation)</li>
+<li>Historiography</li>
+<li>Studying charters, prosopography ("micro biographies").
+"Prosopography is Greek for <i>Facebook</i>", <a href="http://snapdrgn.net/archives/482">SNAP:DRGN project</a>, 2015</li>
+
+</ul>
+<p>
+Research functions and sometimes integrated into Virtual Research Environments
+</p>
+
+
+</section>
+<section id="slide-org6578a8f">
+<h3 id="org6578a8f"><span class="section-number-3">6.1</span> Mellon "Space" Projects</h3>
+<p>
+The Andrew Mellon Foundation funds many projects in CH and DH, and a few software projects, including:
+</p>
+<ul>
+<li><b>CollectionSpace</b>: museum collection management</li>
+<li><b>ArchiveSpace</b>: archive management</li>
+<li><b>ResearchSpace</b>: semantic integration based on CIDOC CRM, search, data &amp; image annotation, data basket, etc</li>
+<li><b>ConservationSpace</b>: line of business application for conservation specialists</li>
+
+</ul>
+
+</section>
+<section id="slide-org9ae1c78">
+<h3 id="org9ae1c78"><span class="section-number-3">6.2</span> ResearchSpace</h3>
+<p>
+Executed by the British Museum. Ontotext developed the first prototype (2010-2013). Semantic Search
+</p>
+
+<div class="figure">
+<p><img src="./img/RS-search-paper-from-London.png" alt="RS-search-paper-from-London.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb05955a">
+<h4 id="orgb05955a"><span class="section-number-4">6.2.1</span> ResearchSpace Search</h4>
+<p>
+Powerful and precise search: Drawings by Rembrandt that are about Mammals
+</p>
+
+<div class="figure">
+<p><img src="./img/RS-search-Rembrandt.png" alt="RS-search-Rembrandt.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org1877650">
+<h4 id="org1877650"><span class="section-number-4">6.2.2</span> ResearchSpace Search: Fundamental Relations</h4>
+<p>
+First implementation experience of the CIDOC CRM Fundamental Relations approach
+</p>
+
+<div class="figure">
+<p><img src="./img/RS-search-FR-matrix.png" alt="RS-search-FR-matrix.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org0a83df3">
+<h4 id="org0a83df3"><span class="section-number-4">6.2.3</span> ResearchSpace Search: One FR (Thing from Place)</h4>
+
+<div class="figure">
+<p><img src="./img/RS-search-FR-thing-from-place.png" alt="RS-search-FR-thing-from-place.png" class="stretch" style="width:1320px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org1acf1fc">
+<h4 id="org1acf1fc"><span class="section-number-4">6.2.4</span> ResearchSpace Search: Implementation</h4>
+<p>
+120 GraphDB rules, weaved using Literate Programming approach. Inference dependencies between props (text=input, gray=intermediate, white=output)
+</p>
+
+<div class="figure">
+<p><img src="./img/RS-search-implementation-deps.png" alt="RS-search-implementation-deps.png" class="stretch" style="width:1100px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orga975cb4">
+<h4 id="orga975cb4"><span class="section-number-4">6.2.5</span> ResearchSpace Search: New Implementation</h4>
+<p>
+(Not Ontotext work). <a href="https://www.youtube.com/watch?v=f5lU-D_3s7M">Watch the video</a> (D.Oldman)
+</p>
+
+<div class="figure">
+<p><img src="./img/RS-search-new.png" alt="RS-search-new.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org42118e8">
+<h4 id="org42118e8"><span class="section-number-4">6.2.6</span> ResearchSpace Data Annotation</h4>
+
+<div class="figure">
+<p><img src="./img/RS-data-annotation.png" alt="RS-data-annotation.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgeeb2d48">
+<h4 id="orgeeb2d48"><span class="section-number-4">6.2.7</span> ResearchSpace Data Annotation Model</h4>
+
+<div class="figure">
+<p><img src="./img/RS-data-annotation-model.png" alt="RS-data-annotation-model.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org0268a50">
+<h4 id="org0268a50"><span class="section-number-4">6.2.8</span> Image Annotation</h4>
+
+<div class="figure">
+<p><img src="./img/RS-image-annotation.png" alt="RS-image-annotation.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orga40701d">
+<h4 id="orga40701d"><span class="section-number-4">6.2.9</span> Image Annotation Model</h4>
+
+<div class="figure">
+<p><img src="./img/RS-image-annotation-model.png" alt="RS-image-annotation-model.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf0191ff">
+<h4 id="orgf0191ff"><span class="section-number-4">6.2.10</span> Image Annotation Architecture</h4>
+
+<div class="figure">
+<p><img src="./img/RS-image-annotation-arch.png" alt="RS-image-annotation-arch.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgcc25cb5">
+<h3 id="orgcc25cb5"><span class="section-number-3">6.3</span> British Museum (BM) and YCBA LOD</h3>
+<ul>
+<li>GraphDB runs the BM SPARQL endpoint. One of the biggest CH RDF collections (917M triples)</li>
+<li>As part of RS, developed mapping of BM data (2M objects) with BM, using CIDOC CRM</li>
+<li>This mapping was followed by the Yale Center for British Art (YCBA)</li>
+<li><a href="https://confluence.ontotext.com/display/ResearchSpace/BM+Mapping">Mapping Documentation</a>: very comprehensive but is monolithic and has imprecisions. Includes the (in)famous diagram</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/BM-mapping-doc.png" alt="BM-mapping-doc.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org236cfaf">
+<h3 id="org236cfaf"><span class="section-number-3">6.4</span> ConservationSpace</h3>
+<p>
+Executed by a consortium led by US National Gallery of Art. 
+Developed by Sirma ITT (Ontotext sibling).
+Based on Ontotext GraphDB (semantic metadata), Alfresco (document management), Smart Documents (Sirma product).
+</p>
+
+<div class="figure">
+<p><img src="./img/ConservationSpace.png" alt="ConservationSpace.png" class="stretch" style="width:700px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-orgc2c09cc">
+<h3 id="orgc2c09cc"><span class="section-number-3">6.5</span> Europeana LOD and OAI PMH</h3>
+<p>
+Ontotext crated and hosted the Europeana SPARQL and OAI PMH services
+</p>
+
+<div class="figure">
+<p><img src="./img/O is for Open (CultJam 201507).png" alt="O is for Open (CultJam 201507).png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb8aafcd">
+<h4 id="orgb8aafcd"><span class="section-number-4">6.5.1</span> Europeana Statistics</h4>
+<p>
+Eg chart of newspapers (several millions) by year: can't do this using the Europeana API, but is easy with SPARQL
+</p>
+
+<div class="figure">
+<p><img src="./img/EDM-chart-EuropeanaNewspapers.png" alt="EDM-chart-EuropeanaNewspapers.png" class="stretch" style="width:700px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org6c7773e">
+<h3 id="org6c7773e"><span class="section-number-3">6.6</span> Europeana Food and Drink</h3>
+<p>
+Food &amp; Drink content, semantically enriched (place and FD topic).
+<a href="http://efd.ontotext.com/app/">EFD Semantic App</a>: open data, SPARQL endpoint, open source (Github). Uses GraphDB and ElasticSearch enterprise connector
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-semapp.png" alt="EFD-semapp.png" class="stretch" style="width:850px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org76f76cf">
+<h4 id="org76f76cf"><span class="section-number-4">6.6.1</span> Tasty Bulgarian Recipes</h4>
+<p>
+Eg 150 with beer, including pancakes!
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-Beer-Pancake.png" alt="EFD-Beer-Pancake.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb30df5b">
+<h4 id="orgb30df5b"><span class="section-number-4">6.6.2</span> Wide Geographic Coverage</h4>
+<p>
+Objects from the Roman Empire to Antarctica (Scott's expedition to the South Pole), and everything in-between
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-Antarctica.png" alt="EFD-Antarctica.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org135fbb4">
+<h4 id="org135fbb4"><span class="section-number-4">6.6.3</span> EFD Enrichment: FD Gazetteer</h4>
+<p>
+Use Wikipedia Categories to extract a FD Gazetteer.
+</p>
+<ul>
+<li>"Domain-specific modeling: Towards a Food and Drink Gazetteer", Tagarev, A.; Tolosi, L.; and Alexiev, V, LNCS 9398, p182-196, January 2016 (<a href="http://vladimiralexiev.github.io/pubs/Tagarev2015-DomainSpecificGazetteer-extended.pdf">preprint</a>)</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/EFD-cats1.png" alt="EFD-cats1.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4c33981">
+<h4 id="org4c33981"><span class="section-number-4">6.6.4</span> EFD Enrichment: Pruning FD Category Tree</h4>
+<ul>
+<li><a href="http://vladimiralexiev.github.io/pres/20160212-Using-DBPedia-in-Europeana-Food-and-Drink.pdf">Using DBPedia in Europeana Food and Drink</a>. Alexiev, V. DBpedia meeting, February 2016.</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/EFD-cats2.png" alt="EFD-cats2.png" class="stretch" style="width:1224px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org60f637e">
+<h4 id="org60f637e"><span class="section-number-4">6.6.5</span> EFD Enrichment: French</h4>
+<p>
+Selected French as second enrichment language after English, considering category overlap (work by L.Tolosi, x-axis is cat level), available content, NLP capabilities
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-cats3.jpg" alt="EFD-cats3.jpg" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org250a470">
+<h4 id="org250a470"><span class="section-number-4">6.6.6</span> EFD Place Enrichment</h4>
+<p>
+We used standard Ontotext Concept Enrichment Service, which is a mix of DBpedia+Wikidata.
+But also had to add Geonames, to leverage the place hierarchy
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-places1.png" alt="EFD-places1.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org79f23f4">
+<h4 id="org79f23f4"><span class="section-number-4">6.6.7</span> EFD Place Enrichment</h4>
+<p>
+Hierarchical semantic facet based on Geonames
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-places2.png" alt="EFD-places2.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf28b59e">
+<h4 id="orgf28b59e"><span class="section-number-4">6.6.8</span> EFD Geographic Mapping: Clustering</h4>
+<p>
+Once we have places, it's relatively easy to map them. We used the Cluster Mapper library
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-geo-clusters.png" alt="EFD-geo-clusters.png" class="stretch" style="width:1204px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org8067a27">
+<h4 id="org8067a27"><span class="section-number-4">6.6.9</span> EFD Geographic Mapping: Jittering</h4>
+<p>
+There are 9k objects marked "Bulgaria". We don't want all flags in the center of Bulgaria, so we jitter them up
+</p>
+
+<div class="figure">
+<p><img src="./img/EFD-geo-Place-jitter.png" alt="EFD-geo-Place-jitter.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5ae3e99">
+<h4 id="org5ae3e99"><span class="section-number-4">6.6.10</span> GLAMs Working With Wikidata</h4>
+<p>
+Why should GLAMs bother about Wikidata? Because it gives an excellent way to connect and expose your collection data to a multilingual audience
+</p>
+<ul>
+<li><a href="http://pro.europeana.eu/files/Europeana_Professional/Europeana_Network/europeana_wikimedia_taskforce_report_2015.pdf">Europeana Wikimedia Taskforce report</a>: 
+<ul>
+<li>Recommendation 1: For every Europeana project, considering the possible benefits of a Wikimedia component should be default behavior</li>
+<li>Recommendation 7: Make Wikidata a central element of Europeana's "portal to platform" strategy</li>
+<li>Recommendation 8: Europeana should continue to invest in technology that improves the interoperability between GLAMs and Wikimedia platforms</li>
+
+</ul></li>
+<li><a href="http://www.slideshare.net/valexiev1/glams-working-with-wikidata">GLAMs Working with Wikidata</a>: easily add content about a colorful tradition "blessing of the baskets" ("swiecenie koszyczek" or just "Święconka" in Polish). With proper cats: when we merge them across languages (pl, en, de), we discover the content is about Food and Drink, Easter, and a Polish tradition</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/Blessing_of_the_baskets_Easter_tradition.jpg" alt="Blessing_of_the_baskets_Easter_tradition.jpg" class="stretch" style="width:500px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2cb0659">
+<h3 id="org2cb0659"><span class="section-number-3">6.7</span> Getty Vocabulary Program LOD</h3>
+<p>
+GVP well-known and respected in GLAM. Dependencies: AAT-TGN-ULAN-CONA. Center of LODLAM cloud?
+<a href="http://www.getty.edu/research/tools/vocabularies/training.html">GVP Training Materials</a> (Diagram by J.Cobb, 2014)
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-linked.png" alt="GVP-linked.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org44757ae">
+<h4 id="org44757ae"><span class="section-number-4">6.7.1</span> GVP LOD Releases</h4>
+<p>
+<a href="http://blogs.getty.edu/iris/art-architecture-thesaurus-now-available-as-linked-open-data/">AAT 2014-02</a>, <a href="http://blogs.getty.edu/iris/getty-thesaurus-of-geographic-names-released-as-linked-open-data/">TGN 2014-08</a>, <a href="http://blogs.getty.edu/iris/getty-thesaurus-of-geographic-names-released-as-linked-open-data/">ULAN 2015-03</a>. Publicized in blog posts by J.Cuno, head of the Getty Trust
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-ULAN_LOD.png" alt="GVP-ULAN_LOD.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgead2b43">
+<h4 id="orgead2b43"><span class="section-number-4">6.7.2</span> Ontotext Scope of Work</h4>
+<ul>
+<li>Semantic/ontology development: <a href="http://vocab.getty.edu/ontology">http://vocab.getty.edu/ontology</a></li>
+<li>Contributed to <a href="http://purl.org/iso25964/skos-thes">ISO 25964 ontology</a> (latest standard on thesauri). Provided implementation experience, suggestions and fixes</li>
+<li>Complete mapping specification</li>
+<li>Help implement R2RML scripts working off Getty's Oracle database, contribution to Perl implementation (RDB2RDF), R2RML extension (rrx:languageColumn)</li>
+<li>Work with a wide External Reviewers group (people from OCLC, Europeana, ISO 25964 working group, etc)</li>
+<li>GraphDB semantic repo, clustered for high-availability</li>
+<li>Semantic application development (customized Forest user interface) and tech consulting</li>
+<li>SPARQL 1.1 compliant endpoint: <a href="http://vocab.getty.edu/sparql">http://vocab.getty.edu/sparql</a></li>
+<li>Comprehensive documentation (100 pages): <a href="http://vocab.getty.edu/doc">http://vocab.getty.edu/doc</a></li>
+<li>Sample queries (100), including charts, geographic queries, etc</li>
+<li>Per-entity export files, explicit/total data dumps. Many formats: RDF, Turtle, NTriples, JSON, JSON-LD</li>
+<li>Help desk / support on twitter and google group (see home page)</li>
+<li>Presentations, papers. <a href="http://link.springer.com/content/pdf/10.1007/s00799-015-0162-2.pdf">On the composition of ISO 25964 hierarchical relations (BTG, BTP, BTI)</a>. Alexiev, V.; Lindenthal, J.; and Isaac, A. International Journal on Digital Libraries, August 2015, Springer.</li>
+
+</ul>
+
+</section>
+<section id="slide-org2f9bec0">
+<h4 id="org2f9bec0"><span class="section-number-4">6.7.3</span> Complete Representation of All GVP Info</h4>
+<p>
+See <a href="http://vladimiralexiev.github.io/pres/20140905-CIDOC-GVP/index.html">GVP LOD: Ontologies and Semantic Representation</a>, V.Alexiev, CIDOC 2014. External Ontologies:
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Prefix</b></td>
+<td class="org-left"><b>Ontology</b></td>
+<td class="org-left"><b>Used for</b></td>
+</tr>
+
+<tr>
+<td class="org-left">bibo:</td>
+<td class="org-left">Bibliography Ontology</td>
+<td class="org-left">Sources</td>
+</tr>
+
+<tr>
+<td class="org-left">dc:</td>
+<td class="org-left">Dublin Core Elements</td>
+<td class="org-left">common</td>
+</tr>
+
+<tr>
+<td class="org-left">dct:</td>
+<td class="org-left">Dublin Core Terms</td>
+<td class="org-left">common</td>
+</tr>
+
+<tr>
+<td class="org-left">foaf:</td>
+<td class="org-left">Friend of a Friend ontology</td>
+<td class="org-left">Contributors</td>
+</tr>
+
+<tr>
+<td class="org-left">iso:</td>
+<td class="org-left">ISO 25946 (latest on thesauri)</td>
+<td class="org-left">iso:ThesaurusArray, BTG/BTP/BTI</td>
+</tr>
+
+<tr>
+<td class="org-left">owl:</td>
+<td class="org-left">Web Ontology Language</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">prov:</td>
+<td class="org-left">Provenance Ontology</td>
+<td class="org-left">Revision history</td>
+</tr>
+
+<tr>
+<td class="org-left">rdf:</td>
+<td class="org-left">Resource Description Framework</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">rdfs:</td>
+<td class="org-left">RDF Schema</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+
+<tr>
+<td class="org-left">schema:</td>
+<td class="org-left">Schema.org</td>
+<td class="org-left">common, geo (TGN), bio (ULAN)</td>
+</tr>
+
+<tr>
+<td class="org-left">skos:</td>
+<td class="org-left">Simple Knowledge Organization System</td>
+<td class="org-left">Basis vocabulary representation</td>
+</tr>
+
+<tr>
+<td class="org-left">skosxl:</td>
+<td class="org-left">SKOS Extension for Labels</td>
+<td class="org-left">Rich labels</td>
+</tr>
+
+<tr>
+<td class="org-left">wgs:</td>
+<td class="org-left">W3C World Geodetic Survey geo</td>
+<td class="org-left">Geo (TGN)</td>
+</tr>
+
+<tr>
+<td class="org-left">xsd:</td>
+<td class="org-left">XML Schema Datatypes</td>
+<td class="org-left">Basic RDF representation</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org020703b">
+<h4 id="org020703b"><span class="section-number-4">6.7.4</span> GVP Semantic Representation (1)</h4>
+
+<div class="figure">
+<p><img src="./img/GVP-semantic-overview-1.png" alt="GVP-semantic-overview-1.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc48b0c9">
+<h4 id="orgc48b0c9"><span class="section-number-4">6.7.5</span> GVP Semantic Representation (2)</h4>
+
+<div class="figure">
+<p><img src="./img/GVP-semantic-overview-2.png" alt="GVP-semantic-overview-2.png" class="stretch" style="width:750px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5468b72">
+<h4 id="org5468b72"><span class="section-number-4">6.7.6</span> Key Values (Flags) Are Important</h4>
+<p>
+Excel-driven Ontology Generation™.
+Key <b>val</b> can be mapped to Custom sub-class, Custom (sub-)prop, Ontology Value (eg &lt;term/kind/Abbreviation&gt;)
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-getty-codes.png" alt="GVP-getty-codes.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org1d89497">
+<h4 id="org1d89497"><span class="section-number-4">6.7.7</span> Associative Relations Are Valuable</h4>
+<p>
+More Excel-driven Ontology Generation™
+</p>
+<ul>
+<li>Relations come in owl:inverseOf pairs (or owl:SymmetricProperty self-inverse)</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/GVP-assoc-rels.png" alt="GVP-assoc-rels.png" class="stretch" style="width:1251px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc0358ed">
+<h4 id="orgc0358ed"><span class="section-number-4">6.7.8</span> Involved Inference of Hierarchical Relations</h4>
+
+<div class="figure">
+<p><img src="./img/GVP-hierarchicalRelationsInference.png" alt="GVP-hierarchicalRelationsInference.png" class="stretch" style="width:1241px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org41576a4">
+<h4 id="org41576a4"><span class="section-number-4">6.7.9</span> Comprehensive Documentation</h4>
+<p>
+<a href="http://vocab.getty.edu/doc/">Getty Vocabularies Linked Open Data: Semantic Representation</a>. Alexiev, V.; Cobb, J.; Garcia, G.; Harpring, P. Getty Research Institute, 3.2 edition, March 2015.
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-doc-TOC.png" alt="GVP-doc-TOC.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgab9c684">
+<h4 id="orgab9c684"><span class="section-number-4">6.7.10</span> Sample Queries (100), Integrated UI</h4>
+<p>
+Some charts, eg "Year Joined UN" (TGN), "Pope Reign Durations" (ULAN)
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-sample-queries.png" alt="GVP-sample-queries.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org87e12d6">
+<h4 id="org87e12d6"><span class="section-number-4">6.7.11</span> GVP Vocabs Usage</h4>
+<p>
+Collected about 100 usages of the vocabs, many in Collection Management and Search. Many described in <a href="http://www.getty.edu/research/tools/vocabularies/cidoc_cobb_getty_vocabs_lod.pdf">Getty Vocabs: Why LOD? Why Now?</a>, J.Cobb, 2014. Eg
+</p>
+<ul>
+<li>AAT used in <a href="http://calculate.alptown.com/">Cataloging Calculator</a>: finds bibliographic and authority data: language codes, geographic area codes, publication country codes, AACR2 abbreviations, LC main entry, Cutter numbers, AAT concepts, etc</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/AAT-CatalogingCalculator.png" alt="AAT-CatalogingCalculator.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org73290a1">
+<h4 id="org73290a1"><span class="section-number-4">6.7.12</span> AAT in Europeana</h4>
+<ul>
+<li><a href="http://pro.europeana.eu/share-your-data/data-guidelines/edm-case-studies/europeana-aat">Europeana uses AAT to enrich</a> type/subject/material fields</li>
+<li>PartagePlus matched Art Nuveau candidate concepts to AAT; enriched labels</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/AAT-Europeana.jpg" alt="AAT-Europeana.jpg" class="stretch" style="width:600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org96c6688">
+<h3 id="org96c6688"><span class="section-number-3">6.8</span> J.P.Getty Museum</h3>
+<p>
+Working with JPGM on publishing LOD. Considering CIDOC CRM, maybe also simpler ontologies.
+Hoping to generate R2RML from instance examples like:
+</p>
+
+<div class="figure">
+<p><img src="./img/GVP-objects.png" alt="GVP-objects.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org477d2c9">
+<h4 id="org477d2c9"><span class="section-number-4">6.8.1</span> J.P.Getty Museum and Wikidata</h4>
+<p>
+Discussing making data for Wikidata. WD has 480 Getty paintings, but the Museum has 180k artworks.
+<a href="https://query.wikidata.org/#%23defaultView:ImageGrid%0ASELECT%20?item%20?itemLabel%20?pic%20WHERE%20%7B%0A%20%20?item%20wdt:P195%20wd:Q731126.%0A%20%20OPTIONAL%20%7B%20?item%20wdt:P18%20?pic.%20%7D%0A%20%20SERVICE%20wikibase:label%20%7B%20bd:serviceParam%20wikibase:language%20%22en%22.%20%7D%0A%7D%0A">WD query shown as image grid</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/WD-Getty.png" alt="WD-Getty.png" class="stretch" style="width:1300px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org864a052">
+<h3 id="org864a052"><span class="section-number-3">6.9</span> American Art Collaborative</h3>
+<p>
+<a href="http://americanartcollaborative.org/">American Art Collaborative</a>: 14 US art museums committed to establishing a critical mass of LOD on the semantic web.
+Consulting on CRM mapping.
+</p>
+<ul>
+<li>Work ongoing at <a href="https://github.com/american-art">https://github.com/american-art</a>, eg see <a href="https://github.com/american-art/npg/issues?utf8=%E2%9C%93&amp;q=is:issue%20">NPG mapping issues</a></li>
+<li>Eg possible mapping of "(sculpture) Cast after"</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/AAC-NPG-castAfter.png" alt="AAC-NPG-castAfter.png" class="stretch" style="width:1256px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org1904cff">
+<h3 id="org1904cff"><span class="section-number-3">6.10</span> European Holocaust Research Infrastructure</h3>
+<p>
+EHRI is a large-scale EU project that involves 23 Holocaust archives (Europe, Israel and the US), DH and IT organizations.
+</p>
+<ul>
+<li>In its first phase (2011-2015) it aggregated archival descriptions and materials on a large scale and built a Virtual Research Environment (portal) for Holocaust researchers based on a graph database.</li>
+<li>In its second phase (2015-2019), EHRI2 seeks to enhance the gathered materials using semantic approaches: enrichment, coreferencing, interlinking. Semantic integration involves Four of the 14 EHRI2 work packages and helps integrate databases, free text, and metadata to interconnect historical entities (people, organizations, places, historic events)  and create networks.</li>
+
+</ul>
+<p>
+"Semantic Archive Integration for Holocaust Research: the EHRI Research Infrastructure", V.Alexiev, L.Brazzo, CIDOC Congress 2016.
+</p>
+
+</section>
+<section id="slide-org49f900a">
+<h4 id="org49f900a"><span class="section-number-4">6.10.1</span> EHRI: Person Networks</h4>
+<p>
+Research question: how person networks influenced chance of survival. Idea:
+</p>
+<ul>
+<li>Rec 123456: firstName “John”, lastName “Smith”, gender Male, dateMarriage 1921-01-05, <i>additional names</i> nameSpouseMaiden “Matienzo”, nameSpouse “Maria Smith”, nameChild “Mike Smith”, nameSibling “Jack Jones”</li>
+<li>We can create Person records for the people mentioned, make some likely inferences, then try to match to other Person records in the database</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/EHRI-person-networks.png" alt="EHRI-person-networks.png" class="stretch" style="width:950px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgda6f147">
+<h4 id="orgda6f147"><span class="section-number-4">6.10.2</span> EHRI: Large-Scale Place Matching</h4>
+<p>
+Match USHMM places to Geonames, also achieving deduplication. A Geonames matching pipeline in free text was also developed
+</p>
+
+<div class="figure">
+<p><img src="./img/EHRI-place-matching.png" alt="EHRI-place-matching.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org896246f">
+<h4 id="org896246f"><span class="section-number-4">6.10.3</span> EHRI: Oral History Interviews</h4>
+<p>
+Analyze 2.5k OH Interviews:
+</p>
+<ul>
+<li>ONTO: Place enrichment, Person name recognition</li>
+<li>INRIA: word2vec experiments</li>
+
+</ul>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">guard</th>
+<th scope="col" class="org-right">Cos dist</th>
+<th scope="col" class="org-left">punishment</th>
+<th scope="col" class="org-right">Cos dist</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">guarding</td>
+<td class="org-right">0.593507</td>
+<td class="org-left">punishments</td>
+<td class="org-right">0.668144</td>
+</tr>
+
+<tr>
+<td class="org-left">sentry</td>
+<td class="org-right">0.512083</td>
+<td class="org-left">punish</td>
+<td class="org-right">0.601212</td>
+</tr>
+
+<tr>
+<td class="org-left">hlinka</td>
+<td class="org-right">0.496201</td>
+<td class="org-left">punishing</td>
+<td class="org-right">0.543213</td>
+</tr>
+
+<tr>
+<td class="org-left">gate</td>
+<td class="org-right">0.490032</td>
+<td class="org-left">beatings</td>
+<td class="org-right">0.527033</td>
+</tr>
+
+<tr>
+<td class="org-left">watching</td>
+<td class="org-right">0.484647</td>
+<td class="org-left">penalty</td>
+<td class="org-right">0.497262</td>
+</tr>
+
+<tr>
+<td class="org-left">rifle</td>
+<td class="org-right">0.484379</td>
+<td class="org-left">deserved</td>
+<td class="org-right">0.490157</td>
+</tr>
+
+<tr>
+<td class="org-left">lookout</td>
+<td class="org-right">0.482025</td>
+<td class="org-left">beaten</td>
+<td class="org-right">0.473870</td>
+</tr>
+
+<tr>
+<td class="org-left">patrol</td>
+<td class="org-right">0.477233</td>
+<td class="org-left">straf</td>
+<td class="org-right">0.473338</td>
+</tr>
+
+<tr>
+<td class="org-left">soldier</td>
+<td class="org-right">0.475982</td>
+<td class="org-left">offense</td>
+<td class="org-right">0.461230</td>
+</tr>
+
+<tr>
+<td class="org-left">guarded</td>
+<td class="org-right">0.474689</td>
+<td class="org-left">executing</td>
+<td class="org-right">0.459965</td>
+</tr>
+
+<tr>
+<td class="org-left">police</td>
+<td class="org-right">0.474291</td>
+<td class="org-left">merciless</td>
+<td class="org-right">0.455123</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>
+semantic "differencing" (<b>interesting</b>)
+</p>
+<pre class="example">
+KGB - Stalin + Hitler = SS
+
+</pre></li>
+
+</ul>
+
+</section>
+<section id="slide-orgffd9239">
+<h4 id="orgffd9239"><span class="section-number-4">6.10.4</span> EHRI: Discovering Camps, Ghettos, Stalags</h4>
+<p>
+And referencing to Geonames so we can get coordinates
+</p>
+
+<div class="figure">
+<p><img src="./img/EHRI-camps.png" alt="EHRI-camps.png" class="stretch" style="width:1290px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc936b86">
+<h3 id="orgc936b86"><span class="section-number-3">6.11</span> Others Projects: WikiArtHistory</h3>
+<p>
+Vienna University of Technology (<a href="http://vsem.ec.tuwien.ac.at/wikiarthistory/2012/05/15/wikiarthistory-init/">site</a>, <a href="http://vsem.ec.tuwien.ac.at/wp-content/publications/WEBSCI12.pdf">paper</a>)
+</p>
+<ul>
+<li>Art History networks from Wikipedia, through VIAF id</li>
+<li>Time and nationality from ULAN</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/wikiarthistory.png" alt="wikiarthistory.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc6e7db3">
+<h3 id="orgc6e7db3"><span class="section-number-3">6.12</span> ChartEx</h3>
+<p>
+NLP analysis of medieval <b>Charters</b> and Deeds.
+Funded by Digging Into Data cross-country SSH funding initiative.
+Visualized with <a href="http://brat.nlplab.org/">BRAT</a>
+</p>
+
+<div class="figure">
+<p><img src="./img/ChartEx.png" alt="ChartEx.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf25afa8">
+<h3 id="orgf25afa8"><span class="section-number-3">6.13</span> Numismatics</h3>
+<p>
+My good friend <a href="https://www.blogger.com/profile/14492799646719449654">Ethan Gruber</a> at the American Numismatic Society has developed a host of amazing software that uses and produces LOD.
+</p>
+<ul>
+<li>Numishare: Data platform for coins/medals, 100k coin types</li>
+<li>Nomisma: Shared authorities for numismatics</li>
+<li>Kerameikos: Pottery LOD</li>
+<li>EADitor: EAD Editor:  based on XML &amp; XForms, uses/produces LOD</li>
+<li>xEAC: EAC/CPF Editor: based on XML &amp; XForms, uses/produces LOD</li>
+
+</ul>
+
+</section>
+<section id="slide-org2338a17">
+<h4 id="org2338a17"><span class="section-number-4">6.13.1</span> Coins in Time and Space</h4>
+<p>
+Spatiotemporal distribution of hoards containing a particular Roman Republican coin type.
+Below: examples of this type in partner collections
+</p>
+
+<div class="figure">
+<p><img src="./img/numismatics-distribution.png" alt="numismatics-distribution.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5ccf706">
+<h4 id="org5ccf706"><span class="section-number-4">6.13.2</span> Geographic Distribution</h4>
+<p>
+Distribution of the Roman denarius: blue dots for mints, heatmap of finds (a lot in the UK Portable Antiquities Scheme)
+</p>
+
+<div class="figure">
+<p><img src="./img/numismatics-denarius.png" alt="numismatics-denarius.png" class="stretch" style="width:900px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org16a9341">
+<h4 id="org16a9341"><span class="section-number-4">6.13.3</span> Numishare</h4>
+<p>
+Data platform with over 100k coin types. 
+Powers custom collections, eg <a href="http://numismatics.org/aod/">Art of Devastation</a>: Medalic Art of the Great War
+</p>
+
+<div class="figure">
+<p><img src="./img/numismatics-AoD.png" alt="numismatics-AoD.png" class="stretch" style="width:1315px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5df50b9">
+<h4 id="org5df50b9"><span class="section-number-4">6.13.4</span> Nomisma</h4>
+<p>
+Shared authorities for numismatics. Eg a mint:
+</p>
+
+<div class="figure">
+<p><img src="./img/numismatics-mint.png" alt="numismatics-mint.png" class="stretch" style="width:1218px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge0a3c9c">
+<h4 id="orge0a3c9c"><span class="section-number-4">6.13.5</span> CoinHoards</h4>
+<ul>
+<li>Greek coin data provided by <a href="http://coinhoards.org">CoinHoards.org</a></li>
+<li>Geo mapping data provided by <a href="http://nomisma.org">nomisma.org</a></li>
+<li>Below: reference to the coin in an archival notebook (linked via OA)</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/numismatics-oa.png" alt="numismatics-oa.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org07b46fa">
+<h4 id="org07b46fa"><span class="section-number-4">6.13.6</span> Statistical Charts</h4>
+<p>
+Denominations issued by Augustus, Tiberius&#x2026; rendered in a chart using d3js
+</p>
+
+<div class="figure">
+<p><img src="./img/numismatics-denominations.png" alt="numismatics-denominations.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org0ed20de">
+<h4 id="org0ed20de"><span class="section-number-4">6.13.7</span> Kerameikos: Pottery LOD</h4>
+<p>
+<a href="http://kerameikos-project.blogspot.bg/">Kerameikos Project</a> editor. Based on XForms, leverages Getty and BM LOD
+</p>
+
+<div class="figure">
+<p><img src="./img/numismatics-kerameikos-editor.png" alt="numismatics-kerameikos-editor.png" class="stretch" style="width:1251px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf67beb8">
+<h4 id="orgf67beb8"><span class="section-number-4">6.13.8</span> EADitor and xEAC</h4>
+<p>
+<a href="http://eaditor.blogspot.com">Blog</a>, <a href="http://wiki.numismatics.org/xeac:viaf-import">Wiki</a>. Based on XForms. Leverages the Getty thesauri and VIAF, imports data as needed
+</p>
+
+<div class="figure">
+<p><img src="./img/numismatics-xEAC-import.png" alt="numismatics-xEAC-import.png" class="stretch" style="width:1200px" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

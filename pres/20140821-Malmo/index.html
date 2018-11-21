@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Semantic Technologies for Cultural Heritage</title>
+<meta name="author" content="(Vladimir Alexiev, Ontotext Corp)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>Semantic Technologies for Cultural Heritage</h2><h3>Vladimir Alexiev, Ontotext Corp</h3><h4>2015-02-10</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/index-full.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org8c074c8">Semantic Technologies</a></li>
+<li><a href="#/slide-orgf4ddc1a">Ontotext Corp</a></li>
+<li><a href="#/slide-orgd3c46b5">Some Ontotext Products</a></li>
+<li><a href="#/slide-org1ee4cc2">Ontotext GLAM Projects</a></li>
+<li><a href="#/slide-org852e16b">Europeana Creative</a></li>
+<li><a href="#/slide-org1116c8f">Europeana Food and Drink</a></li>
+<li><a href="#/slide-orgbd2a3c1">Bulgariana</a></li>
+<li><a href="#/slide-orged500df">Ontotext / GraphDB in CH</a></li>
+<li><a href="#/slide-org51e7c5d">ResearchSpace</a></li>
+<li><a href="#/slide-orgd983642">Getty Vocabularies LOD</a></li>
+<li><a href="#/slide-org0bbc727">Possible Future Topics</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org8c074c8">
+<h2 id="org8c074c8">Semantic Technologies</h2>
+<ul>
+<li><b>Web 1.0</b>: hyperlinked documents (World Wide Web)</li>
+<li><b>Web 2.0</b>: interactive applications, the Social Web</li>
+<li><b>Web 3.0</b>: interlinked data (Global Giant Graph)</li>
+
+</ul>
+<p>
+Is this something new?
+</p>
+<ul>
+<li>It was all envisioned by Sir Tim Berners-Lee 25 years ago</li>
+<li>Standardized by W3C: both HTML and sem web standards (RDF, RDFS, OWL, SPARQL&#x2026;)</li>
+<li>Great flurry of sem tech activity in the last 15 years</li>
+<li>Buzzwords: Big Data, Semantic Analytics, Concept Extraction, Sentiment Analysis&#x2026;</li>
+
+</ul>
+</section>
+<section id="slide-orgd9dde98">
+<h3 id="orgd9dde98">Linked Open Data Cloud</h3>
+<ul>
+<li>Parts at <a href="http://factforge.net">factforge.net</a>, <a href="http://linkedlifedata.com">linkedlifedata.com</a>. Grown 10x since Mar 2009!</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/lod-datasets-2009-03-27-FactForge-LLD.jpg" alt="lod-datasets-2009-03-27-FactForge-LLD.jpg" style="width:800px" />
+</p>
+</div>
+</section>
+<section id="slide-orgd275fbb">
+<h3 id="orgd275fbb">Linguistic Linked Data</h3>
+
+<div class="figure">
+<p><img src="./img/llod-for-multisensor.png" alt="llod-for-multisensor.png" style="width:750px" />
+</p>
+</div>
+</section>
+<section id="slide-orgeb1e9d2">
+<h3 id="orgeb1e9d2">Cultural Heritage Linked Data</h3>
+
+<div class="figure">
+<p><img src="./img/Culture-datacloud-large.png" alt="Culture-datacloud-large.png" style="width:880px" />
+</p>
+</div>
+</section>
+<section id="slide-org496d2c0">
+<h3 id="org496d2c0">Europeana Recognizes Importance of Semantic Technologies</h3>
+
+<div class="figure">
+<p><img src="./img/Europeana-semantic-whitepaper-press-release.png" alt="Europeana-semantic-whitepaper-press-release.png" class="stretch" style="width:900px" />
+</p>
+</div>
+</section>
+<section id="slide-org791138a">
+<h3 id="org791138a">Europeana Sem Tech MindMap</h3>
+
+<div class="figure">
+<p><img src="./img/Europeana-semantic-activities-mindmap.png" alt="Europeana-semantic-activities-mindmap.png" style="width:880px" />
+</p>
+</div>
+</section>
+<section id="slide-org9066675">
+<h3 id="org9066675">Europeana Sem Tech MindMap Detail</h3>
+
+<div class="figure">
+<p><img src="./img/Europeana-semantic-activities-detail.png" alt="Europeana-semantic-activities-detail.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgf4ddc1a">
+<h2 id="orgf4ddc1a">Ontotext Corp</h2>
+<ul>
+<li>World Leading semantic technology developer
+<ul>
+<li>Working in this area since 2000 as part of Sirma Group</li>
+<li>Spun off in 2008 after venture investment (NEVEQ)</li>
+<li>75 employees: Bulgaria (Sofia and Varna), UK, USA (Washington DC)</li>
+<li>Global leader in semantic databases, semantic annotation and search</li>
+
+</ul></li>
+<li>Proven Delivery
+<ul>
+<li>Highest profile sem web applications</li>
+<li>BBC: World Cup 2010, London Olympics 2012, all of BBC sport&#x2026;</li>
+<li>Dynamic Semantic Publishing: Master Publishing platform</li>
+<li>Semantic search for multinational pharmaceuticals (eg Astra Zeneca)</li>
+
+</ul></li>
+<li>Stable and Growing, both staff and revenue</li>
+
+</ul>
+</section>
+<section id="slide-orgd0777e4">
+<h3 id="orgd0777e4">Some Ontotext Clients</h3>
+
+<div class="figure">
+<p><img src="./img/Ontotext-Clients.png" alt="Ontotext-Clients.png" />
+</p>
+</div>
+</section>
+<section id="slide-org65023fc">
+<h3 id="org65023fc">Ontotext Research Projects (FP5-FP7)</h3>
+<ul>
+<li>Bulgaria's largest participant: over 30 projects</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/Ontotext-FP-projects-timeline.png" alt="Ontotext-FP-projects-timeline.png" style="width:800px" />
+</p>
+</div>
+</section>
+<section id="slide-org5d1f2f0">
+<h3 id="org5d1f2f0">Current Research Projects</h3>
+<ul>
+<li><a href="http://www.euclid-project.eu/">EUCLID</a> : Educational Curriculum for the usage of Linked Data
+<ul>
+<li>Professional training curriculum for data practitioners aiming to use Linked Data in their daily work.</li>
+<li>Strongly relevant to CH metadata specialists and other experts focusing on Linked Open Data</li>
+
+</ul></li>
+<li><a href="https://annomarket.eu/">AnnoMarket</a> : Cloud-Based Text Annotation Marketplace
+<ul>
+<li>Open marketplace for pay-as-you-go, cloud-based extraction resources and services</li>
+<li>Multilingual semantic entity extraction from CH text (e.g. museum object descriptions) is important and largely unsolved</li>
+
+</ul></li>
+<li><a href="http://www.ldbc.eu/">LDBC</a> : Linked Data Benchmark Council
+<ul>
+<li>NPO for publishing and auditing benchmark results for graph and RDF databases.</li>
+<li>CH institutions that decide to use repositories require such info, and can provide meaningful use cases</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgf8b1893">
+<h4 id="orgf8b1893">Current Research Projects (2)</h4>
+<ul>
+<li><a href="http://pro.europeana.eu/web/europeana-creative">Europeana Creative</a> : Re-use of cultural heritage metadata and content by the creative industries.
+<ul>
+<li>Contribution to improving the usefulness and kick-starting the professional use of Europeana data</li>
+<li>Ontotext plays a core technological role, helping to fulfill 3 Europeana technical KPIs</li>
+
+</ul></li>
+<li><a href="http://foodanddrinkeurope.eu/">Europeana Food and Drink</a> : explore and celebrate European cultural identity through its culinary and social history
+<ul>
+<li>Ontotext works on culinary culture classification scheme, semantic representation and storage, semantic text analysis, and semantic application</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgbed3a7e">
+<h4 id="orgbed3a7e">Current Research Projects (3)</h4>
+<ul>
+<li><a href="http://www.multisensorproject.eu/">MultiSensor</a> : Multidimensional content integration
+<ul>
+<li>Mine heterogeneous content using multilingual technologies with sentiment, social and spatiotemporal competence</li>
+<li>Application of Linguistic Linked Data</li>
+<li>Relevant to text and multimedia CH content</li>
+
+</ul></li>
+<li><a href="http://project.dapaas.eu/">DaPaaS</a> : Data Publishing through the Cloud
+<ul>
+<li>Data- and Platform-as-a-Service Approach for Efficient Data Publication and Consumption</li>
+<li>Useful for converting and hosting your Linked Open Data, and implementing Open Data Portals</li>
+
+</ul></li>
+<li><a href="http://pheme.eu">Pheme</a> : Computing Veracity Across Media, Languages, and Social Networks</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgd3c46b5">
+<h2 id="orgd3c46b5">Some Ontotext Products</h2>
+<ul>
+<li>GraphDB (OWLIM)</li>
+<li>KIM Semantic Annotation</li>
+<li>Master Publishing Platform</li>
+<li>PROTON Ontology</li>
+
+</ul>
+</section>
+<section id="slide-org331532a">
+<h3 id="org331532a">GraphDB (OWLIM)</h3>
+<ul>
+<li>High-performance semantic repository created by Ontotext</li>
+<li>Reasoning and query evaluation are performed over a persistent storage layer.</li>
+<li>Loading, reasoning and query evaluation are fast even against complex ontologies and huge knowledge bases</li>
+<li>Can manage billions of statements on desktop hardware, 10s of billions on commodity server hardware</li>
+<li>Pure Java implementation, ensuring ease of deployment and portability</li>
+<li>Compatible with Sesame (OpenRDF), which brings interoperability benefits and support for all major RDF syntaxes and query languages</li>
+<li>Compatible with Jena through a built in adapter layer</li>
+<li>Enterprise-grade</li>
+<li>Used by important commercial clients (see slide above)</li>
+<li>Found a great following in the CH domain (see later)</li>
+
+</ul>
+</section>
+<section id="slide-orgd3e0d1d">
+<h3 id="orgd3e0d1d">GraphDB Features</h3>
+<ul>
+<li>High-performance reasoning: RDFS, OWL-Horst, OWL2 RL, QL</li>
+<li>Custom rule-sets allow tuning for optimal performance and expressivity</li>
+<li>Optimized owl:sameAs handling: dramatic improvements for data integrated from multiple sources</li>
+<li>Clustering: resilience, fail-over and scalable parallel query processing</li>
+<li>Geo-spatial extensions for fast geo queries over WGS84 data</li>
+<li>Full-text search support, based on either Lucene or proprietary search techniques</li>
+<li>High-performance retraction of statements &amp; inferences</li>
+<li>Expressive consistency &amp; integrity constraint checking mechanisms</li>
+<li>Notification mechanism, to allow clients to react to statements in the update stream</li>
+
+</ul>
+</section>
+<section id="slide-org1206ffc">
+<h3 id="org1206ffc">New GraphDB Features</h3>
+<ul>
+<li>GraphDB-Workbench with improved management</li>
+<li>JMX-based management and control interfaces</li>
+<li>Cluster deployment and testing tool</li>
+<li>Cluster operational improvements</li>
+<li>Explain Query Plans</li>
+<li>Rule profiling</li>
+<li>Support for external plug-ins. Loaded from the classpath, handle custom functions &amp; predicates</li>
+<li>Connectors that synchronize RDF data to provide extremely fast full-text and facet searches:
+<ul>
+<li>Elasticsearch GraphDB Connector</li>
+<li>Lucene GraphDB Connector</li>
+<li>Solr GraphDB Connector</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org6ee8d5d">
+<h3 id="org6ee8d5d">KIM Semantic Annotation and Search</h3>
+<ul>
+<li>Built on top of GATE</li>
+<li>Ontotext is the largest commercial contributor to GATE</li>
+<li>Used by important commercial clients: BBC, UK Press Association, NDP, Oxford University Press, Financial Times, Euromoney&#x2026;</li>
+
+</ul>
+<p>
+Large-scale semantic annotation based on:
+</p>
+<ul>
+<li>Assembling a semantic knowledge base of a domain</li>
+<li>Creating annotation guidelines and a Gold Standard Corpus</li>
+<li>Machine learning</li>
+
+</ul>
+<p>
+Involves:
+</p>
+<ul>
+<li>Named Entity Recognition</li>
+<li>Semantic Disambiguation</li>
+<li>Concept Extraction</li>
+<li>Relation Extraction</li>
+<li>Event Extraction</li>
+
+</ul>
+</section>
+<section id="slide-orge7e5b98">
+<h3 id="orge7e5b98">KIM Customization</h3>
+<p>
+<a href="https://confluence.ontotext.com/display/SSDC/Semantic+Solutions+Docs+Collection">KIM Semantic Solutions</a> describes the various parts of KIM that can be customized<br />
+<img src="./img/KIM_customizations.png" alt="KIM_customizations.png" />
+</p>
+</section>
+<section id="slide-org2a47c63">
+<h3 id="org2a47c63">Master Publishing Framework</h3>
+
+<div class="figure">
+<p><img src="./img/KIM_customizations-arch.png" alt="KIM_customizations-arch.png" style="width:1000px" />
+</p>
+</div>
+</section>
+<section id="slide-org3a4482d">
+<h3 id="org3a4482d">PROTON Upper Ontology</h3>
+
+<div class="figure">
+<p><img src="./img/PROTON_usage_and_extention_guidelines_map.png" alt="PROTON_usage_and_extention_guidelines_map.png" style="width:850px" />
+</p>
+</div>
+</section>
+<section id="slide-orgfee543b">
+<h3 id="orgfee543b">Ontotext More Info</h3>
+<p>
+See <a href="https://confluence.ontotext.com/display/OntoMKTG/Ontotext+Marketing+Materials">more info</a> including brochures, cases etc
+<img src="./img/OntotextMarketingMaterials.png" alt="OntotextMarketingMaterials.png" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org1ee4cc2">
+<h2 id="org1ee4cc2">Ontotext GLAM Projects</h2>
+<ul>
+<li>UK National Archives: Semantic Knowledge Base</li>
+<li>Europeana Creative</li>
+<li>Europeana Food and Drink</li>
+<li>Bulgariana</li>
+<li>GraphDB CH installations (endpoints)</li>
+<li>ResearchSpace</li>
+<li>Getty LOD</li>
+
+</ul>
+</section>
+<section id="slide-orgd9a6e39">
+<h3 id="orgd9a6e39">UK National Archives: Semantic Knowledge Base</h3>
+
+<div class="figure">
+<p><img src="./img/TNA-SKB.png" alt="TNA-SKB.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org852e16b">
+<h2 id="org852e16b">Europeana Creative</h2>
+<ul>
+<li>Enabling Creatives to Work with CH Data</li>
+<li>Pilots by eCreative partners</li>
+<li>Open challenges, growing to incubation support</li>
+<li>Help with collection data, content reuse, Europeana APIs, creative workshop ideas&#x2026;</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/eCreative-pipeline-workshop.png" alt="eCreative-pipeline-workshop.png" />
+</p>
+</div>
+</section>
+<section id="slide-org1237f49">
+<h3 id="org1237f49">In 5 pilot areas: tourism, social networks, design, nature, history</h3>
+
+<div class="figure">
+<p><img src="./img/eCreative-plan-fragment.png" alt="eCreative-plan-fragment.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgd69b343">
+<h3 id="orgd69b343">Ontotext in Europeana / Europeana Creative</h3>
+<p>
+Ontotext works on fundamental backend technologies important for tech KPIs 
+</p>
+
+<div class="figure">
+<p><img src="./img/OntotextContributesToEuropeana.png" alt="OntotextContributesToEuropeana.png" style="width:1000px" />
+</p>
+</div>
+</section>
+<section id="slide-org23cc16a">
+<h3 id="org23cc16a">Europeana OAI and SPARQL</h3>
+<p>
+Ontotext creates OAI PMH server for Europeana
+</p>
+<ul>
+<li>So we or others can download objects in bulk</li>
+
+</ul>
+<p>
+Ontotext hosts the Europeana semantic data (EDM) in OWLIM
+</p>
+<ul>
+<li><a href="http://europeana.ontotext.com/sparql">http://europeana.ontotext.com/sparql</a><br />
+20M objects, obsolete: 1.5 years old</li>
+<li><a href="http://europeana-test.ontotext.com/sparql">http://europeana-test.ontotext.com/sparql</a><br />
+20M objects, incomplete: working with Europeana to update it</li>
+<li>Provides SPARQL querying</li>
+
+</ul>
+</section>
+<section id="slide-org9c804f7">
+<h3 id="org9c804f7">SPARQL 1.1 Queries</h3>
+<p>
+Eg Polish Periodicals by library and decade<br />
+<a href="http://europeana-test.ontotext.com/sparql">http://europeana-test.ontotext.com/sparql</a>
+</p>
+<pre  class="example">
+select 
+  ?date 
+  (sum(?n1) as ?Uniwersytetu_Warszawskiego)
+  (sum(?n2) as ?Politechniki_Lubelskiej)
+  (sum(?n3) as ?Baltycka)
+{
+  ?x dc:type 'periodical'@en.
+  ?x ore:proxyIn/edm:dataProvider ?dataProvider.
+  ?x dc:date ?date2.
+  bind (xsd:integer(concat(substr(?date2,1,3),'0')) as ?date)
+  bind (if(?dataProvider='e-biblioteka Uniwersytetu Warszawskiego',1,0) as ?n1)
+  bind (if(?dataProvider='Biblioteka Cyfrowa Politechniki Lubelskiej',1,0) as ?n2)
+  bind (if(?dataProvider='Bałtycka Biblioteka Cyfrowa',1,0) as ?n3)
+} group by ?date order by ?date
+</pre>
+</section>
+<section id="slide-orga2491f9">
+<h3 id="orga2491f9">SPARQL Analytics</h3>
+<p>
+Eg Polish Periodicals by library &amp; decade (you can <a href="http://jsfiddle.net/valexiev/t4aX9/">jsfiddle</a> with it)<br />
+<img src="./img/EDM-sgvizler2.png" alt="EDM-sgvizler2.png" />
+</p>
+</section>
+<section id="slide-org8ab4e83">
+<h3 id="org8ab4e83">EDM Object Graph</h3>
+
+<div class="figure">
+<p><img src="./img/europeana-graph.png" alt="europeana-graph.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1116c8f">
+<h2 id="org1116c8f">Europeana Food and Drink</h2>
+<p>
+<a href="http://foodanddrinkeurope.eu/">Europeana Food and Drink</a>:
+</p>
+<ul>
+<li>Explore and celebrate European cultural identity through its culinary and social history</li>
+<li>29 partners, of which perhaps 20 are content providers</li>
+
+</ul>
+<p>
+Ontotext works on:
+</p>
+<ul>
+<li>culinary culture classification scheme</li>
+<li>semantic representation and storage</li>
+<li>semantic text analysis</li>
+<li>semantic application (pilot)</li>
+
+</ul>
+</section>
+<section id="slide-org92ca9d6">
+<h3 id="org92ca9d6">EDAMAM Recipe/Food Knowledge Base</h3>
+<p>
+Crawled 1.5M recipes, extracted ingredients, matched to SR23 enabling semantic search
+</p>
+
+<div class="figure">
+<p><img src="./img/EDAMAM-web-details.png" alt="EDAMAM-web-details.png" style="width:500px" /> 
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbd2a3c1">
+<h2 id="orgbd2a3c1">Bulgariana</h2>
+<p>
+A Bulgarian aggregator to Europeana
+</p>
+
+<div class="figure">
+<p><img src="./img/bulgariana-collections.png" alt="bulgariana-collections.png" style="width:850px" />
+</p>
+</div>
+</section>
+<section id="slide-org464e459">
+<h3 id="org464e459">Bulgariana Collection: Thracian Gold</h3>
+<p>
+World-famous Bulgarian treasures:
+</p>
+
+<div class="figure">
+<p><img src="./img/rhyton-at-bulgariana.png" alt="rhyton-at-bulgariana.png" style="width:880px" />
+</p>
+</div>
+</section>
+<section id="slide-org884f231">
+<h3 id="org884f231">Rhyton at Europeana</h3>
+<p>
+Now any European citizen can find it!
+<img src="./img/rhyton-at-europeana.png" alt="rhyton-at-europeana.png" />
+</p>
+</section>
+<section id="slide-orgd5e9136">
+<h3 id="orgd5e9136">Rhyton at Europeana Open Culture</h3>
+<p>
+Others make beautiful apps with your data! Bulgariana Collection Featured in Open Culture
+</p>
+
+<div class="figure">
+<p><img src="./img/rhyton-europeanaopenculture.png" alt="rhyton-europeanaopenculture.png" style="width:800px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orged500df">
+<h2 id="orged500df">Ontotext / GraphDB in CH</h2>
+<p>
+Ontotext helped create some of the significant CH LOD datasets, hosted on GraphDB:
+</p>
+<ul>
+<li>British Museum (CRM): <a href="http://collection.britishmuseum.org/sparql">http://collection.britishmuseum.org/sparql</a></li>
+<li>PSNC Polish Digital Library (CRM/FRBRoo): <a href="http://dl.psnc.pl">http://dl.psnc.pl</a></li>
+<li>Europeana (EDM): <a href="http://europeana.ontotext.com">http://europeana.ontotext.com</a></li>
+<li>Getty AAT &amp; TGN (SKOS, SKOS-XL&#x2026;): <a href="http://vocab.getty.edu">http://vocab.getty.edu</a></li>
+<li>JP LOD.AC: Japanese LOD initiative: <a href="http://lod.ac">http://lod.ac</a></li>
+<li>FP7 CHARISMA: art database portal: <a href="http://archives-charisma-portal.eu/">http://archives-charisma-portal.eu/</a></li>
+<li>FP7 3D COFORM: architectural and archaeological objects</li>
+<li>ConservationSpace: system for conservation specialists</li>
+
+</ul>
+<p>
+Comparing to:
+</p>
+<ul>
+<li>FactForge (9 general LOD): <a href="http://www.factforge.net">http://www.factforge.net</a></li>
+<li>LinkedLifeData (13 bio LOD): <a href="http://linkedlifedata.com">http://linkedlifedata.com</a></li>
+
+</ul>
+</section>
+<section id="slide-org6314241">
+<h3 id="org6314241">GraphDB Repo Sizes</h3>
+<p>
+Millions: objects, explicit statements, ex.st per object, total statements; expansion ratio
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Repo</th>
+<th scope="col" class="org-left">Ontology</th>
+<th scope="col" class="org-right">Obj</th>
+<th scope="col" class="org-right">Ex.st</th>
+<th scope="col" class="org-right">Ex.st/obj</th>
+<th scope="col" class="org-right">Tot.st</th>
+<th scope="col" class="org-right">Exp.</th>
+<th scope="col" class="org-right">Nodes</th>
+<th scope="col" class="org-right">Density</th>
+<th scope="col" class="org-left">Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">BM</td>
+<td class="org-left">CRM</td>
+<td class="org-right">2.0</td>
+<td class="org-right">195</td>
+<td class="org-right">90</td>
+<td class="org-right">916</td>
+<td class="org-right">4.7</td>
+<td class="org-right">54</td>
+<td class="org-right">17.0</td>
+<td class="org-left">rdfs+tran+FR</td>
+</tr>
+
+<tr>
+<td class="org-left">PSNC</td>
+<td class="org-left">CRM/FRBRoo</td>
+<td class="org-right">3.1</td>
+<td class="org-right">234</td>
+<td class="org-right">75</td>
+<td class="org-right">535</td>
+<td class="org-right">2.3</td>
+<td class="org-right">60</td>
+<td class="org-right">8.9</td>
+<td class="org-left">rdfs-subClass</td>
+</tr>
+
+<tr>
+<td class="org-left">Europeana</td>
+<td class="org-left">EDM</td>
+<td class="org-right">20.3</td>
+<td class="org-right">998</td>
+<td class="org-right">50</td>
+<td class="org-right">3798</td>
+<td class="org-right">3.8</td>
+<td class="org-right">266</td>
+<td class="org-right">14.3</td>
+<td class="org-left">owl-horst</td>
+</tr>
+
+<tr>
+<td class="org-left">Getty</td>
+<td class="org-left">SKOS etc</td>
+<td class="org-right">1.3</td>
+<td class="org-right">103</td>
+<td class="org-right">79</td>
+<td class="org-right">163</td>
+<td class="org-right">1.6</td>
+<td class="org-right">28</td>
+<td class="org-right">5.8</td>
+<td class="org-left">owl-horst</td>
+</tr>
+
+<tr>
+<td class="org-left">FF</td>
+<td class="org-left">DC, DBP</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1673</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">3211</td>
+<td class="org-right">1.9</td>
+<td class="org-right">456</td>
+<td class="org-right">7.0</td>
+<td class="org-left">owl-horst</td>
+</tr>
+
+<tr>
+<td class="org-left">LLD</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">6706</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">10192</td>
+<td class="org-right">1.5</td>
+<td class="org-right">1554</td>
+<td class="org-right">6.6</td>
+<td class="org-left">rdfs+trans</td>
+</tr>
+</tbody>
+</table>
+<p>
+References (Partial):
+</p>
+<ul>
+<li>Large-scale Reasoning with a Complex Cultural Heritage Ontology (CIDOC CRM), CRMEX 2013</li>
+<li>OWLIM Reasoning over FactForge, ORE 2012</li>
+<li>Transforming a Flat Metadata Schema to a Semantic Web Ontology: The Polish Digital Libraries Federation and CIDOC CRM Case Study. 
+Studies in Computational Intelligence 2012</li>
+
+</ul>
+</section>
+<section id="slide-org8b2866d">
+<h3 id="org8b2866d">Example GraphDB use: Charisma Portal</h3>
+<p>
+<a href="http://archives-charisma-portal.eu/">http://archives-charisma-portal.eu/</a>
+<img src="./img/charisma-portal.png" alt="charisma-portal.png" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org51e7c5d">
+<h2 id="org51e7c5d">ResearchSpace</h2>
+<ul>
+<li>A Virtual Research Environment for art research</li>
+<li>Funded by the Andrew Mellon Foundation</li>
+<li>Executed by the British Museum</li>
+<li>Software developed by Ontotext</li>
+<li>Uses Ontotext's semantic database (GraphDB)</li>
+
+</ul>
+<p>
+Papers:
+</p>
+<ul>
+<li>Types and annotations for CIDOC CRM properties, DiPP 2012</li>
+<li>Implementing CIDOC CRM search based on fundamental relations and OWLIM rules, SDA 2012</li>
+<li>Large-scale Reasoning with a Complex Cultural Heritage Ontology (CIDOC CRM), CRMEX 2013</li>
+<li>RDF data and image annotations in ResearchSpace, DH-CASE 2013</li>
+
+</ul>
+</section>
+<section id="slide-orgb696def">
+<h3 id="orgb696def">ResearchSpace Presentations and Videos</h3>
+<ul>
+<li><a href="http://www.researchspace.org/">ResearchSpace</a> website</li>
+<li><a href="http://www.researchspace.org/project-updates">News</a> &amp; <a href="http://www.researchspace.org/file-cabinet">Files</a>, including presentations &amp; papers</li>
+<li>Videos by <a href="https://www.youtube.com/user/dodudeful">Dominic Oldman</a> (British Museum)</li>
+<li>Presentations by <a href="http://www.slideshare.net/BarryNorton/">Barry Norton</a> (BM, former Ontotext)</li>
+
+</ul>
+<p>
+For example:
+</p>
+<ul>
+<li><a href="http://www.researchspace.org/project-updates/slidesfromoxfordsummerschool/DH2014%20BM.pdf">Oxford Summer School slides</a>, Jul 2014</li>
+<li><a href="http://www.slideshare.net/BarryNorton/glamorous-lod-and-researchspace-introduction">GLAMorous LOD and ResearchSpace introduction</a>, Rijksmuseum, May 2014</li>
+<li><a href="http://www.slideshare.net/BarryNorton/glamorous-lod">GLAMorous LOD</a>, NGA, Washington DC, Apr 2014</li>
+<li><a href="https://www.youtube.com/watch?v=Ai7uhtRF7HM">ResearchSpace, CIDOC CRM and Ethical data</a>, UC London</li>
+<li><a href="http://www.youtube.com/watch?v=HCnwgq6ebAs">ResearchSpace CIDOC CRM Search System</a>, Apr 2013</li>
+<li><a href="https://www.youtube.com/watch?v=HbYgaxctGV8">CIDOC CRM Cultural Semantic Search using Fundamental Relationships</a>, May 2013</li>
+<li><a href="http://www.slideshare.net/BarryNorton/book-of-the-dead-project">Book of the Dead Project</a>: using CIDOC-CRM, FRBRoo and RDFa</li>
+<li><a href="http://www.slideshare.net/BarryNorton/querying-cultural-heritage">Querying Cultural Heritage Data</a></li>
+
+</ul>
+</section>
+<section id="slide-orgc49777c">
+<h3 id="orgc49777c">2M British Museum Objects as LOD</h3>
+<p>
+Eg <a href="http://collection.britishmuseum.org/id/object/EOC3130">http://collection.britishmuseum.org/id/object/EOC3130</a>
+<img src="./img/RS-BM-HoaHakananai'a.png" alt="RS-BM-HoaHakananai'a.png" />
+</p>
+</section>
+<section id="slide-org11c4e0e">
+<h3 id="org11c4e0e">ResearchSpace Semantic Search</h3>
+<p>
+Also works across collections, eg BM and Yale Center for British Art
+<img src="./img/RS-search-Rembrandt-drawing-mammal.png" alt="RS-search-Rembrandt-drawing-mammal.png" />
+</p>
+</section>
+<section id="slide-orga0d71df">
+<h3 id="orga0d71df">ResearchSpace: Semantic Data Annotation</h3>
+
+<div class="figure">
+<p><img src="./img/RS-data-annotation-over-BM-data.png" alt="RS-data-annotation-over-BM-data.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgf14497a">
+<h3 id="orgf14497a">ResearchSpace: Semantic Image Annotation</h3>
+<p>
+Allows arbitrary shapes using SvgEdit, supports deep zoom, relates to semantic facts, or free discussion
+<img src="./img/RS-image-annotation-susanna-xRay.png" alt="RS-image-annotation-susanna-xRay.png" />
+</p>
+</section>
+<section id="slide-orgc887a40">
+<h3 id="orgc887a40">CRM Search (Fundamental Relations)</h3>
+<p>
+CRM data comprises complex graphs of nodes and properties.
+</p>
+<ul>
+<li>How can a user search through such complex graphs?</li>
+<li>The number of possible combinations is staggering</li>
+
+</ul>
+<p>
+FC/FR Approach:
+</p>
+<ul>
+<li>New Framework for Querying Semantic Networks (<a href="https://www.ics.forth.gr/tech-reports/2011/2011.TR419_Querying_Semantic_Networks.pdf">FORTH TR419, 2011</a>)</li>
+<li>Fundamental Categories and Relationships for intuitive querying CIDOC-CRM based repositories (<a href="http://www.cidoc-crm.org/docs/TechnicalReport429_April2012.pdf">FORTH TR-429, Apr 2012</a>, 153 pages)</li>
+<li>"Compresses" the semantic network by mapping networks of CRM properties to single FRs</li>
+<li>FRs serve as a "search index" over the CRM semantic web</li>
+<li>Allow the user to use a simpler query vocabulary</li>
+
+</ul>
+</section>
+<section id="slide-org6edc2ea">
+<h3 id="org6edc2ea">CRM Fundamental Relations Matrix</h3>
+<ul>
+<li>114 FRs over all combinations of FCs; 18 "specialization FRs"</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/CRM-FR-matrix.png" alt="CRM-FR-matrix.png" style="width:700px" />
+</p>
+</div>
+</section>
+<section id="slide-orgcb04b6e">
+<h3 id="orgcb04b6e">Example: Thing from Place</h3>
+<p>
+How a Thing's <b>origin</b> can be related to Place (* = recursion)
+</p>
+<ul>
+<li>Thing (part of another)* considered to be "from" Place if:</li>
+<li>is formerly or currently located at Place (falling in another)*</li>
+<li>or was brought into existence (produced/created) by an Event (part of another)*
+<ul>
+<li>that happened at Place (falling in another)*</li>
+<li>or was carried out by an Actor (who is member of a Group)*
+<ul>
+<li>who formerly or currently has residence at Place (falling in another)*</li>
+<li>or was brought into existence (born/formed) by an Event (part of another)* that happened at Place (falling in another)*</li>
+
+</ul></li>
+
+</ul></li>
+<li>or was Moved to/from a Place (falling in another)*</li>
+<li>or changed ownership through an Acquisition (part of another)*
+<ul>
+<li>that happened at Place (falling in another)*</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgfbb43b1">
+<h3 id="orgfbb43b1">Thing from Place: Definition (CRM Classes &amp; Properties)</h3>
+<pre  class="example">
+FC70_Thing --(P46i_forms_part_of* | P106i_forms_part_of* | P148i_is_component_of*)-&gt; FC70_Thing:
+  {FC70_Thing --(P53_has_former_or_current_location | P54_has_current_permanent_location)-&gt; E53_Place:
+    {E53_Place --P89_falls_within*-&gt; E53_Place}
+  OR FC70_Thing --P92i_was_brought_into_existence_by-&gt; E63_Beginning_of_Existence:
+    {E63_Beginning_of_Existence --P9i_forms_part_of*-&gt; E5_Event:
+      {E5_Event --P7_took_place_at-&gt; E53_Place:
+        {E53_Place --P89_falls_within*-&gt; E53_Place}
+      OR E7_Activity --P14_carried_out_by-&gt; E39_Actor:
+        {E39_Actor --P107i_is_current_or_former_member_of* -&gt; E39_Actor:
+          {E39_Actor --P74_has_current_or_former_residence  -&gt; E53_Place:
+            {E53_Place --P89_falls_within*-&gt; E53_Place}
+          OR E39_Actor --P92i_was_brought_into_existence_by-&gt; E63_Beginning_of_Existence:
+            {E63_Beginning_of_Existence --P9i_forms_part_of*-&gt; E5_Event:
+              {E5_Event --P7_took_place_at-&gt; E53_Place:
+                {E53_Place --P89_falls_within* -&gt; E53_Place}}}}}}}
+  OR E19_Physical_Thing  --P25i_moved_by-&gt; E9_Move:
+    {E9_Move --(P26_moved_to | P27_moved_from)-&gt; E53_Place:
+      {E53_Place  --P89_falls_within*-&gt; E53_Place}}
+  OR E19_Physical_Object --P24i_changed_ownership_through-&gt; E8_Acquisition:
+    {E8_Acquisition --P9i_forms_part_of*-&gt; E5_Event:
+      {E5_Event --P7_took_place_at-&gt; E53_Place:
+        {E53_Place --P89_falls_within*-&gt; E53_Place}}}}
+</pre>
+</section>
+<section id="slide-orgcb73233">
+<h3 id="orgcb73233">Thing from Place: Graphical Representation</h3>
+
+<div class="figure">
+<p><img src="./img/FR7_from_place.png" alt="FR7_from_place.png" style="width:1000px" />
+</p>
+</div>
+</section>
+<section id="slide-orgb7247fb">
+<h3 id="orgb7247fb">Thing from Place: SPARQL Query</h3>
+<pre  class="example">
+select ?t ?p2 {
+?t a FC70_Thing. ?t (P46i_forms_part_of* | P106i_forms_part_of* | P148i_is_component_of*) ?t1.
+  {?t1 (P53_has_former_or_current_location | P54_has_current_permanent_location) ?p1}
+  UNION
+  {?t1 P92i_was_brought_into_existence_by ?e1. ?e1 P9i_forms_part_of* ?e2.
+      {?e2 P7_took_place_at ?p1}
+      UNION
+      {?e2 P14_carried_out_by ?a1.
+        ?a1 P107i_is_current_or_former_member_of* ?a2.
+          {?a2 P74_has_current_or_former_residence ?p1}
+          UNION 
+          {?a2 P92i_was_brought_into_existence_by ?e3. ?e3 P9i_forms_part_of* ?e4. 
+           ?e4 P7_took_place_at ?p1}}}
+  UNION
+  {?t2 P25i_moved_by ?e5. ?e5 (P26_moved_to | P27_moved_from) ?p1}
+  UNION
+  {?t2 P24i_changed_ownership_through ?e6.
+    ?e6 P9i_forms_part_of ?e7. ?e7 P7_took_place_at ?p1}.
+?p1 P89_falls_within* ?p2}
+</pre>
+<ul>
+<li>Very complex and expensive, especially when you need to combine with other FRs into composite queries</li>
+<li>Tried in 3D COFORM, just doesn't work</li>
+
+</ul>
+</section>
+<section id="slide-org08976d2">
+<h3 id="org08976d2">Thing from Place: Corrected/Rationalized Definition</h3>
+
+<div class="figure">
+<p><img src="./img/FR7_from_place-fixed.png" alt="FR7_from_place-fixed.png" style="width:1000px" />
+</p>
+</div>
+</section>
+<section id="slide-org615ab29">
+<h3 id="org615ab29">Thing from Place: Decomposing into sub-FRs</h3>
+<ul>
+<li>"Sub-FRs" are auxiliary relations used to build up the final FR</li>
+<li>The numbering comes from CRM property and entity names</li>
+<li>Prefixes: FR: final result, FRT: transitive, FRX: non-transitive, FC70=Thing or E: from/to that class</li>
+
+</ul>
+<pre  class="example">
+        # self-loops and simple disjunctions
+FRT_46i_106i_148i := (P46i|P106i|P148i)+
+FRT_9i_10 := (P9|P10)+
+FRT_107i := P107i+
+FRT_89 := P89+
+FRX_53_54 := (P53|P54)
+FRX_24i_25i := (P24i|P25i)
+         # growing fragments
+FRX_92i := P92i | P92i/FRT_9i_10
+FRX_92i_14 := FRX_92i/P14 | FRX_92i/P14/FRT_107i
+FRX_FC70_E8_9_63 := FRX_92i_14/P92i | FRX_24i_25i
+FRX_FC70_E8_9_63_P7 := FRX_FC70_E8_9_63/P7 | FRX_FC70_E8_9_63/FRT_9i_10/P7
+FRX7 := FRX_53_54 | FRX_FC70_E8_9_63_P7 | FRX_92i_14/P74 | FRX_92i/P7
+FRX7_P89 := FRX7 | FRX7/FRT_89
+FR7 := FRX7_P89 | FRT_46i_106i_148i/FRX7_P89
+</pre>
+</section>
+<section id="slide-orgd95a125">
+<h3 id="orgd95a125">FR Implementation as OWLIM Rules</h3>
+<ul>
+<li>OWL2 doesn't have conjunctive properties</li>
+<li>So we implemented with OWLIM rules, using the parallel/sequential decompositions above</li>
+<li>Details: <a href="https://confluence.ontotext.com/display/ResearchSpace/FR+Implementation">FR Implementation</a></li>
+<li>Implemented 19 FRs of Thing (see <a href="https://confluence.ontotext.com/display/ResearchSpace/Meta-Thesaurus+and+FR+Names#Meta-ThesaurusandFRNames-SpecialFRs">FR Names</a>):
+<ul>
+<li>refers to or is about Place; from Place; is/was located in Place</li>
+<li>has met Actor; by Actor</li>
+<li>refers to or is about Event; has met Event</li>
+<li>is made of Material; is/has Type; used technique; identified by Identifier</li>
+
+</ul></li>
+<li>Use 44 CRM properties. Took 86 rules, 10 axioms, 26 sub-FRs (gray on next slide)</li>
+<li>Refactoring idea: <a href="http://vladimiralexiev.github.io/pres/extending-owl2/index.html">http://vladimiralexiev.github.io/pres/extending-owl2/index.html</a></li>
+
+</ul>
+</section>
+<section id="slide-org7e2fe00">
+<h3 id="org7e2fe00">FR Dependency Diagram</h3>
+<p>
+Used to check no disconnected props, no misspelling in rules
+</p>
+
+<div class="figure">
+<p><img src="./img/FR-graph.png" alt="FR-graph.png" style="width:1000px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd983642">
+<h2 id="orgd983642">Getty Vocabularies LOD</h2>
+<p>
+Well-known and important cultural heritage thesauri:
+</p>
+<ul>
+<li>Art and Architecture Thesaurus (AAT)</li>
+<li>Thesaurus of Geographic Names (TGN)</li>
+<li>Unified List of Artist Names (ULAN)</li>
+<li>Cultural Object Names Authority (CONA)</li>
+
+</ul>
+<p>
+Ontotext helps Getty publish them as LOD: <a href="http://vocab.getty.edu">http://vocab.getty.edu</a>
+</p>
+<ul>
+<li>AAT published Feb 2014, already sees numerous use cases</li>
+<li>TGN published Aug 2014</li>
+<li>Continuing with ULAN, CONA; AATA (bibliography), Getty Museum data</li>
+<li>Special session at CIDOC Congress (Dresden, Sep 2014)</li>
+
+</ul>
+</section>
+<section id="slide-orgbacd7ca">
+<h3 id="orgbacd7ca">Getty External Ontologies</h3>
+<ul>
+<li>SKOS, SKOSXL, ISO 25964 for representing thesaurus info;</li>
+<li>DC, DCT for common properties;</li>
+<li>BIBO, FOAF for sources and contributors;</li>
+<li>WGS, Schema for geographic information;</li>
+<li>PROV for revision history;</li>
+<li>RDF, RDFS, OWL, XSD for system properties;</li>
+<li>R2RML for implementing the conversion.</li>
+
+</ul>
+</section>
+<section id="slide-orgd575645">
+<h3 id="orgd575645">Getty Semantic Representation</h3>
+<ul>
+<li>Covers subjects (concepts, guide terms&#x2026;),
+hierarchical rels, associative rels, historic info,
+labels, sources, contributors, revision history, languages &#x2026;</li>
+<li><a href="http://vocab.getty.edu/doc/">Doc</a> (100 pages!): below is <a href="http://vocab.getty.edu/doc/#Semantic_Overview">Semantic Overview</a></li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/005-semantic-overview.png" alt="005-semantic-overview.png" style="width:330px" />
+</p>
+</div>
+</section>
+<section id="slide-org27d8382">
+<h3 id="org27d8382">TGN Semantic Representation</h3>
+<p>
+Duality Concept-Place (ala VIAF, UK BL, FR BnF, SE KB..)
+</p>
+
+<div class="figure">
+<p><img src="./img/012-TGN-overview.png" alt="012-TGN-overview.png" style="width:400px" />
+</p>
+</div>
+</section>
+<section id="slide-org33e4eff">
+<h3 id="org33e4eff">GVP Ontology</h3>
+<p>
+Custom ontology: <a href="http://vocab.getty.edu/ontology">http://vocab.getty.edu/ontology</a>
+<img src="./img/GVP-documentation.png" alt="GVP-documentation.png" />
+</p>
+</section>
+<section id="slide-org5f6ebc0">
+<h3 id="org5f6ebc0">Use of ISO 25946 in Getty LOD</h3>
+<p>
+Latest standard on thesauri: ISO 25946. Use Thesaurus Array for ordered children
+<img src="./img/Getty-isoThesaurusArray.png" alt="Getty-isoThesaurusArray.png" />
+</p>
+</section>
+<section id="slide-orgfc4d4b1">
+<h3 id="orgfc4d4b1">Contribution to ISO 25946</h3>
+<ul>
+<li>Contributed to ISO 25946 ontology: <a href="http://purl.org/iso25964/skos-thes">http://purl.org/iso25964/skos-thes</a></li>
+<li>See <a href="http://lov.okfn.org/dataset/lov/details/vocabulary_iso-thes.html">Linked Open Vocabularies entry</a></li>
+<li>First industrial use of ISO 25946</li>
+<li>Defined appropriate combinations of BTG, BTP, BTI relations (first formally defined in ISO).</li>
+
+</ul>
+<p>
+<a href="https://drive.google.com/file/d/0B7BFygWDV2_PNkQycHl0bWNLak0">On Compositionality of ISO 25964 Hierarchical Relations (BTG, BTP, BTI)</a>, V.Alexiev, J.Lindenthal, A.Isaac.
+<a href="https://at-web1.comp.glam.ac.uk/pages/research/hypermedia/nkos/nkos2014/programme.html">Networked Knowledge Organization Systems (NKOS 2014)</a> Workshop at DL2014, London, 11-12 Sep 2014
+</p>
+</section>
+<section id="slide-org736c3f6">
+<h3 id="org736c3f6">GVP LOD Architecture</h3>
+
+<div class="figure">
+<p><img src="./img/GVP-architecture.png" alt="GVP-architecture.png" style="width:880px" />
+</p>
+</div>
+</section>
+<section id="slide-org4c8e772">
+<h3 id="org4c8e772">TGN Charting with SPARQL</h3>
+<p>
+Number of members of the UN per year. <a href="http://vocab.getty.edu/doc/#Column_Chart_with_SPARQL">See doc</a> or <a href="http://jsfiddle.net/valexiev/TCr59/">jsfiddle</a> with it
+</p>
+
+<div class="figure">
+<p><img src="./img/029-growth-of-UN.png" alt="029-growth-of-UN.png" style="width:700px" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org0bbc727">
+<h2 id="org0bbc727">Possible Future Topics</h2>
+<ul>
+<li>Deploying thesaurus management system (VocBench) based on SKOS, SKOS-XL and semantic repository</li>
+<li>Text analytics and semantic annotation of CH records</li>
+<li>Linguistic Linked Data</li>
+<li>Manuscripts: semantic integration, semantic search, semantic annotation</li>
+<li>Research Infrastructures</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./img/QuestionMark.jpg" alt="QuestionMark.jpg" style="width:400px" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1595,
+height: 1100,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
