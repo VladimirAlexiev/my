@@ -1,8 +1,7 @@
 * Vladimir Alexiev CV and Bibliography
 
 - CV (updated 2018-11): http://rawgit2.com/VladimirAlexiev/my/master/cv/Vladimir-Alexiev.pdf
-- Publications: http://rawgit2.com/VladimirAlexiev/my/master/index.html
-- Presentations: TODO
+- Publications and Presentations: http://rawgit2.com/VladimirAlexiev/my/master/index.html
 
 Publication stats:
 | Books, thesis, conference proceedings           |  3 |
