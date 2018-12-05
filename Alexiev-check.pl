@@ -1,6 +1,6 @@
 #!perl -wn
 
-# perl Alexiev-check.pl Alexiev-bibliography.bib | sort > Alexiev-brokenLinks.txt
+# perl Alexiev-check.pl Alexiev-bibliography.bib | sort > Alexiev-check.txt
 
 use strict;
 use LWP;
