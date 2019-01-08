@@ -1,174 +1,176 @@
-http://ceur-ws.org/Vol-1117/
-http://ceur-ws.org/Vol-1117/paper8.pdf
-http://ceur-ws.org/Vol-912/paper8.pdf
-http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.30.9953
-http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.301.8273
-http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.301.8381
-http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.7107
-http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.2657
-http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.6168
-http://confluence.ontotext.com/display/ResearchSpace/BM+Mapping
-http://dipp.math.bas.bg/images/2018/019-050_32_11-iDiPP2018-34.pdf
-http://dl.acm.org/citation.cfm?id=212113
-http://dl.acm.org/citation.cfm?id=2517997
-http://docplayer.net/12848719-University-it-pm-education-nbu-and-esi-sei-masters-programs-vladimir-alexiev-phd-pmp-ontotext-lab-sirma-group-holding.html
-http://github.com/VladimirAlexiev/grammar-diagrams
-http://graphdb.ontotext.com/documentation/standard/rules-optimisations.html
-http://jigpal.oxfordjournals.org/content/2/1/77
-http://ldbcouncil.org/sites/default/files/LDBC_D4.4.2.pdf
-http://link.springer.com/article/10.1007/s00799-015-0162-2
-http://link.springer.com/chapter/10.1007/978-3-319-27932-9_16
-http://link.springer.com/content/pdf/10.1007/s00799-015-0162-2.pdf
-http://lov.okfn.org/dataset/lov/details/vocabulary_gvp.html
-http://lov.okfn.org/dataset/lov/details/vocabulary_iso-thes.html
-http://nkos.slis.kent.edu/2015NKOSworkshop/MarciaZeng-LODKOSInnovativeUse.pdf
-http://pro.europeana.eu/blogpost/meet-the-members-council-vladimir-alexiev
-http://pro.europeana.eu/taskforce/evaluation-and-enrichments
-http://purl.org/iso25964/skos-thes
-http://rawgit2.com/VladimirAlexiev/CH-names/master/README.html
-http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.ebnf
-http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.xhtml
-http://rawgit2.com/VladimirAlexiev/multisensor/master/20141008-Linguistic-LD/index-full.html
-http://rawgit2.com/VladimirAlexiev/multisensor/master/20141008-Linguistic-LD/index.html
-http://rawgit2.com/VladimirAlexiev/multisensor/master/20160915-Multisensor-LOD/index.html
-http://rawgit2.com/VladimirAlexiev/multisensor/master/FrameNet/paper.pdf
-http://rawgit2.com/VladimirAlexiev/multisensor/master/FrameNet/pres-full.html
-http://rawgit2.com/VladimirAlexiev/multisensor/master/FrameNet/pres.html
-http://rawgit2.com/VladimirAlexiev/multisensor/master/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20101111-PMI-BG-IT-PM.ppt
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20130413-ResearchSpace as an Example of a VRE Based on CIDOC CRM.pptx
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20131013-VCMS Project Design.pptx
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/Semantic Technologies for Cultural Heritage.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/SemTechCH-Malmo.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/GVP-LOD-CIDOC.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/BTG-BTP-BTI-compositionality.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index-full.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/add-mapping-long.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/add-mapping.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/bg-dbpedia-launched-long.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/bg-dbpedia-launched.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems-long.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160212-Using-DBPedia-in-Europeana-Food-and-Drink.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies/index-full.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index-full.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/Linked%20Open%20Data%20for%20Cultural%20Heritage.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index-full.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright/Linked_Open_Data_for_Cultural_Heritage_Institutions.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright/index-full.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/index-full.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/index.html
-http://rawgit2.com/VladimirAlexiev/my/master/pres/20181109-CLADA-BG- Ontotext and LOD (68 slides).ppt
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/20150518-GLAMs-working-with-Wikidata.ppt
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-annotatedBibliography.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-mutableObjectState.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-objectOriented.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1994-applicationsLinearLogic.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1995-eventCalculus.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1996-targetedCommunication.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1998-distributedSynchronization.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1998-finitePi.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1999-thesis-2up.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1999-thesis.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1999-thesisPresentation.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2010-costEffectiveEGov.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2011-SemtechForCulturalHeritage.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-FR-search.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Properties-presentation.ppt
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Properties.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Search-presentation.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning-slides.ppt
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievAsenova2010-TeachingIT_PM.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievMartev2009-ElectronicExportBG.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievMitevBukev2010-eGovBPM.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Classification-Scheme-(D2.2).pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Delivery-(D3.20).pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Extended-(D3.20d).pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-M18-Report-(D3.20a).pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-M21-Report-(D3.20b).pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Specification-(D3.19).pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/GLAMwiki2015.ppt
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/INSCI2016.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Ikonomov2013-EuropeanaCreative-EDM-slides.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Ikonomov2013-EuropeanaCreative-EDM.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/MarciaZeng-LODKOSInnovativeUse.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/MarinovAlexievDjonev1994-BCPN.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Museum Linked Open Data (77 pages).pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Museum Linked Open Data (DIPP 2018, 21 slides).ppt
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/O_is_for_Open_(CultJam_201507)_poster.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/O_is_for_Open_(CultJam_201507)_slide.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Parvanova2013-SemanticAnnotation-slides.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Parvanova2013-SemanticAnnotation.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/TPDL2016.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2015-DomainSpecificGazetteer-slides.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2015-DomainSpecificGazetteer.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2017-DomainSpecificGazetteer.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/euBusinessGraph-poster-Semantics2017.pdf
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/extending-owl2/index.html#sec-3-1
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/sex-or-gender/index.html
-http://rawgit2.com/euBusinessGraph/eubg-data/master/ontology/index.html
-http://rawgit2.com/webdata/SEMANTiCS2017-posters/master/papers_final/163_Alexiev/index.html
-http://sda2012.dke-research.de/images/pdfs/crm-search-presentation.pdf
-http://vocab.getty.edu/doc/
-http://vocab.getty.edu/doc/queries/
-http://vocab.getty.edu/ontology
-http://www.computer.org/csdl/proceedings/icmew/2015/7079/00/07169818.pdf
-http://www.slideshare.net/valexiev1/20140521-semtechbizguestlecture
-http://www.slideshare.net/valexiev1/comparing-ontotext-kim-and-apache-stanbol
-http://www.slideshare.net/valexiev1/comparing-ontotext-kim-and-apache-stanbol-appendix
-http://www.slideshare.net/valexiev1/europeana-food-and-drink-classification-scheme
-http://www.slideshare.net/valexiev1/glams-working-with-wikidata
-http://www.slideshare.net/valexiev1/research-space-vre-based-on-cidoc-crm
-http://www.slideshare.net/valexiev1/semantic-technologies-for-cultural-heritage-35749530
-http://www.slideshare.net/valexiev1/semantic-technology-in-publishing-finance
-http://www.slideshare.net/valexiev1/wikidata-a-target-for-europeanas-semantic-strategy-glamwiki-2015
-http://www.w3.org/TR/hcls-dataset/
-http://youtu.be/n8oGmOu9JEw
-https://docs.google.com/document/d/1F4FGJqJ2lWponSnzxQpJR6Nq87Ecv3qXJ4ExcmWgIvU/edit#
-https://docs.google.com/document/d/1dhMOTlIOC6dOK_jksJRX0CB-GIRoiYY6fWtCnZArUhU/edit
-https://docs.google.com/document/d/1guwFHi9p4-ujFkrHF6dwMUZndzCmlX_gPyiBi6JlPTs/pub
-https://docs.google.com/presentation/d/1Udah3b8nc1oxjpi8XHtGX4nxIF6tlyrvo29QJkFKfgo/edit
-https://docs.google.com/presentation/d/1s-mQwj_0cpbLFVmhZPUrzB_M5mISkZQug0Wiui6H218/pub
-https://doi.org/10.3389/frobt.2018.00123
-https://drive.google.com/file/d/0B7BFygWDV2_PQ2Y0MVctalVCeXc/view
-https://drive.google.com/file/d/0B7je1jgVmCgIZzNiWmdqTGpDa28/view
-https://era.library.ualberta.ca/downloads/9g54xk065
-https://era.library.ualberta.ca/downloads/bc386k59r
-https://gist.github.com/VladimirAlexiev/090d5e54a525d57acb9b366121e77573
-https://gist.github.com/VladimirAlexiev/8201d614a819cb7d4023ce9aa315af65
-https://gist.github.com/VladimirAlexiev/90753af3a1148b7fd9bb194b2b0d7cbd
-https://gist.github.com/VladimirAlexiev/e51e256be18870ac5033901197ee8277
-https://github.com/VladimirAlexiev/LODE
-https://github.com/VladimirAlexiev/grammar-diagrams#xsparql
-https://github.com/VladimirAlexiev/multisensor
-https://github.com/VladimirAlexiev/xsparql/blob/master/doc/
-https://github.com/euBusinessGraph/eubg-data/raw/master/model/ebg-ontology.ttl
-https://github.com/euBusinessGraph/eubg-data/tree/master/model
-https://github.com/usc-isi-i2/saam-lod/wiki/SAAM-LOD-Review
-https://github.com/webdata/SEMANTiCS2017-posters/raw/master/papers_final/163_Alexiev/163_Alexiev.pdf
-https://link.springer.com/chapter/10.1007/978-3-319-59268-8_9
-https://nl.wikimedia.org/wiki/GLAM-WIKI_2015/Programme/Discussions/Strategy#Presentation:_Wikidata.2C_a_target_for_Europeana.E2.80.99s_semantic_strategy.3F
-https://ontotext.com/knowledgehub/webinars/build-narratives-connect-artifacts-cultural-heritage/
-https://ontotext.com/knowledgehub/webinars/building-knowledge-data-visualization/
-https://peerj.com/articles/2331/
-https://pro.europeana.eu/project/edm-frbroo-application-profile
-https://pro.europeana.eu/project/multilingual-and-semantic-enrichment-strategy
-https://voicethread.com/myvoice/#thread/5784646/29625471/31274564
-https://www.escience2018.com/
-https://www.slideshare.net/valexiev1/eubusinessgraph-company-and-economic-data
-https://www.slideshare.net/valexiev1/largescale-reasoning-with-a-complex-cultural-heritage-ontology-cidoc-crm-slides
-https://www.slideshare.net/valexiev1/linked-open-data-and-ontotext-projects
-https://www.slideshare.net/valexiev1/museum-linked-open-data-ontologies-datasets-projects
-https://www.slideshare.net/valexiev1/semantic-archive-integration-for-holocaust-research-the-ehri-research-infrastructure
-https://www.wiley.com/en-gb/Information+Integration+with+Ontologies%3A+Experiences+from+an+Industrial+Showcase-p-9780470010488 
-https://youtu.be/4WoYlaGF6DE
-https://zenodo.org/record/571202
+http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievNikolova2018-Semantic-Archive-Integration.pdf rawgit2 'error'
+http://vocab.getty.edu/ontology 400 Bad Request
+https://www.wiley.com/en-gb/Information+Integration+with+Ontologies%3A+Experiences+from+an+Industrial+Showcase-p-9780470010488 405 Method Not Allowed
+OK http://ceur-ws.org/Vol-1117/
+OK http://ceur-ws.org/Vol-1117/paper8.pdf
+OK http://ceur-ws.org/Vol-912/paper8.pdf
+OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.30.9953
+OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.301.8273
+OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.301.8381
+OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.7107
+OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.2657
+OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.6168
+OK http://confluence.ontotext.com/display/ResearchSpace/BM+Mapping
+OK http://dipp.math.bas.bg/images/2018/019-050_32_11-iDiPP2018-34.pdf
+OK http://dl.acm.org/citation.cfm?id=212113
+OK http://dl.acm.org/citation.cfm?id=2517997
+OK http://docplayer.net/12848719-University-it-pm-education-nbu-and-esi-sei-masters-programs-vladimir-alexiev-phd-pmp-ontotext-lab-sirma-group-holding.html
+OK http://github.com/VladimirAlexiev/grammar-diagrams
+OK http://graphdb.ontotext.com/documentation/standard/rules-optimisations.html
+OK http://jigpal.oxfordjournals.org/content/2/1/77
+OK http://ldbcouncil.org/sites/default/files/LDBC_D4.4.2.pdf
+OK http://link.springer.com/article/10.1007/s00799-015-0162-2
+OK http://link.springer.com/chapter/10.1007/978-3-319-27932-9_16
+OK http://link.springer.com/content/pdf/10.1007/s00799-015-0162-2.pdf
+OK http://lov.okfn.org/dataset/lov/details/vocabulary_gvp.html
+OK http://lov.okfn.org/dataset/lov/details/vocabulary_iso-thes.html
+OK http://nkos.slis.kent.edu/2015NKOSworkshop/MarciaZeng-LODKOSInnovativeUse.pdf
+OK http://pro.europeana.eu/blogpost/meet-the-members-council-vladimir-alexiev
+OK http://pro.europeana.eu/taskforce/evaluation-and-enrichments
+OK http://purl.org/iso25964/skos-thes
+OK http://rawgit2.com/euBusinessGraph/eubg-data/master/ontology/index.html
+OK http://rawgit2.com/VladimirAlexiev/CH-names/master/README.html
+OK http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.ebnf
+OK http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.xhtml
+OK http://rawgit2.com/VladimirAlexiev/multisensor/master/20141008-Linguistic-LD/index.html
+OK http://rawgit2.com/VladimirAlexiev/multisensor/master/20141008-Linguistic-LD/index-full.html
+OK http://rawgit2.com/VladimirAlexiev/multisensor/master/20160915-Multisensor-LOD/index.html
+OK http://rawgit2.com/VladimirAlexiev/multisensor/master/FrameNet/paper.pdf
+OK http://rawgit2.com/VladimirAlexiev/multisensor/master/FrameNet/pres.html
+OK http://rawgit2.com/VladimirAlexiev/multisensor/master/FrameNet/pres-full.html
+OK http://rawgit2.com/VladimirAlexiev/multisensor/master/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20101111-PMI-BG-IT-PM.ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20130413-ResearchSpace as an Example of a VRE Based on CIDOC CRM.pptx
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20131013-VCMS Project Design.pptx
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140611-SmartCulture-sem-tech-CH/Semantic Technologies for Cultural Heritage.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140821-Malmo/SemTechCH-Malmo.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/GVP-LOD-CIDOC.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140905-CIDOC-GVP/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/BTG-BTP-BTI-compositionality.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20140912-NKOS-compositionality/index-full.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/add-mapping.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/add-mapping-long.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/bg-dbpedia-launched.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/bg-dbpedia-launched-long.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems-long.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160212-Using-DBPedia-in-Europeana-Food-and-Drink.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160329-OpenData-and-Ontologies/index-full.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160514-rdfpuml/index-full.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index-full.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/Linked%20Open%20Data%20for%20Cultural%20Heritage.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright/index-full.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-fulbright/Linked_Open_Data_for_Cultural_Heritage_Institutions.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/index-full.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20171025-Practical Semantic Modeling, SPARQL, RDF Shapes, IoT-WoT-UoM (201710).pptx
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20181109-CLADA-BG- Ontotext and LOD (68 slides).ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/20150518-GLAMs-working-with-Wikidata.ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-annotatedBibliography.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-mutableObjectState.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-objectOriented.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1994-applicationsLinearLogic.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1995-eventCalculus.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1996-targetedCommunication.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1998-distributedSynchronization.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1998-finitePi.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1999-thesis.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1999-thesis-2up.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1999-thesisPresentation.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2010-costEffectiveEGov.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2011-SemtechForCulturalHeritage.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-FR-search.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Properties.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Properties-presentation.ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Search-presentation.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning-slides.ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievAsenova2010-TeachingIT_PM.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievMartev2009-ElectronicExportBG.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievMitevBukev2010-eGovBPM.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/euBusinessGraph-poster-Semantics2017.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Classification-Scheme-(D2.2).pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Delivery-(D3.20).pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Extended-(D3.20d).pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-M18-Report-(D3.20a).pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-M21-Report-(D3.20b).pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Specification-(D3.19).pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/extending-owl2/index.html#sec-3-1
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/GLAMwiki2015.ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Ikonomov2013-EuropeanaCreative-EDM.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Ikonomov2013-EuropeanaCreative-EDM-slides.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/INSCI2016.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/MarciaZeng-LODKOSInnovativeUse.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/MarinovAlexievDjonev1994-BCPN.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Museum Linked Open Data (77 pages).pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Museum Linked Open Data (DIPP 2018, 21 slides).ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/O_is_for_Open_(CultJam_201507)_poster.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/O_is_for_Open_(CultJam_201507)_slide.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Parvanova2013-SemanticAnnotation.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Parvanova2013-SemanticAnnotation-slides.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/sex-or-gender/index.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2015-DomainSpecificGazetteer.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2015-DomainSpecificGazetteer-slides.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2017-DomainSpecificGazetteer.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/TPDL2016.pdf
+OK http://rawgit2.com/webdata/SEMANTiCS2017-posters/master/papers_final/163_Alexiev/index.html
+OK http://sda2012.dke-research.de/images/pdfs/crm-search-presentation.pdf
+OK http://vocab.getty.edu/doc/
+OK http://vocab.getty.edu/doc/queries/
+OK http://www.computer.org/csdl/proceedings/icmew/2015/7079/00/07169818.pdf
+OK http://www.slideshare.net/valexiev1/20140521-semtechbizguestlecture
+OK http://www.slideshare.net/valexiev1/comparing-ontotext-kim-and-apache-stanbol
+OK http://www.slideshare.net/valexiev1/comparing-ontotext-kim-and-apache-stanbol-appendix
+OK http://www.slideshare.net/valexiev1/europeana-food-and-drink-classification-scheme
+OK http://www.slideshare.net/valexiev1/glams-working-with-wikidata
+OK http://www.slideshare.net/valexiev1/research-space-vre-based-on-cidoc-crm
+OK http://www.slideshare.net/valexiev1/semantic-technologies-for-cultural-heritage-35749530
+OK http://www.slideshare.net/valexiev1/semantic-technology-in-publishing-finance
+OK http://www.slideshare.net/valexiev1/wikidata-a-target-for-europeanas-semantic-strategy-glamwiki-2015
+OK http://www.w3.org/TR/hcls-dataset/
+OK http://youtu.be/n8oGmOu9JEw
+OK https://docs.google.com/document/d/1dhMOTlIOC6dOK_jksJRX0CB-GIRoiYY6fWtCnZArUhU/edit
+OK https://docs.google.com/document/d/1F4FGJqJ2lWponSnzxQpJR6Nq87Ecv3qXJ4ExcmWgIvU/edit#
+OK https://docs.google.com/document/d/1guwFHi9p4-ujFkrHF6dwMUZndzCmlX_gPyiBi6JlPTs/pub
+OK https://docs.google.com/presentation/d/1s-mQwj_0cpbLFVmhZPUrzB_M5mISkZQug0Wiui6H218/pub
+OK https://docs.google.com/presentation/d/1Udah3b8nc1oxjpi8XHtGX4nxIF6tlyrvo29QJkFKfgo/edit
+OK https://doi.org/10.3389/frobt.2018.00123
+OK https://drive.google.com/file/d/0B7BFygWDV2_PQ2Y0MVctalVCeXc/view
+OK https://drive.google.com/file/d/0B7je1jgVmCgIZzNiWmdqTGpDa28/view
+OK https://era.library.ualberta.ca/downloads/9g54xk065
+OK https://era.library.ualberta.ca/downloads/bc386k59r
+OK https://gist.github.com/VladimirAlexiev/090d5e54a525d57acb9b366121e77573
+OK https://gist.github.com/VladimirAlexiev/8201d614a819cb7d4023ce9aa315af65
+OK https://gist.github.com/VladimirAlexiev/90753af3a1148b7fd9bb194b2b0d7cbd
+OK https://gist.github.com/VladimirAlexiev/e51e256be18870ac5033901197ee8277
+OK https://github.com/euBusinessGraph/eubg-data/raw/master/model/ebg-ontology.ttl
+OK https://github.com/euBusinessGraph/eubg-data/tree/master/model
+OK https://github.com/usc-isi-i2/saam-lod/wiki/SAAM-LOD-Review
+OK https://github.com/VladimirAlexiev/grammar-diagrams#xsparql
+OK https://github.com/VladimirAlexiev/LODE
+OK https://github.com/VladimirAlexiev/multisensor
+OK https://github.com/VladimirAlexiev/xsparql/blob/master/doc/
+OK https://github.com/webdata/SEMANTiCS2017-posters/raw/master/papers_final/163_Alexiev/163_Alexiev.pdf
+OK https://ieeexplore.ieee.org/document/8588640
+OK https://link.springer.com/chapter/10.1007/978-3-319-59268-8_9
+OK https://nl.wikimedia.org/wiki/GLAM-WIKI_2015/Programme/Discussions/Strategy#Presentation:_Wikidata.2C_a_target_for_Europeana.E2.80.99s_semantic_strategy.3F
+OK https://ontotext.com/knowledgehub/webinars/building-knowledge-data-visualization/
+OK https://ontotext.com/knowledgehub/webinars/build-narratives-connect-artifacts-cultural-heritage/
+OK https://peerj.com/articles/2331/
+OK https://pro.europeana.eu/project/edm-frbroo-application-profile
+OK https://pro.europeana.eu/project/multilingual-and-semantic-enrichment-strategy
+OK https://voicethread.com/myvoice/#thread/5784646/29625471/31274564
+OK https://www.slideshare.net/valexiev1/eubusinessgraph-company-and-economic-data
+OK https://www.slideshare.net/valexiev1/largescale-reasoning-with-a-complex-cultural-heritage-ontology-cidoc-crm-slides
+OK https://www.slideshare.net/valexiev1/linked-open-data-and-ontotext-projects
+OK https://www.slideshare.net/valexiev1/museum-linked-open-data-ontologies-datasets-projects
+OK https://www.slideshare.net/valexiev1/semantic-archive-integration-for-holocaust-research-the-ehri-research-infrastructure
+OK https://youtu.be/4WoYlaGF6DE
+OK https://zenodo.org/record/571202

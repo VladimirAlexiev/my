@@ -1,5 +1,8 @@
 #!/bin/sh
 # -*- tab-width: 62; -*-
+
+# ./Alexiev-stats.sh > ./Alexiev-stats.txt
+
 echo "Book (author), thesis, conference proceedings (editor)	" `grep -cEi '@(.*thesis|book|proceedings){' *.bib`
 echo "Tech reports, manuals, deliverables, ontologies	" `grep -cEi '@(manual|techreport){'         *.bib` 
 echo "Conference papers, journal articles	" `grep -cEi '@(inproceedings|article){'     *.bib`
