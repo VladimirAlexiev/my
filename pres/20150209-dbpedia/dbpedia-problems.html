@@ -28,80 +28,80 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>DBpedia Ontology and Mapping Problems</h2><h3>Vladimir Alexiev</h3><h4>2015-02-16</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/index-full.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
+<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>DBpedia Ontology and Mapping Problems</h2><h3>Vladimir Alexiev</h3><h4>DBpedia Meeting, Dublin, Ireland, 2015-02-16</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20150209-dbpedia/dbpedia-problems-long.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgd24e9dd">1. DBpedia Data Quality</a>
+<li><a href="#/slide-orge42ac61">1. DBpedia Data Quality</a>
 <ul>
-<li><a href="#/slide-org3ad9fbc">1.1. Ontotext's DBpedia Experience</a></li>
-<li><a href="#/slide-org166c899">1.2. A Non-sense Mapping</a></li>
-<li><a href="#/slide-orgda9a688">1.3. Have I got your attention?</a></li>
-<li><a href="#/slide-org3512311">1.4. Mapping Issues Bigger Than Ontology Issues?</a></li>
-<li><a href="#/slide-org1852ff0">1.5. Balanced Effort</a></li>
+<li><a href="#/slide-org0d0c080">1.1. Ontotext's DBpedia Experience</a></li>
+<li><a href="#/slide-org6f2658a">1.2. A Non-sense Mapping</a></li>
+<li><a href="#/slide-org4eef273">1.3. Have I got your attention?</a></li>
+<li><a href="#/slide-orgea3d80e">1.4. Mapping Issues Bigger Than Ontology Issues?</a></li>
+<li><a href="#/slide-org160ba4d">1.5. Balanced Effort</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org19f2742">2. Issue Tracking</a>
+<li><a href="#/slide-orgcd461a3">2. Issue Tracking</a>
 <ul>
-<li><a href="#/slide-orgd32dc2f">2.1. Testing Best Practice</a></li>
+<li><a href="#/slide-orgd503a90">2.1. Testing Best Practice</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orga01529d">3. Mapping Language Issues</a>
+<li><a href="#/slide-org46ff47a">3. Mapping Language Issues</a>
 <ul>
-<li><a href="#/slide-org554cc8e">3.1. ConditionalMapping Not Flexible Enough</a></li>
-<li><a href="#/slide-org2156827">3.2. Object/DataProp Dichotomy</a></li>
-<li><a href="#/slide-orgb4ce8f0">3.3. Mapping Framework is not Modular Enough</a></li>
+<li><a href="#/slide-orgf991a32">3.1. ConditionalMapping Not Flexible Enough</a></li>
+<li><a href="#/slide-org89b5564">3.2. Object/DataProp Dichotomy</a></li>
+<li><a href="#/slide-org382da42">3.3. Mapping Framework is not Modular Enough</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org774185c">4. Mapping Server Deficiencies</a></li>
-<li><a href="#/slide-org2754e50">5. Mapping Wiki Deficiencies</a>
+<li><a href="#/slide-org37b2447">4. Mapping Server Deficiencies</a></li>
+<li><a href="#/slide-org6a81a8c">5. Mapping Wiki Deficiencies</a>
 <ul>
-<li><a href="#/slide-org3475d59">5.1. Improve Display of Mappings</a></li>
+<li><a href="#/slide-orgeec8594">5.1. Improve Display of Mappings</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orga2a2532">6. Mapping Issues</a>
+<li><a href="#/slide-orge172c88">6. Mapping Issues</a>
 <ul>
-<li><a href="#/slide-orgdab048e">6.1. No Editorial Process</a></li>
-<li><a href="#/slide-org0489677">6.2. Lack of Documentation</a></li>
-<li><a href="#/slide-org7727b5d">6.3. Good Documentation Is Specific</a></li>
-<li><a href="#/slide-org66f273f">6.4. Duplicate &amp; Semi-Duplicate Properties</a></li>
-<li><a href="#/slide-org9039333">6.5. Need for Research</a></li>
-<li><a href="#/slide-org63ae57e">6.6. Need for Research</a></li>
-<li><a href="#/slide-org1d20f24">6.7. Validate Ontological Assumptions</a></li>
-<li><a href="#/slide-org6fd04dd">6.8. Property and Class Naming</a></li>
-<li><a href="#/slide-orgf84e4b9">6.9. Various Mapping Issues</a></li>
+<li><a href="#/slide-org5c3d1c0">6.1. No Editorial Process</a></li>
+<li><a href="#/slide-org2a4b36b">6.2. Lack of Documentation</a></li>
+<li><a href="#/slide-org915621c">6.3. Good Documentation Is Specific</a></li>
+<li><a href="#/slide-org4894952">6.4. Duplicate &amp; Semi-Duplicate Properties</a></li>
+<li><a href="#/slide-org5537134">6.5. Need for Research</a></li>
+<li><a href="#/slide-org553a047">6.6. Need for Research</a></li>
+<li><a href="#/slide-org6189768">6.7. Validate Ontological Assumptions</a></li>
+<li><a href="#/slide-orgbc1169a">6.8. Property and Class Naming</a></li>
+<li><a href="#/slide-orgb37f6db">6.9. Various Mapping Issues</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orge1ad0df">7. Extraction Framework Issues</a>
+<li><a href="#/slide-orgc5119cb">7. Extraction Framework Issues</a>
 <ul>
-<li><a href="#/slide-org47346e3">7.1. Issues Important for Local Chapters</a></li>
-<li><a href="#/slide-org6651ed6">7.2. Date as Page is not Extracted</a></li>
-<li><a href="#/slide-org5e49f40">7.3. Object Property Extractor Does Not Respect Ranges</a></li>
-<li><a href="#/slide-org3799d6d">7.4. Curious Parents and Poor Data Monarchs</a></li>
-<li><a href="#/slide-org4de66a0">7.5. Data Property Extractor Does Not Respect Datatypes</a></li>
-<li><a href="#/slide-org049b7f9">7.6. Use Domain &amp; Range to Guide Extraction</a></li>
-<li><a href="#/slide-orgc08ce82">7.7. Specific Properties</a></li>
-<li><a href="#/slide-org8d9c9f5">7.8. Various Extraction Issues</a></li>
+<li><a href="#/slide-orgdc71552">7.1. Issues Important for Local Chapters</a></li>
+<li><a href="#/slide-org3de1219">7.2. Date as Page is not Extracted</a></li>
+<li><a href="#/slide-orga53512f">7.3. Object Property Extractor Does Not Respect Ranges</a></li>
+<li><a href="#/slide-org1b499f0">7.4. Curious Parents and Poor Data Monarchs</a></li>
+<li><a href="#/slide-orgac0de08">7.5. Data Property Extractor Does Not Respect Datatypes</a></li>
+<li><a href="#/slide-orga6b8257">7.6. Use Domain &amp; Range to Guide Extraction</a></li>
+<li><a href="#/slide-org0430595">7.7. Specific Properties</a></li>
+<li><a href="#/slide-org331f6b7">7.8. Various Extraction Issues</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgb6531f2">8. External Mapping Problems</a>
+<li><a href="#/slide-org6b15bae">8. External Mapping Problems</a>
 <ul>
-<li><a href="#/slide-orgd79c904">8.1. DUL Too Generic?</a></li>
-<li><a href="#/slide-orgbc2ddc6">8.2. owl:Thing Considered Useless</a></li>
-<li><a href="#/slide-org55bc057">8.3. No Choice</a></li>
+<li><a href="#/slide-orgb3f5ff4">8.1. DUL Too Generic?</a></li>
+<li><a href="#/slide-org001a060">8.2. owl:Thing Considered Useless</a></li>
+<li><a href="#/slide-org4d5a913">8.3. No Choice</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orga3087d5">9. Ontology Problems</a>
+<li><a href="#/slide-org4e7bf0c">9. Ontology Problems</a>
 <ul>
-<li><a href="#/slide-org849856a">9.1. External Props Not Used Consistently</a></li>
-<li><a href="#/slide-org84ba1cb">9.2. rdfs:domain/range are Wishful</a></li>
-<li><a href="#/slide-org9b9d582">9.3. Classes that Duplicate Properties</a></li>
-<li><a href="#/slide-orgf34a859">9.4. Measurement Classes</a></li>
-<li><a href="#/slide-org8195bbb">9.5. Place vs Organisation</a></li>
-<li><a href="#/slide-org61096b1">9.6. Simple Ontology Fixes</a></li>
+<li><a href="#/slide-orgc93b79d">9.1. External Props Not Used Consistently</a></li>
+<li><a href="#/slide-org7df99f4">9.2. rdfs:domain/range are Wishful</a></li>
+<li><a href="#/slide-org89bfe79">9.3. Classes that Duplicate Properties</a></li>
+<li><a href="#/slide-orgf6e0833">9.4. Measurement Classes</a></li>
+<li><a href="#/slide-org65ce673">9.5. Place vs Organisation</a></li>
+<li><a href="#/slide-orgcc1c18f">9.6. Simple Ontology Fixes</a></li>
 </ul>
 </li>
 </ul>
@@ -110,8 +110,8 @@
 </section>
 
 <section>
-<section id="slide-orgd24e9dd">
-<h2 id="orgd24e9dd"><span class="section-number-2">1</span> DBpedia Data Quality</h2>
+<section id="slide-orge42ac61">
+<h2 id="orge42ac61"><span class="section-number-2">1</span> DBpedia Data Quality</h2>
 <ul>
 <li>DBpedia is a crucial LOD dataset used by many, including for commercial applications by companies like Ontotext.</li>
 <li>But DBpedia data quality leaves a lot to be desired, and has been the subject of many recent papers.</li>
@@ -135,8 +135,8 @@ Instead, I want to focus on root causes of important error classes and to propos
 I give many concrete examples
 </p>
 </section>
-<section id="slide-org3ad9fbc">
-<h3 id="org3ad9fbc"><span class="section-number-3">1.1</span> Ontotext's DBpedia Experience</h3>
+<section id="slide-org0d0c080">
+<h3 id="org0d0c080"><span class="section-number-3">1.1</span> Ontotext's DBpedia Experience</h3>
 <ul>
 <li>Used DBpedia for at least 5 years</li>
 <li>Eg <a href="http://factforge.net">http://factforge.net</a> aggregates DBPedia, FreeBase, GeoNames, etc (9 central LOD datasets), but old versions</li>
@@ -166,8 +166,8 @@ Until now, only grumbled internally about DBpedia data quality
 </ul>
 
 </section>
-<section id="slide-org166c899">
-<h3 id="org166c899"><span class="section-number-3">1.2</span> A Non-sense Mapping</h3>
+<section id="slide-org6f2658a">
+<h3 id="org6f2658a"><span class="section-number-3">1.2</span> A Non-sense Mapping</h3>
 <p>
 <a href="http://mappings.dbpedia.org/index.php?title=Mapping_el:Quote_box&amp;action=edit">Mapping_el:Quote_box</a> is utter nonsense
 </p>
@@ -214,8 +214,8 @@ I especially like these mappings. 1 is a number, alright ;-)
 </ul>
 
 </section>
-<section id="slide-orgda9a688">
-<h3 id="orgda9a688"><span class="section-number-3">1.3</span> Have I got your attention?</h3>
+<section id="slide-org4eef273">
+<h3 id="org4eef273"><span class="section-number-3">1.3</span> Have I got your attention?</h3>
 <p>
 I wanted to open with a horrible example to get your attention
 </p>
@@ -246,8 +246,8 @@ It doesn't take an ontological discussion on the nature of Numbers to figure out
 </ul>
 
 </section>
-<section id="slide-org3512311">
-<h3 id="org3512311"><span class="section-number-3">1.4</span> Mapping Issues Bigger Than Ontology Issues?</h3>
+<section id="slide-orgea3d80e">
+<h3 id="orgea3d80e"><span class="section-number-3">1.4</span> Mapping Issues Bigger Than Ontology Issues?</h3>
 <p>
 Thesis: ontology problems pale in comparison to mapping problems
 </p>
@@ -255,18 +255,18 @@ Thesis: ontology problems pale in comparison to mapping problems
 <li>Lack of documentation of classes &amp; props
 <ul>
 <li>Sometimes template props in wikipedia are also not documented</li>
-<li>This turns mapping into guesswork (also because of Object/DataProp Dichotomy <a href="#/slide-org2156827">3.2</a>)</li>
+<li>This turns mapping into guesswork (also because of Object/DataProp Dichotomy <a href="#/slide-org89b5564">3.2</a>)</li>
 <li>Many people don't research exising props before making new</li>
 
 </ul></li>
 <li>Lack of editorial process</li>
-<li>Bad practices are copy &amp; pasted (<a href="#/slide-orgb4ce8f0">3.3</a>)</li>
+<li>Bad practices are copy &amp; pasted (<a href="#/slide-org382da42">3.3</a>)</li>
 
 </ul>
 
 </section>
-<section id="slide-org1852ff0">
-<h3 id="org1852ff0"><span class="section-number-3">1.5</span> Balanced Effort</h3>
+<section id="slide-org160ba4d">
+<h3 id="org160ba4d"><span class="section-number-3">1.5</span> Balanced Effort</h3>
 <p>
 Please don't focus your energy and efforts only on ontology problems
 </p>
@@ -293,8 +293,8 @@ Are we up to it?
 </section>
 </section>
 <section>
-<section id="slide-org19f2742">
-<h2 id="org19f2742"><span class="section-number-2">2</span> Issue Tracking</h2>
+<section id="slide-orgcd461a3">
+<h2 id="orgcd461a3"><span class="section-number-2">2</span> Issue Tracking</h2>
 <p>
 A major problem was that ontology and mapping issues were not tracked
 </p>
@@ -328,8 +328,8 @@ All discussion should be in the wiki
 </ul>
 
 </section>
-<section id="slide-orgd32dc2f">
-<h3 id="orgd32dc2f"><span class="section-number-3">2.1</span> Testing Best Practice</h3>
+<section id="slide-orgd503a90">
+<h3 id="orgd503a90"><span class="section-number-3">2.1</span> Testing Best Practice</h3>
 <p>
 Say you made a <a href="http://mappings.dbpedia.org/index.php/Mapping_bg:%D0%9C%D0%B0%D0%BD%D0%B5%D0%BA%D0%B5%D0%BD_%D0%B8%D0%BD%D1%84%D0%BE">new mapping</a> or fixed a mapping
 </p>
@@ -372,8 +372,8 @@ Proposed as <a href="http://mappings.dbpedia.org/index.php/Main_Page#Testing_Bes
 </section>
 </section>
 <section>
-<section id="slide-orga01529d">
-<h2 id="orga01529d"><span class="section-number-2">3</span> Mapping Language Issues</h2>
+<section id="slide-org46ff47a">
+<h2 id="org46ff47a"><span class="section-number-2">3</span> Mapping Language Issues</h2>
 <p>
 The <b>mapping language</b> is a set of wiki templates expressing classes, props, mappings
 </p>
@@ -394,8 +394,8 @@ Various cosmetic fixes to the mapping wiki are in the next section
 </p>
 
 </section>
-<section id="slide-org554cc8e">
-<h3 id="org554cc8e"><span class="section-number-3">3.1</span> ConditionalMapping Not Flexible Enough</h3>
+<section id="slide-orgf991a32">
+<h3 id="orgf991a32"><span class="section-number-3">3.1</span> ConditionalMapping Not Flexible Enough</h3>
 <p>
 <a href="https://github.com/dbpedia/extraction-framework/issues/310">#310</a>: <a href="http://mappings.dbpedia.org/index.php?title=Mapping_bg:%D0%9C%D1%83%D0%B7%D0%B8%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD_%D0%B8%D0%B7%D0%BF%D1%8A%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB&amp;action=edit">bg:Musical_artist</a> has complex ConditionalMapping logic (translated from bg):
 </p>
@@ -430,8 +430,8 @@ But <a href="https://github.com/dbpedia/extraction-framework/pull/443">PR#443</a
 </p>
 
 </section>
-<section id="slide-org2156827">
-<h3 id="org2156827"><span class="section-number-3">3.2</span> Object/DataProp Dichotomy</h3>
+<section id="slide-org89b5564">
+<h3 id="org89b5564"><span class="section-number-3">3.2</span> Object/DataProp Dichotomy</h3>
 <p>
 The mapping language adopts the OWL Dichotomy between owl:ObjectProperty and owl:DatatypeProperty
 </p>
@@ -462,8 +462,8 @@ Do you think this should be fixed?
 </p>
 
 </section>
-<section id="slide-orgb4ce8f0">
-<h3 id="orgb4ce8f0"><span class="section-number-3">3.3</span> Mapping Framework is not Modular Enough</h3>
+<section id="slide-org382da42">
+<h3 id="org382da42"><span class="section-number-3">3.3</span> Mapping Framework is not Modular Enough</h3>
 <ul>
 <li>There's no mapping of a <b>property</b> or <b>group of properties</b></li>
 <li>Thus mapping patterns cannot be reused but have to be copy-pasted</li>
@@ -476,8 +476,8 @@ Do you think this should be fixed?
 </section>
 </section>
 <section>
-<section id="slide-org774185c">
-<h2 id="org774185c"><span class="section-number-2">4</span> Mapping Server Deficiencies</h2>
+<section id="slide-org37b2447">
+<h2 id="org37b2447"><span class="section-number-2">4</span> Mapping Server Deficiencies</h2>
 <p>
 The mapping server has good Stats and Testing features, but more is needed
 </p>
@@ -486,7 +486,7 @@ The mapping server has good Stats and Testing features, but more is needed
 <ul>
 <li>On template stats, for every field, add a hyperlink to show some occurrences</li>
 <li>Extremely useful to understand the meaning of some fields</li>
-<li>And whether they're links, text, or both (<a href="#/slide-org2156827">3.2</a>)</li>
+<li>And whether they're links, text, or both (<a href="#/slide-org89b5564">3.2</a>)</li>
 
 </ul></li>
 <li><a href="https://github.com/dbpedia/mappings-tracker/issues/3">#3</a> Statistics and Validator to check for redirected templates. Prevent problems like
@@ -502,7 +502,7 @@ The mapping server has good Stats and Testing features, but more is needed
 <li>Eg <code>firstAscentYear rdfs:domain Peak,Volcano</code> is breakage</li>
 
 </ul></li>
-<li><a href="https://github.com/dbpedia/extraction-framework/issues/289">#289</a> testing works only for en/ASCII (see <a href="#/slide-orgd32dc2f">2.1</a> for workaround)</li>
+<li><a href="https://github.com/dbpedia/extraction-framework/issues/289">#289</a> testing works only for en/ASCII (see <a href="#/slide-orgd503a90">2.1</a> for workaround)</li>
 <li><a href="https://github.com/dbpedia/extraction-framework/issues/304">#304</a> extraction tester should return encoding UTF-8
 <ul>
 <li>Else browser displays gibberish: need to save file &amp; open in proper editor</li>
@@ -516,8 +516,8 @@ The mapping server has good Stats and Testing features, but more is needed
 </section>
 </section>
 <section>
-<section id="slide-org2754e50">
-<h2 id="org2754e50"><span class="section-number-2">5</span> Mapping Wiki Deficiencies</h2>
+<section id="slide-org6a81a8c">
+<h2 id="org6a81a8c"><span class="section-number-2">5</span> Mapping Wiki Deficiencies</h2>
 <p>
 IMHO the mapping wiki is quite workable (some enhancements are in order)
 </p>
@@ -552,8 +552,8 @@ Improve collaboration
 </ul>
 
 </section>
-<section id="slide-org3475d59">
-<h3 id="org3475d59"><span class="section-number-3">5.1</span> Improve Display of Mappings</h3>
+<section id="slide-orgeec8594">
+<h3 id="orgeec8594"><span class="section-number-3">5.1</span> Improve Display of Mappings</h3>
 <ul>
 <li><a href="https://github.com/dbpedia/mappings-tracker/issues/30">#30</a>: The current display (left) is useless (nobody bothers "header=no")</li>
 <li>I just look at the source Edit tab (right)</li>
@@ -569,8 +569,8 @@ Improve collaboration
 </section>
 </section>
 <section>
-<section id="slide-orga2a2532">
-<h2 id="orga2a2532"><span class="section-number-2">6</span> Mapping Issues</h2>
+<section id="slide-orge172c88">
+<h2 id="orge172c88"><span class="section-number-2">6</span> Mapping Issues</h2>
 <p>
 <b>Biggest reason</b> for current situation is lack of <b>Discussion</b> and <b>Editorial process</b>
 </p>
@@ -589,8 +589,8 @@ known exceptions, dynamic validation reports, etc.</li>
 </div>
 
 </section>
-<section id="slide-orgdab048e">
-<h3 id="orgdab048e"><span class="section-number-3">6.1</span> No Editorial Process</h3>
+<section id="slide-org5c3d1c0">
+<h3 id="org5c3d1c0"><span class="section-number-3">6.1</span> No Editorial Process</h3>
 <ul>
 <li>Compare to Wikidata's <b>lack</b> of editorial process for Classes</li>
 <li>Any fool can make "instance of" or "subclass of" claims (thus classes and hierarchy)</li>
@@ -615,8 +615,8 @@ Examples
 </ul>
 
 </section>
-<section id="slide-org0489677">
-<h3 id="org0489677"><span class="section-number-3">6.2</span> Lack of Documentation</h3>
+<section id="slide-org2a4b36b">
+<h3 id="org2a4b36b"><span class="section-number-3">6.2</span> Lack of Documentation</h3>
 <p>
 Many props/classes have no comment. Everyone has complained about this
 </p>
@@ -642,8 +642,8 @@ Must be merciless about new props &amp; classes: <b>no comment means automatic d
 
 </ul>
 </section>
-<section id="slide-org7727b5d">
-<h3 id="org7727b5d"><span class="section-number-3">6.3</span> Good Documentation Is Specific</h3>
+<section id="slide-org915621c">
+<h3 id="org915621c"><span class="section-number-3">6.3</span> Good Documentation Is Specific</h3>
 <p>
 Comments should describe Usage (ie Scope Notes) and compare to similar props
 </p>
@@ -663,8 +663,8 @@ Good examples:
 </ul>
 
 </section>
-<section id="slide-org66f273f">
-<h3 id="org66f273f"><span class="section-number-3">6.4</span> Duplicate &amp; Semi-Duplicate Properties</h3>
+<section id="slide-org4894952">
+<h3 id="org4894952"><span class="section-number-3">6.4</span> Duplicate &amp; Semi-Duplicate Properties</h3>
 <p>
 <a href="https://github.com/dbpedia/mappings-tracker/issues/5">#5</a> Eliminate semi-duplicate properties: another long-term task:
 </p>
@@ -687,8 +687,8 @@ A few random examples, but this just scratches the surface
 </ul>
 
 </section>
-<section id="slide-org9039333">
-<h3 id="org9039333"><span class="section-number-3">6.5</span> Need for Research</h3>
+<section id="slide-org5537134">
+<h3 id="org5537134"><span class="section-number-3">6.5</span> Need for Research</h3>
 <p>
 Need to research problem areas &amp; individual problems!
 </p>
@@ -722,8 +722,8 @@ Any takers to research and write up?
 </p>
 
 </section>
-<section id="slide-org63ae57e">
-<h3 id="org63ae57e"><span class="section-number-3">6.6</span> Need for Research</h3>
+<section id="slide-org553a047">
+<h3 id="org553a047"><span class="section-number-3">6.6</span> Need for Research</h3>
 <p>
 Example 2: <a href="https://github.com/dbpedia/mappings-tracker/issues/19">#19</a> fix mapping Listen. Conclusion:
 </p>
@@ -747,8 +747,8 @@ map using IntermediateNodeMapping:
 </ul>
 
 </section>
-<section id="slide-org1d20f24">
-<h3 id="org1d20f24"><span class="section-number-3">6.7</span> Validate Ontological Assumptions</h3>
+<section id="slide-org6189768">
+<h3 id="org6189768"><span class="section-number-3">6.7</span> Validate Ontological Assumptions</h3>
 <p>
 Sometimes one needs to resort to SPARQL to find out usage
 </p>
@@ -771,8 +771,8 @@ Assumption: "Only material things can have color". Let's check:
 </ul>
 
 </section>
-<section id="slide-org6fd04dd">
-<h3 id="org6fd04dd"><span class="section-number-3">6.8</span> Property and Class Naming</h3>
+<section id="slide-orgbc1169a">
+<h3 id="orgbc1169a"><span class="section-number-3">6.8</span> Property and Class Naming</h3>
 <p>
 Pragmatic problems:
 </p>
@@ -786,7 +786,7 @@ Pragmatic problems:
 
 </ul></li>
 <li><p>
-Props should start with lowerCase, classes with UpperCase, eg <a href="#/slide-org9b9d582">9.3</a> (oops!):
+Props should start with lowerCase, classes with UpperCase, eg <a href="#/slide-org89bfe79">9.3</a> (oops!):
 </p>
 <div class="org-src-container">
 
@@ -797,8 +797,8 @@ Props should start with lowerCase, classes with UpperCase, eg <a href="#/slide-o
 </ul>
 
 </section>
-<section id="slide-orgf84e4b9">
-<h3 id="orgf84e4b9"><span class="section-number-3">6.9</span> Various Mapping Issues</h3>
+<section id="slide-orgb37f6db">
+<h3 id="orgb37f6db"><span class="section-number-3">6.9</span> Various Mapping Issues</h3>
 <ul>
 <li><a href="https://github.com/dbpedia/mappings-tracker/issues/27">#27</a> Mapping_el:Quote_box is utter nonsense</li>
 <li><a href="https://github.com/dbpedia/mappings-tracker/issues/4">#4</a> Merge Geopolitical organization to Country (template is redirected)</li>
@@ -823,8 +823,8 @@ Props should start with lowerCase, classes with UpperCase, eg <a href="#/slide-o
 </section>
 </section>
 <section>
-<section id="slide-orge1ad0df">
-<h2 id="orge1ad0df"><span class="section-number-2">7</span> Extraction Framework Issues</h2>
+<section id="slide-orgc5119cb">
+<h2 id="orgc5119cb"><span class="section-number-2">7</span> Extraction Framework Issues</h2>
 <p>
 If you think about it, the extraction framework does wonders extracting numerous properties
 </p>
@@ -837,8 +837,8 @@ If you think about it, the extraction framework does wonders extracting numerous
 But there are various things that need improvement
 </p>
 </section>
-<section id="slide-org47346e3">
-<h3 id="org47346e3"><span class="section-number-3">7.1</span> Issues Important for Local Chapters</h3>
+<section id="slide-orgdc71552">
+<h3 id="orgdc71552"><span class="section-number-3">7.1</span> Issues Important for Local Chapters</h3>
 <p>
 A local chapter should at least configure dates (eg month names) and numbers (eg decimal separator:
 </p>
@@ -868,8 +868,8 @@ Other issues:
 </ul>
 
 </section>
-<section id="slide-org6651ed6">
-<h3 id="org6651ed6"><span class="section-number-3">7.2</span> Date as Page is not Extracted</h3>
+<section id="slide-org3de1219">
+<h3 id="org3de1219"><span class="section-number-3">7.2</span> Date as Page is not Extracted</h3>
 <p>
 <a href="https://github.com/dbpedia/extraction-framework/issues/306">#306</a> On bgwiki, a lot of dates use the "Notable Date Page" approach, eg
 </p>
@@ -894,8 +894,8 @@ Three non-sense values are extracted:
 </ul>
 
 </section>
-<section id="slide-org5e49f40">
-<h3 id="org5e49f40"><span class="section-number-3">7.3</span> Object Property Extractor Does Not Respect Ranges</h3>
+<section id="slide-orga53512f">
+<h3 id="orga53512f"><span class="section-number-3">7.3</span> Object Property Extractor Does Not Respect Ranges</h3>
 <p>
 Wikipedia editors write all kinds of links in fields.
 </p>
@@ -915,8 +915,8 @@ Curious situations, eg <b>firstAscentPerson</b> of these peaks:
 </ul>
 
 </section>
-<section id="slide-org3799d6d">
-<h3 id="org3799d6d"><span class="section-number-3">7.4</span> Curious Parents and Poor Data Monarchs</h3>
+<section id="slide-org1b499f0">
+<h3 id="org1b499f0"><span class="section-number-3">7.4</span> Curious Parents and Poor Data Monarchs</h3>
 <p>
 Lest you think this is an exotic exception, see <a href="http://dbpedia.org/sparql?default-graph-uri=http://dbpedia.org&amp;query=select+*+%7B?x+dbo:parent+?y+filter+not+exists%7B?y+a+dbo:Person%7D%7D&amp;format=text/html&amp;CXML_redir_for_subjs=121&amp;CXML_redir_for_hrefs=&amp;timeout=30000&amp;debug=on&amp;run=+Run+Query+">curios values for <b>parent</b></a>
 </p>
@@ -942,8 +942,8 @@ The extractor could filter these out by range, <b>but</b>
 </p>
 
 </section>
-<section id="slide-org4de66a0">
-<h3 id="org4de66a0"><span class="section-number-3">7.5</span> Data Property Extractor Does Not Respect Datatypes</h3>
+<section id="slide-orgac0de08">
+<h3 id="orgac0de08"><span class="section-number-3">7.5</span> Data Property Extractor Does Not Respect Datatypes</h3>
 <p>
 Data value extraction is based on imperfect heuristics
 </p>
@@ -962,8 +962,8 @@ Data value extraction is based on imperfect heuristics
 </p>
 
 </section>
-<section id="slide-org049b7f9">
-<h3 id="org049b7f9"><span class="section-number-3">7.6</span> Use Domain &amp; Range to Guide Extraction</h3>
+<section id="slide-orga6b8257">
+<h3 id="orga6b8257"><span class="section-number-3">7.6</span> Use Domain &amp; Range to Guide Extraction</h3>
 <p>
 Extraction quality could be improved if it can take into account the range of properties.
 But this is hard:
@@ -988,8 +988,8 @@ This is the single <b>most important</b> enhancement, if it's possible.
 </p>
 
 </section>
-<section id="slide-orgc08ce82">
-<h3 id="orgc08ce82"><span class="section-number-3">7.7</span> Specific Properties</h3>
+<section id="slide-org0430595">
+<h3 id="org0430595"><span class="section-number-3">7.7</span> Specific Properties</h3>
 <p>
 Specific props provide more "natural" units for a specific measurement.
 </p>
@@ -1024,8 +1024,8 @@ Actually much easier, since 1 is not valid SPARQL
 </ul>
 
 </section>
-<section id="slide-org8d9c9f5">
-<h3 id="org8d9c9f5"><span class="section-number-3">7.8</span> Various Extraction Issues</h3>
+<section id="slide-org331f6b7">
+<h3 id="org331f6b7"><span class="section-number-3">7.8</span> Various Extraction Issues</h3>
 <ul>
 <li><a href="https://github.com/dbpedia/extraction-framework/issues/314">#314</a> numbered raw props are collapsed to one prop</li>
 <li><a href="https://github.com/dbpedia/extraction-framework/issues/325">#325</a> extract several Lengths out of a field?</li>
@@ -1036,8 +1036,8 @@ Actually much easier, since 1 is not valid SPARQL
 </section>
 </section>
 <section>
-<section id="slide-orgb6531f2">
-<h2 id="orgb6531f2"><span class="section-number-2">8</span> External Mapping Problems</h2>
+<section id="slide-org6b15bae">
+<h2 id="org6b15bae"><span class="section-number-2">8</span> External Mapping Problems</h2>
 <p>
 47 owl:equivalentClass, 35 owl:equivalentProperty mappings to schema.org. Controversial and hastily made:
 </p>
@@ -1068,8 +1068,8 @@ But in DBO:
 </ul>
 
 </section>
-<section id="slide-orgd79c904">
-<h3 id="orgd79c904"><span class="section-number-3">8.1</span> DUL Too Generic?</h3>
+<section id="slide-orgb3f5ff4">
+<h3 id="orgb3f5ff4"><span class="section-number-3">8.1</span> DUL Too Generic?</h3>
 <p>
 The DUL properties are so general that their utility is not obvious to me
 </p>
@@ -1089,8 +1089,8 @@ But they're built on strong ontological foundations
 </ul>
 
 </section>
-<section id="slide-orgbc2ddc6">
-<h3 id="orgbc2ddc6"><span class="section-number-3">8.2</span> owl:Thing Considered Useless</h3>
+<section id="slide-org001a060">
+<h3 id="org001a060"><span class="section-number-3">8.2</span> owl:Thing Considered Useless</h3>
 <p>
 A heretic thought: owl:Thing is useless because nobody would query by it
 </p>
@@ -1118,8 +1118,8 @@ The owl:Thing expansion is inconsistent
 
 </ul>
 </section>
-<section id="slide-org55bc057">
-<h3 id="org55bc057"><span class="section-number-3">8.3</span> No Choice</h3>
+<section id="slide-org4d5a913">
+<h3 id="org4d5a913"><span class="section-number-3">8.3</span> No Choice</h3>
 <p>
 Superclasses are expanded to direct rdf:type statements in DBpedia exports
 </p>
@@ -1139,8 +1139,8 @@ IMHO DBpedia should emit as a separate option (load file):
 </section>
 </section>
 <section>
-<section id="slide-orga3087d5">
-<h2 id="orga3087d5"><span class="section-number-2">9</span> Ontology Problems</h2>
+<section id="slide-org4e7bf0c">
+<h2 id="org4e7bf0c"><span class="section-number-2">9</span> Ontology Problems</h2>
 <p>
 Finally I list some ontology problems
 </p>
@@ -1154,8 +1154,8 @@ The list of problems below is by no means exhaustive
 </p>
 
 </section>
-<section id="slide-org849856a">
-<h3 id="org849856a"><span class="section-number-3">9.1</span> External Props Not Used Consistently</h3>
+<section id="slide-orgc93b79d">
+<h3 id="orgc93b79d"><span class="section-number-3">9.1</span> External Props Not Used Consistently</h3>
 <p>
 Widely-used external props should be reused in DBpedia, rather than making our own
 </p>
@@ -1166,8 +1166,8 @@ Widely-used external props should be reused in DBpedia, rather than making our o
 </ul>
 
 </section>
-<section id="slide-org84ba1cb">
-<h3 id="org84ba1cb"><span class="section-number-3">9.2</span> rdfs:domain/range are Wishful</h3>
+<section id="slide-org7df99f4">
+<h3 id="org7df99f4"><span class="section-number-3">9.2</span> rdfs:domain/range are Wishful</h3>
 <p>
 Domain/range are not taken into account by the extractor
 </p>
@@ -1179,8 +1179,8 @@ Domain/range are not taken into account by the extractor
 </ul>
 
 </section>
-<section id="slide-org9b9d582">
-<h3 id="org9b9d582"><span class="section-number-3">9.3</span> Classes that Duplicate Properties</h3>
+<section id="slide-org89bfe79">
+<h3 id="org89bfe79"><span class="section-number-3">9.3</span> Classes that Duplicate Properties</h3>
 <p>
 Classes like President, VicePresident, Medalist are often non-sensical. Check
 </p>
@@ -1220,8 +1220,8 @@ In some cases even led to syntax errors since people are not mindful of capitali
 </ul>
 
 </section>
-<section id="slide-orgf34a859">
-<h3 id="orgf34a859"><span class="section-number-3">9.4</span> Measurement Classes</h3>
+<section id="slide-orgf6e0833">
+<h3 id="orgf6e0833"><span class="section-number-3">9.4</span> Measurement Classes</h3>
 <p>
 There are numerous classes that duplicate measurement props
 </p>
@@ -1244,8 +1244,8 @@ IMHO should be generalized to Measurement (ala <code>crm:E16_Measurement</code>)
 </ul>
 
 </section>
-<section id="slide-org8195bbb">
-<h3 id="org8195bbb"><span class="section-number-3">9.5</span> Place vs Organisation</h3>
+<section id="slide-org65ce673">
+<h3 id="org65ce673"><span class="section-number-3">9.5</span> Place vs Organisation</h3>
 <p>
 Place and Organization are often dual aspects of the same entity, eg
 </p>
@@ -1266,8 +1266,8 @@ IMHO we can't disentangle these without splitting up numerous nodes
 </ul>
 
 </section>
-<section id="slide-org61096b1">
-<h3 id="org61096b1"><span class="section-number-3">9.6</span> Simple Ontology Fixes</h3>
+<section id="slide-orgcc1c18f">
+<h3 id="orgcc1c18f"><span class="section-number-3">9.6</span> Simple Ontology Fixes</h3>
 <p>
 Problems due to decisions in the Extraction Framework (not ontology editing)
 </p>

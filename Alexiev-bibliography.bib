@@ -1,5 +1,17 @@
 %-*- coding: utf-8; fill-column: 5000 -*-
 
+@TechReport{Alexiev2018-BigDataGrapes-D3.1-M9,
+  author       = {Vladimir Alexiev},
+  title        = {{BigDataGrapes D3.1 - Data Modelling and Linking Components}},
+  institution  = {BigDataGrapes (H2020 project 780751)},
+  year         = 2018,
+  type         = {Deliverable},
+  month        = oct,
+  url          = {https://doi.org/10.5281/zenodo.1482757},
+  doi          = {10.5281/zenodo.1482757},
+  abstract     = {WP3 Data & Semantics Layer is a core WP of the project. If we have no data, we cannot achieve almost any of the project objectives. Within this WP3, task T3.1 Data Modelling over Big Data Infrastructures has these objectives: • Explores partner data • Defines competence questions that the data should be able to answer • Studies relevant AgroBio ontologies • defines semantic modelling principles and specific models • Studies user (researcher) requirements for discovering ontologies, mapping data, aligning data, etc. • Implements or adopts tools for these requirements The document has the following structure: • Chapter 1 Introduction describes fundamental AgroBio data (observations and measurements), outlines the ontological representation of measurements, mentions possible alternatives (e.g. following existing AgroBio patterns vs using the W3C CUBE ontology), describes the steps of semantic data integration, and provides links to consortium resources related to the task. • Chapter 2 Relevant AgroBio Ontologies outlines the vast number of potentially relevant ontologies and the terms included in them. We provide some metrics (number of terms) and surveys various Ontology Portals and Tools that are available for browsing, finding and using ontologies; and that can also serve as inspiration for developing requirements for tools to be developed/adopted by the project. • Chapter 3 Improving AgroBio Ontologies describes a variety of problems that we have found in AgroBio ontologies, and the initial steps we have taken to engage with the AgroBio communities to improve the quality of these ontologies. We also show a case of searching for a specific term (NDVI) required by specific partner data in a couple of ontology portals. • Chapter 4 Specific Project Data discusses specific consortium data (including problems of draft semantic data that will be corrected), data processing requirements and data access requirements. • Chapter 5 Conclusions provides conclusions, next steps and a bibliography. Deliverable D3.1 Data Modelling and Linking Components will have 3 iterations at M9, M21, M30. In this first iteration (M9), we describe the first steps taken for the realization of task T3.1. These initial steps were taken to clarify the scope and essential ingredients of the task. Since the project is early in its life cycle, we do not yet have finalized requirements for the tools to be developed by Task 3.1. Section 1.4 outlines the steps that we intend to follow, and the approximate point that we have reached within these steps.},
+}
+
 @Misc{Alexiev2018-CLADA-BG,
   author       = {Vladimir Alexiev},
   title        = {Linked Open Data and Ontotext Projects},
@@ -185,15 +197,19 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   abstract     = {I review the data quality of the LOD publication of a national cultural heritage institution, and show examples of bad practices},
 }
 
-@Article{AlexievNikolova2018-EHRI-UmanisticaDigitale,
+@Article{AlexievNikolova2019-EHRI-UmanisticaDigitale,
   author       = {Vladimir Alexiev and Ivelina Nikolova and Neli Hateva},
   title        = {Semantic Archive Integration for Holocaust Research: the EHRI Research Infrastructure},
-  journal      = {Umanistica Digitale (to appear)},
-  year         = 2018,
-  url          = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievNikolova2018-Semantic-Archive-Integration.pdf},
+  journal      = {Umanistica Digitale},
+  year         = 2019,
+  month        = mar,
+  url          = {https://umanisticadigitale.unibo.it/article/view/9049},
+  url_PDF      = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievNikolova2018-Semantic-Archive-Integration.pdf},
   keywords     = {archives, Holocaust research, EHRI, research infrastructure, digital humanities, VRE, semantic integration, semantic archive integration, coreferencing, access points, thesauri, authorities, EAD, OAI PMH, ResourceSync, Geonames, Wikidata, VIAF, person matching, record linking, deduplication},
+  issue        = 4,
+  doi          = {10.6092/issn.2532-8816/9049},
   publisher    = {Associazione per l'Informatica Umanistica e la Cultural Digitale, Universita di Bologna (AIUCD)},
-  editor       = {Laura Brazzo and Kepa Rodriguez},
+  editor       = {Laura Brazzo and Kepa J. Rodriguez},
   categories   = {Arts and humanities, Digital libraries and archives, Information retrieval, Web searching and information discovery, Document searching, Document metadata, Semantic web description languages, Ontologies, Thesauri},
   abstract     = {The European Holocaust Research Infrastructure (EHRI) is a large-scale EU project that involves 23 institutions and archives working on Holocaust studies, from Europe, Israel and the US. In its first phase (2011-2015) it aggregated archival descriptions and materials on a large scale and built a Virtual Research Environment (portal) for Holocaust researchers based on a graph database. In its second phase (2015-2019), EHRI2 seeks to enhance the gathered materials using semantic approaches: enrichment, coreferencing, interlinking. Semantic integration involves four of the 14 EHRI2 work packages and helps integrate databases, free text, and metadata to interconnect historical entities (people, organizations, places, historic events) and create networks. We will present some of the EHRI2 technical work, including critical issues we have encountered. WP10 (EAD) converts archival descriptions from various formats to standard EAD XML; transports EADs using OAI PMH or ResourceSync; ingests EADs to the EHRI database; enables use cases such as synchronization; coreferencing of textual Access Points to proper thesaurus references. WP11 (Authorities and Standards) consolidates and enlarges the EHRI authorities to render the indexing and retrieval of information more effective. It addresses Access Points in ingested EADs (normalization of Unicode, spelling, punctuation; deduplication; clustering; coreferencing to authority control), Subjects (deployment of a Thesaurus Management System in support of the EHRI Thesaurus Editorial Board), Places (coreferencing to Geonames); Camps and Ghettos (integrating data with Wikidata); Persons, Corporate Bodies (using USHMM HSV and VIAF); semantic (conceptual) search including hierarchical query expansion; interconnectivity of archival descriptions; permanent URLs; metadata quality; EAD RelaxNG and Schematron schemas and validation, etc. WP13 (Data Infrastructures) builds up domain knowledge bases from institutional databases by using deduplication, semantic data integration, semantic text analysis. It provides the foundation for research use cases on Jewish Social Networks and their impact on the chance of survival. WP14 (Digital Historiography Research) works on semantic text analysis (semantic enrichment), text similarity (e.g. clustering based on Neural Networks, LDA, etc), geo-mapping. It develops Digital Historiography researcher tools, including Prosopographical approaches.},
 }
