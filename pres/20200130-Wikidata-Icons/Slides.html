@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Vladimir Alexiev, Ontotext">
+  <meta name="dcterms.date" content="2020-01-30">
+  <title>Wikidata and Icons (KGs for GLAM)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/reveal.css">
+  <link rel="icon" type="image/png" href="https://www.ontotext.com/wp-content/themes/ontotext/favicon.ico">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/theme/ontotext.css" id="theme">
+
+    <!-- For syntax highlighting using highlight.js-->
+    <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/lib/css/onto-hljs.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://presentations.ontotext.com/scripts/reveal.js/css/print/pdf.css' : 'https://presentations.ontotext.com/scripts/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Wikidata and Icons (KGs for GLAM)</h1>
+  <p class="author">Vladimir Alexiev, Ontotext</p>
+  <p class="date">2020-01-30</p>
+</section>
+
+<section id="TOC">
+  <h2> Overview </h2>
+<ul>
+<li><a href="#/knowledge-graphs">Knowledge Graphs</a></li>
+<li><a href="#/linked-open-data">Linked Open Data</a></li>
+<li><a href="#/wikidata">Wikidata</a></li>
+<li><a href="#/wikidata-tools-of-the-trade">Wikidata: Tools of the Trade</a></li>
+<li><a href="#/openrefine">OpenRefine</a></li>
+<li><a href="#/authority-control">Authority Control</a></li>
+<li><a href="#/wikidata-consumption">Wikidata Consumption</a></li>
+<li><a href="#/bulgarian-icons">Bulgarian Icons</a></li>
+<li><a href="#/icons-current-status">Icons: Current Status</a></li>
+<li><a href="#/icon-knowledge-graph">Icon Knowledge Graph</a></li>
+</ul>
+</section>
+
+<section><section id="knowledge-graphs" class="title-slide slide level1"><h1>Knowledge Graphs</h1></section><section id="what-are-kg" class="slide level2">
+<h2>What are KG?</h2>
+<p>Not an entirely new idea</p>
+<ul>
+<li><a href="http://knowledgegraph.today/paper.html">A Brief History of Knowledge Graph’s Main Ideas</a>: A tutorial (from 1960 to the present)
+<ul>
+<li>History of ideas that have led to KGs, which stem from scientific advancements in diverse research areas such as Semantic Web, Databases, Knowledge Representation and Reasoning, NLP, Machine Learning</li>
+</ul></li>
+<li>Semantic Web proposed by TimBL together with the normal web (1989), active dev since 2000</li>
+<li><a href="https://en.wikipedia.org/wiki/Knowledge_Graph">Knowledge Graph</a>: term introduced by Google (2012)</li>
+</ul>
+<p>Nowadays:</p>
+<ul>
+<li>Inroads of Knowledge Graphs in large enterprises</li>
+<li>Convergence of statistical and logical methods (ML+KR/KG),</li>
+<li>Graph databases, RDF vs property-graph languages and their potential convergence (<a href="https://www.w3.org/Data/events/data-ws-2019/report.html">W3C Workshop on Web Standardization for Graph Data</a>)</li>
+<li>KGs have taken the enterprise world by storm
+<ul>
+<li>Google, Amazon, Microsoft (Office, Bing, Microsoft Academic), Samsung, Springer Nature, AirBnB, Refinitiv/Thomson Reuters, Pitney Bowes, Capital One, Goldman Sachs, Wells Fargo, AstraZeneca, Bayer, Accenture, United Nations, US National Library of Medicine, DE National Library of Science and Technology…</li>
+</ul></li>
+</ul>
+</section><section id="kg-what-is-new" class="slide level2">
+<h2>KG: What Is New?</h2>
+<ul>
+<li>Why the recent popularity?
+<ul>
+<li>Web-scale approaches to data (tens of billions of facts)</li>
+<li>Much easier data integration (within and between enterprises)</li>
+<li>Synergies with ML/DL</li>
+</ul></li>
+<li>Distinguishing characteristics of KGs
+<ul>
+<li>Represent a holistic view of data in some domain across applications and possibly beyond application life cycles.</li>
+<li>Whole enterprise or across enterprises.</li>
+<li>Web-scale data (many billions of triples).</li>
+<li>Have semantic grounding: semantic data modeling (ontologies and RDF shapes), integration, reasoning</li>
+<li>Dynamic both regarding the data (live), and the data model (evolution).</li>
+</ul></li>
+<li>Specialized techniques
+<ul>
+<li>To enable easier data integration, harmonization and data model evolution</li>
+<li>Eg: graph databases, ontology-based data access, schema-less data integration</li>
+<li>Unlike traditional Relational Databases (fixed schema) or Knowledge Bases (limited scale)</li>
+</ul></li>
+</ul>
+</section><section id="how-are-kg-different-from-data-warehousing" class="slide level2">
+<h2>How are KG Different from Data Warehousing?</h2>
+<ul>
+<li>Semantic databases (Knowledge Bases or Knowledge Graphs) are self-describing</li>
+<li>Data warehousing usually focuses on statistical data (OLAP)</li>
+<li>KGs can represent OLAP using the W3C Cube ontology, but can also represent any other kind of data</li>
+<li>There are vast LOD datasets that can be utilized in building KGs</li>
+<li>Everyone seems to be building a KG!</li>
+</ul>
+</section><section id="google-kg-entity-pages-disambiguation" class="slide level2">
+<h2>Google KG: Entity Pages, Disambiguation</h2>
+<p><img data-src="img/KG-jaguar.png" /></p>
+</section><section id="kg-resources" class="slide level2">
+<h2>KG Resources</h2>
+<ul>
+<li><a href="http://drops.dagstuhl.de/opus/volltexte/2019/10328/">Knowledge Graphs: New Directions for Knowledge Representation on the Semantic Web</a>: high-level Dagstuhl seminar (Mar 2019) that outlines what are the important current problems</li>
+<li><a href="https://towardsdatascience.com/a-practical-guide-to-build-an-enterprise-knowledge-graph-for-investment-analysis-3a15363098b7">A Practical Guide to Build an Enterprise Knowledge Graph for Investment Analysis</a> “How to solve the practical problems when building a real Enterprise Knowledge Graph service” Describes a Chinese effort to build a KG about companies, what data and processes they used…
+<ul>
+<li>Similar effort: Ontotext’s <a href="https://www.ontotext.com/cima/">Intelligent Matching and Linking of Company Data</a> project (CIMA) project</li>
+</ul></li>
+<li>Using Linked Data Effectively. <a href="http://euclid-project.eu/">EUCLID project</a>, Dec 2013, 207 pages. Available as HTML, iBook, ePUB, Kindle and course modules. This is an older resource but describes systematically topics in semantic data integration.</li>
+<li>Ontotext <a href="https://ecatalog.nbu.bg/default.asp?V_Year=2019&amp;YSem=1&amp;Spec_ID=&amp;Mod_ID=&amp;PageShow=coursepresent&amp;P_Menu=courses&amp;Fac_ID=4&amp;M_PHD=0&amp;P_ID=3049&amp;TabIndex=2&amp;K_ID=52256&amp;K_TypeID=10">Semantic Technologies Course</a> at NBU MS Data Science</li>
+</ul>
+</section><section id="competence-questions" class="slide level2">
+<h2>Competence Questions</h2>
+<ul>
+<li>Before developing applications, one better develop business requirements</li>
+<li>Before procuring/integrating data, one better develop competence questions</li>
+<li>These are sample questions that the KG should be able to answer</li>
+<li>They should lead both dataset research and semantic modeling</li>
+</ul>
+</section><section id="semantic-data-integration" class="slide level2">
+<h2>Semantic Data Integration</h2>
+<p>How to build a KG (steps):</p>
+<ul>
+<li>Dataset research (2)</li>
+<li>Data analysis</li>
+<li>Data cleaning</li>
+<li>Semantic model: examples, shapes, documentation</li>
+<li>Ontology engineering</li>
+<li>Data mapping/conversion (ETL)</li>
+<li>Coreferencing/matching/reconciliation (1)</li>
+<li>Data fusion/harmonization</li>
+<li>Semantic text/metadata enrichment</li>
+<li>Data enrichment, inference, aggregation</li>
+<li>Sample queries</li>
+<li>Semantic search, apps, visualizations</li>
+</ul>
+<p>We’ll only describe (1) and (2) below</p>
+</section><section id="coreferencing" class="slide level2">
+<h2>Coreferencing</h2>
+<p>One of the important steps of KG building</p>
+<ul>
+<li>Synonyms: Instance matching, entity linking, coreferencing, deduplication, record linking</li>
+<li>Overlapping instances across multiple datasets (proprietary and/or LOD) are matched and the sum of their attributes across datasets become available for querying</li>
+<li>This problem is critical in semantic data integration</li>
+<li>Finds data instances that refer to the same real-world entity</li>
+<li>Modification: the process of transforming a “string” (name) to a “thing” (URL) based on the provided semantic context</li>
+</ul>
+</section><section id="coreferencing-varieties" class="slide level2">
+<h2>Coreferencing Varieties</h2>
+<p>Basic Reconciliation:</p>
+<ul>
+<li>Fuzzy name matching</li>
+<li>Simple additional features (e.g. exact string matches, popularity ranking, differences in coordinates/numbers)</li>
+<li>Out-of-the-box match scoring</li>
+</ul>
+<p>Advanced Reconciliation:</p>
+<ul>
+<li>Custom field parsing - additional parsing rules (acronyms, titles, dates etc)</li>
+<li>Complex additional features (text analysis, hierarchical features, geographical features, network topology, etc.)</li>
+<li>Custom match scoring</li>
+<li>Alignment Learning (possibly deep learning)</li>
+</ul>
+</section></section>
+<section><section id="linked-open-data" class="title-slide slide level1"><h1>Linked Open Data</h1></section><section id="dataset-research" class="slide level2">
+<h2>Dataset Research</h2>
+<ul>
+<li>Given a data goal (competence questions), what datasets are available and relevant?</li>
+<li>What is the enterprise data that we “intuitively” know should be captured?</li>
+<li>Are there data gaps compared to the competence questions? How can we fill them?</li>
+<li>What LOD datasets can be leveraged?</li>
+</ul>
+</section><section id="how-to-find-datasets" class="slide level2">
+<h2>How to Find Datasets?</h2>
+<ul>
+<li>Keep abreast of LOD developments in your domain (Knowledge and experience helps)</li>
+<li>Read <a href="http://www.semantic-web-journal.net/accepted-datasets">Semantic Web Journal “dataset descriptions” series</a></li>
+<li>Wikidata’s <a href="https://www.wikidata.org/wiki/Special:ListProperties/external-id"><code>external-id</code> props</a> are an excellent source (over 3700)</li>
+<li>A lot of them have corresponding <a href="https://tools.wmflabs.org/mix-n-match/#/">Mix-n-Match</a> catalog
+<ul>
+<li>A lot are potentially applicable to GLAM, eg Authority control for people 510, Identifier 196, Authority control 102, Authority control for artists 59, Cultural heritage identification 34, etc</li>
+</ul></li>
+<li>Wikipedia categories and Related links</li>
+<li><a href="https://datahub.io">DataHub</a> and <a href="https://old.datahub.io">Old DataHub</a></li>
+<li><a href="http://lod-cloud.net">LOD Cloud</a></li>
+</ul>
+<p>By Example:</p>
+<ul>
+<li>Eg to find computer science awards, get a famous computer scientist (eg Tim Berners-Lee) and explore his awards</li>
+<li>Eg to find artist biographic info, get a well-known artist (eg Emily Carr), find mentions of her on the web, list the ones that provide good biographic text</li>
+</ul>
+</section><section id="lod-cloud" class="slide level2">
+<h2>LOD Cloud</h2>
+<p>1234 datasets, 16136 links between datasets, 30B triples</p>
+<p><img data-src="img/LOD-cloud.png" /></p>
+</section><section id="lod-cloud-growth" class="slide level2">
+<h2>LOD Cloud Growth</h2>
+<p><img data-src="img/LOD-cloud-growth.png" /></p>
+</section></section>
+<section><section id="wikidata" class="title-slide slide level1"><h1>Wikidata</h1></section><section id="wikidata-and-glam" class="slide level2">
+<h2>Wikidata and GLAM</h2>
+<ul>
+<li>Wikidata is one of the most important LOD datasets for GLAM</li>
+<li>It is also a platform for integrating and leveraging GLAM data</li>
+<li><a href="https://meta.wikimedia.org/wiki/Wikidata/Strategy/2019">Wikidata Strategy 2019</a> includes 3 parts, of which “Wikidata as a platform” is strongly GLAM-oriented</li>
+<li>Very strong <a href="https://outreach.wikimedia.org/wiki/GLAM">GLAM Wiki</a> outreach including:
+<ul>
+<li>Case studies on <a href="https://outreach.wikimedia.org/wiki/GLAM/Digital_collections">sharing Digital Collections</a> including Documenting 3D objects, Documenting living traditions, Digitization workflows, Enriching digitized content, Sharing and integrating digitized content</li>
+<li>Advice on <a href="https://outreach.wikimedia.org/wiki/GLAM/Sharing_Knowledge">Sharing Knowledge</a>: Editathons, Workshops, Backstage Events, GLAM professionals contributing, Embedded Wikimedians, Online editing campaigns, Wikidata and institutional metadata, Embedding Wikimedia Content, GLAM + Education</li>
+</ul></li>
+<li>Numerous GLAM projects realized, including <a href="https://outreach.wikimedia.org/wiki/GLAM/Case_studies/Bulgarian_Archives_State_Agency">Bulgarian State Archives case study</a></li>
+<li>Wikipedian in Residence with institutions like British Library, Wales National Library, Europeana, etc etc</li>
+</ul>
+</section><section id="describing-a-painting" class="slide level2">
+<h2>Describing a Painting</h2>
+<ul>
+<li>Example: <a href="https://tools.wmflabs.org/reasonator/?lang=en&amp;q=19863043">Batsheba (in Reasonator)</a></li>
+</ul>
+<p><img data-src="img/WD-reasonator-painting-Batsheba.png" /></p>
+</section><section id="wikidata-project-visual-arts" class="slide level2">
+<h2>Wikidata Project Visual Arts</h2>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Visual_arts">Wikidata:WikiProject_Visual_arts</a> (former name Sum of All Paintings) defines <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Visual_arts/Item_structure">Item structure</a> (very rich metadata) for various CH objects</p>
+<ul>
+<li>eg “depicts Iconclass notation: 71H712”</li>
+</ul>
+<p>Leads to a detailed description and classification using an Iconographic notation (in this case a typical Biblical situation)</p>
+<ul>
+<li>71H71 David, from the roof (or balcony) of his palace, sees Bathsheba bathing
+<ul>
+<li>71H712 Bathsheba attended by servant(s)
+<ul>
+<li>Bathsheba · David · Old Testament · Samuel-2 11-12 · balcony · bathing · bible · love at first sight · maidservant · palace · roof · spying</li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="wikidata-tools-of-the-trade" class="title-slide slide level1"><h1>Wikidata: Tools of the Trade</h1></section><section id="quick-statements-for-data-loadingediting" class="slide level2">
+<h2>Quick Statements for Data Loading/Editing</h2>
+<p><a href="https://tools.wmflabs.org/quickstatements">QuickStatements</a>, <a href="https://www.wikidata.org/wiki/Help:QuickStatements">QS Help</a></p>
+<p><img data-src="img/QuickStatements-help.png" /></p>
+</section><section id="quickstatements-batches" class="slide level2">
+<h2>QuickStatements Batches</h2>
+<p><img data-src="img/YCBA-WD-quickStatements-allBatches.png" /></p>
+</section><section id="google-sheets-for-cleaningmatching" class="slide level2">
+<h2>Google Sheets for Cleaning/Matching</h2>
+<p>Vladimir Alexiev, <a href="https://gist.github.com/VladimirAlexiev/8201d614a819cb7d4023ce9aa315af65">How to use Google Sheets to Manage Wikidata Coreferencing</a>, Mar 2017.</p>
+<p><img data-src="img/WD-gsheet-conditional-formatting.png" /></p>
+</section></section>
+<section><section id="openrefine" class="title-slide slide level1"><h1>OpenRefine</h1></section><section id="openrefine-for-data-cleaning" class="slide level2">
+<h2>OpenRefine for Data Cleaning</h2>
+<ul>
+<li>Created by MetaWeb for mass-edits of FreeBase</li>
+<li>Bought by Google when FreeBase became part of the Google KG (Google Refine)</li>
+<li>Open sourced by Google (Google Refine) around the time when they donated FreeBase to be incorporated in WikiData</li>
+<li>A very powerful tool for cleaning and transforming tabular data</li>
+</ul>
+</section><section id="openrefine-resources" class="slide level2">
+<h2>OpenRefine Resources</h2>
+<ul>
+<li>Linked Data for Digital Libraries (TPDL 2013 Tutorial)- Data Cleaning, Structuring with OpenRefine</li>
+<li>Getty Vocabularies Reconciliation Service Using OpenRefine (201905)</li>
+<li>A survey of OpenRefine reconciliation services</li>
+<li>Getty Vocabularies Reconciliation Example Using OpenRefine (2018)</li>
+<li>OpenRefine Tutorial - Enipedia (2017).htm</li>
+<li>Automating the Reconciliation of Named Entities to LCNAF (using OpenRefine and VIAF, 201709)</li>
+<li>Using OpenRefine’s Reconciliation to Validate Local Authority Headings (CCQ 2017)</li>
+<li>Evaluating the success of vocabulary reconciliation for cultural heritage collections (JASIST 2012)</li>
+<li>How to pick the low hanging fruits of Linked Data (DCMI 201405) slides</li>
+<li>Converting Spreadsheets into MODSXML using Open Refine</li>
+<li>Google Refine tutorial (David Huynh 2011)</li>
+<li>OpenRefine Tutorial (v1.5 2013)</li>
+<li>Ruben Verborgh, Max De Wilde. Using OpenRefine (Packt Publishing, 2013)</li>
+</ul>
+</section><section id="openrefine-software-ecosystem" class="slide level2">
+<h2>OpenRefine Software Ecosystem</h2>
+<p><img data-src="img/openrefine-ecosystem-map.png" /></p>
+</section><section id="openrefine-extracting-from-wikipedia" class="slide level2">
+<h2>OpenRefine: Extracting from Wikipedia</h2>
+<p>Tutorial <a href="https://www.wikidata.org/wiki/Wikidata:Tools/OpenRefine/Editing/Tutorials/Inverse_Listeria">Extracting From Wikipedia Tables</a> (Inverse Listeria). Eg <a href="https://en.wikipedia.org/wiki/List_of_metro_systems">List_of_metro_systems</a> (notice the references)!</p>
+<p><img data-src="img/WP-table-of-Metro-systems.png" /></p>
+</section><section id="openrefine-extracted-info" class="slide level2">
+<h2>OpenRefine: Extracted Info</h2>
+<p><img data-src="img/OpenRefine-WD-extract-Metro-systems.png" /></p>
+</section><section id="openrefine-mapping-to-wikidata" class="slide level2">
+<h2>OpenRefine: Mapping to Wikidata</h2>
+<p><img data-src="img/OpenRefine-WD-schema-Metro-systems.png" /></p>
+</section><section id="openrefine-reconciliation" class="slide level2">
+<h2>OpenRefine Reconciliation</h2>
+<p>Map strings to things (eg persons to Wikidata and VIAF)</p>
+<p><img data-src="img/OpenRefine-reconciliation-WD-VIAF.png" /></p>
+</section><section id="openrefine-recon-against-wikidata" class="slide level2">
+<h2>OpenRefine Recon against Wikidata</h2>
+<p><img data-src="img/OpenRefine-reconciliation-Wikidata-dialog.png" /></p>
+</section></section>
+<section><section id="authority-control" class="title-slide slide level1"><h1>Authority Control</h1></section><section id="authority-control-hub" class="slide level2">
+<h2>Authority Control Hub</h2>
+<ul>
+<li>One of the most important uses of WD is as Authority Control hub (coreferencing).</li>
+<li>Out of 6k WD props, about 3.5k link to external databases (authorities, museum collections, protected monuments, research articles, etc)</li>
+<li>Wikipedia has strong Authority Control practices that are fed with WD data</li>
+</ul>
+<p><img data-src="img/WP-authority-control.png" /></p>
+</section><section id="leveraging-coreferences" class="slide level2">
+<h2>Leveraging Coreferences</h2>
+<ul>
+<li>Once you have a hub, you can easily proliferate identifiers across systems</li>
+<li>Eg here, RKDartists (not yet VIAF contributor) can be added to VIAF easily</li>
+</ul>
+<p><img data-src="img/WD-MnM-Cranach-corefs.jpg" /></p>
+</section><section id="mix-and-match-for-coreferencing" class="slide level2">
+<h2>Mix-and-Match for Coreferencing</h2>
+<p>About 3000 catalogs (external databases) loaded to MnM:</p>
+<p><img data-src="img/WD-MnM-catalogs.png" /></p>
+</section><section id="mnm-one-catalog" class="slide level2">
+<h2>MnM: One Catalog</h2>
+<p><img data-src="img/WD-MnM-stats-ULAN.png" /></p>
+</section><section id="mnm-human-matchingvetting-tools" class="slide level2">
+<h2>MnM: Human Matching/Vetting Tools</h2>
+<p><img data-src="img/WD-MnM-visual-matching-ULAN.png" /></p>
+</section><section id="beacon-and-sparql-for-matchingcounting" class="slide level2">
+<h2>Beacon and SPARQL for Matching/Counting</h2>
+<p><a href="https://docs.google.com/document/d/1F4FGJqJ2lWponSnzxQpJR6Nq87Ecv3qXJ4ExcmWgIvU/edit">How to Count ULAN and SNAC in Wikidata</a></p>
+<ul>
+<li>SNAC: Social Networks and Archival Context. WD <a href="https://www.wikidata.org/wiki/Property_talk:P3430">P3430</a> says “130,137 uses”</li>
+<li>ULAN: Getty Union List of Artist Names. WD <a href="https://www.wikidata.org/wiki/Property_talk:P245">P245</a> says “83,482 out of 293,158 (28% complete)”</li>
+<li><a href="https://tools.wmflabs.org/wikidata-todo/beacon.php">BEACON</a>: simple tool to dump out coreferences.
+<ul>
+<li>Shows the cross-matches SNAC - WD - ULAN</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="wikidata-consumption" class="title-slide slide level1"><h1>Wikidata Consumption</h1></section><section id="reasonator-view-an-item" class="slide level2">
+<h2>Reasonator: View an Item</h2>
+<p><img data-src="img/WD-FransHals-Reasonator.png" /></p>
+</section><section id="reasonator-lots-of-details" class="slide level2">
+<h2>Reasonator: Lots of Details!</h2>
+<p><img data-src="img/WD-reasonator-cheese1.png" /></p>
+</section><section id="reasonator-lots-of-details-1" class="slide level2">
+<h2>Reasonator: Lots of Details!</h2>
+<p><img data-src="img/WD-reasonator-cheese2.png" /></p>
+</section><section id="sqid-browse-props-and-subclasses" class="slide level2">
+<h2>SQID: Browse Props and Subclasses</h2>
+<p>Number of Creative Works and Cultural Institutions in Wikidata:</p>
+<p><img data-src="img/WD-GLAM.png" /></p>
+</section><section id="wikidata-query" class="slide level2">
+<h2>Wikidata Query</h2>
+<p>Eg <a href="https://w.wiki/GNu">Paintings by Titian</a></p>
+<pre class="sparql"><code>#defaultView:ImageGrid
+select ?painting ?paintingLabel ?locationLabel ?image ?coords {
+  ?painting 
+    wdt:P31/wdt:P279* wd:Q3305213; # is a (subclass of...) painting
+    wdt:P170 wd:Q47551; # Titian
+    # wdt:P131/wdt:P361* ?location; # location (is part of...)
+    wdt:P18 ?image.
+  ?location wdt:P625 ?coords. # location has coordinates
+  SERVICE wikibase:label { bd:serviceParam wikibase:language &quot;[AUTO_LANGUAGE],en&quot;. }
+} </code></pre>
+</section><section id="how-to-write-queries" class="slide level2">
+<h2>How to Write Queries?</h2>
+<p>WD queries look like gibberish because of the numbers but:</p>
+<ul>
+<li>Has auto-completion when writing</li>
+<li>Has popups while examining</li>
+<li>End-users can change params without changing the query structure (Query Helper)</li>
+<li>You can ask for help at or twitter <code>@WikidataFacts</code></li>
+</ul>
+<p><img data-src="img/WD-queryHelper.png" /></p>
+</section><section id="titian-paintings" class="slide level2">
+<h2>Titian Paintings</h2>
+<p>WD knows about 317 across many institutions: excellent for making a Catalog Raisonne. Can also show timeline (Histropedia is better!), geo map…</p>
+<p><img data-src="img/titianPaintings.png" /></p>
+</section><section id="histropedia" class="slide level2">
+<h2>Histropedia</h2>
+<p>Create great timelines</p>
+<p><img data-src="img/histropedia-Leonardo.png" /></p>
+</section><section id="geo-mapping" class="slide level2">
+<h2>Geo Mapping</h2>
+<p>Easily create geo maps, with readouts, als can make layers</p>
+<p><img data-src="img/WD-country-capitals.png" /></p>
+</section><section id="openartbrowser" class="slide level2">
+<h2>openArtBrowser</h2>
+<ul>
+<li>Deployed at <a href="http://openartbrowser.org/">http://openartbrowser.org/</a></li>
+<li>Bernhard Humm. <a href="http://ceur-ws.org/Vol-2535/paper_2.pdf">Fascinating with Open Data: openArtBrowser</a>. Conference on Digital Curation Technologies (<a href="https://dblp.org/db/conf/qurator/qurator2020.html">Qurator 2020</a>), Berlin, Germany, January 20th - 21st, 2020. <a href="http://ceur-ws.org/Vol-2535/">CEUR Workshop Proceedings 2535</a>.</li>
+<li>A very estethically pleasing app. Shows what is possible when you have rich metadata linked to LOD.</li>
+<li><a href="https://sammlung.staedelmuseum.de/en">Staedel Museum custom deployment</a>: great site built with that software.
+<ul>
+<li>See the albums (virtual exhibitions)</li>
+<li>Eg see <a href="https://sammlung.staedelmuseum.de/en/work/das-denkmal-1975-1986">das-denkmal-1975-1986</a></li>
+<li>Note that you can explore related artworks by any of the tags in its description.</li>
+</ul></li>
+<li>Built over Wikidata using Elasticsearch.</li>
+<li>Would be marvelous to deploy this for Bulgarian icons.</li>
+</ul>
+</section><section id="openartbrowser-floating-in-air" class="slide level2">
+<h2>openArtBrowser: floating in air</h2>
+<p>Iconclass topical classification “<a href="https://sammlung.staedelmuseum.de/en/search?scope=all&amp;q=term(12196:iconclass)">floating in air</a>”: 107 objects, from classical paintings to photo of a Communist memorial being removed.</p>
+<p><img data-src="img\floatingInAir.png" /></p>
+</section><section id="crotos" class="slide level2">
+<h2>Crotos</h2>
+<p><a href="http://zone47.com/crotos/?l=en">Crotos</a>: browse paintings</p>
+<p><img data-src="img/WD-FransHals-Crotos.png" /></p>
+</section><section id="monumental" class="slide level2">
+<h2>Monumental</h2>
+<p>Monuments, make maps</p>
+<p><img data-src="img/WD-Monumental-page.png" /></p>
+</section></section>
+<section><section id="bulgarian-icons" class="title-slide slide level1"><h1>Bulgarian Icons</h1></section><section id="virtual-encyclopedia-of-bulgarian-icons-bas-imi-bidl" class="slide level2">
+<h2>Virtual Encyclopedia of Bulgarian Icons (BAS IMI BIDL)</h2>
+<p><a href="http://bidl.cc.bas.bg/">BAS IMI BIDL</a></p>
+<p><img data-src="img/icons-BIDL.png" /></p>
+</section><section id="bidl-data" class="slide level2">
+<h2>BIDL Data</h2>
+<ul>
+<li>Got 500 objects, custom XML</li>
+<li>However, don’t have copyright clearance for the images</li>
+<li>This is unfortunate because Wikidata images use Wikimedia Commons, for centralized management</li>
+<li>Such images are very important in most kinds of applications</li>
+<li>There are many images of Balkan icons already in Commons</li>
+<li>The project <a href="https://meta.wikimedia.org/wiki/Structured_Data_on_Commons">Structured Data on Commons</a> makes it easy for GLAM to describe CH images, using a Wikidata approach and linking to Wikidata for creator, location, depicted elements, etc</li>
+<li>Commons also supports DeepZoom (incl. GigaPixel), eg see <a href="https://tools.wmflabs.org/zoomviewer/index.php?f=Ram%C3%B3n_Casas_-_Montserrat_Casas_de_Nieto,_in_Evening_Dress_-_Google_Art_Project.jpg">Montserrat_Casas_de_Nieto,_in_Evening_Dress</a></li>
+</ul>
+</section><section id="bidl-schema" class="slide level2">
+<h2>BIDL Schema</h2>
+<p>Deduced schema, about 60 elements:</p>
+<pre class="xml"><code>#&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+#&lt;xml&gt;
+  &lt;object id=&quot;\d+&quot;&gt;
+    &lt;characteristics&gt;
+      Идентификация
+        Заглавие:bg:en
+        Тип на иконографския обект
+          (Икона|Мозайка)
+          друг:bg:en
+          Пластичен обект
+            друг:bg:en
+        Автор:bg:en
+          Биография на автора:bg:en
+          Иконографски род:bg:en
+        Иконописна школа:bg:en
+        Период
+          От
+            (Година|Век)
+              (начало|среда|край|първа половина|втора половина)
+          До
+            (Година|Век)
+              (Месец|Ден)
+              (начало|среда|край|първа половина|втора половина)
+        Размери \(см\)
+          височина
+          ширина
+          дебелина
+        Местонахождение
+          Държава:bg:en
+          Област:bg:en
+          (Град|Село):bg:en
+          (Галерия|Музей|Частна колекция):bg:en
+          Частна колекция
+          Друго местонахождение:bg:en
+        Място на създаване
+          Държава:bg:en
+          Област:bg:en
+          (Град|Село):bg:en
+          (Манастир|Църква|Параклис):bg:en
+          Църква
+          Друго място на създаване:bg:en
+        Бележки към идентификацията на обекта:bg:en
+      Описание
+        Персонажи
+(          Име на персонаж:bg:en
+(          Каноничен тип на персонаж:bg:en\n)?)*
+        Иконографски сцени
+          Иконографска сцена:bg:en
+          Присъстващ персонаж в сцена(:bg:en)+
+        Описание на обекта:bg(:en)?
+      Технология
+        Иконографска техника:bg:en
+          Описание на техниката:bg:en
+        Основа:bg:en
+          Описание на основата:bg(:en)?
+        Състояние, реставрационни намеси и коментари((:bg)?:en)?
+      Файлове
+    &lt;files&gt;
+      &lt;file</code></pre>
+</section><section id="bidl-data-mapping-opportunities" class="slide level2">
+<h2>BIDL Data Mapping Opportunities</h2>
+<ul>
+<li>Working on mapping to EDM (simpler) and Wikidata (harder, more profitable)</li>
+<li>Lots of nested well-structured info, eg “Местонахождение&gt; Държава&gt; Област&gt; Село&gt; Манастир”
+<ul>
+<li>Has to be flattened out for Europeana, eg concatenated to a single field <code>dct:spatial</code></li>
+</ul></li>
+<li>Great opportunity for semantic enrichment, see <em>highlights</em> below.
+<ul>
+<li>Donated about 1395 to the <em>Poganovo monastery</em> by <em>Empress Elena Paleologus</em>, daughter of the monastery’s sposor <em>Despot Deyan</em> and granddaughter of <em>Tsar Ivan Alexander</em>.</li>
+<li><em>Dimiter T. Molerov</em>, born in 1780 in <em>Bansko</em>, son of <em>Toma Vishanov the Moler</em>. One of the best-known painters, a representative of the <em>Bansko</em> school of art, a disciple of his father, influenced by the art of <em>Athos</em>. Author of the murals of the naos in the <em>St Archangels’ paraclete</em> (параклис) in the <em>Rila monastery</em>, the murals in the <em>Church of the Assumption of the Virgin</em> in the <em>Pchelino dependance</em> (метох)</li>
+</ul></li>
+<li>But I doubt how many of these entities are in Wikidata/DBpedia :-(</li>
+</ul>
+</section><section id="bidl-authority-mapping" class="slide level2">
+<h2>BIDL Authority Mapping</h2>
+<p><img data-src="img/icons-BIDL-authority-mapping.png" /></p>
+</section><section id="adding-icon-concepts" class="slide level2">
+<h2>Adding Icon Concepts</h2>
+<ul>
+<li>Icons involve many specific concepts for techniques, materials, subjects, and iconography (religuous subjects)</li>
+<li>These are described in “ерминии” (herminia, WD <a href="https://www.wikidata.org/wiki/Q3408234">Q3408234</a>) which are “How to Guides” for icon painters</li>
+<li>We should deepen Getty AAT and WD with Bulgarian/Balkan-specific icon and ethnographic concepts</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Getty has only <a href="http://www.getty.edu/vow/AATHierarchy?find=belt+buckle&amp;logic=AND&amp;note=&amp;subjectid=300239260">AAT 300239260</a> “belt buckle”</li>
+<li>Wikidata has more detail and is easier to add to than Getty.</li>
+<li>Wikidata has <a href="https://www.wikidata.org/wiki/Q25457974">WD Q25457974</a> “Пафти”: I added “subclass of: belt buckle”, image</li>
+<li>Commons: <a href="https://commons.wikimedia.org/wiki/File:Belogradchik-hitorical-museum-19century-belt-buckle-14.jpg">Belogradchik-hitorical-museum-19century-belt-buckle-14.jpg</a>:</li>
+<li>Added Structured metadata: depicts: pafta; location: Belogradchik History Museum</li>
+</ul>
+</section><section id="dicho-zograf" class="slide level2">
+<h2>Dicho Zograf</h2>
+<ul>
+<li>One of the prolific iconographers was Dicho Zograf. He’s worked in tens of places, his icons are in hundreds of churches, and he made 2-10 thousands of icons.</li>
+<li>He also left 2 handwritten herminias</li>
+<li>His family tree is shown</li>
+<li>His work and legacy spanned 3 Balkan countries (BG, MK and SR claim him for their own):
+<ul>
+<li>He is Bulgarian: <a href="https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84">Дичо Зограф</a> on bgwiki. Български иконописец, виден представител на Дебърската художествена школа.</li>
+<li>He is Macedonian: <a href="https://mk.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84">Дичо Зограф</a> on mkwiki. Годишно работел по околу педесет големи дела. Во нашите краишта го донел барокот кој доаѓал преку Света Гора и Солун,преку македонските мијачки зографи и резбари кои го учеле занаетот во манастирот “Зограф” на Атос.</li>
+<li>He is Serbian: <a href="https://sr.wikipedia.org/wiki/%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D0%B0%D1%80_%D0%9A%D1%80%D1%81%D1%82%D0%B5%D0%B2%D0%B8%D1%9B">Димитар Крстевић</a> on srwiki. Био је иконописац и представник дебарске уметничке школе.</li>
+</ul></li>
+</ul>
+</section><section id="dicho-zografs-icons" class="slide level2">
+<h2>Dicho Zograf’s Icons</h2>
+<ul>
+<li>The bgwiki article shows maybe 30 of his icons.</li>
+<li>Wikimedia commons has 56 of <a href="https://commons.wikimedia.org/wiki/Category:Dicho_Zograf">Dicho Zograf’s Icons</a> icons/paintings, CC Zero license</li>
+<li>This is less than 2% of his total works.</li>
+<li>But it’s still significant: if we guesstimate 100 iconographers on WD and assume the average is <em>twice less</em>, that makes 2800 icons with cleared rights across Commons.</li>
+</ul>
+<p><img data-src="img/icons-Commons-Dicho-Zograf.png" /></p>
+</section><section id="commons-metadata-and-wikidata-item" class="slide level2">
+<h2>Commons Metadata and Wikidata Item</h2>
+<ul>
+<li>The <a href="https://commons.wikimedia.org/wiki/File:Church_of_the_Presentation_of_Virgin_Mary_Ku%C4%8Devi%C5%A1te_Dicho_Zograf_Jerusalim.jpg">info about an icon on Commons</a> is poor: author, date; title and place are embedded in the filename and cannot be extracted easily.</li>
+<li>The Structured Info (see second tab), eg Depicted, is empty.</li>
+<li>I would guess that none if these icons have a WD record.</li>
+<li>Dicho Zograf’s WD item <a href="https://www.wikidata.org/wiki/Q12278833">Q12278833</a> and <a href="https://commons.wikimedia.org/wiki/Creator:Dicho_Zograf">Commons Creator</a> page are also poor:</li>
+<li>Birth/death date/place and a bunch of identifiers, and links to Wikipedia pages, that’s all</li>
+</ul>
+</section><section id="editing-wikidata" class="slide level2">
+<h2>Editing Wikidata</h2>
+<p>Let’s enrich WD <a href="https://www.wikidata.org/wiki/Q12278833">Q12278833</a> Dicho Zograf from bgwiki <a href="https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84">Дичо Зограф</a>:</p>
+<ul>
+<li>Дебърска художествена школа! (listed as “Macedonian carving” subclass of carving; I added class “painting movement”)</li>
+<li>баща: зограф Кръсте Дичов Перков!</li>
+<li>учи се при: зографа Кръсте Дичов Перков!, а после при зографите Михаил Анагност! от Самарина! и сина му Димитър! (Михайлов).</li>
+<li>ерминията на Дичо Зограф: <a href="https://www.wikidata.org/wiki/Q84082005">Q84082005 Herminia of Dicho Zograf</a>
+<ul>
+<li>collection <a href="https://www.wikidata.org/wiki/Q84082027">Q84082027 Slavic-Byzantium Research Center “Prof. Ivan Duichev”</a>, inventory number “Cod. D. Slavo 412”</li>
+</ul></li>
+</ul>
+</section><section id="editing-data-about-an-icon" class="slide level2">
+<h2>Editing Data About an Icon</h2>
+<ul>
+<li>Първото дело на Дичо Зограф - <a href="https://www.wikidata.org/wiki/Q84296272">Q84296272</a> Света Богородица Пантонхара, 1844</li>
+<li>от „Свети Йоан Богослов Канео“! (commissioned by)</li>
+<li>днес в Охридската галерия за икони! (collection)</li>
+<li>physical description: темпера, гипсен грунд на дъска, 57 х 41 х 4 cm</li>
+<li>described in article <a href="https://www.wikidata.org/wiki/Q84291564">Q84291564</a> The icon of the Mother of God Pantonhara in the Icon Gallery, an article by Milco Georgievski
+<ul>
+<li>published on 26 October 2014 in <a href="https://www.wikidata.org/wiki/Q84298592">Q84298592</a> Ikonimaalari 2/2014 (ISBN 978-952-301-024-6)
+<ul>
+<li>Which is an issue of the Finnish journal on icons <a href="https://www.wikidata.org/wiki/Q84298370">Q84298370</a> Ikonimaalari (ISSN 1455-7975)</li>
+</ul></li>
+<li>English edition at academia.edu paper <a href="https://www.academia.edu/9843052">9843052</a> The icon of the Mother of God Pantonhara in the Icon Gallery</li>
+<li>proposed Wikidata prop <a href="https://www.wikidata.org/wiki/Wikidata:Property_proposal/academia.edu_work_id">academia.edu_work_id</a> so we can link to academia.edu (in this case, it’s the only source for that rare article)</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="icons-current-status" class="title-slide slide level1"><h1>Icons: Current Status</h1></section><section id="icon-class-sqid-q132137" class="slide level2">
+<h2>Icon Class (<a href="https://tools.wmflabs.org/sqid/#/view?id=Q132137">SQID Q132137</a>)</h2>
+<p><img data-src="img/icons-class.png" /></p>
+</section><section id="icons-by-author" class="slide level2">
+<h2>Icons by Author</h2>
+<ul>
+<li>Only 623 icons on wikidata as of 3-Feb-2020: <a href="https://twitter.com/valexiev1/status/1224274473186201608">tweet</a></li>
+<li>268 (43%) with image, 355 (47%) without: <a href="https://w.wiki/GYn">query</a></li>
+<li>33% have no author, 46% is “anonymous”, 20% are “noname” Masters, <a href="https://commons.wikimedia.org/wiki/Commons:Administrators%27_noticeboard/User_problems#merge_Nikolaos_Tsafouris_and_Nikolaos_Zafouris">Nikolaos_Tsafouris and Nikolaos_Zafouris should be merged</a> on Commons: <a href="https://w.wiki/GYi">query</a></li>
+</ul>
+<p><img data-src="img/icons-authors.png" /></p>
+</section><section id="icons-with-images-query" class="slide level2">
+<h2>Icons with Images (<a href="https://w.wiki/GYo">query</a>)</h2>
+<p><img data-src="img/icons-with-image.png" /></p>
+</section><section id="iconographer-dicho-zograf-q12278833" class="slide level2">
+<h2>Iconographer: Dicho Zograf (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=12278833">Q12278833</a>)</h2>
+<p><img data-src="img/icons-iconographer-Dicho-Zograf.png" /></p>
+</section><section id="multilingual-bg-vs-en-q12278833" class="slide level2">
+<h2>Multilingual: BG vs EN (<a href="https://tools.wmflabs.org/reasonator/?q=Q12278833&amp;lang=bg">Q12278833</a>)</h2>
+<p><img data-src="img/icons-iconographer-Dicho-Zograf-bg.png" /></p>
+</section><section id="work-herminia-12278833" class="slide level2">
+<h2>Work: Herminia (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=12278833">12278833</a>)</h2>
+<p><img data-src="img/icons-herminia.png" /></p>
+</section><section id="institution-ivan-duichev-center-84082027" class="slide level2">
+<h2>Institution: Ivan Duichev Center (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84082027">84082027</a>)</h2>
+<p><img data-src="img/icons-institution-Ivan-Duichev.png" /></p>
+</section><section id="icon-mother-of-god-pantonhara-q84296272" class="slide level2">
+<h2>Icon: Mother of God Pantonhara (<a href="https://tools.wmflabs.org/reasonator/?q=Q84296272&amp;lang=en">Q84296272</a>)</h2>
+<p><img data-src="img/icons-icon-Pantonhara.png" /></p>
+</section><section id="iconographic-subject-pantonhara-q84306742" class="slide level2">
+<h2>Iconographic Subject: Pantonhara (<a href="https://tools.wmflabs.org/reasonator/?q=Q84306742&amp;lang=en">Q84306742</a>)</h2>
+<ul>
+<li>This is one of 282 <a href="https://tools.wmflabs.org/reasonator/?&amp;q=1509831">titles of Mary</a> (designation for Mary, mother of Jesus Christ)</li>
+</ul>
+<p><img data-src="img/icons-subject-Pantonhara.png" /></p>
+</section><section id="churchmonastery-commissioned-by-q164664" class="slide level2">
+<h2>Church/Monastery (Commissioned by) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=164664">Q164664</a>)</h2>
+<p><img data-src="img/icons-church-Ioan-Kaneo.png" /></p>
+</section><section id="article-described-by-source-q84291564" class="slide level2">
+<h2>Article (Described by source) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84291564">Q84291564</a>)</h2>
+<p><img data-src="img/icons-article-Pantonhara.png" /></p>
+</section><section id="journal-issue-published-in-q84298592" class="slide level2">
+<h2>Journal Issue (Published in) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84298592">Q84298592</a>)</h2>
+<p><img data-src="img/icons-journal-issue-Ikonimaalari.png" /></p>
+</section><section id="journal-part-of-the-series-q84298370" class="slide level2">
+<h2>Journal (Part of the series) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84298370">Q84298370</a>)</h2>
+<p><img data-src="img/icons-journal-Ikonimaalari.png" /></p>
+</section></section>
+<section id="icon-knowledge-graph" class="title-slide slide level1"><h1>Icon Knowledge Graph</h1><p>Made with <a href="https://github.com/VladimirAlexiev/rdf2rml">rdfpuml</a>: <a href="example/example.ttl">example.ttl</a> -&gt; <a href="example/example.png">example.png</a> (control-click for full-screen)</p>
+<p><img data-src="example/example.png" /></p></section>
+    </div>
+  </div>
+
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/head.min.js"></script>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        width: "1280",
+      	height: "1024",
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'concave', // none/fade/slide/convex/concave/zoom
+        // Parallax background image
+        parallaxBackgroundImage: 'https://presentations.ontotext.com/scripts/reveal.js/css/theme/images/slide_bg2.svg',
+        // Parallax background size
+        parallaxBackgroundSize: '2462px 1636px', // CSS syntax, e.g. "2100px 900px"
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/search/search.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/node_modules/reveal.js-menu/menu.js' },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    </body>
+</html>

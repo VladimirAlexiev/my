@@ -1,0 +1,80 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class _TheIconPantonharaArticle as ":TheIconPantonharaArticle"
+class _Ikonimaalari2_2014 as ":Ikonimaalari2_2014"
+_TheIconPantonharaArticle -down-> _Ikonimaalari2_2014 : :publishedIn
+class _IconPantonhara as ":IconPantonhara"
+_TheIconPantonharaArticle -down-> _IconPantonhara : :mainSubject
+_TheIconPantonharaArticle : :authorString "Milco Georgievski"
+_TheIconPantonharaArticle : :fullWorkAvailableAt "academia.edu/9843052 # in English"
+_TheIconPantonharaArticle : :isA :ScientificArticle
+class _Ikonimaalari as ":Ikonimaalari"
+_Ikonimaalari : :isA :AcademicJournal
+_Ikonimaalari : :issn "1455-​7975"
+class _TitleOfMary as ":TitleOfMary"
+class _VirginMary as ":VirginMary"
+_TitleOfMary -down-> _VirginMary : :of\n:facetOf
+_TitleOfMary : :isA :ReligiousConcept
+_TitleOfMary : :subclassOf :Title
+class _KrasteDichov as ":KrasteDichov"
+_KrasteDichov : :isA :Human
+_KrasteDichov : :label "Кръсте Дичов"
+_KrasteDichov : :occupation :iconographer
+class _MihailAnagnostos as ":MihailAnagnostos"
+_MihailAnagnostos : :isA :Human
+_MihailAnagnostos : :label "Mihail Anagnostos"
+_MihailAnagnostos : :occupation :iconographer
+_IconPantonhara -down-> _VirginMary : :depicts
+class _woodBoard as ":woodBoard"
+_IconPantonhara -up-> _woodBoard : :materialUsed
+class _IconGalleryOhrid as ":IconGalleryOhrid"
+_IconPantonhara -down-> _IconGalleryOhrid : :collection
+class _Pantonhara as ":Pantonhara"
+_IconPantonhara -down-> _Pantonhara : :depicts
+_IconPantonhara -down-> _TheIconPantonharaArticle : :describedBySource
+class _DichoZograf as ":DichoZograf"
+_IconPantonhara -down-> _DichoZograf : :creator
+class _tempera as ":tempera"
+_IconPantonhara -up-> _tempera : :fabricationMethod
+class _ChurchOfStJohnAtKaneo as ":ChurchOfStJohnAtKaneo"
+_IconPantonhara -down-> _ChurchOfStJohnAtKaneo : :commissionedBy
+_IconPantonhara : :height "57 cm"
+_IconPantonhara : :isA :Icon
+_IconPantonhara : :width "41 cm"
+class _Ohrid as ":Ohrid"
+_IconGalleryOhrid -down-> _Ohrid : :locatedInAdminTerritorialEntity
+_IconGalleryOhrid : :isA :ArtGallery
+class _Slavic_ByzantiumResearchCenter as ":Slavic-ByzantiumResearchCenter"
+_Slavic_ByzantiumResearchCenter : :fieldOfWork\n  :ByzantineStudies,\n  :SlavicStudies
+_Slavic_ByzantiumResearchCenter : :isA :ResearchCenter
+_Slavic_ByzantiumResearchCenter : :namedAfter :IvanDuichev
+_Slavic_ByzantiumResearchCenter : :parentOrganization :SofiaUniversity
+_ChurchOfStJohnAtKaneo -down-> _Ohrid : :locatedInAdminTerritorialEntity
+_ChurchOfStJohnAtKaneo : :isA :EasternOrthodoxChurch
+_DichoZograf -down-> _MihailAnagnostos : :studentOf
+_DichoZograf -down-> _KrasteDichov : :studentOf\n:father
+_DichoZograf : :artisticMovement :DebarArtisticSchool
+_DichoZograf : :birthDate "1819-03"
+_DichoZograf : :deathDate "1872"
+_DichoZograf : :isA :Human
+_DichoZograf : :label\n  "Dicho Zograf",\n  "Дичо Зограф",\n  "Дичо Кръстевич"
+_DichoZograf : :occupation :iconographer
+_tempera : :EncyclopædiaUniversalis "tempera-​technique-​picturale"
+_tempera : :GettyAAT "300015062"
+_VirginMary : :isA :HumanBiblicalFigure
+_Ikonimaalari2_2014 -down-> _Ikonimaalari : :partOfTheSeries
+_Ikonimaalari2_2014 : :isA :Issue
+_Ikonimaalari2_2014 : :isbn-13 "978-​952-​301-​024-​6"
+_Ikonimaalari2_2014 : :languageOfWork :Finnish
+_Pantonhara -down-> _TitleOfMary : :isA
+_woodBoard : :GettyAAT "300162666"
+_woodBoard : :NomenclatureForMuseumCataloging "63"
+class _HerminiaOfDichoZograf as ":HerminiaOfDichoZograf"
+_HerminiaOfDichoZograf -down-> _DichoZograf : :creator
+_HerminiaOfDichoZograf -down-> _Slavic_ByzantiumResearchCenter : :collection
+_HerminiaOfDichoZograf : :inventoryNumber "Cod. D Slavo 412"
+_HerminiaOfDichoZograf : :isA :Herminia
+@enduml
