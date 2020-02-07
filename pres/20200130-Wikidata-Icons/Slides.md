@@ -624,8 +624,16 @@ Let's enrich WD [Q12278833](https://www.wikidata.org/wiki/Q12278833) Dicho Zogra
 
 ![](img/icons-journal-Ikonimaalari.png)
 
-# Icon Knowledge Graph
+# Icon Knowledge Graph and Queries
 
 Made with [rdfpuml](https://github.com/VladimirAlexiev/rdf2rml): [example.ttl](example/example.ttl) -> [example.png](example/example.png) (control-click for full-screen)
 
 ![](example/example.png)
+
+## WD [Query](https://w.wiki/Goj): Depicted Subjects by Popularity
+
+![](img/icons-WD-query-depicts.png)
+
+## WD [Query](https://w.wiki/Gon): Icons by Location
+
+![](img/icons-WD-query-map.png)
