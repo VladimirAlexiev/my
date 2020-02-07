@@ -596,6 +596,18 @@ Let's enrich WD [Q12278833](https://www.wikidata.org/wiki/Q12278833) Dicho Zogra
 
 ![](img/icons-subject-Pantonhara.png)
 
+## Detailed Iconography: Added 7 Saints in Order
+
+![](img/icons-icon-Pantonhara-depicts.png)
+
+## Added Bulgarian Descriptions of Saints
+
+![](img/icons-icon-Pantonhara-depicts-bg.png)
+
+## Added Membership of Седмочисленици (Seven Slavic Saints)
+
+![](img/icons-Sedmochislenici.png)
+
 ## Church/Monastery (Commissioned by) ([Q164664](https://tools.wmflabs.org/reasonator/?&q=164664))
 
 ![](img/icons-church-Ioan-Kaneo.png)
