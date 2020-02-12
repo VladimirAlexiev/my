@@ -586,9 +586,17 @@ Let's enrich WD [Q12278833](https://www.wikidata.org/wiki/Q12278833) Dicho Zogra
 
 ![](img/icons-institution-Ivan-Duichev.png)
 
+## Property proposal: [description](https://www.wikidata.org/wiki/Wikidata:Property_proposal/description) 
+
+![](img/property-description.png)
+
+Editorial/authorized description; but I don't think it will be accepted.
+
 ## Icon: Mother of God Pantonhara ([Q84296272](https://tools.wmflabs.org/reasonator/?q=Q84296272&lang=en))
 
 ![](img/icons-icon-Pantonhara.png)
+
+Also BIDL object 001: [Q84545297](https://www.wikidata.org/wiki/Q84545297) The Virgin Cataphyge (Refuge) and St. John the Evangelist 
 
 ## Iconographic Subject: Pantonhara ([Q84306742](https://tools.wmflabs.org/reasonator/?q=Q84306742&lang=en))
 
