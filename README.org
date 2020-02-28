@@ -1,11 +1,11 @@
 * Vladimir Alexiev CV and Bibliography
 
-- CV (updated 2018-11): http://rawgit2.com/VladimirAlexiev/my/master/cv/Vladimir-Alexiev.pdf
+- CV (updated 2020-02): http://rawgit2.com/VladimirAlexiev/my/master/cv/Vladimir-Alexiev.pdf
 - Publications and Presentations: http://rawgit2.com/VladimirAlexiev/my/master/index.html
 
 Publication stats (13-Mar-2019):
 | Book (author), thesis, conference proceedings (editor) |   3 |
-| Tech reports, manuals, deliverables, ontologies        |  33 |
-| Conference papers, journal articles                    |  29 |
-| Presentations, posters, blog posts                     |  25 |
-| TOTAL                                                  | 102 |
+| Tech reports, manuals, deliverables, ontologies        |  35 |
+| Conference papers, journal articles                    |  31 |
+| Presentations, posters, blog posts                     |  32 |
+| TOTAL                                                  | 106 |
