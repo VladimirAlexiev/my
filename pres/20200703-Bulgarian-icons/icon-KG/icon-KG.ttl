@@ -1,0 +1,138 @@
+:DichoZograf
+  puml:stereotype "Iconographer";
+  :isA :Human;
+  :label "Dicho Zograf", "Dicho Krastevich";
+  :occupation :iconographer;
+  :father :KrasteDichov;
+  :studentOf :KrasteDichov, :MihailAnagnostos;
+  :artisticMovement :DebarArtisticSchool;
+  :birthDate "1819-03";
+  :deathDate "1872".
+
+:KrasteDichov 
+  puml:stereotype "Iconographer";
+  :isA :Human;
+  :label "Kraste Dichov";
+  :occupation :iconographer.
+
+:MihailAnagnostos
+  puml:stereotype "Iconographer";
+  :isA :Human;
+  :label "Mihail Anagnostos";
+  :occupation :iconographer.
+
+:IconPantonhara
+  puml:stereotype "Icon";
+  :isA :Icon;
+  :creator :DichoZograf;
+  :commissionedBy :ChurchOfStJohnAtKaneo;
+  :collection :IconGalleryOhrid;
+  :depicts :VirginMary, :Pantonhara;
+  :materialUsed :woodBoard;
+  :fabricationMethod :tempera;
+  :height "57 cm";
+  :width "41 cm";
+  :describedBySource :TheIconPantonharaArticle.
+
+:VirginMary
+  puml:stereotype "Personage";
+  :isA :HumanBiblicalFigure.
+
+:Pantonhara
+  puml:stereotype "Personage";
+  :isA :TitleOfMary.
+
+:TitleOfMary
+  :isA :ReligiousConcept;
+  :facetOf :VirginMary;
+  :subclassOf :Title;
+  :of :VirginMary.
+
+:HerminiaOfDichoZograf
+  puml:stereotype "Manuscript";
+  :isA :Herminia;
+  :creator :DichoZograf;
+  :inventoryNumber "Cod. D Slavo 412";
+  :collection :Slavic-ByzantiumResearchCenter.
+
+:Slavic-ByzantiumResearchCenter
+  puml:stereotype "Institution";
+  :isA :ResearchCenter;
+  :namedAfter :IvanDuichev;
+  :fieldOfWork :SlavicStudies, :ByzantineStudies;
+  :parentOrganization :SofiaUniversity.
+
+:ChurchOfStJohnAtKaneo
+  puml:stereotype "Institution";
+  :isA :EasternOrthodoxChurch;
+  :locatedInAdminTerritorialEntity :Ohrid.
+
+:IconGalleryOhrid
+  puml:stereotype "Institution";
+  :isA :ArtGallery;
+  :locatedInAdminTerritorialEntity :Ohrid.
+
+:TheIconPantonharaArticle
+  puml:stereotype "Article";
+  :isA :ScientificArticle;
+  :authorString "Milco Georgievski";
+  :publishedIn :Ikonimaalari2_2014;
+  :fullWorkAvailableAt "academia.edu/9843052 # in English";
+  :mainSubject :IconPantonhara.
+
+:Ikonimaalari2_2014
+  puml:stereotype "Journal Issue";
+  :isA :Issue;
+  :languageOfWork :Finnish;
+  :isbn-13 "978-952-301-024-6";
+  :partOfTheSeries :Ikonimaalari.
+
+:Ikonimaalari
+  puml:stereotype "Journal";
+  :isA :AcademicJournal;
+  :issn "1455-7975".
+
+:woodBoard
+  puml:stereotype "Material";
+  :GettyAAT "300162666";
+  :NomenclatureForMuseumCataloging "63".
+
+:tempera
+  puml:stereotype "Technique";
+  :EncyclopædiaUniversalis "tempera-technique-picturale";
+  :GettyAAT "300015062".
+
+:Ohrid
+  puml:stereotype "Location";
+  :isA :City;
+  :label "Ohrid";
+  :coordinateLocation "41.11,20.80";
+  :population "55749";
+  :country :NorthMacedonia.
+  
+################# plantuml
+
+:fabricationMethod      puml:arrow puml:up.
+:materialUsed           puml:arrow puml:up.
+
+:artisticMovement       a puml:InlineProperty.
+:fieldOfWork            a puml:InlineProperty.
+:languageOfWork         a puml:InlineProperty.
+:namedAfter             a puml:InlineProperty.
+:occupation             a puml:InlineProperty.
+:parentOrganization     a puml:InlineProperty.
+:subclassOf             a puml:InlineProperty.
+
+:AcademicJournal        a puml:Inline.
+:ArtGallery             a puml:Inline.
+:City                   a puml:Inline.
+:EasternOrthodoxChurch  a puml:Inline.
+:Herminia               a puml:Inline.
+:Human                  a puml:Inline.
+:HumanBiblicalFigure    a puml:Inline.
+:Icon                   a puml:Inline.
+:Issue                  a puml:Inline.
+:NorthMacedonia         a puml:Inline.
+:ReligiousConcept       a puml:Inline.
+:ResearchCenter         a puml:Inline.
+:ScientificArticle      a puml:Inline.

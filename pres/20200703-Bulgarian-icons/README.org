@@ -1,0 +1,33 @@
+* Wikidata Icons
+Copied from https://github.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons
+
+** BibTex record
+#+begin_example
+@Misc{Alexiev-2020-Wikidata-Icons,
+  author       = {Vladimir Alexiev},
+  title        = {Wikidata and Icons: KGs for GLAM},
+  howpublished = {presentation},
+  month        = jan,
+  year         = 2020,
+  url          = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html},
+  keywords     = {knowledge graphs, semantic integration, GLAM, Wikidata, OpenRefine, Mix-n-Match, icons, religious icons, iconography, iconographic subject, GLAM, CLADA},
+  address      = {CLADA BG Consortium Meeting, Sofia, Bulgaria},
+  abstract     = {This presentation introduces the concepts of knowledge graphs, semantic integration, Wikidata, and Wikidata "tools of the trade" to a GLAM audience. We then show the current state of religious Icons in Wikidata, and show an example of how to edit various entities: iconographer, iconographic school, erminia, icon, measurements, material, technique, iconographic subject (a title of the Virgin Mary), scientific article, academic journal, issue. We finally show a simplified form of the resulting knowledge graph, including the graph of all these entities, plus links to external sources: Getty AAT, Nomenclature for Museum Cataloging, ISBN, ISSN, academia.edu},
+}
+#+end_example
+
+** Presentation Outline
+[[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html][20200130-Wikidata-Icons]], in particular:
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/bulgarian-icons][#bulgarian-icons]]
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/bidl-schema][#bidl-schema]] (scrollable!), 60 lines
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/bidl-authority-mapping][#bidl-authority-mapping]]
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/editing-wikidata][#editing-wikidata]] 
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/iconographer-dicho-zograf-q12278833][#iconographer-dicho-zograf-q12278833]]
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/editing-data-about-an-icon][#editing-data-about-an-icon]]
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/icon-knowledge-graph-and-queries][#icon-knowledge-graph-and-queries]]: diagram of some of the data about that icon
+- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html#/iconographic-subject-pantonhara-q84306742][#iconographic-subject-pantonhara-q84306742]] "Pantonhara" is a title of Mary (Богородица)
+
+** WD Icon Descriptions
+- [[https://www.wikidata.org/wiki/Q84296272][Q84296272]] "Mother of God Pantonhara": not from the BIDL dataset, and I've described it in a richer way than what's in BIDL, including article, full-text of article, issue, journal
+- [[https://www.wikidata.org/wiki/Q84545297][Q84545297]] "The Virgin Cataphyge (Refuge) and St. John the Evangelist": BIDL object 001, see respective XML [[../edm/fdl-object-1.xml]]
+

@@ -1,0 +1,101 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class _DichoZograf as ":DichoZograf"
+class _DichoZograf <<Iconographer>>
+class _KrasteDichov as ":KrasteDichov"
+class _KrasteDichov <<Iconographer>>
+class _MihailAnagnostos as ":MihailAnagnostos"
+class _MihailAnagnostos <<Iconographer>>
+class _IconPantonhara as ":IconPantonhara"
+class _IconPantonhara <<Icon>>
+class _VirginMary as ":VirginMary"
+class _VirginMary <<Personage>>
+class _Pantonhara as ":Pantonhara"
+class _Pantonhara <<Personage>>
+class _HerminiaOfDichoZograf as ":HerminiaOfDichoZograf"
+class _HerminiaOfDichoZograf <<Manuscript>>
+class _Slavic_ByzantiumResearchCenter as ":Slavic-ByzantiumResearchCenter"
+class _Slavic_ByzantiumResearchCenter <<Institution>>
+class _ChurchOfStJohnAtKaneo as ":ChurchOfStJohnAtKaneo"
+class _ChurchOfStJohnAtKaneo <<Institution>>
+class _IconGalleryOhrid as ":IconGalleryOhrid"
+class _IconGalleryOhrid <<Institution>>
+class _TheIconPantonharaArticle as ":TheIconPantonharaArticle"
+class _TheIconPantonharaArticle <<Article>>
+class _Ikonimaalari2_2014 as ":Ikonimaalari2_2014"
+class _Ikonimaalari2_2014 <<Journal Issue>>
+class _Ikonimaalari as ":Ikonimaalari"
+class _Ikonimaalari <<Journal>>
+class _woodBoard as ":woodBoard"
+class _woodBoard <<Material>>
+class _tempera as ":tempera"
+class _tempera <<Technique>>
+class _Ohrid as ":Ohrid"
+class _Ohrid <<Location>>
+_ChurchOfStJohnAtKaneo -down-> _Ohrid : :locatedInAdminTerritorialEntity
+_ChurchOfStJohnAtKaneo : :isA :EasternOrthodoxChurch
+_Ikonimaalari : :isA :AcademicJournal
+_Ikonimaalari : :issn "1455-7975"
+_Slavic_ByzantiumResearchCenter : :fieldOfWork\n  :ByzantineStudies,\n  :SlavicStudies
+_Slavic_ByzantiumResearchCenter : :isA :ResearchCenter
+_Slavic_ByzantiumResearchCenter : :namedAfter :IvanDuichev
+_Slavic_ByzantiumResearchCenter : :parentOrganization :SofiaUniversity
+_VirginMary : :isA :HumanBiblicalFigure
+_KrasteDichov : :isA :Human
+_KrasteDichov : :label "Kraste Dichov"
+_KrasteDichov : :occupation :iconographer
+_tempera : :EncyclopædiaUniversalis "tempera-technique-picturale"
+_tempera : :GettyAAT "300015062"
+_DichoZograf -down-> _KrasteDichov : :father\n:studentOf
+_DichoZograf -down-> _MihailAnagnostos : :studentOf
+_DichoZograf : :artisticMovement :DebarArtisticSchool
+_DichoZograf : :birthDate "1819-03"
+_DichoZograf : :deathDate "1872"
+_DichoZograf : :isA :Human
+_DichoZograf : :label\n  "Dicho Krastevich",\n  "Dicho Zograf"
+_DichoZograf : :occupation :iconographer
+_Ohrid : :coordinateLocation "41.11,20.80"
+_Ohrid : :country :NorthMacedonia
+_Ohrid : :isA :City
+_Ohrid : :label "Ohrid"
+_Ohrid : :population "55749"
+_Ikonimaalari2_2014 -down-> _Ikonimaalari : :partOfTheSeries
+_Ikonimaalari2_2014 : :isA :Issue
+_Ikonimaalari2_2014 : :isbn-13 "978-952-301-024-6"
+_Ikonimaalari2_2014 : :languageOfWork :Finnish
+_IconGalleryOhrid -down-> _Ohrid : :locatedInAdminTerritorialEntity
+_IconGalleryOhrid : :isA :ArtGallery
+_IconPantonhara -down-> _DichoZograf : :creator
+_IconPantonhara -down-> _ChurchOfStJohnAtKaneo : :commissionedBy
+_IconPantonhara -down-> _IconGalleryOhrid : :collection
+_IconPantonhara -down-> _VirginMary : :depicts
+_IconPantonhara -down-> _TheIconPantonharaArticle : :describedBySource
+_IconPantonhara -down-> _Pantonhara : :depicts
+_IconPantonhara -up-> _tempera : :fabricationMethod
+_IconPantonhara -up-> _woodBoard : :materialUsed
+_IconPantonhara : :height "57 cm"
+_IconPantonhara : :isA :Icon
+_IconPantonhara : :width "41 cm"
+_HerminiaOfDichoZograf -down-> _Slavic_ByzantiumResearchCenter : :collection
+_HerminiaOfDichoZograf -down-> _DichoZograf : :creator
+_HerminiaOfDichoZograf : :inventoryNumber "Cod. D Slavo 412"
+_HerminiaOfDichoZograf : :isA :Herminia
+_MihailAnagnostos : :isA :Human
+_MihailAnagnostos : :label "Mihail Anagnostos"
+_MihailAnagnostos : :occupation :iconographer
+_TheIconPantonharaArticle -down-> _IconPantonhara : :mainSubject
+_TheIconPantonharaArticle -down-> _Ikonimaalari2_2014 : :publishedIn
+_TheIconPantonharaArticle : :authorString "Milco Georgievski"
+_TheIconPantonharaArticle : :fullWorkAvailableAt "academia.edu/9843052 # in English"
+_TheIconPantonharaArticle : :isA :ScientificArticle
+class _TitleOfMary as ":TitleOfMary"
+_TitleOfMary -down-> _VirginMary : :of\n:facetOf
+_TitleOfMary : :isA :ReligiousConcept
+_TitleOfMary : :subclassOf :Title
+_Pantonhara -down-> _TitleOfMary : :isA
+_woodBoard : :GettyAAT "300162666"
+_woodBoard : :NomenclatureForMuseumCataloging "63"
+@enduml

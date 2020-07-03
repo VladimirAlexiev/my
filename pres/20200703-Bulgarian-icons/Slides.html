@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Vladimir Alexiev, Plamen Tarkalanov, Nikola Georgiev: Ontotext">
+  <title>Bulgarian Icons in Wikidata and EDM</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/reveal.css">
+  <link rel="icon" type="image/png" href="https://www.ontotext.com/wp-content/themes/ontotext/favicon.ico">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/theme/ontotext.css" id="theme">
+
+    <!-- For syntax highlighting using highlight.js-->
+    <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/lib/css/onto-hljs.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://presentations.ontotext.com/scripts/reveal.js/css/print/pdf.css' : 'https://presentations.ontotext.com/scripts/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Bulgarian Icons in Wikidata and EDM</h1>
+  <p class="author">Vladimir Alexiev, Plamen Tarkalanov, Nikola Georgiev: Ontotext</p>
+  <p class="date">CLADA BG project meeting, Plovdiv Library, 2020-07-02</p>
+</section>
+
+<section id="TOC">
+  <h2> Overview </h2>
+<ul>
+<li><a href="#/wikidata-and-glam">Wikidata and GLAM</a></li>
+<li><a href="#/icon-knowledge-graph-model">Icon Knowledge Graph Model</a></li>
+<li><a href="#/bulgarian-icons">Bulgarian Icons</a></li>
+<li><a href="#/sample-wikidata-queries">Sample Wikidata Queries</a></li>
+<li><a href="#/edm-mapping">EDM Mapping</a></li>
+</ul>
+</section>
+
+<section>
+<section id="wikidata-and-glam" class="title-slide slide level1">
+<h1>Wikidata and GLAM</h1>
+<ul>
+<li>Wikidata is one of the most important LOD datasets for GLAM</li>
+<li>It is also a Knowledge Graph platform for integrating and leveraging GLAM data</li>
+<li><a href="https://meta.wikimedia.org/wiki/Wikidata/Strategy/2019">Wikidata Strategy 2019</a> includes 3 parts, of which “Wikidata as a platform” is strongly GLAM-oriented</li>
+<li>Very strong <a href="https://outreach.wikimedia.org/wiki/GLAM">GLAM Wiki</a> outreach including:
+<ul>
+<li>Case studies on <a href="https://outreach.wikimedia.org/wiki/GLAM/Digital_collections">sharing Digital Collections</a> including Documenting 3D objects, Documenting living traditions, Digitization workflows, Enriching digitized content, Sharing and integrating digitized content</li>
+<li>Advice on <a href="https://outreach.wikimedia.org/wiki/GLAM/Sharing_Knowledge">Sharing Knowledge</a>: Editathons, Workshops, Backstage Events, GLAM professionals contributing, Embedded Wikimedians, Online editing campaigns, Wikidata and institutional metadata, Embedding Wikimedia Content, GLAM + Education</li>
+</ul></li>
+<li>Numerous GLAM projects realized, including <a href="https://outreach.wikimedia.org/wiki/GLAM/Case_studies/Bulgarian_Archives_State_Agency">Bulgarian State Archives case study</a></li>
+<li>Wikipedian in Residence with institutions like British Library, Wales National Library, Europeana, etc etc</li>
+</ul>
+</section>
+<section id="wikidata-project-visual-arts" class="slide level2">
+<h2>Wikidata Project Visual Arts</h2>
+<p><a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Visual_arts">Wikidata:WikiProject Visual arts</a> (former name Sum of All Paintings): - paintings: 451k (<a href="https://w.wiki/VrS">query</a>) - paintings and subclasses thereof: 467k (<a href="https://w.wiki/VrR">query</a>)</p>
+<p>Defined very rich metadata for various CH objects (<a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Visual_arts/Item_structure">Item structure</a>)</p>
+<ul>
+<li>eg “depicts Iconclass notation: 71H712”</li>
+</ul>
+<p>Leads to a detailed description and classification using an Iconographic notation (in this case a typical Biblical situation)</p>
+<ul>
+<li>71H71 David, from the roof (or balcony) of his palace, sees Bathsheba bathing
+<ul>
+<li>71H712 Bathsheba attended by servant(s)
+<ul>
+<li>Bathsheba · David · Old Testament · Samuel-2 11-12 · balcony · bathing · bible · love at first sight · maidservant · palace · roof · spying</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-painting" class="slide level2">
+<h2>Example Painting</h2>
+<ul>
+<li>Example: <a href="https://tools.wmflabs.org/reasonator/?lang=en&amp;q=19863043">Batsheba (in Reasonator)</a></li>
+</ul>
+<p><img data-src="img/WD-reasonator-painting-Batsheba.png" /></p>
+</section>
+<section id="icons-current-status" class="slide level2">
+<h2>Icons: Current Status</h2>
+<ul>
+<li>Only 623 icons on wikidata as of 3-Feb-2020: <a href="https://twitter.com/valexiev1/status/1224274473186201608">tweet</a></li>
+<li>268 (43%) with image, 355 (47%) without: <a href="https://w.wiki/GYn">query</a></li>
+<li>33% have no author, 46% is “anonymous”, 20% are “noname” Masters, <a href="https://commons.wikimedia.org/wiki/Commons:Administrators%27_noticeboard/User_problems#merge_Nikolaos_Tsafouris_and_Nikolaos_Zafouris">Nikolaos_Tsafouris and Nikolaos_Zafouris should be merged</a> on Commons: <a href="https://w.wiki/GYi">query</a></li>
+</ul>
+<p><img data-src="img/icons-authors.png" /></p>
+</section>
+<section id="icons-with-images-query" class="slide level2">
+<h2>Icons with Images (<a href="https://w.wiki/GYo">query</a>)</h2>
+<p><img data-src="img/icons-query-images.png" /></p>
+</section>
+<section id="icon-class-props-sqid-q132137" class="slide level2">
+<h2>Icon Class, Props (<a href="https://tools.wmflabs.org/sqid/#/view?id=Q132137">SQID Q132137</a>)</h2>
+<p><img data-src="img/icons-class.png" /></p>
+</section>
+<section id="semantic-data-integration" class="slide level2">
+<h2>Semantic Data Integration</h2>
+<ul>
+<li>Dataset research, Data analysis</li>
+<li>Data cleaning</li>
+<li>Know Wikidata semantic model, propose new props if needed</li>
+<li>Data mapping/conversion (ETL)</li>
+<li>Coreferencing/matching/reconciliation: one of the most important steps
+<ul>
+<li>Match data instances across multiple datasets that refer to the same real-world entity</li>
+<li>Fuzzy name matching (various algorithms), extra features, use machine learning for tuning weights</li>
+<li>Reconciliation: matching tabular data (“strings”) to a KG (“things”)</li>
+</ul></li>
+<li>Data fusion: Gather attributes across datasets; select or aggregate</li>
+<li>Semantic text/metadata enrichment</li>
+<li>Data enrichment, inference, aggregation</li>
+<li>Sample queries; Semantic search, apps, visualizations</li>
+</ul>
+</section>
+<section id="wikidata-mix-n-match" class="slide level2">
+<h2>Wikidata Mix-n-Match</h2>
+<p><a href="https://mix-n-match.toolforge.org/">Mix-n-Match</a>: global authority control. As of 2-Jul-2020:</p>
+<ul>
+<li>5181 <code>external-id</code> props that link to authority control databases (<a href="https://w.wiki/Vra">query</a>)</li>
+<li>1627 with Mix-n-Match catalog (<a href="https://w.wiki/Vre">query</a>)</li>
+<li>3554 without Mix-n-Match catalog (but easy to import/web-scrape)</li>
+</ul>
+<p>Icon-related catalogs:</p>
+<ul>
+<li><a href="https://mix-n-match.toolforge.org/#/catalog/51">Iconclass</a>, a multilingual classification system for cultural content (39.5k, 3.7k matched)</li>
+<li><a href="https://mix-n-match.toolforge.org/#/catalog/2676">Getty Iconography Authority</a> by Getty Research Institute (1.2k, 915 matched)</li>
+<li><a href="https://mix-n-match.toolforge.org/#/catalog/3247">Iconografía Hispana</a> Biblioteca Digital Hispánica (BDH)</li>
+<li><a href="https://mix-n-match.toolforge.org/#/catalog/1887">Brasiliana Iconográfica ID</a> identifier for an artwork, in this database</li>
+<li><a href="https://mix-n-match.toolforge.org/#/catalog/2421">Trinidad and Tobago Icons</a> National Institute of Higher Education, Research, Science and Technology (NIHERST)</li>
+</ul>
+</section>
+<section id="mix-n-match-iconclass-and-getty-ia" class="slide level2">
+<h2>Mix-n-Match: Iconclass and Getty IA</h2>
+<p><img data-src="img/WD-MnM-IconClass-and-GettyIA.png" /></p>
+</section>
+<section id="mix-n-match-corefs-of-lucas-cranach" class="slide level2">
+<h2>Mix-n-Match: Corefs of Lucas Cranach</h2>
+<p><img data-src="img/WD-MnM-Cranach-corefs.jpg" /></p>
+</section>
+<section id="openrefine-reconciliation" class="slide level2">
+<h2>OpenRefine Reconciliation</h2>
+<p>Reconciliation allows you to map strings to things.</p>
+<p><img data-src="img/OpenRefine-reconciliation-Wikidata-dialog.png" /></p>
+</section>
+<section id="openrefine-recon-wikidata-and-viaf" class="slide level2">
+<h2>OpenRefine Recon: Wikidata and VIAF</h2>
+<p><img data-src="img/OpenRefine-reconciliation-WD-VIAF.png" /></p>
+</section></section>
+<section>
+<section id="icon-knowledge-graph-model" class="title-slide slide level1">
+<h1>Icon Knowledge Graph Model</h1>
+<p>Made with <a href="https://github.com/VladimirAlexiev/rdf2rml">rdfpuml</a>: <a href="icon-KG/icon-KG.ttl">icon-KG.ttl</a> -&gt; <a href="icon-KG/icon-KG.png">icon-KG.png</a> (control-click for full-screen)</p>
+<p><img data-src="icon-KG/icon-KG.png" /></p>
+</section>
+<section id="adding-icon-concepts" class="slide level2">
+<h2>Adding Icon Concepts</h2>
+<ul>
+<li>Icons involve many specific concepts for techniques, materials, subjects, and iconography (religuous subjects)</li>
+<li>These are described in “ерминии” (herminia, WD <a href="https://www.wikidata.org/wiki/Q3408234">Q3408234</a>) which are “How to Guides” for icon painters</li>
+<li>We should deepen Getty AAT and WD with Bulgarian/Balkan-specific icon and ethnographic concepts</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Getty has only <a href="http://www.getty.edu/vow/AATHierarchy?find=belt+buckle&amp;logic=AND&amp;note=&amp;subjectid=300239260">AAT 300239260</a> “belt buckle”</li>
+<li>Wikidata has more detail and is easier to add to than Getty.</li>
+<li>Wikidata has <a href="https://www.wikidata.org/wiki/Q25457974">WD Q25457974</a> “Пафти”: I added “subclass of: belt buckle”, image</li>
+<li>Commons: <a href="https://commons.wikimedia.org/wiki/File:Belogradchik-hitorical-museum-19century-belt-buckle-14.jpg">Belogradchik-hitorical-museum-19century-belt-buckle-14.jpg</a>:</li>
+<li>Added Structured metadata: depicts: pafta; location: Belogradchik History Museum</li>
+</ul>
+</section>
+<section id="iconographer-dicho-zograf" class="slide level2">
+<h2>Iconographer: Dicho Zograf</h2>
+<ul>
+<li>One of most prolific iconographers: worked in tens of places, his icons are in hundreds of churches, and he made 2-10 thousands of icons.</li>
+<li>He also left 2 handwritten herminias (<a href="https://bg.wikipedia.org/wiki/Ерминия">Ерминия</a>: icon creation guide)</li>
+<li>His family tree is shown</li>
+<li>His work and legacy spanned 3 Balkan countries (BG, MK and SR: each claim him for their own):
+<ul>
+<li>He is Bulgarian: <a href="https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84">Дичо Зограф</a> on bgwiki. Български иконописец, виден представител на Дебърската художествена школа.</li>
+<li>He is Macedonian: <a href="https://mk.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84">Дичо Зограф</a> on mkwiki. Годишно работел по околу педесет големи дела. Во нашите краишта го донел барокот кој доаѓал преку Света Гора и Солун, преку македонските мијачки зографи и резбари кои го учеле занаетот во манастирот “Зограф” на Атос.</li>
+<li>He is Serbian: <a href="https://sr.wikipedia.org/wiki/%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D0%B0%D1%80_%D0%9A%D1%80%D1%81%D1%82%D0%B5%D0%B2%D0%B8%D1%9B">Димитар Крстевић</a> on srwiki. Био је иконописац и представник дебарске уметничке школе.</li>
+</ul></li>
+</ul>
+</section>
+<section id="dicho-zografs-icons" class="slide level2">
+<h2>Dicho Zograf’s Icons</h2>
+<ul>
+<li>The bgwiki article shows maybe 30 of his icons.</li>
+<li>Wikimedia commons has 56 of <a href="https://commons.wikimedia.org/wiki/Category:Dicho_Zograf">Dicho Zograf’s icons/paintings</a>, CC Zero license</li>
+<li>This is less than 2% of his total works.</li>
+<li>But it’s still significant: if we guesstimate 100 iconographers on WD and assume the average is <em>twice less</em>, that makes 2800 icons with cleared rights across Commons.</li>
+</ul>
+<p><img data-src="img/icons-Commons-Dicho-Zograf.png" /></p>
+</section>
+<section id="info-on-commons-metadata-and-wikidata" class="slide level2">
+<h2>Info on Commons Metadata and Wikidata</h2>
+<ul>
+<li>The <a href="https://commons.wikimedia.org/wiki/File:Church_of_the_Presentation_of_Virgin_Mary_Ku%C4%8Devi%C5%A1te_Dicho_Zograf_Jerusalim.jpg">info about an icon on Commons</a> is poor: author, date; title and place are embedded in the filename and cannot be extracted easily.</li>
+<li>The Structured Info (see second tab), eg Depicted, is empty.</li>
+<li>I would guess that none if these icons have a WD record.</li>
+<li>Dicho Zograf’s WD item <a href="https://www.wikidata.org/wiki/Q12278833">Q12278833</a> and <a href="https://commons.wikimedia.org/wiki/Creator:Dicho_Zograf">Commons Creator</a> page are also poor:</li>
+<li>Birth/death date/place and a bunch of identifiers, and links to Wikipedia pages, that’s all</li>
+</ul>
+<p>Enriched WD <a href="https://www.wikidata.org/wiki/Q12278833">Q12278833</a> Dicho Zograf from bgwiki <a href="https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84">Дичо Зограф</a> (added “!”):</p>
+<ul>
+<li>Дебърска художествена школа! (listed as “Macedonian carving” subclass of carving; I added class “painting movement”)</li>
+<li>баща: зограф Кръсте Дичов Перков!</li>
+<li>учи се при: зографа Кръсте Дичов Перков!, а после при зографите Михаил Анагност! от Самарина! и сина му Димитър! (Михайлов).</li>
+<li>ерминията на Дичо Зограф: <a href="https://www.wikidata.org/wiki/Q84082005">Q84082005 Herminia of Dicho Zograf</a>
+<ul>
+<li>collection <a href="https://www.wikidata.org/wiki/Q84082027">Q84082027 Slavic-Byzantium Research Center “Prof. Ivan Duichev”</a>, inventory number “Cod. D. Slavo 412”</li>
+</ul></li>
+</ul>
+</section>
+<section id="editing-data-about-an-icon" class="slide level2">
+<h2>Editing Data About an Icon</h2>
+<ul>
+<li>Първото дело на Дичо Зограф - <a href="https://www.wikidata.org/wiki/Q84296272">Q84296272</a> Света Богородица Пантонхара, 1844</li>
+<li>от „Свети Йоан Богослов Канео“! (commissioned by)</li>
+<li>днес в Охридската галерия за икони! (collection)</li>
+<li>physical description: темпера, гипсен грунд на дъска, 57 х 41 х 4 cm</li>
+<li>described in article <a href="https://www.wikidata.org/wiki/Q84291564">Q84291564</a> The icon of the Mother of God Pantonhara in the Icon Gallery, an article by Milco Georgievski
+<ul>
+<li>published on 26 October 2014 in <a href="https://www.wikidata.org/wiki/Q84298592">Q84298592</a> Ikonimaalari 2/2014 (ISBN 978-952-301-024-6)
+<ul>
+<li>Which is an issue of the Finnish journal on icons <a href="https://www.wikidata.org/wiki/Q84298370">Q84298370</a> Ikonimaalari (ISSN 1455-7975)</li>
+</ul></li>
+<li>English edition at academia.edu paper <a href="https://www.academia.edu/9843052">9843052</a> The icon of the Mother of God Pantonhara in the Icon Gallery</li>
+<li>proposed Wikidata prop <a href="https://www.wikidata.org/wiki/Wikidata:Property_proposal/academia.edu_work_id">academia.edu work id</a> so we can link to academia.edu (in this case, it’s the only source for that rare article)</li>
+</ul></li>
+</ul>
+</section>
+<section id="iconographer-dicho-zograf-q12278833" class="slide level2">
+<h2>Iconographer: Dicho Zograf (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=12278833">Q12278833</a>)</h2>
+<p><img data-src="img/icons-iconographer-Dicho-Zograf.png" /></p>
+</section>
+<section id="multilingual-bg-vs-en-q12278833" class="slide level2">
+<h2>Multilingual: BG vs EN (<a href="https://tools.wmflabs.org/reasonator/?q=Q12278833&amp;lang=bg">Q12278833</a>)</h2>
+<p><img data-src="img/icons-iconographer-Dicho-Zograf-bg.png" /></p>
+</section>
+<section id="work-herminia-12278833" class="slide level2">
+<h2>Work: Herminia (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=12278833">12278833</a>)</h2>
+<p><img data-src="img/icons-herminia.png" /></p>
+</section>
+<section id="institution-ivan-duichev-center-84082027" class="slide level2">
+<h2>Institution: Ivan Duichev Center (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84082027">84082027</a>)</h2>
+<p><img data-src="img/icons-institution-Ivan-Duichev.png" /></p>
+</section>
+<section id="icon-mother-of-god-pantonhara-q84296272" class="slide level2">
+<h2>Icon: Mother of God Pantonhara (<a href="https://tools.wmflabs.org/reasonator/?q=Q84296272&amp;lang=en">Q84296272</a>)</h2>
+<p><img data-src="img/icons-icon-Pantonhara.png" /></p>
+</section>
+<section id="iconographic-subject-pantonhara-q84306742" class="slide level2">
+<h2>Iconographic Subject: Pantonhara (<a href="https://tools.wmflabs.org/reasonator/?q=Q84306742&amp;lang=en">Q84306742</a>)</h2>
+<ul>
+<li>This is one of 282 <a href="https://tools.wmflabs.org/reasonator/?&amp;q=1509831">titles of Mary</a> (designation for Mary, mother of Jesus Christ)</li>
+</ul>
+<p><img data-src="img/icons-personage-Pantonhara.png" /></p>
+</section>
+<section id="iconography-added-7-saints-in-order" class="slide level2">
+<h2>Iconography: Added 7 Saints in Order</h2>
+<p><img data-src="img/icons-icon-Pantonhara-depicts.png" /></p>
+</section>
+<section id="added-saints" class="slide level2">
+<h2>Added Saints</h2>
+<p>Mother and father of <a href="https://www.wikidata.org/wiki/Q48438">St George</a>: <a href="https://www.wikidata.org/wiki/Q85621971">Polychronia</a> (Polifrona) and <a href="https://www.wikidata.org/wiki/Q85622497">Gerontius</a>, with references</p>
+<p><img data-src="img/icons-personage-Polychronia.png" /></p>
+</section>
+<section id="added-names-of-virgin-mary" class="slide level2">
+<h2>Added Names of Virgin Mary</h2>
+<p>Platitera (<a href="https://reasonator.toolforge.org/?&amp;q=84986979">Q84986979</a>): Platytera; Wider than Heavens, More Spacious than the Heavens; Св. Богородица Ширшая небес, По-широка от небесата</p>
+<p><img data-src="img/icons-personage-Platitera.png" /></p>
+</section>
+<section id="saints-added-bulgarian-descriptions" class="slide level2">
+<h2>Saints: Added Bulgarian Descriptions</h2>
+<p><img data-src="img/icons-icon-Pantonhara-depicts-bg.png" /></p>
+</section>
+<section id="seven-slavic-saints-added-membership" class="slide level2">
+<h2>Seven Slavic Saints: Added Membership</h2>
+<p><img data-src="img/icons-personage-Sedmochislenici.png" /></p>
+</section>
+<section id="church-commissioned-by-q164664" class="slide level2">
+<h2>Church (Commissioned by) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=164664">Q164664</a>)</h2>
+<p><img data-src="img/icons-church-Ioan-Kaneo.png" /></p>
+</section>
+<section id="article-described-by-source-q84291564" class="slide level2">
+<h2>Article (Described by source) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84291564">Q84291564</a>)</h2>
+<p><img data-src="img/icons-article-Pantonhara.png" /></p>
+</section>
+<section id="journal-issue-published-in-q84298592" class="slide level2">
+<h2>Journal Issue (Published in) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84298592">Q84298592</a>)</h2>
+<p><img data-src="img/icons-journal-issue-Ikonimaalari.png" /></p>
+</section>
+<section id="journal-part-of-the-series-q84298370" class="slide level2">
+<h2>Journal (Part of the series) (<a href="https://tools.wmflabs.org/reasonator/?&amp;q=84298370">Q84298370</a>)</h2>
+<p><img data-src="img/icons-journal-Ikonimaalari.png" /></p>
+</section></section>
+<section>
+<section id="bulgarian-icons" class="title-slide slide level1">
+<h1>Bulgarian Icons</h1>
+
+</section>
+<section id="virtual-encyclopedia-of-bulgarian-icons" class="slide level2">
+<h2>Virtual Encyclopedia of Bulgarian Icons</h2>
+<p><a href="http://bidl.cc.bas.bg/">BAS IMI BIDL</a></p>
+<p><img data-src="img/icons-BIDL.png" /></p>
+</section>
+<section id="bidl-data" class="slide level2">
+<h2>BIDL Data</h2>
+<ul>
+<li>Got 308 objects, custom XML</li>
+<li>However, don’t have copyright clearance for the images</li>
+<li>This is unfortunate because Wikidata images use Wikimedia Commons, for centralized management</li>
+<li>Such images are very important in most visual applications</li>
+<li>There are many images of Balkan icons already in Commons</li>
+<li>The project <a href="https://meta.wikimedia.org/wiki/Structured_Data_on_Commons">Structured Data on Commons</a> makes it easy for GLAM to describe CH images, using a Wikidata approach and linking to Wikidata for creator, location, depicted elements, etc</li>
+<li>Commons also supports DeepZoom (incl. GigaPixel), eg see <a href="https://tools.wmflabs.org/zoomviewer/index.php?f=Ram%C3%B3n_Casas_-_Montserrat_Casas_de_Nieto,_in_Evening_Dress_-_Google_Art_Project.jpg">Montserrat Casas de Nieto, in Evening Dress</a></li>
+</ul>
+</section>
+<section id="bidl-schema" class="slide level2">
+<h2>BIDL Schema</h2>
+<p>Deduced schema: about 60 elements:</p>
+<pre class="xml"><code>#&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+#&lt;xml&gt;
+  &lt;object id=&quot;\d+&quot;&gt;
+    &lt;characteristics&gt;
+      Идентификация
+        Заглавие:bg:en
+        Тип на иконографския обект
+          (Икона|Мозайка)
+          друг:bg:en
+          Пластичен обект
+            друг:bg:en
+        Автор:bg:en
+          Биография на автора:bg:en
+          Иконографски род:bg:en
+        Иконописна школа:bg:en
+        Период
+          От
+            (Година|Век)
+              (начало|среда|край|първа половина|втора половина)
+          До
+            (Година|Век)
+              (Месец|Ден)
+              (начало|среда|край|първа половина|втора половина)
+        Размери \(см\)
+          височина
+          ширина
+          дебелина
+        Местонахождение
+          Държава:bg:en
+          Област:bg:en
+          (Град|Село):bg:en
+          (Галерия|Музей|Частна колекция):bg:en
+          Частна колекция
+          Друго местонахождение:bg:en
+        Място на създаване
+          Държава:bg:en
+          Област:bg:en
+          (Град|Село):bg:en
+          (Манастир|Църква|Параклис):bg:en
+          Църква
+          Друго място на създаване:bg:en
+        Бележки към идентификацията на обекта:bg:en
+      Описание
+        Персонажи
+(          Име на персонаж:bg:en
+(          Каноничен тип на персонаж:bg:en\n)?)*
+        Иконографски сцени
+          Иконографска сцена:bg:en
+          Присъстващ персонаж в сцена(:bg:en)+
+        Описание на обекта:bg(:en)?
+      Технология
+        Иконографска техника:bg:en
+          Описание на техниката:bg:en
+        Основа:bg:en
+          Описание на основата:bg(:en)?
+        Състояние, реставрационни намеси и коментари((:bg)?:en)?
+      Файлове
+    &lt;files&gt;
+      &lt;file</code></pre>
+</section>
+<section id="bidl-authorities" class="slide level2">
+<h2>BIDL Authorities</h2>
+<p><img data-src="img/icons-BIDL-authority-mapping.png" /></p>
+</section>
+<section id="bidl-authority-mapping" class="slide level2">
+<h2>BIDL Authority Mapping</h2>
+<ul>
+<li>Lots of nested well-structured info, eg “Местонахождение&gt; Държава&gt; Област&gt; Село&gt; Манастир”
+<ul>
+<li>Has to be flattened out for Europeana, eg concatenated to a single field <code>dct:spatial</code></li>
+</ul></li>
+<li>Great opportunity for semantic enrichment, see <em>highlights</em> below.
+<ul>
+<li>Donated about 1395 to the <em>Poganovo monastery</em> by <em>Empress Elena Paleologus</em>, daughter of the monastery’s sposor <em>Despot Deyan</em> and granddaughter of <em>Tsar Ivan Alexander</em>.</li>
+<li><em>Dimiter T. Molerov</em>, born in 1780 in <em>Bansko</em>, son of <em>Toma Vishanov the Moler</em>. One of the best-known painters, a representative of the <em>Bansko</em> school of art, a disciple of his father, influenced by the art of <em>Athos</em>. Author of the murals of the naos in the <em>St Archangels’ paraclete</em> (параклис) in the <em>Rila monastery</em>, the murals in the <em>Church of the Assumption of the Virgin</em> in the <em>Pchelino dependance</em> (метох)</li>
+</ul></li>
+<li>Mapped to Wikidata:
+<ul>
+<li>Iconographic object type (instance of): WD and AAT</li>
+<li>Personages/saints (depicts)</li>
+<li>Iconographers (creator)</li>
+<li>Iconographic schools (artistic movement)</li>
+<li>Location of creation (comissioned by), current location</li>
+</ul></li>
+</ul>
+</section>
+<section id="openrefine-reconcile-personages" class="slide level2">
+<h2>OpenRefine: Reconcile Personages</h2>
+<p><img data-src="img/icons-OpenRefine-recon-Personages.png" /></p>
+</section>
+<section id="openrefine-reconcile-iconographers" class="slide level2">
+<h2>OpenRefine: Reconcile Iconographers</h2>
+<p><img data-src="img/icons-OpenRefine-recon-Authors.png" /></p>
+</section>
+<section id="openrefine-reconcile-locations" class="slide level2">
+<h2>OpenRefine: Reconcile Locations</h2>
+<p><img data-src="img/icons-OpenRefine-recon-Places.png" /></p>
+</section>
+<section id="openrefine-mapping-icons-to-wikidata" class="slide level2">
+<h2>OpenRefine: Mapping Icons to Wikidata</h2>
+<p><img data-src="img/icons-OpenRefine-Wikidata-schema.png" /></p>
+<p>Only a small part is shown</p>
+</section>
+<section id="mapping-bidl-to-wikidata-results" class="slide level2">
+<h2>Mapping BIDL to Wikidata: Results</h2>
+<ul>
+<li>OpenRefine was used to reconcile BIDL authorities to Wikidata</li>
+<li>OpenRefine Wikidata schema was used to map the data</li>
+<li>The mapped data was exported as QuickStatements and added to Wikidata</li>
+<li>Saints and iconographers were added semi-automatically</li>
+<li>All 308 icons are in WD according to the KG model (but we don’t have data about publications)</li>
+</ul>
+</section></section>
+<section>
+<section id="sample-wikidata-queries" class="title-slide slide level1">
+<h1>Sample Wikidata Queries</h1>
+
+</section>
+<section id="wd-query-depicted-subjects-by-popularity" class="slide level2">
+<h2>WD <a href="https://w.wiki/Goj">Query</a>: Depicted Subjects by Popularity</h2>
+<p><img data-src="img/icons-query-Personages-bubbleChart.png" /></p>
+</section>
+<section id="wd-query-icons-by-type" class="slide level2">
+<h2>WD <a href="https://w.wiki/Tci">Query</a>: Icons by Type</h2>
+<p><img data-src="img/icons-query-types-bubbleChart.png" /></p>
+</section>
+<section id="queries-can-be-modified-by-non-experts" class="slide level2">
+<h2>Queries Can Be Modified by Non-Experts</h2>
+<p><img data-src="img/icons-query-Personages-with-editor-and-helper.png" /></p>
+</section>
+<section id="wd-query-icons-by-current-location" class="slide level2">
+<h2>WD <a href="https://w.wiki/Gon">Query</a>: Icons by Current Location</h2>
+<p><img data-src="img/icons-query-map.png" /></p>
+</section>
+<section id="wd-query-count-by-location-of-creation" class="slide level2">
+<h2>WD <a href="https://w.wiki/Tcm">Query</a>: Count by Location of Creation</h2>
+<p>We know the location and coordinates for 169 of 308 icons</p>
+<p><img data-src="img/icons-query-map-creationPlace.png" /></p>
+</section></section>
+<section>
+<section id="edm-mapping" class="title-slide slide level1">
+<h1>EDM Mapping</h1>
+<ul>
+<li>Detailed and precise EDM mapping including bilingual data, lang tags, links to Wikidata.</li>
+<li>Implemented as a Python script using rdflib, ElementTree.</li>
+<li>Converts XML, adds Wikidata references from CSV.</li>
+</ul>
+</section>
+<section id="edm-cho-1" class="slide level2">
+<h2>EDM: CHO 1</h2>
+<p>CHO, Type, Title, Creator, Size, Date, Locations</p>
+<pre class="ttl"><code>&lt;http://bidl.cc.bas.bg/viewobject.php?id=264&amp;lang=bg&gt; a edm:ProvidedCHO;
+  owl:sameAs wd:Q87103221;
+  edm:hasType wd:Q132137;
+  edm:type &quot;IMAGE&quot;;
+  dc:identifier &quot;264&quot;;
+  dc:title
+    &quot;Преображение Господне&quot;@bg,
+    &quot;The Transfiguration of Jesus Christ&quot;@en;
+  dc:type &quot;Икона&quot;@bg, wd:Q132137;
+  dc:creator
+    &quot;Тома Вишанов-Молера&quot;@bg, &quot;Toma Vishanov-Molera&quot;@en, wd:Q12296667,
+    &quot;Банска иконописна школа&quot;@bg, &quot;Bansko Iconographic School&quot;@en, wd:Q12272944;
+  dct:created &quot;От край на 18 Век До начало на 19 Век&quot;@bg;
+  dct:extent &quot;30.5 x 22.5 x 2.3 cm&quot;;
+  edm:currentLocation
+    &quot;Успение Богородично, Бобошево, Благоевград, България&quot;@bg,
+    &quot;The Assumption of the Virgin, Boboshevo, Blagoevgrad, Bulgaria&quot;@en,
+    wd:Q12297283;
+  dct:provenance
+    &quot;Успение Богородично, Бобошево, Благоевград, България&quot;@bg,
+    &quot;The Assumption of the Virgin, Boboshevo, Blagoevgrad, Bulgaria&quot;@en,
+    wd:Q12297283;
+  dct:spatial
+    &quot;Успение Богородично, Бобошево, Благоевград, България&quot;@bg,
+    &quot;The Assumption of the Virgin, Boboshevo, Blagoevgrad, Bulgaria&quot;@en,
+    wd:Q12297283.</code></pre>
+</section>
+<section id="edm-cho-2" class="slide level2">
+<h2>EDM: CHO 2</h2>
+<p>Description, Subject, Medium, Part Of, Language</p>
+<pre class="ttl"><code>&lt;http://bidl.cc.bas.bg/viewobject.php?id=264&amp;lang=bg&gt;
+  dc:description
+    &quot;&quot;&quot;В горната половина на композицията са изобразени: в центъра Христос в цял ръст
+... старозаветните пророци Мойсей и Илия, седнали. 
+... вляво св. ап. Яков, клекнал и опрял ръце в земята; св. ап. Петър..&quot;&quot;&quot;@bg,
+    &quot;&quot;&quot;Pictured in the upper half of the composition are: in the center - Christ in full length...&quot;&quot;&quot;@en;
+  dc:subject
+    &quot;Апостол&quot;@bg, &quot;Apostle&quot;@en, wd:Q43412,
+    &quot;Иисус Христос&quot;@bg, &quot;Jesus Christ&quot;@en, wd:Q302,
+    &quot;Преображение Господне&quot;@bg, &quot;The Transfiguration of Jesus Christ&quot;@en,
+    &quot;Пророк&quot;@bg, &quot;Prophet&quot;@en, wd:Q42857,
+    &quot;Св. Илия&quot;@bg, &quot;St. Elijah&quot;@en, wd:Q133507,
+    &quot;Св. Йоан Богослов&quot;@bg, &quot;St. John the Evangelist&quot;@en, wd:Q328804,
+    &quot;Св. Моисей&quot;@bg, &quot;St. Moses&quot;@en, wd:Q9077,
+    &quot;Св. Петър&quot;@bg, &quot;St. Peter&quot;@en, wd:Q33923,
+    &quot;Св. Яков&quot;@bg, &quot;St. James&quot;@en, wd:Q43999;
+  dct:medium
+    &quot;&quot;&quot;Маслена/Дърво. Приложена е маслена живопис...&quot;&quot;&quot;@bg,
+    &quot;&quot;&quot;Oil/Wood. Oil painting, laid thinly on the ground coat...&quot;&quot;&quot;@en,
+    wd:Q56676227, wd:Q287;
+  dct:isPartOf
+    &quot;Virtual encyclopaedia of Bulgarian iconography&quot;@en,
+    &quot;Виртуална енциклопедия на Българската иконография&quot;@bg,
+    &lt;http://bidl.cc.bas.bg/index.php?lang=bg&gt;;
+  edm:rights &lt;https://creativecommons.org/publicdomain/mark/1.0/&gt;;
+  dc:language &quot;bg&quot;, &quot;en&quot;.</code></pre>
+</section>
+<section id="edm-auxiliary-objects" class="slide level2">
+<h2>EDM: Auxiliary Objects</h2>
+<p>Aggregation, Providers, Webpage, Image, License, Agent</p>
+<pre class="ttl"><code>&lt;http://bidl.cc.bas.bg/viewobject.php?id=264&amp;lang=bg#aggr&gt; a ore:Aggregation;
+  edm:aggregatedCHO &lt;http://bidl.cc.bas.bg/viewobject.php?id=264&amp;lang=bg&gt;;
+  edm:isShownAt &lt;http://bidl.cc.bas.bg/viewobject.php?id=264&amp;lang=bg&gt;,
+                &lt;http://bidl.cc.bas.bg/viewobject.php?id=264&amp;lang=en&gt;;
+  edm:isShownBy &lt;http://bidl.cc.bas.bg/view/300-view.jpg&gt;;
+  edm:dataProvider &quot;Институт по математика и информатика, БАН&quot;;
+  edm:intermediateProvider &quot;CLADA BG&quot;;
+  edm:provider &quot;Bulgariana&quot;.
+
+&lt;http://bidl.cc.bas.bg/view/300-view.jpg&gt; a edm:WebResource;
+  edm:rights &lt;http://rightsstatements.org/vocab/InC/1.0/&gt;.
+
+wd:Q12296667 a edm:Agent;
+  skos:prefLabel &quot;Тома Вишанов-Молера&quot;@bg, &quot;Toma Vishanov-Molera&quot;@en;
+  dct:isPartOf
+    &quot;Молеров&quot;@bg, &quot;Molerov&quot;@en,
+    &quot;Банска иконописна школа&quot;@bg, &quot;Bansko Iconographic School&quot;@en, wd:Q12272944;
+  skos:note
+    &quot;&quot;&quot;Тома Вишанов-Молера – роден около 1750г., иконописец и стенописец, 
+основоположник на банската художествена школа. Израства в семейството на свещеника Вишан...&quot;&quot;&quot;@bg,
+    &quot;&quot;&quot;Toma Vishanov-Molera, born around 1750, painter of icons and murals, 
+founder of the Bansko school of art. He grew up in the family of the clergyman Vishan...&quot;&quot;&quot;@en.</code></pre>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/head.min.js"></script>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        width: "1280",
+      	height: "1024",
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'concave', // none/fade/slide/convex/concave/zoom
+        // Parallax background image
+        parallaxBackgroundImage: 'https://presentations.ontotext.com/scripts/reveal.js/css/theme/images/slide_bg2.svg',
+        // Parallax background size
+        parallaxBackgroundSize: '2462px 1636px', // CSS syntax, e.g. "2100px 900px"
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/search/search.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/node_modules/reveal.js-menu/menu.js' },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    </body>
+</html>
