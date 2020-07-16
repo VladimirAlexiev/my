@@ -1,0 +1,81 @@
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+
+<http://bidl.cc.bas.bg/viewobject.php?id=264&lang=bg> a edm:ProvidedCHO;
+  owl:sameAs wd:Q87103221;
+  edm:hasType wd:Q132137;
+  edm:type "IMAGE";
+  dc:identifier "264";
+  dc:title "Преображение Господне"@bg, "The Transfiguration of Jesus Christ"@en;
+  dc:type "Икона"@bg, wd:Q132137;
+  dc:creator
+    "Тома Вишанов-Молера"@bg, "Toma Vishanov-Molera"@en, wd:Q12296667 ,
+    "Банска иконописна школа"@bg, "Bansko Iconographic School"@en, wd:Q12272944;
+  dct:created "От край на 18 Век До начало на 19 Век"@bg;
+  dct:extent "30.5 x 22.5 x 2.3 cm";
+  edm:currentLocation
+    "Успение Богородично, Бобошево, Благоевград, България"@bg,
+    "The Assumption of the Virgin, Boboshevo, Blagoevgrad, Bulgaria"@en,
+    wd:Q12297283;
+  dct:provenance
+    "Успение Богородично, Бобошево, Благоевград, България"@bg,
+    "The Assumption of the Virgin, Boboshevo, Blagoevgrad, Bulgaria"@en,
+    wd:Q12297283;
+  dct:spatial
+    "Успение Богородично, Бобошево, Благоевград, България"@bg,
+    "The Assumption of the Virgin, Boboshevo, Blagoevgrad, Bulgaria"@en,
+    wd:Q12297283;
+  dc:description
+    """В горната половина на композицията са изобразени : в центъра Христос в цял ръст
+... старозаветните пророци Мойсей и Илия, седнали. 
+... вляво св. ап. Яков, клекнал и опрял ръце в земята; св. ап. Петър.."""@bg,
+    """Pictured in the upper half of the composition are: ..."""@en;
+  dc:subject
+    "Апостол"@bg, "Apostle"@en, wd:Q43412,
+    "Иисус Христос"@bg, "Jesus Christ"@en, wd:Q302,
+    "Преображение Господне"@bg, "The Transfiguration of Jesus Christ"@en,
+    "Пророк"@bg, "Prophet"@en, wd:Q42857,
+    "Св. Илия"@bg, "St. Elijah"@en, wd:Q133507,
+    "Св. Йоан Богослов"@bg, "St. John the Evangelist"@en, wd:Q328804,
+    "Св. Моисей"@bg, "St. Moses"@en, wd:Q9077,
+    "Св. Петър"@bg, "St. Peter"@en, wd:Q33923,
+    "Св. Яков"@bg, "St. James"@en, wd:Q43999;
+  dct:medium
+    """Маслена/Дърво. Приложена е маслена живопис..."""@bg,
+    """Oil/Wood. Oil painting, laid thinly on the ground coat..."""@en,
+    wd:Q56676227, wd:Q287;
+  dct:isPartOf
+    "Virtual encyclopaedia of Bulgarian iconography"@en,
+    "Виртуална енциклопедия на Българската иконография"@bg,
+    <http://bidl.cc.bas.bg/index.php?lang=bg>;
+  edm:rights <https://creativecommons.org/publicdomain/mark/1.0/>;
+  dc:language "bg", "en".
+
+<http://bidl.cc.bas.bg/viewobject.php?id=264&lang=bg#aggr> a ore:Aggregation;
+  edm:aggregatedCHO <http://bidl.cc.bas.bg/viewobject.php?id=264&lang=bg>;
+  edm:isShownAt <http://bidl.cc.bas.bg/viewobject.php?id=264&lang=bg>,
+                <http://bidl.cc.bas.bg/viewobject.php?id=264&lang=en>;
+  edm:isShownBy <http://bidl.cc.bas.bg/view/300-view.jpg>;
+  edm:dataProvider "Институт по математика и информатика, БАН";
+  edm:intermediateProvider "CLADA BG";
+  edm:provider "Bulgariana".
+
+<http://bidl.cc.bas.bg/view/300-view.jpg> a edm:WebResource;
+  edm:rights <http://rightsstatements.org/vocab/InC/1.0/>.
+
+wd:Q12296667 a edm:Agent;
+  skos:prefLabel "Тома Вишанов-Молера"@bg, "Toma Vishanov-Molera"@en;
+  dct:isPartOf
+    "Молеров"@bg, "Molerov"@en,
+    "Банска иконописна школа"@bg, "Bansko Iconographic School"@en, wd:Q12272944;
+  skos:note
+    """Тома Вишанов-Молера – роден около 1750г., иконописец и стенописец, 
+основоположник на банската художествена школа. Израства в семейството на..."""@bg,
+    """Toma Vishanov-Molera, born around 1750, painter of icons and murals, 
+founder of the Bansko school of art. He grew up in the family of..."""@en.
+    

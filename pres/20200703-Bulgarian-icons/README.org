@@ -49,3 +49,7 @@
 ** WD Icon Descriptions
 - [[https://www.wikidata.org/wiki/Q84296272][Q84296272]] "Mother of God Pantonhara": not from the BIDL dataset, and I've described it in a richer way than what's in BIDL, including article, full-text of article, issue, journal
 - [[https://www.wikidata.org/wiki/Q84545297][Q84545297]] "The Virgin Cataphyge (Refuge) and St. John the Evangelist": BIDL object 001
+
+** EDM Mapping
+
+[[./sample-edm.ttl]] for [[http://bidl.cc.bas.bg/viewobject.php?id=264&lang=en][BIDL object 264]]
