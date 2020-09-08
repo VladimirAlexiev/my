@@ -284,11 +284,32 @@ Let's find the classifications and standards that it is related to:
 {standard(where:{label:{value:{EQ:"ISO 15926"}}}) {
   comment{value}
   hasClassification{id}
-  hasRelevantDomain{id}
   relatedTo {
     id
     label{value}
     comment{value}}}}
+```
+
+Response:
+
+```json
+"standard": [{
+  "comment": {"value": "Industrial automation systems and integration -- Integration of life-cycle data for process plants including oil and gas production facilities."},
+  "hasClassification": [
+    {"id": "https://w3id.org/i40/sto#RamiProduct"},
+    {"id": "https://w3id.org/i40/sto#RamiIntegrationLayer"},
+    {"id": "https://w3id.org/i40/sto#AsConfiguration"},
+    {"id": "https://w3id.org/i40/sto#AsEngineering"},
+    {"id": "https://w3id.org/i40/sto#ProductLifeCycleManagement"}
+  ],
+  "relatedTo": [
+    {"id": "https://w3id.org/i40/sto#DIN_SPEC_16592",
+      "label": {"value": "DIN SPEC 16592"},
+      "comment": {"value": "Combining OPC Unified Architecture and Automation Markup Language."}},
+    {"id": "https://w3id.org/i40/sto#IEC_62541",
+      "label": {"value": "IEC 62541"},
+      "comment": {"value": "OPC Unified Architecture (OPC UA) is an industrial M2M communication protocol..."}}
+
 ```
 
 ## ISO 15926 Complexity
@@ -296,6 +317,7 @@ Let's find the classifications and standards that it is related to:
 The complexity of ISO 15926 is difficult for most people to master.
 
 Its approach to ontology modeling comes from the [BORO method](https://en.wikipedia.org/wiki/BORO) that uses:
+
 - An Extensional (rather than linguistic) identity criterion
 - Four-dimensional modeling (every entity evolution or state is represetned as another temporal part)
 - Non-well-founded Sets and Powersets
@@ -308,27 +330,29 @@ with definition "Any member of `EssentialType` class `hasPossessorType` has a `h
 ![](img/ClassOfIndividualHasIndirectPropertyWithBoundingValues.png)
 
 
-## GraphQL Query 4: Classifications to Concerns
+## GraphQL Query 4: Concerns
 
-I40KG includes some 200 "concerns" (eg AI, DataAnalytics, etc).
+I40KG includes a number of 200 "concerns" i.e. topics relevant to Industry (eg AI, DataAnalytics, etc).
+
+```graphql
+{concern{
+  id 
+  label{value}}}
+```
+
 Let's find which classifications are related to which concerns.
 We use prop `frames` defined as "A relation specifying that a vewpoint regards a Concern":
 
 ```graphql
-{standardFramework(where:{frames:{}}) {
+{standardClassification(where:{frames:{}}) {
   id
   frames{id}}}
 ```
 
-::: notes
-
-Although the ontology has property `hasTargetConcern` to connect Standard to Concer, unfortunately there is just 1 instance of this relation:
+Similarly, property `hasTargetConcern` connects Standards to Concerns:
 
 ```graphql
 {standard(where:{hasTargetConcern:{}}) {
   id
   hasTargetConcern{id}}}
 ```
-
-:::
-

@@ -281,31 +281,56 @@
 <pre class="graphql"><code>{standard(where:{label:{value:{EQ:&quot;ISO 15926&quot;}}}) {
   comment{value}
   hasClassification{id}
-  hasRelevantDomain{id}
   relatedTo {
     id
     label{value}
     comment{value}}}}</code></pre>
+<p>Response:</p>
+<pre class="json"><code>&quot;standard&quot;: [{
+  &quot;comment&quot;: {&quot;value&quot;: &quot;Industrial automation systems and integration -- Integration of life-cycle data for process plants including oil and gas production facilities.&quot;},
+  &quot;hasClassification&quot;: [
+    {&quot;id&quot;: &quot;https://w3id.org/i40/sto#RamiProduct&quot;},
+    {&quot;id&quot;: &quot;https://w3id.org/i40/sto#RamiIntegrationLayer&quot;},
+    {&quot;id&quot;: &quot;https://w3id.org/i40/sto#AsConfiguration&quot;},
+    {&quot;id&quot;: &quot;https://w3id.org/i40/sto#AsEngineering&quot;},
+    {&quot;id&quot;: &quot;https://w3id.org/i40/sto#ProductLifeCycleManagement&quot;}
+  ],
+  &quot;relatedTo&quot;: [
+    {&quot;id&quot;: &quot;https://w3id.org/i40/sto#DIN_SPEC_16592&quot;,
+      &quot;label&quot;: {&quot;value&quot;: &quot;DIN SPEC 16592&quot;},
+      &quot;comment&quot;: {&quot;value&quot;: &quot;Combining OPC Unified Architecture and Automation Markup Language.&quot;}},
+    {&quot;id&quot;: &quot;https://w3id.org/i40/sto#IEC_62541&quot;,
+      &quot;label&quot;: {&quot;value&quot;: &quot;IEC 62541&quot;},
+      &quot;comment&quot;: {&quot;value&quot;: &quot;OPC Unified Architecture (OPC UA) is an industrial M2M communication protocol...&quot;}}
+</code></pre>
 </section>
 <section id="iso-15926-complexity" class="slide level2">
 <h2>ISO 15926 Complexity</h2>
 <p>The complexity of ISO 15926 is difficult for most people to master.</p>
-<p>Its approach to ontology modeling comes from the <a href="https://en.wikipedia.org/wiki/BORO">BORO method</a> that uses: - An Extensional (rather than linguistic) identity criterion - Four-dimensional modeling (every entity evolution or state is represetned as another temporal part) - Non-well-founded Sets and Powersets - Pretty much every link is represented as a reified <code>Relationship</code> (diamond nodes in the diagram below).</p>
+<p>Its approach to ontology modeling comes from the <a href="https://en.wikipedia.org/wiki/BORO">BORO method</a> that uses:</p>
+<ul>
+<li>An Extensional (rather than linguistic) identity criterion</li>
+<li>Four-dimensional modeling (every entity evolution or state is represetned as another temporal part)</li>
+<li>Non-well-founded Sets and Powersets</li>
+<li>Pretty much every link is represented as a reified <code>Relationship</code> (diamond nodes in the diagram below).</li>
+</ul>
 <p>Eg here’s how to represent the allowed range of a parameter of some entity (tag or equipment): template <a href="https://15926.org/home/templatespecs/CL-INDPTY-200.xml">CL-INDPTY-200</a> ClassOfIndividualHasIndirectPropertyWithBoundingValues with definition “Any member of <code>EssentialType</code> class <code>hasPossessorType</code> has a <code>hasIndirectPropertyType</code> with a range of <code>valLowerBound</code> to <code>valUpperBound</code> <code>hasScale</code>”</p>
 <p><img data-src="img/ClassOfIndividualHasIndirectPropertyWithBoundingValues.png" /></p>
 </section>
-<section id="graphql-query-4-classifications-to-concerns" class="slide level2">
-<h2>GraphQL Query 4: Classifications to Concerns</h2>
-<p>I40KG includes some 200 “concerns” (eg AI, DataAnalytics, etc). Let’s find which classifications are related to which concerns. We use prop <code>frames</code> defined as “A relation specifying that a vewpoint regards a Concern”:</p>
-<pre class="graphql"><code>{standardFramework(where:{frames:{}}) {
+<section id="graphql-query-4-concerns" class="slide level2">
+<h2>GraphQL Query 4: Concerns</h2>
+<p>I40KG includes a number of 200 “concerns” i.e. topics relevant to Industry (eg AI, DataAnalytics, etc).</p>
+<pre class="graphql"><code>{concern{
+  id 
+  label{value}}}</code></pre>
+<p>Let’s find which classifications are related to which concerns. We use prop <code>frames</code> defined as “A relation specifying that a vewpoint regards a Concern”:</p>
+<pre class="graphql"><code>{standardClassification(where:{frames:{}}) {
   id
   frames{id}}}</code></pre>
-<aside class="notes">
-<p>Although the ontology has property <code>hasTargetConcern</code> to connect Standard to Concer, unfortunately there is just 1 instance of this relation:</p>
+<p>Similarly, property <code>hasTargetConcern</code> connects Standards to Concerns:</p>
 <pre class="graphql"><code>{standard(where:{hasTargetConcern:{}}) {
   id
   hasTargetConcern{id}}}</code></pre>
-</aside>
 </section></section>
     </div>
   </div>
