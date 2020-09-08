@@ -309,13 +309,23 @@
 <p>The complexity of ISO 15926 is difficult for most people to master.</p>
 <p>Its approach to ontology modeling comes from the <a href="https://en.wikipedia.org/wiki/BORO">BORO method</a> that uses:</p>
 <ul>
-<li>An Extensional (rather than linguistic) identity criterion</li>
-<li>Four-dimensional modeling (every entity evolution or state is represetned as another temporal part)</li>
+<li>An Extensional (rather than linguistic) Criterion of Identity</li>
+<li>Four-dimensional modeling: every entity evolution or state is represetned as another temporal part</li>
 <li>Non-well-founded Sets and Powersets</li>
-<li>Pretty much every link is represented as a reified <code>Relationship</code> (diamond nodes in the diagram below).</li>
+<li>Every relation is represented as a reified <code>Relationship</code> (diamond nodes in the diagram below)</li>
 </ul>
-<p>Eg here’s how to represent the allowed range of a parameter of some entity (tag or equipment): template <a href="https://15926.org/home/templatespecs/CL-INDPTY-200.xml">CL-INDPTY-200</a> ClassOfIndividualHasIndirectPropertyWithBoundingValues with definition “Any member of <code>EssentialType</code> class <code>hasPossessorType</code> has a <code>hasIndirectPropertyType</code> with a range of <code>valLowerBound</code> to <code>valUpperBound</code> <code>hasScale</code>”</p>
+<p>Eg here’s how to represent the allowed range of a parameter of some entity (tag or equipment):</p>
 <p><img data-src="img/ClassOfIndividualHasIndirectPropertyWithBoundingValues.png" /></p>
+<aside class="notes">
+<p>This is template <a href="https://15926.org/home/templatespecs/CL-INDPTY-200.xml">CL-INDPTY-200</a> <strong>ClassOfIndividualHasIndirectPropertyWithBoundingValues</strong> with definition “Any member of <code>EssentialType</code> class <code>hasPossessorType</code> has a <code>hasIndirectPropertyType</code> with a range of <code>valLowerBound</code> to <code>valUpperBound</code> <code>hasScale</code>”.</p>
+<ul>
+<li>It has 5 input parameters held by an N-ary relation named after the template name</li>
+<li>This is expanded to about 23 nodes and 100 triples</li>
+<li>Templates make it easier to <strong>produce</strong> the multitude of triples specified by ISO 15926</li>
+<li>But it’s not clear whether templates simplify <strong>querying</strong> unless you use the N-ary relation…</li>
+<li>… Which begs the question why you need the template expansion</li>
+</ul>
+</aside>
 </section>
 <section id="graphql-query-4-concerns" class="slide level2">
 <h2>GraphQL Query 4: Concerns</h2>

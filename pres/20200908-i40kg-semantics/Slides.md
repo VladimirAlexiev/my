@@ -318,17 +318,27 @@ The complexity of ISO 15926 is difficult for most people to master.
 
 Its approach to ontology modeling comes from the [BORO method](https://en.wikipedia.org/wiki/BORO) that uses:
 
-- An Extensional (rather than linguistic) identity criterion
-- Four-dimensional modeling (every entity evolution or state is represetned as another temporal part)
+- An Extensional (rather than linguistic) Criterion of Identity
+- Four-dimensional modeling: every entity evolution or state is represetned as another temporal part
 - Non-well-founded Sets and Powersets
-- Pretty much every link is represented as a reified `Relationship` (diamond nodes in the diagram below).
+- Every relation is represented as a reified `Relationship` (diamond nodes in the diagram below)
 
 Eg here's how to represent the allowed range of a parameter of some entity (tag or equipment):
-template [CL-INDPTY-200](https://15926.org/home/templatespecs/CL-INDPTY-200.xml) ClassOfIndividualHasIndirectPropertyWithBoundingValues
-with definition "Any member of `EssentialType` class `hasPossessorType` has a `hasIndirectPropertyType` with a range of `valLowerBound` to `valUpperBound` `hasScale`"
 
 ![](img/ClassOfIndividualHasIndirectPropertyWithBoundingValues.png)
 
+::: notes
+
+This is template [CL-INDPTY-200](https://15926.org/home/templatespecs/CL-INDPTY-200.xml) **ClassOfIndividualHasIndirectPropertyWithBoundingValues**
+with definition "Any member of `EssentialType` class `hasPossessorType` has a `hasIndirectPropertyType` with a range of `valLowerBound` to `valUpperBound` `hasScale`".
+
+- It has 5 input parameters held by an N-ary relation named after the template name
+- This is expanded to about 23 nodes and 100 triples
+- Templates make it easier to **produce** the multitude of triples specified by ISO 15926
+- But it's not clear whether templates simplify **querying** unless you use the N-ary relation...
+- ... Which begs the question why you need the template expansion
+
+:::
 
 ## GraphQL Query 4: Concerns
 
