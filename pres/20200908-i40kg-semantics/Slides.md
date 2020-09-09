@@ -117,8 +117,7 @@ So, how do we use this wealth of semantic data? We need to understand its model:
 
 - The paper [The Industry 4.0 Standards Landscape from a Semantic Integration Perspective](https://ieeexplore.ieee.org/document/8247584/) at ETFA 2017 provides a good description, and the basic data looks like this.
 
-## I40KG [Model (Actual)](img
-/sto-graph-ge5.png)
+## I40KG [Model (Actual)](img/sto-graph-ge5.png)
 
 Relations between classes with >=5 instances (click for large version)
 
@@ -309,7 +308,7 @@ Response:
     {"id": "https://w3id.org/i40/sto#IEC_62541",
       "label": {"value": "IEC 62541"},
       "comment": {"value": "OPC Unified Architecture (OPC UA) is an industrial M2M communication protocol..."}}
-
+    ...
 ```
 
 ## ISO 15926 Complexity
