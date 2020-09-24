@@ -1,15 +1,21 @@
-%-*- coding: utf-8; fill-column: 5000 -*-
-
-
+-*- coding: utf-8; fill-column: 5000 -*-
 
 @InProceedings{i40kg,
   author       = {Vladimir Alexiev and Miroslav Chervenski},
   title        = {Exploring Industry 4.0 Standards with the Ontotext Platform},
-  booktitle    = {Semantics 2020 vendor video recording},
+  booktitle    = {Semantics 2020 webinar},
   year         = 2020,
   month        = sep,
   url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20200908-i40kg-semantics/Slides.html},
+  url_Video    = {https://2020-eu.semantics.cc/exploring-industry-40-standards-graph-using-graphql-mapped-sparql},
   abstract     = {Exploring Industry 4.0 Standards Graph using GraphQL mapped to SPARQL via semantic business objects. With the coming of Industry 4.0 and the continuing digitization of manufacturing, construction, oil & gas, automotive etc, a large number of relevant standards have been proposed, approved, put through use cases and interoperability exercises, and some of them found massive adoption in the industry. Older established standards have been integrated or "semanticized", i.e. harmonized using semantic integration techniques. ISO 15926, in development for nearly 30 years, has been touted as the "lingua franca" for global interoperability, but its complexity is difficult for most people to master. The standards landscape is large and puzzling; thanks to the so-called Industry 4.0 Knowledge Graph (formerly Standards Ontology) one can get a good overview and categorization of such relevant standards. We demonstrate a simple way to access Industry 4.0 standards using GraphQL through the Ontotext Platform. The latter features GraphQL interfaces to make it easier for application developers to access knowledge graphs without tedious development of back-end APIs or complex SPARQL. The underlying Semantic Object service implements an efficient GraphQL to SPARQL translation optimized for GraphDB, as well as a generic configurable security model.},
+}
+
+@InProceedings{EBG-2020-ISWC,
+  author       = {Dumitru Roman and Vladimir Alexiev and Javier Paniagua and Brian Elvesæter and Bjørn Marius Von Zernichow and Ahmet Soylu and Boyan Simeonov and Chris Taggart},
+  title        = {{A Bird's-Eye View of euBusinessGraph: A Business Knowledge Graph for Company Data}},
+  booktitle    = {International Semantic Web Conference, Posters and Demos Track (ISWC 2020)},
+  year         = 2020,
 }
 
 @Article{EBG-2020-SWJ,
@@ -23,16 +29,21 @@
   abstract     = {Company data, ranging from basic company information such as company name(s) and incorporation date to complex balance sheets and personal data about directors and shareholders, are the foundation that many data value chains depend upon in various sectors (e.g., business information, marketing and sales, etc.). Company data becomes a valuable asset when data is collected and integrated from a variety of sources, both authoritative (e.g., national business registers) and non-authoritative (e.g., company websites). Company data integration is however a difficult task primarily due to the heterogeneity and complexity of company data, and the lack of generally agreed upon semantic descriptions of the concepts in this domain. In this article, we introduce the euBusinessGraph ontology as a lightweight mechanism for harmonising company data for the purpose of aggregating, linking, provisioning and analysing basic company data. The article provides an overview of the related work, ontology scope, ontology development process, explanations of core concepts and relationships, and the implementation of the ontology. Furthermore, we present scenarios where the ontology was used, among others, for publishing company data (business knowledge graph) and for comparing data from various company data providers. The euBusinessGraph ontology serves as an asset not only for enabling various tasks related to company data but also on which various extensions can be built upon.},
 }
 
-@Misc{AlexievEtAl-2020-Bulgarian-Icons,
-  author       = {Vladimir Alexiev and Plamen Tarkalanov and Nikola Georgiev},
+@InProceedings{AlexievEtAl-Bulgarian-Icons-DIPP2020,
+  author       = {Vladimir Alexiev and Plamen Tarkalanov and Nikola Georgiev and Lilia Pavlova},
   title        = {Bulgarian Icons in Wikidata and EDM},
-  howpublished = {presentation},
-  month        = jul,
+  booktitle    = {Digital Presentation and Preservation of Cultural and Scientific Heritage (DIPP 2020)},
   year         = 2020,
-  url          = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html},
-  keywords     = {knowledge graphs, semantic integration, GLAM, Wikidata, OpenRefine, Mix-n-Match, icons, religious icons, iconography, iconographic subject, GLAM, CLADA, BIDL, Virtual Encyclopedia of Bulgarian Icons},
-  address      = {CLADA BG Consortium Meeting, Plovdiv Library, Bulgaria},
-  abstract     = {The presentation describes Wikidata, its importance for GLAM institutions, iconographic authorities in Mix-n-Match. Then it proposes an Icon Knowledge Graph Model including entities: iconographer, iconographic school, herminia, icon, measurements, material, technique, iconographic subject (saint or a title of the Virgin Mary), location (city, monastery, church, museum), scientific article, academic journal, issue, links to LOD datasets (eg VIAF, Getty AAT, ISBN, ISSN, academia.edu). Then we introduce the Virtual Encyclopedia of Bulgarian Icons (BIDL) and describe how we exported it to Wikidata, while coreferencing to iconographers, saints, locations; and the extra info we added for such entities. Finally we describe a conversion to the Europeana Data Model, including details such as links to Wikidata, bilingual descriptions, lang tags, providers, etc}
+  volume       = 10,
+  month        = sep,
+  address      = {Burgas, Bulgaria},
+  publisher    = {Institute of Mathematics and Informatics (IMI BAS), Sofia},
+  url          = {http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html},
+  keywords     = {Knowledge Graphs, Semantic Integration, GLAM, Wikidata, Mix-n-Match, OpenRefine, Icons, Religious Icons, Iconography, Iconographic Subject, GLAM, CLADA, BIDL, Virtual Encyclopedia of Bulgarian Icons},
+  issn         = {1314-4006},
+  eissn        = {2535-0366},
+  abstract     = {We briefly describe Wikidata, its importance for GLAM institutions, iconographic authorities in Mix-n-Match. Then we propose an Icon Knowledge Graph Model comprising the entities: iconographer, iconographic school, herminia, icon, measurements, material, technique, iconographic subject (saint or a title of the Virgin Mary), location (city, monastery, church, museum), scientific article, academic journal, issue, links to LOD datasets (e.g. VIAF, Getty AAT, ISBN, ISSN, academia.edu). Then we introduce the Virtual Encyclopedia of Bulgarian Icons (BIDL) and describe how we exported it to Wikidata, while coreferencing to iconographers, saints, locations; and the extra info we added for such entities. Finally, we describe a conversion to the Europeana Data Model, including details such as links to Wikidata, bilingual descriptions, language tags, providers. The online version of the paper includes live links; the accompanying presentation includes more images and queries.},
 }
 
 @Misc{Alexiev-2020-Wikidata-Icons,
@@ -107,7 +118,7 @@
   pages        = {19-50},
   month        = sep,
   address      = {Burgas, Bulgaria},
-  publisher    = {Institute of Mathematics and Informatics (IMI BAS)},
+  publisher    = {Institute of Mathematics and Informatics (IMI BAS), Sofia},
   url          = {http://dipp.math.bas.bg/images/2018/019-050_32_11-iDiPP2018-34.pdf},
   url_Slides   = {https://www.slideshare.net/valexiev1/museum-linked-open-data-ontologies-datasets-projects},
   url_PPT      = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/Museum Linked Open Data (DIPP 2018, 21 slides).ppt},
