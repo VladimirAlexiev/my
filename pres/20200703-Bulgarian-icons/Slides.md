@@ -1,10 +1,20 @@
 ---
-author: "Vladimir Alexiev, Plamen Tarkalanov, Nikola Georgiev: Ontotext"
-date: "CLADA BG project meeting, Plovdiv Library, 2020-07-02"
+author: "Vladimir Alexiev, Plamen Tarkalanov, Nikola Georgiev (Ontotext); Lilia Pavlova (IMI BAS)"
+date: "Digital Presentation and Preservation of Cultural and Scientific Heritage, Burgas, 2020-09-24"
 title: "Bulgarian Icons in Wikidata and EDM"
 ---
 
-# Wikidata and GLAM
+# Intro
+
+- Presentation: <http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html>
+- Paper: <http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf>
+- Source: <https://github.com/VladimirAlexiev/my/tree/master/pres/20200703-Bulgarian-icons>
+  - Citation
+  - Presentation highlights
+  - Wikidata icon examples (Mother of God Pantonhara and The Virgin Cataphyge)
+  - EDM mapping example (Transfiguration of Jesus Christ)
+
+## Wikidata and GLAM
 
 - Wikidata is one of the most important LOD datasets for GLAM
 - It is also a Knowledge Graph platform for integrating and leveraging GLAM data
@@ -18,6 +28,7 @@ title: "Bulgarian Icons in Wikidata and EDM"
 ## Wikidata Project Visual Arts
 
 [Wikidata:WikiProject Visual arts](https://www.wikidata.org/wiki/Wikidata:WikiProject_Visual_arts) (former name Sum of All Paintings):
+
 - paintings: 451k ([query](https://w.wiki/VrS))
 - paintings and subclasses thereof: 467k ([query](https://w.wiki/VrR))
 
@@ -41,7 +52,8 @@ Leads to a detailed description and classification using an Iconographic notatio
 
 - Only 623 icons on wikidata as of 3-Feb-2020: [tweet](https://twitter.com/valexiev1/status/1224274473186201608)
 - 268 (43%) with image, 355 (47%) without: [query](https://w.wiki/GYn)
-- 33% have no author, 46% is "anonymous", 20% are "noname" Masters, [Nikolaos_Tsafouris and Nikolaos_Zafouris should be merged](https://commons.wikimedia.org/wiki/Commons:Administrators%27_noticeboard/User_problems#merge_Nikolaos_Tsafouris_and_Nikolaos_Zafouris) on Commons: [query](https://w.wiki/GYi)
+- 33% have no author, 46% is "anonymous", 20% are "noname" Masters: [query](https://w.wiki/GYi)
+- [Nikolaos_Tsafouris and Nikolaos_Zafouris should be merged](https://commons.wikimedia.org/wiki/Commons:Administrators%27_noticeboard/User_problems/Archive_83#merge_Nikolaos_Tsafouris_and_Nikolaos_Zafouris) on Commons (update Feb 2020: Done on Commons [and Wikidata](https://www.wikidata.org/w/index.php?title=Q46347806&action=history))
 
 ![](img/icons-authors.png)
 
@@ -121,13 +133,14 @@ Example:
 - Wikidata has more detail and is easier to add to than Getty.
 - Wikidata has [WD Q25457974](https://www.wikidata.org/wiki/Q25457974) "Пафти": I added "subclass of: belt buckle", image
 - Commons: [Belogradchik-hitorical-museum-19century-belt-buckle-14.jpg](https://commons.wikimedia.org/wiki/File:Belogradchik-hitorical-museum-19century-belt-buckle-14.jpg):
- - Added Structured metadata: depicts: pafta; location: Belogradchik History Museum
+  - Added Structured metadata: depicts: pafta; location: Belogradchik History Museum
+  - Checked **Prominent**
 
 ## Iconographer: Dicho Zograf
 
 - One of most prolific iconographers: worked in tens of places, his icons are in hundreds of churches, and he made 2-10 thousands of icons.
 - He also left 2 handwritten herminias ([Ерминия](https://bg.wikipedia.org/wiki/Ерминия): icon creation guide)
-- His family tree is shown
+- His family tree is shown in bgwiki ([Родословие](https://bg.wikipedia.org/wiki/Дичо_Зограф#Родословие)): wood carvers, iconographers and artists spanning 5 generations!!
 - His work and legacy spanned 3 Balkan countries (BG, MK and SR: each claim him for their own):
   - He is Bulgarian: [Дичо Зограф](https://bg.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84) on bgwiki. Български иконописец, виден представител на Дебърската художествена школа.
   - He is Macedonian: [Дичо Зограф](https://mk.wikipedia.org/wiki/%D0%94%D0%B8%D1%87%D0%BE_%D0%97%D0%BE%D0%B3%D1%80%D0%B0%D1%84) on mkwiki. Годишно работел по околу педесет големи дела. Во нашите краишта го донел барокот кој доаѓал преку Света Гора и Солун, преку македонските мијачки зографи и резбари кои го учеле занаетот во манастирот “Зограф” на Атос.
@@ -156,7 +169,7 @@ Enriched WD [Q12278833](https://www.wikidata.org/wiki/Q12278833) Dicho Zograf fr
 - баща: зограф Кръсте Дичов Перков!
 - учи се при: зографа Кръсте Дичов Перков!, а после при зографите Михаил Анагност! от Самарина! и сина му Димитър! (Михайлов).
 - ерминията на Дичо Зограф: [Q84082005 Herminia of Dicho Zograf](https://www.wikidata.org/wiki/Q84082005)
-  - collection [Q84082027 Slavic-Byzantium Research Center "Prof. Ivan Duichev"](https://www.wikidata.org/wiki/Q84082027), inventory number "Cod. D. Slavo 412"
+  - collection [Q84082027 Slavic-Byzantium Research Center "Prof. Ivan Duichev"](https://www.wikidata.org/wiki/Q84082027), inventory number "Cod. D. Slavo 412"!
 
 ## Editing Data About an Icon
 

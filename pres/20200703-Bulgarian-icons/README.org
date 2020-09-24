@@ -1,20 +1,39 @@
 * Bulgarian Icons in Wikidata and EDM
 
-- Source view: https://github.com/VladimirAlexiev/my/blob/master/pres/20200703-Bulgarian-icons/Slides.md
-- Presentation view: http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html
+- Presentation: http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html
+- Paper: http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf
+- Source: https://github.com/VladimirAlexiev/my/tree/master/pres/20200703-Bulgarian-icons
+  - Presentation highlights
+  - Wikidata icon examples (Mother of God Pantonhara and The Virgin Cataphyge)
+  - EDM mapping example (Transfiguration of Jesus Christ)
+- Citation:
 
-** BibTex record
 #+begin_example
-@Misc{AlexievEtAl-2020-Bulgarian-Icons,
-  author       = {Vladimir Alexiev and Plamen Tarkalanov and Nikola Georgiev},
+@InProceedings{AlexievEtAl-Bulgarian-Icons-DIPP2020,
+  author       = {Vladimir Alexiev and Plamen Tarkalanov and Nikola Georgiev and Lilia Pavlova},
   title        = {Bulgarian Icons in Wikidata and EDM},
-  howpublished = {presentation},
-  month        = jul,
+  booktitle    = {Digital Presentation and Preservation of Cultural and Scientific Heritage (DIPP 2020)},
   year         = 2020,
-  url          = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html},
-  keywords     = {knowledge graphs, semantic integration, GLAM, Wikidata, OpenRefine, Mix-n-Match, icons, religious icons, iconography, iconographic subject, GLAM, CLADA, BIDL, Virtual Encyclopedia of Bulgarian Icons},
-  address      = {CLADA BG Consortium Meeting, Plovdiv Library, Bulgaria},
-  abstract     = {The presentation describes Wikidata, its importance for GLAM institutions, iconographic authorities in Mix-n-Match. Then it proposes an Icon Knowledge Graph Model including entities: iconographer, iconographic school, herminia, icon, measurements, material, technique, iconographic subject (saint or a title of the Virgin Mary), location (city, monastery, church, museum), scientific article, academic journal, issue, links to LOD datasets (eg VIAF, Getty AAT, ISBN, ISSN, academia.edu). Then we introduce the Virtual Encyclopedia of Bulgarian Icons (BIDL) and describe how we exported it to Wikidata, while coreferencing to iconographers, saints, locations; and the extra info we added for such entities. Finally we describe a conversion to the Europeana Data Model, including details such as links to Wikidata, bilingual descriptions, lang tags, providers, etc}
+  volume       = 10,
+  month        = sep,
+  address      = {Burgas, Bulgaria},
+  publisher    = {Institute of Mathematics and Informatics (IMI BAS), Sofia},
+  url          = {http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf},
+  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html},
+  keywords     = {Knowledge Graphs, Semantic Integration, GLAM, Wikidata, Mix-n-Match, OpenRefine, Icons, 
+    Religious Icons, Iconography, Iconographic Subject, GLAM, CLADA, BIDL, Virtual Encyclopedia of Bulgarian Icons},
+  issn         = {1314-4006},
+  eissn        = {2535-0366},
+  abstract     = {We briefly describe Wikidata, its importance for GLAM institutions, iconographic authorities in Mix-n-Match.
+    Then we propose an Icon Knowledge Graph Model comprising the entities: iconographer, iconographic school, herminia, icon,
+    measurements, material, technique, iconographic subject (saint or a title of the Virgin Mary),
+    location (city, monastery, church, museum), scientific article, academic journal, issue, links to LOD datasets
+    (e.g. VIAF, Getty AAT, ISBN, ISSN, academia.edu).
+    Then we introduce the Virtual Encyclopedia of Bulgarian Icons (BIDL) and describe how we exported it to Wikidata,
+    while coreferencing to iconographers, saints, locations; and the extra info we added for such entities.
+    Finally, we describe a conversion to the Europeana Data Model, including details such as
+    links to Wikidata, bilingual descriptions, language tags, providers.
+    The online version of the paper includes live links; the accompanying presentation includes more images and queries.},
 }
 #+end_example
 
