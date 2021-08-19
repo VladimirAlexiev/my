@@ -1,8 +1,13 @@
-http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievNikolova2018-Semantic-Archive-Integration.pdf rawgit2 'error'
+http://graphdb.ontotext.com/documentation/standard/rules-optimisations.html 500 Can't connect to graphdb.ontotext.com:443 (Bad file descriptor)
+http://ldbcouncil.org/sites/default/files/LDBC_D4.4.2.pdf 404 Not Found
+http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-mutableObjectState.pdf 500 read timeout
+http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning.pdf 500 read timeout
+http://sda2012.dke-research.de/images/pdfs/crm-search-presentation.pdf 503 Service Unavailable
 http://vocab.getty.edu/ontology 400 Bad Request
 https://www.wiley.com/en-gb/Information+Integration+with+Ontologies%3A+Experiences+from+an+Industrial+Showcase-p-9780470010488 405 Method Not Allowed
 OK http://ceur-ws.org/Vol-1117/
 OK http://ceur-ws.org/Vol-1117/paper8.pdf
+OK http://ceur-ws.org/Vol-2721/paper493.pdf
 OK http://ceur-ws.org/Vol-912/paper8.pdf
 OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.30.9953
 OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.301.8273
@@ -12,13 +17,12 @@ OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.2657
 OK http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.6168
 OK http://confluence.ontotext.com/display/ResearchSpace/BM+Mapping
 OK http://dipp.math.bas.bg/images/2018/019-050_32_11-iDiPP2018-34.pdf
-OK http://dl.acm.org/citation.cfm?id=212113
+OK http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf
 OK http://dl.acm.org/citation.cfm?id=2517997
 OK http://docplayer.net/12848719-University-it-pm-education-nbu-and-esi-sei-masters-programs-vladimir-alexiev-phd-pmp-ontotext-lab-sirma-group-holding.html
 OK http://github.com/VladimirAlexiev/grammar-diagrams
-OK http://graphdb.ontotext.com/documentation/standard/rules-optimisations.html
+OK http://hdl.handle.net/20.500.11755/cf76f212-80f9-4b31-b693-b98451feb665
 OK http://jigpal.oxfordjournals.org/content/2/1/77
-OK http://ldbcouncil.org/sites/default/files/LDBC_D4.4.2.pdf
 OK http://link.springer.com/article/10.1007/s00799-015-0162-2
 OK http://link.springer.com/chapter/10.1007/978-3-319-27932-9_16
 OK http://link.springer.com/content/pdf/10.1007/s00799-015-0162-2.pdf
@@ -28,7 +32,7 @@ OK http://nkos.slis.kent.edu/2015NKOSworkshop/MarciaZeng-LODKOSInnovativeUse.pdf
 OK http://pro.europeana.eu/blogpost/meet-the-members-council-vladimir-alexiev
 OK http://pro.europeana.eu/taskforce/evaluation-and-enrichments
 OK http://purl.org/iso25964/skos-thes
-OK http://rawgit2.com/euBusinessGraph/eubg-data/master/ontology/index.html
+OK http://rawgit2.com/euBusinessGraph/eubg-data/master/ontology/_old/index.html
 OK http://rawgit2.com/VladimirAlexiev/CH-names/master/README.html
 OK http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.ebnf
 OK http://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.xhtml
@@ -72,9 +76,12 @@ OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/in
 OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20161128-rdfpuml-rdf2rml/index-full.html
 OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20171025-Practical Semantic Modeling, SPARQL, RDF Shapes, IoT-WoT-UoM (201710).pptx
 OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20181109-CLADA-BG- Ontotext and LOD (68 slides).ppt
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20190513-Semantics-and-ML-dev.bg.pptx
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20200130-Wikidata-Icons/Slides.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html
+OK http://rawgit2.com/VladimirAlexiev/my/master/pres/20200908-i40kg-semantics/Slides.html
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/20150518-GLAMs-working-with-Wikidata.ppt
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-annotatedBibliography.pdf
-OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-mutableObjectState.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1993-objectOriented.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1994-applicationsLinearLogic.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev1995-eventCalculus.pdf
@@ -90,11 +97,11 @@ OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-FR-search.p
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Properties.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Properties-presentation.ppt
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Search-presentation.pdf
-OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning-slides.ppt
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievAsenova2010-TeachingIT_PM.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievMartev2009-ElectronicExportBG.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievMitevBukev2010-eGovBPM.pdf
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/AlexievNikolova2018-Semantic-Archive-Integration.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/euBusinessGraph-poster-Semantics2017.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Classification-Scheme-(D2.2).pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Delivery-(D3.20).pdf
@@ -102,7 +109,7 @@ OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Se
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-M18-Report-(D3.20a).pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-M21-Report-(D3.20b).pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Europeana-Food-and-Drink-Semantic-Demonstrator-Specification-(D3.19).pdf
-OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/extending-owl2/index.html#sec-3-1
+OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/extending-owl2/index.html
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/GLAMwiki2015.ppt
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Ikonomov2013-EuropeanaCreative-EDM.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Ikonomov2013-EuropeanaCreative-EDM-slides.pdf
@@ -121,10 +128,10 @@ OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2015-DomainSpecificG
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/Tagarev2017-DomainSpecificGazetteer.pdf
 OK http://rawgit2.com/VladimirAlexiev/my/master/pubs/TPDL2016.pdf
 OK http://rawgit2.com/webdata/SEMANTiCS2017-posters/master/papers_final/163_Alexiev/index.html
-OK http://sda2012.dke-research.de/images/pdfs/crm-search-presentation.pdf
 OK http://vocab.getty.edu/doc/
 OK http://vocab.getty.edu/doc/queries/
 OK http://www.computer.org/csdl/proceedings/icmew/2015/7079/00/07169818.pdf
+OK http://www.semantic-web-journal.net/content/eubusinessgraph-ontology-lightweight-ontology-harmonizing-basic-company-information-0
 OK http://www.slideshare.net/valexiev1/20140521-semtechbizguestlecture
 OK http://www.slideshare.net/valexiev1/comparing-ontotext-kim-and-apache-stanbol
 OK http://www.slideshare.net/valexiev1/comparing-ontotext-kim-and-apache-stanbol-appendix
@@ -136,13 +143,18 @@ OK http://www.slideshare.net/valexiev1/semantic-technology-in-publishing-finance
 OK http://www.slideshare.net/valexiev1/wikidata-a-target-for-europeanas-semantic-strategy-glamwiki-2015
 OK http://www.w3.org/TR/hcls-dataset/
 OK http://youtu.be/n8oGmOu9JEw
+OK https://2020-eu.semantics.cc/exploring-industry-40-standards-graph-using-graphql-mapped-sparql
+OK https://content.iospress.com/articles/semantic-web/sw210424
+OK https://dev.bg/събитие/machine-learning-semantic-integration-is-what-you-do-before-the-deep-learning/
 OK https://docs.google.com/document/d/1dhMOTlIOC6dOK_jksJRX0CB-GIRoiYY6fWtCnZArUhU/edit
 OK https://docs.google.com/document/d/1F4FGJqJ2lWponSnzxQpJR6Nq87Ecv3qXJ4ExcmWgIvU/edit#
-OK https://docs.google.com/document/d/1guwFHi9p4-ujFkrHF6dwMUZndzCmlX_gPyiBi6JlPTs/pub
+OK https://docs.google.com/document/d/e/2PACX-1vTSQPHE0aUO3U1pgtQxk5RrSjsKZFM9Fx425VOdSPURLOGA_5zsGZzmMs9B75krzXh2c9DnHc34WRR8/pub
 OK https://docs.google.com/presentation/d/1s-mQwj_0cpbLFVmhZPUrzB_M5mISkZQug0Wiui6H218/pub
 OK https://docs.google.com/presentation/d/1Udah3b8nc1oxjpi8XHtGX4nxIF6tlyrvo29QJkFKfgo/edit
+OK https://docs.google.com/presentation/d/1vLhNHpXZtwIJDbhjrRNUlDhNvuGLb9N2i2sAA5JvoHY/edit
+OK https://docs.google.com/presentation/d/1yr_FVXeTrFpR-lu8C_QT2ciDtPioEtul2lCyFTh82y4/edit
 OK https://doi.org/10.3389/frobt.2018.00123
-OK https://drive.google.com/file/d/0B7BFygWDV2_PQ2Y0MVctalVCeXc/view
+OK https://doi.org/10.5281/zenodo.1482757
 OK https://drive.google.com/file/d/0B7je1jgVmCgIZzNiWmdqTGpDa28/view
 OK https://era.library.ualberta.ca/downloads/9g54xk065
 OK https://era.library.ualberta.ca/downloads/bc386k59r
@@ -156,6 +168,8 @@ OK https://github.com/usc-isi-i2/saam-lod/wiki/SAAM-LOD-Review
 OK https://github.com/VladimirAlexiev/grammar-diagrams#xsparql
 OK https://github.com/VladimirAlexiev/LODE
 OK https://github.com/VladimirAlexiev/multisensor
+OK https://github.com/VladimirAlexiev/ontotext-graphdb-applications
+OK https://github.com/VladimirAlexiev/ontotext-graphdb-applications/raw/master/Diverse%20Uses%20of%20a%20Semantic%20Graph%20Database%20for%20Knowledge%20Organization%20and%20Research%20(ENDORSE%202021).pptx
 OK https://github.com/VladimirAlexiev/xsparql/blob/master/doc/
 OK https://github.com/webdata/SEMANTiCS2017-posters/raw/master/papers_final/163_Alexiev/163_Alexiev.pdf
 OK https://ieeexplore.ieee.org/document/8588640
@@ -163,14 +177,24 @@ OK https://link.springer.com/chapter/10.1007/978-3-319-59268-8_9
 OK https://nl.wikimedia.org/wiki/GLAM-WIKI_2015/Programme/Discussions/Strategy#Presentation:_Wikidata.2C_a_target_for_Europeana.E2.80.99s_semantic_strategy.3F
 OK https://ontotext.com/knowledgehub/webinars/building-knowledge-data-visualization/
 OK https://ontotext.com/knowledgehub/webinars/build-narratives-connect-artifacts-cultural-heritage/
+OK https://op.europa.eu/documents/7525478/8087182/ALEXIEV_presentation_Diverse+Uses+of+a+Semantic+Graph+Database+for+Knowledge+Organization+and+Research.pdf
+OK https://op.europa.eu/en/web/endorse/programme
 OK https://peerj.com/articles/2331/
 OK https://pro.europeana.eu/project/edm-frbroo-application-profile
 OK https://pro.europeana.eu/project/multilingual-and-semantic-enrichment-strategy
+OK https://pure.knaw.nl/portal/en/publications/names-and-networks-holocaust-victim-communities(cf76f212-80f9-4b31-b693-b98451feb665).html
+OK https://umanisticadigitale.unibo.it/article/view/9049
 OK https://voicethread.com/myvoice/#thread/5784646/29625471/31274564
+OK https://www.ontotext.com/blog/return-of-the-jedi-rbac-mutation-federation-and-owl2graphql/
+OK https://www.ontotext.com/blog/starwars-knowledge-graph-federation/
+OK https://www.ontotext.com/blog/the-rise-of-the-knowledge-graph/
 OK https://www.slideshare.net/valexiev1/eubusinessgraph-company-and-economic-data
 OK https://www.slideshare.net/valexiev1/largescale-reasoning-with-a-complex-cultural-heritage-ontology-cidoc-crm-slides
 OK https://www.slideshare.net/valexiev1/linked-open-data-and-ontotext-projects
 OK https://www.slideshare.net/valexiev1/museum-linked-open-data-ontologies-datasets-projects
+OK https://www.slideshare.net/valexiev1/museum-lod-ontotext-1-may-2019-doha-qatar-143059902
 OK https://www.slideshare.net/valexiev1/semantic-archive-integration-for-holocaust-research-the-ehri-research-infrastructure
+OK https://www.slideshare.net/valexiev1/semantics-and-machine-learning
+OK https://www.youtube.com/watch?v=0q63x2P1V0o&list=PLT5rARDev_rmGr_LJkr7zcI-Qul7yOOHO&index=4&t=4780s
 OK https://youtu.be/4WoYlaGF6DE
 OK https://zenodo.org/record/571202
