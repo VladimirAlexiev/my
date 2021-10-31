@@ -1,5 +1,53 @@
 @Comment{-*- coding: utf-8; fill-column: 5000 -*-}
 
+@Misc{AlexievBoytcheva2021-SemantizatinML,
+  author       = {Vladimir Alexiev and Svetla Boytcheva},
+  title        = {Semantization of Machine Learning and Data Science (a Project Idea)},
+  howpublished = {presentation},
+  month        = sep,
+  year         = 2021,
+  url          = {https://docs.google.com/presentation/d/1_8LSXa9vVzNwPE6Hjj4cKIJNRRBNz2wP/edit},
+  keywords     = {Ontotext, research projects, knowledge graph, KG technologies, Semantization, Machine Learning, Data Science},
+  address      = {Presentation at Big Dava Value Association Activity Group 45 (BDVA AG 45)},
+  abstract     = {Problem: Data Science, AI & ML are expensive, and that's one of the reasons why relatively few enterprises use them.
+     Goal: rationalize and industrialize DS efforts, and make them more reproducible and reusable.
+     Approach: capture a lot of semantic info about all DS processes in an enterprise, and thus enable automation, discovery, reusabulity.
+     The kinds of data we'd like to represent and integrate semantically (part of it is similar to what you can see on the Kaggle and OpenML sites):
+     - Business context: goals, motivations, data value, value chain, cost vs benefit analysis, SWOT analysis...
+     - DS challenges, where do they come from, datasets that can be leveraged to solve them
+     - DS staff, expertise, projects, tasks, risks
+     - DS/ML algorithms, implementations, modules, dependencies, software projects, versions, issue trackers
+     - Cloud and IT resources: compute, storage; their deployment, management, automation...
+     - ML model deployment, performance, model drift, retraining…
+     Established software genres that cover parts of this landscape:
+     - ModelOps (devOps for ML), Feature Spaces
+     - Enterprise data catalogs (data hubs) vs data marketplaces vs open data catalogs vs EU Data Spaces and their metadata
+     - FAIR data, reproducible research, Research Objects, research workflows,
+     We've researched over 100 relevant ontologies that can be leveraged, covering
+     - Organizations/enterprises, business plans,
+     - Ontologies, semantic data,
+     - DS challenges, datasets, statistical data, quality assessment
+     - DS/ML approaches, software, projects, issues,
+     - Data on research/science
+     - Project management
+     Focusing on DS/ML approaches only, a couple of the relevant ontologies or standards are:
+     - PMML (predictive modeling markup language)
+     - e-LICO, DMEX ontologies for describing DS
+     - OntoDM, KDO ontologies for describing DS}
+}
+
+@Misc{IvanovAlexiev2021-EnergyKG,
+  author       = {Chavdar Ivanov and Vladimir Alexiev},
+  title        = {Energy Knowledge Graphs to Facilitate Evolution of the European Energy Market},
+  howpublished = {presentation},
+  month        = oct,
+  year         = 2021,
+  url          = {https://docs.google.com/presentation/d/1vvrUGtutbOzwUK19Z0nEUhZbP6kw-KiFdNELMG4V3v8/edit},
+  keywords     = {knowledge graph, energy knowledge graph, CIM, CGMES, ENTSOE, Single Energy Market, energy market transparency},
+  address      = {Presentation at Ontotext Knowledge Graph Forum},
+  abstract     = {Presents the EU Single Electricity Market, IEC Common Information Model (CIM), ENTSOE Common Grid Model Exchange Specification (CGMES), how Energy KGs can improve data integration in the energy domain, ENTSOE market transparency data, and Ontotext's Energy Transparency KG project.},
+}
+
 @Misc{Alexiev2021-EnergyKG,
   author       = {Vladimir Alexiev},
   title        = {Energy Knowledge Graphs},
@@ -206,17 +254,17 @@
   url_Source   = {https://github.com/euBusinessGraph/eubg-data/raw/master/model/ebg-ontology.ttl},
   url          = {http://rawgit2.com/euBusinessGraph/eubg-data/master/ontology/_old/index.html},
   abstract     = {The euBusinessGraph (ebg:) ontology represents companies, type/status/economic classification, addresses, identifiers, (and soon) directors and CEOs, dataset offerings.
-It uses schema:domain/rangeIncludes (which are polymorphic) to describe which properties are applicable to a class, 
+It uses schema:domain/rangeIncludes (which are polymorphic) to describe which properties are applicable to a class,
 rather than rdfs:domain/rainge (which are monomorphic) to prescribe what classes must be applied to each node using a property.
 We find that this enables more flexible reuse and combination of different ontologies.
 We reuse the following ontologies and nomenclatures, and extend them where appropriate with classes and properties:
-- W3C Org, W3C RegOrg (basic company data), 
-- W3C Time (officer membership), 
+- W3C Org, W3C RegOrg (basic company data),
+- W3C Time (officer membership),
 - W3C Locn (addresses),
 - schema.org (domain/rangeIncludes and various properties)
 - DBpedia ontology (jurisdiction)
 - NGEO and Spatial (NUTS administrative divisions)
-- ADMS (identifiers), 
+- ADMS (identifiers),
 - FOAF, SIOC (blog posts),
 - RAMON, SKOS (NACE economic classifications and various nomenclatures),
 - VOID (dataset descriptions).
@@ -1128,7 +1176,7 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   booktitle    = {Virtual Center for Medieval Studies (Medioevo Europeo VCMS) Workshop},
   year         = 2013,
   month        = oct,
-  address      = {Budapest, Hungary}, 
+  address      = {Budapest, Hungary},
   url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20131013-VCMS Project Design.pptx},
   keywords     = {Medieval studies, virtual research environment, CIDOC CRM, semantic integration},
 }
@@ -1150,10 +1198,11 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   author       = {Johan De Smedt and Antoine Isaac and Stella Dextre Clarke and Jutta Lindenthal and Marcia Lei Zeng and Douglas S. Tudhope and Leonard Will and Vladimir Alexiev},
   month        = dec,
   year         = 2013,
+  note         = {Ontology},
   url          = {http://purl.org/iso25964/skos-thes},
   url_LOV      = {http://lov.okfn.org/dataset/lov/details/vocabulary_iso-thes.html},
+  keywords     = {thesauri, vocabularies, ISO 25964, ontology},
   type         = {Ontology},
-  note         = {Ontology},
   abstract     = {OWL ontology representing the newest ISO standard on thesauri},
 }
 
@@ -1367,8 +1416,8 @@ Conventional INs are strongly confluent, and are therefore unsuitable for the mo
 - IN with Multiple Connections (INMC): Allow hyper-edges (in the graph-theoretical sense), i.e. connections between more than two ports.
 
 We study in considerable detail the relative expressive power of these systems, both by representing various programming examples in them, and by constructing inter-representations that translate nets from one system to another.
-We study formally a translation from the finite pi-calculus to a system that we call MultiInteraction Nets: MIN=INMP+NMPP. We prove the faithfulness of the translation to the pi-calculus processes that it represents, both structural and operational (completeness and soundness of reduction). We show that unlike the pi-calculus, our translation implements the Prefix operation of the pi-calculus in a distributed and purely local manner, and implements explicitly the distribution and duplication of values to the corresponding occurrences of a variable. 
-We compare our translation to other graphical and combinatory representations of the pi-calculus, such as the pi-nets of Milner, the Interaction Diagrams of Parrow, and the Concurrent Combinators of Honda and Yoshida. 
+We study formally a translation from the finite pi-calculus to a system that we call MultiInteraction Nets: MIN=INMP+NMPP. We prove the faithfulness of the translation to the pi-calculus processes that it represents, both structural and operational (completeness and soundness of reduction). We show that unlike the pi-calculus, our translation implements the Prefix operation of the pi-calculus in a distributed and purely local manner, and implements explicitly the distribution and duplication of values to the corresponding occurrences of a variable.
+We compare our translation to other graphical and combinatory representations of the pi-calculus, such as the pi-nets of Milner, the Interaction Diagrams of Parrow, and the Concurrent Combinators of Honda and Yoshida.
 The original paper on IN (Lafont, 1990) states that INs were designed to be simple and practical; to be a "programming language that can be used for the design of interactive software". However, to date INs have been used only for theoretical investigations. This thesis is mostly devoted to a hands-on exploration of applications of IN to various "programming problems".}
 }
 
@@ -1508,47 +1557,3 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   abstract     = {This paper is a survey of a number of languages/systems based on both Object-Oriented and Logic Programming and designed expressly for Knowledge Representation tasks. My goal in the paper is to argue that the integration of these two paradigms (particularly the synergism that emerges from such an integration_ forms a stable basis for Knowledge Representation at the symbolic level. I try to support this claim both by examples from the papers surveyed and by considerations in a more general context. Some more advanced topics concerning special-purpose non-classic logics are also discussed.},
 }
 
-@Comment{Rayfield-201901,
-  author       = {Jem Rayfield},
-  title        = {Ontotext Platform: A Global View Across Knowledge Graphs and Content Annotations},
-  howpublished = {Ontotext blog post},
-  month        = jan,
-  year         = 2019,
-  url          = {https://www.ontotext.com/blog/ontotext-platform-global-view-across-knowledge-graphs-and-content-annotations/}
-}
-
-@comment{Yankulov-202003,
-  author       = {Milen Yankulov},
-  title        = {Ontotext Knowledge Graph Platform: The Modern Way of Building Smart Enterprise Applications},
-  howpublished = {Ontotext blog post},
-  month        = apr,
-  year         = 2020,
-  url          = {https://www.ontotext.com/blog/ontotext-platform-building-smart-enterprise-applications/}
-}
-
-@Comment{Rayfield-201912-starWars,
-  author       = {Jem Rayfield},
-  title        = {A New Hope: The Rise of the Knowledge Graph. Navigating through the Star Wars universe with knowledge graphs, SPARQL and GraphQL},
-  howpublished = {Ontotext blog post},
-  month        = dec,
-  year         = 2019,
-  url          = {https://www.ontotext.com/blog/the-rise-of-the-knowledge-graph/},
-}
-
-@Comment{Rayfield-2020-starWars,
-  author       = {Jem Rayfield},
-  title        = {Return of the Jedi: Ontotext Platform Metamorphosis},
-  howpublished = {Ontotext blog post},
-  month        = apr,
-  year         = 2020,
-  url          = {https://www.ontotext.com/blog/return-of-the-jedi-rbac-mutation-federation-and-owl2graphql/},
-}
-
-@Comment{Rayfield-202006-starWars,
-  author       = {Jem Rayfield},
-  title        = {Protected: StarWars: Knowledge Graph Federation. Federated GraphQL queries across: GraphDB, MongoDB and a Semantic Vector Space},
-  howpublished = {Ontotext blog post},
-  month        = jun,
-  year         = 2020,
-  url          = {https://www.ontotext.com/blog/starwars-knowledge-graph-federation/},
-}
