@@ -1,5 +1,52 @@
 @Comment{-*- coding: utf-8; fill-column: 5000 -*-}
 
+@InProceedings{Alexiev-DataSpaces2022,
+  author       = {Vladimir Alexiev},
+  title        = {Data Spaces vs Knowledge Graphs: How to Get To Semantic Data Spaces?},
+  booktitle    = {Data Spaces & Semantic Interoperability Workshop},
+  year         = 2022,
+  month        = jul,
+  address      = {Vienna, Austria},
+  url          = {https://drive.google.com/file/d/15RuCfyresjmc0JWoNl8Jpjpbf_O65UkD/view},
+  url_Slides   = {TODO},
+  keywords     = {Data Spaces, RDF, Semantic Technology, Polyglot Modeling, Product Classifications, Product Catalogs, Manufacturing Industry, Electricity, Transport and Logistics, Architecture and Construction},
+  abstract     = {EU invests heavily in Data Spaces (DS) as a mechanism to enable commercial data exchange and therefore industry digitalization and proliferation of Data Science (DS) and Artificial Intelligence, in particular Machine Learning (ML). While DSs use heavily semantic technologies, that is limited to describing metadata, license agreements, data market participants, etc. I argue that using Linked Data and semantic technologies for the data itself offers significant benefits regarding more efficient data sharing and use, and improvements to ML and DS processes. I give an overview of the state of semantic data sharing in several industrial domains (Product Classifications and Catalogs, Manufacturing Industry, Electricity, Transport and Logistics, Architecture and Construction; and close with a brief overview of technological enablers required for Semantic Data Spaces.},
+}
+
+@InProceedings{Alexiev-SemIIM2002,
+  author       = {Vladimir Alexiev},
+  title        = {Ontologies vs Linked Data & Knowledge Graphs},
+  booktitle    = {First International Workshop on Semantic Industrial Information Modelling (SemIIM 2022 at ESWC 2022)},
+  year         = 2022,
+  month        = may,
+  note         = {Panel presentation},
+  url_Slides   = {https://docs.google.com/presentation/d/1lKGZ_6MsTE15E6wFBorsVHmyQ3RjqzznpzQ7xpoDhUU/edit},
+}
+
+@Misc{Alexiev-TEKG2,
+  author       = {Vladimir Alexiev},
+  title        = {Advanced SHACL Data Validation for the Transparency Energy KG},
+  howpublished = {presentation},
+  month        = may,
+  year         = 2022,
+  url_Slides   = {https://docs.google.com/presentation/d/1Hhxmx2YDnaxlaU5KeafjRJSDlVgHRz1z/edit},
+  keywords     = {energy, electricity, ENTSO-E, market transparency, knowledge graph, validation, SHACL, SHACL Advanced},
+  address      = {Presentation at Ontotext Demo Days},
+  abstract     = {The Transparency Energy KG (TEKG) project converts the ENTSO-E electricity market transparency data to a semantic KG and complements with external data sources (VIES for VAT validation, OpenStreetMap for power plant maps and coordinates, several power plant databases for correspondences/coreferencing). We have implemented a number of advanced validations over fundamental electricity data such as the EIC file (Energy Identification Code), power plant data, and specific market data observations (time series). KGs afford a holistic view over the data that allow us to uncover a number of data problems, presented in a Data Quality Assessment Dashboard. This could help ENTSO-E and national electricity authorities (Transmission System Operators, TSO) diagnose data quality problems and improve data collection procedures and legislation.},
+}
+
+@Misc{Alexiev-TEKG1,
+  author       = {Vladimir Alexiev},
+  title        = {Transparency Energy Knowledge Graph},
+  howpublished = {presentation},
+  month        = jan,
+  year         = 2022,
+  url_Slides   = {http://interrface.eu/sites/default/files/ontotext_TEKG-20210131.pdf},
+  url_Google   = {https://docs.google.com/presentation/d/1I0CKJ_y-Lq0eErnOabBBxmfAuOQHYNey/edit},
+  keywords     = {energy, electricity, ENTSO-E, market transparency, knowledge graph},
+  address      = {Presentation at Joint INTERRFACE Open Call Projects meeting},
+}
+
 @Misc{Alexiev-EBDVF2021,
   author       = {Vladimir Alexiev},
   title        = {Cross-disciplinary ontologies for buildings, infrastructure, smart grid, electricity, energy efficiency},
@@ -20,31 +67,7 @@
   url          = {https://docs.google.com/presentation/d/1_8LSXa9vVzNwPE6Hjj4cKIJNRRBNz2wP/edit},
   keywords     = {Ontotext, research projects, knowledge graph, KG technologies, Semantization, Machine Learning, Data Science},
   address      = {Presentation at Big Dava Value Association Activity Group 45 (BDVA AG 45)},
-  abstract     = {Problem: Data Science, AI & ML are expensive, and that's one of the reasons why relatively few enterprises use them.
-     Goal: rationalize and industrialize DS efforts, and make them more reproducible and reusable.
-     Approach: capture a lot of semantic info about all DS processes in an enterprise, and thus enable automation, discovery, reusabulity.
-     The kinds of data we'd like to represent and integrate semantically (part of it is similar to what you can see on the Kaggle and OpenML sites):
-     - Business context: goals, motivations, data value, value chain, cost vs benefit analysis, SWOT analysis...
-     - DS challenges, where do they come from, datasets that can be leveraged to solve them
-     - DS staff, expertise, projects, tasks, risks
-     - DS/ML algorithms, implementations, modules, dependencies, software projects, versions, issue trackers
-     - Cloud and IT resources: compute, storage; their deployment, management, automation...
-     - ML model deployment, performance, model drift, retraining…
-     Established software genres that cover parts of this landscape:
-     - ModelOps (devOps for ML), Feature Spaces
-     - Enterprise data catalogs (data hubs) vs data marketplaces vs open data catalogs vs EU Data Spaces and their metadata
-     - FAIR data, reproducible research, Research Objects, research workflows,
-     We've researched over 100 relevant ontologies that can be leveraged, covering
-     - Organizations/enterprises, business plans,
-     - Ontologies, semantic data,
-     - DS challenges, datasets, statistical data, quality assessment
-     - DS/ML approaches, software, projects, issues,
-     - Data on research/science
-     - Project management
-     Focusing on DS/ML approaches only, a couple of the relevant ontologies or standards are:
-     - PMML (predictive modeling markup language)
-     - e-LICO, DMEX ontologies for describing DS
-     - OntoDM, KDO ontologies for describing DS}
+  abstract     = {Problem: Data Science, AI & ML are expensive, and that's one of the reasons why relatively few enterprises use them. Goal: rationalize and industrialize DS efforts, and make them more reproducible and reusable. Approach: capture a lot of semantic info about all DS processes in an enterprise, and thus enable automation, discovery, reusabulity. The kinds of data we'd like to represent and integrate semantically (part of it is similar to what you can see on the Kaggle and OpenML sites): - Business context: goals, motivations, data value, value chain, cost vs benefit analysis, SWOT analysis... - DS challenges, where do they come from, datasets that can be leveraged to solve them - DS staff, expertise, projects, tasks, risks - DS/ML algorithms, implementations, modules, dependencies, software projects, versions, issue trackers - Cloud and IT resources: compute, storage; their deployment, management, automation... - ML model deployment, performance, model drift, retraining… Established software genres that cover parts of this landscape: - ModelOps (devOps for ML), Feature Spaces - Enterprise data catalogs (data hubs) vs data marketplaces vs open data catalogs vs EU Data Spaces and their metadata - FAIR data, reproducible research, Research Objects, research workflows, We've researched over 100 relevant ontologies that can be leveraged, covering - Organizations/enterprises, business plans, - Ontologies, semantic data, - DS challenges, datasets, statistical data, quality assessment - DS/ML approaches, software, projects, issues, - Data on research/science - Project management Focusing on DS/ML approaches only, a couple of the relevant ontologies or standards are: - PMML (predictive modeling markup language) - e-LICO, DMEX ontologies for describing DS - OntoDM, KDO ontologies for describing DS},
 }
 
 @Misc{IvanovAlexiev2021-EnergyKG,
@@ -55,7 +78,6 @@
   year         = 2021,
   url          = {https://docs.google.com/presentation/d/1vvrUGtutbOzwUK19Z0nEUhZbP6kw-KiFdNELMG4V3v8/edit},
   keywords     = {knowledge graph, energy knowledge graph, CIM, CGMES, ENTSOE, Single Energy Market, energy market transparency},
-  address      = {Presentation at Ontotext Knowledge Graph Forum},
   abstract     = {Presents the EU Single Electricity Market, IEC Common Information Model (CIM), ENTSOE Common Grid Model Exchange Specification (CGMES), how Energy KGs can improve data integration in the energy domain, ENTSOE market transparency data, and Ontotext's Energy Transparency KG project.},
 }
 
