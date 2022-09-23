@@ -5,11 +5,14 @@
 
 #+html: <a href="https://github.com/VladimirAlexiev"><img align="center" src="https://github-readme-stats.vercel.app/api?username=VladimirAlexiev&show_icons=true&include_all_commits=true&count_private=true"/></a>
   
-Publication stats (2021-10):
+** Publication stats (2021-10)
 
-| Book (author), thesis, conference proceedings (editor) |   3 |
-| Tech reports, manuals, deliverables, ontologies        |  36 |
-| Conference papers, journal articles                    |  36 |
-| Presentations, posters, blog posts                     |  35 |
-|--------------------------------------------------------|-----|
-| TOTAL                                                  | 116 |
+| Publication                                            | Count |
+|--------------------------------------------------------+-------|
+| Book (author), thesis, conference proceedings (editor) |     3 |
+| Tech reports, manuals, deliverables, ontologies        |    36 |
+| Conference papers, journal articles                    |    36 |
+| Presentations, posters, blog posts                     |    35 |
+|--------------------------------------------------------+-------|
+| TOTAL                                                  |   116 |
+|--------------------------------------------------------+-------|
