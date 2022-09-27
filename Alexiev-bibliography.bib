@@ -36,8 +36,19 @@
   keywords     = {energy, electricity, ENTSO-E, market transparency, knowledge graph, specification, semantic architecture, semantic model},
 }
 
-Last updated: 10-06-2022
-Authors:
+@Misc{Alexiev-TEKG3,
+  author       = {Vladimir Alexiev},
+  title        = {Transparency Energy Knowledge Graphs for Energy Traceability},
+  howpublished = {presentation},
+  month        = sep,
+  year         = 2022,
+  url_Slides   = {https://docs.google.com/presentation/d/1LIw_F_hN6hXGBFnSxq-8_IOJN9bWwh_8},
+  keywords     = {energy, electricity, gas, ENTSO-E, ENTSO-G, ACER, GIE, power plant databases, energy markets, market transparency, knowledge graph, traceability, Wikidata, OpenStreetMap, EIC, GIE gas storage id, ACER id, MIC, SWIFT/BIC, GLEI, GS1 GLN},
+  url_bdva     = {https://jam4.sapjam.com/blogs/show/XnKajJjHL6qjJt6dUuPXzI},
+  address      = {Presentation at Ontotext Knowledge Graph Forum 2022},
+  pages        = 42,
+  abstract     = {Ontotext's Transparency Energy KG (TEKG) project converted part of ENTSO-E electricity market transparency data to a semantic KG and complemented it with external data sources (VIES for VAT validation, OpenStreetMap for power plant maps and coordinates, several power plant databases for correspondences/coreferencing). There are at least 8 EU regulations that lay out rules for market transparency, in particular in energy markets. But energy is holistic, so going beyond electricity, ACER tracks at least 20 transparency platforms in various stages of certification, of which 16 operate for Electricity and 16 for Natural Gas. ENTSO-E and ENTSO-G are the central transparency platforms, but there are also platforms run by energy exchanges (e.g. EEX) and nonprofits (e.g. GIE). The ENTSO-G Transparency Platform publishes data about the gas market, and GIE has data about current and future gas infrastructure, including gas storages. ACER also tracks 130 other platforms (104 of which active): marketplaces, Registered Reporting Mechanisms, trade matching systems, etc. This is important data that affects all of us as energy consumers, and becomes even more important given the Russian gas crisis. However, the data is fragmented in distributed databases with their own access modes and only partially harmonized information. KGs and semantic data integration afford holistic views over all data across an industry and facilitate data validation and analyzes that were not previously possible. A number of identifiers can be used to coreference these entities: EIC for all kind of energy resources and players (issued in a decentralized way, no central database exists), 13 database-specific ids of power plants, GIE storage id for gas storages, ACER id for market players, MIC for market places, BIC for bank routing, GLEI for legal entities, GS1 GLN for logistics locations, OpenStreetMap for entities on a map, and Wikidata id for an encyclopedic KG, etc. We have worked with many of these datasets, in particular integrating parts in Wikidata for open semantic integration. We present the TEKG project, then some of the mentioned datasets and our ideas how TEKG could be extended to cover the following cases: 1) Energy transparency for market players, 2) Progress towards EU energy independence from Russia, 3) Energy tracing for carbon footprint, for enterprises who have mandates to progress towards zero emissions},
+}
 
 @Misc{Alexiev-TEKG2,
   author       = {Vladimir Alexiev},
@@ -91,6 +102,7 @@ Authors:
   author       = {Chavdar Ivanov and Vladimir Alexiev},
   title        = {Energy Knowledge Graphs to Facilitate Evolution of the European Energy Market},
   howpublished = {presentation},
+  address      = {Presentation at Ontotext Knowledge Graph Forum 2021},
   month        = oct,
   year         = 2021,
   url          = {https://docs.google.com/presentation/d/1vvrUGtutbOzwUK19Z0nEUhZbP6kw-KiFdNELMG4V3v8/edit},
@@ -538,9 +550,6 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   keywords     = {AAT, Annotation, BTG, BTI, BTP, British Museum, Broader generic, Broader instantial, Broader partitive, CIDOC CRM, cultural heritage, EDM, ESE, Europeana, FRAD, FRBR, FRBR, FRBRoo, FRBRoo, FRSAD, Fundamental Concepts, Fundamental Relations, GLAM, Geonames, Getty, Getty Museum, ISNI, ISO 25964, LDBC, LOD, Metadata, Museum informatics, OAI, OAI PMH, OWLIM, Ontology, Ontotext GraphDB, Provenance, RDAinfo, RDF, ResearchSpace, SKOS, SKOS-XL, SPARQL, SPECTRUM, Schema, Seeing Standards, TGN, Taxonomy, Thesauri, ULAN, VIAF, Web Annotation, Wikidata, concept extraction, cultural heritage, dataset, endpoint, faceted search, food and drink, gazetteer, inference, knowledge base, knowledge-based system, multimedia annotation, ontology, open data, practical applications, reasoning, semantic application, semantic enrichment, semantic integration, semantic mapping, semantic repository, semantic representation, semantic search, semantic technology, text analysis, thesauri, virtual research environment, visualization, vocabularies},
 }
 
-% Future work: extend RDF by Example to describe RDF Shapes; extend rdf2rml to generate RML instead of only R2RML, i.e. handle XML and JSON data sources
-% http://docs.stardog.com/#_stardog_mapping_syntax is similar: shortcut syntax of R2RML that displays examples
-
 @Misc{Alexiev2016-EFD-DBpedia,
   author       = {Vladimir Alexiev},
   title        = {{Using DBPedia in Europeana Food and Drink}},
@@ -664,6 +673,8 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   howpublished = {presentation},
   abstract     = {RDF is a graph data model, so the best way to understand RDF data schemas (ontologies, application profiles, RDF shapes) is with a diagram. Many RDF visualization tools exist, but they either focus on large graphs (where the details are not easily visible), or the visualization results are not satisfactory, or manual tweaking of the diagrams is required. We describe a tool *rdfpuml* that makes true diagrams directly from Turtle examples using PlantUML and GraphViz. Diagram readability is of prime concern, and rdfpuml introduces various diagram control mechanisms using triples in the puml: namespace. Special attention is paid to inlining and visualizing various Reification mechanisms (described with PRV). We give examples from Getty CONA, Getty Museum, AAC (mappings of museum data to CIDOC CRM), Multisensor (NIF and FrameNet), EHRI (Holocaust Research into Jewish social networks), Duraspace (Portland Common Data Model for holding metadata in institutional repositories), Video annotation. If the example instances include SQL queries and embedded field names, they can describe a mapping precisely. Another tool *rdf2rdb* generates R2RML transformations from such examples, saving about 15x in complexity.},
 }
+% Future work: extend RDF by Example to describe RDF Shapes; extend rdf2rml to generate RML instead of only R2RML, i.e. handle XML and JSON data sources
+% http://docs.stardog.com/#_stardog_mapping_syntax is similar: shortcut syntax of R2RML that displays examples
 
 @InProceedings{AlexievCasamayor2016-FN-NIF,
   author       = {Vladimir Alexiev and Gerard Casamayor},
