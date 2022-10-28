@@ -4,23 +4,11 @@ date: "2022-10-28, Ontotext Last Friday"
 title: "JSON-LD and Polyglot Modeling"
 ---
 
-# Outline
-
-- JSON-LD
-  - What JSON-LD Can and Cannot Do
-  - Context examples from GS1 EPCIS
-  - Context examples from Allotrope
-- Importance of Precise JSON-LD Serializations
-- Innovations in JSON-LD 1.1
-  - JSON-LD Conformance Tests
-  - State of JSON-LD Support in RDF4J & GDB
-- New Community Group: YAML-LD
-- Polyglot Modeling
-
-Links:
+# Links:
 
 - [My publications](https://rawgit2.com/VladimirAlexiev/my/master/index.html)
 - This presentation: [JSON-LD and Polyglot Modeling](https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html)
+  - TODO: check that external resources work
 - [Decentralization and Self-Sovereignty](https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit): presentation and [gdoc](https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit)
 
 # JSON-LD
@@ -54,7 +42,7 @@ Links are to latest editor drafts:
 
 Map JSON to RDF and back in flexible ways:
 
-- Represent any JSON as LD by using an external Context (`Link` header)
+- [Interpret any JSON as RDF](https://w3c.github.io/json-ld-syntax/#modifying-behavior-with-link-relationships) by using an external Context (`Link` header)
 - Map JSON objects to RDF nodes: URL is field `@id`, or blank if none
 - Express node types: `rdf:type` is field `@type`, can be array
 - Map JSON fields to RDF props: attributes (data props) and relations (object props)
@@ -66,6 +54,7 @@ Map JSON to RDF and back in flexible ways:
 - Interpret JSON props locally, based on prop path or node type (nested contexts)
 - Produce and parse RDF graphs
 - Group data by subject, lang tag, etc (`@container`)
+- Alias keywords, eg `"url": "@id", "a": "@type", "lang": "@language"`
 
 ## What JSON-LD Cannot Do
 
@@ -90,7 +79,7 @@ JSON vs Turtle:
 
 ## Context Examples from GS1 EPCIS
 
-See [epcis-context.jsonld](https://github.com/gs1/EPCIS/blob/master/epcis-context.jsonld) or my [epcis-context-simple.jsonld](https://github.com/gs1/EPCIS/blob/master/epcis-context-simple.jsonld)
+See [epcis-context.jsonld](https://github.com/gs1/EPCIS/blob/master/epcis-context.jsonld) or my [epcis-context-simple.jsonld](https://github.com/gs1/EPCIS/blob/master/epcis-context-simple.jsonld).
 
 Field `type` means different RDF props depending on context:
 
@@ -104,15 +93,13 @@ Field `type` means different RDF props depending on context:
     "sourceList": {
       "@id": "epcis:sourceList",
       "@context": [
-          "possessing_party": "cbv:SDT-possessing_party",
-          "location": "cbv:SDT-location"
+          "possessing_party": "cbv:SDT-possessing_party", ...
           "type": {
             "@id": "epcis:sourceOrDestinationType",
     "bizTransactionList": {
       "@id": "epcis:bizTransactionList",
       "@context": [
-          "bol": "cbv:BTT-bol",
-          "cert": "cbv:BTT-cert",
+          "bol": "cbv:BTT-bol", ...
           "type": {
             "@id": "epcis:bizTransactionType",
     "sensorElementList": {
@@ -122,18 +109,24 @@ Field `type` means different RDF props depending on context:
           "@context": {
             "type": {
               "@context": {
-                "AbsoluteHumidity": "gs1:AbsoluteHumidity",
-                "AbsorbedDose": "gs1:AbsorbedDose",
+                "AbsoluteHumidity": "gs1:AbsoluteHumidity", ...
               "@id": "epcis:measurementType",
 ```
 
-## Context Examples from Allotrope
+Can you spot a bug above?
 
-Simplified JSON-LD representations of linked data based on Allotrope Data Models,
-Jindřich Mynarz, Jan Rosecký, Vincent Antonucci, Jan Nešpor
-Merck R&D IT Data Infrastructure.
-Presentation at Allotrope Connect, 20 September 2021:
-[video](https://youtu.be/irZ0i2fA47E), [slides](https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf)
+## Allotrope Foundation
+
+- Defines bridging between RDF and HDT5 (binary format for research & engineering data)
+- Widely used in Lab Measurements community
+- Hope to use for Architectural data in ACCORD
+- Simplified JSON-LD representations of linked data based on Allotrope Data Models,
+  Jindřich Mynarz, Jan Rosecký, Vincent Antonucci, Jan Nešpor
+  Merck R&D IT Data Infrastructure.
+  Presentation at Allotrope Connect, 20 September 2021:
+  [video](https://youtu.be/irZ0i2fA47E), [slides](https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf)
+
+## Context Examples from Allotrope
 
 ![](img/allotrope-context.png)
 
@@ -168,6 +161,17 @@ Eg <https://jsld.org>: use cases building on JSON-LD by [transmute.industries](h
 - Incident Response
 
 # Innovations in JSON-LD 1.1
+
+Compared to JSON-LD 1.0, 1.1 has many advanced features:
+
+- [Scoped (Nested) Contexts](https://w3c.github.io/json-ld-syntax/#scoped-contexts): localize prop definitions to prop path and/or type
+- [Included Nodes/Blocks](https://w3c.github.io/json-ld-syntax/#included-nodes): include secondary node objects in the current node
+- [Nested Property](https://w3c.github.io/json-ld-syntax/#nested-properties): add extraneous JSON prop levels not reflected in JSON
+- [Reverse Properties](https://w3c.github.io/json-ld-syntax/#reverse-properties): JSON field is mapped to the inverse of an RDF prop
+- [Indexing](https://w3c.github.io/json-ld-syntax/#data-indexing) of JSON by data, id, lang, graph, etc
+- [Framing](https://w3c.github.io/json-ld-framing/): express which RDF data to pick and how to lay it out
+
+... too numerous to list all.
 
 ## JSON-LD Conformance Tests
 
