@@ -86,7 +86,7 @@ Map JSON to RDF and back in flexible ways:
 
 JSON vs Turtle:
 
-![](epcis-example1.png)
+![](img/epcis-example1.png)
 
 ## Context Examples from GS1 EPCIS
 
