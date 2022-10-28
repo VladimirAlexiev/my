@@ -1,28 +1,14 @@
-<h1 id="outline">Outline</h1>
-<ul>
-<li>JSON-LD
-<ul>
-<li>What JSON-LD Can and Cannot Do</li>
-<li>Context examples from GS1 EPCIS</li>
-<li>Context examples from Allotrope</li>
-</ul></li>
-<li>Importance of Precise JSON-LD Serializations</li>
-<li>Innovations in JSON-LD 1.1
-<ul>
-<li>JSON-LD Conformance Tests</li>
-<li>State of JSON-LD Support in RDF4J &amp; GDB</li>
-</ul></li>
-<li>New Community Group: YAML-LD</li>
-<li>Polyglot Modeling</li>
-</ul>
-<p>Links:</p>
+<h1 id="links">Links:</h1>
 <ul>
 <li><a
 href="https://rawgit2.com/VladimirAlexiev/my/master/index.html">My
 publications</a></li>
 <li>This presentation: <a
 href="https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html">JSON-LD
-and Polyglot Modeling</a></li>
+and Polyglot Modeling</a>
+<ul>
+<li>TODO: check that external resources work</li>
+</ul></li>
 <li><a
 href="https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit">Decentralization
 and Self-Sovereignty</a>: presentation and <a
@@ -81,8 +67,10 @@ better JSON. CG started by me, see end</li>
 <h2 id="what-json-ld-can-do">What JSON-LD Can Do</h2>
 <p>Map JSON to RDF and back in flexible ways:</p>
 <ul>
-<li>Represent any JSON as LD by using an external Context
-(<code>Link</code> header)</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#modifying-behavior-with-link-relationships">Interpret
+any JSON as RDF</a> by using an external Context (<code>Link</code>
+header)</li>
 <li>Map JSON objects to RDF nodes: URL is field <code>@id</code>, or
 blank if none</li>
 <li>Express node types: <code>rdf:type</code> is field
@@ -100,6 +88,8 @@ omit JSON props on parsing</li>
 (nested contexts)</li>
 <li>Produce and parse RDF graphs</li>
 <li>Group data by subject, lang tag, etc (<code>@container</code>)</li>
+<li>Alias keywords, eg
+<code>"url": "@id", "a": "@type", "lang": "@language"</code></li>
 </ul>
 <h2 id="what-json-ld-cannot-do">What JSON-LD Cannot Do</h2>
 <ul>
@@ -130,7 +120,7 @@ EPCIS</h2>
 <p>See <a
 href="https://github.com/gs1/EPCIS/blob/master/epcis-context.jsonld">epcis-context.jsonld</a>
 or my <a
-href="https://github.com/gs1/EPCIS/blob/master/epcis-context-simple.jsonld">epcis-context-simple.jsonld</a></p>
+href="https://github.com/gs1/EPCIS/blob/master/epcis-context-simple.jsonld">epcis-context-simple.jsonld</a>.</p>
 <p>Field <code>type</code> means different RDF props depending on
 context:</p>
 <ul>
@@ -147,34 +137,39 @@ context:</p>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sourceList&quot;</span><span class="op">:</span> {</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sourceList&quot;</span><span class="op">,</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@context&quot;</span><span class="op">:</span> [</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;possessing_party&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:SDT-possessing_party&quot;</span><span class="op">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;location&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:SDT-location&quot;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sourceOrDestinationType&quot;</span><span class="op">,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;bizTransactionList&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:bizTransactionList&quot;</span><span class="op">,</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@context&quot;</span><span class="op">:</span> [</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;bol&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:BTT-bol&quot;</span><span class="op">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;cert&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:BTT-cert&quot;</span><span class="op">,</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:bizTransactionType&quot;</span><span class="op">,</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sensorElementList&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sensorElementList&quot;</span><span class="op">,</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;sensorReport&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sensorReport&quot;</span><span class="op">,</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;@context&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;@context&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;AbsoluteHumidity&quot;</span><span class="op">:</span> <span class="st">&quot;gs1:AbsoluteHumidity&quot;</span><span class="op">,</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;AbsorbedDose&quot;</span><span class="op">:</span> <span class="st">&quot;gs1:AbsorbedDose&quot;</span><span class="op">,</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:measurementType&quot;</span><span class="op">,</span></span></code></pre></div>
-<h2 id="context-examples-from-allotrope">Context Examples from
-Allotrope</h2>
-<p>Simplified JSON-LD representations of linked data based on Allotrope
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;possessing_party&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:SDT-possessing_party&quot;</span><span class="op">,</span> <span class="op">...</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sourceOrDestinationType&quot;</span><span class="op">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;bizTransactionList&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:bizTransactionList&quot;</span><span class="op">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@context&quot;</span><span class="op">:</span> [</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;bol&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:BTT-bol&quot;</span><span class="op">,</span> <span class="op">...</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:bizTransactionType&quot;</span><span class="op">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sensorElementList&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sensorElementList&quot;</span><span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;sensorReport&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sensorReport&quot;</span><span class="op">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;@context&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;@context&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;AbsoluteHumidity&quot;</span><span class="op">:</span> <span class="st">&quot;gs1:AbsoluteHumidity&quot;</span><span class="op">,</span> <span class="op">...</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:measurementType&quot;</span><span class="op">,</span></span></code></pre></div>
+<p>Can you spot a bug above?</p>
+<h2 id="allotrope-foundation">Allotrope Foundation</h2>
+<ul>
+<li>Defines bridging between RDF and HDT5 (binary format for research
+&amp; engineering data)</li>
+<li>Widely used in Lab Measurements community</li>
+<li>Hope to use for Architectural data in ACCORD</li>
+<li>Simplified JSON-LD representations of linked data based on Allotrope
 Data Models, Jindřich Mynarz, Jan Rosecký, Vincent Antonucci, Jan Nešpor
 Merck R&amp;D IT Data Infrastructure. Presentation at Allotrope Connect,
 20 September 2021: <a href="https://youtu.be/irZ0i2fA47E">video</a>, <a
-href="https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf">slides</a></p>
+href="https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf">slides</a></li>
+</ul>
+<h2 id="context-examples-from-allotrope">Context Examples from
+Allotrope</h2>
 <p><img src="img/allotrope-context.png" /></p>
 <h2 id="frame-examples-from-allotrope">Frame Examples from
 Allotrope</h2>
@@ -221,6 +216,29 @@ href="https://www.transmute.industries/">transmute.industries</a></p>
 <li>Incident Response</li>
 </ul>
 <h1 id="innovations-in-json-ld-1.1">Innovations in JSON-LD 1.1</h1>
+<p>Compared to JSON-LD 1.0, 1.1 has many advanced features:</p>
+<ul>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#scoped-contexts">Scoped
+(Nested) Contexts</a>: localize prop definitions to prop path and/or
+type</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#included-nodes">Included
+Nodes/Blocks</a>: include secondary node objects in the current
+node</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#nested-properties">Nested
+Property</a>: add extraneous JSON prop levels not reflected in JSON</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#reverse-properties">Reverse
+Properties</a>: JSON field is mapped to the inverse of an RDF prop</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#data-indexing">Indexing</a>
+of JSON by data, id, lang, graph, etc</li>
+<li><a href="https://w3c.github.io/json-ld-framing/">Framing</a>:
+express which RDF data to pick and how to lay it out</li>
+</ul>
+<p>… too numerous to list all.</p>
 <h2 id="json-ld-conformance-tests">JSON-LD Conformance Tests</h2>
 <p>Best feature of W3C specs: accompanied by Implementation Reports</p>
 <ul>
