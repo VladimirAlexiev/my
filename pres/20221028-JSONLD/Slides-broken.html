@@ -46,7 +46,7 @@
 <section id="TOC">
   <h2> Overview </h2>
 <ul>
-<li><a href="#/outline" id="/toc-outline">Outline</a></li>
+<li><a href="#/links" id="/toc-links">Links:</a></li>
 <li><a href="#/json-ld" id="/toc-json-ld">JSON-LD</a></li>
 <li><a href="#/importance-of-precise-json-ld-serializations"
 id="/toc-importance-of-precise-json-ld-serializations">Importance of
@@ -61,32 +61,18 @@ Modeling</a></li>
 </ul>
 </section>
 
-<section id="outline" class="title-slide slide level1">
-<h1>Outline</h1>
-<ul>
-<li>JSON-LD
-<ul>
-<li>What JSON-LD Can and Cannot Do</li>
-<li>Context examples from GS1 EPCIS</li>
-<li>Context examples from Allotrope</li>
-</ul></li>
-<li>Importance of Precise JSON-LD Serializations</li>
-<li>Innovations in JSON-LD 1.1
-<ul>
-<li>JSON-LD Conformance Tests</li>
-<li>State of JSON-LD Support in RDF4J &amp; GDB</li>
-</ul></li>
-<li>New Community Group: YAML-LD</li>
-<li>Polyglot Modeling</li>
-</ul>
-<p>Links:</p>
+<section id="links" class="title-slide slide level1">
+<h1>Links:</h1>
 <ul>
 <li><a
 href="https://rawgit2.com/VladimirAlexiev/my/master/index.html">My
 publications</a></li>
 <li>This presentation: <a
 href="https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html">JSON-LD
-and Polyglot Modeling</a></li>
+and Polyglot Modeling</a>
+<ul>
+<li>TODO: check that external resources work</li>
+</ul></li>
 <li><a
 href="https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit">Decentralization
 and Self-Sovereignty</a>: presentation and <a
@@ -153,8 +139,10 @@ better JSON. CG started by me, see end</li>
 <h2>What JSON-LD Can Do</h2>
 <p>Map JSON to RDF and back in flexible ways:</p>
 <ul>
-<li>Represent any JSON as LD by using an external Context
-(<code>Link</code> header)</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#modifying-behavior-with-link-relationships">Interpret
+any JSON as RDF</a> by using an external Context (<code>Link</code>
+header)</li>
 <li>Map JSON objects to RDF nodes: URL is field <code>@id</code>, or
 blank if none</li>
 <li>Express node types: <code>rdf:type</code> is field
@@ -172,6 +160,8 @@ omit JSON props on parsing</li>
 (nested contexts)</li>
 <li>Produce and parse RDF graphs</li>
 <li>Group data by subject, lang tag, etc (<code>@container</code>)</li>
+<li>Alias keywords, eg
+<code>"url": "@id", "a": "@type", "lang": "@language"</code></li>
 </ul>
 </section>
 <section id="what-json-ld-cannot-do" class="slide level2">
@@ -208,7 +198,7 @@ Connector</a>: fetch JSON from Mongo, use it as RDF in SPARQL
 <p>See <a
 href="https://github.com/gs1/EPCIS/blob/master/epcis-context.jsonld">epcis-context.jsonld</a>
 or my <a
-href="https://github.com/gs1/EPCIS/blob/master/epcis-context-simple.jsonld">epcis-context-simple.jsonld</a></p>
+href="https://github.com/gs1/EPCIS/blob/master/epcis-context-simple.jsonld">epcis-context-simple.jsonld</a>.</p>
 <p>Field <code>type</code> means different RDF props depending on
 context:</p>
 <ul>
@@ -225,15 +215,13 @@ context:</p>
     &quot;sourceList&quot;: {
       &quot;@id&quot;: &quot;epcis:sourceList&quot;,
       &quot;@context&quot;: [
-          &quot;possessing_party&quot;: &quot;cbv:SDT-possessing_party&quot;,
-          &quot;location&quot;: &quot;cbv:SDT-location&quot;
+          &quot;possessing_party&quot;: &quot;cbv:SDT-possessing_party&quot;, ...
           &quot;type&quot;: {
             &quot;@id&quot;: &quot;epcis:sourceOrDestinationType&quot;,
     &quot;bizTransactionList&quot;: {
       &quot;@id&quot;: &quot;epcis:bizTransactionList&quot;,
       &quot;@context&quot;: [
-          &quot;bol&quot;: &quot;cbv:BTT-bol&quot;,
-          &quot;cert&quot;: &quot;cbv:BTT-cert&quot;,
+          &quot;bol&quot;: &quot;cbv:BTT-bol&quot;, ...
           &quot;type&quot;: {
             &quot;@id&quot;: &quot;epcis:bizTransactionType&quot;,
     &quot;sensorElementList&quot;: {
@@ -243,17 +231,26 @@ context:</p>
           &quot;@context&quot;: {
             &quot;type&quot;: {
               &quot;@context&quot;: {
-                &quot;AbsoluteHumidity&quot;: &quot;gs1:AbsoluteHumidity&quot;,
-                &quot;AbsorbedDose&quot;: &quot;gs1:AbsorbedDose&quot;,
+                &quot;AbsoluteHumidity&quot;: &quot;gs1:AbsoluteHumidity&quot;, ...
               &quot;@id&quot;: &quot;epcis:measurementType&quot;,</code></pre>
+<p>Can you spot a bug above?</p>
 </section>
-<section id="context-examples-from-allotrope" class="slide level2">
-<h2>Context Examples from Allotrope</h2>
-<p>Simplified JSON-LD representations of linked data based on Allotrope
+<section id="allotrope-foundation" class="slide level2">
+<h2>Allotrope Foundation</h2>
+<ul>
+<li>Defines bridging between RDF and HDT5 (binary format for research
+&amp; engineering data)</li>
+<li>Widely used in Lab Measurements community</li>
+<li>Hope to use for Architectural data in ACCORD</li>
+<li>Simplified JSON-LD representations of linked data based on Allotrope
 Data Models, Jindřich Mynarz, Jan Rosecký, Vincent Antonucci, Jan Nešpor
 Merck R&amp;D IT Data Infrastructure. Presentation at Allotrope Connect,
 20 September 2021: <a href="https://youtu.be/irZ0i2fA47E">video</a>, <a
-href="https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf">slides</a></p>
+href="https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf">slides</a></li>
+</ul>
+</section>
+<section id="context-examples-from-allotrope" class="slide level2">
+<h2>Context Examples from Allotrope</h2>
 <p><img data-src="img/allotrope-context.png" /></p>
 </section>
 <section id="frame-examples-from-allotrope" class="slide level2">
@@ -310,7 +307,29 @@ href="https://www.transmute.industries/">transmute.industries</a></p>
 <section id="innovations-in-json-ld-1.1"
 class="title-slide slide level1">
 <h1>Innovations in JSON-LD 1.1</h1>
-
+<p>Compared to JSON-LD 1.0, 1.1 has many advanced features:</p>
+<ul>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#scoped-contexts">Scoped
+(Nested) Contexts</a>: localize prop definitions to prop path and/or
+type</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#included-nodes">Included
+Nodes/Blocks</a>: include secondary node objects in the current
+node</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#nested-properties">Nested
+Property</a>: add extraneous JSON prop levels not reflected in JSON</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#reverse-properties">Reverse
+Properties</a>: JSON field is mapped to the inverse of an RDF prop</li>
+<li><a
+href="https://w3c.github.io/json-ld-syntax/#data-indexing">Indexing</a>
+of JSON by data, id, lang, graph, etc</li>
+<li><a href="https://w3c.github.io/json-ld-framing/">Framing</a>:
+express which RDF data to pick and how to lay it out</li>
+</ul>
+<p>… too numerous to list all.</p>
 </section>
 <section id="json-ld-conformance-tests" class="slide level2">
 <h2>JSON-LD Conformance Tests</h2>
