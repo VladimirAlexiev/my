@@ -1,0 +1,15 @@
+---
+theme: ontotext
+#theme: beige
+transition: concave
+#revealjs-url: "http://lab.hakim.se/reveal-js/"
+revealjs-url: "https://presentations.ontotext.com/scripts/reveal.js"
+#revealjs-url: "http://localhost:8000"
+
+hlss: onto-hljs
+slideNumber: "c/t"
+toc-title: "Overview"
+parallaxBackgroundImage: true
+parallaxBackgroundSize: '2462px 1636px'
+showNotes: true
+---

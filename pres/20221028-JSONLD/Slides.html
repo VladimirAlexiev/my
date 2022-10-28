@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Vladimir Alexiev, Ontotext">
+  <title>JSON-LD and Polyglot Modeling</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/reveal.css">
+  <link rel="icon" type="image/png" href="https://www.ontotext.com/wp-content/themes/ontotext/favicon.ico">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/theme/ontotext.css" id="theme">
+
+    <!-- For syntax highlighting using highlight.js-->
+    <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/lib/css/onto-hljs.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://presentations.ontotext.com/scripts/reveal.js/css/print/pdf.css' : 'https://presentations.ontotext.com/scripts/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">JSON-LD and Polyglot Modeling</h1>
+  <p class="author">Vladimir Alexiev, Ontotext</p>
+  <p class="date">2022-10-28, Ontotext Last Friday</p>
+</section>
+
+<section id="TOC">
+  <h2> Overview </h2>
+<ul>
+<li><a href="#/outline" id="/toc-outline">Outline</a></li>
+<li><a href="#/json-ld" id="/toc-json-ld">JSON-LD</a></li>
+<li><a href="#/importance-of-precise-json-ld-serializations"
+id="/toc-importance-of-precise-json-ld-serializations">Importance of
+Precise JSON-LD Serializations</a></li>
+<li><a href="#/innovations-in-json-ld-1.1"
+id="/toc-innovations-in-json-ld-1.1">Innovations in JSON-LD 1.1</a></li>
+<li><a href="#/new-community-group-yaml-ld"
+id="/toc-new-community-group-yaml-ld">New Community Group:
+YAML-LD</a></li>
+<li><a href="#/polyglot-modeling" id="/toc-polyglot-modeling">Polyglot
+Modeling</a></li>
+</ul>
+</section>
+
+<section id="outline" class="title-slide slide level1">
+<h1>Outline</h1>
+<ul>
+<li>JSON-LD
+<ul>
+<li>What JSON-LD Can and Cannot Do</li>
+<li>Context examples from GS1 EPCIS</li>
+<li>Context examples from Allotrope</li>
+</ul></li>
+<li>Importance of Precise JSON-LD Serializations</li>
+<li>Innovations in JSON-LD 1.1
+<ul>
+<li>JSON-LD Conformance Tests</li>
+<li>State of JSON-LD Support in RDF4J &amp; GDB</li>
+</ul></li>
+<li>New Community Group: YAML-LD</li>
+<li>Polyglot Modeling</li>
+</ul>
+<p>Links:</p>
+<ul>
+<li><a
+href="https://rawgit2.com/VladimirAlexiev/my/master/index.html">My
+publications</a></li>
+<li>This presentation: <a
+href="https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html">JSON-LD
+and Polyglot Modeling</a></li>
+<li><a
+href="https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit">Decentralization
+and Self-Sovereignty</a>: presentation and <a
+href="https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit">gdoc</a></li>
+</ul>
+</section>
+
+<section>
+<section id="json-ld" class="title-slide slide level1">
+<h1>JSON-LD</h1>
+<ul>
+<li>Came from the desire to let devs use RDF data in an easier way
+<ul>
+<li>Manu Sporny has called RDF the “Three Mile Island nuclear disaster”
+of the semantic web</li>
+</ul></li>
+<li>JSON-LD started 2010, now is a mature set of specs and
+implementations</li>
+<li>Includes</li>
+</ul>
+<p>Links:</p>
+<ul>
+<li>Site: <a href="https://json-ld.org/"
+class="uri">https://json-ld.org/</a>, including publicaitons and
+specs</li>
+<li>Playground: <a href="https://json-ld.org/playground/"
+class="uri">https://json-ld.org/playground/</a>, based on
+<code>jsonld-js</code>, often used for testing</li>
+</ul>
+</section>
+<section id="json-ld-specs" class="slide level2">
+<h2>JSON-LD Specs</h2>
+<p>Links are to latest editor drafts:</p>
+<ul>
+<li><a href="https://w3c.github.io/json-ld-syntax/">JSON-LD Syntax</a>:
+The core spec</li>
+<li><a href="https://w3c.github.io/json-ld-api/">JSON-LD Algorithms and
+API</a>: expansion, compaction, flattening; serialization, parsing
+(deserialization)</li>
+<li><a href="https://w3c.github.io/json-ld-framing/">JSON-LD
+Framing</a>: Framing is the 4th fundamental algorithm: which RDF data to
+use, what objects to embed vs to reference</li>
+<li><a href="https://w3c.github.io/json-ld-bp/">JSON-LD Best
+Practices</a>: Draft</li>
+<li><a href="https://w3c.github.io/json-ld-streaming/">JSON-LD
+Streaming</a>: How to chunk/stream JSON; NDJSON is just one way, another
+is based on particular element order</li>
+<li><a
+href="https://w3c-ccg.github.io/rdf-dataset-canonicalization/spec/">RDF
+Dataset Canonicalization</a>: Important in crypto-signing use cases.
+<ul>
+<li>Difficult because blank nodes require solving the “graph
+isomorphism” problem</li>
+</ul></li>
+<li><a href="https://json-ld.github.io/json-ld-star/">JSON-LD-Star</a>:
+How to capture RDF-star, draft</li>
+<li><a href="https://w3c.github.io/json-ld-cbor/">JSON-LD CBOR</a>: CBOR
+is a binary representation for JSON</li>
+<li><a href="https://json-ld.github.io/yaml-ld/">YAML-LD</a>: YAML is a
+better JSON. CG started by me, see end</li>
+</ul>
+</section>
+<section id="what-json-ld-can-do" class="slide level2">
+<h2>What JSON-LD Can Do</h2>
+<p>Map JSON to RDF and back in flexible ways:</p>
+<ul>
+<li>Represent any JSON as LD by using an external Context
+(<code>Link</code> header)</li>
+<li>Map JSON objects to RDF nodes: URL is field <code>@id</code>, or
+blank if none</li>
+<li>Express node types: <code>rdf:type</code> is field
+<code>@type</code>, can be array</li>
+<li>Map JSON fields to RDF props: attributes (data props) and relations
+(object props)</li>
+<li>Map some strings to individuals by using <code>@base</code></li>
+<li>Attach datatypes to literals</li>
+<li>Attach lang tags to strings</li>
+<li>Treat JSON arrays as multivalued props (<code>@set</code>, default)
+or <code>rdf:List</code> (<code>@list</code>)</li>
+<li><code>@nest</code> extra fixed JSON props on RDF serialization, or
+omit JSON props on parsing</li>
+<li>Interpret JSON props locally, based on prop path or node type
+(nested contexts)</li>
+<li>Produce and parse RDF graphs</li>
+<li>Group data by subject, lang tag, etc (<code>@container</code>)</li>
+</ul>
+</section>
+<section id="what-json-ld-cannot-do" class="slide level2">
+<h2>What JSON-LD Cannot Do</h2>
+<ul>
+<li>Clean up or reformat data</li>
+<li>Validate data (use JSON Schema, SHACL or SHEX for that)</li>
+<li>Concatenate fields to make a URL</li>
+<li>Make RDF sub-nodes</li>
+</ul>
+</section>
+<section id="how-graphdb-uses-json-ld" class="slide level2">
+<h2>How GraphDB Uses JSON-LD</h2>
+<ul>
+<li>As data loading format and RDF output format (whole graph/repo,
+resource, CONSTRUCT)</li>
+<li>In <a
+href="https://graphdb.ontotext.com/documentation/10.0/mongodb-graphdb-connector.html">Mongo
+Connector</a>: fetch JSON from Mongo, use it as RDF in SPARQL
+<ul>
+<li>With embedded context (duplication) or URL (network) context</li>
+<li>But cannot use externally provided context</li>
+</ul></li>
+<li>Limited to JSON 1.0 (see later)</li>
+</ul>
+</section>
+<section id="context-examples-from-gs1-epcis" class="slide level2">
+<h2>Context Examples from GS1 EPCIS</h2>
+<p>JSON vs Turtle:</p>
+<p><img data-src="epcis-example1.png" /></p>
+</section>
+<section id="context-examples-from-gs1-epcis-1" class="slide level2">
+<h2>Context Examples from GS1 EPCIS</h2>
+<p>See <a
+href="https://github.com/gs1/EPCIS/blob/master/epcis-context.jsonld">epcis-context.jsonld</a>
+or my <a
+href="https://github.com/gs1/EPCIS/blob/master/epcis-context-simple.jsonld">epcis-context-simple.jsonld</a></p>
+<p>Field <code>type</code> means different RDF props depending on
+context:</p>
+<ul>
+<li>In <code>sourceList</code> it’s
+<code>epcis:sourceOrDestinationType</code> (eg
+<code>cbv:SDT-possessing_party</code>)</li>
+<li>In <code>bizTransactionList</code> it’s
+<code>epcis:bizTransactionList</code> (eg <code>cbv:BTT-bol</code>)</li>
+<li>In <code>sensorReport</code> it’s <code>epcis:measurementType</code>
+(eg <code>gs1:AbsoluteHumidity</code>)</li>
+</ul>
+<pre class="js"><code>  &quot;@context&quot;: {
+    &quot;type&quot;: &quot;@type&quot;,
+    &quot;sourceList&quot;: {
+      &quot;@id&quot;: &quot;epcis:sourceList&quot;,
+      &quot;@context&quot;: [
+          &quot;possessing_party&quot;: &quot;cbv:SDT-possessing_party&quot;,
+          &quot;location&quot;: &quot;cbv:SDT-location&quot;
+          &quot;type&quot;: {
+            &quot;@id&quot;: &quot;epcis:sourceOrDestinationType&quot;,
+    &quot;bizTransactionList&quot;: {
+      &quot;@id&quot;: &quot;epcis:bizTransactionList&quot;,
+      &quot;@context&quot;: [
+          &quot;bol&quot;: &quot;cbv:BTT-bol&quot;,
+          &quot;cert&quot;: &quot;cbv:BTT-cert&quot;,
+          &quot;type&quot;: {
+            &quot;@id&quot;: &quot;epcis:bizTransactionType&quot;,
+    &quot;sensorElementList&quot;: {
+      &quot;@id&quot;: &quot;epcis:sensorElementList&quot;,
+        &quot;sensorReport&quot;: {
+          &quot;@id&quot;: &quot;epcis:sensorReport&quot;,
+          &quot;@context&quot;: {
+            &quot;type&quot;: {
+              &quot;@context&quot;: {
+                &quot;AbsoluteHumidity&quot;: &quot;gs1:AbsoluteHumidity&quot;,
+                &quot;AbsorbedDose&quot;: &quot;gs1:AbsorbedDose&quot;,
+              &quot;@id&quot;: &quot;epcis:measurementType&quot;,</code></pre>
+</section>
+<section id="context-examples-from-allotrope" class="slide level2">
+<h2>Context Examples from Allotrope</h2>
+<p>Simplified JSON-LD representations of linked data based on Allotrope
+Data Models, Jindřich Mynarz, Jan Rosecký, Vincent Antonucci, Jan Nešpor
+Merck R&amp;D IT Data Infrastructure. Presentation at Allotrope Connect,
+20 September 2021: <a href="https://youtu.be/irZ0i2fA47E">video</a>, <a
+href="https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf">slides</a></p>
+<p><img data-src="img/allotrope-context.png" /></p>
+</section>
+<section id="frame-examples-from-allotrope" class="slide level2">
+<h2>Frame Examples from Allotrope</h2>
+<p><img data-src="img/allotrope-frame.png" /></p>
+</section></section>
+<section>
+<section id="importance-of-precise-json-ld-serializations"
+class="title-slide slide level1">
+<h1>Importance of Precise JSON-LD Serializations</h1>
+<ul>
+<li>Many communities base their data exchange on JSON Schema</li>
+<li>Yet want to have LD representation of their data</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><a href="https://www.w3.org/TR/did-core/">Decentralized
+Identifiers</a></li>
+<li><a href="https://www.w3.org/TR/vc-data-model/">Verifiable
+Credentials</a></li>
+<li><a
+href="https://www.w3.org/community/reports/credentials/CG-FINAL-data-integrity-20220722/">Data
+Integrity</a></li>
+<li><a href="https://w3id.org/security/suites/jws-2020">JSON Web
+Signature 2020</a></li>
+<li><a
+href="https://service.unece.org/trade/uncefact/vocabulary/uncefact/">UNCEFACT
+Buy Ship Pay Reference Data Model</a></li>
+<li><a
+href="https://w3c-ccg.github.io/traceability-vocab/">Traceability</a> in
+trade and logistics</li>
+<li><a href="https://www.acord.org/">Insurance Acord model</a></li>
+<li>International Image Interoperability Framework (<a
+href="https://iiif.io/">IIIF</a>): <a
+href="https://iiif.io/api/image">Image</a> and <a
+href="https://iiif.io/api/presentation">Presentation</a> APIs (eg for
+Flemish Archive)</li>
+</ul>
+</section>
+<section id="example-use-cases" class="slide level2">
+<h2>Example Use Cases</h2>
+<p>Eg <a href="https://jsld.org" class="uri">https://jsld.org</a>: use
+cases building on JSON-LD by <a
+href="https://www.transmute.industries/">transmute.industries</a></p>
+<ul>
+<li>Decentralized Identifiers</li>
+<li>Verificable Credentials</li>
+<li>Encrypted Data Vaults</li>
+<li>Agriculture Futures</li>
+<li>Incident Response</li>
+</ul>
+</section></section>
+<section>
+<section id="innovations-in-json-ld-1.1"
+class="title-slide slide level1">
+<h1>Innovations in JSON-LD 1.1</h1>
+
+</section>
+<section id="json-ld-conformance-tests" class="slide level2">
+<h2>JSON-LD Conformance Tests</h2>
+<p>Best feature of W3C specs: accompanied by Implementation Reports</p>
+<ul>
+<li><a href="https://w3c.github.io/json-ld-api/reports/">JSON-LD 1.1
+Processor Conformance</a></li>
+<li>Generated from EARL results from the JSON-LD 1.1 Test Suite</li>
+<li>EARL is an ontology to capture rest results</li>
+<li>Test subjects:
+<ul>
+<li>JSONLD (Perl)</li>
+<li>guile-jsonld (GNU Guile)</li>
+<li>jsonld.js (JavaScript)</li>
+<li>PyLD (Python)</li>
+<li>Titanium (<strong>Java</strong>)</li>
+<li>Sophia (Rust)</li>
+<li>JSON-goLD (Go)</li>
+<li>JSON::LD (Ruby)</li>
+<li>jsonld-streaming-parser &amp; serializer (JavaScript)</li>
+<li>rdf-parse (JavaScript)</li>
+</ul></li>
+<li>Task <a
+href="https://ontotext.atlassian.net/browse/KGS-70">KGS-70</a>, <a
+href="https://github.com/gkellogg/earl-report/issues/6">earl-report#6</a>
+to add a summary table at end
+<ul>
+<li>Please volunteer! Need to learn a bit of HAML (HTML abstraction
+markup language)</li>
+</ul></li>
+</ul>
+</section>
+<section id="json-ld-conformance-results" class="slide level2">
+<h2>JSON-LD Conformance Results</h2>
+<p><img data-src="img/jsonld-conformance.png" /></p>
+</section>
+<section id="state-of-json-ld-support-in-rdf4j-gdb"
+class="slide level2">
+<h2>State of JSON-LD Support in RDF4J &amp; GDB</h2>
+<ul>
+<li>RDF4J supports only JSON-LD 1.0 through <code>jsonld-java</code> (<a
+href="https://github.com/eclipse/rdf4j/issues/3654">rdf4j#3654</a>)
+<ul>
+<li>Need to add <a
+href="https://github.com/filip26/titanium-json-ld/">Titanium JSON-LD</a>
+for JSON-LD 1.1 support</li>
+<li>Titanium performance improved 2x from 03.12.2020 to 02.04.2022</li>
+<li>But is still 4.6x slower than <code>jsonld-java</code></li>
+<li>So need to keep both libraries, and select based on request header
+or other options</li>
+<li>Tracked as <a
+href="https://ontotext.atlassian.net/browse/GDB-7322">GDB-7322</a>
+JSON-LD 1.1 support</li>
+</ul></li>
+<li>RDF4J can specify context for serialization, but doesn’t expose it
+through request header
+<ul>
+<li>Which context and frame to use: asked <a
+href="https://github.com/w3c/json-ld-framing/issues/133">w3c/json-ld-framing#133</a></li>
+</ul></li>
+<li>Jena has integrated Titanium (<a
+href="https://issues.apache.org/jira/browse/JENA-1948">JENA-1948</a>):
+reading is done, writing is in progress (<a
+href="https://issues.apache.org/jira/browse/JENA-2153">JENA-2153</a>)</li>
+</ul>
+</section></section>
+<section>
+<section id="new-community-group-yaml-ld"
+class="title-slide slide level1">
+<h1>New Community Group: YAML-LD</h1>
+<ul>
+<li>JSON is nice: devs love it
+<ul>
+<li>It’s easy to use in apps</li>
+</ul></li>
+<li>But YAML is nicer: both devs and data archtects love it
+<ul>
+<li>As easy to process as JSON</li>
+<li>Much easier to read than JSON: goes away with the curlies and most
+of the quotes</li>
+</ul></li>
+<li>Yet, YAML is a superset of JSON:
+<ul>
+<li>Can have anchors and references</li>
+<li>Can use object as key</li>
+<li>Can declare tags eg to express datatypes:
+<code>!xsd!date 2022-10-28</code></li>
+</ul></li>
+</ul>
+<p>So I started thinking about YAML-LD: <a
+href="https://github.com/w3c/json-ld-syntax/issues/389">w3c/json-ld-syntax#389</a></p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+</section></section>
+<section>
+<section id="polyglot-modeling" class="title-slide slide level1">
+<h1>Polyglot Modeling</h1>
+<p><a
+href="https://github.com/json-ld/yaml-ld/issues/19">yaml-ld#19</a></p>
+<ul>
+<li>WHO: As an information architect</li>
+<li>WHAT: I want data modeling language(s) independent of technical
+artefacts</li>
+<li>SO THAT:
+<ul>
+<li>the language is understandable to domain experts</li>
+<li>it can generate a variety of required technical artefacts</li>
+<li>all these artefacts are kept in sync, thus lowering maintenance
+effort</li>
+</ul></li>
+</ul>
+</section>
+<section id="multiple-schema-technical-artefacts" class="slide level2">
+<h2>Multiple Schema Technical Artefacts</h2>
+<p>For efficient RDF modeling, you need to define multiple related
+artefacts:</p>
+<ul>
+<li>ontology</li>
+<li>shapes (SHACL or SHEX)</li>
+<li>diagrams and other documentation</li>
+<li>JSON-LD context,</li>
+<li>maybe JSON-LD frames,</li>
+<li>JSON schema or Avro schema</li>
+<li>API bindings and hypertext controls (HATEOAS)</li>
+<li>etc</li>
+</ul>
+</section>
+<section id="json-schema-vs-json-ld-context" class="slide level2">
+<h2>JSON Schema vs JSON-LD Context</h2>
+<p>Efforts to marry JSON Schema with JSON-LD contexts have been
+undertaken in:</p>
+<ul>
+<li><a href="https://w3c-ccg.github.io/">W3C Credentials CG</a></li>
+<li>Web of Things: <a href="https://www.w3.org/2019/wot/json-schema">WoT
+JSON Schema</a>, <a
+href="http://www.w3.org/2019/wot/hypermedia">Hypermedia</a>
+vocabulary</li>
+<li>OpenAPI: <a
+href="https://github.com/OAI/OpenAPI-Specification/">OpenAPI-Specification</a>,
+<a
+href="https://docs.google.com/document/d/1fBRH2wtg1p_g4voNSTlHiSJmKgvfNaIsUXwPBO36RuM/edit">OAS
+Semantic Context</a>, in particular for eGovernment APIs</li>
+</ul>
+</section>
+<section id="examples-of-polyglot-frameworks" class="slide level2">
+<h2>Examples of Polyglot Frameworks</h2>
+<p>Many are YAML-based:</p>
+<ul>
+<li><a href="https://linkml.io/">LinkML</a> (<a
+href="https://github.com/linkml">github</a>)</li>
+<li><a href="https://www.hl7.org/fhir/">HL7 FHIR</a> (not
+YAML-based)</li>
+<li><a
+href="http://shex.io/shex-semantics/index.html#shexc">ShExC</a>/<a
+href="http://shex.io/shex-semantics/index.html#shexj">ShExJ</a>/<a
+href="https://www.w3.org/ns/shex.jsonld">ShExR</a>, now YAML
+(ShExY?)</li>
+<li><a href="https://www.commonwl.org/v1.2/SchemaSalad.html">Schema
+Salad</a></li>
+<li><a href="https://a.ml/">A.ML</a> and <a
+href="https://github.com/cloudinformationmodel/cloudinformationmodel">cloudinformationmodel</a></li>
+<li><a href="http://raml.org/">RAML</a> (RESTful API Modeling Language),
+<a href="https://github.com/raml-org/raml-spec">RAML spec</a></li>
+<li>Dragon at Uber, eg <a
+href="https://eng.uber.com/dragon-schema-integration-at-uber-scale/">Dragon:
+Schema Integration at Uber Scale</a> (<a
+href="https://1fykyq3mdn5r21tpna3wkdyi-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Schema-Integration-at-Uber-Scale-US2TS-2020-1.pdf">cached
+PDF</a>).
+<ul>
+<li>YAML schema examples start slide 42</li>
+</ul></li>
+<li><a href="https://platform.ontotext.com/3.0/soml/index.html">SOML</a>
+for Semantic Objects, Semantic Search (Ontotext)
+<ul>
+<li>Maybe Ontotext Reconciliation servers can be built on this?</li>
+</ul></li>
+<li><a href="https://smartdatamodels.org/">smart-data-models</a>
+(FIWARE, IUDX, SmartCities, TM forum).
+<ul>
+<li>Example: <a
+href="https://github.com/smart-data-models/dataModel.Aeronautics/tree/master/Aircraft">Aircraft</a>.
+<a
+href="https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.p1">contribution
+manual gslides</a></li>
+</ul></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/head.min.js"></script>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        width: "1280",
+      	height: "1024",
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Transition style
+        transition: 'concave', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Parallax background image
+        parallaxBackgroundImage: 'https://presentations.ontotext.com/scripts/reveal.js/css/theme/images/slide_bg2.svg',
+        // Parallax background size
+        parallaxBackgroundSize: '2462px
+1636px', // CSS syntax, e.g. "2100px 900px"
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/search/search.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/node_modules/reveal.js-menu/menu.js' },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    </body>
+</html>
