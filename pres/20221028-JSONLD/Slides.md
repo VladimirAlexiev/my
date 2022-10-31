@@ -261,13 +261,12 @@ So I started thinking about YAML-LD: [w3c/json-ld-syntax#389](https://github.com
 - Object keys for RDF-star
 
 ```yaml
-{$id: bob, age: 42}: {certainty: 0.8} # very natural!
+  {$id: bob, age: 42}: {certainty: 0.8} # very natural!
 
-$id:    # $annotation keyword (long form)
   $id: bob
   age: 
     $value: 42
-    $annotation:
+    $annotation:                        # new keyword (long form)
       certainty: 0.8
 ```
 

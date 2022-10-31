@@ -1,20 +1,69 @@
-<h1 id="links">Links:</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Vladimir Alexiev, Ontotext">
+  <title>JSON-LD, YAML-LD and Polyglot Modeling</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/reveal.css">
+  <link rel="icon" type="image/png" href="https://www.ontotext.com/wp-content/themes/ontotext/favicon.ico">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/css/theme/ontotext.css" id="theme">
+
+    <!-- For syntax highlighting using highlight.js-->
+    <link rel="stylesheet" href="https://presentations.ontotext.com/scripts/reveal.js/lib/css/onto-hljs.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://presentations.ontotext.com/scripts/reveal.js/css/print/pdf.css' : 'https://presentations.ontotext.com/scripts/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">JSON-LD, YAML-LD and Polyglot Modeling</h1>
+  <p class="author">Vladimir Alexiev, Ontotext</p>
+  <p class="date">2022-10-28, Ontotext Last Friday</p>
+</section>
+
+<section id="TOC">
+  <h2> Overview </h2>
 <ul>
-<li><a
-href="https://rawgit2.com/VladimirAlexiev/my/master/index.html">My
-publications</a></li>
-<li>This presentation: <a
-href="https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html">JSON-LD
-and Polyglot Modeling</a>
-<ul>
-<li>TODO: check that external resources work</li>
-</ul></li>
-<li><a
-href="https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit">Decentralization
-and Self-Sovereignty</a>: presentation and <a
-href="https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit">gdoc</a></li>
+<li><a href="#/json-ld" id="/toc-json-ld">JSON-LD</a></li>
+<li><a href="#/importance-of-precise-json-ld-serializations"
+id="/toc-importance-of-precise-json-ld-serializations">Importance of
+Precise JSON-LD Serializations</a></li>
+<li><a href="#/innovations-in-json-ld-1.1"
+id="/toc-innovations-in-json-ld-1.1">Innovations in JSON-LD 1.1</a></li>
+<li><a href="#/new-community-group-yaml-ld"
+id="/toc-new-community-group-yaml-ld">New Community Group:
+YAML-LD</a></li>
+<li><a href="#/polyglot-modeling" id="/toc-polyglot-modeling">Polyglot
+Modeling</a></li>
+<li><a href="#/links" id="/toc-links">Links</a></li>
 </ul>
-<h1 id="json-ld">JSON-LD</h1>
+</section>
+
+<section>
+<section id="json-ld" class="title-slide slide level1">
+<h1>JSON-LD</h1>
 <ul>
 <li>Came from the desire to let devs use RDF data in an easier way
 <ul>
@@ -34,7 +83,9 @@ specs</li>
 class="uri">https://json-ld.org/playground/</a>, based on
 <code>jsonld-js</code>, often used for testing</li>
 </ul>
-<h2 id="json-ld-specs">JSON-LD Specs</h2>
+</section>
+<section id="json-ld-specs" class="slide level2">
+<h2>JSON-LD Specs</h2>
 <p>Links are to latest editor drafts:</p>
 <ul>
 <li><a href="https://w3c.github.io/json-ld-syntax/">JSON-LD Syntax</a>:
@@ -64,7 +115,9 @@ is a binary representation for JSON</li>
 <li><a href="https://json-ld.github.io/yaml-ld/">YAML-LD</a>: YAML is a
 better JSON. CG started by me, see end</li>
 </ul>
-<h2 id="what-json-ld-can-do">What JSON-LD Can Do</h2>
+</section>
+<section id="what-json-ld-can-do" class="slide level2">
+<h2>What JSON-LD Can Do</h2>
 <p>Map JSON to RDF and back in flexible ways:</p>
 <ul>
 <li><a
@@ -91,14 +144,26 @@ omit JSON props on parsing</li>
 <li>Alias keywords, eg
 <code>"url": "@id", "a": "@type", "lang": "@language"</code></li>
 </ul>
-<h2 id="what-json-ld-cannot-do">What JSON-LD Cannot Do</h2>
+</section>
+<section id="what-json-ld-cannot-do" class="slide level2">
+<h2>What JSON-LD Cannot Do</h2>
 <ul>
 <li>Clean up or reformat data</li>
+<li>Change fundamentally the layout of data</li>
 <li>Validate data (use JSON Schema, SHACL or SHEX for that)</li>
 <li>Concatenate fields to make a URL</li>
 <li>Make RDF sub-nodes</li>
 </ul>
-<h2 id="how-graphdb-uses-json-ld">How GraphDB Uses JSON-LD</h2>
+<p>So what to do if a more complex transformation is needed?</p>
+<ul>
+<li>Use a “basic” JSON-LD context to map literals and URLs (if
+present)</li>
+<li>Convert to RDF and load it to a “staging” graph/repo</li>
+<li>Use SPARQL Update to reshape the data to a final graph/repo</li>
+</ul>
+</section>
+<section id="how-graphdb-uses-json-ld" class="slide level2">
+<h2>How GraphDB Uses JSON-LD</h2>
 <ul>
 <li>As data loading format and RDF output format (whole graph/repo,
 resource, CONSTRUCT)</li>
@@ -111,12 +176,14 @@ Connector</a>: fetch JSON from Mongo, use it as RDF in SPARQL
 </ul></li>
 <li>Limited to JSON 1.0 (see later)</li>
 </ul>
-<h2 id="context-examples-from-gs1-epcis">Context Examples from GS1
-EPCIS</h2>
+</section>
+<section id="context-examples-from-gs1-epcis" class="slide level2">
+<h2>Context Examples from GS1 EPCIS</h2>
 <p>JSON vs Turtle:</p>
-<p><img src="img/epcis-example1.png" /></p>
-<h2 id="context-examples-from-gs1-epcis-1">Context Examples from GS1
-EPCIS</h2>
+<p><img data-src="img/epcis-example1.png" /></p>
+</section>
+<section id="context-examples-from-gs1-epcis-1" class="slide level2">
+<h2>Context Examples from GS1 EPCIS</h2>
 <p>See <a
 href="https://github.com/gs1/EPCIS/blob/master/epcis-context.jsonld">epcis-context.jsonld</a>
 or my <a
@@ -132,31 +199,33 @@ context:</p>
 <li>In <code>sensorReport</code> it’s <code>epcis:measurementType</code>
 (eg <code>gs1:AbsoluteHumidity</code>)</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;@context&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;type&quot;</span><span class="op">:</span> <span class="st">&quot;@type&quot;</span><span class="op">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sourceList&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sourceList&quot;</span><span class="op">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@context&quot;</span><span class="op">:</span> [</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;possessing_party&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:SDT-possessing_party&quot;</span><span class="op">,</span> <span class="op">...</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sourceOrDestinationType&quot;</span><span class="op">,</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;bizTransactionList&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:bizTransactionList&quot;</span><span class="op">,</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@context&quot;</span><span class="op">:</span> [</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;bol&quot;</span><span class="op">:</span> <span class="st">&quot;cbv:BTT-bol&quot;</span><span class="op">,</span> <span class="op">...</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:bizTransactionType&quot;</span><span class="op">,</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sensorElementList&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sensorElementList&quot;</span><span class="op">,</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;sensorReport&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:sensorReport&quot;</span><span class="op">,</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;@context&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;@context&quot;</span><span class="op">:</span> {</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;AbsoluteHumidity&quot;</span><span class="op">:</span> <span class="st">&quot;gs1:AbsoluteHumidity&quot;</span><span class="op">,</span> <span class="op">...</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;@id&quot;</span><span class="op">:</span> <span class="st">&quot;epcis:measurementType&quot;</span><span class="op">,</span></span></code></pre></div>
+<pre class="js"><code>  &quot;@context&quot;: {
+    &quot;type&quot;: &quot;@type&quot;,
+    &quot;sourceList&quot;: {
+      &quot;@id&quot;: &quot;epcis:sourceList&quot;,
+      &quot;@context&quot;: [
+          &quot;possessing_party&quot;: &quot;cbv:SDT-possessing_party&quot;, ...
+          &quot;type&quot;: {
+            &quot;@id&quot;: &quot;epcis:sourceOrDestinationType&quot;,
+    &quot;bizTransactionList&quot;: {
+      &quot;@id&quot;: &quot;epcis:bizTransactionList&quot;,
+      &quot;@context&quot;: [
+          &quot;bol&quot;: &quot;cbv:BTT-bol&quot;, ...
+          &quot;type&quot;: {
+            &quot;@id&quot;: &quot;epcis:bizTransactionType&quot;,
+    &quot;sensorElementList&quot;: {
+      &quot;@id&quot;: &quot;epcis:sensorElementList&quot;,
+        &quot;sensorReport&quot;: {
+          &quot;@id&quot;: &quot;epcis:sensorReport&quot;,
+          &quot;@context&quot;: {
+            &quot;type&quot;: {
+              &quot;@context&quot;: {
+                &quot;AbsoluteHumidity&quot;: &quot;gs1:AbsoluteHumidity&quot;, ...
+              &quot;@id&quot;: &quot;epcis:measurementType&quot;,</code></pre>
 <p>Can you spot a bug above?</p>
-<h2 id="allotrope-foundation">Allotrope Foundation</h2>
+</section>
+<section id="allotrope-foundation" class="slide level2">
+<h2>Allotrope Foundation</h2>
 <ul>
 <li>Defines bridging between RDF and HDT5 (binary format for research
 &amp; engineering data)</li>
@@ -168,14 +237,19 @@ Merck R&amp;D IT Data Infrastructure. Presentation at Allotrope Connect,
 20 September 2021: <a href="https://youtu.be/irZ0i2fA47E">video</a>, <a
 href="https://www.allotrope.org/_files/ugd/d6fa33_215d90dde49540bb9d58339731be7a95.pdf">slides</a></li>
 </ul>
-<h2 id="context-examples-from-allotrope">Context Examples from
-Allotrope</h2>
-<p><img src="img/allotrope-context.png" /></p>
-<h2 id="frame-examples-from-allotrope">Frame Examples from
-Allotrope</h2>
-<p><img src="img/allotrope-frame.png" /></p>
-<h1 id="importance-of-precise-json-ld-serializations">Importance of
-Precise JSON-LD Serializations</h1>
+</section>
+<section id="context-examples-from-allotrope" class="slide level2">
+<h2>Context Examples from Allotrope</h2>
+<p><img data-src="img/allotrope-context.png" /></p>
+</section>
+<section id="frame-examples-from-allotrope" class="slide level2">
+<h2>Frame Examples from Allotrope</h2>
+<p><img data-src="img/allotrope-frame.png" /></p>
+</section></section>
+<section>
+<section id="importance-of-precise-json-ld-serializations"
+class="title-slide slide level1">
+<h1>Importance of Precise JSON-LD Serializations</h1>
 <ul>
 <li>Many communities base their data exchange on JSON Schema</li>
 <li>Yet want to have LD representation of their data</li>
@@ -204,7 +278,9 @@ href="https://iiif.io/api/image">Image</a> and <a
 href="https://iiif.io/api/presentation">Presentation</a> APIs (eg for
 Flemish Archive)</li>
 </ul>
-<h2 id="example-use-cases">Example Use Cases</h2>
+</section>
+<section id="example-use-cases" class="slide level2">
+<h2>Example Use Cases</h2>
 <p>Eg <a href="https://jsld.org" class="uri">https://jsld.org</a>: use
 cases building on JSON-LD by <a
 href="https://www.transmute.industries/">transmute.industries</a></p>
@@ -215,7 +291,11 @@ href="https://www.transmute.industries/">transmute.industries</a></p>
 <li>Agriculture Futures</li>
 <li>Incident Response</li>
 </ul>
-<h1 id="innovations-in-json-ld-1.1">Innovations in JSON-LD 1.1</h1>
+</section></section>
+<section>
+<section id="innovations-in-json-ld-1.1"
+class="title-slide slide level1">
+<h1>Innovations in JSON-LD 1.1</h1>
 <p>Compared to JSON-LD 1.0, 1.1 has many advanced features:</p>
 <ul>
 <li><a
@@ -239,7 +319,9 @@ of JSON by data, id, lang, graph, etc</li>
 express which RDF data to pick and how to lay it out</li>
 </ul>
 <p>… too numerous to list all.</p>
-<h2 id="json-ld-conformance-tests">JSON-LD Conformance Tests</h2>
+</section>
+<section id="json-ld-conformance-tests" class="slide level2">
+<h2>JSON-LD Conformance Tests</h2>
 <p>Best feature of W3C specs: accompanied by Implementation Reports</p>
 <ul>
 <li><a href="https://w3c.github.io/json-ld-api/reports/">JSON-LD 1.1
@@ -268,10 +350,13 @@ to add a summary table at end
 markup language)</li>
 </ul></li>
 </ul>
-<h2 id="json-ld-conformance-results">JSON-LD Conformance Results</h2>
-<p><img src="img/jsonld-conformance.png" /></p>
-<h2 id="state-of-json-ld-support-in-rdf4j-gdb">State of JSON-LD Support
-in RDF4J &amp; GDB</h2>
+</section>
+<section id="json-ld-conformance-results" class="slide level2">
+<h2>JSON-LD Conformance Results</h2>
+<p><img data-src="img/jsonld-conformance.png" /></p>
+</section>
+<section id="json-ld-support-in-rdf4j-gdb" class="slide level2">
+<h2>JSON-LD Support in RDF4J &amp; GDB</h2>
 <ul>
 <li>RDF4J supports only JSON-LD 1.0 through <code>jsonld-java</code> (<a
 href="https://github.com/eclipse/rdf4j/issues/3654">rdf4j#3654</a>)
@@ -284,8 +369,10 @@ for JSON-LD 1.1 support</li>
 <li>So need to keep both libraries, and select based on request header
 or other options</li>
 <li>Tracked as <a
-href="https://ontotext.atlassian.net/browse/GDB-7322">GDB-7322</a>
-JSON-LD 1.1 support</li>
+href="https://ontotext.atlassian.net/browse/GDB-7322">GDB-7322</a> 1.1
+support; <a
+href="https://ontotext.atlassian.net/browse/GDB-7324">GDB-7324</a>
+conformance testing</li>
 </ul></li>
 <li>RDF4J can specify context for serialization, but doesn’t expose it
 through request header
@@ -298,7 +385,11 @@ href="https://issues.apache.org/jira/browse/JENA-1948">JENA-1948</a>):
 reading is done, writing is in progress (<a
 href="https://issues.apache.org/jira/browse/JENA-2153">JENA-2153</a>)</li>
 </ul>
-<h1 id="new-community-group-yaml-ld">New Community Group: YAML-LD</h1>
+</section></section>
+<section>
+<section id="new-community-group-yaml-ld"
+class="title-slide slide level1">
+<h1>New Community Group: YAML-LD</h1>
 <ul>
 <li>JSON is nice: devs love it
 <ul>
@@ -310,18 +401,71 @@ href="https://issues.apache.org/jira/browse/JENA-2153">JENA-2153</a>)</li>
 <li>Much easier to read than JSON: goes away with the curlies and most
 of the quotes</li>
 </ul></li>
-<li>Yet, YAML is a superset of JSON:
+<li>Yet, YAML is a superset of JSON as it can:
 <ul>
-<li>Can have anchors and references</li>
-<li>Can use object as key</li>
-<li>Can declare tags eg to express datatypes:
-<code>!xsd!date 2022-10-28</code></li>
+<li>Have anchors and references -&gt; reuse YAML pieces</li>
+<li>Use object as key (fields not limited to strings) -&gt;
+RDF-star</li>
+<li>Declare tags eg <code>!xsd!date 2022-10-28</code> -&gt;
+datatypes</li>
+<li>Have multiple docs in a file (stream) -&gt; multiple named graphs in
+a file</li>
 </ul></li>
 </ul>
 <p>So I started thinking about YAML-LD: <a
 href="https://github.com/w3c/json-ld-syntax/issues/389">w3c/json-ld-syntax#389</a></p>
-<h2 id="section"></h2>
-<h1 id="polyglot-modeling">Polyglot Modeling</h1>
+</section>
+<section id="yaml-ld-community-group" class="slide level2">
+<h2>YAML-LD Community Group</h2>
+<ul>
+<li>Initiated by Vladimir Alexiev</li>
+<li>Constituted by Gregg Kellogg as part of the JSON-LD WG</li>
+<li>Github: <a href="https://github.com/json-ld/yaml-ld/"
+class="uri">https://github.com/json-ld/yaml-ld/</a></li>
+<li><a href="https://github.com/json-ld/yaml-ld/issues">Issues</a>: 49.
+<ul>
+<li>I made 16 and contributed to maybe 20 more</li>
+<li><a href="https://github.com/json-ld/yaml-ld/issues/2">yaml-ld#2</a>:
+Use Case Requirements, recorded 14 UCRs</li>
+</ul></li>
+<li><a href="https://json-ld.github.io/yaml-ld/spec/">YAML-LD spec</a>
+(very draft)</li>
+</ul>
+</section>
+<section id="yaml-ld-examples" class="slide level2">
+<h2>YAML-LD Examples</h2>
+<ul>
+<li>Use tags for datatypes</li>
+</ul>
+<pre class="yaml"><code> dc:date: !xsd!date 2022-05-18  # short form
+
+ dc:date:                       # subfields (long form)
+   @type: xsd:date
+   @value: 2022-05-18</code></pre>
+<ul>
+<li>Use <code>$</code> instead of <code>@</code>: more dev-friendly</li>
+</ul>
+<pre class="yaml"><code>  &quot;@context&quot;:
+    &quot;@sigil&quot;: $
+    $base: http://example.org/resource/
+    $vocab: http://example.org/ontology/
+  $graph:
+    $id: bart
+    spouse: marge</code></pre>
+<ul>
+<li>Object keys for RDF-star</li>
+</ul>
+<pre class="yaml"><code>  {$id: bob, age: 42}: {certainty: 0.8} # very natural!
+
+  $id: bob
+  age: 
+    $value: 42
+    $annotation:                        # new keyword (long form)
+      certainty: 0.8</code></pre>
+</section></section>
+<section>
+<section id="polyglot-modeling" class="title-slide slide level1">
+<h1>Polyglot Modeling</h1>
 <p><a
 href="https://github.com/json-ld/yaml-ld/issues/19">yaml-ld#19</a></p>
 <ul>
@@ -336,8 +480,9 @@ artefacts</li>
 effort</li>
 </ul></li>
 </ul>
-<h2 id="multiple-schema-technical-artefacts">Multiple Schema Technical
-Artefacts</h2>
+</section>
+<section id="multiple-schema-technical-artefacts" class="slide level2">
+<h2>Multiple Schema Technical Artefacts</h2>
 <p>For efficient RDF modeling, you need to define multiple related
 artefacts:</p>
 <ul>
@@ -350,8 +495,9 @@ artefacts:</p>
 <li>API bindings and hypertext controls (HATEOAS)</li>
 <li>etc</li>
 </ul>
-<h2 id="json-schema-vs-json-ld-context">JSON Schema vs JSON-LD
-Context</h2>
+</section>
+<section id="json-schema-vs-json-ld-context" class="slide level2">
+<h2>JSON Schema vs JSON-LD Context</h2>
 <p>Efforts to marry JSON Schema with JSON-LD contexts have been
 undertaken in:</p>
 <ul>
@@ -366,8 +512,9 @@ href="https://github.com/OAI/OpenAPI-Specification/">OpenAPI-Specification</a>,
 href="https://docs.google.com/document/d/1fBRH2wtg1p_g4voNSTlHiSJmKgvfNaIsUXwPBO36RuM/edit">OAS
 Semantic Context</a>, in particular for eGovernment APIs</li>
 </ul>
-<h2 id="examples-of-polyglot-frameworks">Examples of Polyglot
-Frameworks</h2>
+</section>
+<section id="examples-of-polyglot-frameworks" class="slide level2">
+<h2>Examples of Polyglot Frameworks</h2>
 <p>Many are YAML-based:</p>
 <ul>
 <li><a href="https://linkml.io/">LinkML</a> (<a
@@ -408,3 +555,89 @@ href="https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7w
 manual gslides</a></li>
 </ul></li>
 </ul>
+</section></section>
+<section id="links" class="title-slide slide level1">
+<h1>Links</h1>
+<ul>
+<li><a
+href="https://rawgit2.com/VladimirAlexiev/my/master/index.html">My
+publications</a></li>
+<li>This presentation: <a
+href="https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html">JSON-LD
+and Polyglot Modeling</a></li>
+<li><a
+href="https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit">Decentralization
+and Self-Sovereignty</a>: presentation and <a
+href="https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit">gdoc</a></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/lib/js/head.min.js"></script>
+  <script src="https://presentations.ontotext.com/scripts/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        width: "1280",
+      	height: "1024",
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Transition style
+        transition: 'concave', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Parallax background image
+        parallaxBackgroundImage: 'https://presentations.ontotext.com/scripts/reveal.js/css/theme/images/slide_bg2.svg',
+        // Parallax background size
+        parallaxBackgroundSize: '2462px 1636px', // CSS syntax, e.g. "2100px 900px"
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/search/search.js', async: true },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/node_modules/reveal.js-menu/menu.js' },
+          { src: 'https://presentations.ontotext.com/scripts/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    </body>
+</html>
