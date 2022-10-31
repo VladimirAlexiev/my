@@ -71,9 +71,7 @@ So what to do if a more complex transformation is needed?
   - But cannot use externally provided context
 - Limited to JSON 1.0 (see later)
 
-## Context Examples from GS1 EPCIS
-
-JSON vs Turtle:
+## Example from GS1 EPCIS (JSON vs Turtle)
 
 ![](img/epcis-example1.png)
 
