@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Vladimir Alexiev, Ontotext">
-  <title>JSON-LD, YAML-LD and Polyglot Modeling</title>
+  <title>JSON-LD and Polyglot Modeling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -38,7 +38,7 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">JSON-LD, YAML-LD and Polyglot Modeling</h1>
+  <h1 class="title">JSON-LD and Polyglot Modeling</h1>
   <p class="author">Vladimir Alexiev, Ontotext</p>
   <p class="date">2022-10-28, Ontotext Last Friday</p>
 </section>
@@ -46,6 +46,7 @@
 <section id="TOC">
   <h2> Overview </h2>
 <ul>
+<li><a href="#/links" id="/toc-links">Links:</a></li>
 <li><a href="#/json-ld" id="/toc-json-ld">JSON-LD</a></li>
 <li><a href="#/importance-of-precise-json-ld-serializations"
 id="/toc-importance-of-precise-json-ld-serializations">Importance of
@@ -57,7 +58,25 @@ id="/toc-new-community-group-yaml-ld">New Community Group:
 YAML-LD</a></li>
 <li><a href="#/polyglot-modeling" id="/toc-polyglot-modeling">Polyglot
 Modeling</a></li>
-<li><a href="#/links" id="/toc-links">Links</a></li>
+</ul>
+</section>
+
+<section id="links" class="title-slide slide level1">
+<h1>Links:</h1>
+<ul>
+<li><a
+href="https://rawgit2.com/VladimirAlexiev/my/master/index.html">My
+publications</a></li>
+<li>This presentation: <a
+href="https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html">JSON-LD
+and Polyglot Modeling</a>
+<ul>
+<li>TODO: check that external resources work</li>
+</ul></li>
+<li><a
+href="https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit">Decentralization
+and Self-Sovereignty</a>: presentation and <a
+href="https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit">gdoc</a></li>
 </ul>
 </section>
 
@@ -149,17 +168,9 @@ omit JSON props on parsing</li>
 <h2>What JSON-LD Cannot Do</h2>
 <ul>
 <li>Clean up or reformat data</li>
-<li>Change fundamentally the layout of data</li>
 <li>Validate data (use JSON Schema, SHACL or SHEX for that)</li>
 <li>Concatenate fields to make a URL</li>
 <li>Make RDF sub-nodes</li>
-</ul>
-<p>So what to do if a more complex transformation is needed?</p>
-<ul>
-<li>Use a “basic” JSON-LD context to map literals and URLs (if
-present)</li>
-<li>Convert to RDF and load it to a “staging” graph/repo</li>
-<li>Use SPARQL Update to reshape the data to a final graph/repo</li>
 </ul>
 </section>
 <section id="how-graphdb-uses-json-ld" class="slide level2">
@@ -355,8 +366,9 @@ markup language)</li>
 <h2>JSON-LD Conformance Results</h2>
 <p><img data-src="img/jsonld-conformance.png" /></p>
 </section>
-<section id="json-ld-support-in-rdf4j-gdb" class="slide level2">
-<h2>JSON-LD Support in RDF4J &amp; GDB</h2>
+<section id="state-of-json-ld-support-in-rdf4j-gdb"
+class="slide level2">
+<h2>State of JSON-LD Support in RDF4J &amp; GDB</h2>
 <ul>
 <li>RDF4J supports only JSON-LD 1.0 through <code>jsonld-java</code> (<a
 href="https://github.com/eclipse/rdf4j/issues/3654">rdf4j#3654</a>)
@@ -369,10 +381,8 @@ for JSON-LD 1.1 support</li>
 <li>So need to keep both libraries, and select based on request header
 or other options</li>
 <li>Tracked as <a
-href="https://ontotext.atlassian.net/browse/GDB-7322">GDB-7322</a> 1.1
-support; <a
-href="https://ontotext.atlassian.net/browse/GDB-7324">GDB-7324</a>
-conformance testing</li>
+href="https://ontotext.atlassian.net/browse/GDB-7322">GDB-7322</a>
+JSON-LD 1.1 support</li>
 </ul></li>
 <li>RDF4J can specify context for serialization, but doesn’t expose it
 through request header
@@ -401,68 +411,19 @@ class="title-slide slide level1">
 <li>Much easier to read than JSON: goes away with the curlies and most
 of the quotes</li>
 </ul></li>
-<li>Yet, YAML is a superset of JSON as it can:
+<li>Yet, YAML is a superset of JSON:
 <ul>
-<li>Have anchors and references -&gt; reuse YAML pieces</li>
-<li>Use object as key (fields not limited to strings) -&gt;
-RDF-star</li>
-<li>Declare tags eg <code>!xsd!date 2022-10-28</code> -&gt;
-datatypes</li>
-<li>Have multiple docs in a file (stream) -&gt; multiple named graphs in
-a file</li>
+<li>Can have anchors and references</li>
+<li>Can use object as key</li>
+<li>Can declare tags eg to express datatypes:
+<code>!xsd!date 2022-10-28</code></li>
 </ul></li>
 </ul>
 <p>So I started thinking about YAML-LD: <a
 href="https://github.com/w3c/json-ld-syntax/issues/389">w3c/json-ld-syntax#389</a></p>
 </section>
-<section id="yaml-ld-community-group" class="slide level2">
-<h2>YAML-LD Community Group</h2>
-<ul>
-<li>Initiated by Vladimir Alexiev</li>
-<li>Constituted by Gregg Kellogg as part of the JSON-LD WG</li>
-<li>Github: <a href="https://github.com/json-ld/yaml-ld/"
-class="uri">https://github.com/json-ld/yaml-ld/</a></li>
-<li><a href="https://github.com/json-ld/yaml-ld/issues">Issues</a>: 49.
-<ul>
-<li>I made 16 and contributed to maybe 20 more</li>
-<li><a href="https://github.com/json-ld/yaml-ld/issues/2">yaml-ld#2</a>:
-Use Case Requirements, recorded 14 UCRs</li>
-</ul></li>
-<li><a href="https://json-ld.github.io/yaml-ld/spec/">YAML-LD spec</a>
-(very draft)</li>
-</ul>
-</section>
-<section id="yaml-ld-examples" class="slide level2">
-<h2>YAML-LD Examples</h2>
-<ul>
-<li>Use tags for datatypes</li>
-</ul>
-<pre class="yaml"><code> dc:date: !xsd!date 2022-05-18  # short form
-
- dc:date:                       # subfields (long form)
-   @type: xsd:date
-   @value: 2022-05-18</code></pre>
-<ul>
-<li>Use <code>$</code> instead of <code>@</code>: more dev-friendly</li>
-</ul>
-<pre class="yaml"><code>  &quot;@context&quot;:
-    &quot;@sigil&quot;: $
-    $base: http://example.org/resource/
-    $vocab: http://example.org/ontology/
-  $graph:
-    $id: bart
-    spouse: marge</code></pre>
-<ul>
-<li>Object keys for RDF-star</li>
-</ul>
-<pre class="yaml"><code>{$id: bob, age: 42}: {certainty: 0.8} # very natural!
-
-$id:    # $annotation keyword (long form)
-  $id: bob
-  age: 
-    $value: 42
-    $annotation:
-      certainty: 0.8</code></pre>
+<section id="section" class="slide level2">
+<h2></h2>
 </section></section>
 <section>
 <section id="polyglot-modeling" class="title-slide slide level1">
@@ -557,21 +518,6 @@ manual gslides</a></li>
 </ul></li>
 </ul>
 </section></section>
-<section id="links" class="title-slide slide level1">
-<h1>Links</h1>
-<ul>
-<li><a
-href="https://rawgit2.com/VladimirAlexiev/my/master/index.html">My
-publications</a></li>
-<li>This presentation: <a
-href="https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html">JSON-LD
-and Polyglot Modeling</a></li>
-<li><a
-href="https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit">Decentralization
-and Self-Sovereignty</a>: presentation and <a
-href="https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit">gdoc</a></li>
-</ul>
-</section>
     </div>
   </div>
 

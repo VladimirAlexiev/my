@@ -1,15 +1,8 @@
 ---
 author: "Vladimir Alexiev, Ontotext"
 date: "2022-10-28, Ontotext Last Friday"
-title: "JSON-LD and Polyglot Modeling"
+title: "JSON-LD, YAML-LD and Polyglot Modeling"
 ---
-
-# Links:
-
-- [My publications](https://rawgit2.com/VladimirAlexiev/my/master/index.html)
-- This presentation: [JSON-LD and Polyglot Modeling](https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html)
-  - TODO: check that external resources work
-- [Decentralization and Self-Sovereignty](https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit): presentation and [gdoc](https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit)
 
 # JSON-LD
 
@@ -59,9 +52,16 @@ Map JSON to RDF and back in flexible ways:
 ## What JSON-LD Cannot Do
 
 - Clean up or reformat data
+- Change fundamentally the layout of data
 - Validate data (use JSON Schema, SHACL or SHEX for that)
 - Concatenate fields to make a URL
 - Make RDF sub-nodes
+
+So what to do if a more complex transformation is needed?
+
+- Use a "basic" JSON-LD context to map literals and URLs (if present)
+- Convert to RDF and load it to a "staging" graph/repo
+- Use SPARQL Update to reshape the data to a final graph/repo
 
 ## How GraphDB Uses JSON-LD
 
@@ -198,14 +198,14 @@ Best feature of W3C specs: accompanied by Implementation Reports
 
 ![](img/jsonld-conformance.png)
 
-## State of JSON-LD Support in RDF4J & GDB
+## JSON-LD Support in RDF4J & GDB
 
 - RDF4J supports only JSON-LD 1.0 through `jsonld-java` ([rdf4j#3654](https://github.com/eclipse/rdf4j/issues/3654))
   - Need to add [Titanium JSON-LD](https://github.com/filip26/titanium-json-ld/) for JSON-LD 1.1 support
   - Titanium performance improved 2x from 03.12.2020 to 02.04.2022
   - But is still 4.6x slower than  `jsonld-java`
   - So need to keep both libraries, and select based on request header or other options
-  - Tracked as [GDB-7322](https://ontotext.atlassian.net/browse/GDB-7322) JSON-LD 1.1 support
+  - Tracked as [GDB-7322](https://ontotext.atlassian.net/browse/GDB-7322) 1.1 support; [GDB-7324](https://ontotext.atlassian.net/browse/GDB-7324) conformance testing
 - RDF4J can specify context for serialization, but doesn't expose it through request header
   - Which context and frame to use: asked [w3c/json-ld-framing#133](https://github.com/w3c/json-ld-framing/issues/133)
 - Jena has integrated Titanium ([JENA-1948](https://issues.apache.org/jira/browse/JENA-1948)): reading is done, writing is in progress ([JENA-2153](https://issues.apache.org/jira/browse/JENA-2153))
@@ -217,14 +217,59 @@ Best feature of W3C specs: accompanied by Implementation Reports
 - But YAML is nicer: both devs and data archtects love it
   - As easy to process as JSON
   - Much easier to read than JSON: goes away with the curlies and most of the quotes
-- Yet, YAML is a superset of JSON:
-  - Can have anchors and references
-  - Can use object as key
-  - Can declare tags eg to express datatypes: `!xsd!date 2022-10-28`
+- Yet, YAML is a superset of JSON as it can:
+  - Have anchors and references -> reuse YAML pieces
+  - Use object as key (fields not limited to strings) -> RDF-star
+  - Declare tags eg `!xsd!date 2022-10-28` ->  datatypes
+  - Have multiple docs in a file (stream) -> multiple named graphs in a file
 
 So I started thinking about YAML-LD: [w3c/json-ld-syntax#389](https://github.com/w3c/json-ld-syntax/issues/389)
 
-## 
+## YAML-LD Community Group
+
+- Initiated by Vladimir Alexiev
+- Constituted by Gregg Kellogg as part of the JSON-LD WG
+- Github: <https://github.com/json-ld/yaml-ld/>
+- [Issues](https://github.com/json-ld/yaml-ld/issues): 49.
+  - I made 16 and contributed to maybe 20 more
+  - [yaml-ld#2](https://github.com/json-ld/yaml-ld/issues/2): Use Case Requirements, recorded 14 UCRs
+- [YAML-LD spec](https://json-ld.github.io/yaml-ld/spec/) (very draft)
+
+## YAML-LD Examples
+
+- Use tags for datatypes
+```yaml
+ dc:date: !xsd!date 2022-05-18  # short form
+
+ dc:date:                       # subfields (long form)
+   @type: xsd:date
+   @value: 2022-05-18
+``` 
+
+- Use `$` instead of `@`: more dev-friendly
+
+```yaml
+  "@context":
+    "@sigil": $
+    $base: http://example.org/resource/
+    $vocab: http://example.org/ontology/
+  $graph:
+    $id: bart
+    spouse: marge
+```
+
+- Object keys for RDF-star
+
+```yaml
+{$id: bob, age: 42}: {certainty: 0.8} # very natural!
+
+$id:    # $annotation keyword (long form)
+  $id: bob
+  age: 
+    $value: 42
+    $annotation:
+      certainty: 0.8
+```
 
 # Polyglot Modeling
 
@@ -274,3 +319,10 @@ Many are YAML-based:
   - Maybe Ontotext Reconciliation servers can be built on this?
 - [smart-data-models](https://smartdatamodels.org/) (FIWARE, IUDX, SmartCities, TM forum).
   - Example: [Aircraft](https://github.com/smart-data-models/dataModel.Aeronautics/tree/master/Aircraft). [contribution manual gslides](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000&slide=id.p1)
+
+# Links
+
+- [My publications](https://rawgit2.com/VladimirAlexiev/my/master/index.html)
+- This presentation: [JSON-LD and Polyglot Modeling](https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html)
+- [Decentralization and Self-Sovereignty](https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit): presentation and [gdoc](https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit)
+
