@@ -30,8 +30,7 @@
   address      = {Loose Edges podcast with Marsel Tadjer and Justin Dowdy},
   month        = oct,
   year         = 2022,
-  url          = {https://player.fm/series/loose-edges},
-  url_podcast  = {TODO},
+  url  = {https://player.fm/series/loose-edges/semantic-and-polyglot-modeling-generation-of-declarative-transformations-data-spaces-ft-vladimir-alexiev},
   keywords     = {semantic modeling, polyglot modeling, ontology engineering, knowledge graphs, competency questions, upper ontologies, reusable ontologies, GraphDB, GrpahQL, Ontotext Refine, Ontotext Reconcile},
   abstract     = {In this episode of Loose Edges Marsel and Justin interview Vladimir Alexiev, Chief Data Architect at Ontotext.
 - We explore Application Centric Data and how to catch defects in various modeling approaches.
@@ -64,7 +63,19 @@ annote        = {
 58:30 - 1:00:00 Start from "common primitives" / define the base is "not free" comes at a price / Crunchbase + IPO examples}
 }
 
-@InProceedings{Alexiev-DataSpaces2022,
+
+@Misc{Petkova-Alexiev-DataSpaces-2022,
+  author       = {Teodora Petkova and Vladimir Alexiev},
+  title        = {Data Wants To Be Truly Sovereign: Designing Data Spaces with Linked Data Principles In Mind},
+  howpublished = {Ontotext blog post},
+  month        = nov,
+  year         = 2022,
+  url_Blog     = {https://www.ontotext.com/blog/data-wants-to-be-truly-sovereign-designing-data-spaces/},
+  keywords     = {Data Spaces, Knowledge Graphs, Semantic Data Spaces},
+  abstract     = {Learn how data spaces, being a mechanism to enable efficient commercial data exchange can significantly benefit from the use of Linked Data at the level of data itself},
+}
+
+@InProceedings{Alexiev-DataSpaces-2022,
   author       = {Vladimir Alexiev},
   title        = {Data Spaces vs Knowledge Graphs: How to Get To Semantic Data Spaces?},
   booktitle    = {Data Spaces & Semantic Interoperability Workshop},
@@ -73,6 +84,7 @@ annote        = {
   address      = {Vienna, Austria},
   url          = {https://drive.google.com/file/d/15RuCfyresjmc0JWoNl8Jpjpbf_O65UkD/view},
   url_Slides   = {https://docs.google.com/presentation/d/1uujCfAGw7nTwz9c6ItLtUhsKiGEbK2bKCWUOOunpyw0/edit},
+  url_Video    = {https://www.youtube.com/watch?v=RpCVChGczSA},
   url_Blog     = {https://www.ontotext.com/company/news/ontotext-presents-position-paper-at-data-spaces-and-semantic-interoperability-workshop/},
   keywords     = {Data Spaces, RDF, Semantic Technology, Polyglot Modeling, Product Classifications, Product Catalogs, Manufacturing Industry, Electricity, Transport and Logistics, Architecture and Construction},
   abstract     = {EU invests heavily in Data Spaces (DS) as a mechanism to enable commercial data exchange and therefore industry digitalization and proliferation of Data Science (DS) and Artificial Intelligence, in particular Machine Learning (ML). While DSs use heavily semantic technologies, that is limited to describing metadata, license agreements, data market participants, etc. I argue that using Linked Data and semantic technologies for the data itself offers significant benefits regarding more efficient data sharing and use, and improvements to ML and DS processes. I give an overview of the state of semantic data sharing in several industrial domains (Product Classifications and Catalogs, Manufacturing Industry, Electricity, Transport and Logistics, Architecture and Construction; and close with a brief overview of technological enablers required for Semantic Data Spaces.},
@@ -243,6 +255,7 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
   month        = mar,
   note         = {(accepted; the paper is not finished yet; presentation upcoming in Nov 2022)},
   url_Preprint = {https://drive.google.com/open?id=1Cq5o9th_P812paqGkDsaEomJyAmnypkD},
+  url_Slides   = {https://docs.google.com/presentation/d/1JCMQEH8Tw_F-ta6haIToXMLYJxQ9LRv6/edit},
   keywords     = {semantic model, semantic data integration, ETL, semantic conversion, declarative approaches, PlantUML, R2RML, generation, model-driven, RDF by Example, rdfpuml, rdf2rml},
   abstract     = {The daily work of the Knowledge Graph Solutions group at Ontotext involves KG building activities such as investigating data standards and datasets, ontology engineering, harmonizing data through semantic models, converting or virtualizing data to semantic form, entity matching, semantic text enrichment, etc. Semantic pipelines have a variety of desirable properties, of which maintainability and consistency of the various artefacts are some of the most important ones. Despite significant recent progress (eg in the KG Building W3C community group), semantic conversion still remains one of the difficult steps. We favor generation of semantic transformations from semantic models that are both sufficiently precise, easily understandable, can be used to generate diagrams, and are valid RDF to allow processing with RDF tools. We call this approach "RDF by Example" and have developed a set of open source tools at https://github.com/VladimirAlexiev/rdf2rml. This includes "rdfpuml" for visualization and a number of scripts that can generate R2RML for relational databases and ONTOP virtualization, rdf2tarql for TARQL conversion of tabular data, and rdf2ontorefine for Ontotext Refine conversion of tabular data. We describe our approach and illustrate it with complex and high-performance transformations in a variety of domains, such as company data and NIH research grants.},
 }
@@ -584,10 +597,11 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   year         = 2017,
   month        = jun,
   url_Slides   = {https://docs.google.com/presentation/d/1Udah3b8nc1oxjpi8XHtGX4nxIF6tlyrvo29QJkFKfgo/edit},
+  url_Source   = {https://docs.google.com/document/d/1guwFHi9p4-ujFkrHF6dwMUZndzCmlX_gPyiBi6JlPTs/edit},
   url_HTML     = {https://docs.google.com/document/d/e/2PACX-1vTSQPHE0aUO3U1pgtQxk5RrSjsKZFM9Fx425VOdSPURLOGA_5zsGZzmMs9B75krzXh2c9DnHc34WRR8/pub},
   url_Video    = {https://ontotext.com/knowledgehub/webinars/building-knowledge-data-visualization/},
   keywords     = {visualization, GraphDB, RDF, SPARQL, CNL, CUBE, OLAP, charts, graphs, NLP, seq2seq},
-  abstract     = {Building Knowledge through Data Visualization. Data visualization enables analysts and organizations to see huge quantities of data clearly and identify patterns quickly. However, data volume, velocity and variety have increased immensely in recent years and so has the need to see the links between data from many sources. By creating visualizations with graph databases, organizations get insights from all perspectives they wish and need to explore. Even a quick glance at the relationship structure reveals where unusually large clusters of nodes or edges are. More traditional charts and statistical visualizations are also very useful to see the structure of data. Expressing relations, graphs and data trends in a visual way turns data into knowledge. The accompanying Webinar is designed to answer a common request from our community - how to make data visualisations from RDF datasets. Are there tools to help with developing queries? How can people who are not conversant with SPARQL get insights into data and understand its structure? How can they run SPARQL queries developed by others? We describe SPARQL editing and data visualization features available in GraphDB Workbench (GDB WB), or such that can be added with little programming. We will also describe SPARQL writing aids and visualization tools that can be integrated with GraphDB. Detailed topics: Writing SPARQL, Built-in SPARQL Result Visualizations, Using SPARQL Results in Spreadsheets, Invoking SPARQL Queries and Query Parameterization, Tools that Help With Writing SPARQL Queries, Translating natural language to SPARQL, Tools for Statistical Visualizations, Graph Visualizations: Built-in to GDB WB, Developing, Visualization Toolkits, Declarative Visualization, RDF by Example, JDBC Data Access API. Last updated: May 2019},
+  abstract     = {Building Knowledge through Data Visualization. Data visualization enables analysts and organizations to see huge quantities of data clearly and identify patterns quickly. However, data volume, velocity and variety have increased immensely in recent years and so has the need to see the links between data from many sources. By creating visualizations with graph databases, organizations get insights from all perspectives they wish and need to explore. Even a quick glance at the relationship structure reveals where unusually large clusters of nodes or edges are. More traditional charts and statistical visualizations are also very useful to see the structure of data. Expressing relations, graphs and data trends in a visual way turns data into knowledge. The accompanying Webinar is designed to answer a common request from our community - how to make data visualisations from RDF datasets. Are there tools to help with developing queries? How can people who are not conversant with SPARQL get insights into data and understand its structure? How can they run SPARQL queries developed by others? We describe SPARQL editing and data visualization features available in GraphDB Workbench (GDB WB), or such that can be added with little programming. We will also describe SPARQL writing aids and visualization tools that can be integrated with GraphDB. Detailed topics: Writing SPARQL, Built-in SPARQL Result Visualizations, Using SPARQL Results in Spreadsheets, Invoking SPARQL Queries and Query Parameterization, Tools that Help With Writing SPARQL Queries, Translating natural language to SPARQL, Tools for Statistical Visualizations, Graph Visualizations: Built-in to GDB WB, Developing, Visualization Toolkits, Declarative Visualization, RDF by Example, JDBC Data Access API. Last updated: Sep 2022 (HTML report)},
 }
 
 @Misc{Alexiev2017-Wikidata-Museum,
