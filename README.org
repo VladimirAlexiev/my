@@ -3,8 +3,11 @@
 - CV (last updated 2021-08): http://rawgit2.com/VladimirAlexiev/my/master/cv/Vladimir-Alexiev.pdf
 - Publications, Presentations, Github contributions: http://rawgit2.com/VladimirAlexiev/my/master/index.html
 
-#+html: <a href="https://github.com/VladimirAlexiev"><img align="center" src="https://github-readme-stats.vercel.app/api?username=VladimirAlexiev&show_icons=true&include_all_commits=true&count_private=true"/></a>
-  
+#+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=VladimirAlexiev&theme=vue"/></a>
+#+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=VladimirAlexiev&theme=vue"/></a>
+#+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=VladimirAlexiev&theme=vue"/></a>
+#+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-readme-stats.vercel.app/api?username=VladimirAlexiev&show_icons=true&disable_animations=true&text_bold=false&card_width=370px&layout=compact&custom_title=Stats2&include_all_commits=true&count_private=true&theme=vue"/></a>
+
 ** Publication Stats
 (Last updated 2022-09)
 
