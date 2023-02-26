@@ -1,5 +1,43 @@
 @Comment{-*- coding: utf-8; fill-column: 5000 -*-}
 
+@InProceedings{Semantic-BSDD-2023,
+  author       = {Vladimir Alexiev and Mihail Radkov and Nataliya Keberle},
+  title        = {Semantic bSDD: Improving the GraphQL, JSON and RDF Representations of buildingSmart Data Dictionary},
+  booktitle    = {Linked Data in Architecture and Construction (LDAC 2023)},
+  year         = 2023,
+  month        = jun,
+  address      = {Matera, Italy},
+  url          = {(submitted)},
+  url_Slides   = {TODO},
+  keywords     = {Linked building data, LBD, buildingSMART Data Dictionary, bSDD, FAIR data, data quality},
+  abstract     = {The buildingSmart Data Dictionary (bSDD) is an important shared resource in the Architecture, Engineering, Construction, and Operations (AECO) domain. It is a collection of datasets ("domains") that define various classifications (objects representing building components, products, and materials), their properties, allowed values, etc. bSDD defines a GraphQL API, as well as REST APIs that return JSON and RDF representations. This improves the interoperability of bSDD and its easier deployment in architectural Computer Aided Design (CAD) and other AECO software. However, bSDD data is not structured as well as possible, and data retrieved via different APIs is not identical in content and structure. This lowers bSDD data quality, usability and trust. We conduct a thorough comparison and analysis of bSDD data related to fulfillment of FAIR (findable, accessible, interoperable, and reusable) principles. Based on this analysis, we suggest enhancements to make bSDD data better structured and more FAIR. We implement many of the suggestions by refactoring the original data to make it better structured/interconnected, and more "semantic". We provide a SPARQL endpoint using Ontotext GraphDB, and GraphQL endpoint using Ontotext Platform Semantic Objects. Our detailed work is available at https://github.com/Accord-Project/bsdd (open source) and https://bsdd.ontotext.com (home page, schemas, data, sample queries).},
+}
+
+@InProceedings{TowardsInnograph-SciK-2023,
+  author       = {M.Besher Massri and Blerina Spahiu and Marko Grobelnik and Vladimir Alexiev and Matteo Palmonari and Dumitru Roman and},
+  title        = {Towards InnoGraph: A Knowledge Graph for AI Innovation},
+  booktitle    = {3rd International Workshop on Scientific Knowledge Representation, Discovery, and Assessment (Sci-K 2023)},
+  year         = 2023,
+  month        = jun,
+  address      = {Austin, Texas},
+  organization = {In conjunction with The Web Conference (WWW 2023)},
+  url          = {(submitted)},
+  url_Slides   = {TODO},
+  keywords     = {artificial intelligence, innovation, innovation ecosystem, knowledge graph, science knowledge graph, economics knowledge graph},
+  abstract     = {To understand the state-of-the-art innovations in a particular do- main, researchers have to explore patents and scientific articles published recently in that particular domain. Innovation ecosys- tems comprise interconnected information regarding entities, i.e., researchers, institutions, projects, products, and technologies. Rep- resenting such information in a machine-readable format is chal- lenging. This is due to the fact that representing concepts like "knowledge" is not straightforward. However, even a partial repre- sentation provides valuable information. Representing innovation ecosystems as knowledge graphs (KGs) enables the generation of new insights and would allow advanced data analysis. In this pa- per, we propose InnoGraph, a KG of the worldwide AI innovation ecosystem.},
+}
+
+@Misc{Alexiev-InnographDatasets,
+  author       = {Vladimir Alexiev},
+  title        = {InnoGraph Datasets},
+  howpublished = {presentation},
+  month        = jan,
+  year         = 2023,
+  url_Slides   = {TODO},
+  address      = {enrichMyData Project Meeting, Milan, Italy},
+  abstract     = {What is InnoGraph: a Holistic KG of the world-wide AI innovation ecosystem. Who are its users/uses: Investment and strategic advice (VCs, M&A)" Innovators and startups, Industry convergence and digitization, Strategic gaps, Strategic acquisition targets; Researchers and developers; Policy makers: EU level, National science foundations, OECD.AI, maybe even US and China; Self-use: AI is at cusp (singularity), learn about it in depth!},
+}
+
 @Misc{Alexiev-SEMIC-2022,
   author       = {Vladimir Alexiev},
   title        = {Semantic Interoperability for Data Spaces},
@@ -265,10 +303,11 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
   year         = 2023,
   month        = mar,
   note         = {(accepted; the paper is not finished yet; presentation made in Nov 2022)},
+  url_Slides   = {https://drive.google.com/open?id=1A9LSyh71wcpPcNq4sbpsrXVcWlYhajHE},
   url_Preprint = {https://drive.google.com/open?id=1Cq5o9th_P812paqGkDsaEomJyAmnypkD},
-  url_Slides   = {https://docs.google.com/presentation/d/1JCMQEH8Tw_F-ta6haIToXMLYJxQ9LRv6/edit},
   keywords     = {semantic model, semantic data integration, ETL, semantic conversion, declarative approaches, PlantUML, R2RML, generation, model-driven, RDF by Example, rdfpuml, rdf2rml},
-  abstract     = {The daily work of the Knowledge Graph Solutions group at Ontotext involves KG building activities such as investigating data standards and datasets, ontology engineering, harmonizing data through semantic models, converting or virtualizing data to semantic form, entity matching, semantic text enrichment, etc. Semantic pipelines have a variety of desirable properties, of which maintainability and consistency of the various artefacts are some of the most important ones. Despite significant recent progress (eg in the KG Building W3C community group), semantic conversion still remains one of the difficult steps. We favor generation of semantic transformations from semantic models that are both sufficiently precise, easily understandable, can be used to generate diagrams, and are valid RDF to allow processing with RDF tools. We call this approach "RDF by Example" and have developed a set of open source tools at https://github.com/VladimirAlexiev/rdf2rml. This includes "rdfpuml" for visualization and a number of scripts that can generate R2RML for relational databases and ONTOP virtualization, rdf2tarql for TARQL conversion of tabular data, and rdf2ontorefine for Ontotext Refine conversion of tabular data. We describe our approach and illustrate it with complex and high-performance transformations in a variety of domains, such as company data and NIH research grants.},
+  url_pptx     = {https://docs.google.com/presentation/d/1JCMQEH8Tw_F-ta6haIToXMLYJxQ9LRv6/edit},
+  abstract     = {The daily work of the Knowledge Graph Solutions group at Ontotext involves KG building activities such as investigating data standards and datasets, ontology engineering, harmonizing data through semantic models, converting or virtualizing data to semantic form, entity matching, semantic text enrichment, etc. Semantic pipelines have a variety of desirable properties, of which maintainability and consistency of the various artefacts are some of the most important ones. Despite significant recent progress (eg in the KG Building W3C community group), semantic conversion still remains one of the difficult steps. We favor generation of semantic transformations from semantic models that are both sufficiently precise, easily understandable, can be used to generate diagrams, and are valid RDF to allow processing with RDF tools. We call this approach "RDF by Example" and have developed a set of open source tools at https://github.com/VladimirAlexiev/rdf2rml. This includes "rdfpuml" for generating diagrams, "rdf2rml" for generating R2RML for semantization of relational data and ONTOP virtualization, "rdf2sparql" for semantization of tabular data with Ontotext Refine or TARQL. We describe our approach and illustrate it with complex and high-performance transformations in a variety of domains, such as company data and NIH research grants.},
 }
 
 @InProceedings{Alexiev-ENDORSE-2021,
