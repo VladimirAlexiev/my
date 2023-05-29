@@ -1,5 +1,21 @@
 @Comment{-*- coding: utf-8; fill-column: 5000 -*-}
 
+@Misc{NLQ-GPT-SOML-GraphQL-2023,
+  author       = {Vladimir Alexiev},
+  title        = {Natural Language Querying with GPT, SOML and GraphQL},
+  howpublished = {Ontotext Last Friday Webinar},
+  month        = may,
+  year         = 2023,
+  url_Video    = {TODO},
+  abstract     = {Clients want to talk to their KG, i.e. ask questions about the schema and data in natural language. LLMs like GPT and LLAMA have opened a revolution in this regard. Currently Ontotext is exploring 8 themes with LLMs.
+NLQ can be accomplished either by:
+- Providing data from GraphDB to the LLM, or
+- Presenting a schema to the LLM and asking it to generate queries.
+In this talk we explore query generation.
+- SPARQL queries are complex, so even for known schemas (eg Wikidata, DBpedia), GPT has trouble generating good queries, see \Shared drives\KGS\AI-GPT\GPT-SPARQL. Furthermore, RDF schemas (OWL and SHACL) are complex. But I'm sure there will be fast progress in SPARQL generation, see LlamaIndex advances in GDB-8329
+- GraphQL queries are regular and much simpler, and SOML is a simpler schema language (from which the Ontotext Platform generates GraphQL schema, queries and SHACL shapes). In this talk I'll show how GPT4 can answer questions about a schema, and generate GraphQL to answer questions about data.}
+}
+
 @InProceedings{SemanticBSDD-LDAC-2023,
   author       = {Vladimir Alexiev and Mihail Radkov and Nataliya Keberle},
   title        = {Semantic bSDD: Improving the GraphQL, JSON and RDF Representations of buildingSmart Data Dictionary},
@@ -311,7 +327,6 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
   booktitle    = {European Data Conference on Reference Data and Semantics (ENDORSE 2023)},
   year         = 2023,
   month        = mar,
-  note         = {(presented; the paper is not finished yet)},
   url_PPT      = {https://docs.google.com/presentation/d/1JCMQEH8Tw_F-ta6haIToXMLYJxQ9LRv6/edit},
   url_Preprint = {https://drive.google.com/open?id=1Cq5o9th_P812paqGkDsaEomJyAmnypkD},
   url_Slides   = {https://op.europa.eu/documents/10157494/12134844/DAY1-TRACK2-16.35-16.50-VladimirAlexiev_FORPUB.pdf},
