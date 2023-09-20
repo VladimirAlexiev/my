@@ -9,12 +9,12 @@
 #+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-readme-stats.vercel.app/api?username=VladimirAlexiev&show_icons=true&disable_animations=true&text_bold=false&card_width=370px&layout=compact&custom_title=Stats2&include_all_commits=true&count_private=true&theme=vue"/></a>
 
 ** Publication Stats
-(Last updated 2023-03)
+(Last updated 2023-09)
 
 | Publication                                            | Count |
 |--------------------------------------------------------+-------|
 | Book (author), thesis, conference proceedings (editor) |     3 |
-| Tech reports, manuals, deliverables, ontologies        |    37 |
+| Tech reports, manuals, deliverables, ontologies        |    38 |
 | Conference papers, journal articles                    |    41 |
-| Presentations, posters, blog posts                     |    44 |
-| TOTAL                                                  |   136 |
+| Presentations, posters, blog posts                     |    52 |
+| TOTAL                                                  |   134 |
