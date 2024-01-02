@@ -45,8 +45,22 @@ In this talk we explore query generation.
   abstract     = {The buildingSmart Data Dictionary (bSDD) is an important shared resource in the Architecture, Engineering, Construction, and Operations (AECO) domain. It is a collection of datasets ("domains") that define various classifications (objects representing building components, products, and materials), their properties, allowed values, etc. bSDD defines a GraphQL API, as well as REST APIs that return JSON and RDF representations. This improves the interoperability of bSDD and its easier deployment in architectural Computer Aided Design (CAD) and other AECO software. However, bSDD data is not structured as well as possible, and data retrieved via different APIs is not identical in content and structure. This lowers bSDD data quality, usability and trust. We conduct a thorough comparison and analysis of bSDD data related to fulfillment of FAIR (findable, accessible, interoperable, and reusable) principles. Based on this analysis, we suggest enhancements to make bSDD data better structured and more FAIR. We implement many of the suggestions by refactoring the original data to make it better structured/interconnected, and more "semantic". We provide a SPARQL endpoint using Ontotext GraphDB, and GraphQL endpoint using Ontotext Platform Semantic Objects. Our detailed work is available at https://github.com/Accord-Project/bsdd (open source) and https://bsdd.ontotext.com (home page, schemas, data, sample queries).},
 }
 
+@TechReport{InnoGraph-AI-Taxonomy,
+  author       = {Vladimir Alexiev and Boyan Bechev and Alexandr Osytsin},
+  title        = {The InnoGraph Artificial Intelligence Taxonomy: A Key to Unlocking AI-Related Entities and Content},
+  institution  = {Ontotext Corp},
+  year         = 2023,
+  type         = {whitepaper},
+  month        = dec,
+  note         = {Introduction: - Potential InnoGraph Datasets and Users - Importance of Topics and A Holistic Approach - Example: Github Topics - Kinds of Topics. Core Topics: Wikipedia Articles: - Wikipedia Categories - Category Pruning. Collaborative Patent Classification: Application Areas: - PatBase Browser - CPC Semantic Data at EPO - Finding All CPC AI Topics - CPC Snowballing - CPC for Application Area Topics. Other Topic Datasets: - ACM CCS - AIDA FAT - AMiner KGs - ANZSRC FOR - arXiv Areas - China NSFC - EU CORDIS EuroSciVoc - Crunchbase Categories - CSO - JEL - MESH - MSC - OpenAlex Topics - SemanticScholar FOS - StackExchange Tags. Conclusion and Future Work: - Acknowledgements - References},
+  url          = {https://www.ontotext.com/knowledgehub/white_paper/the-innograph-artificial-intelligence-taxonomy/},
+  keywords     = {InnoGraph, Artificial Intelligence, Topics, Taxonomy, InnoGraph},
+  date         = {2023-12},
+  abstract     = {InnoGraph is a holistic Knowledge Graph of innovation based on Artificial Intelligence (AI). AI is the underpinning of much of the world's innovation, therefore it has immense economic and human improvement potential. With the explosive growth of Machine Learning (ML), Deep Learning (DL) and Large Language Models (LLM), it is hard to keep up with all AI development, but also this is a valuable effort. A key to discovering AI elements is to build a comprehensive taxonomy of topics: AI techniques, application areas (verticals). We describe our approach to developing such a taxonomy by integrating and coreferencing data from numerous sources.},
+}
+
 @InProceedings{TowardsInnograph-SciK-2023,
-  author       = {M.Besher Massri and Blerina Spahiu and Marko Grobelnik and Vladimir Alexiev and Matteo Palmonari and Dumitru Roman and},
+  author       = {M.Besher Massri and Blerina Spahiu and Marko Grobelnik and Vladimir Alexiev and Matteo Palmonari and Dumitru Roman},
   title        = {{Towards InnoGraph: A Knowledge Graph for AI Innovation}},
   booktitle    = {{3rd International Workshop on Scientific Knowledge Representation, Discovery, and Assessment (Sci-K 2023). WWW 2023 Companion}},
   year         = 2023,
@@ -58,7 +72,7 @@ In this talk we explore query generation.
   url_Zenodo   = {https://zenodo.org/record/7750707},
   keywords     = {artificial intelligence, innovation, innovation ecosystem, knowledge graph, science knowledge graph, economics knowledge graph},
   doi          = {10.1145/3543873.3587614},
-  abstract     = {To understand the state-of-the-art innovations in a particular do- main, researchers have to explore patents and scientific articles published recently in that particular domain. Innovation ecosys- tems comprise interconnected information regarding entities, i.e., researchers, institutions, projects, products, and technologies. Rep- resenting such information in a machine-readable format is chal- lenging. This is due to the fact that representing concepts like "knowledge" is not straightforward. However, even a partial repre- sentation provides valuable information. Representing innovation ecosystems as knowledge graphs (KGs) enables the generation of new insights and would allow advanced data analysis. In this pa- per, we propose InnoGraph, a KG of the worldwide AI innovation ecosystem.},
+  abstract     = {To understand the state-of-the-art innovations in a particular domain, researchers have to explore patents and scientific articles published recently in that particular domain. Innovation ecosystems comprise interconnected information regarding entities, i.e., researchers, institutions, projects, products, and technologies. Representing such information in a machine-readable format is challenging. This is due to the fact that representing concepts like "knowledge" is not straightforward. However, even a partial representation provides valuable information. Representing innovation ecosystems as knowledge graphs (KGs) enables the generation of new insights and would allow advanced data analysis. In this paper, we propose InnoGraph, a KG of the worldwide AI innovation ecosystem.},
 }
 
 @Misc{Alexiev-InnographDatasets-2023,
@@ -645,6 +659,17 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   eisbn        = {978-1-5386-9156-4},
   doi          = {10.1109/eScience.2018.00021},
   isbn         = {978-1-5386-9157-1},
+}
+
+@Misc{Alexiev2023-MigratingGettyID,
+  author       = {Vladimir Alexiev},
+  title        = {{Migrating J. Paul Getty Museum Agent ID from P2432 to P12040}},
+  howpublished = {Github gist},
+  month        = nov,
+  year         = 2023,
+  url          = {https://gist.github.com/VladimirAlexiev/e0a7bae256e9646a7b6f47b23184f9a4},
+  keywords     = {Getty Trust, J. Paul Getty Museum, authority control, Wikidata, cultural heritage, GLAM},
+  abstract     = {Previously Wikidata had Getty Museum agent DOR ID (P2432), eg https://www.getty.edu/art/collection/artists/377. But this is an internal ID that redirects to eg https://www.getty.edu/art/collection/person/103JV9. So I made a Wikidata property for the Getty Museum new agent ID (P12040). Using the Getty SPARQL endpoint, I exported 12936 persons and 3616 groups with fields "guid name old new ulan nat role birthDate birthPlace deathDate deathPlace". Then I initiated a discussion how to populate these new ID's to Wikidata, leveraging ULAN and the old DOR ID: https://www.wikidata.org/wiki/Property_talk:P12040#Populating_J._Paul_Getty_Museum_agent_ID. I also found some records without new ID, and started a discussion with Getty to see why that ID was missing},
 }
 
 @Misc{Alexiev2016-How-not-to-do-Open-Publications,
