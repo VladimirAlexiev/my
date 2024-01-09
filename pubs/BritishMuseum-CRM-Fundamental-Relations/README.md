@@ -355,9 +355,11 @@ x <rso:FRX24i_25i_30i> y; y <crm:P9_consists_of> z => x <rso:FRX24i_25i_30i> z
 Thing depicts or refers to a place or feature located in place, or is similar in features or composed of or carries an information object that depicts or refers to a place
 
 As defined in FRThing.docx:
+
 ![](FR67_about_place.png)
 
 Corrected definition:
+
 ![](FR67_about_place-fixed.png)
 
 Fixes:
@@ -399,9 +401,11 @@ x <rso:FRX67_about_feature_on_place> y => x <rso:FR67_about_place> y
 Thing (or part/inscription thereof) was created or modified/repaired at/in place (or a broader containing place)
 
 As defined in FORTH TR-429 p25:
+
 ![](FR92i_created_in.png)
 
 Corrected definition:
+
 ![](FR92i_created_in-fixed.png)
 
 The beginning is very similar to `Thing created by Actor: FR92i_created_by`, so we reuse from there
@@ -454,9 +458,11 @@ x <rdf:type> <rso:FC70_Thing>; x <crm:P12i_was_present_at> y; y <rdf:type> <bmo:
 Thing has former, current or permanent location at place, or was created/found at place, or moved to/from place, or changed ownership/custody at place (or a broader containing place)
 
 As defined in FRThing.docx:
+
 ![](FR7_from_place.png)
 
 Corrected definition:
+
 ![](FR7_from_place-fixed.png)
 
 Corrections:
@@ -521,6 +527,7 @@ x <crm:P52_has_current_owner>  y => x <rso:FR52_current_owner_keeper> y
 ### Thing has former owner or keeper Actor: `FR51_former_or_current_owner_keeper`
 
 Thing has former or current owner or keeper Actor, or ownership/custody was transferred from/to actor in Acquisition/Transfer of Custody event
+
 ![](FR51_former_or_current_owner_keeper.png)
 
 Note: this subsumes `Thing has owner-keeper Actor- FR52_current_owner_keeper`
@@ -540,9 +547,11 @@ x <rso:FRX24i_30i> y; y <crm:P29_custody_received_by>    z => x <rso:FR51_former
 Thing (or part/inscription thereof) was created or modified/repaired by Actor (or group it is member of)
 
 As defined by FORTH TR-429, p49:
+
 ![](FR92i_created_by.png)
 
 Corrected definition:
+
 ![](FR92i_created_by-fixed.png)
 
 Corrections:
@@ -584,6 +593,7 @@ Thing's production was influenced/motivated by Actor (or group it is member of).
 - Examples of \[BM Association Mapping#Production Motivated By\] include Eponym/Governor/Issuer/Ruler/Magistrate who authorised/patronised/ordered the production; Made for.
 
 We use the same beginning as `Thing created by Actor: FR92i_created_by`:
+
 ![](FR15_influenced_by.png)
 
 Implementation: `P15_was_influenced_by` subsumes `P17_was_motivated_by`.
@@ -603,9 +613,11 @@ x <crm:P12i_was_present_at> y; y <rdf:type> <bmo:EX_Discovery>; y <crm:P14_carri
 Thing (or part thereof) has met Actor in the same event, or Actor was involved in its acquisition or custody
 
 As defined in FRThing.docx:
+
 ![](FR12_has_met.png)
 
 Corrected definition:
+
 ![](FR12_has_met-fixed.png)
 
 Fixed Problems:
@@ -650,9 +662,11 @@ x <rso:FRX67_about> y; y <rdf:type> <crm:E39_Actor> => x <rso:FR67_about_actor> 
 Thing depicts or refers to event/period, or carries information object that is about event, or bears similarity with a thing that is about event
 
 As defined in FORTH TR-429 p55:
+
 ![](FR67_about_period.png)
 
 Corrected definition:
+
 ![](FR67_about_period-fixed.png)
 
 Fixed Problems:
@@ -674,12 +688,14 @@ Thing was present at Event (eg exhibition) or is from Period
 
 As defined in FRThing.docx:
 - FRThing.docx and FORTH TR-429 (p.59) refer to this variously as "has met" or "from"
+
 ![](FR12_was_present_at.png)
 
 Corrected definition:
 - we use name "has_met" for Actor, so we name "was_present_at" for this. The name is derived from the name of the key constituent CRM property.
 - loop at the beginning: traverse the part hierarchy downwards to avoid `BUG`
 - loop at the end: traverse the event hierarchy downwards (`P9`) and add `P10`: see `Navigating the Event Hierarchy`
+
 ![](FR12_was_present_at_fixed.png)
 
 Implementation
@@ -691,7 +707,7 @@ x <rso:FRT_46_106_148_128> y; y <crm:P12i_was_present_at> z => x <rso:FR12_was_p
 x <rso:FRT_46_106_148_128> y; y <crm:P12i_was_present_at> z; z <rso:FRT9_10> t => x <rso:FR12_was_present_at> t
 ```
 
-h4. Navigating the Event Hierarchy
+#### Navigating the Event Hierarchy
 (jira RS-1832)
 
 "Thing present at Ancient Egypt" (`thes:x107598`) should find all:
@@ -729,10 +745,12 @@ If a data provider uses `P9_consists_of` instead of `skos:broader` to connect Pe
 
 In 2 above we have asked the production sub-events to be directly connected to the object.
 Then we'd navigate upward and the P9 link is never used:
+
 ![](FR12_was_present_at_data1.png)
 
 In fact the main production <GAA42731/production> is parasitic since it carries no data.
 So you can dismiss it, simplifying the representation:
+
 ![](FR12_was_present_at_data2.png)
 
 
@@ -789,6 +807,7 @@ For this FR, we loop over `P46_is_composed_of` in order to account for:
 ### Thing is made of Material: FR45_is_made_of
 
 Thing (or part thereof) consists of material
+
 ![](FR45_is_made_of-fixed.png)
 
 Corrections:
@@ -807,6 +826,7 @@ x <rso:FRX92i_created> y; y <crm:P126_employed> z => x <rso:FR45_is_made_of> z
 ### Thing used technique: `FR32_used_technique`
 
 The production/modification of Thing (or part thereof) used general technique
+
 ![](FR32_used_technique-fixed.png)
 
 - This is an extension defined by me
@@ -823,6 +843,7 @@ x <rso:FRX92i_created> y; y <crm:P32_used_general_technique> z => x <rso:FR32_us
 ### Thing is/has Type: `FR2_has_type`
 
 Thing has Type (or has shape, is of kind, is about subject, etc)
+
 ![](FR2_has_type-fixed.png)
 
 - FRThing.docx calls this "has type" but I think "is/has/about" matches the general usage: "is Weapon", "has shape Vertical Rectangle", etc
@@ -860,6 +881,7 @@ but our search UI currently has a restriction that the many-to-many relation "FR
 
 Thing (or part thereof) has Identifier (exact-match string).
 Extension defined by me:
+
 ![](FR1_identified_by.png)
 
 - `FR1_identified_by := (FC70_Thing) FRT_46_106_148* / P1_is_identified_by / (P3_has_note | rdfs:label)`
@@ -880,7 +902,7 @@ Notes:
 
 In order to make access to images for display easier, and \[FR Enhancements#Search by Image\] faster, we implement two FRs according to the definitions in \[Search Result Fields#Display Fields\]
 
-- `rso:FR_main_representation`: main image (denoted `?Image`)
+- `rso:FR_main_representation`: main image
 ```pie
 E <rdf:type> <rso:FC70_Thing>
 E <crm:P70i_is_documented_in> doc
@@ -892,6 +914,7 @@ img1 <crm:P3_has_note> Image
 -------------------------------
 E <rso:FR_main_representation> Image
 ```
+and
 ```pie
 E <rdf:type> <rso:FC70_Thing>
 E <bmo:PX_has_main_representation> Image
@@ -900,7 +923,7 @@ Image <rdf:type> <crm:E38_Image>
 E <rso:FR_main_representation> Image
 ```
 
-- `rso:FR138i_representation`: all images (denoted `?Images`)
+- `rso:FR138i_representation`: all images
 ```pie
 E <rdf:type> <rso:FC70_Thing>
 E <crm:P70i_is_documented_in> doc
@@ -912,6 +935,7 @@ img1 <crm:P3_has_note> Image
 -------------------------------
 E <rso:FR138i_representation> Image
 ```
+and
 ```pie
 E <rdf:type> <rso:FC70_Thing>
 E <crm:P138i_has_representation> Image
