@@ -16,6 +16,6 @@ Total: 359p
 
 ## Overall Picture
 
-[mapping manual-diagram.pdf](mapping manual-diagram.pdf), [mapping manual-diagram.png](mapping manual-diagram.png) (Page 9 of 359)
+[mapping-manual-diagram.pdf](mapping-manual-diagram.pdf), [mapping-manual-diagram.png](mapping-manual-diagram.png) (Page 9 of 359)
 
-![](mapping manual-diagram-small.png)
+![](mapping-manual-diagram-small.png)
