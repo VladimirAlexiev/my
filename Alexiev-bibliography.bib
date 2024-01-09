@@ -1450,7 +1450,7 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   url          = {http://ceur-ws.org/Vol-1117/paper8.pdf},
   url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning-slides.ppt},
   url_Preprint = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning.pdf},
-  keywords     = {cultural heritage, ontology, CIDOC CRM, semantic search, Fundamental Relations, GraphDB, semantic repository, inference, performance, ResearchSpace},
+  keywords     = {cultural heritage, semantic technology, ontology, CIDOC CRM, semantic search, Fundamental Concepts, Fundamental Relations, GraphDB, semantic repository, inference, performance, ResearchSpace},
   abstract     = {The CIDOC Conceptual Reference Model (CRM) is an important ontology in the Cultural Heritage (CH) domain. CRM is intended mostly as a data integration mechanism, allowing reasoning and discoverability across diverse CH sources represented in CRM. CRM data comprises complex graphs of nodes and properties. An important question is how to search through such complex graphs, since the number of possible combinations is staggering. One answer is the "Fundamental Relations" (FR) approach that maps whole networks of CRM properties to fewer FRs, serving as a "search index" over the CRM semantic web. We present performance results for an FR Search implementation based on OWLIM. This search works over a significant CH dataset: almost 1B statements resulting from 2M objects of the British Museum. This is an exciting demonstration of large-scale reasoning with real-world data over a complex ontology (CIDOC CRM). We present volumetrics, hardware specs, compare the numbers to other repositories hosted by Ontotext, performance results, and compare performance of a SPARQL implementation.},
 }
 
@@ -1546,10 +1546,20 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   year         = 2013,
   note         = {Draft 0.98},
   month        = jul,
-  url          = {http://confluence.ontotext.com/display/ResearchSpace/BM+Mapping},
+  url          = {https://github.com/VladimirAlexiev/my/tree/master/pubs/BritishMuseum-CRM-mapping},
   keywords     = {cultural heritage, museum informatics, ontology, CIDOC CRM, semantic mapping, British Museum, ResearchSpace},
   pages        = {359 pages},
-  abstract     = {Contents: 169p: Main body, including discussion, illustrations and mapping diagrams. 7p: Association Codes (see details at BM Association Mapping v2). 49p: Example Object Graph. 134p: RDFer configuration files (i.e. mapping implementation)},
+  abstract     = {Contents: 169p: Main body, including discussion, illustrations and mapping diagrams. 7p: Association Codes (see details at BM Association Mapping v2). 49p: Example Object Graph. 134p: mapping implementation as RDFer configuration files},
+}
+
+@TechReport{Alexiev2013-FR-implementation,
+  author       = {Vladimir Alexiev},
+  title        = {British Museum CIDOC CRM Fundamental Relations Implementation},
+  institution  = {ResearchSpace Project},
+  year         = 2013,
+  url          = {https://github.com/VladimirAlexiev/my/blob/master/pubs/BritishMuseum-CRM-Fundamental-Relations/README.md},
+  keywords     = {cultural heritage, semantic technology, ontology, CIDOC CRM, semantic search, Fundamental Concepts, Fundamental Relations, GraphDB, semantic repository, inference, performance, ResearchSpace},
+  abstract     = {Detailed description of CIDOC CRM Fundamental Relations Implementation for the British Museum collection using GraphDB rules},
 }
 
 @InProceedings{Parvanova2013-SemanticAnnotation,
@@ -1608,8 +1618,7 @@ keywords={Europeana, task force, EDM, FRBR, FRBRoo, CIDOC CRM, ontology}
   url          = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-FR-search.pdf},
   url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Search-presentation.pdf},
   url_Published= {http://ceur-ws.org/Vol-912/paper8.pdf},
-  keywords     = {cultural heritage, ontology, CIDOC CRM, semantic search, Fundamental Relations, GraphDB, semantic repository, inference, performance, ResearchSpace},
-  keywords     = {cultural heritage, semantic technology, ontology, CIDOC CRM, semantic search, Fundamental Concepts, Fundamental Relations, ResearchSpace},
+  keywords     = {cultural heritage, semantic technology, ontology, CIDOC CRM, semantic search, Fundamental Concepts, Fundamental Relations, GraphDB, semantic repository, inference, performance, ResearchSpace},
   abstract     = {The CIDOC CRM provides an ontology for describing entities, properties and relationships appearing in cultural heritage (CH) documentation, history and archeology. CRM promotes shared understanding by providing an extensible semantic framework that any CH information can be mapped to. CRM data is usually represented in semantic web format (RDF) and comprises complex graphs of nodes and properties. An important question is how a user can search through such complex graphs, since the number of possible combinations is staggering. One approach "compresses" the semantic network by mapping many CRM entity classes to a few "Fundamental Concepts" (FC), and mapping whole networks of CRM proper-ties to fewer "Fundamental Relations" (FR). These FC and FRs serve as a "search index" over the CRM semantic web and allow the user to use a simpler query vocabulary. We describe an implementation of CRM FR Search based on OWLIM Rules, done as part of the ResearchSpace (RS) project. We describe the technical de-tails, problems and difficulties encountered, benefits and disadvantages of using OWLIM rules, and preliminary performance results. We provide implementation experience that can be valuable for further implementation, definition and maintenance of CRM FRs.},
 }
 

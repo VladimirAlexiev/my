@@ -559,11 +559,10 @@ Corrections:
   - produced by: `P108i_was_produced_by`
   - produced by subevent: `P108i_was_produced_by/P9_consists_of`.
     We loop over the event hierarchy downwards since that's how BM data is laid out:
-```
+```ttl
 <object/RFM1664> P108i_was_produced_by <object/RFM1664/production>.
 <object/RFM1664/production> P9_consists_of <object/RFM1664/production/1>.
 <object/RFM1664/production/1> P14_carried_out_by <person>.
-
 ```
   - modified (repaired) by: `P31i_was_modified_by` (subsumes `P108i_was_produced_by`)
   - part made by: `P46_is_composed_of/P108i_was_produced_by`
@@ -852,7 +851,7 @@ Fixes:
 - added `P67 (E55_Type)`, since some types are attached using `P67_refers_to` (or `P129_is_about`),
   eg these RKD extension properties: `rso:P129_has_iconclass, rso:P129_has_keyword`
 - added `P128_carries` (`E73_Information_Object`) to move from physical to conceptual, eg
-  `<obj/2926> crm:P65_shows_visual_item [crm:P129_is_about rst-iconclass:_71P412]`
+  - `<obj/2926> crm:P65_shows_visual_item [crm:P129_is_about rst-iconclass:_71P412]`
 - added `P127_has_broader_term` to search by type hierarchy
 
 Implementation:
