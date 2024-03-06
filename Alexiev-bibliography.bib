@@ -1,5 +1,17 @@
 @Comment{-*- coding: utf-8; fill-column: 5000 -*-}
 
+@Misc{Alexiev-Qualification-vs-Rolification-2024,
+  author       = {Vladimir Alexiev},
+  title        = {{Using Qualification Instead of Rolification for the Records in Context Ontology (RiC-O)}},
+  month        = jan,
+  year         = 2024,
+  url          = {https://github.com/ICA-EGAD/RiC-O/issues/67#issuecomment-1919383104},
+  keywords     = {rolification, qualification, reasoning, GraphDB Rules, GLAM, archives, RiC-O, Records in Context, PROV},
+  abstract     = {The Records in Context Ontology (RiC-O) uses a "Rolification" pattern to derive direct (unqualified) relations from Relation nodes. This involves the use of a "parasitic" self-link on relation nodes (owl:hasSelf) and owl:propertyChainAxiom, which is expensive to implement. Instead, I propose to use the PROV Qualified Relation pattern (associate the direct relation to the Relation class using prov:unqualifiedForm) and implement it with simpler GraphDB rules.}
+}
+  
+
+
 @TechReport{Alexiev-Crunchbase-Fibo-2023,
   author       = {Vladimir Alexiev},
   title        = {{Exploring FIBO Complexity With Crunchbase: Representing Crunchbase IPOs in FIBO}},
