@@ -1,7 +1,9 @@
 ---
 author: "Vladimir Alexiev & Miroslav Chervenski, Ontotext"
-date: "2020-09-08, Semantics 2020 vendor videos"
+date: "2020-09-08"
 title: "Exploring Industry 4.0 Standards with the Ontotext Platform"
+subtitle: "Semantics 2020 vendor videos"
+metadata-files: [_metadata.yml]
 ---
 
 # Intro
@@ -16,11 +18,12 @@ Key resources (more links further in the slides):
 
 - My publications: <http://rawgit2.com/VladimirAlexiev/my/master/index.html>
 - This presentation: <http://rawgit2.com/VladimirAlexiev/my/master/pres/20200908-i40kg-semantics/Slides.html>
-- Industry 4.0 KG main visualization: <http://i40.semantic-interoperability.org/>
-- Ontotext Platform documentation: <http://platform.ontotext.com/>
-- Try the GraphQL queries: <http://platform-test.ontotext.com/graphiql/> (to appear shortly)
+- Industry 4.0 KG main visualization: <http://i40.semantic-interoperability.org/> (29-Mar-2024: site is down)
+- Ontotext Platform Semantic Objects: <https://platform.ontotext.com/semantic-objects/>
+- Try GraphQL queries: <https://i40kg.ontotext.com/workbench/graphql>
+- Try SPARQL queries: <https://i40kg.ontotext.com/graphdb/sparql>
 
-# Industry Standards
+## Industry Standards
 
 - Numerous "traditional" standards for design, manufacturing, automation, control, quality etc
 - New and upcoming standards for Industry 4.0, digital twins, Industrial IoT, asset management, etc
@@ -33,48 +36,35 @@ Standard classification frameworks:
 - Reference Architectural Model Industrie 4.0 (RAMI 4.0), German Electrical and Electronic Manufacturers' Association (ZVEI)
 - Asset Administration shell, German Electrical and Electronic Manufacturers' Association (ZVEI)
 
-::: notes
+## Notes on Standards
 
-Standards have always been very important in the industrial society. In addition to old established standards, there are now new upcoming standards for the digitization of industry (Industry 4.0).
+Standards have always been very important in the industrial society.
 
-How do you overview and understand them? Various classification frameworks have been adopted. Some of the important ones include NIST, IIRA, RAMI and Asset Shell.
+- In addition to old established standards, there are now new upcoming standards for the digitization of industry (Industry 4.0).
+- Various classification frameworks have been adopted. Some of the important ones include NIST, IIRA, RAMI and Asset Shell.
+- Asset Shell is also a methodology/idea about integrating various standards in one "shell" using semantic technologies.
 
-Asset Shell is also a methodology/idea about integrating various standards in one "shell" using semantic technologies.
-
-:::
-
-# Industry 4.0 Knowledge Graph
+# Industry 4.0 Knowledge Graph (I40KG)
 
 (formerly Standards Ontology), Fraunhofer IAIS
 
-- Describes semantically 320 standards, their classification, purpose, relations, etc
+- Describes semantically 320 standards, their classification, area of use, purpose, relations, etc
 - Documentation: <https://i40-tools.github.io/I40KG/docs>
 - Main visualization: <http://i40.semantic-interoperability.org/>
 - Extra visualizations: <https://i40-tools.github.io/StandardOntologyVisualization/>
 - [The Industry 4.0 Standards Landscape from a Semantic Integration Perspective](https://ieeexplore.ieee.org/document/8247584/), Emerging Technologies and Factory Automation (ETFA), 2017-09
 - Classifies standards according to various methodologies and levels: Admin Shell Sub Model, Alliance of Industrial Internet Architecture Classification, Fiware Chapter, IDS RAM Layer, IIRA Functional Domain, ISA 95 Level, IVI Layer, IoT-A Perspective, NGSI Context Information Management API, Product Development Life Cycle, Production System Life Cycle, RAMI Hierarchy Level, etc
 
-::: notes
-
-Industry 4.0 Knowledge Graph
-I40KG is an ontology and knowledge base (knowledge graph) by Fraunhofer IAIS that describes to some extent 320 standards and their classification, area of use, purpose, relations, etc
-
-:::
-
 ## I40KG [Main Visualization](http://i40.semantic-interoperability.org/)
-
-(This is a partial view, click for full version)
 
 ![](img/I4.0 Standards-reduced.png)
 
-::: notes
+## I40KG Visualization Notes
 
 The main view of I40KG shows the integrative role of RAMI 4.0 and Admin Shell, their various areas, and how they build upon existing areas in those areas.
 
 - For example for Communication Layer, they use OPC UA (for M2M communication) and IEC 61784 (for industrial networks).
 - Click on the title for a full version of the image!
-
-:::
 
 ## I40KG Standards Classification
 
@@ -82,7 +72,7 @@ The main view of I40KG shows the integrative role of RAMI 4.0 and Admin Shell, t
 
 ![](img/I4.0 Standards Classification-progressive zoom.png)
 
-::: notes
+## I40KG Standards Progressive Classification
 
 A great feature of I40KG is its elaborative (progressive) classification. (Follow the direction of the red arrows).
 
@@ -90,10 +80,9 @@ A great feature of I40KG is its elaborative (progressive) classification. (Follo
 - On the middle level, eg the NIST initiative covers Modeling, Production model data, Production lifecycle management, etc.
 - On the lowest level, eg Modeling includes standards like ASME Y14.41, IEC 81714, etc
 
-:::
-
 ## I40KG Concerns
 
+- "Concerns" are various areas or topics relevant to industry digitization (eg AI, access rights, adaptability, etc).
 - Addresses about 160 Concerns
 
 AI AccessPolicy Access_Rights_for_IoT-Cloud Accountability Actuation Adaptability Agility Anonymity AssetManagement Authentication Authorization Auto_Scaling AutonomousCommunication AutonomousConfiguration Availability Awareness Bandwidth BigDataApplications BusinessContext BusinessProcessManagement BusinessTransactions BusinessValue CardinalityOfDataSources CardinalityOfParticipants Certification CloudComputing Communication ComplexEventProcessing Compliance Confidentiality Connectivity ConstrainedDevices ContextAwareness CostEfficiency CrossDomainIdentityManagement Customization DataAccess DataAccessControl DataAggregation DataAnalytics 
@@ -102,72 +91,54 @@ AI AccessPolicy Access_Rights_for_IoT-Cloud Accountability Actuation Adaptabilit
 
 ServiceChoreography ServiceComposition ServiceDeployment ServiceDescription ServiceDiscovery ServiceIsolation ServiceLevelAgreements ServiceLifecycleManagement ServiceOrchestration ServiceSelection Service_Recovery Software_Updates SpatialModeling StreamProcessing SyntacticInteroperability SystemEvolution SystemRecovery ThingDescription ThingMobility ThingRepresentation TimeSynchronization Trustworthiness Unicast UnreliableNetwork UserInteraction UserPreferences VendorLockin VirtualEntity
 
-::: notes
-
-"Concerns" are various areas or topics relevant to industry digitization (eg AI, access rights, adaptability, etc).
-I40KG covers (well, to some extent) **160 concerns**, will you believe that?
-
-:::
-
 ## I40KG Model (Described)
+
+- So, how do we use this wealth of semantic data?
+- We need to understand its model: what ontologies it uses and how they are put together.
+- The paper [The Industry 4.0 Standards Landscape from a Semantic Integration Perspective](https://ieeexplore.ieee.org/document/8247584/) at ETFA 2017 provides a good description, and the basic data looks like this.
+
+## I40KG Model Image (Described)
 
 ![](img/STO classes and props-yEd.png)
 
-So, how do we use this wealth of semantic data? We need to understand its model: what ontologies it uses and how they are put together.
-
-- The paper [The Industry 4.0 Standards Landscape from a Semantic Integration Perspective](https://ieeexplore.ieee.org/document/8247584/) at ETFA 2017 provides a good description, and the basic data looks like this.
-
-## I40KG [Model (Actual)](img/sto-graph-ge5.png)
-
-Relations between classes with >=5 instances (click for large version)
-
-![](img/sto-graph-ge5.png)
-
-::: notes
+## I40KG Model (Actual)
 
 In reality, the data is a lot more complex.
 
-- If you analyze all relations between classes, there are 300 such (domain-property-range). Here we depict relations with >=5 instances; there are 78 such.
+- If you analyze all relations between classes, there are 300 `domain-property-range`
+- Here we depict relations with >=5 instances; there are 78 total relations
 - Note: attributes are not even depicted.
-- Control-click on the title for a large version of the diagram.
+- Click on the title for a large version of the diagram.
 
-:::
+## I40KG [Model Image (Actual)](img/sto-graph-ge5.png)
 
-# Exploring with the Ontotext Platform
+![](img/sto-graph-ge5.png)
 
+# Exploring With the Ontotext Platform
+
+The [Ontotext Platform](http://platform.ontotext.com) gives us an easier way to explore: `GraphQL`.
+
+- We need to make a Semantic Object model schema (SOML).
 - Made various fixes to ontology (eg duplicated prop definitions, redundant props) 
   and data (eg `dbr:_Arizona` shouldn't have leading underscore)
+- First generate a draft schema from the ontology using a tool called **owl2soml**, which is embedded in the Workbench in the form of a wizard
 - Generated [Semantic Object (SOML) Model](http://platform.ontotext.com/soml) from the ontology with [owl2soml](http://platform.ontotext.com/soml/owl2soml.html) (see [github](https://github.com/VladimirAlexiev/soml/tree/master/owl2soml/)): Schema>Create wizard
 
 ![](img/Platform-wizard.png)
 
-::: notes
-
-The [Ontotext Platform](http://platform.ontotext.com) gives us an easier way to explore: GraphQL.
-
-- But before that, we need to make a Semantic Object model schema (SOML).
-- We first generate a draft schema from the ontology using a tool called **owl2soml**, which is embedded in the Workbench in the form of a wizard
-
-:::
-
 ## SOML Schema
 
-Made a number of additions and fixes, then Activated:
-
-![](img/Platform-schema.png)
-
-::: notes
-
-We made a number of additions and fixes, eg
+Made a number of additions and fixes, eg
 
 - **lang: en,ALL** to return only one exemplar of multi-valued labels (preferring English),
 - removing almost all prefixes from GraphQL names for easier consumption (eg **associatedWith** instead of **dul:associatedWith**),
 - adding [virtual inverses with inverseAlias](http://platform.ontotext.com/soml/properties.html#inverses) for bidirectional graph navigation,
 - binding all useful props to classes (several are in an abstract root class Entity),
 - removing **max: inf** cardinality from several props since it's more expensive to query,
-- etc
 
-:::
+## SOML Schema Activated
+
+![](img/Platform-schema.png)
 
 ## GraphQL Query 1: Standards and Classifications
 
@@ -179,7 +150,7 @@ Eg "give me standards that have both International Classification of Standards (
 and some classifications that have both `isDescribedin` and `associatedWith` relations"
 
 ```graphql
-{
+query Standards {
   standard(where:{hasICS:{} 
       hasClassification:{isDescribedin:{} associatedWith:{}}} limit:10) { 
     label{value}
@@ -193,7 +164,7 @@ and some classifications that have both `isDescribedin` and `associatedWith` rel
 }
 ```
 
-::: notes
+## GraphQL Query 1 Notes
 
 To understand this query, you need to look at the diagram of the data, and know two things:
 
@@ -204,8 +175,6 @@ If you play with GraphiQL, you may agree that queries nearly "write themselves".
 
 - Eg here I've put too many props in Entity (eg abbreviation, label, license) while in actuality some appear at more specific classes.
 - So these props are offered for most entities, which "pollutes" the editor suggestions a bit.
-
-:::
 
 ## GraphQL Result 1: Standards and Classifications
 
@@ -233,23 +202,20 @@ If you play with GraphiQL, you may agree that queries nearly "write themselves".
 and `AsSecurity` (described in `AdministrationShell`, 
 associated with `BdvaCyberSecurityTrust, DtpSecurityPrivacy, FiwareSecurity`)
 
-::: notes
+## GraphQL Result 1 Notes
 
-You may notice that the result shape (nesting) exactly matches the query shape. 
-
-- (Well, I've compressed the result to fit it on the page, but if you look in GraphiQL, you'll see that's true).
-
-IEC 60832 is about alarm systems, so all its classifications (security) appear to be correct.
-
-:::
+- You may notice that the result shape (nesting) exactly matches the query shape. 
+- (I've compressed the result to fit it on the page, but if you look in GraphiQL, you'll see that's true).
+- IEC 60832 is about alarm systems, so all its classifications (security) appear to be correct.
 
 ## GraphQL Query 2: Standards and Licenses
 
 Let's find entities (eg standards) and their licenses:
 
 ```graphql
-{entity(where:{license:{}}) {id
-  license{id}}}
+query Licenses {
+  entity(where:{license:{}}) {id
+    license{id}}}
 ```
 
 We get results, plus an error:
@@ -261,17 +227,15 @@ We get results, plus an error:
   "locations": [{"line": 3, "column": 3}]}],
 ```
 
+## GraphQL Query 2 Notes
+
 Turns out that `IEC_62541` is dual-licensed under `GPLv2` and `OpenLicenseDocument`.
 So our assumption that entities have a single license (removing `max:inf`) is not 100% true.
-
-::: notes
 
 Here we're looking for entities and their licenses.
 
 - I assumed entities have just one license so removed `max: inf` (more expensive to query), but it turns out the assumption is not 100% right (only 95% or so).
 - GraphQL returns a very precise error, which allows us to find the exact query spot, and the exact data record that caused the error.
-
-:::
 
 ## GraphQL Query 3: ISO 15926
 
@@ -280,16 +244,17 @@ ISO 15926, in development for nearly 30 years, has been touted as the "lingua fr
 Let's find the classifications and standards that it is related to:
 
 ```graphql
-{standard(where:{label:{value:{EQ:"ISO 15926"}}}) {
-  comment{value}
-  hasClassification{id}
-  relatedTo {
-    id
-    label{value}
-    comment{value}}}}
+query ISO_15926 {
+  standard (where:{label:{value:{EQ:"ISO 15926"}}}) {
+    comment {value}
+    hasClassification {id}
+    relatedTo {
+      id
+      label {value}
+      comment {value}}}}
 ```
 
-Response:
+## GraphQL Query 3 Response
 
 ```json
 "standard": [{
@@ -326,7 +291,7 @@ Eg here's how to represent the allowed range of a parameter of some entity (tag 
 
 ![](img/ClassOfIndividualHasIndirectPropertyWithBoundingValues.png)
 
-::: notes
+## ISO 15926 Complexity Notes
 
 This is template [CL-INDPTY-200](https://15926.org/home/templatespecs/CL-INDPTY-200.xml) **ClassOfIndividualHasIndirectPropertyWithBoundingValues**
 with definition "Any member of `EssentialType` class `hasPossessorType` has a `hasIndirectPropertyType` with a range of `valLowerBound` to `valUpperBound` `hasScale`".
@@ -337,31 +302,74 @@ with definition "Any member of `EssentialType` class `hasPossessorType` has a `h
 - But it's not clear whether templates simplify **querying** unless you use the N-ary relation...
 - ... Which begs the question why you need the template expansion
 
-:::
-
 ## GraphQL Query 4: Concerns
 
-I40KG includes a number of 200 "concerns" i.e. topics relevant to Industry (eg AI, DataAnalytics, etc).
+I40KG includes about 160 "concerns" i.e. topics relevant to Industry (eg AI, DataAnalytics, etc).
 
 ```graphql
-{concern{
-  id 
-  label{value}}}
+query Concerns {
+  concern{
+    id 
+    label {value}}}
 ```
+
+Results:
+
+```json
+{
+  "data": {
+    "concern": [
+      {"id": "https://w3id.org/i40/sto#IdentityManagement",
+        "label": {"value": "Identity Management"}},
+      {"id": "https://w3id.org/i40/sto#AsProcessPlanning",
+        "label": {"value": "Process planning"}},
+      {"id": "https://w3id.org/i40/sto#AI",
+        "label": {"value": "Artificial Intelligence"}}, ...
+```
+
+## GraphQL Query 5: Classification Concerns
 
 Let's find which classifications are related to which concerns.
 We use prop `frames` defined as "A relation specifying that a vewpoint regards a Concern":
 
 ```graphql
-{standardClassification(where:{frames:{}}) {
-  id
-  frames{id}}}
+query ClassificationConcerns {
+  standardClassification(where:{frames:{}}) {
+    id
+    frames {id}}}
 ```
+
+Results:
+
+```json
+{"data": {
+    "standardClassification": [
+      {"id": "https://w3id.org/i40/sto#IIRAFunctionalViewpoint",
+        "frames": [
+          {"id": "https://w3id.org/i40/sto#IdentityManagement"},
+          {"id": "https://w3id.org/i40/sto#AsProcessPlanning"}, ...
+```
+
+## GraphQL Query 6: Standard Concerns
 
 Similarly, property `hasTargetConcern` connects Standards to Concerns:
 
 ```graphql
-{standard(where:{hasTargetConcern:{}}) {
-  id
-  hasTargetConcern{id}}}
+query StandardConcerns {
+  standard(where:{hasTargetConcern:{}}) {
+    id
+    hasTargetConcern{id}}}
+```
+
+Result:
+
+```json
+{"data": {
+    "standard": [
+      {"id": "https://w3id.org/i40/sto#DIN_77005_P1",
+        "hasTargetConcern": [{"id": "https://w3id.org/i40/sto#DataLifecycleManagment"}]},
+      {"id": "https://w3id.org/i40/sto#DIN_EN_50128",
+        "hasTargetConcern": [{"id": "https://w3id.org/i40/sto#Safety"}]},
+      {"id": "https://w3id.org/i40/sto#DIN_EN_50129",
+        "hasTargetConcern": [{"id": "https://w3id.org/i40/sto#Safety"}]}, ...
 ```

@@ -1,0 +1,35 @@
+from: gfm+autolink_bare_uris
+format:
+  revealjs:
+    # resource-path: [https://presentations.ontotext.com/resources/]
+    theme: ontotext.scss
+    incremental: false
+    slide-number: c/t
+    logo: https://presentations.ontotext.com/resources/ontotext.png
+    embed-resources: false
+    margin: 0
+    width: 1800
+    height: 1350
+  #  background-image: https://presentations.ontotext.com/resources/bkg-blue.png
+    background-size: cover
+    background-opacity: 0.1
+    transition: none
+    code-copy: true
+    code-line-numbers: true
+    code-overflow: scroll
+    number-sections: false
+    number-offset: 0      # start from 1
+    scrollable: true # use if slides can be lenghty texts and tables
+    auto-stretch: false # does not work for big images within custom dvs (tables, columns)
+    include-in-header:
+    - file: quarto-revealjs-defaults.html
+    include-after-body: 
+    - file: quarto-revealjs-title-slide.html
+    menu:
+      side: left
+    title-slide-attributes:
+        data-background-image: https://presentations.ontotext.com/resources/bkg-blue.jpg
+#filters:
+#  - reveal-header # if you need both header and footer on slides. They are declared in the presentation.qmd file
+
+    
