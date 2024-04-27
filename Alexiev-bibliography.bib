@@ -7,6 +7,8 @@
   year         = 2024,
   month        = apr,
   address      = {Barcelona, Spain (upcoming)},
+  url          = {TODO},
+  url_Slides   = {TODO},
   keywords     = {AECO, BIM, regulation checking, automated compliance checking},
   abstract     = {The Architecture, Engineering and Construction (AEC) industry is subject to many building codes and regulations that apply to the design and construction of buildings. These regulations often involve complex language and technical vocabulary that can give rise to different interpretations, depending on their context and purpose, and therefore a difficulty in their application. The introduction of Building Information Modelling (BIM), as well as authoring tools capable of creating and exporting 3D representations of buildings, is paving the way for compliance checking to become more automated and less dependent on interpretation. This should allow for better quality by reducing the time needed for checking and avoiding human errors. However, despite attempts to provide new BIM-based methods and approaches to achieve this goal in the past two decades, none of these methods have proven to be close to being a definitive solution. The basis for checking compliance against regulations using a BIM model is to have a description of the regulations in a computable form. In turn, this makes it necessary to define data requirements for models that guarantee that regulations can be checked consistently. Within this framework, several scenarios can be considered to address the problem. One is to consider the descriptive part of the regulation separate from the execution part, that is, compliance checking procedures. Currently, those in charge of writing the regulations typically publish them in plain text documents in PDF format. Therefore, the next evolutionary step is to manage construction regulations in a machine-readable way underpinned by semantics, thus, ensuring they can be interpretated precisely by the software used for checking buildings against them.},
 }
@@ -17,7 +19,10 @@
   booktitle    = {Digital Building Permit 2024},
   year         = 2024,
   month        = apr,
-  address      = {Barcelona, Spain (upcoming)},
+  address      = {Barcelona, Spain},
+  url          = {TODO},
+  url_PDF      = {https://presentations.ontotext.com/2024/checking-of-urban-planning-regulations-with-geosparql-and-bim-sparql/Slides.pdf},
+  url_Slides   = {https://presentations.ontotext.com/2024/checking-of-urban-planning-regulations-with-geosparql-and-bim-sparql/Slides.html},
   keywords     = {AECO, urban planning, BIM, City Information Management, regulation checking, XPlanung, INSPIRE PLU, CityGML, GeoSPARQL, Berlin Tegel, TXL, Malgrat},
   abstract     = {The former Berlin Tegel airport (TXL) will be the site of a university campus (refurbished airport terminal), startups, production facilities (“tech republic”), a living quarter, stores, smart mobility hubs, park and recreation areas, etc. The Tegel Project company (owned by the City of Berlin) has developed detailed urban planning and regulations covering built area use, height restrictions, noise protection, floor space index (buildup density), greenery requirements (vegetation and habitats), etc. The regulations are expressed in XPlanung and INSPIRE PLU. These are GML-based UML and XML models for urban planning: XPlanung is Germany-specific and PLU (Planned Land Use) is part of the INSPIRE initiative. Building designs are expressed in IFC and include simple geometries (for residential buildings) and complex geometries (for the university campus). Compliance checking of urban planning requires accessing two different kinds of data in a harmonized way: BIM (building information) and GIS (also called CIM “city information management” and often represented using GML extension schemas). As part of the Horizon Europe ACCORD project, we plan to do this checking using SPARQL in Ontotext GraphDB. GIS data is covered by the existing GeoSPARQL plugin that supports WKT and GML geometries. BIM data can either be converted to GIS/GML using already developed approaches, or accessed through a future Binary Engineering Data connector for GraphDB based on the HDF5 format. We give an overview of XPlanung, INSPIRE PLU, CityGML and GeoSPARQL 1.0 and 1.1. Then we describe the semantic conversion of XPlanung / INSPIRE PLU data, our approach regarding semantization of BIM data, the overall structure of regulations, the respective geometric and non-geometric checks to be implemented, the use of GeoSPARQL topological relations to leverage planning zone hierarchies and to check which buildings fall in which zones, potential specialized BIM SPARQL functions to be implemented, management of multiple BIM files that need to be checked in concert, and result creation and content.},
 }
@@ -32,11 +37,26 @@
   abstract     = {The Records in Context Ontology (RiC-O) uses a "Rolification" pattern to derive direct (unqualified) relations from Relation nodes. This involves the use of a "parasitic" self-link on relation nodes (owl:hasSelf) and owl:propertyChainAxiom, which is expensive to implement. Instead, I propose to use the PROV Qualified Relation pattern (associate the direct relation to the Relation class using prov:unqualifiedForm) and implement it with simpler GraphDB rules.}
 }
 
+@TechReport{thamermecharniaExistingOntologiesStandards2023,
+  author       = {Thamer Mecharnia and Maxime Lefrançois and Antoine Zimmermann and Edlira Vakaj and Amna Dridi and Hansi Hettiarachchi and Vladimir Alexiev and Nataliya Keberle and He Tan and Francesca Noardo and Rick Makkinga and Franco Cheung},
+  title        = {Existing Ontologies, Standards, and Data Models in the Building Data Domain Relevant to Compliance Checking},
+  institution  = {ACCORD Project},
+  year         = 2023,
+  type         = {Deliverable},
+  number       = {D2.1},
+  month        = aug,
+  url          = {https://accordproject.eu/wp-content/uploads/2023/09/ACCORD_D2.1_Technical_Report_Existing_Models.pdf},
+  keywords     = {Architecture Engineering Construction and Operations (AECO), Ontologies, Review},
+  url_library  = {https://www.zotero.org/groups/3007408/semantic_bim/library},
+  abstract     = {This deliverable presents the results of Task 2.1 (Technical Review of Existing Standards) of the ACCORD project. The ACCORD project employs a semantic approach for validating building permits, eliminating the need for costly centralized systems that are challenging to establish and maintain. The primary aim of the ACCORD project is to digitize permit and compliance procedures to improve the productivity and quality of design and construction processes and facilitate the creation of an environmentally sustainable built environment. This deliverable will review the existing ontologies, standards, and data models in the Architecture, Engineering, and Construction (AEC) domain and how they can be reused for the purpose of the automatic compliance check. More specifically, this deliverable will: 1. Evaluate the AEC domain-related ontologies and propose suggestions on how they can be employed for the development of the Architecture Engineering and Construction Compliance Checking and Permitting Ontology (AEC3PO). 2. Conduct a review of query languages associated with the AEC domain and the semantic web. 3. Compare the rule languages developed or used in AEC projects. 4. Review the standards that may be relevant to different areas in the ACCORD project. 5. Compare the existing reasoners that could be useful to building permitting automatic compliance checking. All the references used in this deliverable are gathered in the open Zotero library for the project. In the AEC industry, several standards and recommendations aim to achieve different levels of data interoperability in systems. This deliverable concentrates on data-related standards such as those that provide syntactic rules and semantics to represent data in a standardized way. Policy and regulatory standards are out of the scope of this deliverable and are addressed in deliverable D1.1 "Landscape Review Report". The outcomes of this deliverable will serve as a reference for other tasks within the project, which will determine the preferred rule language, which ontologies can be reused, aligned, or serve as inspiration for the creation of the AEC3PO to be developed in Task 2.2 of WP2. Furthermore, the standards that will be presented in this deliverable can be employed in various aspects of the ACCORD project. This groundwork will facilitate the development of the AEC3PO ontology as well as the design and implementation of the Rule Formalisation Tool.},
+}
+
+
 @TechReport{Alexiev-Crunchbase-Fibo-2023,
   author       = {Vladimir Alexiev},
   title        = {{Exploring FIBO Complexity With Crunchbase: Representing Crunchbase IPOs in FIBO}},
-  month        = sep,
-  year         = 2023,
+  month        = apr,
+  year         = 2024,
   url          = {https://rawgit2.com/VladimirAlexiev/crunchbase-fibo/main/README.html},
   url_Github   = {https://github.com/VladimirAlexiev/crunchbase-fibo/},
   keywords     = {fintech, Crunchbase, ontologies, semantic modeling, Initial Public Offering, IPO, Financial Industry Business Ontology, FIBO},
@@ -1460,7 +1480,7 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   abstract     = {Triplestores and inference, applications in Finance, text-mining. Projects and solutions for financial media and publishers. Thanks to Atanas Kiryakov for this presentation, I just cut it to size.},
 }
 
-@TechReport{LDBC-D442,
+@TechReport{LDBC-BenchmarkReasoning-2014,
   author       = {Vassilis Papakonstantinou and Irini Fundulaki and Giorgos Flouris and Vladimir Alexiev},
   title        = {{Benchmark Design for Reasoning}},
   institution  = {Linked Data Benchmarking Council project},
@@ -1471,6 +1491,17 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   url          = {https://ldbcouncil.org/post/owl-empowered-sparql-query-optimization/LDBC_D4.4.2_final.pdf},
   keywords     = {LDBC, benchmark, reasoning, inference},
   abstract     = {Reasoning (mainly OWL reasoning) has received increasing attention by ontology designers for more accurately representing the domain at hand. To reflect this importance, one of LDBC’s objectives is to identify a set of interesting use cases that consider OWL reasoning constructs (beyond the usual RDFS constructs) that can be used to challenge existing RDF engines or repositories. This Deliverable has two parts: in the first part, we present four different sets of queries that can be used to determine whether RDF query engines take into account OWL constructs during query plan construction or query execution; in the second part we consider how a repository or query engine incorporates and considers business rules, i.e., domain-specific rules that follow common templates, useful in practical applications.},
+}
+
+@TechReport{LDBC-SemanticPublishing-2014,
+  author       = {Venelin Kotsev and Atanas Kiryakov and Irini Fundulaki and Vladimir Alexiev},
+  title        = {{{LDBC Semantic Publishing Benchmark}} ({{SPB}}) v2.0},
+  institution  = {Linked Data Benchmarking Council project},
+  year         = 2014,
+  number       = {v2.0 First Public Draft Release},
+  url          = {https://ldbcouncil.org/publication/ldbc-spc-specification/},
+  keywords     = {LDBC, benchmark, semantic publishing, graph databases},
+  abstract     = {The Semantic Publishing Benchmark (SPB) is a LDBC benchmark for RDF database engines inspired by the Media/Publishing industry, particularly by the BBC’s Dynamic Semantic Publishing approach. As of June 2014 the benchmark has reached the state of draft publication. This document describes the current state of the Semantic Publishing Benchmark software. The application scenario behind the benchmark considers a media or a publishing organisation that deals with large volume of streaming content, namely articles and other “creative works” and “media assets”. This content is enriched with metadata that describes it and links it to reference knowledge – taxonomies and databases that include relevant concepts, entities and factual information. This metadata allows publishers to efficiently retrieve relevant content, according to their various business models. From a technology standpoint, the benchmark assumes that an RDF database is used to store both the reference knowledge and the metadata. The main interactions with the repository are (i) updates, that add new metadata or alter the repository, and (ii) aggregation queries, that retrieve content according to various criteria. The engine should handle instantly large number of updates in parallel with massive amount of aggregation queries. This document describes all features of the SPB : data (reference data-sets, ontologies, data generation), query workloads (descriptions of queries used, choke point descriptions), validation of query results and instructions (how to configure and use the benchmark driver, execution, auditing and disclosure rules)},
 }
 
 @InProceedings{Alexiev2013-CRM-reasoning,
