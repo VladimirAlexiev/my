@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Vladimir Alexiev, Chief Data Architect, Ontotext" />
-  <title>eCl@ss RDF Representation</title>
+  <title>ECLASS RDF Representation</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -20,14 +20,14 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">eCl@ss RDF Representation</h1>
+<h1 class="title">ECLASS RDF Representation</h1>
 <p class="author">Vladimir Alexiev, Chief Data Architect, Ontotext</p>
 <p class="date">2020-12-15, last updated 2020-12-21</p>
 </header>
 <h1 id="motivation">Motivation</h1>
-<p>We discuss various considerations for representing eCl@ss product info as RDF.</p>
+<p>We discuss various considerations for representing ECLASS product info as RDF.</p>
 <ul>
-<li>Why is it important to put eCl@ss online on the web of data?
+<li>Why is it important to put ECLASS online on the web of data?
 <ul>
 <li>Use Cases must drive representation principles (see below)</li>
 <li>Competency Questions are also important (none discussed yet)</li>
@@ -50,7 +50,7 @@
 </ul></li>
 </ul>
 <h2 id="crucial-questions">Crucial Questions</h2>
-<p>Crucial Questions to consider when designing eCl@ss RDF.</p>
+<p>Crucial Questions to consider when designing ECLASS RDF.</p>
 <p>Together with the use cases and competency questions, they should provide a frame of reference for making decisions that are <strong>usable, consistent, viable in the long term</strong>.</p>
 <ul>
 <li>Data Copying vs Data Decentralization
@@ -65,7 +65,7 @@
 <li>Closed vs Open Data Ecosystems</li>
 <li>Local vs Global Thinking</li>
 </ul>
-<p>While I have my doubts that the eCl@ss Association will be able to soon subscribe to these principles, I believe they are important considerations to keep in mind.</p>
+<p>While I have my doubts that the ECLASS Association will be able to soon subscribe to these principles, I believe they are important considerations to keep in mind.</p>
 <h3 id="semantic-web-principles">Semantic Web Principles</h3>
 <p>Semantic Web and Linked Data are based on several simple principles:</p>
 <ul>
@@ -89,12 +89,12 @@
 <li>Global IRIs are sparingly used and don’t have “first class citizen” status</li>
 <li>There is no assumption that the up-to-date Version of Record of a fine-granularity piece of data will always be found at a certain IRI.
 <ul>
-<li>eCl@ss distributions,</li>
+<li>ECLASS distributions,</li>
 <li>BMEcat transfers,</li>
 <li>IEC CDD unavailability of IRDIs for global resolution,</li>
 <li>RAMI/AAS examples of copying other data into an admin shell, etc.</li>
 </ul></li>
-<li>I believe that eCl@ss RDF should break out of this tradition and tackle directly Data Distribution.</li>
+<li>I believe that ECLASS RDF should break out of this tradition and tackle directly Data Distribution.</li>
 <li>Exception: ISO 15926 (oil &amp; gas) and its <strong>Reference Data Libraries</strong></li>
 </ul>
 <h3 id="ontological-realism-vs-idiosyncrasy">Ontological Realism vs Idiosyncrasy</h3>
@@ -125,21 +125,21 @@
 </ul></li>
 </ul>
 <h3 id="open-vs-closed-data-ecosystems">Open vs Closed Data Ecosystems</h3>
-<p>eCl@ss is a very closed data environment: it does not reuse data by anyone else. Eg:</p>
+<p>ECLASS is a very closed data environment: it does not reuse data by anyone else. Eg:</p>
 <ul>
 <li>Although it uses same/similar data model as IEC CDD, it does not use any IEC data, not even IEC Units of Measure.</li>
-<li>It defines various lists that <strong>should not be the business</strong> of eCl@ss, eg: Countries, Languages, Colors, Units of Measure, etc</li>
+<li>It defines various lists that <strong>should not be the business</strong> of ECLASS, eg: Countries, Languages, Colors, Units of Measure, etc</li>
 </ul>
-<p>Why should eCl@ss care about this?</p>
+<p>Why should ECLASS care about this?</p>
 <ul>
-<li>Reusing data representations and data items created by others may reduce the work of eCl@ss.
+<li>Reusing data representations and data items created by others may reduce the work of ECLASS.
 <ul>
 <li>(I acknowledge that this does not hold in all cases because sometimes it’s easier to produce data in a closed environment.)</li>
 </ul></li>
-<li>Reusing data may make it easier for eCl@ss users to consume eCl@ss:
+<li>Reusing data may make it easier for ECLASS users to consume ECLASS:
 <ul>
-<li>eCl@ss product data is only one kind of data in an enterprise IT environment</li>
-<li>There is a large number of ontologies relevant to the use cases that eCl@ss cannot interoperate with</li>
+<li>ECLASS product data is only one kind of data in an enterprise IT environment</li>
+<li>There is a large number of ontologies relevant to the use cases that ECLASS cannot interoperate with</li>
 <li>That includes IoT/WoT, schema.org, sensors, electrical, green energy, BIM, etc, etc</li>
 </ul></li>
 </ul>
@@ -175,7 +175,7 @@
 <p>Positive aspects:</p>
 <ul>
 <li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf">IEC CDD</a> is online, open (but not quite), update a lot more frequently</li>
-<li>PLIB is well described at eCl@ss wiki: <a href="https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML">ISO_13584-32_ontoML</a> and <a href="https://wiki.eclass.eu/wiki/Conceptual_data_model">Conceptual_data_model</a>; but not officia/comprehensive</li>
+<li>PLIB is well described at ECLASS wiki: <a href="https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML">ISO_13584-32_ontoML</a> and <a href="https://wiki.eclass.eu/wiki/Conceptual_data_model">Conceptual_data_model</a>; but not officia/comprehensive</li>
 </ul>
 <p>“ISO/IEC are for professional use, so money is not a problem”</p>
 <ul>
@@ -191,16 +191,16 @@
 <li>YOU may copy the database only for a restricted and confidential internal use and this LICENSE exception is also restricted to other employees for their internal or external use within YOUR organization.</li>
 <li>Only partial dumps available</li>
 </ul></li>
-<li>eCl@ss is not available online in machine-readable form
+<li>ECLASS is not available online in machine-readable form
 <ul>
-<li>eCl@ss is paid and <strong>that is fine</strong>: “Open” is not the same as “Free”</li>
+<li>ECLASS is paid and <strong>that is fine</strong>: “Open” is not the same as “Free”</li>
 <li>But the Association must consider carefully who are its paying customers and what should be its licensing model</li>
 <li>I think manufacturers should pay, but not eCommerce or WoT developers</li>
 </ul></li>
 </ul>
 <h2 id="local-vs-global-thinking">Local vs Global Thinking</h2>
 <ul>
-<li>PLIB &amp; eCl@ss define everything locally</li>
+<li>PLIB &amp; ECLASS define everything locally</li>
 <li>Internal data items are not intended for online access (eg IRDI Versioning)</li>
 <li>External LOD is never reused, although readily available, eg
 <ul>
@@ -214,8 +214,8 @@
 </ul>
 <h2 id="use-cases">Use Cases</h2>
 <ul>
-<li>Product libraries: PLIB/POM, eCl@ss/IEC CDD (innate)</li>
-<li>Web of Things TD: online description and control (original case posed by eCl@ss Association)</li>
+<li>Product libraries: PLIB/POM, ECLASS/IEC CDD (innate)</li>
+<li>Web of Things TD: online description and control (original case posed by ECLASS Association)</li>
 <li>Online product catalogs (BMEcat conversion shown recently)</li>
 <li>schema.org (GoodRelations): eCommerce integration</li>
 <li>Industrie 4.0: RAMI 4.0, Admin Shell, OPC UA…</li>
@@ -228,7 +228,7 @@
 </ul>
 <h3 id="product-libraries">Product Libraries</h3>
 <ul>
-<li>eCl@ss is based on the ISO 13584 - IEC 61360 PLIB standard
+<li>ECLASS is based on the ISO 13584 - IEC 61360 PLIB standard
 <ul>
 <li>Uses the ISO 13584-32 ontoML Conceptual data model</li>
 </ul></li>
@@ -246,7 +246,7 @@
 <p><img src="img/IEC%2062656-%20ontology-props.png" /></p>
 <h4 id="plibpom-product-library-examples">PLIB/POM Product Library Examples</h4>
 <ul>
-<li>eCl@ss (100 orgs, German/international)</li>
+<li>ECLASS (100 orgs, German/international)</li>
 <li>IEC 62474: Material Declarations for Electrotechnical Products</li>
 <li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf/TreeFrameset?OpenFrameSet">IEC 61360: Common Data Dictionary</a>
 <ul>
@@ -270,7 +270,7 @@
 <p><img src="img/IEC%20SC3D%20cooperation%20wIth%20other%20ISO%20and%20IEC%20TC%20and%20SC.png" /></p>
 <h3 id="web-of-things-td">Web of Things TD</h3>
 <ul>
-<li>This was the original case posed by the eCl@ss Association</li>
+<li>This was the original case posed by the ECLASS Association</li>
 <li>WoT aims to unify/reduce fragmentation of IoT protocols/data formats
 <ul>
 <li>Follow the Web Architecture</li>
@@ -301,14 +301,14 @@
 <li>You can’t expect a Smart Bulb to carry its own Spec Sheet (not enough memory!)</li>
 <li>So a Thing uses Template to link to its detailed product props:</li>
 <li>Bulb links to a manufacturer Catalog</li>
-<li>Catalog links to eCl@ss product/prop definitions</li>
+<li>Catalog links to ECLASS product/prop definitions</li>
 <li>The data is distributed functionally</li>
 <li>Yet, a WoT server should assemble all of it and present as a single TD</li>
 </ul>
 <h4 id="wot-td-questions">WoT TD Questions</h4>
 <p>There are many questions/details to be aligned, most importantly:</p>
 <ul>
-<li>eCl@ss is about describing the props, parts and aspects of products</li>
+<li>ECLASS is about describing the props, parts and aspects of products</li>
 <li>How to reflect those in WoT TD? It takes a simpler approach</li>
 <li>How to use those to systematically construct TD Affordances?</li>
 <li>Eg if a Lamp uses a Cardinality blocks Switch 1, Switch 2 and Bulb 1, Bulb 2, does that mean I can systematically have:
@@ -321,11 +321,11 @@
 </ul>
 <h3 id="online-product-catalogs">Online Product Catalogs</h3>
 <ul>
-<li>A crucial current use of eCl@ss is in product catalogs (eg XML based: BMEcat, ISO)-</li>
+<li>A crucial current use of ECLASS is in product catalogs (eg XML based: BMEcat, ISO)-</li>
 <li>I’m very glad this is included in scope (the BMEcat-&gt;RDF conversion shown recently)</li>
-<li>eCl@ss RDF representation without guidance on catalog RDF representation would be pointless</li>
+<li>ECLASS RDF representation without guidance on catalog RDF representation would be pointless</li>
 <li>Web-accessible (online) and semantic catalogs are crucial for other use cases (WoT Templates, schema.org)</li>
-<li>The design of RDF catalogs <strong>conforming</strong> to those cases is a prerequisite for eCl@ss RDF</li>
+<li>The design of RDF catalogs <strong>conforming</strong> to those cases is a prerequisite for ECLASS RDF</li>
 </ul>
 <h3 id="schema.org">schema.org</h3>
 <ul>
@@ -375,7 +375,7 @@
 <li>Reference Architectural Model for Industry 4.0 (RAMI)</li>
 <li>Asset Administration Shell (AAS)</li>
 </ul>
-<p>Intended to unify/incorporate/extend previous Industrial IoT models including AutomationML, OPC UA, IEC CDD, and eCl@ss.</p>
+<p>Intended to unify/incorporate/extend previous Industrial IoT models including AutomationML, OPC UA, IEC CDD, and ECLASS.</p>
 <p>Spec “Details of the Asset Administration Shell Part 1” (Version 2.0.1 2019-11) includes the following semantic parts in Annex G</p>
 <ul>
 <li>“ii. RDF Data Model for the Administration Shell” (p270-315): an OWL ontology with namespace <a href="http://admin-shell.io" class="uri">http://admin-shell.io</a>, saved as <code>aas-ontology.ttl</code></li>
@@ -392,9 +392,9 @@
 <li>BMEcat</li>
 <li>i4aas</li>
 <li>CSV</li>
-<li>eCl@ss as presented at <a href="https://www.eclass.eu/anwendung/verwaltungsschale.html">eCl@ss in Admin Shell</a></li>
+<li>ECLASS as presented at <a href="https://www.eclass.eu/anwendung/verwaltungsschale.html">ECLASS in Admin Shell</a></li>
 </ul>
-<h4 id="aasx-eclss-import">AASX eCl@ss Import</h4>
+<h4 id="aasx-eclss-import">AASX ECLASS Import</h4>
 <p><img src="img/csm_7_52bfb6aa34.png" /></p>
 <h4 id="ramiaas-problems">RAMI/AAS Problems</h4>
 <p>Relies on copying, not web data distribution; blank nodes not global IRIs:</p>
@@ -458,7 +458,7 @@
         aas_key:idType aas_identifierType:IRDI]];
     dataspec_iec:datatype &quot;INTEGER_MEASURE&quot;;</code></pre>
 <h2 id="non-functional-requirements">Non-Functional Requirements</h2>
-<p>Use cases outline the information domains that eCl@ss RDF must relate to.</p>
+<p>Use cases outline the information domains that ECLASS RDF must relate to.</p>
 <p>But that’s not the whole story, we also need to detail:</p>
 <ul>
 <li>How to get the data? Hosting, Serving, Resolution…</li>
@@ -468,7 +468,7 @@
 <ul>
 <li>Hosting/serving of RDF in a semantic database
 <ul>
-<li>Scope: eCl@ss and manufacturer product catalogs (as a minimum)</li>
+<li>Scope: ECLASS and manufacturer product catalogs (as a minimum)</li>
 </ul></li>
 <li>Semantic resolution</li>
 <li>Content negotiation</li>
@@ -488,7 +488,7 @@
 <li>What will consumers want to search for or search by?
 <ul>
 <li>Eg are these legit queries “find red products”, “find products shorter than 15cm”?</li>
-<li>Are these easy to answer? I haven’t seen many/any sub-properties in eCl@ss?</li>
+<li>Are these easy to answer? I haven’t seen many/any sub-properties in ECLASS?</li>
 <li>Eg there isn’t a single “height”, there’s also “height of enveloping body”</li>
 <li>That applies to “enveloping body - cylinder” and “enveloping body - box”</li>
 <li>There are different props that relate to those Polymorphic blocks</li>
@@ -500,7 +500,7 @@
 </ul></li>
 </ul>
 <h1 id="related-work">Related Work</h1>
-<p>Various previous works are relevant for the eCl@ss effort.</p>
+<p>Various previous works are relevant for the ECLASS effort.</p>
 <ul>
 <li>Martin Hepp: GoodRelations, product classifications, product catalogs</li>
 <li>schema.org Product classes: relevant for all web sites and more; simple pragmatic modeling</li>
@@ -515,14 +515,14 @@
 <li>The “Gen/Tax” distinction between strict class hierarchies and vaguer taxonomic (classification) hierarchies</li>
 <li>Conversion of a number of product ontologies to RDF/OWL, although in a simplistic way</li>
 </ul>
-<p>I’m sure eCl@ss has taken into account his experiments, but we can turn back to his work for more advice and guidance. Below I list Martin’s papers that are relevant to this effort.</p>
+<p>I’m sure ECLASS has taken into account his experiments, but we can turn back to his work for more advice and guidance. Below I list Martin’s papers that are relevant to this effort.</p>
 <p>Comparison/Overview of product description vocabularies:</p>
 <ul>
 <li>Product Representation in the Semantic Web (Working Paper 2004-04)</li>
 <li>Content Metrics for Products and Services Categorization Standard (EEE 2005)</li>
-<li>A Quantitative Analysis of eCl@ss, UNSPSC, eOTD, and RNTD Content, Coverage, and Maintenance (ICEBE 2005)</li>
+<li>A Quantitative Analysis of ECLASS, UNSPSC, eOTD, and RNTD Content, Coverage, and Maintenance (ICEBE 2005)</li>
 <li>The True Complexity of Product Representation in the Semantic Web (ECIS 2006)</li>
-<li>A Quantitative Analysis of Product Categorization Standards: eCl@ss, UNSPSC, eOTD, and RNTD (KAIS 2007)</li>
+<li>A Quantitative Analysis of Product Categorization Standards: ECLASS, UNSPSC, eOTD, and RNTD (KAIS 2007)</li>
 </ul>
 <h3 id="martin-hepp-2">Martin Hepp (2)</h3>
 <p>Conversion Methods:</p>
@@ -541,11 +541,11 @@
 <li>Product Ontology website documentation</li>
 </ul>
 <h3 id="martin-hepp-3">Martin Hepp (3)</h3>
-<p>eCl@ss:</p>
+<p>ECLASS:</p>
 <ul>
-<li>eCl@ssOWL- The Web Ontology for Products and Services (2010-04) website documentation</li>
-<li>Integrating Product Classification Standards into Schema.org- eCl@ss and UNSPSC on the Web of Data (OTM 2017)</li>
-<li>eCl@ssOWL- A Fully-Fledged Products and Services Ontology in OWL (ISWC 2005 Poster)</li>
+<li>ECLASSOWL- The Web Ontology for Products and Services (2010-04) website documentation</li>
+<li>Integrating Product Classification Standards into Schema.org- ECLASS and UNSPSC on the Web of Data (OTM 2017)</li>
+<li>ECLASSOWL- A Fully-Fledged Products and Services Ontology in OWL (ISWC 2005 Poster)</li>
 <li>Using BMEcat Catalogs as a Lever for Product Master Data on the Semantic Web (ESWC 2013)</li>
 </ul>
 <p>ISO 13584 (PLIB):</p>
@@ -620,7 +620,7 @@
 <li>Describe data structure and validation rules in a machine-readable way</li>
 <li>Select amongst several closely related models
 <ul>
-<li>I think this should be used to implement the <strong>eCl@ss Basic/Advanced distinction</strong></li>
+<li>I think this should be used to implement the <strong>ECLASS Basic/Advanced distinction</strong></li>
 <li>A recent specification describes how such selection can be done in the HTTP protocol: <a href="https://www.w3.org/TR/dx-prof-conneg/">Content Negotiation by Profile</a></li>
 <li>Similar to negotiation by content type (<code>Accept</code>) and language (<code>Accept-Language</code>)</li>
 </ul></li>
@@ -700,9 +700,9 @@
 <h1 id="ontoml-representation">OntoML Representation</h1>
 <p><img src="img/RDF-20200920-OntoML%20Aspects.png" /></p>
 <h3 id="ontoml-pros-and-cons">OntoML Pros and Cons</h3>
-<p>Both the first and second eCl@ss RDF representations closely mirror OntoML.</p>
+<p>Both the first and second ECLASS RDF representations closely mirror OntoML.</p>
 <ul>
-<li>Pros: represents all eCl@ss information
+<li>Pros: represents all ECLASS information
 <ul>
 <li>Any alternative approach should take this into account</li>
 </ul></li>
@@ -876,19 +876,19 @@
 <p>OntoML is a closed information ecosystem, so it promotes the use of own Units of Measure (UoM)</p>
 <ul>
 <li>IEC UoM (eg see quantity <a href="https://cdd.iec.ch/cdd/iec61360/cdddev.nsf/ListsOfUnitsAllVersions/0112-2---62720%23UAD106?opendocument:">mass density</a> and its list of units): large number, but no dimensional analysis, no conversion factors.</li>
-<li>eCl@ss UoM: no dimensional analysis (AFAIK), proper conversion factors.</li>
+<li>ECLASS UoM: no dimensional analysis (AFAIK), proper conversion factors.</li>
 </ul>
-<p>Maybe eCl@ss should not attempt to be an authority on UoM?</p>
+<p>Maybe ECLASS should not attempt to be an authority on UoM?</p>
 <ul>
 <li>Evaluate against the two UoM evaluation papers</li>
-<li>How many units does eCl@ss have?</li>
+<li>How many units does ECLASS have?</li>
 <li>Option1: use established units (QUDT or LINDT)</li>
-<li>Option2: use eCl@ss units, but express with QUDT properties</li>
+<li>Option2: use ECLASS units, but express with QUDT properties</li>
 </ul>
 <h3 id="ontoml-local-vs-global-thinking">OntoML: Local vs Global Thinking</h3>
 <p>OntoML is based upon local not global thinking. Examples:</p>
 <ul>
-<li>Embedded list of country codes, but eCl@ss should not attempt to be a geographic authority
+<li>Embedded list of country codes, but ECLASS should not attempt to be a geographic authority
 <ul>
 <li>Authoritative LOD sources are available: Geonames on all kinds of places, and many up to date country lists</li>
 </ul></li>
@@ -930,7 +930,7 @@
 <p>I understand the logic of using IRDIs instead of names for ontology terms (classes and properties):</p>
 <ul>
 <li>Names are not as stable</li>
-<li>eCl@ss includes multilingual information. Although EN is the first and mandatory language, it may be better not to put it in the foundation</li>
+<li>ECLASS includes multilingual information. Although EN is the first and mandatory language, it may be better not to put it in the foundation</li>
 </ul>
 <p>The largest ontology with named terms that I know of is FIBO in the financial domain: 122 ontologies, 1500 classes, 1000 properties. But most of the huge ontologies use numbered/coded class, eg:</p>
 <ul>
@@ -946,7 +946,7 @@
 <ul>
 <li>Which does NOT mean that I recommend making English names</li>
 </ul></li>
-<li>But eCl@ss may decide to reuse some existing classes, properties or UoM
+<li>But ECLASS may decide to reuse some existing classes, properties or UoM
 <ul>
 <li>Then some IRDIs should be replaced with named terms</li>
 <li>Eg <code>schema:gtin</code> instead of <code>ec:0173-1_02-AAO663_003</code></li>
@@ -956,7 +956,7 @@
 <h2 id="irdi-stability-vs-versioning">IRDI Stability vs Versioning</h2>
 <ul>
 <li>Some props have quite a large IRDI version (last component), eg “Operating resource protection class” <code>0173-1#02-BAA205#012</code></li>
-<li>I guess the IRDI version is incremented (upon eCl@ss release time) when one of its dependencies are incremented</li>
+<li>I guess the IRDI version is incremented (upon ECLASS release time) when one of its dependencies are incremented</li>
 <li>This leads to cascading (avalanche) incrementing:
 <ul>
 <li>Eg if a new country is added to the list</li>
@@ -975,26 +975,26 @@
 </ul>
 <h3 id="irdi-versioning-cons">IRDI Versioning Cons</h3>
 <ul>
-<li>A large manufacturer who uses eCl@ss for a long time:
+<li>A large manufacturer who uses ECLASS for a long time:
 <ul>
-<li>Will have data referring to <strong>many</strong> historic eCl@ss versions at the same time</li>
+<li>Will have data referring to <strong>many</strong> historic ECLASS versions at the same time</li>
 <li>Or face large-scale data migrations</li>
-<li>His tooling must deal with these multiple eCl@ss versions</li>
-<li>A <strong>disincentive</strong> for upgrading to the latest eCl@ss often</li>
+<li>His tooling must deal with these multiple ECLASS versions</li>
+<li>A <strong>disincentive</strong> for upgrading to the latest ECLASS often</li>
 </ul></li>
 <li>A large supplier/retailer that deals with many manufacturers:
 <ul>
-<li>Will have to deal with many historic eCl@ss versions, even if each manufacturer use sonly one eCl@ss version</li>
+<li>Will have to deal with many historic ECLASS versions, even if each manufacturer use sonly one ECLASS version</li>
 </ul></li>
 <li>A data consumer that wants to query data:
 <ul>
 <li>Will have to deal with many different (versioned) IRIs for the same prop eg “height”</li>
 <li>Will have to find them (how?) and enumerate them in the query (huge inconvenience)</li>
-<li>Queries will be invalidated when a new eCl@ss version comes out</li>
+<li>Queries will be invalidated when a new ECLASS version comes out</li>
 </ul></li>
-<li>eCl@ss provides no formal link between versions of the same IRDI
+<li>ECLASS provides no formal link between versions of the same IRDI
 <ul>
-<li>eCl@ss even stopped issuing a version-less IRDI field</li>
+<li>ECLASS even stopped issuing a version-less IRDI field</li>
 </ul></li>
 </ul>
 <h3 id="versioned-iris-make-querying-harder">Versioned IRIs Make Querying Harder</h3>
@@ -1084,7 +1084,7 @@ unit:A                                         ### URLs are permanent
 <li>Below I use named classes and properties rather than IRDI-based terms, but that’s just for better understandability
 <ul>
 <li>It doesn’t represent a decision to switch away from IRDIs</li>
-<li>Most eCl@ss URLs will be IRDI-based</li>
+<li>Most ECLASS URLs will be IRDI-based</li>
 <li>But for some you may decide to use schema.org terms</li>
 </ul></li>
 <li>For every term I include the <code>:irdi</code> in is original form, for searching by id</li>
@@ -1095,15 +1095,15 @@ unit:A                                         ### URLs are permanent
 <li><code>skos:notation</code> is commonly used to represent the hierarchical code.</li>
 <li>schema.org has <code>DefinedTermSet</code> and <code>DefinedTerm</code> that do the same, but don’t have a hierarchy.</li>
 </ul>
-<pre class="ttl"><code>:eCl@ss a skos:ConceptScheme; skos:prefLabel &quot;eCl@ss Product Classification&quot;@en, &quot;...&quot;@de.
+<pre class="ttl"><code>:ECLASS a skos:ConceptScheme; skos:prefLabel &quot;ECLASS Product Classification&quot;@en, &quot;...&quot;@de.
 
-:27000000 a skos:Concept; skos:notation &quot;27000000&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:topConceptOf :eCl@ss;
+:27000000 a skos:Concept; skos:notation &quot;27000000&quot;; :irdi &quot;...&quot;; skos:inScheme :ECLASS; skos:topConceptOf :ECLASS;
   skos:prefLabel &quot;27 Electric engineering, automation, process control engineering&quot;@en.
-:27070000 a skos:Concept; skos:notation &quot;27070000&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:broader :27000000;
+:27070000 a skos:Concept; skos:notation &quot;27070000&quot;; :irdi &quot;...&quot;; skos:inScheme :ECLASS; skos:broader :27000000;
   skos:prefLabel &quot;27-07 Medium voltage switchgear, system&quot;@en.
-:27070200 a skos:Concept; skos:notation &quot;27070200&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:broader :27070000;
+:27070200 a skos:Concept; skos:notation &quot;27070200&quot;; :irdi &quot;...&quot;; skos:inScheme :ECLASS; skos:broader :27070000;
   skos:prefLabel &quot;27-07-02 Switch (medium voltage)&quot;@en.
-:27070203 a skos:Concept; skos:notation &quot;27070203&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:broader :27070200;
+:27070203 a skos:Concept; skos:notation &quot;27070203&quot;; :irdi &quot;...&quot;; skos:inScheme :ECLASS; skos:broader :27070200;
   skos:prefLabel &quot;27-07-02-03 Disconnecting switch (medium voltage)&quot;@en.</code></pre>
 <h3 id="product-class">Product Class</h3>
 <p>An application class (basic or advanced) is represented as an OWL class <code>:ProductClass</code>.</p>
@@ -1246,7 +1246,7 @@ unit:A                                         ### URLs are permanent
 <ul>
 <li>I find instance data more important (and “more interesting”) as it directly tells you what the data looks like.</li>
 <li>Now we have some basic <code>ProductClass</code> info and can show how a manufacturer can use it in their product catalog.</li>
-<li>I used the empty prefix <code>:</code> for eCl@ss props, and <code>mf:</code> for manufacturer props.</li>
+<li>I used the empty prefix <code>:</code> for ECLASS props, and <code>mf:</code> for manufacturer props.</li>
 <li>First I show the more natural representation using the “refactored” pattern for supplier/manufacturer.</li>
 </ul>
 <h3 id="catalog-entry-refactored">Catalog Entry (Refactored)</h3>
@@ -1273,7 +1273,7 @@ mf:Company2 a :Organization; :name &quot;Company2&quot;@en; :gln &quot;098765432
 <ul>
 <li>It doesn’t optimize aspect structure/nesting
 <ul>
-<li>From the point of view of eCl@ss information engineer, Advanced structure is much better than Basic because it’s “divide and conquer”</li>
+<li>From the point of view of ECLASS information engineer, Advanced structure is much better than Basic because it’s “divide and conquer”</li>
 <li>But from the point of view of information consumer, <code>mf:1234567_identification</code> is a “parasitic” node!
 <ul>
 <li>It adds a level to hop through, without adding much value</li>
@@ -1340,14 +1340,14 @@ mf:1234567_doc3 a :AdditionalInformation; :index 3;
   :type_of_document :Application_Software;
   :source_as_path_info &quot;smartLamp-driver.dll&quot;;
   :type_of_source_file &quot;application/octet-stream&quot;.</code></pre>
-<h3 id="eclss-datatype-uri">eCl@ss Datatype <code>URI</code></h3>
+<h3 id="eclss-datatype-uri">ECLASS Datatype <code>URI</code></h3>
 <ul>
 <li>Speaking of <code>AdditionalInformation</code>, I can’t believe there’s no <code>document URL</code> prop.
 <ul>
 <li>Modern manufacturers put their product documents online, right?</li>
 <li>Maybe <code>source as path info</code> plays that role?</li>
 </ul></li>
-<li>But really, eCl@ss needs a data type <code>URI</code> so it can be validated properly</li>
+<li>But really, ECLASS needs a data type <code>URI</code> so it can be validated properly</li>
 <li><code>URI of the product</code> has datatype “String (translatable)”
 <ul>
 <li>Assume there are web pages in English and German</li>
@@ -1375,7 +1375,7 @@ mf:1234567_doc3 a :AdditionalInformation; :index 3;
 <p>Below I show how the first alternative looks in a catalog entry.</p>
 <ul>
 <li>I use <code>ucum:</code> literals that keep the value and unit together, while allowing comparison and arithmetic operations</li>
-<li>Or if the unit is fixed in eCl@ss, it can be omitted from the literal</li>
+<li>Or if the unit is fixed in ECLASS, it can be omitted from the literal</li>
 <li>Or if we must express the unit explicitly, we need extra nodes</li>
 </ul>
 <h3 id="polymorphism-1">Polymorphism</h3>
@@ -1391,7 +1391,7 @@ mf:1234568_cuboid a :EnvelopingBodyCuboid;
   :depth &quot;25 cm&quot;^^cdt:ucum;
   :height &quot;12 cm&quot;^^cdt:ucum; :width &quot;12 cm&quot;^^cdt:ucum.</code></pre>
 <ul>
-<li>AFAIK eCl@ss uses 2 different IRDI <code>:size_dimension1</code> and <code>:size_dimension2</code></li>
+<li>AFAIK ECLASS uses 2 different IRDI <code>:size_dimension1</code> and <code>:size_dimension2</code></li>
 <li>That’s a problem for querying</li>
 <li>Even more, there’s no relation between them</li>
 </ul>
@@ -1400,10 +1400,10 @@ mf:1234568_cuboid a :EnvelopingBodyCuboid;
 <ul>
 <li>Link from device to <code>ProductModel</code> (must be compatible TD Templates)</li>
 <li>When possible, use SGTIN (its prefix is the GTIN of the product model)</li>
-<li>Links from Product Model (manufacturer catalog) to eCl@ss by using classes/props</li>
+<li>Links from Product Model (manufacturer catalog) to ECLASS by using classes/props</li>
 <li>Prop <code>luminance</code> described as <code>min..max</code> levels in <code>ProductModel</code> but a dynamic “current” value in the device</li>
 <li>Annotation to state that <code>luminance</code> is a WoT TD property, having <code>NumberSchema</code></li>
-<li>Somehow (HOW?) relate eCl@ss props to WoT TD properties or parts (see next)</li>
+<li>Somehow (HOW?) relate ECLASS props to WoT TD properties or parts (see next)</li>
 </ul>
 <h3 id="wot-parts">WoT Parts</h3>
 <ul>
