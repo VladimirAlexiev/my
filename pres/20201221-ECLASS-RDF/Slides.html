@@ -428,10 +428,9 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section>
 <section id="motivation" class="title-slide slide level1 center" data-number="1">
 <h1><span class="header-section-number">1</span> Motivation</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sparql number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>select * where {?s ?p ?o}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We discuss various considerations for representing <a href="mailto:ECLASS" class="email">ECLASS</a> product info as RDF.</p>
+<p>We discuss various considerations for representing ECLASS product info as RDF.</p>
 <ul>
-<li>Why is it important to put <a href="mailto:ECLASS" class="email">ECLASS</a> online on the web of data?
+<li>Why is it important to put ECLASS online on the web of data?
 <ul>
 <li>Use Cases must drive representation principles (see below)</li>
 <li>Competency Questions are also important (none discussed yet)</li>
@@ -459,7 +458,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="crucial-questions" class="title-slide slide level2 center" data-number="1.2">
 <h2><span class="header-section-number">1.2</span> Crucial Questions</h2>
-<p>Crucial Questions to consider when designing <a href="mailto:ECLASS" class="email">ECLASS</a> RDF.</p>
+<p>Crucial Questions to consider when designing ECLASS RDF.</p>
 <p>Together with the use cases and competency questions, they should provide a frame of reference for making decisions that are <strong>usable, consistent, viable in the long term</strong>.</p>
 <ul>
 <li>Data Copying vs Data Decentralization
@@ -474,7 +473,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Closed vs Open Data Ecosystems</li>
 <li>Local vs Global Thinking</li>
 </ul>
-<p>While I have my doubts that the <a href="mailto:ECLASS" class="email">ECLASS</a> Association will be able to soon subscribe to these principles, I believe they are important considerations to keep in mind.</p>
+<p>While I have my doubts that the ECLASS Association will be able to soon subscribe to these principles, I believe they are important considerations to keep in mind.</p>
 </section>
 <section id="semantic-web-principles" class="title-slide slide level3 center" data-number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Semantic Web Principles</h3>
@@ -505,12 +504,12 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Global IRIs are sparingly used and don’t have “first class citizen” status</li>
 <li>There is no assumption that the up-to-date Version of Record of a fine-granularity piece of data will always be found at a certain IRI.
 <ul>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> distributions,</li>
+<li>ECLASS distributions,</li>
 <li>BMEcat transfers,</li>
 <li>IEC CDD unavailability of IRDIs for global resolution,</li>
 <li>RAMI/AAS examples of copying other data into an admin shell, etc.</li>
 </ul></li>
-<li>I believe that <a href="mailto:ECLASS" class="email">ECLASS</a> RDF should break out of this tradition and tackle directly Data Distribution.</li>
+<li>I believe that ECLASS RDF should break out of this tradition and tackle directly Data Distribution.</li>
 <li>Exception: ISO 15926 (oil &amp; gas) and its <strong>Reference Data Libraries</strong></li>
 </ul>
 </section>
@@ -551,21 +550,21 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="open-vs-closed-data-ecosystems" class="title-slide slide level3 smaller center" data-number="1.2.4">
 <h3><span class="header-section-number">1.2.4</span> Open vs Closed Data Ecosystems</h3>
-<p><a href="mailto:ECLASS" class="email">ECLASS</a> is a very closed data environment: it does not reuse data by anyone else. Eg:</p>
+<p>ECLASS is a very closed data environment: it does not reuse data by anyone else. Eg:</p>
 <ul>
 <li>Although it uses same/similar data model as IEC CDD, it does not use any IEC data, not even IEC Units of Measure.</li>
-<li>It defines various lists that <strong>should not be the business</strong> of <a href="mailto:ECLASS" class="email">ECLASS</a>, eg: Countries, Languages, Colors, Units of Measure, etc</li>
+<li>It defines various lists that <strong>should not be the business</strong> of ECLASS, eg: Countries, Languages, Colors, Units of Measure, etc</li>
 </ul>
-<p>Why should <a href="mailto:ECLASS" class="email">ECLASS</a> care about this?</p>
+<p>Why should ECLASS care about this?</p>
 <ul>
-<li>Reusing data representations and data items created by others may reduce the work of <a href="mailto:ECLASS" class="email">ECLASS</a>.
+<li>Reusing data representations and data items created by others may reduce the work of ECLASS.
 <ul>
 <li>(I acknowledge that this does not hold in all cases because sometimes it’s easier to produce data in a closed environment.)</li>
 </ul></li>
-<li>Reusing data may make it easier for <a href="mailto:ECLASS" class="email">ECLASS</a> users to consume <a href="mailto:ECLASS" class="email">ECLASS</a>:
+<li>Reusing data may make it easier for ECLASS users to consume ECLASS:
 <ul>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> product data is only one kind of data in an enterprise IT environment</li>
-<li>There is a large number of ontologies relevant to the use cases that <a href="mailto:ECLASS" class="email">ECLASS</a> cannot interoperate with</li>
+<li>ECLASS product data is only one kind of data in an enterprise IT environment</li>
+<li>There is a large number of ontologies relevant to the use cases that ECLASS cannot interoperate with</li>
 <li>That includes IoT/WoT, schema.org, sensors, electrical, green energy, BIM, etc, etc</li>
 </ul></li>
 </ul>
@@ -607,7 +606,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>Positive aspects:</p>
 <ul>
 <li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf">IEC CDD</a> is online, open (but not quite), update a lot more frequently</li>
-<li>PLIB is well described at <a href="mailto:ECLASS" class="email">ECLASS</a> wiki: <a href="https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML">ISO_13584-32_ontoML</a> and <a href="https://wiki.eclass.eu/wiki/Conceptual_data_model">Conceptual_data_model</a>; but not officia/comprehensive</li>
+<li>PLIB is well described at ECLASS wiki: <a href="https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML">ISO_13584-32_ontoML</a> and <a href="https://wiki.eclass.eu/wiki/Conceptual_data_model">Conceptual_data_model</a>; but not officia/comprehensive</li>
 </ul>
 <p>“ISO/IEC are for professional use, so money is not a problem”</p>
 <ul>
@@ -626,9 +625,9 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>YOU may copy the database only for a restricted and confidential internal use and this LICENSE exception is also restricted to other employees for their internal or external use within YOUR organization.</li>
 <li>Only partial dumps available</li>
 </ul></li>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> is not available online in machine-readable form
+<li>ECLASS is not available online in machine-readable form
 <ul>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> is paid and <strong>that is fine</strong>: “Open” is not the same as “Free”</li>
+<li>ECLASS is paid and <strong>that is fine</strong>: “Open” is not the same as “Free”</li>
 <li>But the Association must consider carefully who are its paying customers and what should be its licensing model</li>
 <li>I think manufacturers should pay, but not eCommerce or WoT developers</li>
 </ul></li>
@@ -639,7 +638,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="local-vs-global-thinking" class="title-slide slide level2 center" data-number="1.3">
 <h2><span class="header-section-number">1.3</span> Local vs Global Thinking</h2>
 <ul>
-<li>PLIB &amp; <a href="mailto:ECLASS" class="email">ECLASS</a> define everything locally</li>
+<li>PLIB &amp; ECLASS define everything locally</li>
 <li>Internal data items are not intended for online access (eg IRDI Versioning)</li>
 <li>External LOD is never reused, although readily available, eg
 <ul>
@@ -656,8 +655,8 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="use-cases" class="title-slide slide level2 center" data-number="1.4">
 <h2><span class="header-section-number">1.4</span> Use Cases</h2>
 <ul>
-<li>Product libraries: PLIB/POM, <a href="mailto:ECLASS" class="email">ECLASS</a>/IEC CDD (innate)</li>
-<li>Web of Things TD: online description and control (original case posed by <a href="mailto:ECLASS" class="email">ECLASS</a> Association)</li>
+<li>Product libraries: PLIB/POM, ECLASS/IEC CDD (innate)</li>
+<li>Web of Things TD: online description and control (original case posed by ECLASS Association)</li>
 <li>Online product catalogs (BMEcat conversion shown recently)</li>
 <li>schema.org (GoodRelations): eCommerce integration</li>
 <li>Industrie 4.0: RAMI 4.0, Admin Shell, OPC UA…</li>
@@ -672,7 +671,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="product-libraries" class="title-slide slide level3 center" data-number="1.4.1">
 <h3><span class="header-section-number">1.4.1</span> Product Libraries</h3>
 <ul>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> is based on the ISO 13584 - IEC 61360 PLIB standard
+<li>ECLASS is based on the ISO 13584 - IEC 61360 PLIB standard
 <ul>
 <li>Uses the ISO 13584-32 ontoML Conceptual data model</li>
 </ul></li>
@@ -695,7 +694,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="plibpom-product-library-examples" class="title-slide slide level4 smaller center" data-number="1.4.1.2">
 <h4><span class="header-section-number">1.4.1.2</span> PLIB/POM Product Library Examples</h4>
 <ul>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> (100 orgs, German/international)</li>
+<li>ECLASS (100 orgs, German/international)</li>
 <li>IEC 62474: Material Declarations for Electrotechnical Products</li>
 <li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf/TreeFrameset?OpenFrameSet">IEC 61360: Common Data Dictionary</a>
 <ul>
@@ -729,7 +728,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="web-of-things-td" class="title-slide slide level3 center" data-number="1.4.2">
 <h3><span class="header-section-number">1.4.2</span> Web of Things TD</h3>
 <ul>
-<li>This was the original case posed by the <a href="mailto:ECLASS" class="email">ECLASS</a> Association</li>
+<li>This was the original case posed by the ECLASS Association</li>
 <li>WoT aims to unify/reduce fragmentation of IoT protocols/data formats
 <ul>
 <li>Follow the Web Architecture</li>
@@ -762,7 +761,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>You can’t expect a Smart Bulb to carry its own Spec Sheet (not enough memory!)</li>
 <li>So a Thing uses Template to link to its detailed product props:</li>
 <li>Bulb links to a manufacturer Catalog</li>
-<li>Catalog links to <a href="mailto:ECLASS" class="email">ECLASS</a> product/prop definitions</li>
+<li>Catalog links to ECLASS product/prop definitions</li>
 <li>The data is distributed functionally</li>
 <li>Yet, a WoT server should assemble all of it and present as a single TD</li>
 </ul>
@@ -772,7 +771,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <h4><span class="header-section-number">1.4.2.2</span> WoT TD Questions</h4>
 <p>There are many questions/details to be aligned, most importantly:</p>
 <ul>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> is about describing the props, parts and aspects of products</li>
+<li>ECLASS is about describing the props, parts and aspects of products</li>
 <li>How to reflect those in WoT TD? It takes a simpler approach</li>
 <li>How to use those to systematically construct TD Affordances?</li>
 <li>Eg if a Lamp uses a Cardinality blocks Switch 1, Switch 2 and Bulb 1, Bulb 2, does that mean I can systematically have:
@@ -789,11 +788,11 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="online-product-catalogs" class="title-slide slide level3 center" data-number="1.4.3">
 <h3><span class="header-section-number">1.4.3</span> Online Product Catalogs</h3>
 <ul>
-<li>A crucial current use of <a href="mailto:ECLASS" class="email">ECLASS</a> is in product catalogs (eg XML based: BMEcat, ISO)-</li>
+<li>A crucial current use of ECLASS is in product catalogs (eg XML based: BMEcat, ISO)-</li>
 <li>I’m very glad this is included in scope (the BMEcat-&gt;RDF conversion shown recently)</li>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> RDF representation without guidance on catalog RDF representation would be pointless</li>
+<li>ECLASS RDF representation without guidance on catalog RDF representation would be pointless</li>
 <li>Web-accessible (online) and semantic catalogs are crucial for other use cases (WoT Templates, schema.org)</li>
-<li>The design of RDF catalogs <strong>conforming</strong> to those cases is a prerequisite for <a href="mailto:ECLASS" class="email">ECLASS</a> RDF</li>
+<li>The design of RDF catalogs <strong>conforming</strong> to those cases is a prerequisite for ECLASS RDF</li>
 </ul>
 </section>
 
@@ -852,7 +851,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Reference Architectural Model for Industry 4.0 (RAMI)</li>
 <li>Asset Administration Shell (AAS)</li>
 </ul>
-<p>Intended to unify/incorporate/extend previous Industrial IoT models including AutomationML, OPC UA, IEC CDD, and <a href="mailto:ECLASS" class="email">ECLASS</a>.</p>
+<p>Intended to unify/incorporate/extend previous Industrial IoT models including AutomationML, OPC UA, IEC CDD, and ECLASS.</p>
 <p>Spec “Details of the Asset Administration Shell Part 1” (Version 2.0.1 2019-11) includes the following semantic parts in Annex G</p>
 <ul>
 <li>“ii. RDF Data Model for the Administration Shell” (p270-315): an OWL ontology with namespace <a href="http://admin-shell.io" class="uri">http://admin-shell.io</a>, saved as <code>aas-ontology.ttl</code></li>
@@ -871,12 +870,12 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>BMEcat</li>
 <li>i4aas</li>
 <li>CSV</li>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> as presented at <a href="https://www.eclass.eu/anwendung/verwaltungsschale.html">ECLASS in Admin Shell</a></li>
+<li>ECLASS as presented at <a href="https://www.eclass.eu/anwendung/verwaltungsschale.html">ECLASS in Admin Shell</a></li>
 </ul>
 </section>
 
 <section id="aasx-eclss-import" class="title-slide slide level4 center" data-number="1.4.5.2">
-<h4><span class="header-section-number">1.4.5.2</span> AASX <a href="mailto:ECLASS" class="email">ECLASS</a> Import</h4>
+<h4><span class="header-section-number">1.4.5.2</span> AASX ECLASS Import</h4>
 
 <img data-src="img/csm_7_52bfb6aa34.png" class="r-stretch"></section>
 
@@ -948,7 +947,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="non-functional-requirements" class="title-slide slide level2 center" data-number="1.5">
 <h2><span class="header-section-number">1.5</span> Non-Functional Requirements</h2>
-<p>Use cases outline the information domains that <a href="mailto:ECLASS" class="email">ECLASS</a> RDF must relate to.</p>
+<p>Use cases outline the information domains that ECLASS RDF must relate to.</p>
 <p>But that’s not the whole story, we also need to detail:</p>
 <ul>
 <li>How to get the data? Hosting, Serving, Resolution…</li>
@@ -960,7 +959,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>Hosting/serving of RDF in a semantic database
 <ul>
-<li>Scope: <a href="mailto:ECLASS" class="email">ECLASS</a> and manufacturer product catalogs (as a minimum)</li>
+<li>Scope: ECLASS and manufacturer product catalogs (as a minimum)</li>
 </ul></li>
 <li>Semantic resolution</li>
 <li>Content negotiation</li>
@@ -983,7 +982,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>What will consumers want to search for or search by?
 <ul>
 <li>Eg are these legit queries “find red products”, “find products shorter than 15cm”?</li>
-<li>Are these easy to answer? I haven’t seen many/any sub-properties in <a href="mailto:ECLASS" class="email">ECLASS</a>?</li>
+<li>Are these easy to answer? I haven’t seen many/any sub-properties in ECLASS?</li>
 <li>Eg there isn’t a single “height”, there’s also “height of enveloping body”</li>
 <li>That applies to “enveloping body - cylinder” and “enveloping body - box”</li>
 <li>There are different props that relate to those Polymorphic blocks</li>
@@ -1000,7 +999,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section>
 <section id="related-work" class="title-slide slide level1 center" data-number="2">
 <h1><span class="header-section-number">2</span> Related Work</h1>
-<p>Various previous works are relevant for the <a href="mailto:ECLASS" class="email">ECLASS</a> effort.</p>
+<p>Various previous works are relevant for the ECLASS effort.</p>
 <ul>
 <li>Martin Hepp: GoodRelations, product classifications, product catalogs</li>
 <li>schema.org Product classes: relevant for all web sites and more; simple pragmatic modeling</li>
@@ -1017,14 +1016,14 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>The “Gen/Tax” distinction between strict class hierarchies and vaguer taxonomic (classification) hierarchies</li>
 <li>Conversion of a number of product ontologies to RDF/OWL, although in a simplistic way</li>
 </ul>
-<p>I’m sure <a href="mailto:ECLASS" class="email">ECLASS</a> has taken into account his experiments, but we can turn back to his work for more advice and guidance. Below I list Martin’s papers that are relevant to this effort.</p>
+<p>I’m sure ECLASS has taken into account his experiments, but we can turn back to his work for more advice and guidance. Below I list Martin’s papers that are relevant to this effort.</p>
 <p>Comparison/Overview of product description vocabularies:</p>
 <ul>
 <li>Product Representation in the Semantic Web (Working Paper 2004-04)</li>
 <li>Content Metrics for Products and Services Categorization Standard (EEE 2005)</li>
-<li>A Quantitative Analysis of <a href="mailto:ECLASS" class="email">ECLASS</a>, UNSPSC, eOTD, and RNTD Content, Coverage, and Maintenance (ICEBE 2005)</li>
+<li>A Quantitative Analysis of ECLASS, UNSPSC, eOTD, and RNTD Content, Coverage, and Maintenance (ICEBE 2005)</li>
 <li>The True Complexity of Product Representation in the Semantic Web (ECIS 2006)</li>
-<li>A Quantitative Analysis of Product Categorization Standards: <a href="mailto:ECLASS" class="email">ECLASS</a>, UNSPSC, eOTD, and RNTD (KAIS 2007)</li>
+<li>A Quantitative Analysis of Product Categorization Standards: ECLASS, UNSPSC, eOTD, and RNTD (KAIS 2007)</li>
 </ul>
 </section>
 <section id="martin-hepp-2" class="title-slide slide level3 smaller center" data-number="2.1.1">
@@ -1048,10 +1047,10 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="martin-hepp-3" class="title-slide slide level3 smaller center" data-number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Martin Hepp (3)</h3>
-<p><a href="mailto:ECLASS" class="email">ECLASS</a>:</p>
+<p>ECLASS:</p>
 <ul>
 <li><a href="mailto:ECLASSOWL" class="email">ECLASSOWL</a>- The Web Ontology for Products and Services (2010-04) website documentation</li>
-<li>Integrating Product Classification Standards into Schema.org- <a href="mailto:ECLASS" class="email">ECLASS</a> and UNSPSC on the Web of Data (OTM 2017)</li>
+<li>Integrating Product Classification Standards into Schema.org- ECLASS and UNSPSC on the Web of Data (OTM 2017)</li>
 <li><a href="mailto:ECLASSOWL" class="email">ECLASSOWL</a>- A Fully-Fledged Products and Services Ontology in OWL (ISWC 2005 Poster)</li>
 <li>Using BMEcat Catalogs as a Lever for Product Master Data on the Semantic Web (ESWC 2013)</li>
 </ul>
@@ -1146,7 +1145,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Describe data structure and validation rules in a machine-readable way</li>
 <li>Select amongst several closely related models
 <ul>
-<li>I think this should be used to implement the <strong><a href="mailto:ECLASS" class="email">ECLASS</a> Basic/Advanced distinction</strong></li>
+<li>I think this should be used to implement the <strong>ECLASS Basic/Advanced distinction</strong></li>
 <li>A recent specification describes how such selection can be done in the HTTP protocol: <a href="https://www.w3.org/TR/dx-prof-conneg/">Content Negotiation by Profile</a></li>
 <li>Similar to negotiation by content type (<code>Accept</code>) and language (<code>Accept-Language</code>)</li>
 </ul></li>
@@ -1256,9 +1255,9 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </section>
 <section id="ontoml-pros-and-cons" class="title-slide slide level3 center" data-number="3.0.1">
 <h3><span class="header-section-number">3.0.1</span> OntoML Pros and Cons</h3>
-<p>Both the first and second <a href="mailto:ECLASS" class="email">ECLASS</a> RDF representations closely mirror OntoML.</p>
+<p>Both the first and second ECLASS RDF representations closely mirror OntoML.</p>
 <ul>
-<li>Pros: represents all <a href="mailto:ECLASS" class="email">ECLASS</a> information
+<li>Pros: represents all ECLASS information
 <ul>
 <li>Any alternative approach should take this into account</li>
 </ul></li>
@@ -1452,14 +1451,14 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>OntoML is a closed information ecosystem, so it promotes the use of own Units of Measure (UoM)</p>
 <ul>
 <li>IEC UoM (eg see quantity <a href="https://cdd.iec.ch/cdd/iec61360/cdddev.nsf/ListsOfUnitsAllVersions/0112-2---62720%23UAD106?opendocument:">mass density</a> and its list of units): large number, but no dimensional analysis, no conversion factors.</li>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> UoM: no dimensional analysis (AFAIK), proper conversion factors.</li>
+<li>ECLASS UoM: no dimensional analysis (AFAIK), proper conversion factors.</li>
 </ul>
-<p>Maybe <a href="mailto:ECLASS" class="email">ECLASS</a> should not attempt to be an authority on UoM?</p>
+<p>Maybe ECLASS should not attempt to be an authority on UoM?</p>
 <ul>
 <li>Evaluate against the two UoM evaluation papers</li>
-<li>How many units does <a href="mailto:ECLASS" class="email">ECLASS</a> have?</li>
+<li>How many units does ECLASS have?</li>
 <li>Option1: use established units (QUDT or LINDT)</li>
-<li>Option2: use <a href="mailto:ECLASS" class="email">ECLASS</a> units, but express with QUDT properties</li>
+<li>Option2: use ECLASS units, but express with QUDT properties</li>
 </ul>
 </section>
 
@@ -1467,7 +1466,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <h3><span class="header-section-number">3.1.7</span> OntoML: Local vs Global Thinking</h3>
 <p>OntoML is based upon local not global thinking. Examples:</p>
 <ul>
-<li>Embedded list of country codes, but <a href="mailto:ECLASS" class="email">ECLASS</a> should not attempt to be a geographic authority
+<li>Embedded list of country codes, but ECLASS should not attempt to be a geographic authority
 <ul>
 <li>Authoritative LOD sources are available: Geonames on all kinds of places, and many up to date country lists</li>
 </ul></li>
@@ -1516,7 +1515,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>I understand the logic of using IRDIs instead of names for ontology terms (classes and properties):</p>
 <ul>
 <li>Names are not as stable</li>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> includes multilingual information. Although EN is the first and mandatory language, it may be better not to put it in the foundation</li>
+<li>ECLASS includes multilingual information. Although EN is the first and mandatory language, it may be better not to put it in the foundation</li>
 </ul>
 <p>The largest ontology with named terms that I know of is FIBO in the financial domain: 122 ontologies, 1500 classes, 1000 properties. But most of the huge ontologies use numbered/coded class, eg:</p>
 <ul>
@@ -1534,7 +1533,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>Which does NOT mean that I recommend making English names</li>
 </ul></li>
-<li>But <a href="mailto:ECLASS" class="email">ECLASS</a> may decide to reuse some existing classes, properties or UoM
+<li>But ECLASS may decide to reuse some existing classes, properties or UoM
 <ul>
 <li>Then some IRDIs should be replaced with named terms</li>
 <li>Eg <code>schema:gtin</code> instead of <code>ec:0173-1_02-AAO663_003</code></li>
@@ -1548,7 +1547,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <h2><span class="header-section-number">3.3</span> IRDI Stability vs Versioning</h2>
 <ul>
 <li>Some props have quite a large IRDI version (last component), eg “Operating resource protection class” <code>0173-1#02-BAA205#012</code></li>
-<li>I guess the IRDI version is incremented (upon <a href="mailto:ECLASS" class="email">ECLASS</a> release time) when one of its dependencies are incremented</li>
+<li>I guess the IRDI version is incremented (upon ECLASS release time) when one of its dependencies are incremented</li>
 <li>This leads to cascading (avalanche) incrementing:
 <ul>
 <li>Eg if a new country is added to the list</li>
@@ -1569,26 +1568,26 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="irdi-versioning-cons" class="title-slide slide level3 smaller center" data-number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> IRDI Versioning Cons</h3>
 <ul>
-<li>A large manufacturer who uses <a href="mailto:ECLASS" class="email">ECLASS</a> for a long time:
+<li>A large manufacturer who uses ECLASS for a long time:
 <ul>
-<li>Will have data referring to <strong>many</strong> historic <a href="mailto:ECLASS" class="email">ECLASS</a> versions at the same time</li>
+<li>Will have data referring to <strong>many</strong> historic ECLASS versions at the same time</li>
 <li>Or face large-scale data migrations</li>
-<li>His tooling must deal with these multiple <a href="mailto:ECLASS" class="email">ECLASS</a> versions</li>
-<li>A <strong>disincentive</strong> for upgrading to the latest <a href="mailto:ECLASS" class="email">ECLASS</a> often</li>
+<li>His tooling must deal with these multiple ECLASS versions</li>
+<li>A <strong>disincentive</strong> for upgrading to the latest ECLASS often</li>
 </ul></li>
 <li>A large supplier/retailer that deals with many manufacturers:
 <ul>
-<li>Will have to deal with many historic <a href="mailto:ECLASS" class="email">ECLASS</a> versions, even if each manufacturer use sonly one <a href="mailto:ECLASS" class="email">ECLASS</a> version</li>
+<li>Will have to deal with many historic ECLASS versions, even if each manufacturer use sonly one ECLASS version</li>
 </ul></li>
 <li>A data consumer that wants to query data:
 <ul>
 <li>Will have to deal with many different (versioned) IRIs for the same prop eg “height”</li>
 <li>Will have to find them (how?) and enumerate them in the query (huge inconvenience)</li>
-<li>Queries will be invalidated when a new <a href="mailto:ECLASS" class="email">ECLASS</a> version comes out</li>
+<li>Queries will be invalidated when a new ECLASS version comes out</li>
 </ul></li>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> provides no formal link between versions of the same IRDI
+<li>ECLASS provides no formal link between versions of the same IRDI
 <ul>
-<li><a href="mailto:ECLASS" class="email">ECLASS</a> even stopped issuing a version-less IRDI field</li>
+<li>ECLASS even stopped issuing a version-less IRDI field</li>
 </ul></li>
 </ul>
 </section>
@@ -1694,7 +1693,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Below I use named classes and properties rather than IRDI-based terms, but that’s just for better understandability
 <ul>
 <li>It doesn’t represent a decision to switch away from IRDIs</li>
-<li>Most <a href="mailto:ECLASS" class="email">ECLASS</a> URLs will be IRDI-based</li>
+<li>Most ECLASS URLs will be IRDI-based</li>
 <li>But for some you may decide to use schema.org terms</li>
 </ul></li>
 <li>For every term I include the <code>:irdi</code> in is original form, for searching by id</li>
@@ -1884,7 +1883,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>I find instance data more important (and “more interesting”) as it directly tells you what the data looks like.</li>
 <li>Now we have some basic <code>ProductClass</code> info and can show how a manufacturer can use it in their product catalog.</li>
-<li>I used the empty prefix <code>:</code> for <a href="mailto:ECLASS" class="email">ECLASS</a> props, and <code>mf:</code> for manufacturer props.</li>
+<li>I used the empty prefix <code>:</code> for ECLASS props, and <code>mf:</code> for manufacturer props.</li>
 <li>First I show the more natural representation using the “refactored” pattern for supplier/manufacturer.</li>
 </ul>
 </section>
@@ -1917,7 +1916,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>It doesn’t optimize aspect structure/nesting
 <ul>
-<li>From the point of view of <a href="mailto:ECLASS" class="email">ECLASS</a> information engineer, Advanced structure is much better than Basic because it’s “divide and conquer”</li>
+<li>From the point of view of ECLASS information engineer, Advanced structure is much better than Basic because it’s “divide and conquer”</li>
 <li>But from the point of view of information consumer, <code>mf:1234567_identification</code> is a “parasitic” node!
 <ul>
 <li>It adds a level to hop through, without adding much value</li>
@@ -1996,14 +1995,14 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </section>
 
 <section id="eclss-datatype-uri" class="title-slide slide level3 center" data-number="3.4.16">
-<h3><span class="header-section-number">3.4.16</span> <a href="mailto:ECLASS" class="email">ECLASS</a> Datatype <code class="smaller">URI</code></h3>
+<h3><span class="header-section-number">3.4.16</span> ECLASS Datatype <code class="smaller">URI</code></h3>
 <ul>
 <li>Speaking of <code>AdditionalInformation</code>, I can’t believe there’s no <code>document URL</code> prop.
 <ul>
 <li>Modern manufacturers put their product documents online, right?</li>
 <li>Maybe <code>source as path info</code> plays that role?</li>
 </ul></li>
-<li>But really, <a href="mailto:ECLASS" class="email">ECLASS</a> needs a data type <code>URI</code> so it can be validated properly</li>
+<li>But really, ECLASS needs a data type <code>URI</code> so it can be validated properly</li>
 <li><code>URI of the product</code> has datatype “String (translatable)”
 <ul>
 <li>Assume there are web pages in English and German</li>
@@ -2034,7 +2033,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>Below I show how the first alternative looks in a catalog entry.</p>
 <ul>
 <li>I use <code>ucum:</code> literals that keep the value and unit together, while allowing comparison and arithmetic operations</li>
-<li>Or if the unit is fixed in <a href="mailto:ECLASS" class="email">ECLASS</a>, it can be omitted from the literal</li>
+<li>Or if the unit is fixed in ECLASS, it can be omitted from the literal</li>
 <li>Or if we must express the unit explicitly, we need extra nodes</li>
 </ul>
 </section>
@@ -2053,7 +2052,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <span id="cb15-10"><a href="#cb15-10"></a>  :depth "25 cm"^^cdt:ucum;</span>
 <span id="cb15-11"><a href="#cb15-11"></a>  :height "12 cm"^^cdt:ucum; :width "12 cm"^^cdt:ucum.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>AFAIK <a href="mailto:ECLASS" class="email">ECLASS</a> uses 2 different IRDI <code>:size_dimension1</code> and <code>:size_dimension2</code></li>
+<li>AFAIK ECLASS uses 2 different IRDI <code>:size_dimension1</code> and <code>:size_dimension2</code></li>
 <li>That’s a problem for querying</li>
 <li>Even more, there’s no relation between them</li>
 </ul>
@@ -2065,10 +2064,10 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>Link from device to <code>ProductModel</code> (must be compatible TD Templates)</li>
 <li>When possible, use SGTIN (its prefix is the GTIN of the product model)</li>
-<li>Links from Product Model (manufacturer catalog) to <a href="mailto:ECLASS" class="email">ECLASS</a> by using classes/props</li>
+<li>Links from Product Model (manufacturer catalog) to ECLASS by using classes/props</li>
 <li>Prop <code>luminance</code> described as <code>min..max</code> levels in <code>ProductModel</code> but a dynamic “current” value in the device</li>
 <li>Annotation to state that <code>luminance</code> is a WoT TD property, having <code>NumberSchema</code></li>
-<li>Somehow (HOW?) relate <a href="mailto:ECLASS" class="email">ECLASS</a> props to WoT TD properties or parts (see next)</li>
+<li>Somehow (HOW?) relate ECLASS props to WoT TD properties or parts (see next)</li>
 </ul>
 </section>
 
