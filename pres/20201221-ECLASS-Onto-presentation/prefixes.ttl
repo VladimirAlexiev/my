@@ -1,0 +1,9 @@
+@prefix : <http://rdf.eclass.eu/ontology/>.
+@prefix mf: <http://company1.com/data/>.
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix puml: <http://plantuml.com/ontology#> .
+
+:material              a puml:InlineProperty.
+:luminaire_application a puml:InlineProperty.
+:uri_of_the_product    a puml:InlineProperty.

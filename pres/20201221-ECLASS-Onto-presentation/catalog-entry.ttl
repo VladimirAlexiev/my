@@ -1,0 +1,23 @@
+mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;
+  schema:name "Smart lamp";
+  :luminaire_application :Wall_lamp;
+  :design_of_interior_lighting "curved";
+  :pole_number 2;
+  :material :Real_glas, :Thermoplast;
+  :identification mf:1234567_identification.
+
+mf:1234567_identification a :IdentificationAspects;
+  :manufacturer mf:1234567_manufacturer;
+  :supplier mf:1234567_supplier.
+
+mf:1234567_manufacturer a :ManufacturerAspects;
+  :gtin "1234567"; # or schema:gtin
+  :uri_of_the_product <http://company1.com/product/1234567>; # or schema:uri
+  :date_of_manufacture "2020-10-10"^^xsd:date;
+  :name_of_manufacturer "Company1"@en;
+  :gln_of_manufacturer "987654321".
+
+mf:1234567_supplier a :SupplierAspects;
+  :product_article_number_of_supplier "A-1234567";
+  :name_of_supplier "Company2"@en;
+  :gln_of_supplier "098765432".

@@ -1,0 +1,18 @@
+mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;
+  schema:name "Smart lamp";
+  :manufacturer mf:Company1;
+  :supplier mf:Company2;
+  :gtin "1234567"; # or schema:gtin
+  :product_article_number_of_supplier "A-1234567";
+  :uri_of_the_product <http://company1.com/product/1234567>; # or schema:uri
+  :date_of_manufacture "2020-10-10"^^xsd:date;
+  :luminaire_application :Wall_lamp;
+  :design_of_interior_lighting "curved";
+  :pole_number 2;
+  :material :Real_glas, :Thermoplast.
+
+mf:Company1 a :Organization; :name "Company1"@en; :gln "987654321".
+  # Add here any number of org props, like address, website, etc
+
+mf:Company2 a :Organization; :name "Company2"@en; :gln "098765432".
+  # Add here any number of org props, like address, website, etc

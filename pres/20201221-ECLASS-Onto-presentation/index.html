@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Vladimir Alexiev, Chief Data Architect, Ontotext" />
+  <title>eCl@ss RDF Representation</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">eCl@ss RDF Representation</h1>
+<p class="author">Vladimir Alexiev, Chief Data Architect, Ontotext</p>
+<p class="date">2020-12-15, last updated 2020-12-21</p>
+</header>
+<h1 id="motivation">Motivation</h1>
+<p>We discuss various considerations for representing eCl@ss product info as RDF.</p>
+<ul>
+<li>Why is it important to put eCl@ss online on the web of data?
+<ul>
+<li>Use Cases must drive representation principles (see below)</li>
+<li>Competency Questions are also important (none discussed yet)</li>
+</ul></li>
+<li>Why RDF?
+<ul>
+<li>Semantic data integration has proven itself as the most sclable method for Enterprise Information Integration</li>
+<li>Huge recent interest in Enterprise Knowledge Graps</li>
+<li>Replies the Web Architecture: some simple Semantic Web Principles and Data Decentralization</li>
+</ul></li>
+<li>Unfortunately, as far as I can see, most Industry data still relies on Data Copying (or Exchange)</li>
+</ul>
+<h3 id="ontotext-presentations">Ontotext Presentations</h3>
+<p>Somewhat related Ontotext presentations:</p>
+<ul>
+<li><a href="http://rawgit2.com/VladimirAlexiev/my/master/pres/20200908-i40kg-semantics/Slides.html">Exploring Industry 4.0 Standards with the Ontotext Platform</a>, Semantics 2020 webinar, Sep 2020</li>
+<li><a href="http://rawgit2.com/VladimirAlexiev/my/master/pres/20171025-Practical%20Semantic%20Modeling,%20SPARQL,%20RDF%20Shapes,%20IoT-WoT-UoM%20(201710).pptx">Practical Semantic Modeling, SPARQL, RDF Shapes, IoT/WoT/UoM</a>, Ontotext Training, 80 Slides, Oct 2017
+<ul>
+<li>I now made an update on Units of Measure (available on request)</li>
+</ul></li>
+</ul>
+<h2 id="crucial-questions">Crucial Questions</h2>
+<p>Crucial Questions to consider when designing eCl@ss RDF.</p>
+<p>Together with the use cases and competency questions, they should provide a frame of reference for making decisions that are <strong>usable, consistent, viable in the long term</strong>.</p>
+<ul>
+<li>Data Copying vs Data Decentralization
+<ul>
+<li>Decentralization and Semantic Web Principles</li>
+<li>Data Copying</li>
+</ul></li>
+<li>Ontological Realism vs Idiosyncrasy
+<ul>
+<li>Step-by-Step Guide to Ontology Development</li>
+</ul></li>
+<li>Closed vs Open Data Ecosystems</li>
+<li>Local vs Global Thinking</li>
+</ul>
+<p>While I have my doubts that the eCl@ss Association will be able to soon subscribe to these principles, I believe they are important considerations to keep in mind.</p>
+<h3 id="semantic-web-principles">Semantic Web Principles</h3>
+<p>Semantic Web and Linked Data are based on several simple principles:</p>
+<ul>
+<li>Everything has a IRI (URL): from a huge enterprise, to its plants, to every machine and asset, to each document and data spec, to the smallest measurement or data field.</li>
+<li>The data model is simple (abstracted). It’s a semantic graph made of triples (relations that are graph edges, and attributes that are literal values).</li>
+<li>RDF is flexible: can be used without or with schemas; schemas stored the same as data, can always be extended, without requiring system redeployment or data migration.</li>
+<li>In appropriate settings, a data consumer can rely that data about any entity will be returned when its IRI is dereferenced.</li>
+</ul>
+<h3 id="decentralization">Decentralization</h3>
+<p>Data Decentralization (Distribution)</p>
+<ul>
+<li>each party holds its data and allows other parties to access it at any time (as appropriate, controlled by license agreements and access rights).</li>
+<li>an important technological element of Data Sovereignty, as propounded by the International Data Spaces Association.</li>
+<li>better approach to cross-enterprise data integration, as evidenced by boom of Semantic Data Integration and Enterprise Knowledge Graphs.</li>
+<li>a system will often want to make a local copy of global data (caching), but this is engineering not data architectural principle</li>
+</ul>
+<h4 id="data-copying">Data Copying</h4>
+<p>As far as I can see, most Industry data still relies on Data Copying (or Exchange).</p>
+<ul>
+<li>Copies of data are transferred between parties</li>
+<li>Global IRIs are sparingly used and don’t have “first class citizen” status</li>
+<li>There is no assumption that the up-to-date Version of Record of a fine-granularity piece of data will always be found at a certain IRI.
+<ul>
+<li>eCl@ss distributions,</li>
+<li>BMEcat transfers,</li>
+<li>IEC CDD unavailability of IRDIs for global resolution,</li>
+<li>RAMI/AAS examples of copying other data into an admin shell, etc.</li>
+</ul></li>
+<li>I believe that eCl@ss RDF should break out of this tradition and tackle directly Data Distribution.</li>
+<li>Exception: ISO 15926 (oil &amp; gas) and its <strong>Reference Data Libraries</strong></li>
+</ul>
+<h3 id="ontological-realism-vs-idiosyncrasy">Ontological Realism vs Idiosyncrasy</h3>
+<ul>
+<li>an ontology should be analogous <strong>not to a data model</strong>, but rather to a <strong>reality model</strong></li>
+<li>ontological realism positions the resulting ontologies as best candidates for serving as <strong>common models of all the data sources within a complex information ecosystem</strong></li>
+<li>realist ontologies enable <strong>cross-enterprise-wide data integration</strong> by removing a layer of <strong>perspective from each of the several data sources involved</strong></li>
+</ul>
+<p>Compare:</p>
+<ul>
+<li>The <strong>real world</strong> of economy/manufacturing has products, product classes, properties, manufacturers, documents, spec sheets, etc</li>
+<li>The <strong>PLIB (OntoML/POM) world</strong> of idiosyncratic information artifacts has classification classes, characterization classes, application classes, blocks, aspects, etc.</li>
+</ul>
+<h4 id="step-by-step-guide-to-ontology-development-excerpts">Step-by-Step Guide to Ontology Development (excerpts)</h4>
+<ul>
+<li>Identify the primary bodies of data your ontology will be used to annotate.</li>
+<li>Maximize the ability of your ontology to address these primary tasks
+<ul>
+<li>but without detriment to its ability to address secondary uses not yet identified.</li>
+<li>(secondary uses are often significantly more important than primary uses, and almost always what guarantees the enduring value of an ontology)</li>
+<li>ensure that the terms and definitions in your ontology are of broad understandability and validity</li>
+<li>(rather than being understandable and valid only by your immediate collaborators and only when used in relation to your currently available data)</li>
+</ul></li>
+<li>Do not confuse information artifacts with the reality they denote
+<ul>
+<li>Distinguish explicitly between each real entity and the information about it</li>
+<li>Eg <code>gtin</code> is a prop of ProductModel but <code>gln</code> is a prop of an Organization</li>
+</ul></li>
+</ul>
+<h3 id="open-vs-closed-data-ecosystems">Open vs Closed Data Ecosystems</h3>
+<p>eCl@ss is a very closed data environment: it does not reuse data by anyone else. Eg:</p>
+<ul>
+<li>Although it uses same/similar data model as IEC CDD, it does not use any IEC data, not even IEC Units of Measure.</li>
+<li>It defines various lists that <strong>should not be the business</strong> of eCl@ss, eg: Countries, Languages, Colors, Units of Measure, etc</li>
+</ul>
+<p>Why should eCl@ss care about this?</p>
+<ul>
+<li>Reusing data representations and data items created by others may reduce the work of eCl@ss.
+<ul>
+<li>(I acknowledge that this does not hold in all cases because sometimes it’s easier to produce data in a closed environment.)</li>
+</ul></li>
+<li>Reusing data may make it easier for eCl@ss users to consume eCl@ss:
+<ul>
+<li>eCl@ss product data is only one kind of data in an enterprise IT environment</li>
+<li>There is a large number of ontologies relevant to the use cases that eCl@ss cannot interoperate with</li>
+<li>That includes IoT/WoT, schema.org, sensors, electrical, green energy, BIM, etc, etc</li>
+</ul></li>
+</ul>
+<h3 id="the-web-open-innovation">The Web: Open Innovation</h3>
+<p>W3C standards are fully open:</p>
+<ul>
+<li>Preceded by UCR (Use Case Requirement specifications) that are gathered through wide consultation</li>
+<li>Openly developed (usually on github), anyone can submit issues</li>
+<li>Free of patent claims</li>
+<li>Openly accessible throughout all draft stages</li>
+<li>Include machine-readable artefacts: <a href="https://www.youtube.com/watch?v=r9AXrFoFEg4">All your spec are belong to us - irrigating dev resources from specs</a></li>
+<li>Include conformance testing suites and harnesses</li>
+<li>Models (ontologies), test suites and test results (EARL ontology) are all expressed in machine-readable way (usually RDF)</li>
+<li>Before accepted as recommendation, minimum 2 conforming implementations are needed. Implementation Report is generated from EARL RDF</li>
+</ul>
+<p>The web invites wide participation:</p>
+<ul>
+<li>Anyone can make content and link to other content</li>
+<li>World Wide Web of content (web) and Global Giant Graph of data (semantic web)</li>
+<li>Working Groups and Community Groups</li>
+<li>“Permission-free innovation”</li>
+<li>Unfortunately, big “internet properties” have become content monopolists: so TimBL started the <a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)">Solid</a> web decentralization project</li>
+</ul>
+<h3 id="iso-and-iec-closed-standards">ISO and IEC: Closed Standards</h3>
+<p>ISO and IEC standards are closed:</p>
+<ul>
+<li>Eg <a href="https://www.iso.org/obp/ui/#iso:std:iso:13584:-32:ed-1:v1:en">ISO 13584-32:2010</a> Industrial automation systems and integration — Parts library — Part 32: Implementation resources: OntoML: Product ontology markup language</li>
+<li>Development by a close expert group</li>
+<li>Long and bureaucratic development and update cycles</li>
+<li>Delivered as PDF with few machine-processable artefacts</li>
+<li>Costs 200 CHF: few developers will bother to pay this to get it</li>
+</ul>
+<p>Positive aspects:</p>
+<ul>
+<li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf">IEC CDD</a> is online, open (but not quite), update a lot more frequently</li>
+<li>PLIB is well described at eCl@ss wiki: <a href="https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML">ISO_13584-32_ontoML</a> and <a href="https://wiki.eclass.eu/wiki/Conceptual_data_model">Conceptual_data_model</a>; but not officia/comprehensive</li>
+</ul>
+<p>“ISO/IEC are for professional use, so money is not a problem”</p>
+<ul>
+<li>Closeness is the problem. It reduces the reach, scope and adoption of engineering data</li>
+<li>Eg “A Critical Assessment of ISO 13584 Adoption by B2B Data Exchange Specifications” (Martin Hepp, ICCE 2006)</li>
+<li>Openness is <strong>the major reason</strong> for the success and penetration of the web</li>
+</ul>
+<h3 id="plib-and-pom-not-open-data">PLIB and POM: Not Open Data</h3>
+<ul>
+<li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf/License?openPage">IEC CDD License</a> is “kinda open but not really”
+<ul>
+<li>YOU may not sell, lend, lease or distribute to a third party, reproduce or otherwise exploit, whether commercially or not, the total database or a significant portion of it, to which this LICENSE relates .</li>
+<li>YOU may copy the database only for a restricted and confidential internal use and this LICENSE exception is also restricted to other employees for their internal or external use within YOUR organization.</li>
+<li>Only partial dumps available</li>
+</ul></li>
+<li>eCl@ss is not available online in machine-readable form
+<ul>
+<li>eCl@ss is paid and <strong>that is fine</strong>: “Open” is not the same as “Free”</li>
+<li>But the Association must consider carefully who are its paying customers and what should be its licensing model</li>
+<li>I think manufacturers should pay, but not eCommerce or WoT developers</li>
+</ul></li>
+</ul>
+<h2 id="local-vs-global-thinking">Local vs Global Thinking</h2>
+<ul>
+<li>PLIB &amp; eCl@ss define everything locally</li>
+<li>Internal data items are not intended for online access (eg IRDI Versioning)</li>
+<li>External LOD is never reused, although readily available, eg
+<ul>
+<li>Countries and other Places</li>
+<li>UoM</li>
+<li>Languages</li>
+<li>MIME types</li>
+<li>Materials</li>
+<li>Manufacturers/suppliers…</li>
+</ul></li>
+</ul>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li>Product libraries: PLIB/POM, eCl@ss/IEC CDD (innate)</li>
+<li>Web of Things TD: online description and control (original case posed by eCl@ss Association)</li>
+<li>Online product catalogs (BMEcat conversion shown recently)</li>
+<li>schema.org (GoodRelations): eCommerce integration</li>
+<li>Industrie 4.0: RAMI 4.0, Admin Shell, OPC UA…</li>
+</ul>
+<p>Not yet discussed/confirmed:</p>
+<ul>
+<li>PIM/PLM/supply chain management</li>
+<li><a href="https://www.gs1.org/standards/Digital-Link/">GS1 Digital Link</a>: online consumer information from GTIN</li>
+<li>Online/smart documentation</li>
+</ul>
+<h3 id="product-libraries">Product Libraries</h3>
+<ul>
+<li>eCl@ss is based on the ISO 13584 - IEC 61360 PLIB standard
+<ul>
+<li>Uses the ISO 13584-32 ontoML Conceptual data model</li>
+</ul></li>
+<li>A newer rendition of the same ideas is IEC 62656
+<ul>
+<li>Uses POM (Parcelized Object Model), which is an “ensemble of spread sheets”</li>
+</ul></li>
+<li>Considerable investment by:
+<ul>
+<li>Standardization bodies, especially IC</li>
+<li>The engineering/manufacturing communities</li>
+</ul></li>
+</ul>
+<h4 id="iec-62656-pom">IEC 62656 POM</h4>
+<p><img src="img/IEC%2062656-%20ontology-props.png" /></p>
+<h4 id="plibpom-product-library-examples">PLIB/POM Product Library Examples</h4>
+<ul>
+<li>eCl@ss (100 orgs, German/international)</li>
+<li>IEC 62474: Material Declarations for Electrotechnical Products</li>
+<li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf/TreeFrameset?OpenFrameSet">IEC 61360: Common Data Dictionary</a>
+<ul>
+<li>IEC 13584 Measuring instruments (not publicly browseable)</li>
+<li>IEC 60721 Environmental declaration (not publicly browseable)</li>
+<li>IEC 61360 Electric/electronic components</li>
+<li>IEC 61987 Process Automation</li>
+<li>IEC 62683 Low Voltage switchgear</li>
+<li>IEC 62720 Units of Measure (not publicly browseable)</li>
+<li>IEC TC47 Electro-electronic components (not publicly browseable)</li>
+<li>ISO 23584 Optics (not publicly browseable)</li>
+</ul></li>
+<li>NAMUR (118 orgs): plant devices</li>
+<li>PFI (130 orgs, French)</li>
+<li>ECALS (100 orgs, Japan, JEITA)</li>
+<li>RosettaNet</li>
+</ul>
+<h4 id="pom-example-iec-cdd">POM Example: IEC CDD</h4>
+<p><img src="img/IEC_CDD_Web-Interface.jpg" /></p>
+<h4 id="iec-cdd-expansion-plans">IEC CDD Expansion Plans</h4>
+<p><img src="img/IEC%20SC3D%20cooperation%20wIth%20other%20ISO%20and%20IEC%20TC%20and%20SC.png" /></p>
+<h3 id="web-of-things-td">Web of Things TD</h3>
+<ul>
+<li>This was the original case posed by the eCl@ss Association</li>
+<li>WoT aims to unify/reduce fragmentation of IoT protocols/data formats
+<ul>
+<li>Follow the Web Architecture</li>
+<li>Standard complementing building blocks (e.g., metadata and APIs)</li>
+<li>Enable easy integration across IoT platforms and application domains</li>
+<li>Just like <code>http</code> unified access to previously disparate protocols/resoures like <code>ftp, gopher, nnews</code>…</li>
+<li>WoT IG innovates, WoT WG standardizes</li>
+</ul></li>
+<li>WoT TD (<a href="https://www.w3.org/TR/wot-thing-description/">spec</a>, <a href="https://www.w3.org/2019/wot/td">ontology</a>) allows online description and control of IoT devices
+<ul>
+<li>description in JSONLD and other RDF formats</li>
+<li>controls: properties (eg brightness), actions (turn on/off), events (overheating)</li>
+<li>hypermedia <strong>affordances</strong>: TD includes not just static and dynamic data, but also controls URLs</li>
+<li>allowance for constrained devices (HTTPS -&gt; COAP, RDF -&gt; EXI)</li>
+</ul></li>
+</ul>
+<h4 id="wot-td-templates">WoT TD Templates</h4>
+<p><a href="https://www.w3.org/TR/wot-thing-description/#thing-templates">TD Templates</a>: description for a class of Things (entire group of Things).</p>
+<p>WoT spec posits these use cases:</p>
+<ul>
+<li>management of multiple Things by a cloud service.</li>
+<li>simulation of devices/Things that have not yet been developed.</li>
+<li>common applications across devices from different manufacturers that share a common Thing model.</li>
+<li>combining multiple models into a Thing.</li>
+</ul>
+<p>Elaborating the last case:</p>
+<ul>
+<li>You can’t expect a Smart Bulb to carry its own Spec Sheet (not enough memory!)</li>
+<li>So a Thing uses Template to link to its detailed product props:</li>
+<li>Bulb links to a manufacturer Catalog</li>
+<li>Catalog links to eCl@ss product/prop definitions</li>
+<li>The data is distributed functionally</li>
+<li>Yet, a WoT server should assemble all of it and present as a single TD</li>
+</ul>
+<h4 id="wot-td-questions">WoT TD Questions</h4>
+<p>There are many questions/details to be aligned, most importantly:</p>
+<ul>
+<li>eCl@ss is about describing the props, parts and aspects of products</li>
+<li>How to reflect those in WoT TD? It takes a simpler approach</li>
+<li>How to use those to systematically construct TD Affordances?</li>
+<li>Eg if a Lamp uses a Cardinality blocks Switch 1, Switch 2 and Bulb 1, Bulb 2, does that mean I can systematically have:
+<ul>
+<li>action <a href="http://my-house/room1/lamp/switch/1/toggle" class="uri">http://my-house/room1/lamp/switch/1/toggle</a></li>
+<li>action <a href="http://my-house/room1/lamp/switch/2/toggle" class="uri">http://my-house/room1/lamp/switch/2/toggle</a></li>
+<li>prop <a href="http://my-house/room1/lamp/bulb/1/brightness" class="uri">http://my-house/room1/lamp/bulb/1/brightness</a></li>
+<li>prop <a href="http://my-house/room1/lamp/bulb/2/brightness" class="uri">http://my-house/room1/lamp/bulb/2/brightness</a></li>
+</ul></li>
+</ul>
+<h3 id="online-product-catalogs">Online Product Catalogs</h3>
+<ul>
+<li>A crucial current use of eCl@ss is in product catalogs (eg XML based: BMEcat, ISO)-</li>
+<li>I’m very glad this is included in scope (the BMEcat-&gt;RDF conversion shown recently)</li>
+<li>eCl@ss RDF representation without guidance on catalog RDF representation would be pointless</li>
+<li>Web-accessible (online) and semantic catalogs are crucial for other use cases (WoT Templates, schema.org)</li>
+<li>The design of RDF catalogs <strong>conforming</strong> to those cases is a prerequisite for eCl@ss RDF</li>
+</ul>
+<h3 id="schema.org">schema.org</h3>
+<ul>
+<li>schema.org has much wider scope than marking up web pages</li>
+<li>After Marting Hepp’s work (GoodRelations), schema.org is widely used for eCommerce
+<ul>
+<li>A lot is for B2C (buying cars, products, tickets; booking restaurants)</li>
+<li>But I imagine some is for B2B integration</li>
+</ul></li>
+<li><a href="http://webdatacommons.org/structureddata/2019-12/stats/stats.html">Web Data Commons crawl 2019-12</a> found 44B triples about 14B entities at 934M pages from 12M web domains</li>
+<li>The majority of that data is expressed in schema.org</li>
+</ul>
+<h4 id="schema.org-ecommerce">schema.org eCommerce</h4>
+<p><a href="http://webdatacommons.org/structureddata/2019-12/stats/stats.html">Web Data Commons crawl 2019-12</a>: a huge chunk is eCommerce data.</p>
+<ul>
+<li>Search <code>Top Classes</code> then <code>Show top values by entity count</code>, 6x
+<ul>
+<li>Extractor html-microdata
+<ul>
+<li>schema:Product (329,320,312 Entities)</li>
+<li>schema:Offer (298,566,693 Entities)</li>
+</ul></li>
+<li>Extractor html-embedded-jsonld (etc)
+<ul>
+<li>schema:Offer (43,207,520 Entities)</li>
+<li>schema:Product (42,026,698 Entities)</li>
+</ul></li>
+</ul></li>
+<li>Could also look at <code>Top Properties</code>
+<ul>
+<li>Extractor html-microdata
+<ul>
+<li>schema:Product/name (309,798,605 Entities)</li>
+<li>schema:Offer/price (270,064,408 Entities)</li>
+<li>schema:Offer/priceCurrency (252,327,550 Entities)</li>
+<li>schema:Product/offers (239,419,097 Entities)</li>
+<li>schema:Product/image (234,121,189 Entities)</li>
+<li>schema:Product/url (160,633,419 Entities)</li>
+<li>schema:Product/description (142,279,305 Entities)</li>
+<li>schema:Offer/availability (132,764,096 Entities)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="industrie-4.0">Industrie 4.0</h3>
+<p>Cornerstones of the German Industrie 4.0 initiative:</p>
+<ul>
+<li>Reference Architectural Model for Industry 4.0 (RAMI)</li>
+<li>Asset Administration Shell (AAS)</li>
+</ul>
+<p>Intended to unify/incorporate/extend previous Industrial IoT models including AutomationML, OPC UA, IEC CDD, and eCl@ss.</p>
+<p>Spec “Details of the Asset Administration Shell Part 1” (Version 2.0.1 2019-11) includes the following semantic parts in Annex G</p>
+<ul>
+<li>“ii. RDF Data Model for the Administration Shell” (p270-315): an OWL ontology with namespace <a href="http://admin-shell.io" class="uri">http://admin-shell.io</a>, saved as <code>aas-ontology.ttl</code></li>
+<li>“iii. RDF Schema for the Administration Shell” (p316-333): a SHACL shape definition</li>
+<li>“iv. RDF Example of a motor”, saved as <code>RDF-example-motor.ttl</code></li>
+<li>(I’ve extracted them, added prefixes and sections for easier reading)</li>
+</ul>
+<h4 id="aas-explorer-and-import">AAS Explorer and Import</h4>
+<p>The AAS Package Explorer (AASX) can import the following formats to AAS:</p>
+<ul>
+<li>AutomationML</li>
+<li>OPC UA</li>
+<li>IEC CDD</li>
+<li>BMEcat</li>
+<li>i4aas</li>
+<li>CSV</li>
+<li>eCl@ss as presented at <a href="https://www.eclass.eu/anwendung/verwaltungsschale.html">eCl@ss in Admin Shell</a></li>
+</ul>
+<h4 id="aasx-eclss-import">AASX eCl@ss Import</h4>
+<p><img src="img/csm_7_52bfb6aa34.png" /></p>
+<h4 id="ramiaas-problems">RAMI/AAS Problems</h4>
+<p>Relies on copying, not web data distribution; blank nodes not global IRIs:</p>
+<pre class="ttl"><code>&lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184&gt; a aas:Submodel;
+  aas_referable:idShort &quot;TechnicalData&quot;;
+  rdfs:label &quot;TechnicalData&quot;;
+  aas_referable:category &quot;CONSTANT&quot;;
+  aas_identifiable:identification &lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184&gt;;
+  aas_hasSemantics:semanticId [
+    a aas:Reference;
+    aas_reference:key [
+      a aas:Key;
+      aas_key:index &quot;0&quot;^^xsd:integer;
+      aas_key:type aas_keyElements:GLOBAL_REFERENCE;
+      aas_key:local &quot;false&quot;^^xsd:boolean;
+      aas_key:value &quot;0173-1#01-AFZ615#016&quot;;
+      aas_key:idType aas_identifierType:IRDI]];
+  aas_hasKind:kind aas_modelingKind:INSTANCE;
+  aas_submodel:submodelElement [
+    a aas:Property;
+    rdf:subject &lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184/MaxRotationSpeed&gt;;
+    aas_referable:idShort &quot;MaxRotationSpeed&quot;;
+    rdfs:label &quot;MaxRotationSpeed&quot;;
+    aas_property:category aas_category:PARAMETER;
+    aas_hasSemantics:semanticId [
+      a aas:Reference;
+      aas_reference:key [
+        a aas:Key;
+        aas_key:index &quot;0&quot;^^xsd:integer;
+        aas_key:type aas_identifiableElements:CONCEPT_DESCRIPTION;
+        aas_key:local &quot;true&quot;^^xsd:boolean;
+        aas_key:value &quot;0173-1#02-BAA120#008&quot;;
+        aas_key:idType aas_identifierType:IRDI]];
+    aas_hasKind:kind aas_modelingKind:INSTANCE;
+    aas_key:value &quot;5000&quot;^^xsd:integer];
+
+&lt;http://i40.customer.com/type/1/1/F13E8576F6488342/MaxRotationSpeed&gt;
+  a aas:ConceptDescription;
+  aas_referable:idShort &quot;MaxRotationSpeed&quot;;
+  rdfs:label &quot;MaxRotationSpeed&quot;;
+  aas_referable:category &quot;PROPERTY&quot;;
+  aas_identifiable:identification [
+    aas_identifier:id &quot;0173-1#02-BAA120#008&quot;;
+    aas_identifier:idType aas_identifierType:IRDI];
+  aas_identifiable:administration [
+    a aas:AdministrativeInformation;
+    aas_administrativeInformation:revision &quot;&quot;];
+  aas_conceptDescription:content [
+    a dataspec_iec:DataSpecificationIEC61360;
+    dataspec_iec:preferredName &quot;max. Drehzahl&quot;@de;
+    dataspec_iec:preferredName &quot;Max. rotation speed&quot;@en;
+    dataspec_iec:unit &quot;1/min&quot;;
+    dataspec_iec:unitId [
+      a aas:Reference;
+      aas_reference:key [
+        a aas:Key;
+        aas_key:index &quot;0&quot;^^xsd:integer;
+        aas_key:type aas_keyElements:GLOBAL_REFERENCE;
+        aas_key:local &quot;false&quot;^^xsd:boolean;
+        aas_key:value &quot;0173-1#05-AAA650#002&quot;;
+        aas_key:idType aas_identifierType:IRDI]];
+    dataspec_iec:datatype &quot;INTEGER_MEASURE&quot;;</code></pre>
+<h2 id="non-functional-requirements">Non-Functional Requirements</h2>
+<p>Use cases outline the information domains that eCl@ss RDF must relate to.</p>
+<p>But that’s not the whole story, we also need to detail:</p>
+<ul>
+<li>How to get the data? Hosting, Serving, Resolution…</li>
+<li>What would consumers want to search for and get? Competency Questions</li>
+</ul>
+<h3 id="how-to-get-the-data">How to Get The Data</h3>
+<ul>
+<li>Hosting/serving of RDF in a semantic database
+<ul>
+<li>Scope: eCl@ss and manufacturer product catalogs (as a minimum)</li>
+</ul></li>
+<li>Semantic resolution</li>
+<li>Content negotiation</li>
+<li>Long-term IRI stability</li>
+<li>Protocols: HTTP/HTTPS (usual), COAP (for constrained devices)</li>
+<li>Semantic formats: Turtle, JSONLD (usual), EXI (for constrained devices)</li>
+<li>Licensing/access control</li>
+</ul>
+<h3 id="competency-questions">Competency Questions</h3>
+<p>Defined Competency Questions are the best way to guide ontology development</p>
+<ul>
+<li>To avoid going off on a tangent and designing too much of what’s not needed</li>
+<li>In our case we start from a well-developed information model, so we should capture all of it</li>
+</ul>
+<p>But we still need to answer:</p>
+<ul>
+<li>What will consumers want to search for or search by?
+<ul>
+<li>Eg are these legit queries “find red products”, “find products shorter than 15cm”?</li>
+<li>Are these easy to answer? I haven’t seen many/any sub-properties in eCl@ss?</li>
+<li>Eg there isn’t a single “height”, there’s also “height of enveloping body”</li>
+<li>That applies to “enveloping body - cylinder” and “enveloping body - box”</li>
+<li>There are different props that relate to those Polymorphic blocks</li>
+</ul></li>
+<li>What data do they want to get? Tradeoff:
+<ul>
+<li>Don’t get too much (eg only definitions of props actually used in a product)</li>
+<li>Don’t get too little (to avoid too many network round-trips)</li>
+</ul></li>
+</ul>
+<h1 id="related-work">Related Work</h1>
+<p>Various previous works are relevant for the eCl@ss effort.</p>
+<ul>
+<li>Martin Hepp: GoodRelations, product classifications, product catalogs</li>
+<li>schema.org Product classes: relevant for all web sites and more; simple pragmatic modeling</li>
+<li>Application Profiles and RDF Shapes</li>
+<li>XSD data types: everyone uses them (even schema.org that declares its own datatypes)</li>
+<li>Unit of Measurement Ontologies: 3 are widely established and used</li>
+</ul>
+<h2 id="martin-hepp">Martin Hepp</h2>
+<p>Martin Hepp’s work on semantic web approaches to eCommerce is well-known and established:</p>
+<ul>
+<li>GoodRelations (products, offers, prices) is the foundation of eCommerce in schema.org</li>
+<li>The “Gen/Tax” distinction between strict class hierarchies and vaguer taxonomic (classification) hierarchies</li>
+<li>Conversion of a number of product ontologies to RDF/OWL, although in a simplistic way</li>
+</ul>
+<p>I’m sure eCl@ss has taken into account his experiments, but we can turn back to his work for more advice and guidance. Below I list Martin’s papers that are relevant to this effort.</p>
+<p>Comparison/Overview of product description vocabularies:</p>
+<ul>
+<li>Product Representation in the Semantic Web (Working Paper 2004-04)</li>
+<li>Content Metrics for Products and Services Categorization Standard (EEE 2005)</li>
+<li>A Quantitative Analysis of eCl@ss, UNSPSC, eOTD, and RNTD Content, Coverage, and Maintenance (ICEBE 2005)</li>
+<li>The True Complexity of Product Representation in the Semantic Web (ECIS 2006)</li>
+<li>A Quantitative Analysis of Product Categorization Standards: eCl@ss, UNSPSC, eOTD, and RNTD (KAIS 2007)</li>
+</ul>
+<h3 id="martin-hepp-2">Martin Hepp (2)</h3>
+<p>Conversion Methods:</p>
+<ul>
+<li>SKOS2OWL- An Online Tool for Deriving OWL and RDF-S Ontologies from SKOS Vocabularies (ISWC 2009 poster)</li>
+<li>A Methodology for Deriving OWL Ontologies from Products and Services Categorization Standards (ECIS 2005)</li>
+<li>Representing the Hierarchy of Industrial Taxonomies in OWL- The gen-tax Approach (ICSW 2005)</li>
+<li>Products and Services Ontologies- A Methodology for Deriving OWL Ontologies from Industrial Categorization Standards (IJSWIS 2006-01)</li>
+<li>GenTax- A Generic Methodology for Deriving OWL and RDF-S Ontologies from Hierarchical Classifications, Thesauri, and Inconsistent Taxonomies (ESWC 2007)</li>
+<li>Alignment of Ontology Design Patterns- Class As Property Value, Value Partition and Normalisation (OTM 2012)</li>
+</ul>
+<p>Specific Product Classifications:</p>
+<ul>
+<li>PCS2OWL- A Generic Approach for Deriving Web Ontologies from Product Classification Systems (ESWC 2014)</li>
+<li>ProdLight- A Lightweight Ontology for Product Description Based on Datatype Properties (BIS 2007)</li>
+<li>Product Ontology website documentation</li>
+</ul>
+<h3 id="martin-hepp-3">Martin Hepp (3)</h3>
+<p>eCl@ss:</p>
+<ul>
+<li>eCl@ssOWL- The Web Ontology for Products and Services (2010-04) website documentation</li>
+<li>Integrating Product Classification Standards into Schema.org- eCl@ss and UNSPSC on the Web of Data (OTM 2017)</li>
+<li>eCl@ssOWL- A Fully-Fledged Products and Services Ontology in OWL (ISWC 2005 Poster)</li>
+<li>Using BMEcat Catalogs as a Lever for Product Master Data on the Semantic Web (ESWC 2013)</li>
+</ul>
+<p>ISO 13584 (PLIB):</p>
+<ul>
+<li>Ontologizing B2B Message Specifications- Experiences from Adopting the PLIB Ontology for Commercial Product Data (ICEBE 2006)</li>
+<li>A Critical Assessment of ISO 13584 Adoption by B2B Data Exchange Specifications (ICCE 2006)</li>
+</ul>
+<h2 id="schema.org-1">schema.org</h2>
+<p>Schema.org describes many real-world entities, is applicable in a wide variety of domains, and integrates data from a huge number of providers and domains</p>
+<ul>
+<li>It is used more and more often on actual eCommerce sites (see Use Case above)</li>
+<li>WoT efforts make a connection to schema.org, and use the same “low ontological commitment” as schema.org</li>
+</ul>
+<h3 id="rdfsowl-high-ontological-commitment">RDFS/OWL: High Ontological Commitment</h3>
+<p>RDFS defines the properties <code>rdfs:domain</code> and <code>rdfs:range</code></p>
+<ul>
+<li>These are strict and “prescriptive”:</li>
+<li>According to RDFS semantics, every time the described property is used, the property subject resp. object gets the domain resp. range as type.</li>
+<li>This also makes these RDFS properties “monomorphic”: they should take single values, otherwise the subject/object will get multiple types, which are usually not intended.</li>
+<li>Eg if you state that name is applicable to Person and Organization with the axiom <code>:name rdfs:domain :Person, :Organization</code>, entities with <code>name</code> will become <strong>both</strong> <code>Person</code> and <code>Organization</code>, which is an often made mistake.</li>
+<li>Ontology engineers overcome this problem by:
+<ul>
+<li>introducing abstract superclasses (e.g. <code>Actor</code> or even <code>Nameable</code>),</li>
+<li>using <code>owl:union</code> to make a disjunction of several classes, or</li>
+<li>using <code>owl:Restriction</code> to bind the property to the class locally.</li>
+</ul></li>
+</ul>
+<p>But all of these approaches complicate the ontology, increase “ontological commitment”, and ultimately make ontology reuse harder.</p>
+<h3 id="schema.org-low-ontological-commitment">schema.org: Low Ontological Commitment</h3>
+<p>To cope with web-scale integration of data, Schema uses properties <code>schema:domainIncludes</code> and <code>schema:rangeIncludes</code></p>
+<ul>
+<li>These are advisory and “descriptive” (describe properties applicable to a class, without being exclusive)</li>
+<li>Therefore polymorphic: an axiom like <code>:name schema:domainIncludes :Person, :Organization</code> doesn’t cause any unintended types to be inferred</li>
+<li>This approach has much lower “ontological commitment” and enables more flexible reuse and combination of different ontologies</li>
+<li>So it is appropriate in any data domain where data comes from a large number of sources</li>
+<li>Rather than using complicated OWL mechanisms, we prefer to use RDF Shapes to validate incoming data from data providers</li>
+<li>We used this mechanism for Company data, see the euBusinessGraph Ontology cited above</li>
+<li>It is also <strong>used in the WoT Thing Description</strong> ontology</li>
+</ul>
+<h3 id="schema.org-specific-classes">Schema.org Specific Classes</h3>
+<p>schema.org has several releant classes. Should be considered for reuse:</p>
+<ul>
+<li><code>ProductModel</code>: A datasheet or vendor specification of a product (in the sense of a prototypical description).</li>
+<li><code>Product</code>: Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.</li>
+<li><code>PropertyValue</code>: A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.</li>
+<li><code>QuantitativeValue</code>: A point value or interval for product characteristics and other purposes.</li>
+</ul>
+<p>Might be relevant:</p>
+<ul>
+<li><code>ProductGroup</code>: a group of Products that vary only in certain well-described ways, such as by size, color, material etc.</li>
+<li><code>EnergyConsumptionDetails</code>: the energy efficiency Category (“class” or “rating”) for a product according to an international energy efficiency standard</li>
+</ul>
+<h3 id="schema.org-specific-props">Schema.org Specific Props</h3>
+<p>schema.org also has some fixed product properties. Can be useful if you decide to replace some IRDIs with named terms:</p>
+<ul>
+<li><code>unitCode</code> which is either based on UNECE/UNCEFACT (eg <code>MTR</code>), can use a prefixed name (eg <code>ucum:um</code> for micrometers), or a URL (eg <code>qudt:Meter</code>)</li>
+<li>Links like <code>isAccessoryOrSparePartFor, isRelatedTo, isSimilarTo, isVariantOf, inProductGroupWithID, manufacturer</code></li>
+<li>Identifiers like <code>gtin, mpn, nsn, productID, sku, identifier</code></li>
+<li>Classification extensions like <code>additionalType, category</code></li>
+<li>Characteristics like <code>model, brand, material, color, size, pattern, height, depth, weigth, width</code></li>
+<li>Dates/events like <code>productionDate, releaseDate</code></li>
+</ul>
+<p>Extensions for particular product domains, eg Automotive, Financial, Hospitality.</p>
+<ul>
+<li>These add specific classes like <code>Vehicle, EngineSpecification</code> etc</li>
+<li>And add specific characteristics like <code>accelerationTime, cargoVolume</code> etc</li>
+</ul>
+<h2 id="application-profiles">Application Profiles</h2>
+<p>Application profiles serve several related goals, see <a href="https://w3c.github.io/dxwg/profiles/">W3C Profiles Guidance</a> adn the earlier <a href="http://dublincore.org/documents/profile-guidelines/">Guidelines for Dublin Core Application Profiles</a></p>
+<ul>
+<li>Document data models</li>
+<li>Describe data structure and validation rules in a machine-readable way</li>
+<li>Select amongst several closely related models
+<ul>
+<li>I think this should be used to implement the <strong>eCl@ss Basic/Advanced distinction</strong></li>
+<li>A recent specification describes how such selection can be done in the HTTP protocol: <a href="https://www.w3.org/TR/dx-prof-conneg/">Content Negotiation by Profile</a></li>
+<li>Similar to negotiation by content type (<code>Accept</code>) and language (<code>Accept-Language</code>)</li>
+</ul></li>
+</ul>
+<h3 id="rdf-shapes">RDF Shapes</h3>
+<p>RDF Shapes have emerged as the way to express application profiles in machine-readable way and to validate RDF.</p>
+<ul>
+<li>I cannot do them justice here, but we have a lot of experience with shapes</li>
+<li>I was a reviewer for the first Shapes book: <a href="https://book.validatingrdf.com/">Validating RDF Data</a></li>
+<li>The two major standards are SHACL and SHEX, and both have their strengths and weaknesses; in particular SHEX is much easier to edit</li>
+<li>Consider SHACLC (SHACL Compact), see <a href="https://github.com/VladimirAlexiev/shaclc-mode">VladimirAlexiev/shaclc-mode</a> : compact writing, syntax highlighting, syntax checking, menu navigation</li>
+</ul>
+<p><img src="img/shaclc-flyCheck-validation.png" /></p>
+<h2 id="rdf-literals-and-datatypes">RDF Literals and Datatypes</h2>
+<ul>
+<li>RDF uses XSD datatypes, everyone uses them, and they have special support in RDF repositories and tooling</li>
+<li><code>rdf:langString</code> puts the string and lang tag together in a literal.
+<ul>
+<li>IANA defines the structure and <a href="https://docs.google.com/spreadsheets/d/1M1yv9aBUmc-NyCJX69vOLUmH2uIglSwmDwgRgByI1AI/edit">register of lang tags</a> (used widely on the web), and it has more components: <code>lang-Script-dialect-REGION</code></li>
+</ul></li>
+<li>(Note: <code>rdf:XMLLiteral</code> and <code>rdf:HTMLLiteral</code> are also available for special purposes)</li>
+<li>A few custom datatypes are used, if they have special support: eg
+<ul>
+<li><code>geo:asWKT</code> or <code>geo:asGML</code> for GeoSPARQL geometries (spatial indexing),</li>
+<li><code>cdt:ucum</code> for quantity literals, etc</li>
+</ul></li>
+</ul>
+<h2 id="uom-ontologies">UoM Ontologies</h2>
+<p>Widely used lists:</p>
+<ul>
+<li>UNCEFACT Recommedation 20, which accommodates more exotic eCommerce units, like “pairs”, “US barrels per day”, etc</li>
+<li>UCUM, which handles decimal prefixes and has info on conversion factors</li>
+</ul>
+<p>There are also about 10 ontologies:</p>
+<ul>
+<li>MUO, OBOE, OM 2, QU, QUDT 2.1, SWEET 3, UO+PATO, Wikidata, unitsOfMeasure, LINDT</li>
+</ul>
+<p>2 UoM ontologies are most promising and widely used:</p>
+<ul>
+<li>QUDT: sponsored by NASA, rich dimension analysis, conversion factors, links to a bunch of scientific disciplines, links to other UoM authorities</li>
+<li>LINDT UCUM: puts the number and unit in the same string:
+<ul>
+<li>Comparability, conversion and arithmetic operations on quantities (eg <code>"1 m"^^cdt:ucum + "100 cm"^^cdt:ucum</code>)</li>
+<li>Unlike QUDT, has countably infinite list of units, eg <code>[lb_av]/h</code> for “fuel flow” used by USAF/NASA (see <a href="https://github.com/qudt/qudt-public-repo/issues/285">QUDT issue</a>).</li>
+<li>Smart innovative approach, used in various ontologies and projects,</li>
+<li>Requires SPARQL extensions and not yet commonly accepted, so needs to be discussed</li>
+<li>I posted a SPARQL 1.2 issue for wider adoption: <a href="https://github.com/w3c/sparql-12/issues/129">sparql-12#129</a></li>
+</ul></li>
+</ul>
+<h3 id="uom-evaluations">UoM Evaluations</h3>
+<ul>
+<li><a href="https://www.w3.org/community/owled/files/2016/11/OWLED-ORE-2016_paper_5.pdf">Use Cases and Suitability Metrics for Unit Ontologies</a> (OWLED ORE 2016)
+<ul>
+<li>Defines 16 use cases and 33 features</li>
+<li>Evaluates 7 UoM ontologies against these criteria</li>
+</ul></li>
+<li><a href="http://www.semantic-web-journal.net/system/files/swj1825.pdf">Comparison and Evaluation of Ontologies for Units of Measurement</a> (SWJ 2019)
+<ul>
+<li><a href="https://github.com/fusion-jena/unit-ontology-review" class="uri">https://github.com/fusion-jena/unit-ontology-review</a></li>
+<li>In-depth evaluation of 8 UoM ontologies</li>
+<li>Number of units, included facts, cross-ontology statistics, analyzes syntactical and semantical errors</li>
+</ul></li>
+</ul>
+<h3 id="use-cases-and-suitability-metrics-for-uo-1">Use Cases and Suitability Metrics for UO (1)</h3>
+<p><img src="img/Use%20Cases%20and%20Suitability%20Metrics%20for%20Unit%20Ontologies-UC.png" /></p>
+<h3 id="use-cases-and-suitability-metrics-for-uo-2">Use Cases and Suitability Metrics for UO (2)</h3>
+<p><img src="img/Use%20Cases%20and%20Suitability%20Metrics%20for%20Unit%20Ontologies-matrix.png" /></p>
+<h3 id="comparison-and-evaluation-of-ontologies-for-uom">Comparison and Evaluation of Ontologies for UoM</h3>
+<p><img src="img/Comparison%20and%20Evaluation%20of%20Ontologies%20for%20Units%20of%20Measurement.png" /></p>
+<h3 id="the-future-of-web-enabled-uom">The Future of Web-Enabled UoM</h3>
+<p>This just out:</p>
+<ul>
+<li>BIPM (Bureau International des Poids et des Mesures)</li>
+<li>Online workshop <a href="https://www.bipm.org/en/conference-centre/bipm-workshops/digital-si/">The International System of Units (SI) in FAIR digital data</a>, Feb 22-26 2021 (<a href="https://form.jotform.com/BIPM/Workshop-SI-2021">register</a>)</li>
+<li>Paper <a href="https://www.bipm.org/utils/en/pdf/WIP%20Grand_Vision_v3.4.pdf">Grand Vision: Transforming the International System of Units for a Digital World</a></li>
+</ul>
+<h1 id="ontoml-representation">OntoML Representation</h1>
+<p><img src="img/RDF-20200920-OntoML%20Aspects.png" /></p>
+<h3 id="ontoml-pros-and-cons">OntoML Pros and Cons</h3>
+<p>Both the first and second eCl@ss RDF representations closely mirror OntoML.</p>
+<ul>
+<li>Pros: represents all eCl@ss information
+<ul>
+<li>Any alternative approach should take this into account</li>
+</ul></li>
+<li>Cons:
+<ul>
+<li>Uses complicated RDF modeling, eg properties are not mapped to RDF properties but to classes</li>
+<li>Innate OntoML problems, see next</li>
+</ul></li>
+</ul>
+<h2 id="ontoml-problems">OntoML Problems</h2>
+<ul>
+<li>OntoML is (arguably) not logical and not semantic
+<ul>
+<li>(Despite the name and being an ISO standard)</li>
+</ul></li>
+<li>Not an open standard</li>
+<li>Niche terminology</li>
+<li>No realism: deals with information modeling artefacts not real-world (physical) artefacts</li>
+<li>Uses its own datatypes</li>
+<li>Uses its own units of measure</li>
+<li>Not oriented towards linked data</li>
+<li>Based upon local not global thinking</li>
+</ul>
+<h3 id="rdfrdfsowl-simple-logical">RDF/RDFS/OWL: Simple, Logical</h3>
+<ul>
+<li>RDF is a very simple data model based on predicate logic: triple <code>s p o</code> corresponds to predicate <code>p(s,o)</code></li>
+<li>RDFS and OWL have strong logical foundations: Set Theory, First Order Logic, Description Logics</li>
+<li>OWL was developed through a rigorous process and many experts in logic, datalog, logic programming and databases were involved</li>
+<li>OWL2 was added after practical experience</li>
+<li>Many studies on the complexity of various OWL fragments</li>
+<li>Defined complexity/reasoning profiles: RDFS, RDFS+, OWL Lite, RL, QL, DL, EL, Full (eg see <a href="https://graphdb.ontotext.com/documentation/enterprise/introduction-to-semantic-web.html#the-web-ontology-language-owl-and-its-dialects">naive OWL Fragments map</a>)</li>
+<li>Some of the best ontologies follow principles of Realism</li>
+</ul>
+<h3 id="ontoml-complicated-not-semantic-not-logical">OntoML: Complicated, Not Semantic, Not Logical</h3>
+<ul>
+<li>Complicated XML model</li>
+<li>Does not have grounding in Realism</li>
+<li>Does not have grounding in logic or logic programming</li>
+<li>No opportunities for inference (or at least nobody has investigated this)
+<ul>
+<li>No subclass and subproperty relations?</li>
+</ul></li>
+</ul>
+<h3 id="ontoml-niche-terminology-1">OntoML: Niche Terminology (1)</h3>
+<p>Very few people will take the time to read and understand OntoML, and fewer will use it correctly. Here’s an attempt at “translation” (please excuse me if I got some OntoML terms wrong).</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>OntoML</th>
+<th>RDF/OWL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>classification class</td>
+<td>Conceptual hierarchy, probably skos:Concept in ConceptScheme</td>
+</tr>
+<tr class="even">
+<td>characterization class</td>
+<td>Product class (eg <code>ec:ProductClass</code>)</td>
+</tr>
+<tr class="odd">
+<td>application class</td>
+<td>Product class; the basic/advanced distinction should be handled through Profiles</td>
+</tr>
+<tr class="even">
+<td>product model</td>
+<td><code>schema:ProductModel</code> (in manufacturer catalog, refers to <code>ec:ProductClass</code>)</td>
+</tr>
+<tr class="odd">
+<td>property</td>
+<td>Property, with rich definition</td>
+</tr>
+<tr class="even">
+<td>reference</td>
+<td>Object Property linking to product or part</td>
+</tr>
+<tr class="odd">
+<td>attaching property to class</td>
+<td>OWL DL <code>owl:Restriction</code> or <code>schema:domainIncludes</code> or RDF Shape</td>
+</tr>
+<tr class="even">
+<td>synonym/alias</td>
+<td>Property altLabel</td>
+</tr>
+<tr class="odd">
+<td>keyword</td>
+<td>Class altLabel or keyword/subject</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ontoml-niche-terminology-2">OntoML: Niche Terminology (2)</h3>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>OntoML</th>
+<th>RDF/OWL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>block</td>
+<td>Product part (but need to confirm whether all “blocks” are parts)</td>
+</tr>
+<tr class="even">
+<td>aspect</td>
+<td>Class holding additional information (eg Manufacturer, Supplier, Customs info, etc)</td>
+</tr>
+<tr class="odd">
+<td>cardinality</td>
+<td>Numbered product part</td>
+</tr>
+<tr class="even">
+<td>polymorphism</td>
+<td>Named product part</td>
+</tr>
+<tr class="odd">
+<td>depending property</td>
+<td>RDF Shape describing the dependency</td>
+</tr>
+<tr class="even">
+<td>value list</td>
+<td>Enumerated class (<code>owl:oneOf</code>) or <code>skos:ConceptScheme</code> or <code>schema:DefinedTermSet</code></td>
+</tr>
+<tr class="odd">
+<td>value</td>
+<td>Object</td>
+</tr>
+<tr class="even">
+<td>explicit value</td>
+<td>Literal</td>
+</tr>
+<tr class="odd">
+<td>coded value</td>
+<td>Individual from an enumerated class</td>
+</tr>
+<tr class="even">
+<td>domain</td>
+<td>Property range (class or datatype)</td>
+</tr>
+<tr class="odd">
+<td>unit</td>
+<td>Unit of Measure ontologies</td>
+</tr>
+<tr class="even">
+<td>level</td>
+<td>Property qualifier (eg <code>min, max</code>), need to also include <code>current, stdev</code> etc</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ontoml-uses-its-own-datatypes">OntoML Uses its Own Datatypes</h3>
+<p>For basic data, OntoML uses its own <strong>classes</strong>:</p>
+<ul>
+<li><code>OntoML:Datatype</code> class</li>
+<li>Labels: several classes (eg <code>OntoML:preferred_name</code>) with fields <code>label, language_code, country_code</code></li>
+</ul>
+<p>This is not economical, people will not waht to use that in RDF.</p>
+<ul>
+<li>Note: some other industrial ontologies make the same mistake, eg <code>IFCowl</code>, which has datatypes with legacy to EXPRESS</li>
+<li>As a counter-point, alterantive transations of <code>IFC</code> has appeared and alternative Linked Building Data ontologies</li>
+</ul>
+<h3 id="ontoml-uses-its-own-uom">OntoML Uses its Own UoM</h3>
+<p>OntoML is a closed information ecosystem, so it promotes the use of own Units of Measure (UoM)</p>
+<ul>
+<li>IEC UoM (eg see quantity <a href="https://cdd.iec.ch/cdd/iec61360/cdddev.nsf/ListsOfUnitsAllVersions/0112-2---62720%23UAD106?opendocument:">mass density</a> and its list of units): large number, but no dimensional analysis, no conversion factors.</li>
+<li>eCl@ss UoM: no dimensional analysis (AFAIK), proper conversion factors.</li>
+</ul>
+<p>Maybe eCl@ss should not attempt to be an authority on UoM?</p>
+<ul>
+<li>Evaluate against the two UoM evaluation papers</li>
+<li>How many units does eCl@ss have?</li>
+<li>Option1: use established units (QUDT or LINDT)</li>
+<li>Option2: use eCl@ss units, but express with QUDT properties</li>
+</ul>
+<h3 id="ontoml-local-vs-global-thinking">OntoML: Local vs Global Thinking</h3>
+<p>OntoML is based upon local not global thinking. Examples:</p>
+<ul>
+<li>Embedded list of country codes, but eCl@ss should not attempt to be a geographic authority
+<ul>
+<li>Authoritative LOD sources are available: Geonames on all kinds of places, and many up to date country lists</li>
+</ul></li>
+<li>Embedded lists of languages. But there are many comprehensive linguistic resources:
+<ul>
+<li>IANA lang tags as mentioned above</li>
+<li>lexvo, lingvo, etc LOD sites</li>
+</ul></li>
+<li>Embedded list of Materials: has a few hundred items, but there are many industry-specific lists:
+<ul>
+<li>Chemicals</li>
+<li>Grades of steel and formulations of alloys</li>
+<li>New materials (eg nanomaterials, graphene…)</li>
+</ul></li>
+<li>Embedded copy of the MIME Types list (type of source file)
+<ul>
+<li>Includes duplicates (eg <code>application/x-sh</code>, <code>application/x-tcl</code>)</li>
+<li>Excludes many modern types and combination types (eg <code>text/turtle</code>, <code>application/rdf+xml</code>, <code>application/json</code>, <code>application/ld+json</code>)</li>
+</ul></li>
+<li>Colors: insufficient for professional design use (eg think Panathon colors)</li>
+</ul>
+<h3 id="ontoml-not-oriented-towards-linked-data">OntoML: Not Oriented Towards Linked Data</h3>
+<p>Being based on XML, OntoML is not oriented towards Linked Data</p>
+<ul>
+<li>Limited number of external URLs, and they never point to structured data</li>
+<li>Eg the Manufacturer and Supplier blocks:
+<ul>
+<li>Include 2 fields that characterize the Organization not the product (name of manufacturer/supplier, GLN of manufacturer/supplier)</li>
+<li>Don’t include other potentially useful Organization info (eg country, address, affiliations)</li>
+<li>Doesn’t allow linking to a separate (potentially external) Organization node</li>
+</ul></li>
+<li>But there are tons of Linked Data about Organizations! Eg see
+<ul>
+<li><a href="https://opencorporates.com" class="uri">https://opencorporates.com</a>: 189M companies scraped from <a href="https://opencorporates.com/registers">140 registers/jurisdictions</a></li>
+<li><a href="http://www.semantic-web-journal.net/content/eubusinessgraph-ontology-lightweight-ontology-harmonizing-basic-company-information">The euBusinessGraph Ontology: a Lightweight Ontology for Harmonizing Basic Company Information</a>, Semantic Web Journal, 2020</li>
+</ul></li>
+</ul>
+<h2 id="irdi-vs-named-classesprops-pros">IRDI vs Named Classes/Props (pros)</h2>
+<p>I understand the logic of using IRDIs instead of names for ontology terms (classes and properties):</p>
+<ul>
+<li>Names are not as stable</li>
+<li>eCl@ss includes multilingual information. Although EN is the first and mandatory language, it may be better not to put it in the foundation</li>
+</ul>
+<p>The largest ontology with named terms that I know of is FIBO in the financial domain: 122 ontologies, 1500 classes, 1000 properties. But most of the huge ontologies use numbered/coded class, eg:</p>
+<ul>
+<li>Wikidata</li>
+<li>All LifeSci and Biomedical ontologies</li>
+<li>RDA in the library domain</li>
+</ul>
+<h3 id="irdi-vs-named-classesprops-cons">IRDI vs Named Classes/Props (Cons)</h3>
+<p>There are some considerations against using IRDI terms:</p>
+<ul>
+<li>People are always happier to use understandable (English) names in their RDF data rather than opaque IDs. Eg see <a href="https://github.com/RDARegistry/RDA-Vocabularies/issues/38">RDA-Vocabularies/issues/38</a></li>
+<li>In the examples below I use named terms for better understadability
+<ul>
+<li>Which does NOT mean that I recommend making English names</li>
+</ul></li>
+<li>But eCl@ss may decide to reuse some existing classes, properties or UoM
+<ul>
+<li>Then some IRDIs should be replaced with named terms</li>
+<li>Eg <code>schema:gtin</code> instead of <code>ec:0173-1_02-AAO663_003</code></li>
+<li>This can be done with some lookup tables during the conversion process</li>
+</ul></li>
+</ul>
+<h2 id="irdi-stability-vs-versioning">IRDI Stability vs Versioning</h2>
+<ul>
+<li>Some props have quite a large IRDI version (last component), eg “Operating resource protection class” <code>0173-1#02-BAA205#012</code></li>
+<li>I guess the IRDI version is incremented (upon eCl@ss release time) when one of its dependencies are incremented</li>
+<li>This leads to cascading (avalanche) incrementing:
+<ul>
+<li>Eg if a new country is added to the list</li>
+<li>That Value List is incremented</li>
+<li>All props using it are incremented</li>
+<li>All blocks using them are incremented</li>
+<li>All classes using the blocks are incremented</li>
+</ul></li>
+<li>Pros: Provide precise IDs for every change of data</li>
+<li>But: 99.9% of the time the <strong>meaning</strong> of an IRDI doesn’t change, only details are added</li>
+<li>Versioning class/property IRIs has serious drawbacks for data consumers:
+<ul>
+<li>See well-known papers <a href="https://www.w3.org/Provider/Style/URI">Cool URIs Don’t Change</a> and <a href="https://www.w3.org/TR/cooluris">Cool URIs for the Semantic Web</a> by TimBL</li>
+<li>If a user has billions of triples using a property IRI, you don’t want him to have to change that IRI</li>
+</ul></li>
+</ul>
+<h3 id="irdi-versioning-cons">IRDI Versioning Cons</h3>
+<ul>
+<li>A large manufacturer who uses eCl@ss for a long time:
+<ul>
+<li>Will have data referring to <strong>many</strong> historic eCl@ss versions at the same time</li>
+<li>Or face large-scale data migrations</li>
+<li>His tooling must deal with these multiple eCl@ss versions</li>
+<li>A <strong>disincentive</strong> for upgrading to the latest eCl@ss often</li>
+</ul></li>
+<li>A large supplier/retailer that deals with many manufacturers:
+<ul>
+<li>Will have to deal with many historic eCl@ss versions, even if each manufacturer use sonly one eCl@ss version</li>
+</ul></li>
+<li>A data consumer that wants to query data:
+<ul>
+<li>Will have to deal with many different (versioned) IRIs for the same prop eg “height”</li>
+<li>Will have to find them (how?) and enumerate them in the query (huge inconvenience)</li>
+<li>Queries will be invalidated when a new eCl@ss version comes out</li>
+</ul></li>
+<li>eCl@ss provides no formal link between versions of the same IRDI
+<ul>
+<li>eCl@ss even stopped issuing a version-less IRDI field</li>
+</ul></li>
+</ul>
+<h3 id="versioned-iris-make-querying-harder">Versioned IRIs Make Querying Harder</h3>
+<pre class="ttl"><code># simplest
+?x schema:height ?h
+filter (?h &lt;= 10)
+
+# unacceptable: label is not stable
+?height ec:label &quot;Height&quot;. 
+
+# find IRDI by substring: slow
+?height a ec:Property; ec:irdi ?irdi.
+filter(strstarts(?irdi,&quot;0176//blah-blah#&quot;)) # excluding version
+?x ?height ?h
+filter (?h &lt;= 10)
+
+# better to have explicit connections between IRDIs:
+:0176__blah-blah a ec:Property;
+  ec:irdi &quot;0176//blah-blah&quot;;
+  ec:propertyVersion :0176__blah-blah_001, :0176__blah-blah_002;
+  ec:label &quot;height&quot;.
+
+:0176__blah-blah_002 a ec:PropertyVersion;
+  :irdi &quot;0176//blah-blah#001&quot;;
+  ec:basicProperty :0176__blah-blah;
+  ec:label &quot;height&quot;.
+
+# query:
+?height a ec:VersionedProperty; ec:basicProperty :0176__blah-blah.
+?x ?height ?h.
+filter (?h &lt;= 10)</code></pre>
+<h3 id="using-version-less-iris-1">Using Version-less IRIs (1)</h3>
+<ul>
+<li>IEC CDD uses versionless IRDIs for internal links:
+<ul>
+<li>Eg unit <code>0112/2///62720#UAD587#001</code> m⁻³ kg</li>
+<li>Uses version-less page URL <a href="https://cdd.iec.ch/cdd/iec61360/cdddev.nsf/Units/0112-2---62720%23UAD587?opendocument" class="uri">https://cdd.iec.ch/cdd/iec61360/cdddev.nsf/Units/0112-2---62720%23UAD587?opendocument</a></li>
+<li>Shows version-less as Code: <code>0112/2///62720#UAD587</code></li>
+<li>Links to version-less list of units, eg <code>0112/2///62720#UAD106</code> mass density</li>
+<li>Links to version-less units, eg <code>0112/2///62720#UAA619</code> kilogram per metre cubed</li>
+<li>Is cross-referenced from the QUDT ontology as version-less (<code>qudt:iec61360Code</code>)</li>
+</ul></li>
+</ul>
+<h3 id="using-version-less-iris-2">Using Version-less IRIs (2)</h3>
+<ul>
+<li>Every W3C spec has at least two URLs:
+<ul>
+<li><code>curent</code> This Version, eg <a href="https://www.w3.org/TR/2020/REC-wot-thing-description-20200409/" class="uri">https://www.w3.org/TR/2020/REC-wot-thing-description-20200409/</a></li>
+<li><code>latest</code>
+<ul>
+<li>Latest published version: https://www.w3.org/TR/wot-thing-description/&gt;</li>
+<li>Latest editor’s draft: <a href="https://w3c.github.io/wot-thing-description/" class="uri">https://w3c.github.io/wot-thing-description/</a></li>
+</ul></li>
+</ul></li>
+<li>Best practice:
+<ul>
+<li>The latest IRIs of classes/props should be version-less</li>
+<li>Each release can also have a variant with versioned IRIs</li>
+<li>This allows a user to retarget to that older version in case of breaking changes</li>
+<li>Eg QUDT 2.0 had <code>unit:KG</code>, QUDT 2.1 has <code>unit:KiloGM</code>: our <a href="https://github.com/BigDataGrapes-EU/ontology" class="uri">https://github.com/BigDataGrapes-EU/ontology</a> had to change to versioned 2.0</li>
+</ul></li>
+<li>OWL ontology URLs usually don’t change, whereas <code>owl:versionIRI</code> is the versioned URL</li>
+</ul>
+<h3 id="versioning-example-qudt">Versioning Example: QUDT</h3>
+<pre class="ttl"><code>@prefix unit: &lt;http://qudt.org/vocab/unit/&gt; .  ### version-less
+unit:A                                         ### URLs are permanent
+  a qudt:Unit ;
+  qudt:dbpediaMatch &quot;http://dbpedia.org/resource/Ampere&quot;^^xsd:anyURI ; ### version-less
+  qudt:hasDimensionVector qkdv:A0E1L0I0M0H0T0D0 ;
+  qudt:hasQuantityKind quantitykind:ElectricCurrent ;
+  qudt:iec61360Code &quot;0112/2///62720#UAA101&quot; ;  ### version-less
+  qudt:iec61360Code &quot;0112/2///62720#UAD717&quot; ;  ### version-less
+  qudt:informativeReference &quot;http://en.wikipedia.org/wiki/Ampere?oldid=494026699&quot;^^xsd:anyURI ; 
+    ### Versioned: this exact Wikipedia edit
+  qudt:omUnit &lt;http://www.ontology-of-units-of-measure.org/resource/om-2/ampere&gt; ;
+    ### Versioned: big changes from OM 1.1 to OM 2
+  qudt:ucumCode &quot;A&quot;^^qudt:UCUMcs ;
+  qudt:uneceCommonCode &quot;AMP&quot; ;
+  qudt:unitOfSystem &lt;http://qudt.org/vocab/sou/SOU_SI&gt; ;
+  rdfs:isDefinedBy &lt;http://qudt.org/2.1/vocab/unit&gt; ; ### versioned
+  rdfs:label &quot;Ampere&quot;@en ;
+  skos:altLabel &quot;amp&quot; ;</code></pre>
+<h2 id="sample-rdf-patterns">Sample RDF Patterns</h2>
+<p>I can’t make complete and definite examples yet because there are many questions to be decided.</p>
+<ul>
+<li>But I can show some examples from the test cases of “lamp” and “switch”.</li>
+<li>Below I use named classes and properties rather than IRDI-based terms, but that’s just for better understandability
+<ul>
+<li>It doesn’t represent a decision to switch away from IRDIs</li>
+<li>Most eCl@ss URLs will be IRDI-based</li>
+<li>But for some you may decide to use schema.org terms</li>
+</ul></li>
+<li>For every term I include the <code>:irdi</code> in is original form, for searching by id</li>
+</ul>
+<h3 id="classification-hierarchy">Classification Hierarchy</h3>
+<p>If we use SKOS to represent the classification, it can go like this.</p>
+<ul>
+<li><code>skos:notation</code> is commonly used to represent the hierarchical code.</li>
+<li>schema.org has <code>DefinedTermSet</code> and <code>DefinedTerm</code> that do the same, but don’t have a hierarchy.</li>
+</ul>
+<pre class="ttl"><code>:eCl@ss a skos:ConceptScheme; skos:prefLabel &quot;eCl@ss Product Classification&quot;@en, &quot;...&quot;@de.
+
+:27000000 a skos:Concept; skos:notation &quot;27000000&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:topConceptOf :eCl@ss;
+  skos:prefLabel &quot;27 Electric engineering, automation, process control engineering&quot;@en.
+:27070000 a skos:Concept; skos:notation &quot;27070000&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:broader :27000000;
+  skos:prefLabel &quot;27-07 Medium voltage switchgear, system&quot;@en.
+:27070200 a skos:Concept; skos:notation &quot;27070200&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:broader :27070000;
+  skos:prefLabel &quot;27-07-02 Switch (medium voltage)&quot;@en.
+:27070203 a skos:Concept; skos:notation &quot;27070203&quot;; :irdi &quot;...&quot;; skos:inScheme :eCl@ss; skos:broader :27070200;
+  skos:prefLabel &quot;27-07-02-03 Disconnecting switch (medium voltage)&quot;@en.</code></pre>
+<h3 id="product-class">Product Class</h3>
+<p>An application class (basic or advanced) is represented as an OWL class <code>:ProductClass</code>.</p>
+<pre class="ttl"><code>:Ceiling_wall_luminaire a :ProductClass; :irdi &quot;0173-1#01-AGB066#004&quot;; :classification :27010203;
+  :prefLabel &quot;Ceiling-wall luminaire&quot;@en, :altLabel &quot;lamp&quot;@en, &quot;лампион&quot;@bg, &quot;plafon&quot;@en.</code></pre>
+<ul>
+<li>We attach properties to classes using the schema.org mechanism (not OWL DL).</li>
+<li>We use common naming conventions (<code>Capital</code> for classes, <code>lowercase</code> for props).</li>
+<li>We map props in the most natural way for RDF.</li>
+</ul>
+<h3 id="product-chracteristics">Product Chracteristics</h3>
+<pre class="ttl"><code>:luminaire_application a owl:ObjectProperty; 
+  :irdi &quot;0173-1#02-BAB386&quot;; :versionedIrdi &quot;0173-1#02-BAB386#006&quot;;
+  :prefLabel &quot;application&quot;@en;
+  schema:domainIncludes :Ceiling-wall_luminaire;
+  schema:rangeIncludes :Luminaire-Application.
+
+:design_of_interior_lighting a owl:DatatypeProperty;
+  :irdi &quot;0173-1#02-AAP824&quot;; :versionedIrdi &quot;0173-1#02-AAP824#001&quot;;
+  :prefLabel &quot;design of interior lighting&quot;@en;
+  schema:domainIncludes :Ceiling-wall_luminaire;
+  schema:rangeIncludes xsd:string. # not translatable
+
+:design_of_illuminant a owl:DatatypeProperty;
+  :irdi &quot;0173-1#02-BAA209&quot;;
+  :prefLabel &quot;design of illuminant&quot;@en;
+  schema:domainIncludes :Ceiling-wall_luminaire;
+  schema:rangeIncludes rdf:langString. # translatable
+
+:material a owl:ObjectProperty;
+  :irdi &quot;0173-1#02-BAB664&quot;;
+  :prefLabel &quot;material&quot;@en;
+  schema:domainIncludes :Ceiling-wall_luminaire, ...;
+  schema:rangeIncludes :Material.
+
+:pole_number a owl:DatatypeProperty;
+  :irdi &quot;0173-1#02-AAT080&quot;;
+  :prefLabel &quot;pole number&quot;@en;
+  schema:domainIncludes :Ceiling-wall_luminaire;
+  schema:rangeIncludes xsd:integer.
+</code></pre>
+<h3 id="value-lists">Value Lists</h3>
+<p>We represent them as enumerated classes with instances (above we used these specific classes).</p>
+<ul>
+<li>Another way is to use <code>skos:ConceptSchemes</code>, but to validate that a <code>skos:Concept</code> from a correct scheme is used, we’d need to check a property path value</li>
+</ul>
+<pre class="ttl"><code>:Luminaire-Application a rdfs:Class; :irdi &quot;0173-1#02-BAB386&quot;;
+  :prefLabel &quot;application&quot;@en.
+
+:Headlight_car_truck a :Luminaire-Application; irdi &quot;...&quot;;
+  &quot;Headlight, car+truck&quot;@en.
+:Headlight_motorcycle a :Luminaire-Application; irdi &quot;...&quot;;
+  &quot;Headlight, motorcycle&quot;@en.
+
+:Material a rdfs:Class; :irdi &quot;0173-1#02-BAB664&quot;;
+  :prefLabel &quot;Material&quot;@en.
+
+:Real_glas a :Material; :irdi &quot;...&quot;;
+  :prefLabel &quot;Real glas&quot;@en.
+:Thermoplast a :Material; :irdi &quot;...&quot;;
+  :prefLabel &quot;Thermoplast&quot;@en.</code></pre>
+<h3 id="blocks-and-aspects">Blocks and Aspects</h3>
+<p>Blocks and Aspects are groups of properties that we represent as additional classes.</p>
+<ul>
+<li>Blocks (mmight usually) map to parts, whereas aspects add additional information.</li>
+<li>Below I show a systematic mapping of <code>identification</code> and its two members <code>supplier</code> and <code>manufacturer</code>:</li>
+</ul>
+<pre class="ttl"><code># Aspect classes
+:IdentificationAspects a rdfs:Class; :irdi &quot;...&quot;; :prefLabel &quot;Identification aspects&quot;@en.
+:SupplierAspects       a rdfs:Class; :irdi &quot;...&quot;; :prefLabel &quot;Supplier aspects&quot;@en.
+:ManufacturerAspects   a rdfs:Class; :irdi &quot;...&quot;; :prefLabel &quot;Manufacturer aspects&quot;@en.
+
+# Links to aspects
+:identification a owl:ObjectProperty; :irdi &quot;...&quot;; :prefLabel &quot;Identification aspects&quot;@en;
+  schema:domainIncludes :Ceiling_wall_luminaire, ...; schema:rangeIncludes :IdentificationAspects.
+:supplier       a owl:ObjectProperty; :irdi &quot;...&quot;; :prefLabel &quot;Supplier aspects&quot;@en.
+  schema:domainIncludes :IdentificationAspects; schema:rangeIncludes :SupplierAspects.
+:manufacturer   a owl:ObjectProperty; :irdi &quot;...&quot;; :prefLabel &quot;Manufacturer aspects&quot;@en.
+  schema:domainIncludes :IdentificationAspects; schema:rangeIncludes :ManufacturerAspects.</code></pre>
+<h3 id="blocks-and-aspects-2">Blocks and Aspects (2)</h3>
+<pre class="ttl"><code># Aspect props
+:product_article_number_of_supplier a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :SupplierAspects; schema:rangeIncludes xsd:string.
+:name_of_supplier a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :SupplierAspects; schema:rangeIncludes rdf:langString.
+:gln_of_supplier a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :SupplierAspects; schema:rangeIncludes xsd:string.
+
+:date_of_manufacture a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:date.
+:gtin a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:string.
+:manufacturer_name a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes rdf:langString.
+:gln_of_manufacturer a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:string.</code></pre>
+<h3 id="blocks-and-aspects-problems">Blocks and Aspects Problems</h3>
+<p>The above representation has several defects:</p>
+<ul>
+<li>It mixes product info (eg <code>article number, GTIN</code>) and organization info (<code>name, GLN</code>) into one node</li>
+<li>It doesn’t consider suppliers and manufacturers as worthy entities on their own, but as subsidiary aspects of products</li>
+<li>It doesn’t consider <code>name, GLN</code> as universally applicable organization attributes, but uses properties relative to the org’s role for the product (eg <code>name of supplier, GLN of supplier</code>)
+<ul>
+<li>If you consider all 5 <a href="https://catmaster.unspsc.org/Help/index.html?4_-_unspsc.htm">UNSPSC Business Function Identifiers</a> (as Martin Hepp did), would you also have <code>name of repairer, GLN of repairer</code> and so on for all 10 or so business functions?</li>
+</ul></li>
+<li>It has a parasitic node <code>:Identification</code> that does nothing else but hold two links <code>:supplier</code> and <code>:manufacturer</code></li>
+<li>It pushes important product info like <code>GTIN</code> deep down the hierarchy</li>
+</ul>
+<h3 id="blocks-and-aspects-refactoring">Blocks and Aspects Refactoring</h3>
+<p>Below I show a better way to model it, but I understand this may be hard or impossible do systematically.</p>
+<ul>
+<li>We could do it for important, commonly used aspects</li>
+<li>Or at least consider flattening such aspects to avoid parasitic links and nodes</li>
+<li>I think that <code>supplier</code> is not a repeatable aspect (I didn’t see cardinality), so below I don’t have per-product-per-supplier properties
+<ul>
+<li>But in reality may need them, since the same product may be distributed by many suppliers?</li>
+</ul></li>
+</ul>
+<h3 id="blocks-and-aspects-refactored">Blocks and Aspects Refactored</h3>
+<pre class="ttl"><code>:Organization a rdfs:Class; :prefLabel &quot;Organization/company&quot;@en.
+
+:supplier a owl:ObjectProperty; :irdi &quot;...&quot;; :prefLabel &quot;Supplier&quot;@en.
+  schema:domainIncludes :Ceiling-wall_luminaire, ...; schema:rangeIncludes :Organization.
+:manufacturer a owl:ObjectProperty; :irdi &quot;...&quot;; :prefLabel &quot;Manufacturer&quot;@en.
+  schema:domainIncludes :Ceiling-wall_luminaire, ...; schema:rangeIncludes :Organization.
+
+:name a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :Organization; schema:rangeIncludes rdf:langString.
+:gln a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :Organization; schema:rangeIncludes xsd:string.
+
+:product_article_number_of_supplier a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :Ceiling-wall_luminaire; schema:rangeIncludes xsd:string.
+:date_of_manufacture a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :Manufacturer; schema:rangeIncludes xsd:date.
+:gtin a owl:DatatypeProperty; :irdi &quot;...&quot;; :prefLabel &quot;...&quot;@en;
+  schema:domainIncludes :Manufacturer; schema:rangeIncludes xsd:string.</code></pre>
+<h3 id="catalog-entry">Catalog Entry</h3>
+<p>Ok, enough ontology talk!</p>
+<ul>
+<li>I find instance data more important (and “more interesting”) as it directly tells you what the data looks like.</li>
+<li>Now we have some basic <code>ProductClass</code> info and can show how a manufacturer can use it in their product catalog.</li>
+<li>I used the empty prefix <code>:</code> for eCl@ss props, and <code>mf:</code> for manufacturer props.</li>
+<li>First I show the more natural representation using the “refactored” pattern for supplier/manufacturer.</li>
+</ul>
+<h3 id="catalog-entry-refactored">Catalog Entry (Refactored)</h3>
+<pre class="ttl"><code>mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;
+  schema:name &quot;Smart lamp&quot;;
+  :manufacturer mf:Company1;
+  :supplier mf:Company2;
+  :gtin &quot;1234567&quot;; # or schema:gtin
+  :product_article_number_of_supplier &quot;A-1234567&quot;;
+  :uri_of_the_product &lt;http://company1.com/product/1234567&gt;; # or schema:uri
+  :date_of_manufacture &quot;2020-10-10&quot;^^xsd:date;
+  :luminaire_application :Wall_lamp;
+  :design_of_interior_lighting &quot;curved&quot;;
+  :pole_number 2;
+  :material :Real_glas, :Thermoplast.
+
+mf:Company1 a :Organization; :name &quot;Company1&quot;@en; :gln &quot;987654321&quot;.
+  # Add here any number of org props, like address, website, etc
+
+mf:Company2 a :Organization; :name &quot;Company2&quot;@en; :gln &quot;098765432&quot;.
+  # Add here any number of org props, like address, website, etc</code></pre>
+<h3 id="catalog-entry-not-refactored">Catalog Entry (Not Refactored)</h3>
+<p>To appreciate that the above refactored representation is better, here’s the systematic representation:</p>
+<ul>
+<li>It doesn’t optimize aspect structure/nesting
+<ul>
+<li>From the point of view of eCl@ss information engineer, Advanced structure is much better than Basic because it’s “divide and conquer”</li>
+<li>But from the point of view of information consumer, <code>mf:1234567_identification</code> is a “parasitic” node!
+<ul>
+<li>It adds a level to hop through, without adding much value</li>
+<li>I believe that most actual data uses only a small portion of all potential props and blocks</li>
+</ul></li>
+</ul></li>
+<li>There are no separate nodes for Organizations, it all boils down to products
+<ul>
+<li>Thus an Organization’s attributes like <code>name, GLN</code> are repeated in each of its products</li>
+</ul></li>
+<li>Important product info like <code>gtin</code> is pushed a couple of links away from the product</li>
+</ul>
+<h3 id="catalog-entry-not-refactored-1">Catalog Entry (Not Refactored)</h3>
+<pre class="ttl"><code>mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;
+  schema:name &quot;Smart lamp&quot;;
+  :luminaire_application :Wall_lamp;
+  :design_of_interior_lighting &quot;curved&quot;;
+  :pole_number 2;
+  :material :Real_glas, :Thermoplast;
+  :identification mf:1234567_identification.
+
+mf:1234567_identification a :IdentificationAspects;
+  :manufacturer mf:1234567_manufacturer;
+  :supplier mf:1234567_supplier.
+
+mf:1234567_manufacturer a :ManufacturerAspects;
+  :gtin &quot;1234567&quot;; # or schema:gtin
+  :uri_of_the_product &lt;http://company1.com/product/1234567&gt;; # or schema:uri
+  :date_of_manufacture &quot;2020-10-10&quot;^^xsd:date;
+  :name_of_manufacturer &quot;Company1&quot;@en;
+  :gln_of_manufacturer &quot;987654321&quot;.
+
+mf:1234567_supplier a :SupplierAspects;
+  :product_article_number_of_supplier &quot;A-1234567&quot;;
+  :name_of_supplier &quot;Company2&quot;@en;
+  :gln_of_supplier &quot;098765432&quot;.</code></pre>
+<h3 id="cardinality">Cardinality</h3>
+<p>Let’s show how to represent repeated aspects (“Cardinality”) on the example of <code>Additional Information</code></p>
+<ul>
+<li>I skipped “number of documentations” because that’s redundant (one can just count the number of instances)</li>
+<li>I’d model classes and properties as above, so we don’t show them but only instance data</li>
+<li>The only addition is <code>:index</code> which shows the sequential number of the additional info</li>
+<li>We could use an <code>rdf:List</code> but using an <code>:index</code> is easier and cleaner</li>
+</ul>
+<h3 id="cardinality-example">Cardinality (Example)</h3>
+<pre class="ttl"><code>mf:1234567 :add_on_documentation mf:1234567_doc1, mf:1234567_doc2, mf:1234567_doc3.
+
+mf:1234567_doc1 a :AdditionalInformation; :index 1;
+  :calendrical_validity_from &quot;2020-10-10&quot;^^xsd:date;
+  :type_of_document :Technical_documentation;
+  :source_as_path_info &quot;user_guide-en.pdf&quot;;
+  :language_of_document :English;
+  :type_of_source_file &quot;application/pdf&quot;.
+
+mf:1234567_doc2 a :AdditionalInformation; :index 2;
+  :calendrical_validity_from &quot;2020-10-10&quot;^^xsd:date;
+  :type_of_document :Technical_documentation;
+  :source_as_path_info &quot;user_guide-de.pdf&quot;;
+  :language_of_document :German;
+  :type_of_source_file &quot;application/pdf&quot;.
+
+mf:1234567_doc3 a :AdditionalInformation; :index 3;
+  :calendrical_validity_from &quot;2020-10-12&quot;^^xsd:date;
+  :type_of_document :Application_Software;
+  :source_as_path_info &quot;smartLamp-driver.dll&quot;;
+  :type_of_source_file &quot;application/octet-stream&quot;.</code></pre>
+<h3 id="eclss-datatype-uri">eCl@ss Datatype <code>URI</code></h3>
+<ul>
+<li>Speaking of <code>AdditionalInformation</code>, I can’t believe there’s no <code>document URL</code> prop.
+<ul>
+<li>Modern manufacturers put their product documents online, right?</li>
+<li>Maybe <code>source as path info</code> plays that role?</li>
+</ul></li>
+<li>But really, eCl@ss needs a data type <code>URI</code> so it can be validated properly</li>
+<li><code>URI of the product</code> has datatype “String (translatable)”
+<ul>
+<li>Assume there are web pages in English and German</li>
+<li>If I want to indicate the lang of the page, does that mean I should do this:
+<ul>
+<li><code>"http://company1.com/en/product/1234567"@en</code></li>
+<li><code>"http://company1.com/de/product/1234567"@de</code></li>
+<li>This is all wrong</li>
+</ul></li>
+</ul></li>
+<li>In contrast, <code>Additional Information</code> has <code>language of document</code> and that’s how it should be done (with a separate field)</li>
+</ul>
+<h3 id="polymorphism">Polymorphism</h3>
+<p><code>size_dimension</code> can also be stated several times</p>
+<ul>
+<li>But unlike <code>AdditionalInformation</code> that uses an <code>:index</code>,</li>
+<li>Here we use a discriminator prop <code>type of enveloping body</code> that determines what further props are applicable:</li>
+<li><code>depth, diameter</code> for <code>cylinder</code> but <code>height, width, depth</code> for <code>cuboid</code></li>
+</ul>
+<p>We could model this in two ways:</p>
+<ul>
+<li>As separate classes <code>EnvelopingBodyCylinder, EnvelopingBodyCuboid</code> (then we don’t need a prop <code>type of enveloping body</code>), or</li>
+<li>Lump all props in one class <code>EnvelopingBody</code> and add an RDF Shape to validate that appropriate extra props are applied per type</li>
+</ul>
+<p>Below I show how the first alternative looks in a catalog entry.</p>
+<ul>
+<li>I use <code>ucum:</code> literals that keep the value and unit together, while allowing comparison and arithmetic operations</li>
+<li>Or if the unit is fixed in eCl@ss, it can be omitted from the literal</li>
+<li>Or if we must express the unit explicitly, we need extra nodes</li>
+</ul>
+<h3 id="polymorphism-1">Polymorphism</h3>
+<pre class="ttl"><code>mf:1234567 :size_dimension1 mf:1234567_cylinder.
+
+mf:1234567_cylinder a :EnvelopingBodyCylinder;
+  :depth &quot;25 cm&quot;^^cdt:ucum;
+  :diameter &quot;12 cm&quot;^^cdt:ucum.
+  
+mf:1234568 :size_dimension2 mf:1234568_cuboid.
+  
+mf:1234568_cuboid a :EnvelopingBodyCuboid;
+  :depth &quot;25 cm&quot;^^cdt:ucum;
+  :height &quot;12 cm&quot;^^cdt:ucum; :width &quot;12 cm&quot;^^cdt:ucum.</code></pre>
+<ul>
+<li>AFAIK eCl@ss uses 2 different IRDI <code>:size_dimension1</code> and <code>:size_dimension2</code></li>
+<li>That’s a problem for querying</li>
+<li>Even more, there’s no relation between them</li>
+</ul>
+<h3 id="wot-device">WoT Device</h3>
+<p>Must conform to WoT Things Description:</p>
+<ul>
+<li>Link from device to <code>ProductModel</code> (must be compatible TD Templates)</li>
+<li>When possible, use SGTIN (its prefix is the GTIN of the product model)</li>
+<li>Links from Product Model (manufacturer catalog) to eCl@ss by using classes/props</li>
+<li>Prop <code>luminance</code> described as <code>min..max</code> levels in <code>ProductModel</code> but a dynamic “current” value in the device</li>
+<li>Annotation to state that <code>luminance</code> is a WoT TD property, having <code>NumberSchema</code></li>
+<li>Somehow (HOW?) relate eCl@ss props to WoT TD properties or parts (see next)</li>
+</ul>
+<h3 id="wot-parts">WoT Parts</h3>
+<ul>
+<li>Parts and their connections are modeled as Blocks with Cardinality or Polymorphism
+<ul>
+<li>But not all Blocks are parts! Some are documents, conceptual entities, etc. How to distingush?</li>
+</ul></li>
+<li>How is parthood modeled in WoT? Need to research if there are commonly accepted approaches</li>
+<li>Direct props/actions, eg
+<ul>
+<li><a href="http://myhome.org/lamp1/luminance" class="uri">http://myhome.org/lamp1/luminance</a> : read &amp; write prop to control luminance</li>
+<li><a href="http://myhome.org/lamp1/toggle" class="uri">http://myhome.org/lamp1/toggle</a> : action to operate the switch</li>
+</ul></li>
+<li>Indirect through parts, eg
+<ul>
+<li><a href="http://myhome.org/lamp1/part/luminanceControl" class="uri">http://myhome.org/lamp1/part/luminanceControl</a> : link to part
+<ul>
+<li><a href="http://myhome.org/luminanceControl1/level" class="uri">http://myhome.org/luminanceControl1/level</a> : read &amp; write prop to control the level of the <code>luminanceControl</code> part</li>
+</ul></li>
+<li><a href="http://myhome.org/lamp1/part/switch" class="uri">http://myhome.org/lamp1/part/switch</a> : link to part
+<ul>
+<li><a href="http://myhome.org/switch1/toggle" class="uri">http://myhome.org/switch1/toggle</a> : action to operate the <code>switch</code> part</li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="semantic-modeling">Semantic Modeling</h1>
+<p>For me, Semantic Modeling is more than Ontology Engineering:</p>
+<ol type="1">
+<li>Define use cases and competency questions</li>
+<li>Research and pick appropriate ontologies</li>
+<li>Ontology Engineering to add missing classes and properties</li>
+<li>Decide how to put the data together (this is the core of semantic modeling)</li>
+<li>Document as application profile, including provider rules and diagrams</li>
+<li>Implement as RDF shapes</li>
+<li>Create sample or conformance testing data</li>
+<li>Implement competency questions as queries</li>
+<li>Define additional aspects like URL policy, application protocols, special indexing (eg full-text, facets), etc</li>
+</ol>
+<h3 id="rdfpuml-diagrams">rdfpuml Diagrams</h3>
+<p>RDF is all about graphs, so I think diagrams are crucial for understanding by both:</p>
+<ul>
+<li>Data Providers, who need to know what data to produce or how to convert</li>
+<li>Data Consumers, who need to know what paths and data are available, to write queries or consume it in other forms (eg JSON-LD)</li>
+</ul>
+<p>I’ve been using a tool called <code>rdfpuml</code> (see <a href="http://github.com/VladimirAlexiev/rdf2rml">VladimirAlexiev/rdf2rml</a>) that makes <strong>faithful</strong> diagrams from turtle examples.</p>
+<p>In the next two slides I show diagrams of Catalog Entry (Refactored) and Catalog Entry (Not Refactored)</p>
+<ul>
+<li>They are made from the Turtle code shown above</li>
+<li>Automatically, without any changes or tweaking</li>
+<li>Which means diagrams are precise, there is no <a href="https://en.wikipedia.org/wiki/Hand-waving">hand-waving</a></li>
+</ul>
+<h3 id="diagram-of-catalog-entry-refactored"><a href="img/catalog-entry-refactored.png">Diagram</a> of Catalog Entry (Refactored)</h3>
+<p><img src="img/catalog-entry-refactored.png" /></p>
+<h3 id="diagram-of-catalog-entry-not-refactored"><a href="img/catalog-entry.png">Diagram</a> of Catalog Entry (Not Refactored)</h3>
+<p><img src="img/catalog-entry.png" /></p>
+</body>
+</html>
