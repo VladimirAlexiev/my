@@ -8,10 +8,10 @@ all : $(PNG) Slides.html index.html
 	rdfpuml.bat $<
 
 img/%.png : %.puml
-	puml.bat -o img $<
+	plantuml -o img $<
 
 index.html : Slides.md
-	pandoc Slides.md -o index.html -f markdown+fenced_divs -s
+	pandoc --defaults=pandoc-defaults $^  -o $@
 
 Slides.html : Slides.md
 	quarto render $^

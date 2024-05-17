@@ -6,8 +6,7 @@ embed-resources: true
 format: revealjs
 slide-level: 6
 toc-depth: 2
-metadata-files:
-  - _metadata.yml
+metadata-files: [_metadata.yml]
 ---
 
 # Motivation
@@ -28,7 +27,7 @@ We discuss various considerations for representing ECLASS product info as RDF.
 Somewhat related Ontotext presentations:
 
 - [Exploring Industry 4.0 Standards with the Ontotext Platform](http://rawgit2.com/VladimirAlexiev/my/master/pres/20200908-i40kg-semantics/Slides.html), Semantics 2020 webinar, Sep 2020
-- [Practical Semantic Modeling, SPARQL, RDF Shapes, IoT/WoT/UoM](http://rawgit2.com/VladimirAlexiev/my/master/pres/20171025-Practical Semantic Modeling, SPARQL, RDF Shapes, IoT-WoT-UoM (201710).pptx), Ontotext Training, 80 Slides, Oct 2017
+- [Practical Semantic Modeling, SPARQL, RDF Shapes, IoT/WoT/UoM](http://rawgit2.com/VladimirAlexiev/my/master/pres/20171025-Practical%20Semantic%20Modeling,%20SPARQL,%20RDF%20Shapes,%20IoT-WoT-UoM%20(201710).pptx), Ontotext Training, 80 Slides, Oct 2017
   - I now made an update on Units of Measure (available on request)
 
 ## Crucial Questions
@@ -103,7 +102,7 @@ Compare:
   - Distinguish explicitly between each real entity and the information about it
   - Eg `gtin` is a prop of ProductModel but `gln` is a prop of an Organization
 
-###  Open vs Closed Data Ecosystems{.smaller}
+###  Open vs Closed Data Ecosystems
 
 ECLASS is a very closed data environment: it does not reuse data by anyone else. Eg:
 
@@ -119,7 +118,7 @@ Why should ECLASS care about this?
   - There is a large number of ontologies relevant to the use cases that ECLASS cannot interoperate with
   - That includes IoT/WoT, schema.org, sensors, electrical, green energy, BIM, etc, etc
 
-### The Web: Open Innovation{.smaller}
+### The Web: Open Innovation
 
 W3C standards are fully open:
 
@@ -132,7 +131,7 @@ W3C standards are fully open:
 - Models (ontologies), test suites and test results (EARL ontology) are all expressed in machine-readable way (usually RDF)
 - Before accepted as recommendation, minimum 2 conforming implementations are needed. Implementation Report is generated from EARL RDF
 
-The web invites wide participation:
+### The Web Invites Wide Participation
 
 - Anyone can make content and link to other content
 - World Wide Web of content (web) and Global Giant Graph of data (semantic web)
@@ -140,7 +139,7 @@ The web invites wide participation:
 - "Permission-free innovation"
 - Unfortunately, big "internet properties" have become content monopolists: so TimBL started the [Solid](https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)) web decentralization project
 
-### ISO and IEC: Closed Standards{.smaller}
+### ISO and IEC: Closed Standards
 
 ISO and IEC standards are closed:
 
@@ -150,10 +149,10 @@ ISO and IEC standards are closed:
 - Delivered as PDF with few machine-processable artefacts
 - Costs 200 CHF: few developers will bother to pay this to get it
 
-Positive aspects:
+### ISO and IEC: Positive Aspects
 
 - [IEC CDD](https://cdd.iec.ch/CDD/iec61360/iec61360.nsf) is online, open (but not quite), update a lot more frequently
-- PLIB is well described at ECLASS wiki: [ISO_13584-32_ontoML](https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML) and [Conceptual_data_model](https://wiki.eclass.eu/wiki/Conceptual_data_model); but not officia/comprehensive
+- PLIB is well described at ECLASS wiki: [ISO 13584-32 ontoML](https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML) and [Conceptual Data Model](https://wiki.eclass.eu/wiki/Conceptual_data_model); but not official/comprehensive
 
 "ISO/IEC are for professional use, so money is not a problem"
 
@@ -161,7 +160,7 @@ Positive aspects:
 - Eg "A Critical Assessment of ISO 13584 Adoption by B2B Data Exchange Specifications" (Martin Hepp, ICCE 2006)
 - Openness is **the major reason** for the success and penetration of the web
 
-### PLIB and POM: Not Open Data{.smaller}
+### PLIB and POM: Not Open Data
 
 - [IEC CDD License](https://cdd.iec.ch/CDD/iec61360/iec61360.nsf/License?openPage) is "kinda open but not really"
   - YOU may not sell, lend, lease or distribute to a third party, reproduce or otherwise exploit, whether commercially or not, the total database or a significant portion of it, to which this LICENSE relates .
@@ -210,9 +209,9 @@ Not yet discussed/confirmed:
 
 #### IEC 62656 POM
 
-![](img/IEC 62656- ontology-props.png)
+![](img/IEC62656-ontology-props.png)
 
-#### PLIB/POM Product Library Examples {.smaller}
+#### PLIB/POM Product Library Examples 
 
 - ECLASS (100 orgs, German/international)
 - IEC 62474: Material Declarations for Electrotechnical Products
@@ -236,7 +235,7 @@ Not yet discussed/confirmed:
 
 #### IEC CDD Expansion Plans
 
-![](img/IEC SC3D cooperation wIth other ISO and IEC TC and SC.png)
+![](img/IEC_SC3D_cooperation_wIth_other_ISO_and_IEC_TC_and_SC.png)
 
 ### Web of Things TD
 
@@ -303,7 +302,7 @@ There are many questions/details to be aligned, most importantly:
 - [Web Data Commons crawl 2019-12](http://webdatacommons.org/structureddata/2019-12/stats/stats.html) found 44B triples about 14B entities at 934M pages from 12M web domains
 - The majority of that data is expressed in schema.org
 
-#### schema.org eCommerce {.smaller}
+#### schema.org eCommerce 
 
 [Web Data Commons crawl 2019-12](http://webdatacommons.org/structureddata/2019-12/stats/stats.html): a huge chunk is eCommerce data.
 
@@ -472,7 +471,7 @@ Various previous works are relevant for the ECLASS effort.
 - XSD data types: everyone uses them (even schema.org that declares its own datatypes)
 - Unit of Measurement Ontologies: 3 are widely established and used
 
-## Martin Hepp {.smaller}
+## Martin Hepp 
 
 Martin Hepp's work on semantic web approaches to eCommerce is well-known and established:
 
@@ -491,7 +490,7 @@ Comparison/Overview of product description vocabularies:
 - The True Complexity of Product Representation in the Semantic Web (ECIS 2006)
 - A Quantitative Analysis of Product Categorization Standards: ECLASS, UNSPSC, eOTD, and RNTD (KAIS 2007)
 
-### Martin Hepp (2) {.smaller}
+### Martin Hepp (2) 
 
 Conversion Methods:
 
@@ -508,7 +507,7 @@ Specific Product Classifications:
 - ProdLight- A Lightweight Ontology for Product Description Based on Datatype Properties (BIS 2007)
 - Product Ontology website documentation
 
-### Martin Hepp (3) {.smaller}
+### Martin Hepp (3) 
 
 ECLASS:
 
@@ -529,7 +528,7 @@ Schema.org describes many real-world entities, is applicable in a wide variety o
 - It is used more and more often on actual eCommerce sites (see Use Case above)
 - WoT efforts make a connection to schema.org, and use the same "low ontological commitment" as schema.org
 
-### RDFS/OWL: High Ontological Commitment {.smaller}
+### RDFS/OWL: High Ontological Commitment 
 
 RDFS defines the properties `rdfs:domain` and `rdfs:range`
 
@@ -545,7 +544,7 @@ RDFS defines the properties `rdfs:domain` and `rdfs:range`
   
 But all of these approaches complicate the ontology, increase "ontological commitment", and ultimately make ontology reuse harder.
 
-### schema.org: Low Ontological Commitment {.smaller}
+### schema.org: Low Ontological Commitment 
 
 To cope with web-scale integration of data, Schema uses properties `schema:domainIncludes` and `schema:rangeIncludes`
 
@@ -557,7 +556,7 @@ To cope with web-scale integration of data, Schema uses properties `schema:domai
 - We used this mechanism for Company data, see the euBusinessGraph Ontology cited above
 - It is also **used in the WoT Thing Description** ontology
 
-### Schema.org Specific Classes{.smaller}
+### Schema.org Specific Classes
 
 schema.org has several releant classes. Should be considered for reuse:
 
@@ -571,7 +570,7 @@ Might be relevant:
 - `ProductGroup`: a group of Products that vary only in certain well-described ways, such as by size, color, material etc.
 - `EnergyConsumptionDetails`: the energy efficiency Category ("class" or "rating") for a product according to an international energy efficiency standard
 
-### Schema.org Specific Props{.smaller}
+### Schema.org Specific Props
 
 schema.org also has some fixed product properties.
 Can be useful if you decide to replace some IRDIs with named terms:
@@ -588,7 +587,7 @@ Extensions for particular product domains, eg Automotive, Financial, Hospitality
 - These add specific classes like `Vehicle, EngineSpecification` etc
 - And add specific characteristics like `accelerationTime, cargoVolume` etc
 
-## Application Profiles{.smaller}
+## Application Profiles
 
 Application profiles serve several related goals, see [W3C Profiles Guidance](https://w3c.github.io/dxwg/profiles/) adn the earlier [Guidelines for Dublin Core Application Profiles](http://dublincore.org/documents/profile-guidelines/)
 
@@ -608,7 +607,7 @@ RDF Shapes have emerged as the way to express application profiles in machine-re
 - The two major standards are SHACL and SHEX, and both have their strengths and weaknesses; in particular SHEX is much easier to edit
 - Consider SHACLC (SHACL Compact), see [VladimirAlexiev/shaclc-mode](https://github.com/VladimirAlexiev/shaclc-mode) : compact writing, syntax highlighting, syntax checking, menu navigation
 
-![](img/shaclc-flyCheck-validation.png){width="200%"}
+![](img/shaclc-flyCheck-validation.png)
 
 
 ## RDF Literals and Datatypes
@@ -621,7 +620,7 @@ RDF Shapes have emerged as the way to express application profiles in machine-re
   - `geo:asWKT` or `geo:asGML` for GeoSPARQL geometries (spatial indexing),
   - `cdt:ucum` for quantity literals, etc
 
-## UoM Ontologies{.smaller}
+## UoM Ontologies
 
 Widely used lists:
 
@@ -631,6 +630,8 @@ Widely used lists:
 There are also about 10 ontologies:
 
 - MUO, OBOE, OM 2, QU, QUDT 2.1, SWEET 3, UO+PATO, Wikidata, unitsOfMeasure, LINDT
+
+## UoM Ontologies (2)
 
 2 UoM ontologies are most promising and widely used:
 
@@ -717,7 +718,7 @@ Both the first and second ECLASS RDF representations closely mirror OntoML.
 - No opportunities for inference (or at least nobody has investigated this)
   - No subclass and subproperty relations?
 
-### OntoML: Niche Terminology (1){.smaller}
+### OntoML: Niche Terminology (1)
 
 Very few people will take the time to read and understand OntoML, and fewer will use it correctly.
 Here's an attempt at "translation" (please excuse me if I got some OntoML terms wrong).
@@ -734,7 +735,7 @@ Here's an attempt at "translation" (please excuse me if I got some OntoML terms 
 | synonym/alias               | Property altLabel                                                                |
 | keyword                     | Class altLabel or keyword/subject                                                |
 
-### OntoML: Niche Terminology (2){.smaller}
+### OntoML: Niche Terminology (2)
 
 | OntoML             | RDF/OWL                                                                             |
 |--------------------|-------------------------------------------------------------------------------------|
@@ -777,7 +778,7 @@ Maybe ECLASS should not attempt to be an authority on UoM?
 - Option1: use established units (QUDT or LINDT)
 - Option2: use ECLASS units, but express with QUDT properties
 
-### OntoML: Local vs Global Thinking{.smaller}
+### OntoML: Local vs Global Thinking
 
 OntoML is based upon local not global thinking. Examples:
 
@@ -795,7 +796,7 @@ OntoML is based upon local not global thinking. Examples:
   - Excludes many modern types and combination types (eg `text/turtle`, `application/rdf+xml`, `application/json`, `application/ld+json`)
 - Colors: insufficient for professional design use (eg think Panathon colors)
 
-### OntoML: Not Oriented Towards Linked Data{.smaller}
+### OntoML: Not Oriented Towards Linked Data
 
 Being based on XML, OntoML is not oriented towards Linked Data
 
@@ -835,7 +836,7 @@ There are some considerations against using IRDI terms:
   - Eg `schema:gtin` instead of `ec:0173-1_02-AAO663_003`
   - This can be done with some lookup tables during the conversion process
 
-## IRDI Stability vs Versioning{.smaller}
+## IRDI Stability vs Versioning
 
 - Some props have quite a large IRDI version (last component), eg "Operating resource protection class" `0173-1#02-BAA205#012`
 - I guess the IRDI version is incremented (upon ECLASS release time) when one of its dependencies are incremented
@@ -851,7 +852,7 @@ There are some considerations against using IRDI terms:
   - See well-known papers [Cool URIs Don't Change](https://www.w3.org/Provider/Style/URI) and [Cool URIs for the Semantic Web](https://www.w3.org/TR/cooluris) by TimBL
   - If a user has billions of triples using a property IRI, you don't want him to have to change that IRI 
 
-### IRDI Versioning Cons{.smaller}
+### IRDI Versioning Cons
 
 - A large manufacturer who uses ECLASS for a long time:
   - Will have data referring to **many** historic ECLASS versions at the same time
@@ -869,10 +870,10 @@ There are some considerations against using IRDI terms:
 
 ### Versioned IRIs Make Querying Harder
 
-```ttl
+```sparql
 # simplest
 ?x schema:height ?h
-filter (?h <= 10)
+filter (?h >= 10)
 
 # unacceptable: label is not stable
 ?height ec:label "Height". 
@@ -881,7 +882,7 @@ filter (?h <= 10)
 ?height a ec:Property; ec:irdi ?irdi.
 filter(strstarts(?irdi,"0176//blah-blah#")) # excluding version
 ?x ?height ?h
-filter (?h <= 10)
+filter (?h >= 10)
 
 # better to have explicit connections between IRDIs:
 :0176__blah-blah a ec:Property;
@@ -897,7 +898,7 @@ filter (?h <= 10)
 # query:
 ?height a ec:VersionedProperty; ec:basicProperty :0176__blah-blah.
 ?x ?height ?h.
-filter (?h <= 10)
+filter (?h >= 10)
 ```
 
 ### Using Version-less IRIs (1)
@@ -910,18 +911,18 @@ filter (?h <= 10)
   - Links to version-less units, eg `0112/2///62720#UAA619` kilogram per metre cubed
   - Is cross-referenced from the QUDT ontology as version-less (`qudt:iec61360Code`)
 
-### Using Version-less IRIs (2){.smaller}
+### Using Version-less IRIs (2)
 
 - Every W3C spec has at least two URLs:
   - `current` This Version, eg <https://www.w3.org/TR/2020/REC-wot-thing-description-20200409/>
   - `latest`
-    - Latest published version: https://www.w3.org/TR/wot-thing-description/>
+    - Latest published version: <https://www.w3.org/TR/wot-thing-description/>
     - Latest editor's draft: <https://w3c.github.io/wot-thing-description/>
 - Best practice:
   - The latest IRIs of classes/props should be version-less
   - Each release can also have a variant with versioned IRIs
   - This allows a user to retarget to that older version in case of breaking changes
-  - Eg QUDT 2.0 had `unit:KG`, QUDT 2.1 has `unit:KiloGM`: our <https://github.com/BigDataGrapes-EU/ontology> had to change to versioned 2.0
+  - Eg QUDT 2.0 had `unit:KG`, QUDT 2.1 has `unit:KiloGM`: our [BigDataGrapes ontology](https://github.com/BigDataGrapes-EU/ontology) had to change to versioned 2.0
 - OWL ontology URLs usually don't change, whereas `owl:versionIRI` is the versioned URL
 
   
@@ -1095,7 +1096,7 @@ Blocks and Aspects are groups of properties that we represent as additional clas
   schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:string.
 ```
 
-### Blocks and Aspects Problems{.smaller}
+### Blocks and Aspects Problems
 
 The above representation has several defects:
 
@@ -1172,7 +1173,7 @@ mf:Company2 a :Organization; :name "Company2"@en; :gln "098765432".
   # Add here any number of org props, like address, website, etc
 ```
 
-### Catalog Entry (Not Refactored){.smaller}
+### Catalog Entry (Not Refactored)
 
 To appreciate that the above refactored representation is better, here's the systematic representation:
 
@@ -1185,7 +1186,7 @@ To appreciate that the above refactored representation is better, here's the sys
   - Thus an Organization's attributes like `name, GLN` are repeated in each of its products
 - Important product info like `gtin` is pushed a couple of links away from the product
 
-### Catalog Entry (Not Refactored){.smaller}
+### Catalog Entry (Not Refactored)
 
 ```ttl
 mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;
@@ -1248,7 +1249,7 @@ mf:1234567_doc3 a :AdditionalInformation; :index 3;
   :type_of_source_file "application/octet-stream".
 ```
 
-### ECLASS Datatype `URI`{.smaller}
+### ECLASS Datatype `URI`
 
 - Speaking of `AdditionalInformation`, I can't believe there's no `document URL` prop.
   - Modern manufacturers put their product documents online, right?
@@ -1262,7 +1263,7 @@ mf:1234567_doc3 a :AdditionalInformation; :index 3;
     - This is all wrong
 - In contrast, `Additional Information` has `language of document` and that's how it should be done (with a separate field)
 
-### Polymorphism{.smaller}
+### Polymorphism
 
 `size_dimension` can also be stated several times
 
@@ -1312,7 +1313,7 @@ Must conform to WoT Things Description:
 - Annotation to state that `luminance` is a WoT TD property, having `NumberSchema`
 - Somehow (HOW?) relate ECLASS props to WoT TD properties or parts (see next)
 
-### WoT Parts{.smaller}
+### WoT Parts
 
 - Parts and their connections are modeled as Blocks with Cardinality or Polymorphism
   - But not all Blocks are parts! Some are documents, conceptual entities, etc. How to distingush?
@@ -1326,7 +1327,7 @@ Must conform to WoT Things Description:
   - <http://myhome.org/lamp1/part/switch> : link to part
     - <http://myhome.org/switch1/toggle> : action to operate the `switch` part
 
-# Semantic Modeling{.smaller}
+# Semantic Modeling
 
 For me, Semantic Modeling is more than Ontology Engineering:
 
@@ -1340,7 +1341,7 @@ For me, Semantic Modeling is more than Ontology Engineering:
 8. Implement competency questions as queries
 9. Define additional aspects like URL policy, application protocols, special indexing (eg full-text, facets), etc
 
-### rdfpuml Diagrams{.smaller}
+## rdfpuml Diagrams
 
 RDF is all about graphs, so I think diagrams are crucial for understanding by both:
 
@@ -1355,11 +1356,11 @@ In the next two slides I show diagrams of Catalog Entry (Refactored) and Catalog
 - Automatically, without any changes or tweaking
 - Which means diagrams are precise, there is no [hand-waving](https://en.wikipedia.org/wiki/Hand-waving)
 
-### [Diagram](img/catalog-entry-refactored.png) of Catalog Entry (Refactored)
+## [Diagram](img/catalog-entry-refactored.png) of Catalog Entry (Refactored)
 
 ![](img/catalog-entry-refactored.png)
 
-### [Diagram](img/catalog-entry.png) of Catalog Entry (Not Refactored)
+## [Diagram](img/catalog-entry.png) of Catalog Entry (Not Refactored)
 
 ![](img/catalog-entry.png)
 

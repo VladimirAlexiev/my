@@ -1,0 +1,19 @@
+from: markdown+pipe_tables+autolink_bare_uris+citations+lists_without_preceding_blankline-smart
+to: html
+strip-comments: true
+toc: true
+number-sections: true
+wrap: preserve
+standalone: true
+embed-resources: false
+citeproc: true
+include-in-header: pandoc-header.html # JavaScript for highlighting
+css:
+  - https://presentations.ontotext.com/resources/default.min.css
+  - https://presentations.ontotext.com/resources/onto-hljs.css
+metadata:
+  maxwidth: 100%
+  document-css: true  # `css` disables default styles, re-enable them
+  # bibliography: bibliography.bib
+  # csl: acm-sig-proceedings-long-author-list.csl
+  # link-citations: true

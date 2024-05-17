@@ -8,7 +8,7 @@
 <link href="Slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Vladimir Alexiev, Chief Data Architect, Ontotext">
   <meta name="dcterms.date" content="2020-12-21">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -390,22 +391,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
   <link rel="stylesheet" href="https://presentations.ontotext.com/resources/onto-hljs.css">
   <!--added for testing trySparql.js-->
-  <script src="../../resources/trySparql.js"></script>
+  <script src="https://presentations.ontotext.com/resources/trySparql.js"></script>
   <!-- added for highlighting additional languages-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   <!-- and it's easy to individually load additional languages -->
   <!-- they'd simply add your language modules -->
-  <script src="../../resources/graphql.js"></script>
-  <script src="../../resources/ttl.js"></script>
-  <script src="../../resources/sparql.js"></script>
-  <script src="../../resources/pie.js"></script>
-  <script>hljs.registerLanguage('ttl', ttl_highlight);
-      hljs.registerLanguage('sparql', sparql_highlight);
-      hljs.registerLanguage('pie', pie_highlight);
-      hljs.registerLanguage("graphql", window.hljsDefineGraphQL);
-      hljs.initHighlightingOnLoad();
-      hljs.highlightAll();
-      //console.log(hljs.listLanguages());
+  <script src="https://presentations.ontotext.com/resources/ttl.js"></script>
+  <script src="https://presentations.ontotext.com/resources/sparql.js"></script>
+  <script src="https://presentations.ontotext.com/resources/pie.js"></script>
+  <script>
+    hljs.registerLanguage('ttl', ttl_highlight);
+    hljs.registerLanguage('sparql', sparql_highlight);
+    hljs.registerLanguage('pie', pie_highlight);
+    //hljs.registerLanguage("graphql", window.hljsDefineGraphQL);
+    hljs.initHighlightingOnLoad();
+    hljs.highlightAll();
+    //console.log(hljs.listLanguages());
   </script>
 </head>
 <body class="quarto-light">
@@ -480,7 +481,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>Semantic Web and Linked Data are based on several simple principles:</p>
 <ul>
 <li>Everything has a IRI (URL): from a huge enterprise, to its plants, to every machine and asset, to each document and data spec, to the smallest measurement or data field.</li>
-<li>The data model is simple (abstracted). It’s a semantic graph made of triples (relations that are graph edges, and attributes that are literal values).</li>
+<li>The data model is simple (abstracted). It's a semantic graph made of triples (relations that are graph edges, and attributes that are literal values).</li>
 <li>RDF is flexible: can be used without or with schemas; schemas stored the same as data, can always be extended, without requiring system redeployment or data migration.</li>
 <li>In appropriate settings, a data consumer can rely that data about any entity will be returned when its IRI is dereferenced.</li>
 </ul>
@@ -501,7 +502,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>As far as I can see, most Industry data still relies on Data Copying (or Exchange).</p>
 <ul>
 <li>Copies of data are transferred between parties</li>
-<li>Global IRIs are sparingly used and don’t have “first class citizen” status</li>
+<li>Global IRIs are sparingly used and don't have "first class citizen" status</li>
 <li>There is no assumption that the up-to-date Version of Record of a fine-granularity piece of data will always be found at a certain IRI.
 <ul>
 <li>ECLASS distributions,</li>
@@ -548,7 +549,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </section>
 
 
-<section id="open-vs-closed-data-ecosystems" class="title-slide slide level3 smaller center" data-number="1.2.4">
+<section id="open-vs-closed-data-ecosystems" class="title-slide slide level3 center" data-number="1.2.4">
 <h3><span class="header-section-number">1.2.4</span> Open vs Closed Data Ecosystems</h3>
 <p>ECLASS is a very closed data environment: it does not reuse data by anyone else. Eg:</p>
 <ul>
@@ -559,7 +560,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>Reusing data representations and data items created by others may reduce the work of ECLASS.
 <ul>
-<li>(I acknowledge that this does not hold in all cases because sometimes it’s easier to produce data in a closed environment.)</li>
+<li>(I acknowledge that this does not hold in all cases because sometimes it's easier to produce data in a closed environment.)</li>
 </ul></li>
 <li>Reusing data may make it easier for ECLASS users to consume ECLASS:
 <ul>
@@ -570,7 +571,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="the-web-open-innovation" class="title-slide slide level3 smaller center" data-number="1.2.5">
+<section id="the-web-open-innovation" class="title-slide slide level3 center" data-number="1.2.5">
 <h3><span class="header-section-number">1.2.5</span> The Web: Open Innovation</h3>
 <p>W3C standards are fully open:</p>
 <ul>
@@ -583,18 +584,21 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Models (ontologies), test suites and test results (EARL ontology) are all expressed in machine-readable way (usually RDF)</li>
 <li>Before accepted as recommendation, minimum 2 conforming implementations are needed. Implementation Report is generated from EARL RDF</li>
 </ul>
-<p>The web invites wide participation:</p>
+</section>
+
+<section id="the-web-invites-wide-participation" class="title-slide slide level3 center" data-number="1.2.6">
+<h3><span class="header-section-number">1.2.6</span> The Web Invites Wide Participation</h3>
 <ul>
 <li>Anyone can make content and link to other content</li>
 <li>World Wide Web of content (web) and Global Giant Graph of data (semantic web)</li>
 <li>Working Groups and Community Groups</li>
-<li>“Permission-free innovation”</li>
-<li>Unfortunately, big “internet properties” have become content monopolists: so TimBL started the <a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)">Solid</a> web decentralization project</li>
+<li>"Permission-free innovation"</li>
+<li>Unfortunately, big "internet properties" have become content monopolists: so TimBL started the <a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)">Solid</a> web decentralization project</li>
 </ul>
 </section>
 
-<section id="iso-and-iec-closed-standards" class="title-slide slide level3 smaller center" data-number="1.2.6">
-<h3><span class="header-section-number">1.2.6</span> ISO and IEC: Closed Standards</h3>
+<section id="iso-and-iec-closed-standards" class="title-slide slide level3 center" data-number="1.2.7">
+<h3><span class="header-section-number">1.2.7</span> ISO and IEC: Closed Standards</h3>
 <p>ISO and IEC standards are closed:</p>
 <ul>
 <li>Eg <a href="https://www.iso.org/obp/ui/#iso:std:iso:13584:-32:ed-1:v1:en">ISO 13584-32:2010</a> Industrial automation systems and integration — Parts library — Part 32: Implementation resources: OntoML: Product ontology markup language</li>
@@ -603,23 +607,26 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Delivered as PDF with few machine-processable artefacts</li>
 <li>Costs 200 CHF: few developers will bother to pay this to get it</li>
 </ul>
-<p>Positive aspects:</p>
+</section>
+
+<section id="iso-and-iec-positive-aspects" class="title-slide slide level3 center" data-number="1.2.8">
+<h3><span class="header-section-number">1.2.8</span> ISO and IEC: Positive Aspects</h3>
 <ul>
 <li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf">IEC CDD</a> is online, open (but not quite), update a lot more frequently</li>
-<li>PLIB is well described at ECLASS wiki: <a href="https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML">ISO_13584-32_ontoML</a> and <a href="https://wiki.eclass.eu/wiki/Conceptual_data_model">Conceptual_data_model</a>; but not officia/comprehensive</li>
+<li>PLIB is well described at ECLASS wiki: <a href="https://wiki.eclass.eu/wiki/ISO_13584-32_ontoML">ISO 13584-32 ontoML</a> and <a href="https://wiki.eclass.eu/wiki/Conceptual_data_model">Conceptual Data Model</a>; but not official/comprehensive</li>
 </ul>
-<p>“ISO/IEC are for professional use, so money is not a problem”</p>
+<p>"ISO/IEC are for professional use, so money is not a problem"</p>
 <ul>
 <li>Closeness is the problem. It reduces the reach, scope and adoption of engineering data</li>
-<li>Eg “A Critical Assessment of ISO 13584 Adoption by B2B Data Exchange Specifications” (Martin Hepp, ICCE 2006)</li>
+<li>Eg "A Critical Assessment of ISO 13584 Adoption by B2B Data Exchange Specifications" (Martin Hepp, ICCE 2006)</li>
 <li>Openness is <strong>the major reason</strong> for the success and penetration of the web</li>
 </ul>
 </section>
 
-<section id="plib-and-pom-not-open-data" class="title-slide slide level3 smaller center" data-number="1.2.7">
-<h3><span class="header-section-number">1.2.7</span> PLIB and POM: Not Open Data</h3>
+<section id="plib-and-pom-not-open-data" class="title-slide slide level3 center" data-number="1.2.9">
+<h3><span class="header-section-number">1.2.9</span> PLIB and POM: Not Open Data</h3>
 <ul>
-<li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf/License?openPage">IEC CDD License</a> is “kinda open but not really”
+<li><a href="https://cdd.iec.ch/CDD/iec61360/iec61360.nsf/License?openPage">IEC CDD License</a> is "kinda open but not really"
 <ul>
 <li>YOU may not sell, lend, lease or distribute to a third party, reproduce or otherwise exploit, whether commercially or not, the total database or a significant portion of it, to which this LICENSE relates .</li>
 <li>YOU may copy the database only for a restricted and confidential internal use and this LICENSE exception is also restricted to other employees for their internal or external use within YOUR organization.</li>
@@ -627,7 +634,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul></li>
 <li>ECLASS is not available online in machine-readable form
 <ul>
-<li>ECLASS is paid and <strong>that is fine</strong>: “Open” is not the same as “Free”</li>
+<li>ECLASS is paid and <strong>that is fine</strong>: "Open" is not the same as "Free"</li>
 <li>But the Association must consider carefully who are its paying customers and what should be its licensing model</li>
 <li>I think manufacturers should pay, but not eCommerce or WoT developers</li>
 </ul></li>
@@ -647,7 +654,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Languages</li>
 <li>MIME types</li>
 <li>Materials</li>
-<li>Manufacturers/suppliers…</li>
+<li>Manufacturers/suppliers...</li>
 </ul></li>
 </ul>
 </section>
@@ -659,7 +666,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Web of Things TD: online description and control (original case posed by ECLASS Association)</li>
 <li>Online product catalogs (BMEcat conversion shown recently)</li>
 <li>schema.org (GoodRelations): eCommerce integration</li>
-<li>Industrie 4.0: RAMI 4.0, Admin Shell, OPC UA…</li>
+<li>Industrie 4.0: RAMI 4.0, Admin Shell, OPC UA...</li>
 </ul>
 <p>Not yet discussed/confirmed:</p>
 <ul>
@@ -677,7 +684,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul></li>
 <li>A newer rendition of the same ideas is IEC 62656
 <ul>
-<li>Uses POM (Parcelized Object Model), which is an “ensemble of spread sheets”</li>
+<li>Uses POM (Parcelized Object Model), which is an "ensemble of spread sheets"</li>
 </ul></li>
 <li>Considerable investment by:
 <ul>
@@ -689,9 +696,9 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="iec-62656-pom" class="title-slide slide level4 center" data-number="1.4.1.1">
 <h4><span class="header-section-number">1.4.1.1</span> IEC 62656 POM</h4>
 
-<img data-src="img/IEC%2062656-%20ontology-props.png" class="r-stretch"></section>
+<img data-src="img/IEC62656-ontology-props.png" class="r-stretch"></section>
 
-<section id="plibpom-product-library-examples" class="title-slide slide level4 smaller center" data-number="1.4.1.2">
+<section id="plibpom-product-library-examples" class="title-slide slide level4 center" data-number="1.4.1.2">
 <h4><span class="header-section-number">1.4.1.2</span> PLIB/POM Product Library Examples</h4>
 <ul>
 <li>ECLASS (100 orgs, German/international)</li>
@@ -722,7 +729,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="iec-cdd-expansion-plans" class="title-slide slide level4 center" data-number="1.4.1.4">
 <h4><span class="header-section-number">1.4.1.4</span> IEC CDD Expansion Plans</h4>
 
-<img data-src="img/IEC%20SC3D%20cooperation%20wIth%20other%20ISO%20and%20IEC%20TC%20and%20SC.png" class="r-stretch"></section>
+<img data-src="img/IEC_SC3D_cooperation_wIth_other_ISO_and_IEC_TC_and_SC.png" class="r-stretch"></section>
 
 
 <section id="web-of-things-td" class="title-slide slide level3 center" data-number="1.4.2">
@@ -734,7 +741,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Follow the Web Architecture</li>
 <li>Standard complementing building blocks (e.g., metadata and APIs)</li>
 <li>Enable easy integration across IoT platforms and application domains</li>
-<li>Just like <code>http</code> unified access to previously disparate protocols/resoures like <code>ftp, gopher, nnews</code>…</li>
+<li>Just like <code>http</code> unified access to previously disparate protocols/resoures like <code>ftp, gopher, nnews</code>...</li>
 <li>WoT IG innovates, WoT WG standardizes</li>
 </ul></li>
 <li>WoT TD (<a href="https://www.w3.org/TR/wot-thing-description/">spec</a>, <a href="https://www.w3.org/2019/wot/td">ontology</a>) allows online description and control of IoT devices
@@ -758,7 +765,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 <p>Elaborating the last case:</p>
 <ul>
-<li>You can’t expect a Smart Bulb to carry its own Spec Sheet (not enough memory!)</li>
+<li>You can't expect a Smart Bulb to carry its own Spec Sheet (not enough memory!)</li>
 <li>So a Thing uses Template to link to its detailed product props:</li>
 <li>Bulb links to a manufacturer Catalog</li>
 <li>Catalog links to ECLASS product/prop definitions</li>
@@ -789,7 +796,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <h3><span class="header-section-number">1.4.3</span> Online Product Catalogs</h3>
 <ul>
 <li>A crucial current use of ECLASS is in product catalogs (eg XML based: BMEcat, ISO)-</li>
-<li>I’m very glad this is included in scope (the BMEcat-&gt;RDF conversion shown recently)</li>
+<li>I'm very glad this is included in scope (the BMEcat-&gt;RDF conversion shown recently)</li>
 <li>ECLASS RDF representation without guidance on catalog RDF representation would be pointless</li>
 <li>Web-accessible (online) and semantic catalogs are crucial for other use cases (WoT Templates, schema.org)</li>
 <li>The design of RDF catalogs <strong>conforming</strong> to those cases is a prerequisite for ECLASS RDF</li>
@@ -800,7 +807,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <h3><span class="header-section-number">1.4.4</span> schema.org</h3>
 <ul>
 <li>schema.org has much wider scope than marking up web pages</li>
-<li>After Marting Hepp’s work (GoodRelations), schema.org is widely used for eCommerce
+<li>After Marting Hepp's work (GoodRelations), schema.org is widely used for eCommerce
 <ul>
 <li>A lot is for B2C (buying cars, products, tickets; booking restaurants)</li>
 <li>But I imagine some is for B2B integration</li>
@@ -809,7 +816,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>The majority of that data is expressed in schema.org</li>
 </ul>
 </section>
-<section id="schema.org-ecommerce" class="title-slide slide level4 smaller center" data-number="1.4.4.1">
+<section id="schema.org-ecommerce" class="title-slide slide level4 center" data-number="1.4.4.1">
 <h4><span class="header-section-number">1.4.4.1</span> schema.org eCommerce</h4>
 <p><a href="http://webdatacommons.org/structureddata/2019-12/stats/stats.html">Web Data Commons crawl 2019-12</a>: a huge chunk is eCommerce data.</p>
 <ul>
@@ -852,12 +859,12 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Asset Administration Shell (AAS)</li>
 </ul>
 <p>Intended to unify/incorporate/extend previous Industrial IoT models including AutomationML, OPC UA, IEC CDD, and ECLASS.</p>
-<p>Spec “Details of the Asset Administration Shell Part 1” (Version 2.0.1 2019-11) includes the following semantic parts in Annex G</p>
+<p>Spec "Details of the Asset Administration Shell Part 1" (Version 2.0.1 2019-11) includes the following semantic parts in Annex G</p>
 <ul>
-<li>“ii. RDF Data Model for the Administration Shell” (p270-315): an OWL ontology with namespace <a href="http://admin-shell.io" class="uri">http://admin-shell.io</a>, saved as <code>aas-ontology.ttl</code></li>
-<li>“iii. RDF Schema for the Administration Shell” (p316-333): a SHACL shape definition</li>
-<li>“iv. RDF Example of a motor”, saved as <code>RDF-example-motor.ttl</code></li>
-<li>(I’ve extracted them, added prefixes and sections for easier reading)</li>
+<li>"ii. RDF Data Model for the Administration Shell" (p270-315): an OWL ontology with namespace <a href="http://admin-shell.io" class="uri">http://admin-shell.io</a>, saved as <code>aas-ontology.ttl</code></li>
+<li>"iii. RDF Schema for the Administration Shell" (p316-333): a SHACL shape definition</li>
+<li>"iv. RDF Example of a motor", saved as <code>RDF-example-motor.ttl</code></li>
+<li>(I've extracted them, added prefixes and sections for easier reading)</li>
 </ul>
 </section>
 <section id="aas-explorer-and-import" class="title-slide slide level4 center" data-number="1.4.5.1">
@@ -874,7 +881,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="aasx-eclss-import" class="title-slide slide level4 center" data-number="1.4.5.2">
+<section id="aasx-eclass-import" class="title-slide slide level4 center" data-number="1.4.5.2">
 <h4><span class="header-section-number">1.4.5.2</span> AASX ECLASS Import</h4>
 
 <img data-src="img/csm_7_52bfb6aa34.png" class="r-stretch"></section>
@@ -882,65 +889,65 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="ramiaas-problems" class="title-slide slide level4 center" data-number="1.4.5.3">
 <h4><span class="header-section-number">1.4.5.3</span> RAMI/AAS Problems</h4>
 <p>Relies on copying, not web data distribution; blank nodes not global IRIs:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>&lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184&gt; a aas:Submodel;</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  aas_referable:idShort "TechnicalData";</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  rdfs:label "TechnicalData";</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  aas_referable:category "CONSTANT";</span>
-<span id="cb2-5"><a href="#cb2-5"></a>  aas_identifiable:identification &lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184&gt;;</span>
-<span id="cb2-6"><a href="#cb2-6"></a>  aas_hasSemantics:semanticId [</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    a aas:Reference;</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    aas_reference:key [</span>
-<span id="cb2-9"><a href="#cb2-9"></a>      a aas:Key;</span>
-<span id="cb2-10"><a href="#cb2-10"></a>      aas_key:index "0"^^xsd:integer;</span>
-<span id="cb2-11"><a href="#cb2-11"></a>      aas_key:type aas_keyElements:GLOBAL_REFERENCE;</span>
-<span id="cb2-12"><a href="#cb2-12"></a>      aas_key:local "false"^^xsd:boolean;</span>
-<span id="cb2-13"><a href="#cb2-13"></a>      aas_key:value "0173-1#01-AFZ615#016";</span>
-<span id="cb2-14"><a href="#cb2-14"></a>      aas_key:idType aas_identifierType:IRDI]];</span>
-<span id="cb2-15"><a href="#cb2-15"></a>  aas_hasKind:kind aas_modelingKind:INSTANCE;</span>
-<span id="cb2-16"><a href="#cb2-16"></a>  aas_submodel:submodelElement [</span>
-<span id="cb2-17"><a href="#cb2-17"></a>    a aas:Property;</span>
-<span id="cb2-18"><a href="#cb2-18"></a>    rdf:subject &lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184/MaxRotationSpeed&gt;;</span>
-<span id="cb2-19"><a href="#cb2-19"></a>    aas_referable:idShort "MaxRotationSpeed";</span>
-<span id="cb2-20"><a href="#cb2-20"></a>    rdfs:label "MaxRotationSpeed";</span>
-<span id="cb2-21"><a href="#cb2-21"></a>    aas_property:category aas_category:PARAMETER;</span>
-<span id="cb2-22"><a href="#cb2-22"></a>    aas_hasSemantics:semanticId [</span>
-<span id="cb2-23"><a href="#cb2-23"></a>      a aas:Reference;</span>
-<span id="cb2-24"><a href="#cb2-24"></a>      aas_reference:key [</span>
-<span id="cb2-25"><a href="#cb2-25"></a>        a aas:Key;</span>
-<span id="cb2-26"><a href="#cb2-26"></a>        aas_key:index "0"^^xsd:integer;</span>
-<span id="cb2-27"><a href="#cb2-27"></a>        aas_key:type aas_identifiableElements:CONCEPT_DESCRIPTION;</span>
-<span id="cb2-28"><a href="#cb2-28"></a>        aas_key:local "true"^^xsd:boolean;</span>
-<span id="cb2-29"><a href="#cb2-29"></a>        aas_key:value "0173-1#02-BAA120#008";</span>
-<span id="cb2-30"><a href="#cb2-30"></a>        aas_key:idType aas_identifierType:IRDI]];</span>
-<span id="cb2-31"><a href="#cb2-31"></a>    aas_hasKind:kind aas_modelingKind:INSTANCE;</span>
-<span id="cb2-32"><a href="#cb2-32"></a>    aas_key:value "5000"^^xsd:integer];</span>
-<span id="cb2-33"><a href="#cb2-33"></a></span>
-<span id="cb2-34"><a href="#cb2-34"></a>&lt;http://i40.customer.com/type/1/1/F13E8576F6488342/MaxRotationSpeed&gt;</span>
-<span id="cb2-35"><a href="#cb2-35"></a>  a aas:ConceptDescription;</span>
-<span id="cb2-36"><a href="#cb2-36"></a>  aas_referable:idShort "MaxRotationSpeed";</span>
-<span id="cb2-37"><a href="#cb2-37"></a>  rdfs:label "MaxRotationSpeed";</span>
-<span id="cb2-38"><a href="#cb2-38"></a>  aas_referable:category "PROPERTY";</span>
-<span id="cb2-39"><a href="#cb2-39"></a>  aas_identifiable:identification [</span>
-<span id="cb2-40"><a href="#cb2-40"></a>    aas_identifier:id "0173-1#02-BAA120#008";</span>
-<span id="cb2-41"><a href="#cb2-41"></a>    aas_identifier:idType aas_identifierType:IRDI];</span>
-<span id="cb2-42"><a href="#cb2-42"></a>  aas_identifiable:administration [</span>
-<span id="cb2-43"><a href="#cb2-43"></a>    a aas:AdministrativeInformation;</span>
-<span id="cb2-44"><a href="#cb2-44"></a>    aas_administrativeInformation:revision ""];</span>
-<span id="cb2-45"><a href="#cb2-45"></a>  aas_conceptDescription:content [</span>
-<span id="cb2-46"><a href="#cb2-46"></a>    a dataspec_iec:DataSpecificationIEC61360;</span>
-<span id="cb2-47"><a href="#cb2-47"></a>    dataspec_iec:preferredName "max. Drehzahl"@de;</span>
-<span id="cb2-48"><a href="#cb2-48"></a>    dataspec_iec:preferredName "Max. rotation speed"@en;</span>
-<span id="cb2-49"><a href="#cb2-49"></a>    dataspec_iec:unit "1/min";</span>
-<span id="cb2-50"><a href="#cb2-50"></a>    dataspec_iec:unitId [</span>
-<span id="cb2-51"><a href="#cb2-51"></a>      a aas:Reference;</span>
-<span id="cb2-52"><a href="#cb2-52"></a>      aas_reference:key [</span>
-<span id="cb2-53"><a href="#cb2-53"></a>        a aas:Key;</span>
-<span id="cb2-54"><a href="#cb2-54"></a>        aas_key:index "0"^^xsd:integer;</span>
-<span id="cb2-55"><a href="#cb2-55"></a>        aas_key:type aas_keyElements:GLOBAL_REFERENCE;</span>
-<span id="cb2-56"><a href="#cb2-56"></a>        aas_key:local "false"^^xsd:boolean;</span>
-<span id="cb2-57"><a href="#cb2-57"></a>        aas_key:value "0173-1#05-AAA650#002";</span>
-<span id="cb2-58"><a href="#cb2-58"></a>        aas_key:idType aas_identifierType:IRDI]];</span>
-<span id="cb2-59"><a href="#cb2-59"></a>    dataspec_iec:datatype "INTEGER_MEASURE";</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a>&lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184&gt; a aas:Submodel;</span>
+<span id="cb1-2"><a href=""></a>  aas_referable:idShort "TechnicalData";</span>
+<span id="cb1-3"><a href=""></a>  rdfs:label "TechnicalData";</span>
+<span id="cb1-4"><a href=""></a>  aas_referable:category "CONSTANT";</span>
+<span id="cb1-5"><a href=""></a>  aas_identifiable:identification &lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184&gt;;</span>
+<span id="cb1-6"><a href=""></a>  aas_hasSemantics:semanticId [</span>
+<span id="cb1-7"><a href=""></a>    a aas:Reference;</span>
+<span id="cb1-8"><a href=""></a>    aas_reference:key [</span>
+<span id="cb1-9"><a href=""></a>      a aas:Key;</span>
+<span id="cb1-10"><a href=""></a>      aas_key:index "0"^^xsd:integer;</span>
+<span id="cb1-11"><a href=""></a>      aas_key:type aas_keyElements:GLOBAL_REFERENCE;</span>
+<span id="cb1-12"><a href=""></a>      aas_key:local "false"^^xsd:boolean;</span>
+<span id="cb1-13"><a href=""></a>      aas_key:value "0173-1#01-AFZ615#016";</span>
+<span id="cb1-14"><a href=""></a>      aas_key:idType aas_identifierType:IRDI]];</span>
+<span id="cb1-15"><a href=""></a>  aas_hasKind:kind aas_modelingKind:INSTANCE;</span>
+<span id="cb1-16"><a href=""></a>  aas_submodel:submodelElement [</span>
+<span id="cb1-17"><a href=""></a>    a aas:Property;</span>
+<span id="cb1-18"><a href=""></a>    rdf:subject &lt;http://i40.customer.com/type/1/1/7A7104BDAB57E184/MaxRotationSpeed&gt;;</span>
+<span id="cb1-19"><a href=""></a>    aas_referable:idShort "MaxRotationSpeed";</span>
+<span id="cb1-20"><a href=""></a>    rdfs:label "MaxRotationSpeed";</span>
+<span id="cb1-21"><a href=""></a>    aas_property:category aas_category:PARAMETER;</span>
+<span id="cb1-22"><a href=""></a>    aas_hasSemantics:semanticId [</span>
+<span id="cb1-23"><a href=""></a>      a aas:Reference;</span>
+<span id="cb1-24"><a href=""></a>      aas_reference:key [</span>
+<span id="cb1-25"><a href=""></a>        a aas:Key;</span>
+<span id="cb1-26"><a href=""></a>        aas_key:index "0"^^xsd:integer;</span>
+<span id="cb1-27"><a href=""></a>        aas_key:type aas_identifiableElements:CONCEPT_DESCRIPTION;</span>
+<span id="cb1-28"><a href=""></a>        aas_key:local "true"^^xsd:boolean;</span>
+<span id="cb1-29"><a href=""></a>        aas_key:value "0173-1#02-BAA120#008";</span>
+<span id="cb1-30"><a href=""></a>        aas_key:idType aas_identifierType:IRDI]];</span>
+<span id="cb1-31"><a href=""></a>    aas_hasKind:kind aas_modelingKind:INSTANCE;</span>
+<span id="cb1-32"><a href=""></a>    aas_key:value "5000"^^xsd:integer];</span>
+<span id="cb1-33"><a href=""></a></span>
+<span id="cb1-34"><a href=""></a>&lt;http://i40.customer.com/type/1/1/F13E8576F6488342/MaxRotationSpeed&gt;</span>
+<span id="cb1-35"><a href=""></a>  a aas:ConceptDescription;</span>
+<span id="cb1-36"><a href=""></a>  aas_referable:idShort "MaxRotationSpeed";</span>
+<span id="cb1-37"><a href=""></a>  rdfs:label "MaxRotationSpeed";</span>
+<span id="cb1-38"><a href=""></a>  aas_referable:category "PROPERTY";</span>
+<span id="cb1-39"><a href=""></a>  aas_identifiable:identification [</span>
+<span id="cb1-40"><a href=""></a>    aas_identifier:id "0173-1#02-BAA120#008";</span>
+<span id="cb1-41"><a href=""></a>    aas_identifier:idType aas_identifierType:IRDI];</span>
+<span id="cb1-42"><a href=""></a>  aas_identifiable:administration [</span>
+<span id="cb1-43"><a href=""></a>    a aas:AdministrativeInformation;</span>
+<span id="cb1-44"><a href=""></a>    aas_administrativeInformation:revision ""];</span>
+<span id="cb1-45"><a href=""></a>  aas_conceptDescription:content [</span>
+<span id="cb1-46"><a href=""></a>    a dataspec_iec:DataSpecificationIEC61360;</span>
+<span id="cb1-47"><a href=""></a>    dataspec_iec:preferredName "max. Drehzahl"@de;</span>
+<span id="cb1-48"><a href=""></a>    dataspec_iec:preferredName "Max. rotation speed"@en;</span>
+<span id="cb1-49"><a href=""></a>    dataspec_iec:unit "1/min";</span>
+<span id="cb1-50"><a href=""></a>    dataspec_iec:unitId [</span>
+<span id="cb1-51"><a href=""></a>      a aas:Reference;</span>
+<span id="cb1-52"><a href=""></a>      aas_reference:key [</span>
+<span id="cb1-53"><a href=""></a>        a aas:Key;</span>
+<span id="cb1-54"><a href=""></a>        aas_key:index "0"^^xsd:integer;</span>
+<span id="cb1-55"><a href=""></a>        aas_key:type aas_keyElements:GLOBAL_REFERENCE;</span>
+<span id="cb1-56"><a href=""></a>        aas_key:local "false"^^xsd:boolean;</span>
+<span id="cb1-57"><a href=""></a>        aas_key:value "0173-1#05-AAA650#002";</span>
+<span id="cb1-58"><a href=""></a>        aas_key:idType aas_identifierType:IRDI]];</span>
+<span id="cb1-59"><a href=""></a>    dataspec_iec:datatype "INTEGER_MEASURE";</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 
@@ -948,9 +955,9 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <section id="non-functional-requirements" class="title-slide slide level2 center" data-number="1.5">
 <h2><span class="header-section-number">1.5</span> Non-Functional Requirements</h2>
 <p>Use cases outline the information domains that ECLASS RDF must relate to.</p>
-<p>But that’s not the whole story, we also need to detail:</p>
+<p>But that's not the whole story, we also need to detail:</p>
 <ul>
-<li>How to get the data? Hosting, Serving, Resolution…</li>
+<li>How to get the data? Hosting, Serving, Resolution...</li>
 <li>What would consumers want to search for and get? Competency Questions</li>
 </ul>
 </section>
@@ -974,23 +981,23 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <h3><span class="header-section-number">1.5.2</span> Competency Questions</h3>
 <p>Defined Competency Questions are the best way to guide ontology development</p>
 <ul>
-<li>To avoid going off on a tangent and designing too much of what’s not needed</li>
+<li>To avoid going off on a tangent and designing too much of what's not needed</li>
 <li>In our case we start from a well-developed information model, so we should capture all of it</li>
 </ul>
 <p>But we still need to answer:</p>
 <ul>
 <li>What will consumers want to search for or search by?
 <ul>
-<li>Eg are these legit queries “find red products”, “find products shorter than 15cm”?</li>
-<li>Are these easy to answer? I haven’t seen many/any sub-properties in ECLASS?</li>
-<li>Eg there isn’t a single “height”, there’s also “height of enveloping body”</li>
-<li>That applies to “enveloping body - cylinder” and “enveloping body - box”</li>
+<li>Eg are these legit queries "find red products", "find products shorter than 15cm"?</li>
+<li>Are these easy to answer? I haven't seen many/any sub-properties in ECLASS?</li>
+<li>Eg there isn't a single "height", there's also "height of enveloping body"</li>
+<li>That applies to "enveloping body - cylinder" and "enveloping body - box"</li>
 <li>There are different props that relate to those Polymorphic blocks</li>
 </ul></li>
 <li>What data do they want to get? Tradeoff:
 <ul>
-<li>Don’t get too much (eg only definitions of props actually used in a product)</li>
-<li>Don’t get too little (to avoid too many network round-trips)</li>
+<li>Don't get too much (eg only definitions of props actually used in a product)</li>
+<li>Don't get too little (to avoid too many network round-trips)</li>
 </ul></li>
 </ul>
 </section>
@@ -1008,15 +1015,15 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Unit of Measurement Ontologies: 3 are widely established and used</li>
 </ul>
 </section>
-<section id="martin-hepp" class="title-slide slide level2 smaller center" data-number="2.1">
+<section id="martin-hepp" class="title-slide slide level2 center" data-number="2.1">
 <h2><span class="header-section-number">2.1</span> Martin Hepp</h2>
-<p>Martin Hepp’s work on semantic web approaches to eCommerce is well-known and established:</p>
+<p>Martin Hepp's work on semantic web approaches to eCommerce is well-known and established:</p>
 <ul>
 <li>GoodRelations (products, offers, prices) is the foundation of eCommerce in schema.org</li>
-<li>The “Gen/Tax” distinction between strict class hierarchies and vaguer taxonomic (classification) hierarchies</li>
+<li>The "Gen/Tax" distinction between strict class hierarchies and vaguer taxonomic (classification) hierarchies</li>
 <li>Conversion of a number of product ontologies to RDF/OWL, although in a simplistic way</li>
 </ul>
-<p>I’m sure ECLASS has taken into account his experiments, but we can turn back to his work for more advice and guidance. Below I list Martin’s papers that are relevant to this effort.</p>
+<p>I'm sure ECLASS has taken into account his experiments, but we can turn back to his work for more advice and guidance. Below I list Martin's papers that are relevant to this effort.</p>
 <p>Comparison/Overview of product description vocabularies:</p>
 <ul>
 <li>Product Representation in the Semantic Web (Working Paper 2004-04)</li>
@@ -1026,7 +1033,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>A Quantitative Analysis of Product Categorization Standards: ECLASS, UNSPSC, eOTD, and RNTD (KAIS 2007)</li>
 </ul>
 </section>
-<section id="martin-hepp-2" class="title-slide slide level3 smaller center" data-number="2.1.1">
+<section id="martin-hepp-2" class="title-slide slide level3 center" data-number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Martin Hepp (2)</h3>
 <p>Conversion Methods:</p>
 <ul>
@@ -1045,13 +1052,13 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="martin-hepp-3" class="title-slide slide level3 smaller center" data-number="2.1.2">
+<section id="martin-hepp-3" class="title-slide slide level3 center" data-number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Martin Hepp (3)</h3>
 <p>ECLASS:</p>
 <ul>
-<li><a href="mailto:ECLASSOWL" class="email">ECLASSOWL</a>- The Web Ontology for Products and Services (2010-04) website documentation</li>
+<li>ECLASSOWL- The Web Ontology for Products and Services (2010-04) website documentation</li>
 <li>Integrating Product Classification Standards into Schema.org- ECLASS and UNSPSC on the Web of Data (OTM 2017)</li>
-<li><a href="mailto:ECLASSOWL" class="email">ECLASSOWL</a>- A Fully-Fledged Products and Services Ontology in OWL (ISWC 2005 Poster)</li>
+<li>ECLASSOWL- A Fully-Fledged Products and Services Ontology in OWL (ISWC 2005 Poster)</li>
 <li>Using BMEcat Catalogs as a Lever for Product Master Data on the Semantic Web (ESWC 2013)</li>
 </ul>
 <p>ISO 13584 (PLIB):</p>
@@ -1067,34 +1074,34 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>Schema.org describes many real-world entities, is applicable in a wide variety of domains, and integrates data from a huge number of providers and domains</p>
 <ul>
 <li>It is used more and more often on actual eCommerce sites (see Use Case above)</li>
-<li>WoT efforts make a connection to schema.org, and use the same “low ontological commitment” as schema.org</li>
+<li>WoT efforts make a connection to schema.org, and use the same "low ontological commitment" as schema.org</li>
 </ul>
 </section>
-<section id="rdfsowl-high-ontological-commitment" class="title-slide slide level3 smaller center" data-number="2.2.1">
+<section id="rdfsowl-high-ontological-commitment" class="title-slide slide level3 center" data-number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> RDFS/OWL: High Ontological Commitment</h3>
 <p>RDFS defines the properties <code>rdfs:domain</code> and <code>rdfs:range</code></p>
 <ul>
-<li>These are strict and “prescriptive”:</li>
+<li>These are strict and "prescriptive":</li>
 <li>According to RDFS semantics, every time the described property is used, the property subject resp. object gets the domain resp. range as type.</li>
-<li>This also makes these RDFS properties “monomorphic”: they should take single values, otherwise the subject/object will get multiple types, which are usually not intended.</li>
+<li>This also makes these RDFS properties "monomorphic": they should take single values, otherwise the subject/object will get multiple types, which are usually not intended.</li>
 <li>Eg if you state that name is applicable to Person and Organization with the axiom <code>:name rdfs:domain :Person, :Organization</code>, entities with <code>name</code> will become <strong>both</strong> <code>Person</code> and <code>Organization</code>, which is an often made mistake.</li>
 <li>Ontology engineers overcome this problem by:
 <ul>
-<li>introducing abstract superclasses (e.g.&nbsp;<code>Actor</code> or even <code>Nameable</code>),</li>
+<li>introducing abstract superclasses (e.g. <code>Actor</code> or even <code>Nameable</code>),</li>
 <li>using <code>owl:union</code> to make a disjunction of several classes, or</li>
 <li>using <code>owl:Restriction</code> to bind the property to the class locally.</li>
 </ul></li>
 </ul>
-<p>But all of these approaches complicate the ontology, increase “ontological commitment”, and ultimately make ontology reuse harder.</p>
+<p>But all of these approaches complicate the ontology, increase "ontological commitment", and ultimately make ontology reuse harder.</p>
 </section>
 
-<section id="schema.org-low-ontological-commitment" class="title-slide slide level3 smaller center" data-number="2.2.2">
+<section id="schema.org-low-ontological-commitment" class="title-slide slide level3 center" data-number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> schema.org: Low Ontological Commitment</h3>
 <p>To cope with web-scale integration of data, Schema uses properties <code>schema:domainIncludes</code> and <code>schema:rangeIncludes</code></p>
 <ul>
-<li>These are advisory and “descriptive” (describe properties applicable to a class, without being exclusive)</li>
-<li>Therefore polymorphic: an axiom like <code>:name schema:domainIncludes :Person, :Organization</code> doesn’t cause any unintended types to be inferred</li>
-<li>This approach has much lower “ontological commitment” and enables more flexible reuse and combination of different ontologies</li>
+<li>These are advisory and "descriptive" (describe properties applicable to a class, without being exclusive)</li>
+<li>Therefore polymorphic: an axiom like <code>:name schema:domainIncludes :Person, :Organization</code> doesn't cause any unintended types to be inferred</li>
+<li>This approach has much lower "ontological commitment" and enables more flexible reuse and combination of different ontologies</li>
 <li>So it is appropriate in any data domain where data comes from a large number of sources</li>
 <li>Rather than using complicated OWL mechanisms, we prefer to use RDF Shapes to validate incoming data from data providers</li>
 <li>We used this mechanism for Company data, see the euBusinessGraph Ontology cited above</li>
@@ -1102,23 +1109,23 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="schema.org-specific-classes" class="title-slide slide level3 smaller center" data-number="2.2.3">
+<section id="schema.org-specific-classes" class="title-slide slide level3 center" data-number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Schema.org Specific Classes</h3>
 <p>schema.org has several releant classes. Should be considered for reuse:</p>
 <ul>
 <li><code>ProductModel</code>: A datasheet or vendor specification of a product (in the sense of a prototypical description).</li>
 <li><code>Product</code>: Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.</li>
-<li><code>PropertyValue</code>: A property-value pair representing an additional characteristics of the entitity, e.g.&nbsp;a product feature or another characteristic for which there is no matching property in schema.org.</li>
+<li><code>PropertyValue</code>: A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.</li>
 <li><code>QuantitativeValue</code>: A point value or interval for product characteristics and other purposes.</li>
 </ul>
 <p>Might be relevant:</p>
 <ul>
 <li><code>ProductGroup</code>: a group of Products that vary only in certain well-described ways, such as by size, color, material etc.</li>
-<li><code>EnergyConsumptionDetails</code>: the energy efficiency Category (“class” or “rating”) for a product according to an international energy efficiency standard</li>
+<li><code>EnergyConsumptionDetails</code>: the energy efficiency Category ("class" or "rating") for a product according to an international energy efficiency standard</li>
 </ul>
 </section>
 
-<section id="schema.org-specific-props" class="title-slide slide level3 smaller center" data-number="2.2.4">
+<section id="schema.org-specific-props" class="title-slide slide level3 center" data-number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Schema.org Specific Props</h3>
 <p>schema.org also has some fixed product properties. Can be useful if you decide to replace some IRDIs with named terms:</p>
 <ul>
@@ -1137,7 +1144,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </section>
 
 
-<section id="application-profiles" class="title-slide slide level2 smaller center" data-number="2.3">
+<section id="application-profiles" class="title-slide slide level2 center" data-number="2.3">
 <h2><span class="header-section-number">2.3</span> Application Profiles</h2>
 <p>Application profiles serve several related goals, see <a href="https://w3c.github.io/dxwg/profiles/">W3C Profiles Guidance</a> adn the earlier <a href="http://dublincore.org/documents/profile-guidelines/">Guidelines for Dublin Core Application Profiles</a></p>
 <ul>
@@ -1160,7 +1167,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>The two major standards are SHACL and SHEX, and both have their strengths and weaknesses; in particular SHEX is much easier to edit</li>
 <li>Consider SHACLC (SHACL Compact), see <a href="https://github.com/VladimirAlexiev/shaclc-mode">VladimirAlexiev/shaclc-mode</a> : compact writing, syntax highlighting, syntax checking, menu navigation</li>
 </ul>
-<p><img data-src="img/shaclc-flyCheck-validation.png" style="width:200.0%"></p>
+<p><img data-src="img/shaclc-flyCheck-validation.png"></p>
 </section>
 
 
@@ -1181,32 +1188,36 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="uom-ontologies" class="title-slide slide level2 smaller center" data-number="2.5">
+<section id="uom-ontologies" class="title-slide slide level2 center" data-number="2.5">
 <h2><span class="header-section-number">2.5</span> UoM Ontologies</h2>
 <p>Widely used lists:</p>
 <ul>
-<li>UNCEFACT Recommedation 20, which accommodates more exotic eCommerce units, like “pairs”, “US barrels per day”, etc</li>
+<li>UNCEFACT Recommedation 20, which accommodates more exotic eCommerce units, like "pairs", "US barrels per day", etc</li>
 <li>UCUM, which handles decimal prefixes and has info on conversion factors</li>
 </ul>
 <p>There are also about 10 ontologies:</p>
 <ul>
 <li>MUO, OBOE, OM 2, QU, QUDT 2.1, SWEET 3, UO+PATO, Wikidata, unitsOfMeasure, LINDT</li>
 </ul>
+</section>
+
+<section id="uom-ontologies-2" class="title-slide slide level2 center" data-number="2.6">
+<h2><span class="header-section-number">2.6</span> UoM Ontologies (2)</h2>
 <p>2 UoM ontologies are most promising and widely used:</p>
 <ul>
 <li>QUDT: sponsored by NASA, rich dimension analysis, conversion factors, links to a bunch of scientific disciplines, links to other UoM authorities</li>
 <li>LINDT UCUM: puts the number and unit in the same string:
 <ul>
 <li>Comparability, conversion and arithmetic operations on quantities (eg <code>"1 m"^^cdt:ucum + "100 cm"^^cdt:ucum</code>)</li>
-<li>Unlike QUDT, has countably infinite list of units, eg <code>[lb_av]/h</code> for “fuel flow” used by USAF/NASA (see <a href="https://github.com/qudt/qudt-public-repo/issues/285">QUDT issue</a>).</li>
+<li>Unlike QUDT, has countably infinite list of units, eg <code>[lb_av]/h</code> for "fuel flow" used by USAF/NASA (see <a href="https://github.com/qudt/qudt-public-repo/issues/285">QUDT issue</a>).</li>
 <li>Smart innovative approach, used in various ontologies and projects,</li>
 <li>Requires SPARQL extensions and not yet commonly accepted, so needs to be discussed</li>
 <li>I posted a SPARQL 1.2 issue for wider adoption: <a href="https://github.com/w3c/sparql-12/issues/129">sparql-12#129</a></li>
 </ul></li>
 </ul>
 </section>
-<section id="uom-evaluations" class="title-slide slide level3 center" data-number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> UoM Evaluations</h3>
+<section id="uom-evaluations" class="title-slide slide level3 center" data-number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> UoM Evaluations</h3>
 <ul>
 <li><a href="https://www.w3.org/community/owled/files/2016/11/OWLED-ORE-2016_paper_5.pdf">Use Cases and Suitability Metrics for Unit Ontologies</a> (OWLED ORE 2016)
 <ul>
@@ -1222,23 +1233,23 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="use-cases-and-suitability-metrics-for-uo-1" class="title-slide slide level3 r-stretch smaller center" data-number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Use Cases and Suitability Metrics for UO (1)</h3>
+<section id="use-cases-and-suitability-metrics-for-uo-1" class="title-slide slide level3 r-stretch smaller center" data-number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Use Cases and Suitability Metrics for UO (1)</h3>
 
 <img data-src="img/Use%20Cases%20and%20Suitability%20Metrics%20for%20Unit%20Ontologies-UC.png" class="r-stretch"></section>
 
-<section id="use-cases-and-suitability-metrics-for-uo-2" class="title-slide slide level3 r-stretch smaller center" data-number="2.5.3">
-<h3><span class="header-section-number">2.5.3</span> Use Cases and Suitability Metrics for UO (2)</h3>
+<section id="use-cases-and-suitability-metrics-for-uo-2" class="title-slide slide level3 r-stretch smaller center" data-number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Use Cases and Suitability Metrics for UO (2)</h3>
 
 <img data-src="img/Use%20Cases%20and%20Suitability%20Metrics%20for%20Unit%20Ontologies-matrix.png" class="r-stretch"></section>
 
-<section id="comparison-and-evaluation-of-ontologies-for-uom" class="title-slide slide level3 r-stretch smaller center" data-number="2.5.4">
-<h3><span class="header-section-number">2.5.4</span> Comparison and Evaluation of Ontologies for UoM</h3>
+<section id="comparison-and-evaluation-of-ontologies-for-uom" class="title-slide slide level3 r-stretch smaller center" data-number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> Comparison and Evaluation of Ontologies for UoM</h3>
 
 <img data-src="img/Comparison%20and%20Evaluation%20of%20Ontologies%20for%20Units%20of%20Measurement.png" class="r-stretch"></section>
 
-<section id="the-future-of-web-enabled-uom" class="title-slide slide level3 center" data-number="2.5.5">
-<h3><span class="header-section-number">2.5.5</span> The Future of Web-Enabled UoM</h3>
+<section id="the-future-of-web-enabled-uom" class="title-slide slide level3 center" data-number="2.6.5">
+<h3><span class="header-section-number">2.6.5</span> The Future of Web-Enabled UoM</h3>
 <p>This just out:</p>
 <ul>
 <li>BIPM (Bureau International des Poids et des Mesures)</li>
@@ -1311,9 +1322,9 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="ontoml-niche-terminology-1" class="title-slide slide level3 smaller center" data-number="3.1.3">
+<section id="ontoml-niche-terminology-1" class="title-slide slide level3 center" data-number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> OntoML: Niche Terminology (1)</h3>
-<p>Very few people will take the time to read and understand OntoML, and fewer will use it correctly. Here’s an attempt at “translation” (please excuse me if I got some OntoML terms wrong).</p>
+<p>Very few people will take the time to read and understand OntoML, and fewer will use it correctly. Here's an attempt at "translation" (please excuse me if I got some OntoML terms wrong).</p>
 <table>
 <colgroup>
 <col style="width: 26%">
@@ -1366,7 +1377,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </table>
 </section>
 
-<section id="ontoml-niche-terminology-2" class="title-slide slide level3 smaller center" data-number="3.1.4">
+<section id="ontoml-niche-terminology-2" class="title-slide slide level3 center" data-number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> OntoML: Niche Terminology (2)</h3>
 <table>
 <colgroup>
@@ -1382,7 +1393,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <tbody>
 <tr class="odd">
 <td>block</td>
-<td>Product part (but need to confirm whether all “blocks” are parts)</td>
+<td>Product part (but need to confirm whether all "blocks" are parts)</td>
 </tr>
 <tr class="even">
 <td>aspect</td>
@@ -1462,7 +1473,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="ontoml-local-vs-global-thinking" class="title-slide slide level3 smaller center" data-number="3.1.7">
+<section id="ontoml-local-vs-global-thinking" class="title-slide slide level3 center" data-number="3.1.7">
 <h3><span class="header-section-number">3.1.7</span> OntoML: Local vs Global Thinking</h3>
 <p>OntoML is based upon local not global thinking. Examples:</p>
 <ul>
@@ -1479,7 +1490,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>Chemicals</li>
 <li>Grades of steel and formulations of alloys</li>
-<li>New materials (eg nanomaterials, graphene…)</li>
+<li>New materials (eg nanomaterials, graphene...)</li>
 </ul></li>
 <li>Embedded copy of the MIME Types list (type of source file)
 <ul>
@@ -1490,7 +1501,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="ontoml-not-oriented-towards-linked-data" class="title-slide slide level3 smaller center" data-number="3.1.8">
+<section id="ontoml-not-oriented-towards-linked-data" class="title-slide slide level3 center" data-number="3.1.8">
 <h3><span class="header-section-number">3.1.8</span> OntoML: Not Oriented Towards Linked Data</h3>
 <p>Being based on XML, OntoML is not oriented towards Linked Data</p>
 <ul>
@@ -1498,8 +1509,8 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Eg the Manufacturer and Supplier blocks:
 <ul>
 <li>Include 2 fields that characterize the Organization not the product (name of manufacturer/supplier, GLN of manufacturer/supplier)</li>
-<li>Don’t include other potentially useful Organization info (eg country, address, affiliations)</li>
-<li>Doesn’t allow linking to a separate (potentially external) Organization node</li>
+<li>Don't include other potentially useful Organization info (eg country, address, affiliations)</li>
+<li>Doesn't allow linking to a separate (potentially external) Organization node</li>
 </ul></li>
 <li>But there are tons of Linked Data about Organizations! Eg see
 <ul>
@@ -1543,10 +1554,10 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </section>
 
 
-<section id="irdi-stability-vs-versioning" class="title-slide slide level2 smaller center" data-number="3.3">
+<section id="irdi-stability-vs-versioning" class="title-slide slide level2 center" data-number="3.3">
 <h2><span class="header-section-number">3.3</span> IRDI Stability vs Versioning</h2>
 <ul>
-<li>Some props have quite a large IRDI version (last component), eg “Operating resource protection class” <code>0173-1#02-BAA205#012</code></li>
+<li>Some props have quite a large IRDI version (last component), eg "Operating resource protection class" <code>0173-1#02-BAA205#012</code></li>
 <li>I guess the IRDI version is incremented (upon ECLASS release time) when one of its dependencies are incremented</li>
 <li>This leads to cascading (avalanche) incrementing:
 <ul>
@@ -1557,15 +1568,15 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>All classes using the blocks are incremented</li>
 </ul></li>
 <li>Pros: Provide precise IDs for every change of data</li>
-<li>But: 99.9% of the time the <strong>meaning</strong> of an IRDI doesn’t change, only details are added</li>
+<li>But: 99.9% of the time the <strong>meaning</strong> of an IRDI doesn't change, only details are added</li>
 <li>Versioning class/property IRIs has serious drawbacks for data consumers:
 <ul>
-<li>See well-known papers <a href="https://www.w3.org/Provider/Style/URI">Cool URIs Don’t Change</a> and <a href="https://www.w3.org/TR/cooluris">Cool URIs for the Semantic Web</a> by TimBL</li>
-<li>If a user has billions of triples using a property IRI, you don’t want him to have to change that IRI</li>
+<li>See well-known papers <a href="https://www.w3.org/Provider/Style/URI">Cool URIs Don't Change</a> and <a href="https://www.w3.org/TR/cooluris">Cool URIs for the Semantic Web</a> by TimBL</li>
+<li>If a user has billions of triples using a property IRI, you don't want him to have to change that IRI</li>
 </ul></li>
 </ul>
 </section>
-<section id="irdi-versioning-cons" class="title-slide slide level3 smaller center" data-number="3.3.1">
+<section id="irdi-versioning-cons" class="title-slide slide level3 center" data-number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> IRDI Versioning Cons</h3>
 <ul>
 <li>A large manufacturer who uses ECLASS for a long time:
@@ -1581,7 +1592,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul></li>
 <li>A data consumer that wants to query data:
 <ul>
-<li>Will have to deal with many different (versioned) IRIs for the same prop eg “height”</li>
+<li>Will have to deal with many different (versioned) IRIs for the same prop eg "height"</li>
 <li>Will have to find them (how?) and enumerate them in the query (huge inconvenience)</li>
 <li>Queries will be invalidated when a new ECLASS version comes out</li>
 </ul></li>
@@ -1594,34 +1605,34 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="versioned-iris-make-querying-harder" class="title-slide slide level3 center" data-number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Versioned IRIs Make Querying Harder</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a># simplest</span>
-<span id="cb3-2"><a href="#cb3-2"></a>?x schema:height ?h</span>
-<span id="cb3-3"><a href="#cb3-3"></a>filter (?h &lt;= 10)</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a># unacceptable: label is not stable</span>
-<span id="cb3-6"><a href="#cb3-6"></a>?height ec:label "Height". </span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a># find IRDI by substring: slow</span>
-<span id="cb3-9"><a href="#cb3-9"></a>?height a ec:Property; ec:irdi ?irdi.</span>
-<span id="cb3-10"><a href="#cb3-10"></a>filter(strstarts(?irdi,"0176//blah-blah#")) # excluding version</span>
-<span id="cb3-11"><a href="#cb3-11"></a>?x ?height ?h</span>
-<span id="cb3-12"><a href="#cb3-12"></a>filter (?h &lt;= 10)</span>
-<span id="cb3-13"><a href="#cb3-13"></a></span>
-<span id="cb3-14"><a href="#cb3-14"></a># better to have explicit connections between IRDIs:</span>
-<span id="cb3-15"><a href="#cb3-15"></a>:0176__blah-blah a ec:Property;</span>
-<span id="cb3-16"><a href="#cb3-16"></a>  ec:irdi "0176//blah-blah";</span>
-<span id="cb3-17"><a href="#cb3-17"></a>  ec:propertyVersion :0176__blah-blah_001, :0176__blah-blah_002;</span>
-<span id="cb3-18"><a href="#cb3-18"></a>  ec:label "height".</span>
-<span id="cb3-19"><a href="#cb3-19"></a></span>
-<span id="cb3-20"><a href="#cb3-20"></a>:0176__blah-blah_002 a ec:PropertyVersion;</span>
-<span id="cb3-21"><a href="#cb3-21"></a>  :irdi "0176//blah-blah#001";</span>
-<span id="cb3-22"><a href="#cb3-22"></a>  ec:basicProperty :0176__blah-blah;</span>
-<span id="cb3-23"><a href="#cb3-23"></a>  ec:label "height".</span>
-<span id="cb3-24"><a href="#cb3-24"></a></span>
-<span id="cb3-25"><a href="#cb3-25"></a># query:</span>
-<span id="cb3-26"><a href="#cb3-26"></a>?height a ec:VersionedProperty; ec:basicProperty :0176__blah-blah.</span>
-<span id="cb3-27"><a href="#cb3-27"></a>?x ?height ?h.</span>
-<span id="cb3-28"><a href="#cb3-28"></a>filter (?h &lt;= 10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sparql number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href=""></a># simplest</span>
+<span id="cb2-2"><a href=""></a>?x schema:height ?h</span>
+<span id="cb2-3"><a href=""></a>filter (?h &gt;= 10)</span>
+<span id="cb2-4"><a href=""></a></span>
+<span id="cb2-5"><a href=""></a># unacceptable: label is not stable</span>
+<span id="cb2-6"><a href=""></a>?height ec:label "Height". </span>
+<span id="cb2-7"><a href=""></a></span>
+<span id="cb2-8"><a href=""></a># find IRDI by substring: slow</span>
+<span id="cb2-9"><a href=""></a>?height a ec:Property; ec:irdi ?irdi.</span>
+<span id="cb2-10"><a href=""></a>filter(strstarts(?irdi,"0176//blah-blah#")) # excluding version</span>
+<span id="cb2-11"><a href=""></a>?x ?height ?h</span>
+<span id="cb2-12"><a href=""></a>filter (?h &gt;= 10)</span>
+<span id="cb2-13"><a href=""></a></span>
+<span id="cb2-14"><a href=""></a># better to have explicit connections between IRDIs:</span>
+<span id="cb2-15"><a href=""></a>:0176__blah-blah a ec:Property;</span>
+<span id="cb2-16"><a href=""></a>  ec:irdi "0176//blah-blah";</span>
+<span id="cb2-17"><a href=""></a>  ec:propertyVersion :0176__blah-blah_001, :0176__blah-blah_002;</span>
+<span id="cb2-18"><a href=""></a>  ec:label "height".</span>
+<span id="cb2-19"><a href=""></a></span>
+<span id="cb2-20"><a href=""></a>:0176__blah-blah_002 a ec:PropertyVersion;</span>
+<span id="cb2-21"><a href=""></a>  :irdi "0176//blah-blah#001";</span>
+<span id="cb2-22"><a href=""></a>  ec:basicProperty :0176__blah-blah;</span>
+<span id="cb2-23"><a href=""></a>  ec:label "height".</span>
+<span id="cb2-24"><a href=""></a></span>
+<span id="cb2-25"><a href=""></a># query:</span>
+<span id="cb2-26"><a href=""></a>?height a ec:VersionedProperty; ec:basicProperty :0176__blah-blah.</span>
+<span id="cb2-27"><a href=""></a>?x ?height ?h.</span>
+<span id="cb2-28"><a href=""></a>filter (?h &gt;= 10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="using-version-less-iris-1" class="title-slide slide level3 center" data-number="3.3.3">
@@ -1639,7 +1650,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="using-version-less-iris-2" class="title-slide slide level3 smaller center" data-number="3.3.4">
+<section id="using-version-less-iris-2" class="title-slide slide level3 center" data-number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Using Version-less IRIs (2)</h3>
 <ul>
 <li>Every W3C spec has at least two URLs:
@@ -1647,8 +1658,8 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li><code>current</code> This Version, eg <a href="https://www.w3.org/TR/2020/REC-wot-thing-description-20200409/" class="uri">https://www.w3.org/TR/2020/REC-wot-thing-description-20200409/</a></li>
 <li><code>latest</code>
 <ul>
-<li>Latest published version: <a href="https://www.w3.org/TR/wot-thing-description/" class="uri">https://www.w3.org/TR/wot-thing-description/</a>&gt;</li>
-<li>Latest editor’s draft: <a href="https://w3c.github.io/wot-thing-description/" class="uri">https://w3c.github.io/wot-thing-description/</a></li>
+<li>Latest published version: <a href="https://www.w3.org/TR/wot-thing-description/" class="uri">https://www.w3.org/TR/wot-thing-description/</a></li>
+<li>Latest editor's draft: <a href="https://w3c.github.io/wot-thing-description/" class="uri">https://w3c.github.io/wot-thing-description/</a></li>
 </ul></li>
 </ul></li>
 <li>Best practice:
@@ -1656,43 +1667,43 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>The latest IRIs of classes/props should be version-less</li>
 <li>Each release can also have a variant with versioned IRIs</li>
 <li>This allows a user to retarget to that older version in case of breaking changes</li>
-<li>Eg QUDT 2.0 had <code>unit:KG</code>, QUDT 2.1 has <code>unit:KiloGM</code>: our <a href="https://github.com/BigDataGrapes-EU/ontology" class="uri">https://github.com/BigDataGrapes-EU/ontology</a> had to change to versioned 2.0</li>
+<li>Eg QUDT 2.0 had <code>unit:KG</code>, QUDT 2.1 has <code>unit:KiloGM</code>: our <a href="https://github.com/BigDataGrapes-EU/ontology">BigDataGrapes ontology</a> had to change to versioned 2.0</li>
 </ul></li>
-<li>OWL ontology URLs usually don’t change, whereas <code>owl:versionIRI</code> is the versioned URL</li>
+<li>OWL ontology URLs usually don't change, whereas <code>owl:versionIRI</code> is the versioned URL</li>
 </ul>
 </section>
 
 <section id="versioning-example-qudt" class="title-slide slide level3 center" data-number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> Versioning Example: QUDT</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>@prefix unit: &lt;http://qudt.org/vocab/unit/&gt; .  ### version-less</span>
-<span id="cb4-2"><a href="#cb4-2"></a>unit:A                                         ### URLs are permanent</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  a qudt:Unit ;</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  qudt:dbpediaMatch "http://dbpedia.org/resource/Ampere"^^xsd:anyURI ; ### version-less</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  qudt:hasDimensionVector qkdv:A0E1L0I0M0H0T0D0 ;</span>
-<span id="cb4-6"><a href="#cb4-6"></a>  qudt:hasQuantityKind quantitykind:ElectricCurrent ;</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  qudt:iec61360Code "0112/2///62720#UAA101" ;  ### version-less</span>
-<span id="cb4-8"><a href="#cb4-8"></a>  qudt:iec61360Code "0112/2///62720#UAD717" ;  ### version-less</span>
-<span id="cb4-9"><a href="#cb4-9"></a>  qudt:informativeReference "http://en.wikipedia.org/wiki/Ampere?oldid=494026699"^^xsd:anyURI ; </span>
-<span id="cb4-10"><a href="#cb4-10"></a>    ### Versioned: this exact Wikipedia edit</span>
-<span id="cb4-11"><a href="#cb4-11"></a>  qudt:omUnit &lt;http://www.ontology-of-units-of-measure.org/resource/om-2/ampere&gt; ;</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    ### Versioned: big changes from OM 1.1 to OM 2</span>
-<span id="cb4-13"><a href="#cb4-13"></a>  qudt:ucumCode "A"^^qudt:UCUMcs ;</span>
-<span id="cb4-14"><a href="#cb4-14"></a>  qudt:uneceCommonCode "AMP" ;</span>
-<span id="cb4-15"><a href="#cb4-15"></a>  qudt:unitOfSystem &lt;http://qudt.org/vocab/sou/SOU_SI&gt; ;</span>
-<span id="cb4-16"><a href="#cb4-16"></a>  rdfs:isDefinedBy &lt;http://qudt.org/2.1/vocab/unit&gt; ; ### versioned</span>
-<span id="cb4-17"><a href="#cb4-17"></a>  rdfs:label "Ampere"@en ;</span>
-<span id="cb4-18"><a href="#cb4-18"></a>  skos:altLabel "amp" ;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href=""></a>@prefix unit: &lt;http://qudt.org/vocab/unit/&gt; .  ### version-less</span>
+<span id="cb3-2"><a href=""></a>unit:A                                         ### URLs are permanent</span>
+<span id="cb3-3"><a href=""></a>  a qudt:Unit ;</span>
+<span id="cb3-4"><a href=""></a>  qudt:dbpediaMatch "http://dbpedia.org/resource/Ampere"^^xsd:anyURI ; ### version-less</span>
+<span id="cb3-5"><a href=""></a>  qudt:hasDimensionVector qkdv:A0E1L0I0M0H0T0D0 ;</span>
+<span id="cb3-6"><a href=""></a>  qudt:hasQuantityKind quantitykind:ElectricCurrent ;</span>
+<span id="cb3-7"><a href=""></a>  qudt:iec61360Code "0112/2///62720#UAA101" ;  ### version-less</span>
+<span id="cb3-8"><a href=""></a>  qudt:iec61360Code "0112/2///62720#UAD717" ;  ### version-less</span>
+<span id="cb3-9"><a href=""></a>  qudt:informativeReference "http://en.wikipedia.org/wiki/Ampere?oldid=494026699"^^xsd:anyURI ; </span>
+<span id="cb3-10"><a href=""></a>    ### Versioned: this exact Wikipedia edit</span>
+<span id="cb3-11"><a href=""></a>  qudt:omUnit &lt;http://www.ontology-of-units-of-measure.org/resource/om-2/ampere&gt; ;</span>
+<span id="cb3-12"><a href=""></a>    ### Versioned: big changes from OM 1.1 to OM 2</span>
+<span id="cb3-13"><a href=""></a>  qudt:ucumCode "A"^^qudt:UCUMcs ;</span>
+<span id="cb3-14"><a href=""></a>  qudt:uneceCommonCode "AMP" ;</span>
+<span id="cb3-15"><a href=""></a>  qudt:unitOfSystem &lt;http://qudt.org/vocab/sou/SOU_SI&gt; ;</span>
+<span id="cb3-16"><a href=""></a>  rdfs:isDefinedBy &lt;http://qudt.org/2.1/vocab/unit&gt; ; ### versioned</span>
+<span id="cb3-17"><a href=""></a>  rdfs:label "Ampere"@en ;</span>
+<span id="cb3-18"><a href=""></a>  skos:altLabel "amp" ;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 
 <section id="sample-rdf-patterns" class="title-slide slide level2 center" data-number="3.4">
 <h2><span class="header-section-number">3.4</span> Sample RDF Patterns</h2>
-<p>I can’t make complete and definite examples yet because there are many questions to be decided.</p>
+<p>I can't make complete and definite examples yet because there are many questions to be decided.</p>
 <ul>
-<li>But I can show some examples from the test cases of “lamp” and “switch”.</li>
-<li>Below I use named classes and properties rather than IRDI-based terms, but that’s just for better understandability
+<li>But I can show some examples from the test cases of "lamp" and "switch".</li>
+<li>Below I use named classes and properties rather than IRDI-based terms, but that's just for better understandability
 <ul>
-<li>It doesn’t represent a decision to switch away from IRDIs</li>
+<li>It doesn't represent a decision to switch away from IRDIs</li>
 <li>Most ECLASS URLs will be IRDI-based</li>
 <li>But for some you may decide to use schema.org terms</li>
 </ul></li>
@@ -1704,25 +1715,25 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <p>If we use SKOS to represent the classification, it can go like this.</p>
 <ul>
 <li><code>skos:notation</code> is commonly used to represent the hierarchical code.</li>
-<li>schema.org has <code>DefinedTermSet</code> and <code>DefinedTerm</code> that do the same, but don’t have a hierarchy.</li>
+<li>schema.org has <code>DefinedTermSet</code> and <code>DefinedTerm</code> that do the same, but don't have a hierarchy.</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>:ECLASS a skos:ConceptScheme; skos:prefLabel "ECLASS Product Classification"@en, "..."@de.</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>:27000000 a skos:Concept; skos:notation "27000000"; :irdi "..."; skos:inScheme :ECLASS; skos:topConceptOf :ECLASS;</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  skos:prefLabel "27 Electric engineering, automation, process control engineering"@en.</span>
-<span id="cb5-5"><a href="#cb5-5"></a>:27070000 a skos:Concept; skos:notation "27070000"; :irdi "..."; skos:inScheme :ECLASS; skos:broader :27000000;</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  skos:prefLabel "27-07 Medium voltage switchgear, system"@en.</span>
-<span id="cb5-7"><a href="#cb5-7"></a>:27070200 a skos:Concept; skos:notation "27070200"; :irdi "..."; skos:inScheme :ECLASS; skos:broader :27070000;</span>
-<span id="cb5-8"><a href="#cb5-8"></a>  skos:prefLabel "27-07-02 Switch (medium voltage)"@en.</span>
-<span id="cb5-9"><a href="#cb5-9"></a>:27070203 a skos:Concept; skos:notation "27070203"; :irdi "..."; skos:inScheme :ECLASS; skos:broader :27070200;</span>
-<span id="cb5-10"><a href="#cb5-10"></a>  skos:prefLabel "27-07-02-03 Disconnecting switch (medium voltage)"@en.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>:ECLASS a skos:ConceptScheme; skos:prefLabel "ECLASS Product Classification"@en, "..."@de.</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a>:27000000 a skos:Concept; skos:notation "27000000"; :irdi "..."; skos:inScheme :ECLASS; skos:topConceptOf :ECLASS;</span>
+<span id="cb4-4"><a href=""></a>  skos:prefLabel "27 Electric engineering, automation, process control engineering"@en.</span>
+<span id="cb4-5"><a href=""></a>:27070000 a skos:Concept; skos:notation "27070000"; :irdi "..."; skos:inScheme :ECLASS; skos:broader :27000000;</span>
+<span id="cb4-6"><a href=""></a>  skos:prefLabel "27-07 Medium voltage switchgear, system"@en.</span>
+<span id="cb4-7"><a href=""></a>:27070200 a skos:Concept; skos:notation "27070200"; :irdi "..."; skos:inScheme :ECLASS; skos:broader :27070000;</span>
+<span id="cb4-8"><a href=""></a>  skos:prefLabel "27-07-02 Switch (medium voltage)"@en.</span>
+<span id="cb4-9"><a href=""></a>:27070203 a skos:Concept; skos:notation "27070203"; :irdi "..."; skos:inScheme :ECLASS; skos:broader :27070200;</span>
+<span id="cb4-10"><a href=""></a>  skos:prefLabel "27-07-02-03 Disconnecting switch (medium voltage)"@en.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="product-class" class="title-slide slide level3 center" data-number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Product Class</h3>
 <p>An application class (basic or advanced) is represented as an OWL class <code>:ProductClass</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>:Ceiling_wall_luminaire a :ProductClass; :irdi "0173-1#01-AGB066#004"; :classification :27010203;</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  :prefLabel "Ceiling-wall luminaire"@en, :altLabel "lamp"@en, "лампион"@bg, "plafon"@en.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href=""></a>:Ceiling_wall_luminaire a :ProductClass; :irdi "0173-1#01-AGB066#004"; :classification :27010203;</span>
+<span id="cb5-2"><a href=""></a>  :prefLabel "Ceiling-wall luminaire"@en, :altLabel "lamp"@en, "лампион"@bg, "plafon"@en.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>We attach properties to classes using the schema.org mechanism (not OWL DL).</li>
 <li>We use common naming conventions (<code>Capital</code> for classes, <code>lowercase</code> for props).</li>
@@ -1732,58 +1743,58 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="product-chracteristics" class="title-slide slide level3 center" data-number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> Product Chracteristics</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>:luminaire_application a owl:ObjectProperty; </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  :irdi "0173-1#02-BAB386"; :versionedIrdi "0173-1#02-BAB386#006";</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  :prefLabel "application"@en;</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
-<span id="cb7-5"><a href="#cb7-5"></a>  schema:rangeIncludes :Luminaire-Application.</span>
-<span id="cb7-6"><a href="#cb7-6"></a></span>
-<span id="cb7-7"><a href="#cb7-7"></a>:design_of_interior_lighting a owl:DatatypeProperty;</span>
-<span id="cb7-8"><a href="#cb7-8"></a>  :irdi "0173-1#02-AAP824"; :versionedIrdi "0173-1#02-AAP824#001";</span>
-<span id="cb7-9"><a href="#cb7-9"></a>  :prefLabel "design of interior lighting"@en;</span>
-<span id="cb7-10"><a href="#cb7-10"></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
-<span id="cb7-11"><a href="#cb7-11"></a>  schema:rangeIncludes xsd:string. # not translatable</span>
-<span id="cb7-12"><a href="#cb7-12"></a></span>
-<span id="cb7-13"><a href="#cb7-13"></a>:design_of_illuminant a owl:DatatypeProperty;</span>
-<span id="cb7-14"><a href="#cb7-14"></a>  :irdi "0173-1#02-BAA209";</span>
-<span id="cb7-15"><a href="#cb7-15"></a>  :prefLabel "design of illuminant"@en;</span>
-<span id="cb7-16"><a href="#cb7-16"></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
-<span id="cb7-17"><a href="#cb7-17"></a>  schema:rangeIncludes rdf:langString. # translatable</span>
-<span id="cb7-18"><a href="#cb7-18"></a></span>
-<span id="cb7-19"><a href="#cb7-19"></a>:material a owl:ObjectProperty;</span>
-<span id="cb7-20"><a href="#cb7-20"></a>  :irdi "0173-1#02-BAB664";</span>
-<span id="cb7-21"><a href="#cb7-21"></a>  :prefLabel "material"@en;</span>
-<span id="cb7-22"><a href="#cb7-22"></a>  schema:domainIncludes :Ceiling-wall_luminaire, ...;</span>
-<span id="cb7-23"><a href="#cb7-23"></a>  schema:rangeIncludes :Material.</span>
-<span id="cb7-24"><a href="#cb7-24"></a></span>
-<span id="cb7-25"><a href="#cb7-25"></a>:pole_number a owl:DatatypeProperty;</span>
-<span id="cb7-26"><a href="#cb7-26"></a>  :irdi "0173-1#02-AAT080";</span>
-<span id="cb7-27"><a href="#cb7-27"></a>  :prefLabel "pole number"@en;</span>
-<span id="cb7-28"><a href="#cb7-28"></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
-<span id="cb7-29"><a href="#cb7-29"></a>  schema:rangeIncludes xsd:integer.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href=""></a>:luminaire_application a owl:ObjectProperty; </span>
+<span id="cb6-2"><a href=""></a>  :irdi "0173-1#02-BAB386"; :versionedIrdi "0173-1#02-BAB386#006";</span>
+<span id="cb6-3"><a href=""></a>  :prefLabel "application"@en;</span>
+<span id="cb6-4"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
+<span id="cb6-5"><a href=""></a>  schema:rangeIncludes :Luminaire-Application.</span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a>:design_of_interior_lighting a owl:DatatypeProperty;</span>
+<span id="cb6-8"><a href=""></a>  :irdi "0173-1#02-AAP824"; :versionedIrdi "0173-1#02-AAP824#001";</span>
+<span id="cb6-9"><a href=""></a>  :prefLabel "design of interior lighting"@en;</span>
+<span id="cb6-10"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
+<span id="cb6-11"><a href=""></a>  schema:rangeIncludes xsd:string. # not translatable</span>
+<span id="cb6-12"><a href=""></a></span>
+<span id="cb6-13"><a href=""></a>:design_of_illuminant a owl:DatatypeProperty;</span>
+<span id="cb6-14"><a href=""></a>  :irdi "0173-1#02-BAA209";</span>
+<span id="cb6-15"><a href=""></a>  :prefLabel "design of illuminant"@en;</span>
+<span id="cb6-16"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
+<span id="cb6-17"><a href=""></a>  schema:rangeIncludes rdf:langString. # translatable</span>
+<span id="cb6-18"><a href=""></a></span>
+<span id="cb6-19"><a href=""></a>:material a owl:ObjectProperty;</span>
+<span id="cb6-20"><a href=""></a>  :irdi "0173-1#02-BAB664";</span>
+<span id="cb6-21"><a href=""></a>  :prefLabel "material"@en;</span>
+<span id="cb6-22"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire, ...;</span>
+<span id="cb6-23"><a href=""></a>  schema:rangeIncludes :Material.</span>
+<span id="cb6-24"><a href=""></a></span>
+<span id="cb6-25"><a href=""></a>:pole_number a owl:DatatypeProperty;</span>
+<span id="cb6-26"><a href=""></a>  :irdi "0173-1#02-AAT080";</span>
+<span id="cb6-27"><a href=""></a>  :prefLabel "pole number"@en;</span>
+<span id="cb6-28"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire;</span>
+<span id="cb6-29"><a href=""></a>  schema:rangeIncludes xsd:integer.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="value-lists" class="title-slide slide level3 center" data-number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> Value Lists</h3>
 <p>We represent them as enumerated classes with instances (above we used these specific classes).</p>
 <ul>
-<li>Another way is to use <code>skos:ConceptSchemes</code>, but to validate that a <code>skos:Concept</code> from a correct scheme is used, we’d need to check a property path value</li>
+<li>Another way is to use <code>skos:ConceptSchemes</code>, but to validate that a <code>skos:Concept</code> from a correct scheme is used, we'd need to check a property path value</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>:Luminaire-Application a rdfs:Class; :irdi "0173-1#02-BAB386";</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  :prefLabel "application"@en.</span>
-<span id="cb8-3"><a href="#cb8-3"></a></span>
-<span id="cb8-4"><a href="#cb8-4"></a>:Headlight_car_truck a :Luminaire-Application; irdi "...";</span>
-<span id="cb8-5"><a href="#cb8-5"></a>  "Headlight, car+truck"@en.</span>
-<span id="cb8-6"><a href="#cb8-6"></a>:Headlight_motorcycle a :Luminaire-Application; irdi "...";</span>
-<span id="cb8-7"><a href="#cb8-7"></a>  "Headlight, motorcycle"@en.</span>
-<span id="cb8-8"><a href="#cb8-8"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a>:Material a rdfs:Class; :irdi "0173-1#02-BAB664";</span>
-<span id="cb8-10"><a href="#cb8-10"></a>  :prefLabel "Material"@en.</span>
-<span id="cb8-11"><a href="#cb8-11"></a></span>
-<span id="cb8-12"><a href="#cb8-12"></a>:Real_glas a :Material; :irdi "...";</span>
-<span id="cb8-13"><a href="#cb8-13"></a>  :prefLabel "Real glas"@en.</span>
-<span id="cb8-14"><a href="#cb8-14"></a>:Thermoplast a :Material; :irdi "...";</span>
-<span id="cb8-15"><a href="#cb8-15"></a>  :prefLabel "Thermoplast"@en.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href=""></a>:Luminaire-Application a rdfs:Class; :irdi "0173-1#02-BAB386";</span>
+<span id="cb7-2"><a href=""></a>  :prefLabel "application"@en.</span>
+<span id="cb7-3"><a href=""></a></span>
+<span id="cb7-4"><a href=""></a>:Headlight_car_truck a :Luminaire-Application; irdi "...";</span>
+<span id="cb7-5"><a href=""></a>  "Headlight, car+truck"@en.</span>
+<span id="cb7-6"><a href=""></a>:Headlight_motorcycle a :Luminaire-Application; irdi "...";</span>
+<span id="cb7-7"><a href=""></a>  "Headlight, motorcycle"@en.</span>
+<span id="cb7-8"><a href=""></a></span>
+<span id="cb7-9"><a href=""></a>:Material a rdfs:Class; :irdi "0173-1#02-BAB664";</span>
+<span id="cb7-10"><a href=""></a>  :prefLabel "Material"@en.</span>
+<span id="cb7-11"><a href=""></a></span>
+<span id="cb7-12"><a href=""></a>:Real_glas a :Material; :irdi "...";</span>
+<span id="cb7-13"><a href=""></a>  :prefLabel "Real glas"@en.</span>
+<span id="cb7-14"><a href=""></a>:Thermoplast a :Material; :irdi "...";</span>
+<span id="cb7-15"><a href=""></a>  :prefLabel "Thermoplast"@en.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="blocks-and-aspects" class="title-slide slide level3 center" data-number="3.4.5">
@@ -1793,47 +1804,47 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Blocks (mmight usually) map to parts, whereas aspects add additional information.</li>
 <li>Below I show a systematic mapping of <code>identification</code> and its two members <code>supplier</code> and <code>manufacturer</code>:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a># Aspect classes</span>
-<span id="cb9-2"><a href="#cb9-2"></a>:IdentificationAspects a rdfs:Class; :irdi "..."; :prefLabel "Identification aspects"@en.</span>
-<span id="cb9-3"><a href="#cb9-3"></a>:SupplierAspects       a rdfs:Class; :irdi "..."; :prefLabel "Supplier aspects"@en.</span>
-<span id="cb9-4"><a href="#cb9-4"></a>:ManufacturerAspects   a rdfs:Class; :irdi "..."; :prefLabel "Manufacturer aspects"@en.</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a># Links to aspects</span>
-<span id="cb9-7"><a href="#cb9-7"></a>:identification a owl:ObjectProperty; :irdi "..."; :prefLabel "Identification aspects"@en;</span>
-<span id="cb9-8"><a href="#cb9-8"></a>  schema:domainIncludes :Ceiling_wall_luminaire, ...; schema:rangeIncludes :IdentificationAspects.</span>
-<span id="cb9-9"><a href="#cb9-9"></a>:supplier       a owl:ObjectProperty; :irdi "..."; :prefLabel "Supplier aspects"@en.</span>
-<span id="cb9-10"><a href="#cb9-10"></a>  schema:domainIncludes :IdentificationAspects; schema:rangeIncludes :SupplierAspects.</span>
-<span id="cb9-11"><a href="#cb9-11"></a>:manufacturer   a owl:ObjectProperty; :irdi "..."; :prefLabel "Manufacturer aspects"@en.</span>
-<span id="cb9-12"><a href="#cb9-12"></a>  schema:domainIncludes :IdentificationAspects; schema:rangeIncludes :ManufacturerAspects.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href=""></a># Aspect classes</span>
+<span id="cb8-2"><a href=""></a>:IdentificationAspects a rdfs:Class; :irdi "..."; :prefLabel "Identification aspects"@en.</span>
+<span id="cb8-3"><a href=""></a>:SupplierAspects       a rdfs:Class; :irdi "..."; :prefLabel "Supplier aspects"@en.</span>
+<span id="cb8-4"><a href=""></a>:ManufacturerAspects   a rdfs:Class; :irdi "..."; :prefLabel "Manufacturer aspects"@en.</span>
+<span id="cb8-5"><a href=""></a></span>
+<span id="cb8-6"><a href=""></a># Links to aspects</span>
+<span id="cb8-7"><a href=""></a>:identification a owl:ObjectProperty; :irdi "..."; :prefLabel "Identification aspects"@en;</span>
+<span id="cb8-8"><a href=""></a>  schema:domainIncludes :Ceiling_wall_luminaire, ...; schema:rangeIncludes :IdentificationAspects.</span>
+<span id="cb8-9"><a href=""></a>:supplier       a owl:ObjectProperty; :irdi "..."; :prefLabel "Supplier aspects"@en.</span>
+<span id="cb8-10"><a href=""></a>  schema:domainIncludes :IdentificationAspects; schema:rangeIncludes :SupplierAspects.</span>
+<span id="cb8-11"><a href=""></a>:manufacturer   a owl:ObjectProperty; :irdi "..."; :prefLabel "Manufacturer aspects"@en.</span>
+<span id="cb8-12"><a href=""></a>  schema:domainIncludes :IdentificationAspects; schema:rangeIncludes :ManufacturerAspects.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="blocks-and-aspects-2" class="title-slide slide level3 center" data-number="3.4.6">
 <h3><span class="header-section-number">3.4.6</span> Blocks and Aspects (2)</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href="#cb10-1"></a># Aspect props</span>
-<span id="cb10-2"><a href="#cb10-2"></a>:product_article_number_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb10-3"><a href="#cb10-3"></a>  schema:domainIncludes :SupplierAspects; schema:rangeIncludes xsd:string.</span>
-<span id="cb10-4"><a href="#cb10-4"></a>:name_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb10-5"><a href="#cb10-5"></a>  schema:domainIncludes :SupplierAspects; schema:rangeIncludes rdf:langString.</span>
-<span id="cb10-6"><a href="#cb10-6"></a>:gln_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb10-7"><a href="#cb10-7"></a>  schema:domainIncludes :SupplierAspects; schema:rangeIncludes xsd:string.</span>
-<span id="cb10-8"><a href="#cb10-8"></a></span>
-<span id="cb10-9"><a href="#cb10-9"></a>:date_of_manufacture a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb10-10"><a href="#cb10-10"></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:date.</span>
-<span id="cb10-11"><a href="#cb10-11"></a>:gtin a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb10-12"><a href="#cb10-12"></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:string.</span>
-<span id="cb10-13"><a href="#cb10-13"></a>:manufacturer_name a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb10-14"><a href="#cb10-14"></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes rdf:langString.</span>
-<span id="cb10-15"><a href="#cb10-15"></a>:gln_of_manufacturer a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb10-16"><a href="#cb10-16"></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:string.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href=""></a># Aspect props</span>
+<span id="cb9-2"><a href=""></a>:product_article_number_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb9-3"><a href=""></a>  schema:domainIncludes :SupplierAspects; schema:rangeIncludes xsd:string.</span>
+<span id="cb9-4"><a href=""></a>:name_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb9-5"><a href=""></a>  schema:domainIncludes :SupplierAspects; schema:rangeIncludes rdf:langString.</span>
+<span id="cb9-6"><a href=""></a>:gln_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb9-7"><a href=""></a>  schema:domainIncludes :SupplierAspects; schema:rangeIncludes xsd:string.</span>
+<span id="cb9-8"><a href=""></a></span>
+<span id="cb9-9"><a href=""></a>:date_of_manufacture a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb9-10"><a href=""></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:date.</span>
+<span id="cb9-11"><a href=""></a>:gtin a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb9-12"><a href=""></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:string.</span>
+<span id="cb9-13"><a href=""></a>:manufacturer_name a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb9-14"><a href=""></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes rdf:langString.</span>
+<span id="cb9-15"><a href=""></a>:gln_of_manufacturer a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb9-16"><a href=""></a>  schema:domainIncludes :ManufacturerAspects; schema:rangeIncludes xsd:string.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
-<section id="blocks-and-aspects-problems" class="title-slide slide level3 smaller center" data-number="3.4.7">
+<section id="blocks-and-aspects-problems" class="title-slide slide level3 center" data-number="3.4.7">
 <h3><span class="header-section-number">3.4.7</span> Blocks and Aspects Problems</h3>
 <p>The above representation has several defects:</p>
 <ul>
 <li>It mixes product info (eg <code>article number, GTIN</code>) and organization info (<code>name, GLN</code>) into one node</li>
-<li>It doesn’t consider suppliers and manufacturers as worthy entities on their own, but as subsidiary aspects of products</li>
-<li>It doesn’t consider <code>name, GLN</code> as universally applicable organization attributes, but uses properties relative to the org’s role for the product (eg <code>name of supplier, GLN of supplier</code>)
+<li>It doesn't consider suppliers and manufacturers as worthy entities on their own, but as subsidiary aspects of products</li>
+<li>It doesn't consider <code>name, GLN</code> as universally applicable organization attributes, but uses properties relative to the org's role for the product (eg <code>name of supplier, GLN of supplier</code>)
 <ul>
 <li>If you consider all 5 <a href="https://catmaster.unspsc.org/Help/index.html?4_-_unspsc.htm">UNSPSC Business Function Identifiers</a> (as Martin Hepp did), would you also have <code>name of repairer, GLN of repairer</code> and so on for all 10 or so business functions?</li>
 </ul></li>
@@ -1848,7 +1859,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <ul>
 <li>We could do it for important, commonly used aspects</li>
 <li>Or at least consider flattening such aspects to avoid parasitic links and nodes</li>
-<li>I think that <code>supplier</code> is not a repeatable aspect (I didn’t see cardinality), so below I don’t have per-product-per-supplier properties
+<li>I think that <code>supplier</code> is not a repeatable aspect (I didn't see cardinality), so below I don't have per-product-per-supplier properties
 <ul>
 <li>But in reality may need them, since the same product may be distributed by many suppliers?</li>
 </ul></li>
@@ -1857,67 +1868,67 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="blocks-and-aspects-refactored" class="title-slide slide level3 center" data-number="3.4.9">
 <h3><span class="header-section-number">3.4.9</span> Blocks and Aspects Refactored</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href="#cb11-1"></a>:Organization a rdfs:Class; :prefLabel "Organization/company"@en.</span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a>:supplier a owl:ObjectProperty; :irdi "..."; :prefLabel "Supplier"@en.</span>
-<span id="cb11-4"><a href="#cb11-4"></a>  schema:domainIncludes :Ceiling-wall_luminaire, ...; schema:rangeIncludes :Organization.</span>
-<span id="cb11-5"><a href="#cb11-5"></a>:manufacturer a owl:ObjectProperty; :irdi "..."; :prefLabel "Manufacturer"@en.</span>
-<span id="cb11-6"><a href="#cb11-6"></a>  schema:domainIncludes :Ceiling-wall_luminaire, ...; schema:rangeIncludes :Organization.</span>
-<span id="cb11-7"><a href="#cb11-7"></a></span>
-<span id="cb11-8"><a href="#cb11-8"></a>:name a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb11-9"><a href="#cb11-9"></a>  schema:domainIncludes :Organization; schema:rangeIncludes rdf:langString.</span>
-<span id="cb11-10"><a href="#cb11-10"></a>:gln a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb11-11"><a href="#cb11-11"></a>  schema:domainIncludes :Organization; schema:rangeIncludes xsd:string.</span>
-<span id="cb11-12"><a href="#cb11-12"></a></span>
-<span id="cb11-13"><a href="#cb11-13"></a>:product_article_number_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb11-14"><a href="#cb11-14"></a>  schema:domainIncludes :Ceiling-wall_luminaire; schema:rangeIncludes xsd:string.</span>
-<span id="cb11-15"><a href="#cb11-15"></a>:date_of_manufacture a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb11-16"><a href="#cb11-16"></a>  schema:domainIncludes :Manufacturer; schema:rangeIncludes xsd:date.</span>
-<span id="cb11-17"><a href="#cb11-17"></a>:gtin a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
-<span id="cb11-18"><a href="#cb11-18"></a>  schema:domainIncludes :Manufacturer; schema:rangeIncludes xsd:string.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href=""></a>:Organization a rdfs:Class; :prefLabel "Organization/company"@en.</span>
+<span id="cb10-2"><a href=""></a></span>
+<span id="cb10-3"><a href=""></a>:supplier a owl:ObjectProperty; :irdi "..."; :prefLabel "Supplier"@en.</span>
+<span id="cb10-4"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire, ...; schema:rangeIncludes :Organization.</span>
+<span id="cb10-5"><a href=""></a>:manufacturer a owl:ObjectProperty; :irdi "..."; :prefLabel "Manufacturer"@en.</span>
+<span id="cb10-6"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire, ...; schema:rangeIncludes :Organization.</span>
+<span id="cb10-7"><a href=""></a></span>
+<span id="cb10-8"><a href=""></a>:name a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb10-9"><a href=""></a>  schema:domainIncludes :Organization; schema:rangeIncludes rdf:langString.</span>
+<span id="cb10-10"><a href=""></a>:gln a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb10-11"><a href=""></a>  schema:domainIncludes :Organization; schema:rangeIncludes xsd:string.</span>
+<span id="cb10-12"><a href=""></a></span>
+<span id="cb10-13"><a href=""></a>:product_article_number_of_supplier a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb10-14"><a href=""></a>  schema:domainIncludes :Ceiling-wall_luminaire; schema:rangeIncludes xsd:string.</span>
+<span id="cb10-15"><a href=""></a>:date_of_manufacture a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb10-16"><a href=""></a>  schema:domainIncludes :Manufacturer; schema:rangeIncludes xsd:date.</span>
+<span id="cb10-17"><a href=""></a>:gtin a owl:DatatypeProperty; :irdi "..."; :prefLabel "..."@en;</span>
+<span id="cb10-18"><a href=""></a>  schema:domainIncludes :Manufacturer; schema:rangeIncludes xsd:string.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="catalog-entry" class="title-slide slide level3 center" data-number="3.4.10">
 <h3><span class="header-section-number">3.4.10</span> Catalog Entry</h3>
 <p>Ok, enough ontology talk!</p>
 <ul>
-<li>I find instance data more important (and “more interesting”) as it directly tells you what the data looks like.</li>
+<li>I find instance data more important (and "more interesting") as it directly tells you what the data looks like.</li>
 <li>Now we have some basic <code>ProductClass</code> info and can show how a manufacturer can use it in their product catalog.</li>
 <li>I used the empty prefix <code>:</code> for ECLASS props, and <code>mf:</code> for manufacturer props.</li>
-<li>First I show the more natural representation using the “refactored” pattern for supplier/manufacturer.</li>
+<li>First I show the more natural representation using the "refactored" pattern for supplier/manufacturer.</li>
 </ul>
 </section>
 
 <section id="catalog-entry-refactored" class="title-slide slide level3 center" data-number="3.4.11">
 <h3><span class="header-section-number">3.4.11</span> Catalog Entry (Refactored)</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href="#cb12-1"></a>mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  schema:name "Smart lamp";</span>
-<span id="cb12-3"><a href="#cb12-3"></a>  :manufacturer mf:Company1;</span>
-<span id="cb12-4"><a href="#cb12-4"></a>  :supplier mf:Company2;</span>
-<span id="cb12-5"><a href="#cb12-5"></a>  :gtin "1234567"; # or schema:gtin</span>
-<span id="cb12-6"><a href="#cb12-6"></a>  :product_article_number_of_supplier "A-1234567";</span>
-<span id="cb12-7"><a href="#cb12-7"></a>  :uri_of_the_product &lt;http://company1.com/product/1234567&gt;; # or schema:uri</span>
-<span id="cb12-8"><a href="#cb12-8"></a>  :date_of_manufacture "2020-10-10"^^xsd:date;</span>
-<span id="cb12-9"><a href="#cb12-9"></a>  :luminaire_application :Wall_lamp;</span>
-<span id="cb12-10"><a href="#cb12-10"></a>  :design_of_interior_lighting "curved";</span>
-<span id="cb12-11"><a href="#cb12-11"></a>  :pole_number 2;</span>
-<span id="cb12-12"><a href="#cb12-12"></a>  :material :Real_glas, :Thermoplast.</span>
-<span id="cb12-13"><a href="#cb12-13"></a></span>
-<span id="cb12-14"><a href="#cb12-14"></a>mf:Company1 a :Organization; :name "Company1"@en; :gln "987654321".</span>
-<span id="cb12-15"><a href="#cb12-15"></a>  # Add here any number of org props, like address, website, etc</span>
-<span id="cb12-16"><a href="#cb12-16"></a></span>
-<span id="cb12-17"><a href="#cb12-17"></a>mf:Company2 a :Organization; :name "Company2"@en; :gln "098765432".</span>
-<span id="cb12-18"><a href="#cb12-18"></a>  # Add here any number of org props, like address, website, etc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href=""></a>mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;</span>
+<span id="cb11-2"><a href=""></a>  schema:name "Smart lamp";</span>
+<span id="cb11-3"><a href=""></a>  :manufacturer mf:Company1;</span>
+<span id="cb11-4"><a href=""></a>  :supplier mf:Company2;</span>
+<span id="cb11-5"><a href=""></a>  :gtin "1234567"; # or schema:gtin</span>
+<span id="cb11-6"><a href=""></a>  :product_article_number_of_supplier "A-1234567";</span>
+<span id="cb11-7"><a href=""></a>  :uri_of_the_product &lt;http://company1.com/product/1234567&gt;; # or schema:uri</span>
+<span id="cb11-8"><a href=""></a>  :date_of_manufacture "2020-10-10"^^xsd:date;</span>
+<span id="cb11-9"><a href=""></a>  :luminaire_application :Wall_lamp;</span>
+<span id="cb11-10"><a href=""></a>  :design_of_interior_lighting "curved";</span>
+<span id="cb11-11"><a href=""></a>  :pole_number 2;</span>
+<span id="cb11-12"><a href=""></a>  :material :Real_glas, :Thermoplast.</span>
+<span id="cb11-13"><a href=""></a></span>
+<span id="cb11-14"><a href=""></a>mf:Company1 a :Organization; :name "Company1"@en; :gln "987654321".</span>
+<span id="cb11-15"><a href=""></a>  # Add here any number of org props, like address, website, etc</span>
+<span id="cb11-16"><a href=""></a></span>
+<span id="cb11-17"><a href=""></a>mf:Company2 a :Organization; :name "Company2"@en; :gln "098765432".</span>
+<span id="cb11-18"><a href=""></a>  # Add here any number of org props, like address, website, etc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
-<section id="catalog-entry-not-refactored" class="title-slide slide level3 smaller center" data-number="3.4.12">
+<section id="catalog-entry-not-refactored" class="title-slide slide level3 center" data-number="3.4.12">
 <h3><span class="header-section-number">3.4.12</span> Catalog Entry (Not Refactored)</h3>
-<p>To appreciate that the above refactored representation is better, here’s the systematic representation:</p>
+<p>To appreciate that the above refactored representation is better, here's the systematic representation:</p>
 <ul>
-<li>It doesn’t optimize aspect structure/nesting
+<li>It doesn't optimize aspect structure/nesting
 <ul>
-<li>From the point of view of ECLASS information engineer, Advanced structure is much better than Basic because it’s “divide and conquer”</li>
-<li>But from the point of view of information consumer, <code>mf:1234567_identification</code> is a “parasitic” node!
+<li>From the point of view of ECLASS information engineer, Advanced structure is much better than Basic because it's "divide and conquer"</li>
+<li>But from the point of view of information consumer, <code>mf:1234567_identification</code> is a "parasitic" node!
 <ul>
 <li>It adds a level to hop through, without adding much value</li>
 <li>I believe that most actual data uses only a small portion of all potential props and blocks</li>
@@ -1925,45 +1936,45 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul></li>
 <li>There are no separate nodes for Organizations, it all boils down to products
 <ul>
-<li>Thus an Organization’s attributes like <code>name, GLN</code> are repeated in each of its products</li>
+<li>Thus an Organization's attributes like <code>name, GLN</code> are repeated in each of its products</li>
 </ul></li>
 <li>Important product info like <code>gtin</code> is pushed a couple of links away from the product</li>
 </ul>
 </section>
 
-<section id="catalog-entry-not-refactored-1" class="title-slide slide level3 smaller center" data-number="3.4.13">
+<section id="catalog-entry-not-refactored-1" class="title-slide slide level3 center" data-number="3.4.13">
 <h3><span class="header-section-number">3.4.13</span> Catalog Entry (Not Refactored)</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href="#cb13-1"></a>mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;</span>
-<span id="cb13-2"><a href="#cb13-2"></a>  schema:name "Smart lamp";</span>
-<span id="cb13-3"><a href="#cb13-3"></a>  :luminaire_application :Wall_lamp;</span>
-<span id="cb13-4"><a href="#cb13-4"></a>  :design_of_interior_lighting "curved";</span>
-<span id="cb13-5"><a href="#cb13-5"></a>  :pole_number 2;</span>
-<span id="cb13-6"><a href="#cb13-6"></a>  :material :Real_glas, :Thermoplast;</span>
-<span id="cb13-7"><a href="#cb13-7"></a>  :identification mf:1234567_identification.</span>
-<span id="cb13-8"><a href="#cb13-8"></a></span>
-<span id="cb13-9"><a href="#cb13-9"></a>mf:1234567_identification a :IdentificationAspects;</span>
-<span id="cb13-10"><a href="#cb13-10"></a>  :manufacturer mf:1234567_manufacturer;</span>
-<span id="cb13-11"><a href="#cb13-11"></a>  :supplier mf:1234567_supplier.</span>
-<span id="cb13-12"><a href="#cb13-12"></a></span>
-<span id="cb13-13"><a href="#cb13-13"></a>mf:1234567_manufacturer a :ManufacturerAspects;</span>
-<span id="cb13-14"><a href="#cb13-14"></a>  :gtin "1234567"; # or schema:gtin</span>
-<span id="cb13-15"><a href="#cb13-15"></a>  :uri_of_the_product &lt;http://company1.com/product/1234567&gt;; # or schema:uri</span>
-<span id="cb13-16"><a href="#cb13-16"></a>  :date_of_manufacture "2020-10-10"^^xsd:date;</span>
-<span id="cb13-17"><a href="#cb13-17"></a>  :name_of_manufacturer "Company1"@en;</span>
-<span id="cb13-18"><a href="#cb13-18"></a>  :gln_of_manufacturer "987654321".</span>
-<span id="cb13-19"><a href="#cb13-19"></a></span>
-<span id="cb13-20"><a href="#cb13-20"></a>mf:1234567_supplier a :SupplierAspects;</span>
-<span id="cb13-21"><a href="#cb13-21"></a>  :product_article_number_of_supplier "A-1234567";</span>
-<span id="cb13-22"><a href="#cb13-22"></a>  :name_of_supplier "Company2"@en;</span>
-<span id="cb13-23"><a href="#cb13-23"></a>  :gln_of_supplier "098765432".</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href=""></a>mf:1234567 a schema:ProductModel, :Ceiling_wall_luminaire;</span>
+<span id="cb12-2"><a href=""></a>  schema:name "Smart lamp";</span>
+<span id="cb12-3"><a href=""></a>  :luminaire_application :Wall_lamp;</span>
+<span id="cb12-4"><a href=""></a>  :design_of_interior_lighting "curved";</span>
+<span id="cb12-5"><a href=""></a>  :pole_number 2;</span>
+<span id="cb12-6"><a href=""></a>  :material :Real_glas, :Thermoplast;</span>
+<span id="cb12-7"><a href=""></a>  :identification mf:1234567_identification.</span>
+<span id="cb12-8"><a href=""></a></span>
+<span id="cb12-9"><a href=""></a>mf:1234567_identification a :IdentificationAspects;</span>
+<span id="cb12-10"><a href=""></a>  :manufacturer mf:1234567_manufacturer;</span>
+<span id="cb12-11"><a href=""></a>  :supplier mf:1234567_supplier.</span>
+<span id="cb12-12"><a href=""></a></span>
+<span id="cb12-13"><a href=""></a>mf:1234567_manufacturer a :ManufacturerAspects;</span>
+<span id="cb12-14"><a href=""></a>  :gtin "1234567"; # or schema:gtin</span>
+<span id="cb12-15"><a href=""></a>  :uri_of_the_product &lt;http://company1.com/product/1234567&gt;; # or schema:uri</span>
+<span id="cb12-16"><a href=""></a>  :date_of_manufacture "2020-10-10"^^xsd:date;</span>
+<span id="cb12-17"><a href=""></a>  :name_of_manufacturer "Company1"@en;</span>
+<span id="cb12-18"><a href=""></a>  :gln_of_manufacturer "987654321".</span>
+<span id="cb12-19"><a href=""></a></span>
+<span id="cb12-20"><a href=""></a>mf:1234567_supplier a :SupplierAspects;</span>
+<span id="cb12-21"><a href=""></a>  :product_article_number_of_supplier "A-1234567";</span>
+<span id="cb12-22"><a href=""></a>  :name_of_supplier "Company2"@en;</span>
+<span id="cb12-23"><a href=""></a>  :gln_of_supplier "098765432".</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="cardinality" class="title-slide slide level3 center" data-number="3.4.14">
 <h3><span class="header-section-number">3.4.14</span> Cardinality</h3>
-<p>Let’s show how to represent repeated aspects (“Cardinality”) on the example of <code>Additional Information</code></p>
+<p>Let's show how to represent repeated aspects ("Cardinality") on the example of <code>Additional Information</code></p>
 <ul>
-<li>I skipped “number of documentations” because that’s redundant (one can just count the number of instances)</li>
-<li>I’d model classes and properties as above, so we don’t show them but only instance data</li>
+<li>I skipped "number of documentations" because that's redundant (one can just count the number of instances)</li>
+<li>I'd model classes and properties as above, so we don't show them but only instance data</li>
 <li>The only addition is <code>:index</code> which shows the sequential number of the additional info</li>
 <li>We could use an <code>rdf:List</code> but using an <code>:index</code> is easier and cleaner</li>
 </ul>
@@ -1971,39 +1982,39 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="cardinality-example" class="title-slide slide level3 center" data-number="3.4.15">
 <h3><span class="header-section-number">3.4.15</span> Cardinality (Example)</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href="#cb14-1"></a>mf:1234567 :add_on_documentation mf:1234567_doc1, mf:1234567_doc2, mf:1234567_doc3.</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a>mf:1234567_doc1 a :AdditionalInformation; :index 1;</span>
-<span id="cb14-4"><a href="#cb14-4"></a>  :calendrical_validity_from "2020-10-10"^^xsd:date;</span>
-<span id="cb14-5"><a href="#cb14-5"></a>  :type_of_document :Technical_documentation;</span>
-<span id="cb14-6"><a href="#cb14-6"></a>  :source_as_path_info "user_guide-en.pdf";</span>
-<span id="cb14-7"><a href="#cb14-7"></a>  :language_of_document :English;</span>
-<span id="cb14-8"><a href="#cb14-8"></a>  :type_of_source_file "application/pdf".</span>
-<span id="cb14-9"><a href="#cb14-9"></a></span>
-<span id="cb14-10"><a href="#cb14-10"></a>mf:1234567_doc2 a :AdditionalInformation; :index 2;</span>
-<span id="cb14-11"><a href="#cb14-11"></a>  :calendrical_validity_from "2020-10-10"^^xsd:date;</span>
-<span id="cb14-12"><a href="#cb14-12"></a>  :type_of_document :Technical_documentation;</span>
-<span id="cb14-13"><a href="#cb14-13"></a>  :source_as_path_info "user_guide-de.pdf";</span>
-<span id="cb14-14"><a href="#cb14-14"></a>  :language_of_document :German;</span>
-<span id="cb14-15"><a href="#cb14-15"></a>  :type_of_source_file "application/pdf".</span>
-<span id="cb14-16"><a href="#cb14-16"></a></span>
-<span id="cb14-17"><a href="#cb14-17"></a>mf:1234567_doc3 a :AdditionalInformation; :index 3;</span>
-<span id="cb14-18"><a href="#cb14-18"></a>  :calendrical_validity_from "2020-10-12"^^xsd:date;</span>
-<span id="cb14-19"><a href="#cb14-19"></a>  :type_of_document :Application_Software;</span>
-<span id="cb14-20"><a href="#cb14-20"></a>  :source_as_path_info "smartLamp-driver.dll";</span>
-<span id="cb14-21"><a href="#cb14-21"></a>  :type_of_source_file "application/octet-stream".</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>mf:1234567 :add_on_documentation mf:1234567_doc1, mf:1234567_doc2, mf:1234567_doc3.</span>
+<span id="cb13-2"><a href=""></a></span>
+<span id="cb13-3"><a href=""></a>mf:1234567_doc1 a :AdditionalInformation; :index 1;</span>
+<span id="cb13-4"><a href=""></a>  :calendrical_validity_from "2020-10-10"^^xsd:date;</span>
+<span id="cb13-5"><a href=""></a>  :type_of_document :Technical_documentation;</span>
+<span id="cb13-6"><a href=""></a>  :source_as_path_info "user_guide-en.pdf";</span>
+<span id="cb13-7"><a href=""></a>  :language_of_document :English;</span>
+<span id="cb13-8"><a href=""></a>  :type_of_source_file "application/pdf".</span>
+<span id="cb13-9"><a href=""></a></span>
+<span id="cb13-10"><a href=""></a>mf:1234567_doc2 a :AdditionalInformation; :index 2;</span>
+<span id="cb13-11"><a href=""></a>  :calendrical_validity_from "2020-10-10"^^xsd:date;</span>
+<span id="cb13-12"><a href=""></a>  :type_of_document :Technical_documentation;</span>
+<span id="cb13-13"><a href=""></a>  :source_as_path_info "user_guide-de.pdf";</span>
+<span id="cb13-14"><a href=""></a>  :language_of_document :German;</span>
+<span id="cb13-15"><a href=""></a>  :type_of_source_file "application/pdf".</span>
+<span id="cb13-16"><a href=""></a></span>
+<span id="cb13-17"><a href=""></a>mf:1234567_doc3 a :AdditionalInformation; :index 3;</span>
+<span id="cb13-18"><a href=""></a>  :calendrical_validity_from "2020-10-12"^^xsd:date;</span>
+<span id="cb13-19"><a href=""></a>  :type_of_document :Application_Software;</span>
+<span id="cb13-20"><a href=""></a>  :source_as_path_info "smartLamp-driver.dll";</span>
+<span id="cb13-21"><a href=""></a>  :type_of_source_file "application/octet-stream".</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
-<section id="eclss-datatype-uri" class="title-slide slide level3 center" data-number="3.4.16">
-<h3><span class="header-section-number">3.4.16</span> ECLASS Datatype <code class="smaller">URI</code></h3>
+<section id="eclass-datatype-uri" class="title-slide slide level3 center" data-number="3.4.16">
+<h3><span class="header-section-number">3.4.16</span> ECLASS Datatype <code>URI</code></h3>
 <ul>
-<li>Speaking of <code>AdditionalInformation</code>, I can’t believe there’s no <code>document URL</code> prop.
+<li>Speaking of <code>AdditionalInformation</code>, I can't believe there's no <code>document URL</code> prop.
 <ul>
 <li>Modern manufacturers put their product documents online, right?</li>
 <li>Maybe <code>source as path info</code> plays that role?</li>
 </ul></li>
 <li>But really, ECLASS needs a data type <code>URI</code> so it can be validated properly</li>
-<li><code>URI of the product</code> has datatype “String (translatable)”
+<li><code>URI of the product</code> has datatype "String (translatable)"
 <ul>
 <li>Assume there are web pages in English and German</li>
 <li>If I want to indicate the lang of the page, does that mean I should do this:
@@ -2013,11 +2024,11 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>This is all wrong</li>
 </ul></li>
 </ul></li>
-<li>In contrast, <code>Additional Information</code> has <code>language of document</code> and that’s how it should be done (with a separate field)</li>
+<li>In contrast, <code>Additional Information</code> has <code>language of document</code> and that's how it should be done (with a separate field)</li>
 </ul>
 </section>
 
-<section id="polymorphism" class="title-slide slide level3 smaller center" data-number="3.4.17">
+<section id="polymorphism" class="title-slide slide level3 center" data-number="3.4.17">
 <h3><span class="header-section-number">3.4.17</span> Polymorphism</h3>
 <p><code>size_dimension</code> can also be stated several times</p>
 <ul>
@@ -2027,7 +2038,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 <p>We could model this in two ways:</p>
 <ul>
-<li>As separate classes <code>EnvelopingBodyCylinder, EnvelopingBodyCuboid</code> (then we don’t need a prop <code>type of enveloping body</code>), or</li>
+<li>As separate classes <code>EnvelopingBodyCylinder, EnvelopingBodyCuboid</code> (then we don't need a prop <code>type of enveloping body</code>), or</li>
 <li>Lump all props in one class <code>EnvelopingBody</code> and add an RDF Shape to validate that appropriate extra props are applied per type</li>
 </ul>
 <p>Below I show how the first alternative looks in a catalog entry.</p>
@@ -2040,21 +2051,21 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 <section id="polymorphism-1" class="title-slide slide level3 center" data-number="3.4.18">
 <h3><span class="header-section-number">3.4.18</span> Polymorphism</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href="#cb15-1"></a>mf:1234567 :size_dimension1 mf:1234567_cylinder.</span>
-<span id="cb15-2"><a href="#cb15-2"></a></span>
-<span id="cb15-3"><a href="#cb15-3"></a>mf:1234567_cylinder a :EnvelopingBodyCylinder;</span>
-<span id="cb15-4"><a href="#cb15-4"></a>  :depth "25 cm"^^cdt:ucum;</span>
-<span id="cb15-5"><a href="#cb15-5"></a>  :diameter "12 cm"^^cdt:ucum.</span>
-<span id="cb15-6"><a href="#cb15-6"></a>  </span>
-<span id="cb15-7"><a href="#cb15-7"></a>mf:1234568 :size_dimension2 mf:1234568_cuboid.</span>
-<span id="cb15-8"><a href="#cb15-8"></a>  </span>
-<span id="cb15-9"><a href="#cb15-9"></a>mf:1234568_cuboid a :EnvelopingBodyCuboid;</span>
-<span id="cb15-10"><a href="#cb15-10"></a>  :depth "25 cm"^^cdt:ucum;</span>
-<span id="cb15-11"><a href="#cb15-11"></a>  :height "12 cm"^^cdt:ucum; :width "12 cm"^^cdt:ucum.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource ttl number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href=""></a>mf:1234567 :size_dimension1 mf:1234567_cylinder.</span>
+<span id="cb14-2"><a href=""></a></span>
+<span id="cb14-3"><a href=""></a>mf:1234567_cylinder a :EnvelopingBodyCylinder;</span>
+<span id="cb14-4"><a href=""></a>  :depth "25 cm"^^cdt:ucum;</span>
+<span id="cb14-5"><a href=""></a>  :diameter "12 cm"^^cdt:ucum.</span>
+<span id="cb14-6"><a href=""></a>  </span>
+<span id="cb14-7"><a href=""></a>mf:1234568 :size_dimension2 mf:1234568_cuboid.</span>
+<span id="cb14-8"><a href=""></a>  </span>
+<span id="cb14-9"><a href=""></a>mf:1234568_cuboid a :EnvelopingBodyCuboid;</span>
+<span id="cb14-10"><a href=""></a>  :depth "25 cm"^^cdt:ucum;</span>
+<span id="cb14-11"><a href=""></a>  :height "12 cm"^^cdt:ucum; :width "12 cm"^^cdt:ucum.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>AFAIK ECLASS uses 2 different IRDI <code>:size_dimension1</code> and <code>:size_dimension2</code></li>
-<li>That’s a problem for querying</li>
-<li>Even more, there’s no relation between them</li>
+<li>That's a problem for querying</li>
+<li>Even more, there's no relation between them</li>
 </ul>
 </section>
 
@@ -2065,13 +2076,13 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Link from device to <code>ProductModel</code> (must be compatible TD Templates)</li>
 <li>When possible, use SGTIN (its prefix is the GTIN of the product model)</li>
 <li>Links from Product Model (manufacturer catalog) to ECLASS by using classes/props</li>
-<li>Prop <code>luminance</code> described as <code>min..max</code> levels in <code>ProductModel</code> but a dynamic “current” value in the device</li>
+<li>Prop <code>luminance</code> described as <code>min..max</code> levels in <code>ProductModel</code> but a dynamic "current" value in the device</li>
 <li>Annotation to state that <code>luminance</code> is a WoT TD property, having <code>NumberSchema</code></li>
 <li>Somehow (HOW?) relate ECLASS props to WoT TD properties or parts (see next)</li>
 </ul>
 </section>
 
-<section id="wot-parts" class="title-slide slide level3 smaller center" data-number="3.4.20">
+<section id="wot-parts" class="title-slide slide level3 center" data-number="3.4.20">
 <h3><span class="header-section-number">3.4.20</span> WoT Parts</h3>
 <ul>
 <li>Parts and their connections are modeled as Blocks with Cardinality or Polymorphism
@@ -2100,7 +2111,7 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 
 </section>
 <section>
-<section id="semantic-modeling" class="title-slide slide level1 smaller center" data-number="4">
+<section id="semantic-modeling" class="title-slide slide level1 center scrollable" data-number="4">
 <h1><span class="header-section-number">4</span> Semantic Modeling</h1>
 <p>For me, Semantic Modeling is more than Ontology Engineering:</p>
 <ol type="1">
@@ -2115,14 +2126,14 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 <li>Define additional aspects like URL policy, application protocols, special indexing (eg full-text, facets), etc</li>
 </ol>
 </section>
-<section id="rdfpuml-diagrams" class="title-slide slide level3 smaller center" data-number="4.0.1">
-<h3><span class="header-section-number">4.0.1</span> rdfpuml Diagrams</h3>
+<section id="rdfpuml-diagrams" class="title-slide slide level2 center" data-number="4.1">
+<h2><span class="header-section-number">4.1</span> rdfpuml Diagrams</h2>
 <p>RDF is all about graphs, so I think diagrams are crucial for understanding by both:</p>
 <ul>
 <li>Data Providers, who need to know what data to produce or how to convert</li>
 <li>Data Consumers, who need to know what paths and data are available, to write queries or consume it in other forms (eg JSON-LD)</li>
 </ul>
-<p>I’ve been using a tool called <code>rdfpuml</code> (see <a href="http://github.com/VladimirAlexiev/rdf2rml">VladimirAlexiev/rdf2rml</a>) that makes <strong>faithful</strong> diagrams from turtle examples.</p>
+<p>I've been using a tool called <code>rdfpuml</code> (see <a href="http://github.com/VladimirAlexiev/rdf2rml">VladimirAlexiev/rdf2rml</a>) that makes <strong>faithful</strong> diagrams from turtle examples.</p>
 <p>In the next two slides I show diagrams of Catalog Entry (Refactored) and Catalog Entry (Not Refactored)</p>
 <ul>
 <li>They are made from the Turtle code shown above</li>
@@ -2131,17 +2142,19 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
 </ul>
 </section>
 
-<section id="diagram-of-catalog-entry-refactored" class="title-slide slide level3 center" data-number="4.0.2">
-<h3><span class="header-section-number">4.0.2</span> <a href="img/catalog-entry-refactored.png">Diagram</a> of Catalog Entry (Refactored)</h3>
+<section id="diagram-of-catalog-entry-refactored" class="title-slide slide level2 center" data-number="4.2">
+<h2><span class="header-section-number">4.2</span> <a href="img/catalog-entry-refactored.png">Diagram</a> of Catalog Entry (Refactored)</h2>
 
 <img data-src="img/catalog-entry-refactored.png" class="r-stretch"></section>
 
-<section id="diagram-of-catalog-entry-not-refactored" class="title-slide slide level3 center" data-number="4.0.3">
-<h3><span class="header-section-number">4.0.3</span> <a href="img/catalog-entry.png">Diagram</a> of Catalog Entry (Not Refactored)</h3>
+<section id="diagram-of-catalog-entry-not-refactored" class="title-slide slide level2 center" data-number="4.3">
+<h2><span class="header-section-number">4.3</span> <a href="img/catalog-entry.png">Diagram</a> of Catalog Entry (Not Refactored)</h2>
 <p><img data-src="img/catalog-entry.png"></p>
+<div class="quarto-auto-generated-content">
 <p><img src="https://presentations.ontotext.com/resources/ontotext.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
 </section>
@@ -2171,7 +2184,6 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2322,9 +2334,9 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1800,
+        width: 2000,
 
-        height: 900,
+        height: 1200,
 
         // Factor of the display size that should remain empty around the content
         margin: 0,
@@ -2432,10 +2444,27 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2445,8 +2474,17 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2460,7 +2498,11 @@ Vladimir Alexiev, Chief Data Architect, Ontotext
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

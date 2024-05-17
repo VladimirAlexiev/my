@@ -1,0 +1,13 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://presentations.ontotext.com/resources/ttl.js"></script>
+<script src="https://presentations.ontotext.com/resources/sparql.js"></script>
+<script src="https://presentations.ontotext.com/resources/pie.js"></script>
+<script>
+  hljs.registerLanguage('ttl', ttl_highlight);
+  hljs.registerLanguage('turtle', ttl_highlight);
+  hljs.registerLanguage('sparql', sparql_highlight);
+  hljs.registerLanguage('pie', pie_highlight);
+  // hljs.registerLanguage("graphql", window.hljsDefineGraphQL);
+  // hljs.initHighlightingOnLoad(); // Deprecated as of 10.6.0. Use highlightAll() now.
+  hljs.highlightAll();
+</script>

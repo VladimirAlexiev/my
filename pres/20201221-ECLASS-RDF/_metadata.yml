@@ -1,4 +1,4 @@
-from: gfm+autolink_bare_uris
+from: markdown+pipe_tables+autolink_bare_uris+citations+lists_without_preceding_blankline-smart
 format:
   revealjs: 
     incremental: false
@@ -8,8 +8,8 @@ format:
     logo:  https://presentations.ontotext.com/resources/ontotext.png
     embed-resources: false
     margin: 0
-    width: 1800
-    height: 900
+    width: 2000
+    height: 1200
 #    background-image: https://presentations.ontotext.com/resources/bkg1.png
 #    background-size: cover
 #    background-opacity: 0.1
@@ -25,18 +25,9 @@ format:
     scrollable: true
 #auto-stretch: disallow stretching of images, as it does not work for big images within custom dvs (tables, columns)
     auto-stretch: true
-    include-in-header:
-#      text: |
-#        <script src="https://presentations.ontotext.com/css/onto-style.html"></script>
-# two rows above are written following the discussion at https://github.com/quarto-dev/quarto-cli/discussions/6854
-    - file: "https://presentations.ontotext.com/css/onto-style.html"
-    include-after-body:
-#      text: |
-#        <script src="https://presentations.ontotext.com/css/onto-title.html"></script>
-# two rows above are written following the discussion at https://github.com/quarto-dev/quarto-cli/discussions/6854
-    - file: "https://presentations.ontotext.com/css/onto-title.html"
-    menu:
-      side: left
+    include-in-header: [{file: onto-style.html}]
+    include-after-body: [{file: onto-title.html}]
+    menu: {side: left}
     title-slide-attributes:
         data-background-image: https://presentations.ontotext.com/resources/bkg-title.png
 #use reveal-header extension if you need both header and footer on slides. They are declared in the presentation.qmd file
