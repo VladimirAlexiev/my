@@ -1,15 +1,30 @@
-@Comment{-*- coding: utf-8; fill-column: 5000 -*-}
+coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
+
+@Manual{AEC3PO-ontology-2024,
+  title        = {{AEC3PO: Architecture, Engineering, Construction Compliance Checking and Permitting Ontology}},
+  author       = {Edlira Vakaj and Panagiotis Patlakas and Thomas Beach and Maxime Lefrançois and Amna Dridi and Vladimir Alexiev},
+  month        = feb,
+  year         = 2024,
+  url          = {https://w3id.org/lbd/aec3po/},
+  keywords     = {AECO, automated compliance checking, building regulations, construction regulations, land use, ontologies, ACCORD, Architecture Engineering and Construction Compliance Checking and Permitting Ontology, AEC3PO, compliance checking, CO2 emission, Sustainability, domain-specific rule language, RASE},
+  url_githib   = {https://github.com/accord-project/aec3po/},
+  date         = {2024-02-15},
+  abstract     = {The Architecture, Engineering, Construction Compliance Checking and Permitting Ontology (AEC3PO) is an ontology developed to support the automated compliance checking of construction, renovation, and demolition works. It has been developed in the context of the Automated Compliance Checking for Construction, Renovation or Demolition Works (ACCORD) project, an ERC/Horizon-funded project that aims to digitalise permitting and compliance processes. AEC3PO aims to capture all aspects of building compliance and building permitting in Architecture, Engineering, and Construction (AEC), across different regulatory systems. It allows the modelling of aspects such as: building and infrastructure codes, regulations, and standards, and their compliance requirements; building and infrastructure permitting processes and documentation; building and infrastructure compliance and permitting actors. The ontology requirements are derived from the rule formalisation methodology that aims to semantise regulations and provide an open format for machine-readable rules. The ontology is built using Semantic Web technologies, adhering to standards like RDF, OWL, and SKOS. It also integrates popular ontologies such as Dublin Core Terms (DCT) and Europe's Legislation Identifier (ELI) in order to create a structured and interconnected knowledge graph. This allows professionals to explore, query, and understand various aspects of the compliance and permitting processes more comprehensively.},
+}
 
 @InProceedings{DBP2024-buildingCodes,
   author       = {Gonçal Costa and Edlira Vakaj and Thomas Beach and Rita Lavikka and Maxime Lefrançois and Antoine Zimmermann and Thamer Mecharnia and Vladimir Alexiev and Amna Dridi and Hansi Hettiarachchi and Nataliya Keberle},
   title        = {Formalization of Building Codes and Regulations in Knowledge Graphs},
-  booktitle    = {Digital Building Permit 2024},
+  booktitle    = {Digital Building Permit Conference 2024},
   year         = 2024,
+  editor       = {Francesca Noardo and Judith Fauth},
+  pages        = {142-146},
   month        = apr,
-  address      = {Barcelona, Spain (upcoming)},
-  url          = {TODO},
-  url_Slides   = {TODO},
+  address      = {Barcelona, Spain},
+  url          = {https://zenodo.org/records/12760552},
+  url_Slides   = {https://docs.google.com/presentation/d/1UO8bH9LY_KprjZhrSHFV7QKq2d8r_fjF/edit},
   keywords     = {AECO, BIM, regulation checking, automated compliance checking},
+  doi          = {10.5281/zenodo.12760552},
   abstract     = {The Architecture, Engineering and Construction (AEC) industry is subject to many building codes and regulations that apply to the design and construction of buildings. These regulations often involve complex language and technical vocabulary that can give rise to different interpretations, depending on their context and purpose, and therefore a difficulty in their application. The introduction of Building Information Modelling (BIM), as well as authoring tools capable of creating and exporting 3D representations of buildings, is paving the way for compliance checking to become more automated and less dependent on interpretation. This should allow for better quality by reducing the time needed for checking and avoiding human errors. However, despite attempts to provide new BIM-based methods and approaches to achieve this goal in the past two decades, none of these methods have proven to be close to being a definitive solution. The basis for checking compliance against regulations using a BIM model is to have a description of the regulations in a computable form. In turn, this makes it necessary to define data requirements for models that guarantee that regulations can be checked consistently. Within this framework, several scenarios can be considered to address the problem. One is to consider the descriptive part of the regulation separate from the execution part, that is, compliance checking procedures. Currently, those in charge of writing the regulations typically publish them in plain text documents in PDF format. Therefore, the next evolutionary step is to manage construction regulations in a machine-readable way underpinned by semantics, thus, ensuring they can be interpretated precisely by the software used for checking buildings against them.},
 }
 
@@ -18,12 +33,14 @@
   title        = {Checking of Urban Planning Regulations with GeoSPARQL and BIM SPARQL},
   booktitle    = {Digital Building Permit 2024},
   year         = 2024,
+  pages        = 234,
   month        = apr,
   address      = {Barcelona, Spain},
-  url          = {TODO},
-  url_PDF      = {https://presentations.ontotext.com/2024/checking-of-urban-planning-regulations-with-geosparql-and-bim-sparql/Slides.pdf},
-  url_Slides   = {https://presentations.ontotext.com/2024/checking-of-urban-planning-regulations-with-geosparql-and-bim-sparql/Slides.html},
+  url          = {https://zenodo.org/records/12760552},
+  url_HTML     = {https://presentations.ontotext.com/2024/checking-of-urban-planning-regulations-with-geosparql-and-bim-sparql/Slides.html},
+  url_Slides   = {https://drive.google.com/file/d/1PtApSPgU2nQjvRBCcgNU8oles2O7EnC6/view},
   keywords     = {AECO, urban planning, BIM, City Information Management, regulation checking, XPlanung, INSPIRE PLU, CityGML, GeoSPARQL, Berlin Tegel, TXL, Malgrat},
+  doi          = {10.5281/zenodo.12760552},
   abstract     = {The former Berlin Tegel airport (TXL) will be the site of a university campus (refurbished airport terminal), startups, production facilities (“tech republic”), a living quarter, stores, smart mobility hubs, park and recreation areas, etc. The Tegel Project company (owned by the City of Berlin) has developed detailed urban planning and regulations covering built area use, height restrictions, noise protection, floor space index (buildup density), greenery requirements (vegetation and habitats), etc. The regulations are expressed in XPlanung and INSPIRE PLU. These are GML-based UML and XML models for urban planning: XPlanung is Germany-specific and PLU (Planned Land Use) is part of the INSPIRE initiative. Building designs are expressed in IFC and include simple geometries (for residential buildings) and complex geometries (for the university campus). Compliance checking of urban planning requires accessing two different kinds of data in a harmonized way: BIM (building information) and GIS (also called CIM “city information management” and often represented using GML extension schemas). As part of the Horizon Europe ACCORD project, we plan to do this checking using SPARQL in Ontotext GraphDB. GIS data is covered by the existing GeoSPARQL plugin that supports WKT and GML geometries. BIM data can either be converted to GIS/GML using already developed approaches, or accessed through a future Binary Engineering Data connector for GraphDB based on the HDF5 format. We give an overview of XPlanung, INSPIRE PLU, CityGML and GeoSPARQL 1.0 and 1.1. Then we describe the semantic conversion of XPlanung / INSPIRE PLU data, our approach regarding semantization of BIM data, the overall structure of regulations, the respective geometric and non-geometric checks to be implemented, the use of GeoSPARQL topological relations to leverage planning zone hierarchies and to check which buildings fall in which zones, potential specialized BIM SPARQL functions to be implemented, management of multiple BIM files that need to be checked in concert, and result creation and content.},
 }
 
@@ -498,6 +515,17 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
   eissn        = {2535-0366},
   abstract     = {We briefly describe Wikidata, its importance for GLAM institutions, iconographic authorities in Mix-n-Match. Then we propose an Icon Knowledge Graph Model comprising the entities: iconographer, iconographic school, herminia, icon, measurements, material, technique, iconographic subject (saint or a title of the Virgin Mary), location (city, monastery, church, museum), scientific article, academic journal, issue, links to LOD datasets (e.g. VIAF, Getty AAT, ISBN, ISSN, academia.edu). Then we introduce the Virtual Encyclopedia of Bulgarian Icons (BIDL) and describe how we exported it to Wikidata, while coreferencing to iconographers, saints, locations; and the extra info we added for such entities. Finally, we describe a conversion to the Europeana Data Model, including details such as links to Wikidata, bilingual descriptions, language tags, providers. The online version of the paper includes live links; the accompanying presentation includes more images and queries.},
 }
+
+@Misc{Alexiev2020-ECLASS,
+  author       = {Vladimir Alexiev},
+  title        = {{ECLASS RDF} Representation},
+  year         = 2020,
+  url          = {https://rawgit2.com/VladimirAlexiev/my/master/pres/20201221-ECLASS-RDF/index.html},
+  url_Slides   = {https://rawgit2.com/VladimirAlexiev/my/master/pres/20201221-ECLASS-RDF/Slides.html},
+  keywords     = {product data, product catalogs, product classification, product characteristics, ECLASS, RDF representation, AAS},
+  date         = {21-Dec-2020},
+}
+
 
 @InProceedings{EBG-2020-ISWC,
   author       = {Dumitru Roman and Vladimir Alexiev and Javier Paniagua and Brian Elvesaeter and Bjorn Marius Von Zernichow and Ahmet Soylu and Boyan Simeonov and Chris Taggart},
