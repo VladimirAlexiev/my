@@ -1,13 +1,13 @@
 * Bulgarian Icons in Wikidata and EDM
 
-- Presentation: http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html
+- Presentation: https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html
 - Paper: http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf
 - Source: https://github.com/VladimirAlexiev/my/tree/master/pres/20200703-Bulgarian-icons
   - Presentation highlights
   - Wikidata icon examples (Mother of God Pantonhara and The Virgin Cataphyge)
   - EDM mapping example (Transfiguration of Jesus Christ)
 - Citation:
-
+  
 #+begin_example
 @InProceedings{AlexievEtAl-Bulgarian-Icons-DIPP2020,
   author       = {Vladimir Alexiev and Plamen Tarkalanov and Nikola Georgiev and Lilia Pavlova},
@@ -19,7 +19,7 @@
   address      = {Burgas, Bulgaria},
   publisher    = {Institute of Mathematics and Informatics (IMI BAS), Sofia},
   url          = {http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf},
-  url_Slides   = {http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html},
+  url_Slides   = {https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html},
   keywords     = {Knowledge Graphs, Semantic Integration, GLAM, Wikidata, Mix-n-Match, OpenRefine, Icons, 
     Religious Icons, Iconography, Iconographic Subject, GLAM, CLADA, BIDL, Virtual Encyclopedia of Bulgarian Icons},
   issn         = {1314-4006},
@@ -39,31 +39,31 @@
 
 ** Presentation Highlights
 
-- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#icons-current-status][Wikidata current status, Feb 2020]]: only 623 icons, very basic metadata, 47% without image
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#icons-with-images-query][Lightbox of icons with images]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#icon-class-props-sqid-q132137][Icon class]]: description and typical properties
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#wikidata-mix-n-match][Iconographic authorities in Mix-n-Match]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#openrefine-reconciliation][OpenRefine Reconciliation]]
-- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#icon-knowledge-graph-model][Icon Knowledge Graph Model]] for Wikidata
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#iconographer-dicho-zograf][Iconographer: Dicho Zograf]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#editing-data-about-an-icon][Editing Icon Data]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#icon-mother-of-god-pantonhara-q84296272][Icon Details]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#iconographic-subject-pantonhara-q84306742][Iconographic Personage Details]]: names of Virgin Mary, members of the Seven Slavic Saints (Седмочисленици)
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#added-saints][Added Personages]]: mother and father of St. George, Platitera (Ширшая небес)
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#church-commissioned-by-q164664][Church Details]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#article-described-by-source-q84291564][Bibliography]]: article, journal issue, journal
-- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#virtual-encyclopedia-of-bulgarian-icons][Bulgarian Icons]] 
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#bidl-schema][BIDL Schema]] (scrollable!), 60 elements
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#bidl-authorities][BIDL Authorities]] 
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#bidl-authority-mapping][BIDL Authority Mapping]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#openrefine-reconcile-personages][OpenRefine Reconciliaton]]: Personages, Iconographers, Locations
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#openrefine-mapping-icons-to-wikidata][Mapping Icon Data to Wikidata]]
-- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#sample-wikidata-queries][Sample Wikidata Queries]]: bubble chart, maps, 
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#queries-can-be-modified-by-non-experts][Queries Can Be Modified by Non-Experts]]
-- [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#edm-mapping][Mapping to Europeana Data Model]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#edm-cho-1][Culural Heritage Object (CHO): Type, Title, Creator, Size, Date, Locations]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#edm-cho-2][CHO: Description, Subject, Medium, Part Of, Language]]
-  - [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html#edm-auxiliary-objects][Auxiliary: Aggregation, Providers, Webpage, Image, License, Agent]]
+- [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#icons-current-status][Wikidata current status, Feb 2020]]: only 623 icons, very basic metadata, 47% without image
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#icons-with-images-query][Lightbox of icons with images]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#icon-class-props-sqid-q132137][Icon class]]: description and typical properties
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#wikidata-mix-n-match][Iconographic authorities in Mix-n-Match]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#openrefine-reconciliation][OpenRefine Reconciliation]]
+- [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#icon-knowledge-graph-model][Icon Knowledge Graph Model]] for Wikidata
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#iconographer-dicho-zograf][Iconographer: Dicho Zograf]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#editing-data-about-an-icon][Editing Icon Data]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#icon-mother-of-god-pantonhara-q84296272][Icon Details]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#iconographic-subject-pantonhara-q84306742][Iconographic Personage Details]]: names of Virgin Mary, members of the Seven Slavic Saints (Седмочисленици)
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#added-saints][Added Personages]]: mother and father of St. George, Platitera (Ширшая небес)
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#church-commissioned-by-q164664][Church Details]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#article-described-by-source-q84291564][Bibliography]]: article, journal issue, journal
+- [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#virtual-encyclopedia-of-bulgarian-icons][Bulgarian Icons]] 
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#bidl-schema][BIDL Schema]] (scrollable!), 60 elements
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#bidl-authorities][BIDL Authorities]] 
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#bidl-authority-mapping][BIDL Authority Mapping]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#openrefine-reconcile-personages][OpenRefine Reconciliaton]]: Personages, Iconographers, Locations
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#openrefine-mapping-icons-to-wikidata][Mapping Icon Data to Wikidata]]
+- [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#sample-wikidata-queries][Sample Wikidata Queries]]: bubble chart, maps, 
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#queries-can-be-modified-by-non-experts][Queries Can Be Modified by Non-Experts]]
+- [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#edm-mapping][Mapping to Europeana Data Model]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#edm-cho-1][Culural Heritage Object (CHO): Type, Title, Creator, Size, Date, Locations]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#edm-cho-2][CHO: Description, Subject, Medium, Part Of, Language]]
+  - [[https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html#edm-auxiliary-objects][Auxiliary: Aggregation, Providers, Webpage, Image, License, Agent]]
 
 ** WD Icon Descriptions
 - [[https://www.wikidata.org/wiki/Q84296272][Q84296272]] "Mother of God Pantonhara": not from the BIDL dataset, and I've described it in a richer way than what's in BIDL, including article, full-text of article, issue, journal

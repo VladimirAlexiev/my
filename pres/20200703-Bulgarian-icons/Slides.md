@@ -6,7 +6,7 @@ title: "Bulgarian Icons in Wikidata and EDM"
 
 # Intro
 
-- Presentation: <http://rawgit2.com/VladimirAlexiev/my/master/pres/20200703-Bulgarian-icons/Slides.html>
+- Presentation: <https://vladimiralexiev.github.io/my/pres/20200703-Bulgarian-icons/Slides.html>
 - Paper: <http://dipp.math.bas.bg/images/2020/045-064_1.2_iDiPP2020-24_v.1c.pdf>
 - Source: <https://github.com/VladimirAlexiev/my/tree/master/pres/20200703-Bulgarian-icons>
   - Citation

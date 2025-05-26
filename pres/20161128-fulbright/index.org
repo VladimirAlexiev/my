@@ -6,7 +6,7 @@
 * About Ontotext
 #+ATTR_HTML: :class center
 Subtitle "Build Narratives through Connecting Artifacts".\\
-Also see [[http://rawgit2.com/VladimirAlexiev/my/master/pres/20160929-webinar/index.html][full version of webinar]] (134 slides)
+Also see [[https://vladimiralexiev.github.io/my/pres/20160929-webinar][full version of webinar]] (134 slides)
 
 #+ATTR_HTML: :class stretch :style width:1217px
 [[./img/about-Ontotext.png]]

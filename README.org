@@ -1,7 +1,7 @@
 * Vladimir Alexiev CV and Bibliography
 
-- CV (last updated 2023-02): http://rawgit2.com/VladimirAlexiev/my/master/cv/Vladimir-Alexiev.pdf
-- Publications, Presentations, Github contributions: http://rawgit2.com/VladimirAlexiev/my/master/index.html
+- CV (last updated 2023-02): https://vladimiralexiev.github.io/my/cv/Vladimir-Alexiev.pdf
+- Publications, Presentations, Github contributions: https://vladimiralexiev.github.io/my
 
 #+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=VladimirAlexiev&theme=vue"/></a>
 #+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=VladimirAlexiev&theme=vue"/></a>
@@ -9,12 +9,12 @@
 #+html: <a href="https://github.com/VladimirAlexiev"><img src="https://github-readme-stats.vercel.app/api?username=VladimirAlexiev&show_icons=true&disable_animations=true&text_bold=false&card_width=370px&layout=compact&custom_title=Stats2&include_all_commits=true&count_private=true&theme=vue"/></a>
 
 ** Publication Stats
-(Last updated 2024-12)
+(Last updated 2025-05)
 
 | Publication                                            | Count |
 |--------------------------------------------------------+-------|
 | Book (author), thesis, conference proceedings (editor) |     3 |
 | Tech reports, manuals, deliverables, ontologies        |    43 |
-| Conference papers, journal articles                    |    45 |
+| Conference papers, journal articles                    |    50 |
 | Presentations, posters, blog posts                     |    55 |
-| TOTAL                                                  |   146 |
+| TOTAL                                                  |   151 |

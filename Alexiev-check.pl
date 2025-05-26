@@ -22,8 +22,8 @@ my $len = $resp->header("Content-Length");
 
 !$resp->is_success and do
   {print "$url ",$resp->status_line,"\n"; next};
-$len && $len == 5 &&  $url =~ m{http://rawgit2} and do
-  {print "$url rawgit2 'error'\n"; next};
+# $len && $len == 5 &&  $url =~ m{http://rawgit2} and do
+#   {print "$url rawgit2 'error'\n"; next};
 $len && $len <= 10 and do
   {print "$url $len is too short\n"; next};
 print "OK $url\n";

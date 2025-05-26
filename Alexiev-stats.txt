@@ -1,6 +1,5 @@
 Book (author), thesis, conference proceedings (editor)	 3
 Tech reports, manuals, deliverables, ontologies	 43
-Conference papers, journal articles	 45
+Conference papers, journal articles	 50
 Presentations, posters, blog posts	 55
-TOTAL	 146
-н
+TOTAL	 151

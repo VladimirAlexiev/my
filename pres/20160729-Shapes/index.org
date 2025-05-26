@@ -80,8 +80,7 @@ Domain Data Modeling:
 
 * Domain Modeling Example
 ~atag:~ (AutoTag): Automotive Video Tagging for Tagasauris
-- https://github.com/Ontotext-AD/tagasauris/tree/master/data-model
-- Unfortunately http://rawgit.com/Ontotext-AD/tagasauris/master/data-model/index.html doesn't work since the repo is closed. Download and view
+- https://gitlab.ontotext.com/SAS/tagasauris/-/tree/master/data-model (unfortunately this repo is closed)
 
 ** Domain Areas
 The model covers the following areas:

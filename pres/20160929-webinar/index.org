@@ -12,7 +12,7 @@
   - Last 8 years focused on data modeling and integration
   - Last 6 years in paricular, focused on semantic data and semantic integration
 - I love to poke in other people's data and get in-depth. So there's a lot about data in these slides
-- See [[http://rawgit2.com/VladimirAlexiev/my/master/index.html][My publications]]: you can sort by type and keyword, full abstracts are available. 
+- See [[https://vladimiralexiev.github.io/my][My publications]]: you can sort by type and keyword, full abstracts are available. 
   - I've provided a few references below, but if a topic interests you, please search in the publications
 - The shorter version has about 110 slides, so sit back, relax, and enjoy the ride. Should take us 1:20h
   - Ask questions at any time in the chat, I'll answer them all at the end

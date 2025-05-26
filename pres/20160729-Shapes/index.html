@@ -1,137 +1,304 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>RDF Shapes</title>
-<meta name="author" content="(Vladimir Alexiev)"/>
-<meta name="description" content="Shapes as the new Ontologies, SHACL as the new SPIN"/>
-<style type="text/css">
-.underline { text-decoration: underline; }
+<meta name="author" content="Vladimir Alexiev" />
+<meta name="description" content="Shapes as the new Ontologies, SHACL as the new SPIN" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
 </style>
-<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
-
-<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
-
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../../reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:70%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:75%} </style>
-<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+<style> #content {max-width: 120em; margin: auto} h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.org-left   {text-align:left} th.org-right  {text-align:right} th.org-center {text-align:center} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .SAME {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide"><p class='center'><img src='../ontotext.png' style='width:506px'/></p><p/><p/><h2>RDF Shapes</h2><h3>Vladimir Alexiev</h3><h4>2016-07-29</h4><p class='center'><a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160729-Shapes/index.html'>2D presentation</a> (O for overview, ? for help). <a href='http://rawgit2.com/VladimirAlexiev/my/master/pres/20160729-Shapes/index-full.html'>Continuous HTML</a>. <a href='http://rawgit2.com/VladimirAlexiev/my/master/index.html'>Publications</a></p>
-</section>
-<section id="table-of-contents">
-<div id="table-of-contents">
+<div id="preamble" class="status">
+<p class="author">Author: Vladimir Alexiev (<a href="mailto:vladimir.alexiev@ontotext.com">vladimir.alexiev@ontotext.com</a>)</p>
+<p class="date">Date: 2016-07-29</p>
+</div>
+<div id="content" class="content">
+<h1 class="title">RDF Shapes</h1>
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org0f55a14">Motivation</a>
+<li><a href="#org3d16a58">1. Motivation</a>
 <ul>
-<li><a href="#/slide-org7505467">Ontologies</a></li>
-<li><a href="#/slide-org59e4c02">OWA vs CWA</a></li>
-<li><a href="#/slide-orgdcd1791">Ontology Engineering vs Domain Data Modeling</a></li>
+<li><a href="#org4538b8e">1.1. Ontologies</a></li>
+<li><a href="#org71cc3a5">1.2. OWA vs CWA</a></li>
+<li><a href="#orgc850ff5">1.3. Ontology Engineering vs Domain Data Modeling</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orge206613">Domain Modeling Example</a>
+<li><a href="#orga90c5c3">2. Domain Modeling Example</a>
 <ul>
-<li><a href="#/slide-orgeaf9fdb">Domain Areas</a></li>
-<li><a href="#/slide-orgc64d4ae">Ontologies Reused</a></li>
-<li><a href="#/slide-orgb3a2b50">Ontologies Reused</a></li>
-<li><a href="#/slide-orge102c19">ATAG Ontology</a></li>
-<li><a href="#/slide-org2028f06">ATAG Ontology</a></li>
-<li><a href="#/slide-org6f5cc25">ATAG Domain Model: Video Metadata</a></li>
-<li><a href="#/slide-orgcc47137">ATAG Domain Model: Video Segmentation</a></li>
-<li><a href="#/slide-org3d51553">ATAG Domain Model: Text Annotations</a></li>
-<li><a href="#/slide-org0ecd757">ATAG Domain Model: Text to Video Synchronization</a></li>
+<li><a href="#org20a3108">2.1. Domain Areas</a></li>
+<li><a href="#orgd6625b8">2.2. Ontologies Reused</a></li>
+<li><a href="#org1d6b3c8">2.3. Ontologies Reused</a></li>
+<li><a href="#orgf63ee43">2.4. ATAG Ontology</a></li>
+<li><a href="#orgbc0edd3">2.5. ATAG Ontology</a></li>
+<li><a href="#orgcae3b42">2.6. ATAG Domain Model: Video Metadata</a></li>
+<li><a href="#orgf604851">2.7. ATAG Domain Model: Video Segmentation</a></li>
+<li><a href="#org466bf38">2.8. ATAG Domain Model: Text Annotations</a></li>
+<li><a href="#orgec251e3">2.9. ATAG Domain Model: Text to Video Synchronization</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org9a8cd60">RDF Shapes</a>
+<li><a href="#orgaa64825">3. RDF Shapes</a>
 <ul>
-<li><a href="#/slide-org4fdfcdb">Database of Requirements</a></li>
-<li><a href="#/slide-orgdcdeae0">Database of Requirements: Use Cases</a></li>
-<li><a href="#/slide-org8ae5853">Database of Requirements: Requirements</a></li>
-<li><a href="#/slide-org81788b4">Database of Requirements: Requirements by Use Case</a></li>
-<li><a href="#/slide-org7bb6c30">Database of Requirements: Requirements Coverage by Tools</a></li>
-<li><a href="#/slide-org47e1864">Evaluation and Logical Underpinning</a></li>
-<li><a href="#/slide-org97817ce">Evaluation and Logical Underpinning</a></li>
+<li><a href="#orgeecc3b3">3.1. Database of Requirements</a></li>
+<li><a href="#org96de478">3.2. Database of Requirements: Use Cases</a></li>
+<li><a href="#orgaae3ba1">3.3. Database of Requirements: Requirements</a></li>
+<li><a href="#orgc730794">3.4. Database of Requirements: Requirements by Use Case</a></li>
+<li><a href="#org9b44434">3.5. Database of Requirements: Requirements Coverage by Tools</a></li>
+<li><a href="#orgc50a202">3.6. Evaluation and Logical Underpinning</a></li>
+<li><a href="#orgaec5c2b">3.7. Evaluation and Logical Underpinning</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org8779206">ShEx</a>
+<li><a href="#org689aead">4. ShEx</a>
 <ul>
-<li><a href="#/slide-org2f58a2a">ShEx Example</a></li>
+<li><a href="#orgefa876a">4.1. ShEx Example</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org57861b9">SHACL</a>
+<li><a href="#org8a36ee0">5. SHACL</a>
 <ul>
-<li><a href="#/slide-org01c205f">SHACL Example</a></li>
-<li><a href="#/slide-org1954df6">Tools</a></li>
+<li><a href="#org2bc3a14">5.1. SHACL Example</a></li>
+<li><a href="#orga48ae4d">5.2. Tools</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-</section>
 
-<section>
-<section id="slide-org0f55a14">
-<h2 id="org0f55a14">Motivation</h2>
-<ul>
+<div id="outline-container-org3d16a58" class="outline-2">
+<h2 id="org3d16a58"><span class="section-number-2">1.</span> Motivation</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
 <li>Why RDF Shapes aka Application Profiles are more important than Ontologies</li>
 <li>Shapes as the new Ontologies, SHACL as the new SPIN</li>
-
 </ul>
+</div>
 
-</section>
-<section id="slide-org7505467">
-<h3 id="org7505467">Ontologies</h3>
-<ul>
+<div id="outline-container-org4538b8e" class="outline-3">
+<h3 id="org4538b8e"><span class="section-number-3">1.1.</span> Ontologies</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
 <li>Everyone uses rdfs:subClassOf, rdfs:subPropertyOf</li>
 <li>Problems start with rdfs:domain, rdfs:range</li>
 <li>OWL classes (especilly Restrictions) are not very useful</li>
-
 </ul>
 
 <p>
 RDFS/OWL is made to infer new stuff, not for constraint validation
 </p>
-<ul>
+<ul class="org-ul">
 <li><p>
 eg this makes every node having the property be both dbo:Peak and dbo:Volcano:
 </p>
 <pre class="example">
 dbo:firstAscentYear rdfs:domain dbo:Peak, dbo:Volcano
-
 </pre></li>
 <li>eg see <a href="https://github.com/dbpedia/extraction-framework/issues/287">dbpedia/extraction-framework/issues/287</a></li>
-
 </ul>
 
 <p>
 schema:domainIncludes &amp; schema:rangeIncludes don't have this problem
 </p>
-<ul>
-<li>see <a href="https://github.com/dbpedia/ontology-tracker/issues/14">dbpedia/ontology-tracker/issues/14</a> and <a href="https://docs.google.com/document/d/1pQPO61d3RJY05yHSxlcu4DsR1NEcW8n9URoTci4lFJY/edit#heading=h.btsd7n2canhm">this discussion</a></li>
-
+<ul class="org-ul">
+<li>see <a href="https://github.com/dbpedia/ontology-tracker/issues/14">dbpedia/ontology-tracker/issues/14</a> and <a href="https://docs.google.com/document/d/1pQPO61d3RJY05yHSxlcu4DsR1NEcW8n9URoTci4lFJY/edit#heading%3Dh.btsd7n2canhm">this discussion</a></li>
 </ul>
+</div>
+</div>
 
-</section>
-<section id="slide-org59e4c02">
-<h3 id="org59e4c02">OWA vs CWA</h3>
+<div id="outline-container-org71cc3a5" class="outline-3">
+<h3 id="org71cc3a5"><span class="section-number-3">1.2.</span> OWA vs CWA</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 Pellet ICV (Integrity Constraint Validation): Validating RDF with OWL
 </p>
-<ul>
+<ul class="org-ul">
 <li>Interprets OWL ontologies with the Closed World Assumption in order to detect constraint violations in RDF data</li>
 <li>Developed by Clark &amp; Parsia in 2010 as open source.
 Still continues at <a href="https://github.com/Complexible/pellet">https://github.com/Complexible/pellet</a></li>
@@ -139,91 +306,88 @@ Still continues at <a href="https://github.com/Complexible/pellet">https://githu
 <li><a href="http://pellet-users.mindswap.narkive.com/QJjUKeZj/where-can-i-get-the-pellet-icv">Kendall Clark 2011</a>: ICV not available any longer.
 if yr interested in icv, it will be available in the next release of stardog</li>
 <li><a href="http://notes.3kbo.com/node/572">Notes at 3kbo</a></li>
-
 </ul>
+</div>
+</div>
 
-</section>
-<section id="slide-orgdcd1791">
-<h3 id="orgdcd1791">Ontology Engineering vs Domain Data Modeling</h3>
+<div id="outline-container-orgc850ff5" class="outline-3">
+<h3 id="orgc850ff5"><span class="section-number-3">1.3.</span> Ontology Engineering vs Domain Data Modeling</h3>
+<div class="outline-text-3" id="text-1-3">
 <p>
 Ontology Engineering:
 </p>
-<ul>
+<ul class="org-ul">
 <li>Make a new ontology for a new domain</li>
-
 </ul>
 
 <p>
 But how often do you work in a brand new domain?
 </p>
-<ul>
+<ul class="org-ul">
 <li>The spirit of the web is "reuse as much as you can"</li>
 <li>Don't make up your own stuff just because you can:</li>
 <li>Often this is more effort-intensive</li>
 <li>Using a custom ontology will limit reuse of your data</li>
-
 </ul>
 
 <p>
 Domain Data Modeling:
 </p>
-<ul>
+<ul class="org-ul">
 <li>Research &amp; find appropriate ontologies</li>
 <li>Extend if/as needed</li>
 <li>Document how they come together to describe the domain data</li>
-
 </ul>
+</div>
+</div>
+</div>
 
-</section>
-</section>
-<section>
-<section id="slide-orge206613">
-<h2 id="orge206613">Domain Modeling Example</h2>
+<div id="outline-container-orga90c5c3" class="outline-2">
+<h2 id="orga90c5c3"><span class="section-number-2">2.</span> Domain Modeling Example</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 <code>atag:</code> (AutoTag): Automotive Video Tagging for Tagasauris
 </p>
-<ul>
-<li><a href="https://github.com/Ontotext-AD/tagasauris/tree/master/data-model">https://github.com/Ontotext-AD/tagasauris/tree/master/data-model</a></li>
-<li>Unfortunately <a href="http://rawgit.com/Ontotext-AD/tagasauris/master/data-model/index.html">http://rawgit.com/Ontotext-AD/tagasauris/master/data-model/index.html</a> doesn't work since the repo is closed. Download and view</li>
-
+<ul class="org-ul">
+<li><a href="https://gitlab.ontotext.com/SAS/tagasauris/-/tree/master/data-model">https://gitlab.ontotext.com/SAS/tagasauris/-/tree/master/data-model</a> (unfortunately this repo is closed)</li>
 </ul>
+</div>
 
-</section>
-<section id="slide-orgeaf9fdb">
-<h3 id="orgeaf9fdb">Domain Areas</h3>
+<div id="outline-container-org20a3108" class="outline-3">
+<h3 id="org20a3108"><span class="section-number-3">2.1.</span> Domain Areas</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 The model covers the following areas:
 </p>
-<ul>
+<ul class="org-ul">
 <li>Video and Annotation domain:
-<ul>
+<ul class="org-ul">
 <li>Video <b>Metadata</b></li>
 <li>Video <b>Segmentation</b> including hierarchy (Chapter/Scene/Shot/Frame), time stamps, hash URLs</li>
 <li>Text <b>captions</b>: Subtitles or Automatic Speech Recognition (ASR)</li>
 <li>Text Segmentation and <b>Annotations</b> (applies to title, description, captions)</li>
 <li>Text to Video <b>Synchronization</b>, allowing fusion of text and video annotations</li>
 <li>Video <b>Recognition</b> of images</li>
-
 </ul></li>
 <li>Automotive domain:
-<ul>
+<ul class="org-ul">
 <li>Vehicle <b>brands &amp; models</b></li>
 <li>Tuners</li>
 <li><b>Events</b>: places (Venues, Circuits), dates, Participants</li>
 <li><b>Racing</b>: Series (championships), Seasons, Races, Teams, drivers, Ranking (results)</li>
 <li><b>Shows</b> (expositions, salons)</li>
-
 </ul></li>
-
 </ul>
 <p>
-See <a href="https://docs.google.com/document/d/1ULiUbG2rjR9x6tkrsXUK8wXJTuogdEgdiOzKIRqo9AM/edit#heading=h.l9l2q5iu754">Multimedia Annotation</a> notes (google doc)
+See <a href="https://docs.google.com/document/d/1ULiUbG2rjR9x6tkrsXUK8wXJTuogdEgdiOzKIRqo9AM/edit#heading%3Dh.l9l2q5iu754">Multimedia Annotation</a> notes (google doc)
 </p>
+</div>
+</div>
 
-</section>
-<section id="slide-orgc64d4ae">
-<h3 id="orgc64d4ae">Ontologies Reused</h3>
-<ul>
+<div id="outline-container-orgd6625b8" class="outline-3">
+<h3 id="orgd6625b8"><span class="section-number-3">2.2.</span> Ontologies Reused</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
 <li><a href="http://dbpedia.org/ontology/">dbo</a>: DBpedia ontology: some classes (eg dbo:Person) and props (eg dbo:productionStartYear, dbo:manufacturer)</li>
 <li><a href="http://purl.org/dc/elements/1.1/">dc</a>, <a href="http://purl.org/dc/terms/">dct</a>: Dublin Core: basic metadata (eg dc:creator, dct:title, dct:issued, dc:format, eg "video/mpeg4")</li>
 <li><a href="http://purl.org/dc/dcmitype/">dctype</a>: media resource type (eg dctype:MovingImage)</li>
@@ -234,56 +398,54 @@ See <a href="https://docs.google.com/document/d/1ULiUbG2rjR9x6tkrsXUK8wXJTuogdEg
 <li><a href="http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#">nif</a>: NLP Interchange Format: text annotation</li>
 <li><a href="http://www.w3.org/ns/oa#">oa</a>: Open Annotation: video annotation</li>
 <li><a href="http://www.w3.org/2004/02/skos/core#">skos</a>: Simple Knowledge Organization System: defining concepts</li>
-
 </ul>
+</div>
+</div>
 
-</section>
-<section id="slide-orgb3a2b50">
-<h3 id="orgb3a2b50">Ontologies Reused</h3>
+<div id="outline-container-org1d6b3c8" class="outline-3">
+<h3 id="org1d6b3c8"><span class="section-number-3">2.3.</span> Ontologies Reused</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
 Datasets reused:
 </p>
-<ul>
+<ul class="org-ul">
 <li><a href="http://babelnet.org/rdf/">bn</a>: Babelnet: concepts, eg bn:s03473434n "pole position"</li>
 <li><a href="http://dbpedia.org/resource/">dbr</a>: DBpedia resources (eg dbr:Niki_Lauda, dbo:Honda) and concepts (eg dbr:Mid-size_car, dbr:Luxury_vehicle)</li>
 <li><a href="http://vocab.linkeddata.es/lscom#">lscom</a>: concepts often occuring in videos (eg lscom:Commentator_Studio_Expert, lscom:Performing_Art_Activity)</li>
-
 </ul>
 
 <p>
 Standard reused:
 </p>
-<ul>
+<ul class="org-ul">
 <li><a href="https://www.w3.org/TR/media-frags/">mfrag</a>: W3C Media Fragments: not ontology but hash URL schemes to access a certain fragment of a media resource
-<ul>
+<ul class="org-ul">
 <li><code>#t=start,end</code>: temporal</li>
 <li><code>#xywh=x,y,width,height</code>: region</li>
-
 </ul></li>
 <li>nif: does that for text, reusing RFC 5147: <code>#char=beg,end</code></li>
-
 </ul>
 
 <p>
 Potentially useful:
 </p>
-<ul>
+<ul class="org-ul">
 <li><a href="http://data.linkedtv.eu/ontologies/core#">linkedtv</a>: FP7 LinkedTV ontology: used as model for <code>atag</code></li>
 <li><a href="http://multimedialab.elis.ugent.be/organon/ontologies/ninsuna/">nsa</a>: Ninsuna: represent mfrag info in properties: used as model for <code>atag</code></li>
 <li><a href="http://linkedmultimedia.org/sparql-mm/functions#">mm</a>: SPARQL MM for querying video annotations</li>
 <li><a href="http://purl.org/ontology/po/">po</a>: BBC Programmes Ontology</li>
-
 </ul>
+</div>
+</div>
 
-</section>
-<section id="slide-orge102c19">
-<h3 id="orge102c19">ATAG Ontology</h3>
+<div id="outline-container-orgf63ee43" class="outline-3">
+<h3 id="orgf63ee43"><span class="section-number-3">2.4.</span> ATAG Ontology</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
 We define a few classes and properties, eg for Video fragmentation:
 </p>
 <div class="org-src-container">
-
-<pre  class="src src-Turtle">
+<pre class="src src-Turtle">
 <span style="color: #228b22;">atag:</span><span style="color: #008b8b;">Shot</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">Class</span>; 
   <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Shot"</span>;
   <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">comment</span> <span style="color: #8b2252;">"Continuous footage between two camera edits (change of camera setup)"</span>;
@@ -313,16 +475,17 @@ We define a few classes and properties, eg for Video fragmentation:
 <span style="color: #228b22;">atag:</span><span style="color: #008b8b;">hasFragment</span> <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">subPropertyOf</span> <span style="color: #228b22;">atag:</span><span style="color: #008b8b;">transitiveFragment</span>.
 </pre>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org2028f06">
-<h3 id="org2028f06">ATAG Ontology</h3>
+<div id="outline-container-orgbc0edd3" class="outline-3">
+<h3 id="orgbc0edd3"><span class="section-number-3">2.5.</span> ATAG Ontology</h3>
+<div class="outline-text-3" id="text-2-5">
 <p>
 And for vehicles, brands etc
 </p>
 <div class="org-src-container">
-
-<pre  class="src src-Turtle"><span style="color: #228b22;">atag:</span><span style="color: #008b8b;">VehicleBrand</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">Class</span>;
+<pre class="src src-Turtle"><span style="color: #228b22;">atag:</span><span style="color: #008b8b;">VehicleBrand</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">Class</span>;
   <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"VehicleBrand"</span>;
   <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">comment</span> <span style="color: #8b2252;">"""Manufacturer or brand name for automobiles, motorcycles, trucks, etc; eg Acura"""</span>;
   <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">isDefinedBy</span> <span style="color: #228b22;">atag:</span><span style="color: #008b8b;"> </span>.
@@ -344,87 +507,94 @@ And for vehicles, brands etc
   <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">isDefinedBy</span> <span style="color: #228b22;">atag:</span><span style="color: #008b8b;"> </span>.
 </pre>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org6f5cc25">
-<h3 id="org6f5cc25">ATAG Domain Model: Video Metadata</h3>
+<div id="outline-container-orgcae3b42" class="outline-3">
+<h3 id="orgcae3b42"><span class="section-number-3">2.6.</span> ATAG Domain Model: Video Metadata</h3>
+<div class="outline-text-3" id="text-2-6">
 <p>
 More importantly, we document how things come together to represent data.
 </p>
 
 
-<div class="figure">
+<div id="orgbb9812f" class="figure">
 <p><img src="./img/video-metadata.png" alt="video-metadata.png" class="stretch" style="width:800px" />
 </p>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-orgcc47137">
-<h3 id="orgcc47137">ATAG Domain Model: Video Segmentation</h3>
+<div id="outline-container-orgf604851" class="outline-3">
+<h3 id="orgf604851"><span class="section-number-3">2.7.</span> ATAG Domain Model: Video Segmentation</h3>
+<div class="outline-text-3" id="text-2-7">
 
-<div class="figure">
+<div id="orgbb63d6e" class="figure">
 <p><img src="./img/video-segmentation.png" alt="video-segmentation.png" class="stretch" style="width:700px" />
 </p>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org3d51553">
-<h3 id="org3d51553">ATAG Domain Model: Text Annotations</h3>
+<div id="outline-container-org466bf38" class="outline-3">
+<h3 id="org466bf38"><span class="section-number-3">2.8.</span> ATAG Domain Model: Text Annotations</h3>
+<div class="outline-text-3" id="text-2-8">
 
-<div class="figure">
+<div id="orge52dd3d" class="figure">
 <p><img src="./img/nif.png" alt="nif.png" class="stretch" style="width:1200px" />
 </p>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org0ecd757">
-<h3 id="org0ecd757">ATAG Domain Model: Text to Video Synchronization</h3>
+<div id="outline-container-orgec251e3" class="outline-3">
+<h3 id="orgec251e3"><span class="section-number-3">2.9.</span> ATAG Domain Model: Text to Video Synchronization</h3>
+<div class="outline-text-3" id="text-2-9">
 
-<div class="figure">
+<div id="orgd4900c9" class="figure">
 <p><img src="./img/nif-video.png" alt="nif-video.png" class="stretch" style="width:1000px" />
 </p>
 </div>
+</div>
+</div>
+</div>
 
-</section>
-</section>
-<section>
-<section id="slide-org9a8cd60">
-<h2 id="org9a8cd60">RDF Shapes</h2>
+<div id="outline-container-orgaa64825" class="outline-2">
+<h2 id="orgaa64825"><span class="section-number-2">3.</span> RDF Shapes</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 Goal: formally describe the shape of RDF data:
 </p>
-<ul>
+<ul class="org-ul">
 <li>constraint validation</li>
 <li>documentation between data exchange partners</li>
 <li>generating UIs, etc</li>
-
 </ul>
 
 <p>
 Precedents:
 </p>
-<ul>
+<ul class="org-ul">
 <li><a href="http://wiki.dublincore.org/index.php/RDF-Application-Profiles">DCMI RDF Application Profiles</a> task group</li>
 <li><a href="https://www.w3.org/Submission/shapes/">OSLC Resource Shapes</a>: IBM-led, for exchanging info between requirements management systems, change trackers, issue trackers&#x2026;</li>
 <li><a href="http://spinrdf.org/">SPIN</a> (SPARQL Inferencing Notation), <a href="https://www.w3.org/Submission/spin-overview/">2011-02 W3C Submission</a> by TopQuadrant, RPI, OpenLink</li>
 <li><a href="http://aksw.org/Projects/RDFUnit.html">RDFUnit</a> (AKSW): generates SPARQL tests from OWL, DCAP, OSLC and now SHACL</li>
 <li><a href="http://purl.org/net/rdf-validation">Database of Requirements</a> on RDF Constraint Formulation and Validation</li>
-
 </ul>
 
 <p>
 W3C Activities:
 </p>
-<ul>
+<ul class="org-ul">
 <li><a href="http://www.w3.org/2012/12/rdf-val/">RDF Validation Workshop</a>: Cambridge, 2013-09-11</li>
 <li><a href="https://www.w3.org/2014/data-shapes/wiki/Main_Page">RDF Data Shapes Working Group</a>: approved 2014-09-26.
 Initially lots of friction (eg between ShEx and SHACL), now settled on SHACL</li>
-
 </ul>
+</div>
 
-</section>
-<section id="slide-org4fdfcdb">
-<h3 id="org4fdfcdb"><a href="http://purl.org/net/rdf-validation">Database of Requirements</a></h3>
+<div id="outline-container-orgeecc3b3" class="outline-3">
+<h3 id="orgeecc3b3"><span class="section-number-3">3.1.</span> <a href="http://purl.org/net/rdf-validation">Database of Requirements</a></h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 Case Studies<br />
 <img src="./img/req-case-studies.png" alt="req-case-studies.png" />
@@ -434,30 +604,36 @@ Case Studies<br />
 Tools<br />
 <img src="./img/req-tools.png" alt="req-tools.png" />
 </p>
+</div>
+</div>
 
-</section>
-<section id="slide-orgdcdeae0">
-<h3 id="orgdcdeae0">Database of Requirements: Use Cases</h3>
+<div id="outline-container-org96de478" class="outline-3">
+<h3 id="org96de478"><span class="section-number-3">3.2.</span> Database of Requirements: Use Cases</h3>
+<div class="outline-text-3" id="text-3-2">
 
-<div class="figure">
+<div id="org7dedd93" class="figure">
 <p><img src="./img/req-use-cases.png" alt="req-use-cases.png" class="stretch" style="width:1000px" />
 </p>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org8ae5853">
-<h3 id="org8ae5853">Database of Requirements: Requirements</h3>
+<div id="outline-container-orgaae3ba1" class="outline-3">
+<h3 id="orgaae3ba1"><span class="section-number-3">3.3.</span> Database of Requirements: Requirements</h3>
+<div class="outline-text-3" id="text-3-3">
 
-<div class="figure">
+<div id="orga21ed70" class="figure">
 <p><img src="./img/req-requirements.png" alt="req-requirements.png" class="stretch" style="width:1000px" />
 </p>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org81788b4">
-<h3 id="org81788b4">Database of Requirements: Requirements by Use Case</h3>
+<div id="outline-container-orgc730794" class="outline-3">
+<h3 id="orgc730794"><span class="section-number-3">3.4.</span> Database of Requirements: Requirements by Use Case</h3>
+<div class="outline-text-3" id="text-3-4">
 
-<div class="figure">
+<div id="org8647154" class="figure">
 <p><img src="./img/req-by-use-case.png" alt="req-by-use-case.png" class="stretch" style="width:1000px" />
 </p>
 </div>
@@ -465,40 +641,45 @@ Tools<br />
 <p>
 EDM (Europeana Data Model) validation: work topic of Europeana DQC (Data Quality Committee)
 </p>
+</div>
+</div>
 
-</section>
-<section id="slide-org7bb6c30">
-<h3 id="org7bb6c30">Database of Requirements: Requirements Coverage by Tools</h3>
+<div id="outline-container-org9b44434" class="outline-3">
+<h3 id="org9b44434"><span class="section-number-3">3.5.</span> Database of Requirements: Requirements Coverage by Tools</h3>
+<div class="outline-text-3" id="text-3-5">
 
-<div class="figure">
+<div id="org6fd5ef8" class="figure">
 <p><img src="./img/req-coverage.png" alt="req-coverage.png" class="stretch" style="width:1000px" />
 </p>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org47e1864">
-<h3 id="org47e1864">Evaluation and Logical Underpinning</h3>
+<div id="outline-container-orgc50a202" class="outline-3">
+<h3 id="orgc50a202"><span class="section-number-3">3.6.</span> Evaluation and Logical Underpinning</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 "RDF Validation Requirements - Evaluation and Logical Underpinning"
 </p>
-<ul>
+<ul class="org-ul">
 <li>by Thomas Bosch, Andreas Nolle, Erman Acar, Kai Eckert</li>
 <li>(GESIS – Leibniz Institute, Albstadt-Sigmaringen University, University of Mannheim)</li>
 <li>82.1 Evaluation of Constraint Languages, p71</li>
-
 </ul>
 
 
-<div class="figure">
+<div id="org48510ef" class="figure">
 <p><img src="./img/req-evaluation1.png" alt="req-evaluation1.png" class="stretch" style="width:1000px" />
 </p>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org97817ce">
-<h3 id="org97817ce">Evaluation and Logical Underpinning</h3>
+<div id="outline-container-orgaec5c2b" class="outline-3">
+<h3 id="orgaec5c2b"><span class="section-number-3">3.7.</span> Evaluation and Logical Underpinning</h3>
+<div class="outline-text-3" id="text-3-7">
 
-<div class="figure">
+<div id="org0fd5e82" class="figure">
 <p><img src="./img/req-evaluation2.png" alt="req-evaluation2.png" class="stretch" style="width:1000px" />
 </p>
 </div>
@@ -506,43 +687,41 @@ EDM (Europeana Data Model) validation: work topic of Europeana DQC (Data Quality
 <p>
 "If you can't check it with SPARQL, it doesn't mattter"
 </p>
+</div>
+</div>
+</div>
 
-</section>
-</section>
-<section>
-<section id="slide-org8779206">
-<h2 id="org8779206">ShEx</h2>
+<div id="outline-container-org689aead" class="outline-2">
+<h2 id="org689aead"><span class="section-number-2">4.</span> ShEx</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 ShapeExpressions: like regexps but for graphs
 </p>
-<ul>
+<ul class="org-ul">
 <li><a href="http://www.w3.org/Submission/shex-primer/">http://www.w3.org/Submission/shex-primer/</a>
-<ul>
+<ul class="org-ul">
 <li>Beautifully animated with JS. Visualises how the validation works</li>
 <li>Lets you try things and understand the concepts</li>
-
 </ul></li>
 <li><a href="http://shex.io/">http://shex.io/</a>: resources</li>
 <li><a href="http://www.w3.org/2013/ShEx/Examples/">http://www.w3.org/2013/ShEx/Examples/</a> &amp; <a href="http://www.w3.org/2013/ShEx/FancyShExDemo">http://www.w3.org/2013/ShEx/FancyShExDemo</a></li>
 <li>devised by Eric Prud’hommeaux (W3C)</li>
 <li>Iovka Boneva (INRIA &amp; CNRS, University of Lille): theoretical proofs on ShEx and SHACL</li>
-
 </ul>
+</div>
 
-</section>
-<section id="slide-org2f58a2a">
-<h3 id="org2f58a2a">ShEx Example</h3>
+<div id="outline-container-orgefa876a" class="outline-3">
+<h3 id="orgefa876a"><span class="section-number-3">4.1.</span> ShEx Example</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 Nice and simple language.
 </p>
-<ul>
+<ul class="org-ul">
 <li>A person must have one name and mbox, an optional age, and may have <code>foaf:knows</code> links that are also Persons</li>
-
 </ul>
 
 <div class="org-src-container">
-
-<pre  class="src src-Turtle"><span style="color: #0000ff;">&lt;PersonShape&gt;</span> {
+<pre class="src src-Turtle"><span style="color: #0000ff;">&lt;PersonShape&gt;</span> {
   <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">name</span> <span style="color: #228b22;">xsd:</span><span style="color: #008b8b;">string</span> 
 , <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">age</span>  <span style="color: #228b22;">xsd:</span>integer{0,1}
 , <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">mbox</span> IRI
@@ -550,33 +729,33 @@ Nice and simple language.
 }
 </pre>
 </div>
+</div>
+</div>
+</div>
 
-</section>
-</section>
-<section>
-<section id="slide-org57861b9">
-<h2 id="org57861b9">SHACL</h2>
+<div id="outline-container-org8a36ee0" class="outline-2">
+<h2 id="org8a36ee0"><span class="section-number-2">5.</span> SHACL</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Shapes Constraint Language
 </p>
-<ul>
+<ul class="org-ul">
 <li>Strongly inspired by SPIN</li>
 <li>Led by TopQuadrant</li>
-
 </ul>
 <p>
 <a href="http://w3c.github.io/data-shapes/shacl/">http://w3c.github.io/data-shapes/shacl/</a>: current draft
 </p>
+</div>
 
-</section>
-<section id="slide-org01c205f">
-<h3 id="org01c205f">SHACL Example</h3>
+<div id="outline-container-org2bc3a14" class="outline-3">
+<h3 id="org2bc3a14"><span class="section-number-3">5.1.</span> SHACL Example</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 Complex and verbose
 </p>
 <div class="org-src-container">
-
-<pre  class="src src-Turtle"><span style="color: #0000ff;">&lt;PersonShape&gt;</span>  <span style="color: #a020f0;">a</span> <span style="color: #228b22;">sh:</span><span style="color: #008b8b;">Shape</span> ;
+<pre class="src src-Turtle"><span style="color: #0000ff;">&lt;PersonShape&gt;</span>  <span style="color: #a020f0;">a</span> <span style="color: #228b22;">sh:</span><span style="color: #008b8b;">Shape</span> ;
   <span style="color: #228b22;">sh:</span><span style="color: #008b8b;">property</span>  [ <span style="color: #a020f0;">a</span>   <span style="color: #228b22;">sh:</span><span style="color: #008b8b;">PropertyConstraint</span> ;
     <span style="color: #228b22;">sh:</span><span style="color: #008b8b;">minCount</span>   0 ;
     <span style="color: #228b22;">sh:</span><span style="color: #008b8b;">predicate</span>  <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">knows]</span> ;
@@ -597,61 +776,28 @@ Complex and verbose
     <span style="color: #228b22;">sh:</span><span style="color: #008b8b;">predicate</span>  <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">name]</span> .
 </pre>
 </div>
+</div>
+</div>
 
-</section>
-<section id="slide-org1954df6">
-<h3 id="org1954df6">Tools</h3>
-<ul>
-<li><a href="http://rdfshape.herokuapp.com/">http://rdfshape.herokuapp.com/</a>: validation/conversion between languages. Eg <a href="http://rdfshape.herokuapp.com/converter/schema?schema=prefix+:+++++%3Chttp://example.org/%3E%0D%0Aprefix+foaf:+%3Chttp://xmlns.com/foaf/0.1/%3E%0D%0Aprefix+xsd:++%3Chttp://www.w3.org/2001/XMLSchema#%3E%0D%0Aprefix+shex:+%3Chttp://www.w3.org/2013/ShEx/ns%23%3E%0D%0A%0D%0A%3CPersonShape%3E+%7B%0D%0A++foaf:name+xsd:string+%0D%0A,+foaf:age++xsd:integer%0D%0A,+foaf:mbox+IRI%0D%0A,+foaf:knows+@%3CPersonShape%3E*%0D%0A%7D&amp;targetFormat=TURTLE">previous example</a></li>
-
+<div id="outline-container-orga48ae4d" class="outline-3">
+<h3 id="orga48ae4d"><span class="section-number-3">5.2.</span> Tools</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li><a href="http://rdfshape.herokuapp.com/">http://rdfshape.herokuapp.com/</a>: validation/conversion between languages. Eg <a href="http://rdfshape.herokuapp.com/converter/schema?schema%3Dprefix%2B%3A%2B%2B%2B%2B%2B%3Chttp%3A%2F%2Fexample.org%2F%3E%0D%0Aprefix%2Bfoaf%3A%2B%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0D%0Aprefix%2Bxsd%3A%2B%2B%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0D%0Aprefix%2Bshex%3A%2B%3Chttp%3A%2F%2Fwww.w3.org%2F2013%2FShEx%2Fns%23%3E%0D%0A%0D%0A%3CPersonShape%3E%2B%7B%0D%0A%2B%2Bfoaf%3Aname%2Bxsd%3Astring%2B%0D%0A%2C%2Bfoaf%3Aage%2B%2Bxsd%3Ainteger%0D%0A%2C%2Bfoaf%3Ambox%2BIRI%0D%0A%2C%2Bfoaf%3Aknows%2B%40%3CPersonShape%3E*%0D%0A%7D&amp;targetFormat%3DTURTLE">previous example</a></li>
 </ul>
 
 
-<div class="figure">
+<div id="org11510de" class="figure">
 <p><img src="./img/heroku-compare.png" alt="heroku-compare.png" class="stretch" style="width:700px" />
 </p>
 </div>
-</section>
-</section>
 </div>
 </div>
-<script src="../../reveal.js/lib/js/head.min.js"></script>
-<script src="../../reveal.js/js/reveal.js"></script>
-
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-
-controls: false,
-progress: true,
-history: false,
-center: true,
-slideNumber: 'c',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-width: 1595,
-height: 1100,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{src: '../../reveal.js-tagcloud-plugin/tagcloud/tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
- { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-});
-</script>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator">Exported by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.19)</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
 </body>
 </html>

@@ -10,10 +10,10 @@ Some of the links below are broken (they look like \[Broken Link\]).
 - This is the first implementation of CRM Fundamental Relations, see
   - Vladimir Alexiev: Implementing CIDOC CRM Search Based on Fundamental Relations and OWLIM Rules.
     Workshop on Semantic Digital Archives (SDA 2012), part of International Conference on Theory and Practice of Digital Libraries (TPDL 2012).
-    CEUR-WS vol 912. [paper](http://ceur-ws.org/Vol-912/paper8.pdf), [presentation](http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2012-CRM-Search-presentation.pdf)
+    CEUR-WS vol 912. [paper](http://ceur-ws.org/Vol-912/paper8.pdf), [presentation](https://vladimiralexiev.github.io/my/pubs/Alexiev2012-CRM-Search-presentation.pdf)
   - Vladimir Alexiev, Dimitar Manov, Jana Parvanova, Svetoslav Petrov: Large-scale Reasoning with a Complex Cultural Heritage Ontology (CIDOC CRM).
     Workshop Practical Experiences with CIDOC CRM and its Extensions (CRMEX 2013) at TPDL 2013.
-    CEUR-WS vol 1117. [paper](http://ceur-ws.org/Vol-1117/paper8.pdf), [presentation](http://rawgit2.com/VladimirAlexiev/my/master/pubs/Alexiev2013-CRM-reasoning-slides.ppt)
+    CEUR-WS vol 1117. [paper](http://ceur-ws.org/Vol-1117/paper8.pdf), [presentation](https://vladimiralexiev.github.io/my/pubs/Alexiev2013-CRM-reasoning-slides.ppt)
 
 ## OWLIM Rules and Reasoning Dialect
 

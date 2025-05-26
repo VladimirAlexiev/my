@@ -319,7 +319,7 @@ Many are YAML-based:
 
 # Links
 
-- [My publications](https://rawgit2.com/VladimirAlexiev/my/master/index.html)
-- This presentation: [JSON-LD and Polyglot Modeling](https://rawgit2.com/VladimirAlexiev/my/master/pres/20221028-JSONLD/Slides.html)
+- [My publications](https://vladimiralexiev.github.io/my/index.html)
+- This presentation: [JSON-LD and Polyglot Modeling](https://vladimiralexiev.github.io/my/pres/20221028-JSONLD/Slides.html)
 - [Decentralization and Self-Sovereignty](https://docs.google.com/presentation/d/1AEwLjM7ry6BeM0XoF8EVbl5zeoMkE-tBht0CcL3cfPk/edit): presentation and [gdoc](https://docs.google.com/document/d/1qpMAa55SYV6E4D_ffIgsZopmpzrUrjjR9c36SXXCVZQ/edit)
 

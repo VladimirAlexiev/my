@@ -16,8 +16,8 @@ This presentation is an intro to the Industry 4.0 Knowledge Graph by Fraunhofer 
 
 Key resources (more links further in the slides):
 
-- My publications: <http://rawgit2.com/VladimirAlexiev/my/master/index.html>
-- This presentation: <http://rawgit2.com/VladimirAlexiev/my/master/pres/20200908-i40kg-semantics/Slides.html>
+- My publications: <https://vladimiralexiev.github.io/my>
+- This presentation: <https://vladimiralexiev.github.io/my/pres/20200908-i40kg-semantics/Slides.html>
 - Industry 4.0 KG main visualization: <http://i40.semantic-interoperability.org/> (29-Mar-2024: site is down)
 - Ontotext Platform Semantic Objects: <https://platform.ontotext.com/semantic-objects/>
 - Try GraphQL queries: <https://i40kg.ontotext.com/workbench/graphql>

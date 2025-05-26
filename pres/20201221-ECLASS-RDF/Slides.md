@@ -26,8 +26,8 @@ We discuss various considerations for representing ECLASS product info as RDF.
 
 Somewhat related Ontotext presentations:
 
-- [Exploring Industry 4.0 Standards with the Ontotext Platform](http://rawgit2.com/VladimirAlexiev/my/master/pres/20200908-i40kg-semantics/Slides.html), Semantics 2020 webinar, Sep 2020
-- [Practical Semantic Modeling, SPARQL, RDF Shapes, IoT/WoT/UoM](http://rawgit2.com/VladimirAlexiev/my/master/pres/20171025-Practical%20Semantic%20Modeling,%20SPARQL,%20RDF%20Shapes,%20IoT-WoT-UoM%20(201710).pptx), Ontotext Training, 80 Slides, Oct 2017
+- [Exploring Industry 4.0 Standards with the Ontotext Platform](https://vladimiralexiev.github.io/my/pres/20200908-i40kg-semantics/Slides.html), Semantics 2020 webinar, Sep 2020
+- [Practical Semantic Modeling, SPARQL, RDF Shapes, IoT/WoT/UoM](https://vladimiralexiev.github.io/my/pres/20171025-Practical%20Semantic%20Modeling,%20SPARQL,%20RDF%20Shapes,%20IoT-WoT-UoM%20(201710).pptx), Ontotext Training, 80 Slides, Oct 2017
   - I now made an update on Units of Measure (available on request)
 
 ## Crucial Questions
