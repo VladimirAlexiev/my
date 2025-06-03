@@ -13,14 +13,15 @@ coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
   date         = {2025-05-13},
 }
 
-@InProceedings{David-vocabularyHub-2025,
+@InProceedings{David-vocabularyHubs-SDS-2025,
   author       = {Robert David and Vladimir Alexiev and Petar Ivanov and Wouter van den Berg and Jan Pieter Wijbenga and Michiel Stornebrink},
   title        = {Federated Vocabulary Hubs as a Foundation for Semantic Layers in Data Spaces},
   booktitle    = {Third International Workshop on Semantics in Dataspaces (SDS 2025) at ESWC 2025},
   year         = 2025,
   month        = jun,
   address      = {Portorož, Slovenia},
-  url          = {TODO},
+  url          = {https://vladimiralexiev.github.io/my/pubs/Federated_Vocabulary_Hubs_(SDS_2025).pdf},
+  url_Proceedings= {https://dbis.rwth-aachen.de/SDS25/},
   url_Slides   = {TODO},
   keywords     = {dataspace, IDS-RAM, vocabulary hub, SPARQL Federation, semantic layer, semantic interoperability, data interoperability, data sovereignty, data governance, scalability, linked data, UNDERPIN},
   date         = {2025-06-01},
@@ -171,7 +172,7 @@ coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
   title        = {{Exploring FIBO Complexity With Crunchbase: Representing Crunchbase IPOs in FIBO}},
   month        = apr,
   year         = 2024,
-  url          = {https://vladimiralexiev.github.io/crunchbase-fibo/main/README.html},
+  url          = {https://vladimiralexiev.github.io/crunchbase-fibo/README.html},
   url_Github   = {https://github.com/VladimirAlexiev/crunchbase-fibo/},
   keywords     = {fintech, Crunchbase, ontologies, semantic modeling, Initial Public Offering, IPO, Financial Industry Business Ontology, FIBO},
   abstract     = {The Financial Industry Business Ontology (FIBO) by the Enterprise Data Management Council (EDMC) is a family of ontologies and a reference model for representing data in the financial world using semantic technologies. It is used in fintech Knowledge Graph (KG) projects because it offers a comprehensive and principled approach to representing financial data, and a wide set of predefined models that can be used to implement data harmonization and financial data integration. The 2022Q2 FIBO release consists of 290 ontologies using 380 prefixes that cover topics such as legal entities, contracts, agency, trusts, regulators, securities, loans, derivatives, etc. FIBO's reach and flexible ontological approach allow the integration of a wide variety of financial data, but it comes at the price of more complex representation. Crunchbase (CB) is a well-known dataset by TechCrunch that includes companies, key people, funding rounds, acquisitions, Initial Public Offerings (IPOs), etc. It has about 2M companies with a good mix of established enterprises (including 47k public companies), mid-range companies and startups. We (Ontotext and other Wikidata contributors) have matched 72k CB companies to Wikidata, see this query. I explore the representation of Crunchbase data (more specifically IPOs) in FIBO and compare it to the simplest possible semantic representation. I therefore illustrate the complexity of FIBO, and explain its flexibility along the way. I finish with some discussion and conclusions as to when FIBO can bring value to fintech KG projects.},
@@ -433,7 +434,6 @@ UC4: Energy Tracing for CO2 Footprint and Pollution Impact, for enterprises who 
   month        = jan,
   year         = 2022,
   url          = {https://docs.google.com/presentation/d/1I0CKJ_y-Lq0eErnOabBBxmfAuOQHYNey/edit},
-  url_PDF      = {http://interrface.eu/sites/default/files/ontotext_TEKG-20210131.pdf},
   keywords     = {energy, electricity, ENTSO-E, market transparency, knowledge graph},
   address      = {Presentation at Joint INTERRFACE Open Call Projects meeting},
 }
@@ -1948,7 +1948,6 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   year         = 1998,
   month        = jan,
   url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1998-distributedSynchronization.pdf},
-  url_CiteSeer = {https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.301.8273},
   keywords     = {pi-calculus, input prefix, distributed synchronization, communication},
   abstract     = {The (input) prefix operation of the pi-calculus expresses global synchronization (blocking) of the prefixed process. We show how to implement synchronization in a completely distributed manner, by using bidirectional atomic communication and the principle of provision (data-dependency-based synchronization)},
 }
@@ -1960,7 +1959,6 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   year         = 1998,
   month        = apr,
   url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1998-finitePi.pdf},
-  url_CiteSeer = {https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.301.8381},
   keywords     = {pi-calculus, interaction nets, linear logic, concurrent computation,distributed computation},
   abstract     = {We extend the Interaction Nets of Lafont with some non-determinism capabilities and then show how to implement the finite monadic pi-calculus in that system},
 }
@@ -1972,11 +1970,11 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   year         = 1996,
   month        = sep,
   publisher    = {IOI Press},
-  url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1996-targetedCommunication.pdf},
-  url_CiteSeer = {https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.7107},
-  url_TR       = {https://era.library.ualberta.ca/downloads/bc386k59r},
-  keywords     = {Linear Objects, communication, broadcasting, object-oriented programming, logic programming, linear logic},
   note         = {Also University of Alberta TR94-14},
+  url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1996-targetedCommunication.pdf},
+  url_TR       = {https://ualberta.scholaris.ca/items/35ebea75-e3d7-4130-b211-d1bdd128c745},
+  keywords     = {Linear Objects, communication, broadcasting, object-oriented programming, logic programming, linear logic},
+  doi          = {10.7939/R3RN30899},
   abstract     = {Linear Objects (LO) of Andreoli and Pareschi is the first proposal to integrate object-oriented programming into logic programming based on Girard's Linear Logic (LL). In LO each object is represented by a separate open node of a proof tree. This ``insulates'' objects from one another which allows the attributes of an object to be represented as a multiset of atoms and thus facilitates easy retrieval and update of attributes. However this separation hinders communication between objects. Communication in LO is achieved through broadcasting to all objects which in our opinion is infeasible from a computational viewpoint. This paper proposes a refined communication mechanism for LO which uses explicit communication channels specified by the programmer. We name it TCLO which stands for ``Targeted Communication in LO''. Although channel specification puts some burden on the programmer, we demonstrate that the language is expressive enough by redoing some of the examples given for LO. Broadcasting can be done in a controlled manner. LO can be seen as a special case of TCLO where only one global channel (the forum) is used.},
 }
 
@@ -1988,9 +1986,9 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   number       = {TR95-24},
   month        = sep,
   url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1995-eventCalculus.pdf},
-  url_CiteSeer = {https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.30.9953},
-  url_TR       = {https://era.library.ualberta.ca/downloads/9g54xk065},
+  url_TR       = {https://ualberta.scholaris.ca/items/cd6710eb-be59-4fd4-ba54-a296b07bc9d6},
   keywords     = {event calculus, linear logic, negation as failure, knowledge update},
+  doi          = {10.7939/R3RN30899},
   abstract     = {The traditional presentation of Kowalski's Event Calculus as a logic program uses Negation- as-Failure (NAF) in an essential way to support persistence of fluents. In this paper we present an implementation of Event Calculus as a purely logical (without NAF) Linear Logic (LL) program. This work demonstrates some of the internal non-monotonic features of LL and its suitability for knowledge update (as opposed to knowledge revision). Although NAF is an ontologically sufficient solution to the frame problem, the LL solution is implementationally superior. Handling of incomplete temporal descriptions and support for ramifications (derived fluents) are also considered.},
   keywords     = {event calculus, linear logic},
 }
@@ -2046,7 +2044,6 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   year         = 1993,
   month        = mar,
   url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1993-annotatedBibliography.pdf},
-  url_CiteSeer = {https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.6168},
   keywords     = {object-oriented programming, logic programming, multiparadigm programming, bibliography},
   abstract     = {An overview of existing applications of Linear Logic (LL) to issues of computation. After a substantial introduction to LL, it discusses the implications of LL to functional programming, logic programming, concurrent and object-oriented programming and some other applications of LL, like semantics of negation in LP, non-monotonic issues in AI planning, etc. Although the overview covers pretty much the state-of-the-art in this area, by necessity many of the works are only mentioned and referenced, but not discussed in any considerable detail. The paper does not presuppose any previous exposition to LL, and is addressed more to computer scientists (probably with a theoretical inclination) than to logicians. The paper contains over 140 references, of which some 80 are about applications of LL.},
 }
@@ -2059,7 +2056,9 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   number       = {TR93-15},
   month        = aug,
   url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1993-mutableObjectState.pdf},
+  url_TR       = {https://ualberta.scholaris.ca/items/cc68f0f6-aca8-4ce4-82c2-c4ab75c863a5},
   keywords     = {object-oriented programming, logic programming, multiparadigm programming, mutable, object state, survey},
+  doi          = {10.7939/R3CV4BR88},
   abstract     = {One of the most difficult problems on the way to an integration of Object-Oriented and Logic Programming is the modeling of changeable object state(i.e. object dynamics) in a particular logic in order not to forfeit the declarative nature of LP. Classical logic is largely unsuitable for such a task, because it adopts a general (both temporally and spatially), Platonic notion of validity, whereas object state changes over time and is local to an object. This paper presents the problem and surveys the state-of-the-art approaches to its solution, as well as some emerging, promising new approaches. The paper tries to relate the different approaches, to evaluate their merits and deficiencies and to identify promising directions for development. The emphasis in this survey is on efficient implementation of state change, one which would be suitable for the lowest fundamental level of a general OOLP language. The following approaches are covered: Assert/Retract, Declarative Database Updates and Transaction Logic, Modal and Dynamic Logics, Perpetual Objects, Logical Objects and Linear Objects, Linear Logic, Rewriting Logic and MaudeLog.},
 }
 
@@ -2070,8 +2069,8 @@ The original paper on IN (Lafont, 1990) states that INs were designed to be simp
   year         = 1993,
   note         = {Term project},
   url          = {https://vladimiralexiev.github.io/my/pubs/Alexiev1993-objectOriented.pdf},
-  url_CiteSeer = {https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.54.2657},
   keywords     = {object-oriented programming, logic programming, multiparadigm programming, knowledge representation},
   abstract     = {This paper is a survey of a number of languages/systems based on both Object-Oriented and Logic Programming and designed expressly for Knowledge Representation tasks. My goal in the paper is to argue that the integration of these two paradigms (particularly the synergism that emerges from such an integration_ forms a stable basis for Knowledge Representation at the symbolic level. I try to support this claim both by examples from the papers surveyed and by considerations in a more general context. Some more advanced topics concerning special-purpose non-classic logics are also discussed.},
 }
+
 
