@@ -1,5 +1,39 @@
 coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
 
+@Misc{Alexiev-ERA-SHACL-2025,
+  author       = {Vladimir Alexiev},
+  title        = {Improving ERA SHACL},
+  howpublished = {Blog post},
+  month        = jun,
+  year         = 2025,
+  url          = {https://github.com/VladimirAlexiev/RailDataForum2025-SPARQL/blob/main/improving-era-shacl.md},
+  keywords     = {rail, ERA, ERA Vocabulary, ERA KG, SHACL, RDF shapes, data validation, SPARQLConstraint, SPARQLTarget},
+  abstract     = {The ERA KG is the result of a large-scale collaboration between Europe's rail entities and is the foundation of EU rail data interoperability. It is complex and relatively big, and SHACL data validation is used to improve data quality. In this blog we describe Graphwise experience with complex SHACL shapes, show how ERA SHACL shapes can be simplified by a third, how their performance can be optimized (instead of million times, run SPARQL once), and discuss incremental validation scenarios that can further improve performance. In particular, section Constraints for SKOS Properties shows how to replace 73 to 103 enum constraints that run SPARQL over 8M times (per enum prop instance); with 1 constraint that runs SPARQL once (then a few cheap SPARQLs per violation)},
+}
+
+
+@Misc{Alexiev-RailDataForum-SPARQL-2025,
+  author       = {Vladimir Alexiev},
+  title        = {RailDataForum2025: SPARQL Masterclass},
+  howpublished = {Tutorial at RailDataForum2025},
+  month        = jun,
+  year         = 2025,
+  url          = {https://github.com/VladimirAlexiev/RailDataForum2025-SPARQL},
+  keywords     = {rail, ERA, ERA Vocabulary, ERA KG, SPARQL, tutorial, RailDataForum, Talk to Your Graph, TTYG, chatbot, ERAbot},
+  abstract     = {A SPARQL tutorial presented at the RailDataForum2025 masterclass. We present sample queries, schema exploration queries, and link to the ERA Vocabulary "data stories" (competency questions). We also introduce the ERAbot, setup quickly by using GraphDB's "Talk to Your Graph" functionality. Contents: Intro: SPARQL eLearning, ERA KG Intro, ERAbot, SPARQL Intro; Some SPARQL Queries: Longest Tunnel, Tunnels in Romania, Names of Romania, Collect Names, Ordered and Distinct Names, Query Explanation by GPT; Schema Exploration: Class Count, ERA Class Count, Property Count, ERA Property Count, Deprecated Terms, SKOS Vocabularies Complex Queries: Canonical URIs, Data Duplication, Counting Tunnels; Data Stories},
+}
+
+@Misc{Alexiev-Olsen-Talk2PowerSystem-2025,
+  author       = {Vladimir Alexiev and Svein Harald Olsen},
+  title        = {Talk2PowerSystem: Democratizing power system analytics},
+  howpublished = {Presentation at CIM IEC TC57 meeting, EDF R&D, Paris-Saclay},
+  month        = jun,
+  year         = 2025,
+  url_PDF      = {https://docs.google.com/presentation/d/1HjuO77pSiz2NhNjVA01Iit092d3Ex9GZ4QGASFp0ZlY/edit},
+  keywords     = {Statnett, Graphwise, Talk2PowerSystem, Talk to Your Graph, GraphDB, text2sparql, LLM, chatbot, SPARQL electrical CIM, CGMES, Nordic44},
+  date         = {2025-06-06},
+  abstract     = {We present the Talk2PowerSystem (Democratizing power system analytics) project of Statnett and Graphwise, including motivation, project goals, technical approaches and accents, future plans, research proposals, and an invitation for collaboration to other electrical enterprises},
+}
 
 @InProceedings{Alexiev-interop-SM4RT-UNDERPIN-2025,
   author       = {Vladimir Alexiev and Petar Ivanov},
@@ -615,7 +649,7 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
 
 @Misc{Alexiev2020-ECLASS,
   author       = {Vladimir Alexiev},
-  title        = {{ECLASS RDF} Representation},
+  title        = {{ECLASS RDF Representation}},
   year         = 2020,
   url          = {https://vladimiralexiev.github.io/my/pres/20201221-ECLASS-RDF/index.html},
   url_Slides   = {https://vladimiralexiev.github.io/my/pres/20201221-ECLASS-RDF/Slides.html},
@@ -1663,9 +1697,9 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   organization = {Ontotext Corp},
   month        = apr,
   year         = 2013,
-  url          = {https://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.xhtml},
+  url          = {https://VladimirAlexiev.github.io/grammar-diagrams/sparql11-grammar.xhtml},
   url_Github   = {https://github.com/VladimirAlexiev/grammar-diagrams},
-  url_ebnf     = {https://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.ebnf},
+  url_ebnf     = {https://VladimirAlexiev.github.io/grammar-diagrams/sparql11-grammar.ebnf},
   abstract     = {Cross-linked SPARQL 1.1 syntax (railroad) diagrams, one per production (173 total). A bit hard to understand: use this for reference, but not for learning SPARQL. Also available: EBNF syntax rules extracted from the SPARQL 1.1 specification, Text file including production numbers and syntax rules},
 }
 
