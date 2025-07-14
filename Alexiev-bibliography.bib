@@ -1,5 +1,20 @@
 coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
 
+@Article{NovalijaEtAl-AI-Innovation-2025,
+  author       = {Inna Novalija and Dumitru Roman and Federico Belotti and Luis Rei and Roberto Avogadro and Babak Khalilvandian and Boyan Bechev and Catalina Alexandra Chinie and Iulia Ciurea and Janez Brank and Cosmin Udroiu and Ahmet Soylu and Matteo Palmonari},
+  title        = {From Code to Concept: A Semantic Approach to AI Innovation Discovery in Open Source Software Repositories},
+  journal      = {IEEE Access},
+  year         = 2025,
+  volume       = {TODO},
+  number       = {TODO},
+  month        = {TODO},
+  note         = {(accepted)},
+  url          = {TODO},
+  keywords     = {Artificial intelligence, Data mining, Text mining, Time series analysis},
+  doi          = {TODO},
+  abstract     = {Artificial Intelligence (AI) is a transformative force driving innovation, yet tracking AI- related advancements remains challenging due to the rapid pace of development and unstructured data from platforms like GitHub. This paper proposes an AI-driven approach to innovation detection, leveraging GitHub as a data source to systematically identify and link AI projects to organizations. A knowledge graph is constructed to represent relationships among AI topics, projects, and companies, thereby enabling structured innovation tracking. The methodology incorporates a taxonomy of 7,490 AI topics, a pipeline for collecting and pre-processing data from GitHub, and a set of techniques for entity linking and topic extraction. The approach addresses challenges such as data sparsity and noise, demonstrating strengths in semantic annotation and topic categorization. Results highlight the potential for accurately detecting AI innovations and linking them to organizational entities, offering valuable insights for researchers, companies, and policymakers. This work contributes a scalable, automated approach for AI innovation tracking, with future directions focusing on refining entity linking and expanding the knowledge graph to capture emerging trends.},
+}
+
 @Misc{Alexiev-ERA-SHACL-2025,
   author       = {Vladimir Alexiev},
   title        = {Improving ERA SHACL},
@@ -11,7 +26,6 @@ coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
   abstract     = {The ERA KG is the result of a large-scale collaboration between Europe's rail entities and is the foundation of EU rail data interoperability. It is complex and relatively big, and SHACL data validation is used to improve data quality. In this blog we describe Graphwise experience with complex SHACL shapes, show how ERA SHACL shapes can be simplified by a third, how their performance can be optimized (instead of million times, run SPARQL once), and discuss incremental validation scenarios that can further improve performance. In particular, section Constraints for SKOS Properties shows how to replace 73 to 103 enum constraints that run SPARQL over 8M times (per enum prop instance); with 1 constraint that runs SPARQL once (then a few cheap SPARQLs per violation)},
 }
 
-
 @Misc{Alexiev-RailDataForum-SPARQL-2025,
   author       = {Vladimir Alexiev},
   title        = {RailDataForum2025: SPARQL Masterclass},
@@ -21,6 +35,30 @@ coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
   url          = {https://github.com/VladimirAlexiev/RailDataForum2025-SPARQL},
   keywords     = {rail, ERA, ERA Vocabulary, ERA KG, SPARQL, tutorial, RailDataForum, Talk to Your Graph, TTYG, chatbot, ERAbot},
   abstract     = {A SPARQL tutorial presented at the RailDataForum2025 masterclass. We present sample queries, schema exploration queries, and link to the ERA Vocabulary "data stories" (competency questions). We also introduce the ERAbot, setup quickly by using GraphDB's "Talk to Your Graph" functionality. Contents: Intro: SPARQL eLearning, ERA KG Intro, ERAbot, SPARQL Intro; Some SPARQL Queries: Longest Tunnel, Tunnels in Romania, Names of Romania, Collect Names, Ordered and Distinct Names, Query Explanation by GPT; Schema Exploration: Class Count, ERA Class Count, Property Count, ERA Property Count, Deprecated Terms, SKOS Vocabularies Complex Queries: Canonical URIs, Data Duplication, Counting Tunnels; Data Stories},
+}
+
+@Misc{Alexiev-Ontology-Simplification-2025,
+  author       = {Vladimir Alexiev},
+  title        = {Ontology Simplification for LLM},
+  howpublished = {Blog post},
+  month        = jun,
+  year         = 2025,
+  url          = {https://github.com/statnett/Talk2PowerSystem/wiki/Blog-Ontology-Simplification-for-LLM},
+  keywords     = {LLM, GPT, chatbot, ontology, ontology simplification, Talk to Your Graph, TTYG, text2sparql, NLQ, natural language querying, SPARQL generation},
+  abstract     = {LLM's short term memory (token space) is limited, so a problem that often needs to be tackled is how to simplify an ontology to present it to an LLM. Even if it all fits in memory, long and badly presented ontologies run a high risk of the LLM getting confused or forgetting things in the middle. The shorter and "prettier" a schema is, the better its chance to be understood and used correctly in query answering.
+In this blog we share our experience with: An ERAbot for ERA KG of the European Agency for Railways; it uses the standard GraphDB Talk to Your Graph functionality (TTYG).
+The Talk2PowerSystem project for Statnett, involving CIM/CGMES electrical data; it uses a custom chatbot with custom tools; periodically we take learnings from this project and add them to the GraphDB product},
+}
+
+@Misc{Alexiev-reasoning-LLM-2025,
+  author       = {Vladimir Alexiev},
+  title        = {Using Semantic Reasoning to Help LLM with SPARQL Generation in Electrical CIM},
+  howpublished = {Blog post},
+  month        = jun,
+  year         = 2025,
+  url          = {https://github.com/statnett/Talk2PowerSystem/wiki/Blog-Using-Semantic-Reasoning-to-Help-LLM-with-SPARQL-Generation-in-Electrical-CIM},
+  keywords     = {LLM, GPT, chatbot, reasoning, derived relations, shortcut relations, Talk to Your Graph, TTYG, text2sparql, NLQ, natural language querying, SPARQL generation},
+  abstract     = {Electrical CIM is a complex ontology that can represent the complete electrical enterprise, including generation, transmission, distribution, client operations, asset management, market info and operations. One of the basic ontology modules (profiles) is about Equipment. It models Equipments, Equipment Containers, Terminals, Connectivity Nodes. Thus a query like "List all substations that are connected via an AC-line to substation XYZ" becomes very complex, and unfeasible for an LLM to generate. We have used standard OWL2 RL rules to add inferred relations, which makes the query much simpler and allows the LLM to generate it confidently. It was also important to describe (document) the derived properties well, to allow the LLM to discover them and use them. This is a great case showcasing the benefits of using semantic reasoning to make a KG easier to use, therefore making the LLM's task easier.},
 }
 
 @Misc{Alexiev-Olsen-Talk2PowerSystem-2025,
