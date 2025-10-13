@@ -1,5 +1,17 @@
 coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
 
+@InCollection{AtkinsonEtAl-data-profiling-2025,
+  author       = {Rob Atkinson and Francesca Noardo and Nataliya Keberle and Arkadiusz Chadzynski and Alejandro Villar and Mayte Toscano and Vladimir Alexiev},
+  title        = {Data Profiling and Validation Through Linked Data},
+  booktitle    = {Digitalisation and innovation of building permit processes in the context of a sustainable built environment},
+  publisher    = {Taylor and Francis},
+  year         = 2025,
+  editor       = {Fauth J. and Noardo F. and Ventura S. and Lavikka R. and Guler D. and Gade P.},
+  series       = {BRI Research Series (Building Research & Information},
+  keywords     = {digital permits, automated compliance checking, building regulations, land use, AECO, BIM, CityGML, CityRDF, XPlanung, INSPIRE, XSPARQL, OGC, GeoSPARQL, OGC Building Blocks, SHACL, SPARQL},
+  abstract     = {The digitalisation of building permit necessitates streamlined approaches for handling diverse and complex datasets. To meet this need, profiles of varied data sources are critical in distilling relevant information, addressing common concerns, and simplifying the use of interoperable data. Defining simplified profiles allows avoiding over-reliance on the entirety of available data, instead using constrained, modular representations tailored to specific regulatory and procedural needs. Drawing from principles of interoperability and practical applications, this chapter highlights existing and emerging practices in defining and managing such data profiles. It discusses how profiling standards like CityGML, IFC, XPlanung and INSPIRE can improve practical interoperability to suit specific regulatory use cases. Machine readable profiles can be used to validate whether available data meets processing requirements and ensure the reliability of digital workflows by automating compliance checks and linking disparate data sources. By leveraging profiling methodologies, digital building permit processes can achieve better data reusability, trusted automatic compliance checks, and integration of diverse datasets into cohesive workflows. This chapter reviews practices in the area and discusses how Linked Data approaches can support scalable solutions with modular, machine-readable profiles that can harmonize data while reducing complexity and enhancing traceability.},
+}
+
 @Comment Manuscript ID: Access-2025-25892
 @Article{NovalijaEtAl-AI-Innovation-2025,
   author       = {Inna Novalija and Dumitru Roman and Federico Belotti and Vladimir Alexiev and Luis Rei and Roberto Avogadro and Babak Khalilvandian and Boyan Bechev and Catalina Alexandra Chinie and Iulia Ciurea and Janez Brank and Cosmin Udroiu and Ahmet Soylu and Matteo Palmonari},
@@ -13,6 +25,17 @@ coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
   date         = {2025-07},
   doi          = {10.1109/ACCESS.2025.3590135},
   abstract     = {Artificial Intelligence (AI) is a transformative force driving innovation, yet tracking AI- related advancements remains challenging due to the rapid pace of development and unstructured data from platforms like GitHub. This paper proposes an AI-driven approach to innovation detection, leveraging GitHub as a data source to systematically identify and link AI projects to organizations. A knowledge graph is constructed to represent relationships among AI topics, projects, and companies, thereby enabling structured innovation tracking. The methodology incorporates a taxonomy of 7,490 AI topics, a pipeline for collecting and pre-processing data from GitHub, and a set of techniques for entity linking and topic extraction. The approach addresses challenges such as data sparsity and noise, demonstrating strengths in semantic annotation and topic categorization. Results highlight the potential for accurately detecting AI innovations and linking them to organizational entities, offering valuable insights for researchers, companies, and policymakers. This work contributes a scalable, automated approach for AI innovation tracking, with future directions focusing on refining entity linking and expanding the knowledge graph to capture emerging trends.},
+}
+
+@Misc{Alexiev-index-yaml-json-sparql-2025,
+  author       = {Vladimir Alexiev},
+  title        = {Convert GraphDB Elastic index definition from YAML to JSON and embed in SPARQL},
+  howpublished = {Software},
+  month        = mar,
+  year         = 2025,
+  url          = {https://github.com/VladimirAlexiev/index-yaml-json-sparql},
+  keywords     = {yaml, elasticsearch, json, connector, sparql, graphdb, elastic, underpin, dcat, datasets},
+  abstract     = {GraphDB has a powerful Elasticsearch connector that allows you to specify which parts of a Knowledge Graph should be indexed in Elastic. This is done by posting index definitions through the Workbench or using SPARQL Update. The index definition is quite verbose: It's written in JSON, so you need to pay attention to a lot of quotes and braces. You cannot use prefixes in RDF props but have to specify the full URLs. You must write sequence property paths using JSON arrays. You must write alternative paths by using suffixed field names and repeat all field characteristics between the suffixed variants. This repository has a script index-yaml-json-sparql that makes index creation much easier. We give an example from the UNDERPIN semantic index for DCAT Datastes.},
 }
 
 @Misc{Alexiev-ERA-SHACL-2025,
@@ -38,7 +61,7 @@ coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
   abstract     = {A SPARQL tutorial presented at the RailDataForum2025 masterclass. We present sample queries, schema exploration queries, and link to the ERA Vocabulary "data stories" (competency questions). We also introduce the ERAbot, setup quickly by using GraphDB's "Talk to Your Graph" functionality. Contents: Intro: SPARQL eLearning, ERA KG Intro, ERAbot, SPARQL Intro; Some SPARQL Queries: Longest Tunnel, Tunnels in Romania, Names of Romania, Collect Names, Ordered and Distinct Names, Query Explanation by GPT; Schema Exploration: Class Count, ERA Class Count, Property Count, ERA Property Count, Deprecated Terms, SKOS Vocabularies Complex Queries: Canonical URIs, Data Duplication, Counting Tunnels; Data Stories},
 }
 
-@Misc{Alexiev-Ontology-Simplification-2025,
+@Misc{Alexiev-ChatGPT-Validation-2025,
   author       = {Vladimir Alexiev},
   title        = {Trying ChatGPT for Electrical CIM Data Validation},
   howpublished = {Blog post},
@@ -95,6 +118,7 @@ The Talk2PowerSystem project for Statnett, involving CIM/CGMES electrical data; 
   url_Slides   = {https://docs.google.com/presentation/d/1R86L3fg7ZAojcIgph5vdR_FMyE5CyMrwhOYFWQ_TN2c/edit},
   keywords     = {UNDERPIN, dataspace, DCAT, CSVW, QUDT, ontology, semantic interoperability, semantic layer, semantic search, sensor data, timeseries, InfluxDB},
   date         = {2025-05-13},
+  doi          = {10.5281/zenodo.17045600},
 }
 
 @InProceedings{David-vocabularyHubs-SDS-2025,
@@ -109,6 +133,7 @@ The Talk2PowerSystem project for Statnett, involving CIM/CGMES electrical data; 
   url_Slides   = {TODO},
   keywords     = {dataspace, IDS-RAM, vocabulary hub, SPARQL Federation, semantic layer, semantic interoperability, data interoperability, data sovereignty, data governance, scalability, linked data, UNDERPIN},
   date         = {2025-06-01},
+  doi          = {10.5281/zenodo.17045643},
   abstract     = {This paper proposes a layered architecture for federating vocabulary hubs, the component within a single data space responsible for shared agreement on semantics. Until now, each data space has their own vocabulary hub as prescribed by the IDS-RAM. The proposed design addresses the vocabulary hub federation problem. Moreover, it enables a semantic layer that provides semantic services over these federated data spaces. The European Commission's recent standardization request for a European Trusted Data Framework underlines the relevance of this work. This paper discusses relevance, requirements, like scalability and data sovereignty, and a layered architecture that integrates IDS and Semantic Web standards. Existing tool implementations are discussed that implement parts of the architecture and that can form a basis for future implementation of the full architecture for this semantic layer over data spaces.},
 }
 
@@ -122,6 +147,7 @@ The Talk2PowerSystem project for Statnett, involving CIM/CGMES electrical data; 
   url_Slides   = {https://docs.google.com/presentation/d/1fvByGbVyqDf3FeJojRRJZCaFe6TGPxV-7aFwXpUTbio/edit},
   keywords     = {UNDERPIN, dataspace, DCAT, CSVW, QUDT, ontology, semantic interoperability, semantic search, sensor data, timeseries, LLM},
   date         = {2025-04-10},
+  doi          = {10.5281/zenodo.17045724},
 }
 
 @InProceedings{Alexiev-AIOTI-AAS-ECLASS-SAAM-2025,
@@ -137,6 +163,7 @@ The Talk2PowerSystem project for Statnett, involving CIM/CGMES electrical data; 
   url_Slides   = {https://docs.google.com/presentation/d/1iZhZin5XkXliIa4Y80G2KtwTtGDbg2czLD9w_T4eIQc/edit},
   keywords     = {Asset Administration Shell, AAS, Industrial IoT, Industrial Digital Twins, ECLASS, Semantic Aspect Meta Model, SAMM, Eclipse Semantic Modeling Framework, ESMF, UNDERPIN},
   date         = {2025-02-05},
+  doi          = {10.5281/zenodo.17047480},
 }
 
 @InProceedings{Alexiev-AIOTI-Dataspaces-2025,
@@ -152,6 +179,7 @@ The Talk2PowerSystem project for Statnett, involving CIM/CGMES electrical data; 
   url_Slides   = {https://docs.google.com/presentation/d/1UL5_AMlURkzTKE737Bat6J-KLGTR1yhlzqaBzNvaAi4/edit},
   keywords     = {Dataspaces, semantic metadata, DCAT, CSVW, Eclipse Dataspace Components, EDC, JSON-LD, UNDERPIN},
   date         = {2025-02-05},
+  doi          = {10.5281/zenodo.17047444},
 }
 
 @Misc{Lutz-Alexiev-IDO-vendor-meeting-2024,
@@ -174,12 +202,13 @@ The Talk2PowerSystem project for Statnett, involving CIM/CGMES electrical data; 
   year         = 2024,
   month        = oct,
   address      = {Budapest, Hungary},
-  url_Proceedings = {https://semantic.internationaldataspaces.org/workshop-2024/},
-  url_Slides   = {https://underpin-project.github.io/papers/EBDVF-2024/EBDVF-2024-presentation/presentation.html},
   url_PDF      = {https://raw.githubusercontent.com/underpin-project/papers/refs/heads/main/EBDVF-2024/EBDVF-2024-presentation/presentation.pdf},
+  url_Proceedings= {https://semantic.internationaldataspaces.org/workshop-2024/},
+  url_Slides   = {https://underpin-project.github.io/papers/EBDVF-2024/EBDVF-2024-presentation/presentation.html},
   keywords     = {UNDERPIN, dataspaces, semantic interoperability, semantic technologies, ontologies, vocabulary hub, oil and gas, renewable energy, refineries, windfarms},
   date         = {2024-10-02},
   abstract     = {Dataspaces are an important enabler for industrial sharing data (either commercially licensed or private). Europe is investing heavily into sectoral dataspaces, federation and orchestration platforms like SIMPL, Eclipse DSC, GXFS, etc. Still, dataspaces enable shared data access, but do not solve the data interoperability problem. For that, the consumer would like to see the data from different providers in a harmonized and semantically integrated form. The Vocabulary Hub service (part of the IDS RAM) provides a repository for ontologies and vocabularies. We describe an approach of raising the role of the Vocabulary Hub to also allow richer metadata description (e.g. the meaning of every column in a tabular dataset), and binding semantic descriptions to ingested datasets, thus providing on-the-fly data semantization and easing data querying. This is achieved through the integration of two commercial semantic products (PoolParty and GraphDB), leveraging the partnership between the Semantic Web Company and Ontotext, and is being developed within the frame of the Digital Europe project UNDERPIN, with applications to refinery and wind farm data.},
+  doi          = {10.5281/zenodo.17047518},
 }
 
 @Manual{Vakaj-AEC3PO-ontology-2024,
@@ -607,7 +636,7 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
   organization = {European Commission: Directorate-General for Informatics, Publications Office of the European Union},
   url          = {https://drive.google.com/open?id=1Cq5o9th_P812paqGkDsaEomJyAmnypkD},
   url_PPT      = {https://docs.google.com/presentation/d/1JCMQEH8Tw_F-ta6haIToXMLYJxQ9LRv6/edit},
-  url_Slides   = {https://op.europa.eu/documents/10157494/12134844/DAY1-TRACK2-16.35-16.50-VladimirAlexiev_FORPUB.pdf/6e564f96-6ad6-1464-7a6e-e9533207f281},
+  url_Slides   = {https://op.europa.eu/documents/10157494/12134844/DAY1-TRACK2-16.35-16.50-VladimirAlexiev_FORPUB.pdf},
   url_Video    = {https://youtu.be/yL5nI_3ccxs},
   keywords     = {semantic model, semantic data integration, ETL, semantic conversion, declarative approaches, PlantUML, R2RML, generation, model-driven, RDF by Example, rdfpuml, rdf2rml},
   isbn         = {978-92-78-43682-7},
@@ -700,8 +729,10 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
 @Misc{Alexiev2020-ECLASS,
   author       = {Vladimir Alexiev},
   title        = {{ECLASS RDF Representation}},
+  month        = dec,
   year         = 2020,
-  url          = {https://vladimiralexiev.github.io/my/pres/20201221-ECLASS-RDF/index.html},
+  url          = {https://docs.google.com/document/d/1ebKRgAdgCAlVkB53WrtErB0WIhJ95NZWfU8qE_S6nDU/edit},
+  url_HTML     = {https://vladimiralexiev.github.io/my/pres/20201221-ECLASS-RDF/index.html},
   url_Slides   = {https://vladimiralexiev.github.io/my/pres/20201221-ECLASS-RDF/Slides.html},
   keywords     = {product data, product catalogs, product classification, product characteristics, ECLASS, RDF representation, AAS},
   date         = {21-Dec-2020},
