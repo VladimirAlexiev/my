@@ -1,5 +1,45 @@
 coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
 
+https://github.com/spdx/spdx-3-model/issues/1157
+
+@TechReport{Alexiev-SoftwareDPPs-2025,
+  author       = {Vladimir Alexiev},
+  title        = {UNDERPIN Software DPPs},
+  institution  = {Graphwise},
+  year         = 2025,
+  month        = {dec},
+  keywords     = {DPP, SPDX, SPDX ontology, software description, UNDERPIN},
+  date         = {2025-12-01},
+  url_Guithub  = {https://github.com/underpin-project/dpp/blob/main/README.md},
+  abstract     = {Contents: Trivy SPDX 2.3 and Cyclone 1.6 Formats. License Reports. SPDX Tools. SPDX Semantic Conversion. Makefile. Exploring SPDX RDF. SPDX RDF Basic Structure. SPDX Ontology. Sample Queries. Explore SPDX Classes and Properties. List all softwares. Softwares with count of packages. List licenses per count. Licenses per Software. Visual Graph Configuration. Contributions to SPDX. Modeling of Identifiers. Reusing Prior Modeling Efforts. SHACL Simplification and Rationalization. Ontology Realism and Descriptions. Namespaces},
+}
+
+@TechReport{AlexievEtAl-UNTP-Review-2025,
+  author       = {Vladimir Alexiev and Elio Hbeich and Robert David},
+  title        = {UNTP Ontology Review},
+  institution  = {Graphwise and GS1},
+  year         = 2025,
+  month        = {oct},
+  url          = {https://docs.google.com/document/d/1R3yqaYCO3JTpWsIckSzbumzyQgwRvd5X4Ewg-9Ax4yU/edit},
+  keywords     = {DPP, ontology, ontology review, semantic modeling, UNTP},
+  date         = {2025-10-23},
+  abstract     = {The document is a review of the United Nations Transparency Protocol (UNTP) ontologies, identifying problems and areas for improvement. Purpose: The review aims to help the EU Cirpass2 project assess UNTP ontology suitability; and to facilitate posting issues to UNTP (at UNICC GitLab). Parts: Describes the current UNTP domains (core, dcc, dfr, dia, dpp, dte). Links to a github repo with Turtle variants and some analysis. Outlines issues in 16 detailed subsections. After general approval at the UNTP mailing list, all the issues were posted on the UNTP gitlab},
+}
+
+@TechReport{AlexievEtAl-Cirpass2-Review-2025,
+  author       = {Vladimir Alexiev and Elio Hbeich and Ivo Ladenius},
+  title        = {Cirpass2 Ontology Review: Core and Substances of Concern},
+  institution  = {Graphwise and GS1},
+  year         = 2025,
+  month        = {oct},
+  url          = {https://docs.google.com/document/d/1yGp35EHM_54bdIllKz_iXvdFDFs7ahfm9OOcXjZDUWc/edit},
+  keywords     = {Cirpass, Cirpass2, DPP, ontology, ontology review, semantic modeling, UNTP},
+  date         = {2025-10-23},
+  url_issues   = {https://opensource.unicc.org/un/unece/uncefact/spec-untp/-/issues},
+  url_ontology = {https://github.com/VladimirAlexiev/untp-ontologies},
+  abstract     = {This document is a review of the Cirpass2 core ontology, which is the first iteration of the EU Digital Product Passport (DPP) core ontology proposal. The review highlights several issues, including: Lack of reuse of UNTP ontologies: The document suggests that reusing UNTP ontologies would save development time and broaden the global reach of Cirpass DPP ontologies. Namespace and Naming problems: Issues such as using http instead of https for namespaces, non-permanent URLs, inconsistent spelling, and poorly named classes and properties. Ontology Metadata issues: Problems with author representation, empty contributor values, and comments attached to blank nodes. Modularity Errors: The core ontology is formed by concatenating modules, leading to redundant metadata and version information. The reviewer suggests using owl:import and potentially a single namespace for better modularity. Syntax Errors and Typos: Examples include mistyped ontology URLs and spelling mistakes. Description Errors: Comments with incorrect language tags, unclosed parentheses, misspellings, poor line breaks, and imprecise or misleading descriptions. It also suggests moving source information to dc:source and links to rdfs:seeAlso. Descriptive Omissions: Many terms lack rdfs:label and rdfs:comment, making them unclear. External Property Errors: Misspelling of skos:exactMatch and improper redefinition of owl:topDataProperty. Modeling Problems and Omissions: Issues with rdfs:subPropertyOf owl:topObjectProperty declarations, unelaborated dimensions and quality indicators, role modeling problems, missing links for permissions, no relation to Verifiable Credentials, inverse property naming, and failure to reuse GS1 Digital Link types. QuantitativeProductProperty Modeling Problems: These properties are often not elaborated, and there's a need for a more flexible way to capture what is being measured. It also points out that QuantityValue lacks defined MeasurementUnit and QuantityKind, suggesting the use of QUDT classes. Identifiers Not Modeled Adequately: Inconsistent ID property ranges and a lack of clear structure for identifier schemes. Recommendations include using adms:Identifier and considering W3C DIDs and/or GS1 identifiers. Unwarranted Union Datatypes: The use of union datatypes for uniqueProductID and webLink is considered unwarranted. Undefined classes and properties: The ontology includes undefined classes and properties like Type, hasType, and participatesInEvent. Duplication of annotation properties: Due to merging modules, standard annotation properties are defined multiple times.},
+}
+
 @InCollection{AtkinsonEtAl-data-profiling-2025,
   author       = {Rob Atkinson and Francesca Noardo and Nataliya Keberle and Arkadiusz Chadzynski and Alejandro Villar and Mayte Toscano and Vladimir Alexiev},
   title        = {Data Profiling and Validation Through Linked Data},
@@ -59,6 +99,17 @@ coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
   url          = {https://github.com/VladimirAlexiev/RailDataForum2025-SPARQL},
   keywords     = {rail, ERA, ERA Vocabulary, ERA KG, SPARQL, tutorial, RailDataForum, Talk to Your Graph, TTYG, chatbot, ERAbot},
   abstract     = {A SPARQL tutorial presented at the RailDataForum2025 masterclass. We present sample queries, schema exploration queries, and link to the ERA Vocabulary "data stories" (competency questions). We also introduce the ERAbot, setup quickly by using GraphDB's "Talk to Your Graph" functionality. Contents: Intro: SPARQL eLearning, ERA KG Intro, ERAbot, SPARQL Intro; Some SPARQL Queries: Longest Tunnel, Tunnels in Romania, Names of Romania, Collect Names, Ordered and Distinct Names, Query Explanation by GPT; Schema Exploration: Class Count, ERA Class Count, Property Count, ERA Property Count, Deprecated Terms, SKOS Vocabularies Complex Queries: Canonical URIs, Data Duplication, Counting Tunnels; Data Stories},
+}
+
+@Misc{Alexiev-double-OPTIONAL-2025,
+  author       = {Vladimir Alexiev},
+  title        = {Using Double Optional to Select Preferred Value in SPARQL},
+  howpublished = {Blog post},
+  month        = oct,
+  year         = 2025,
+  url          = {https://github.com/statnett/Talk2PowerSystem/wiki/Blog-Using-Double-Optional-to-Select-Preferred-Value-in-SPARQL},
+  keywords     = {SPARQL, OPTIONAL, UNION, NOT EXISTS, BOUND, COALESCE, preference order, SELECT, Wikidata, Lang String, DCAT, Talk2PowerSystem chatbot, Talk2PowerSystem components, Electrical CIM, CimSparql},
+  abstract     = {A common SPARQL need is to fetch one of several possible values in some preference order. The "most natural" way to approach such a query is to try the different alternatives and select into different variables, then combine them with COALESCE. I've seen people struggle with this (and I've been guilty myself) by using complex constructs like UNION, FILTER NOT EXISTS, FILTER(!BOUND), COALESCE. It is even worse to use GROUP BY and some aggregation function like SAMPLE, MAX, MAX(LENGTH). Using these constructs complicates the query and makes it more brittle in the face of multiple values or other data problems/deformities. If you are not extra careful, it's easy to fall into the "Cartesian Explosion" trap, i.e. produce a resultset that's the Cartesian Product of multivalued variables. A simpler way is to use a sequence of OPTIONAL clauses that all select into the same variable. This is a beautiful trick that makes sense when you grok it. I'll give several examples of real-world queries that can be optimized using this "Double OPTIONAL" trick. The only "gotcha" is if the query optimizer decides to reorder OPTIONAL clauses: but I don't know of any optimizer to do that, at least if you put more complicated clauses later in the query.},
 }
 
 @Misc{Alexiev-ChatGPT-Validation-2025,
@@ -462,7 +513,8 @@ annote        = {
   year         = 2022,
   month        = jul,
   address      = {Vienna, Austria},
-  url          = {https://drive.google.com/file/d/15RuCfyresjmc0JWoNl8Jpjpbf_O65UkD/view},
+  url={https://www.trusts-data.eu/wp-content/uploads/2022/06/07-Data-Spaces-vs-Knowledge-Graphs.pdf},
+  url_Gdoc          = {https://drive.google.com/file/d/15RuCfyresjmc0JWoNl8Jpjpbf_O65UkD/view},
   url_Slides   = {https://docs.google.com/presentation/d/1uujCfAGw7nTwz9c6ItLtUhsKiGEbK2bKCWUOOunpyw0/edit},
   url_Video    = {https://www.youtube.com/watch?v=RpCVChGczSA},
   url_Blog     = {https://www.ontotext.com/company/news/ontotext-presents-position-paper-at-data-spaces-and-semantic-interoperability-workshop/},
@@ -558,7 +610,7 @@ UC4: Energy Tracing for CO2 Footprint and Pollution Impact, for enterprises who 
   month        = nov,
   year         = 2021,
   url          = {https://vladimiralexiev.github.io/my/pres/EBDVF-2021-(V.Alexiev).pptx},
-  keywords     = {Cross-disciplinary, ontologies, buildings, infrastructure, smart grid, electricity, energy efficiency, energy consumption, AECO, architecture, construction, cadaster, smart city, Manufacturing, Transport/Logistics, Product classification, sensor, CIM, CGMES, IFC, LOIN, IDM, ICDD, COINS, MVD, BCF, bSDD, Data Dictionaries, Data Templates, Object Libraries, Bricks Schema, Haystack, Digital Buildings, Real Estate Core, LBD, BOT, BPO, CDC, CTO, DOT, FOG, OMG CityGML, GeoSPARQL, other OGC, ISO 23262, GIS-BIM interop, FSGIM, OpenADR, DABGEO, EnergyUse, OEMA, EEPSA, PROSG, SEAS, SEMANCO, DogOnt, ThinkHome, OPC UA, AutomationML, RAMI, AdminShell GS1 EPCIS, CBV, WebVoc, Digital Links, TDS identifiers (GTIN, GLN, GRAI, GIAI, GDTN…) COBIE, eClass, IEC CDD, GS1 GPC, UNSPSC, SOSA, SSN, WoT TD, DTML, SAREF, SAREF4ENER, SAREF4BLDG, SAREF4water},
+  keywords     = {Cross-disciplinary, ontologies, buildings, infrastructure, smart grid, electricity, energy efficiency, energy consumption, AECO, architecture, construction, cadaster, smart city, Manufacturing, Transport/Logistics, Product classification, sensor, CIM, CGMES, IFC, LOIN, IDM, ICDD, COINS, MVD, BCF, bSDD, Data Dictionaries, Data Templates, Object Libraries, Bricks Schema, Haystack, Digital Buildings, Real Estate Core, LBD, BOT, BPO, CDC, CTO, DOT, FOG, OMG CityGML, GeoSPARQL, other OGC, ISO 23262, GIS-BIM interop, FSGIM, OpenADR, DABGEO, EnergyUse, OEMA, EEPSA, PROSG, SEAS, SEMANCO, DogOnt, ThinkHome, OPC UA, AutomationML, RAMI, AdminShell, AAS, GS1 EPCIS, CBV, WebVoc, Digital Links, TDS identifiers (GTIN, GLN, GRAI, GIAI, GDTN…) COBIE, eClass, IEC CDD, GS1 GPC, UNSPSC, SOSA, SSN, WoT TD, DTML, SAREF, SAREF4ENER, SAREF4BLDG, SAREF4water},
   address      = {Presentation at European Big Dava Value Forum (EBDVF 2021)},
 }
 
@@ -626,6 +678,18 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
   abstract     = {Presents the EU Data Spaces initiatives, Single Electricity Market, ENTSOE market transparency data, IEC Common Information Model (CIM), ENTSOE Common Grid Model Exchange Specification (CGMES), and how Energy KGs can improve data integration in the energy domain.},
 }
 
+@Misc{Petkova-Alexiev-EPCIS2-2021,
+  author       = {Gergana Petkova and Vladimir Alexiev},
+  title        = {{Ontotext Contributes To The Development of GS1 EPCIS 2.0 That Will Further Improve Supply Chain Transparency}},
+  howpublished = {Ontotext blog post},
+  month        = dec,
+  year         = 2021,
+  url          = {https://www.ontotext.com/company/news/ontotext-contributes-to-the-development-of-gs1-epcis-2-0/},
+  keywords     = {Transport, Logistics, GS1, EPCIS, EPCIS 2.0, CBV, Ontology, SHACL, JSON-LD},
+  TODO         = {Links not underlined, missing links, duplicate bullets. Compare to https://www.trusts-data.eu/wp-content/uploads/2022/06/07-Data-Spaces-vs-Knowledge-Graphs.pdf p9},
+  abstract     = {EPCIS (Electronic Product Code Information Services) is a standard developed and maintained by GS1 – an international organization for standards in transport and logistics. EPCIS provides a solution to building a trusted supply chain between the actors involved in the process. It specifies the context of an event and enables trading partners to share traceable information about the physical movement and status of products as they travel throughout the supply chain – from business to business and ultimately to consumers. The new version of EPCIS features many updates and improvements. Some of the major differences between version 1.2 and 2.0 include adding a section on EPCIS Semantics (to clarify the meaning of various identifiers and constructs), extending the XML schema to support RDF SHACL shapes, adding JSON, JSONLD and RDF (Linked Data) renditions in addition to the existing XML rendition, etc. Ontotext has actively participated in the specifications of EPCIS 2.0 by adding: the EPCIS Semantics document; mappings of EPC/TDS identifiers to GS1 classes, and additions to GS1 class hierarchy; improvements to the EPCIS ontology and RDF shapes; the EPCIS Semantics document; mappings of EPC/TDS identifiers to GS1 classes, and additions to GS1 class hierarchy; improvements to the ontology and RDF shapes; specific proposals for gs1:CertificationDetails and gs1:MeasurementType; meta-properties to enable the generation of “dual” documentation of the JSON model and RDF (ontological) model; best practices about publishing ontologies, semantic resolution, and many more.},
+}
+
 @InProceedings{Alexiev-ENDORSE-2023,
   author       = {Vladimir Alexiev},
   title        = {{Generation of Declarative Transformations from Semantic Models}},
@@ -645,6 +709,25 @@ Focusing on DS/ML approaches only, a couple of the relevant ontologies or standa
   date         = {2023-08-04},
   url_proceedings= {https://op.europa.eu/en/publication-detail/-/publication/4db67b35-34df-11ee-bdc3-01aa75ed71a1},
   abstract     = {The daily work of the Knowledge Graph Solutions group at Ontotext involves KG building activities such as investigating data standards and datasets, ontology engineering, harmonizing data through semantic models, converting or virtualizing data to semantic form, entity matching, semantic text enrichment, etc. Semantic pipelines have a variety of desirable properties, of which maintainability and consistency of the various artefacts are some of the most important ones. Despite significant recent progress (eg in the KG Building W3C community group), semantic conversion still remains one of the difficult steps. We favor generation of semantic transformations from semantic models that are both sufficiently precise, easily understandable, can be used to generate diagrams, and are valid RDF to allow processing with RDF tools. We call this approach "RDF by Example" and have developed a set of open source tools at https://github.com/VladimirAlexiev/rdf2rml. This includes "rdfpuml" for generating diagrams, "rdf2rml" for generating R2RML for semantization of relational data and ONTOP virtualization, "rdf2sparql" for semantization of tabular data with Ontotext Refine or TARQL. We describe our approach and illustrate it with complex and high-performance transformations in a variety of domains, such as company data and NIH research grants.},
+}
+
+@Misc{Alexiev-Crunchbase-challenge-2022,
+  author       = {Vladimir Alexiev},
+  title        = {Crunchbase Challenge},
+  howpublished = {Github gist},
+  month        = Mar,
+  year         = 2022,
+  url          = {https://gist.github.com/VladimirAlexiev/d5d67feb002dbcfa6b3d4c3dd59b52da},
+  date         = {2022-03-24},
+  keywords     = {Crunchbase, ontologies, knowledge graphs, KG construction, RDFization, declarative transformations, semantic model, semantic data integration, ETL, semantic conversion, declarative approaches},
+  abstract     = {Here's a challenge for the "Knowledge Graphs Construction" Community Group (KGC CG):
+Take Crunchbase: 14M rows, across 18 tables, served as CSV, updated daily.
+The data of some nodes comes from multiple tables (eg Organization from organizations, org_parents, org_descriptions).
+RDFize and store the total dataset, in under 1-2 hours time.
+Using the approach described here, GraphDB 9.11 with OntoRefine takes 76-119 minutes (1.3-2 hours) depending on hardware to produce and load 138M triples (19-30k triples per second).
+Update the data daily, replacing the data of recently updated rows.
+Using the approach described here, it takes about 15 minutes to update all of Crunchbase.
+Do it with your favorite RDFization toolkit, and preferably do it declaratively.},
 }
 
 @InProceedings{Alexiev-ENDORSE-2021,
@@ -1034,6 +1117,18 @@ This is only a reference. See more detail in the EBG Semantic Model document, wh
   keywords     = {Wikidata, SPARQL, GLAM, cultural heritage, Getty Museum, JPGM},
   abstract     = {I use Wikidata SPARQL to find J. Paul Getty Museum objects without museum Object ID. Most of these objects have a property "described at URL" that includes the object ID I seek. I use SPARQL to transform the results to Wikidata Quick Statements format, then insert the IDs directly to Wikidata.},
 }
+
+@Misc{Alexiev2024-Complex-SPARQL,
+  author       = {Vladimir Alexiev},
+  title        = {{Complex SPARQL Examples}},
+  howpublished = {Github gist},
+  month        = mar,
+  year         = 2024,
+  url          = {https://gist.github.com/VladimirAlexiev/cf2de89b692bbc2ae70917aae021ec07},
+  keywords     = {SPARQL, SPARQL transformation, TARQL, complex queries, Wikidata, DnB, Dun & Bradstreet, company graph, organization data, CHIN, Canadian Heritage, Nomenclature for Museum Cataloging},
+  abstract     = {Examples of complex SPARQL queries that I've written in my practice as a Knowledge Graph engineer. Dun and Bradstreet Companies: a TARQL conversion from a DnB tabular data format with 160 columns to a semantic model based on FIBO; the query is 480 lines, 110 prefixes, 110 binds; and makes 33 nodes, 250 triples. Wikidata Org Mapping: extracts selected WD data about one organization (denoted "?it") and simplifies it to a "Company Graph" KG format, which is an extension of the euBusinessGraph Ontology; the query is rather complex: 1118 lines, 58 prefixes, 108 binds; 29 nodes, 90 triples; So it was developed in Literate Programming style in Emacs Orgmode (wd-mapping.org), then tangled (wd-mapping.m4) and finally processed with the M4 macro processor. CHIN Nomenclature Restructuring: a thesaurus of museum object types. The query is the core of an ETL process that converts from an internal (SKOS+custom) to public (SKOS+SKOSXL+schema etc) representaion; it is a complex Federated SPARQL Update of 231 lines, 13.9k chars, 18 prefixes, 50 binds; and makes 18 nodes, 99 triples. It is described in detail, going line by line.},
+}
+
 
 @Misc{Alexiev2017-euBusinessGraph-organization-datasets-and-ontologies,
   author       = {Vladimir Alexiev},
