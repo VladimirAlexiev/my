@@ -1,13 +1,25 @@
-coding{-*- @Comment: utf-8; fill-column: 5000 -*-}
+@Comment: -*- utf-8; fill-column: 5000 -*-
 
-https://github.com/spdx/spdx-3-model/issues/1157
+@comment https://github.com/spdx/spdx-3-model/issues/1157
+
+@InProceedings{David-AIOTI-Rules-2026,
+  author       = {Robert David and Vladimir Alexiev},
+  title        = {SHACL Rules Interoperability: Enabling cross-model interoperability with rule-based reasoning},
+  booktitle    = {AIOTI Workshop on Semantic Interoperability for Digital Twins},
+  year         = 2026,
+  month        = mar,
+  address      = {Frankfurt on Oder, Germany},
+  url          = {https://docs.google.com/presentation/d/1vZUL6TA8xunMBKx-Ob1RgfxP4dt9rar5pn8Ytvn8UP4/edit},
+  abstract     = {The Digital Product Passport (DPP) has emerged as a cornerstone of the European Union’s Circular Economy Action Plan, serving as a mandatory framework to enhance product transparency, traceability, and sustainability across global value chains. As the EU accelerates the roll-out of DPP requirements to sectors ranging from batteries to textiles and electronics, the technical community faces a critical challenge: the fragmentation of modeling standards. Currently, two primary architectural paradigms dominate the landscape. The first is rooted in Ontological modeling, championed by the W3C Traceability Community Group and its international successor, the UNECE/UNCEFACT United Nations Transparency Protocol (UNTP). These efforts leverage Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs) to create a decentralized, cryptographically secure layer for provenance and claims. In parallel, the Asset Administration Shell (AAS) approach, pioneered by Plattform Industrie 4.0 and operationalized by initiatives like Catena-X, provides a robust digital twin framework. AAS-based efforts have successfully defined standardized submodels for Product Carbon Footprint (PCF), Digital Nameplates, Battery Passports and DPPs, using the Semantic Aspect Meta Model (SAMM). While SAMM utilizes RDF to carry schema information and SHACL for some validation, it doesn’t use the Web Ontology Language (OWL), creating a semantic gap between the structural rigor of AAS and the relational reasoning capabilities of formal ontologies. The industry stands at a crossroads where the lack of alignment between these two paradigms threatens to increase integration costs and hinder data portability for manufacturers. It is increasingly clear that stakeholders will benefit from a unified ecosystem where ontological traceability and AAS-based digital twins can either converge or seamlessly interoperate. Recognizing this necessity, the Cirpass2 project has initiated an informal "Multi-project AAS/RDF interoperability discussion group" in October 2025 to work on reconciling these approaches to ensure a harmonized DPP implementation and try to bridge a gap between AAS developers and the Semantic Web community. A promising approach to bridge AAS schema definitions (SAMM) and OWL is to use SHACL Rules (part of the upcoming SHACL 1.2 specification). We present the approach and our plans to develop a "samm2owl" converter. It will facilitate reuse of the rich, industry-vetted data models of the AAS world to be utilized within the decentralized, linked-data architectures of the UNTP. We hope to bridge between these frameworks and facilitate a "best of both worlds" scenario: the structural reliability of AAS for industrial operations and the flexible, verifiable traceability of ontologies for cross-border regulatory compliance.},
+}
+
 
 @TechReport{Alexiev-SoftwareDPPs-2025,
   author       = {Vladimir Alexiev},
   title        = {UNDERPIN Software DPPs},
   institution  = {Graphwise},
   year         = 2025,
-  month        = {dec},
+  month        = dec,
   keywords     = {DPP, SPDX, SPDX ontology, software description, UNDERPIN},
   date         = {2025-12-01},
   url_Guithub  = {https://github.com/underpin-project/dpp/blob/main/README.md},
@@ -19,7 +31,7 @@ https://github.com/spdx/spdx-3-model/issues/1157
   title        = {UNTP Ontology Review},
   institution  = {Graphwise and GS1},
   year         = 2025,
-  month        = {oct},
+  month        = oct,
   url          = {https://docs.google.com/document/d/1R3yqaYCO3JTpWsIckSzbumzyQgwRvd5X4Ewg-9Ax4yU/edit},
   keywords     = {DPP, ontology, ontology review, semantic modeling, UNTP},
   date         = {2025-10-23},
@@ -31,7 +43,7 @@ https://github.com/spdx/spdx-3-model/issues/1157
   title        = {Cirpass2 Ontology Review: Core and Substances of Concern},
   institution  = {Graphwise and GS1},
   year         = 2025,
-  month        = {oct},
+  month        = oct,
   url          = {https://docs.google.com/document/d/1yGp35EHM_54bdIllKz_iXvdFDFs7ahfm9OOcXjZDUWc/edit},
   keywords     = {Cirpass, Cirpass2, DPP, ontology, ontology review, semantic modeling, UNTP},
   date         = {2025-10-23},
